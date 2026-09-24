@@ -1,0 +1,63 @@
+name: Deploy preview to GitHub Pages
+
+# Publishes ONLY preview/index.html and its photographs.
+#
+# Deliberately NOT published: design/ (internal phase documents, including the
+# internal-only territory names), docs/, src/, scripts/. A GitHub Pages site is
+# reachable by anyone with the URL even when the repository is private, unless
+# the organisation is on Enterprise Cloud with Pages access control. Keep the
+# published surface to the preview itself.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'preview/**'
+      - 'public/images/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the site
+        run: |
+          set -euo pipefail
+          mkdir -p _site/images
+          cp public/images/*.jpg _site/images/
+          # The preview loads images from ../public/images/ when opened from a
+          # clone. Flatten that to images/ for the published root.
+          sed 's|\.\./public/images/|images/|g' preview/index.html > _site/index.html
+          if grep -q '\.\./public/images/' _site/index.html; then
+            echo "image paths were not rewritten"; exit 1
+          fi
+          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
+          touch _site/.nojekyll
+          echo "--- published files ---"
+          find _site -type f | sort
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
