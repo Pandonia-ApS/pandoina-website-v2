@@ -38,6 +38,35 @@ consent for web use regardless.
 | Attribution | Not required |
 | Status | **Holding image.** Replace with Pandonia's own hero photograph |
 
+## Supplied by the client — rights not documented
+
+| File | `transit.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 24 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Placement | Day sequence frame 2 — 09.05, "the sample goes in" |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+Two things to settle before this ships.
+
+**Rights.** No source, creator or licence came with the file. The project rule is
+that images with uncertain commercial rights do not go into the production-ready
+version. This one is in the preview because it was asked for directly; it is
+tagged "Stock · rights pending" in the interface rather than as Pandonia's own.
+
+**What it depicts.** It is generic laboratory stock photography — a rack of
+barcoded collection tubes and a gloved hand. It occupies the frame representing
+Pandonia's own sample handling. The standing rule is that stock imagery may
+never stand in for Pandonia's laboratory, staff, doctor, blood draw or product.
+This sits close to that line: it is an object detail rather than a depiction of
+Pandonia's premises or people, but a reader will reasonably take it for
+Pandonia's own operation.
+
+The original brief for this frame — `OBJ-02`, "sample in transit, documentary
+object detail" — still stands as the real shot.
+
 ## Rejected
 
 Two atmospheric candidates were downloaded and discarded: a sheer-curtain still
@@ -54,7 +83,7 @@ because it would misrepresent Pandonia's actual operation:
 
 - **Laboratory ×4** — `LAB-01` … `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress.
 - **The doctor ×3** — `PORTRÆT-01`. Must be the real Pandonia doctor.
-- **Sample in transit ×1** — `OBJ-02`. Documentary object detail.
+- **Sample in transit ×1** — `OBJ-02`. Documentary object detail. Currently filled by `transit.webp`, a stock image with undocumented rights; the real shot is still outstanding.
 
 Stock imagery may be used for atmosphere — a home in the morning, Copenhagen
 residential exteriors, light and transitions. It may never stand in for
