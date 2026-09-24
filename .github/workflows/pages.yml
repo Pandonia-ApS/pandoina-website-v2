@@ -36,7 +36,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p _site/images
-          cp public/images/*.jpg _site/images/
+          # Every image, whatever the extension. An earlier version globbed
+          # *.jpg and silently dropped a .webp, which 404'd on the live site.
+          cp public/images/* _site/images/
           # The preview loads images from ../public/images/ when opened from a
           # clone. Flatten that to images/ for the published root.
           sed 's|\.\./public/images/|images/|g' preview/index.html > _site/index.html
@@ -45,6 +47,21 @@ jobs:
           fi
           printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
           touch _site/.nojekyll
+
+          # Fail the build if the page references an image that is not here.
+          missing=0
+          for f in $(grep -o 'src="images/[^"]*"' _site/index.html \
+                     | sed 's|src="||; s|"||' | sort -u); do
+            if [ ! -f "_site/$f" ]; then
+              echo "MISSING: $f"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "referenced images are missing from the published site"
+            exit 1
+          fi
+
           echo "--- published files ---"
           find _site -type f | sort
 
