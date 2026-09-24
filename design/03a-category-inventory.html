@@ -1,0 +1,533 @@
+<title>Pandonia Category Inventory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap">
+
+<style>
+  :root{
+    --page:#F6F1E8; --surface:#FCFAF6; --surface2:#F4EADB; --deep:#18261A;
+    --ink:#26201A; --ink2:#5C554C; --ink3:#8A8175;
+    --rule:rgba(38,32,26,.14); --ruleSoft:rgba(38,32,26,.07);
+    --accent:#415A3B; --amber:#E3A754; --ok:#4E7050; --warn:#B07C2E; --no:#8C3B2E;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#141F13; --surface:#1C2A19; --surface2:#24301F;
+      --ink:#EDE7DA; --ink2:#B3B5A4; --ink3:#8B9182;
+      --rule:rgba(237,231,218,.18); --ruleSoft:rgba(237,231,218,.09);
+      --accent:#9BBE90; --ok:#9BBE90; --warn:#E3A754; --no:#E09077;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#141F13; --surface:#1C2A19; --surface2:#24301F;
+    --ink:#EDE7DA; --ink2:#B3B5A4; --ink3:#8B9182;
+    --rule:rgba(237,231,218,.18); --ruleSoft:rgba(237,231,218,.09);
+    --accent:#9BBE90; --ok:#9BBE90; --warn:#E3A754; --no:#E09077;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--page);color:var(--ink);margin:0;font-family:"DM Sans",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .sheet{max-width:1180px;margin:0 auto;padding-inline:24px;padding-block:0 100px}
+  .serif{font-family:"Newsreader",Georgia,serif;font-weight:400}
+  .mono{font-family:"DM Mono",ui-monospace,monospace}
+  .lbl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:1.5}
+
+  h1,h2,h3,h4{margin:0}
+  p{margin:0 0 1em;max-width:70ch} p:last-child{margin-bottom:0}
+  code{font-family:"DM Mono",monospace;font-size:.85em;background:var(--ruleSoft);padding:1px 5px}
+  a{color:inherit;text-underline-offset:3px} a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  .masthead{border-bottom:1px solid var(--ink);padding-block:30px 0}
+  .mb{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:baseline;justify-content:space-between;padding-bottom:46px}
+  .wordmark{font-family:"Newsreader",Georgia,serif;font-size:23px}
+  h1.title{font-family:"Newsreader",Georgia,serif;font-size:clamp(34px,6.2vw,76px);line-height:1;letter-spacing:-.02em;text-wrap:balance;padding-bottom:26px}
+  h1.title i{font-style:italic;color:var(--ink3)}
+  .standfirst{font-size:clamp(17px,2vw,20px);line-height:1.5;max-width:56ch;color:var(--ink2);padding-bottom:34px}
+  .colophon{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 28px;border-top:1px solid var(--rule);padding-block:16px 20px}
+  .colophon span{display:block}
+  .colophon .v{font-family:"DM Sans",sans-serif;font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink);margin-top:5px}
+
+  section{border-top:1px solid var(--ink);padding-block:58px 12px}
+  .row{display:grid;grid-template-columns:140px minmax(0,1fr);gap:36px;align-items:start}
+  .rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+  h2.sec{font-family:"Newsreader",Georgia,serif;font-size:clamp(28px,4.2vw,44px);line-height:1.04;letter-spacing:-.02em;text-wrap:balance;padding-bottom:10px}
+  .dek{font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.5;color:var(--ink2);max-width:64ch;padding-bottom:32px}
+  h3{font-size:18px;font-weight:500;letter-spacing:-.012em;line-height:1.25;margin-bottom:8px}
+  h4{font-family:"DM Mono",monospace;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+
+  .block{border-top:1px solid var(--rule);padding-block:32px}
+  .block:first-of-type{border-top:none;padding-top:2px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:26px 38px}
+  .cols p,.cols li{font-size:15px;line-height:1.58}
+  .cols ul{margin:0;padding-left:17px} .cols li{margin-bottom:6px}
+  .note{border-left:2px solid var(--accent);padding:4px 0 4px 20px;font-size:15.5px;line-height:1.58;margin-block:20px}
+  .note.warn{border-left-color:var(--no)} .note.warn h3{color:var(--no)}
+
+  .tag{display:inline-block;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;padding:3px 7px;border:1px solid currentColor;white-space:nowrap}
+  .t-ok{color:var(--ok)} .t-warn{color:var(--warn)} .t-no{color:var(--no)}
+
+  .key{display:flex;flex-wrap:wrap;gap:20px 34px;padding-block:4px 24px}
+  .key>div{max-width:31ch} .key p{font-size:14px;line-height:1.5;color:var(--ink2);margin:8px 0 0}
+
+  .tw{overflow-x:auto;margin-block:6px 22px}
+  table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px}
+  th,td{text-align:left;padding:10px 16px 10px 0;border-bottom:1px solid var(--ruleSoft);vertical-align:top}
+  th{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:400;border-bottom-color:var(--rule)}
+  td.m{font-family:"DM Mono",monospace;font-size:12px}
+  td.n{font-family:"DM Mono",monospace;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td small{display:block;color:var(--ink3);font-size:12px;line-height:1.45;margin-top:3px}
+
+  .cat{border-top:1px solid var(--rule);padding-block:28px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:24px}
+  .cat .no{font-family:"DM Mono",monospace;font-size:12px;color:var(--accent);padding-top:6px}
+  .cat h3{font-family:"Newsreader",Georgia,serif;font-size:26px;font-weight:400;letter-spacing:-.015em;margin-bottom:2px}
+  .cat .en{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+  .cat dl{margin:0;display:grid;grid-template-columns:148px minmax(0,1fr);gap:0 20px;font-size:14.5px}
+  .cat dt{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);padding-block:9px;border-bottom:1px solid var(--ruleSoft)}
+  .cat dd{margin:0;padding-block:9px;border-bottom:1px solid var(--ruleSoft);line-height:1.5}
+
+  /* two-layer diagram */
+  .layers{border:1px solid var(--rule);margin-block:16px 26px}
+  .layer{padding:clamp(16px,2.6vw,26px);border-bottom:1px solid var(--rule)}
+  .layer:last-child{border-bottom:none}
+  .layer.l1{background:var(--surface)}
+  .layer.l2{background:var(--surface2)}
+  :root[data-theme="dark"] .layer.l2, :root:not([data-theme="light"]) .layer.l2{background:var(--surface2)}
+  .layer .lh{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:12px}
+  .layer .lh .t{font-family:"Newsreader",Georgia,serif;font-size:21px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:"DM Sans",sans-serif;font-size:13px;border:1px solid var(--rule);padding:6px 11px;color:var(--ink)}
+  .chip.pend{color:var(--ink3);border-style:dashed;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.07em}
+  .chip.sys{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.06em;color:var(--ink2)}
+
+  ul.asks{list-style:none;margin:0;padding:0}
+  ul.asks li{border-top:1px solid var(--ruleSoft);padding-block:17px;display:grid;grid-template-columns:24px minmax(0,1fr);gap:16px;max-width:78ch}
+  ul.asks li::before{content:"→";color:var(--accent)}
+  ul.asks p{font-size:15px;line-height:1.55;margin:0}
+
+  .endmark{border-top:1px solid var(--ink);margin-top:62px;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between}
+
+  @media (max-width:840px){
+    .row{grid-template-columns:minmax(0,1fr);gap:16px}
+    .rail{position:static}
+    .cat{grid-template-columns:26px minmax(0,1fr);gap:14px}
+    .cat dl{grid-template-columns:minmax(0,1fr)}
+    .cat dt{border-bottom:none;padding-bottom:0}
+    .cat dd{padding-top:2px}
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="mb">
+      <span class="wordmark">Pandonia</span>
+      <span class="lbl">Phase 03 · Appendix A · Revision B · Internal</span>
+    </div>
+    <h1 class="title">Two models of<br>one body, and<br><i>fifteen open claims.</i></h1>
+    <p class="standfirst">The evidence behind the two-layer taxonomy, the verified inventory, the "affaldssystem" review you asked for, and every factual discrepancy currently live on pandonia.com.</p>
+    <div class="colophon lbl">
+      <div><span>Sources</span><span class="v">pandonia.com DK + EN, sitemap, booking system</span></div>
+      <div><span>Read on</span><span class="v">23 September 2026</span></div>
+      <div><span>Layer 2</span><span class="v" style="color:var(--ok)">Verified, 6 of 6</span></div>
+      <div><span>Layer 1</span><span class="v" style="color:var(--warn)">Evidence for 7 candidates, no set of six</span></div>
+    </div>
+  </header>
+
+  <!-- KEY -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">Key</span></div>
+      <div>
+        <h2 class="sec">How to read the tags</h2>
+        <div class="key">
+          <div><span class="tag t-ok">Verified</span><p>Published on pandonia.com or the live booking system, quoted as found. Usable as fact.</p></div>
+          <div><span class="tag t-warn">Needs verification</span><p>Implied, inconsistent between sources, or inferred from adjacent copy. Confirm before it goes on a page.</p></div>
+          <div><span class="tag t-no">Not established</span><p>My design or editorial observation, or a gap. <strong>Never a medical claim.</strong> Nothing in this tier ships without clinical sign-off.</p></div>
+        </div>
+        <div class="note">
+          <p style="margin:0">Throughout this revision I have <strong>not</strong> assigned a single biomarker to a category. Every mapping below is either quoted from Pandonia's own commercial copy or marked as unestablished. The line between "what Pandonia says" and "what would be reasonable" is kept visible on purpose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO LAYERS: EVIDENCE -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">01 / Two layers</span></div>
+      <div>
+        <h2 class="sec">Is there evidence for two layers?</h2>
+        <p class="dek">Yes — and it is stronger than I expected. Pandonia already speaks in two vocabularies, in two different places, for two different purposes. Nobody has noticed because they never appear on the same screen.</p>
+
+        <div class="block">
+          <h4>Layer 2 — the biological model</h4>
+          <p style="font-size:15px;max-width:68ch"><span class="tag t-ok">Verified</span> &nbsp;Published once, in the FAQ answer to <em>"Hvilke biomarkører analyserer I…"</em>, in both languages. It describes what the body <strong>does</strong>.</p>
+          <p class="serif" style="font-size:21px;line-height:1.4;margin-block:14px">signalering · transport · fordøjelse · energi · immunforsvar · affaldssystem</p>
+          <p style="font-size:15px;color:var(--ink2)">This is explanatory language. It sits inside a sentence about how the body works, and it is the only place on the site where Pandonia describes a <em>model</em> rather than a product. It also matches the framing of the Pandonia Health Model — "a snapshot of your body's key systems".</p>
+        </div>
+
+        <div class="block">
+          <h4>Layer 1 — the commercial and clinical vocabulary</h4>
+          <p style="font-size:15px;max-width:68ch"><span class="tag t-ok">Verified as words Pandonia uses</span> &nbsp;Spread across the booking system's product descriptions and the homepage marquee. This vocabulary describes what a <strong>person</strong> wants to know about.</p>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Health-area term</th><th>Exactly where it appears</th><th>Status as a category</th></tr></thead>
+              <tbody>
+                <tr><td class="m">Kolesterolprofil / Lipid Profile / Cholesterol Profile</td><td>Booking: <em>Blodsukker- og Kolesteroltest</em>. Homepage marquee (×3).</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m">Blodsukker · Langtidsblodsukker · HbA1c</td><td>Booking: two products. Marquee (×3).</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m">Metabolisk sundhed / stofskifte</td><td>Booking: <em>Metabolisk Sundheds Test</em>, <em>Blodsukker- og Kolesteroltest</em>.</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m">Hormoner — testosteron, kvindelige hormoner</td><td>Booking: <em>Mænds Sundhedstest</em>, <em>Health check + Female hormones</em>. Marquee.</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m">Skjoldbruskkirtel / Thyroid performance — TSH, T3, T4</td><td>Booking: <em>Skjoldbruskkirtel Test</em>. Marquee (×4).</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m">Leverfunktion · Nyrernes filtreringskapacitet</td><td>Booking: <em>Metabolisk Sundheds Test</em>. Marquee.</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m">Elektrolytter og væskebalance</td><td>Booking: <em>Metabolisk Sundheds Test</em>. Marquee (×3).</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m">Vitaminer — D-vitamin</td><td>Booking: <em>D-vitamin Test</em>. Marquee (×5).</td><td><span class="tag t-ok">Term verified</span></td></tr>
+                <tr><td class="m" style="color:var(--warn)">Hjerte og kar</td><td><strong>Nowhere on pandonia.com.</strong> Only in your design concept.</td><td><span class="tag t-warn">Concept only</span></td></tr>
+                <tr><td class="m" style="color:var(--warn)">Blodsukker og stofskifte</td><td><strong>Nowhere as that phrase.</strong> Both halves appear separately in booking copy.</td><td><span class="tag t-warn">Concept only</span></td></tr>
+                <tr><td class="m" style="color:var(--warn)">Hormoner (as a category label)</td><td>The word appears; the <em>category</em> does not.</td><td><span class="tag t-warn">Concept only</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note warn">
+            <p style="margin:0"><strong>Read this table carefully before treating it as a taxonomy.</strong> It proves that Pandonia already uses eight health-area terms in its own commercial copy. It does <em>not</em> prove that any six of them are the six categories, and it assigns no biomarker to any of them. <strong>Assembling these into a set of six is a product decision, not a research finding.</strong> I have not done it.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Why the two layers are not a hierarchy</h4>
+          <div class="cols">
+            <div><h3>They cut across each other</h3><p>Vitamin D appears in Pandonia's own copy under immune defence, bone strength and mental balance — three different concerns. Cholesterol is a "transport" question biologically and a "hjerte og kar" question clinically. <strong>This is a many-to-many relationship, not a tree.</strong></p></div>
+            <div><h3>Which means the IA can't nest them</h3><p>You cannot put six biological systems inside six health areas, or the reverse. Layer 1 has to be the navigation, and Layer 2 has to be an attribute that a marker or an area <em>carries</em> — shown as context, never as a folder.</p></div>
+            <div><h3>The good news</h3><p>That constraint is exactly what the Phase 2 system is built for. Layer 1 becomes editorial structure — names, counts, photographs. Layer 2 becomes a mono annotation, which is already the register reserved for "this is how the instrument sees it".</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SIX, VERIFIED -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">02 / Layer 2</span></div>
+      <div>
+        <h2 class="sec">The six systems, exactly as published</h2>
+        <p class="dek">Unchanged from Revision A. No marker has been assigned to any of them, and none will be until a clinician does it.</p>
+
+        <div class="note">
+          <p style="margin-bottom:8px"><strong>DK, verbatim:</strong> "Vi analyserer mere end 30 unikke biomarkører – herunder indikatorer for kroppens <strong>signalering, transport, fordøjelse, energi, immunforsvar og affaldssystem</strong>."</p>
+          <p style="margin:0"><strong>EN, verbatim:</strong> "We analyse more than 30 unique biomarkers, including indicators of <strong>cellular signalling, transport, digestion, energy production, immune defence, and detoxification</strong>."</p>
+        </div>
+
+        <div class="cat"><div class="no">01</div><div>
+          <h3>Signalering</h3><div class="en">Cellular signalling</div>
+          <dl>
+            <dt>Name</dt><dd><span class="tag t-ok">Verified</span> Both languages. Never used as a formal label anywhere — only inside running copy.</dd>
+            <dt>Markers</dt><dd><span class="tag t-no">Not established</span> No marker is assigned to any system anywhere on the site.</dd>
+            <dt>Count</dt><dd><span class="tag t-no">Not published</span></dd>
+            <dt>Note</dt><dd>The EN adds "cellular", the DK does not. Minor asymmetry.</dd>
+          </dl>
+        </div></div>
+
+        <div class="cat"><div class="no">02</div><div>
+          <h3>Transport</h3><div class="en">Transport</div>
+          <dl>
+            <dt>Name</dt><dd><span class="tag t-ok">Verified</span> Identical in both languages — the only one that is.</dd>
+            <dt>Markers</dt><dd><span class="tag t-no">Not established</span></dd>
+            <dt>Count</dt><dd><span class="tag t-no">Not published</span></dd>
+          </dl>
+        </div></div>
+
+        <div class="cat"><div class="no">03</div><div>
+          <h3>Fordøjelse</h3><div class="en">Digestion</div>
+          <dl>
+            <dt>Name</dt><dd><span class="tag t-ok">Verified</span></dd>
+            <dt>Markers</dt><dd><span class="tag t-no">Not established</span></dd>
+            <dt>Count</dt><dd><span class="tag t-no">Not published</span></dd>
+            <dt>Concern</dt><dd><span class="tag t-warn">Needs verification</span> Pandonia publishes no gut or digestive marker anywhere. It is unclear what a blood panel measures under this heading, and it may be the second label needing review after §03.</dd>
+          </dl>
+        </div></div>
+
+        <div class="cat"><div class="no">04</div><div>
+          <h3>Energi</h3><div class="en">Energy production</div>
+          <dl>
+            <dt>Name</dt><dd><span class="tag t-ok">Verified</span> DK "energi", EN "energy production".</dd>
+            <dt>Markers</dt><dd><span class="tag t-no">Not established</span></dd>
+            <dt>Count</dt><dd><span class="tag t-no">Not published</span></dd>
+          </dl>
+        </div></div>
+
+        <div class="cat"><div class="no">05</div><div>
+          <h3>Immunforsvar</h3><div class="en">Immune defence</div>
+          <dl>
+            <dt>Name</dt><dd><span class="tag t-ok">Verified</span></dd>
+            <dt>Markers</dt><dd><span class="tag t-no">Not established</span> No immune marker is named anywhere on the site. The only adjacent statement is the D-vitamin product copy: "Påvirker immunforsvar, knoglestyrke og mental balance."</dd>
+            <dt>Count</dt><dd><span class="tag t-no">Not published</span></dd>
+          </dl>
+        </div></div>
+
+        <div class="cat"><div class="no">06</div><div>
+          <h3>Affaldssystem</h3><div class="en">Detoxification</div>
+          <dl>
+            <dt>Name</dt><dd><span class="tag t-warn">Flagged for review — see §03</span></dd>
+            <dt>Markers</dt><dd><span class="tag t-no">Not established</span></dd>
+            <dt>Count</dt><dd><span class="tag t-no">Not published</span></dd>
+          </dl>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFFALDSSYSTEM REVIEW -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">03 / Review</span></div>
+      <div>
+        <h2 class="sec">"Affaldssystem" / "detoxification"</h2>
+        <p class="dek">You asked me to flag this rather than silently normalise it. Here is the case, with no rewrite attached.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div>
+              <h3>The two words do not mean the same thing</h3>
+              <p><strong>Affaldssystem</strong> is anatomically neutral and slightly industrial. It is not a standard term in Danish clinical language — you would normally say <em>udskillelse</em>, or name the organs. As a coinage it is at least honest and unglamorous.</p>
+              <p><strong>Detoxification</strong> is a different proposition. In consumer health English it is the vocabulary of detox teas, juice cleanses and liver-flush supplements. It is arguably the single most compromised word in wellness marketing.</p>
+            </div>
+            <div>
+              <h3>Why it matters more than the other five</h3>
+              <p>Pandonia's whole credibility position rests on being the serious option — a real laboratory, named clinicians, a refusal to promise protection. <strong>"Detoxification" is the one word on the site that a medically literate reader would stop at.</strong> It undercuts precisely the audience most likely to pay 3.500 kr.</p>
+              <p>The Danish audience reads both languages. An EN/DK mismatch of this size is visible.</p>
+            </div>
+            <div>
+              <h3>What I am not doing</h3>
+              <p><strong>Not proposing a replacement.</strong> If the markers behind this heading are liver and kidney function — which the marquee and the <em>Metabolisk Sundheds Test</em> copy both hint at — then several accurate names exist. Choosing one is a clinical and brand decision, and naming it here would quietly make it real.</p>
+              <p>What I would say: whatever it becomes, <strong>the DK and EN should describe the same thing.</strong></p>
+            </div>
+            <div>
+              <h3>The question for Pandonia</h3>
+              <p>Is "detoxification" a deliberate translation choice, or an artefact of translating "affaldssystem" without a clinician in the room? The answer determines whether this is a copy fix or a taxonomy fix.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note warn">
+          <p style="margin:0"><strong>Second label worth the same scrutiny: "fordøjelse" / "digestion".</strong> Pandonia publishes no digestive or gut marker, and the booking system lists a gut product nowhere. If nothing in the 34 measures digestion, this heading describes something the test does not do — which is a more serious problem than an awkward word.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIOMARKER INVENTORY -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">04 / Markers</span></div>
+      <div>
+        <h2 class="sec">The biomarker inventory</h2>
+        <p class="dek">Everything Pandonia names publicly, in one table, with what kind of thing each one actually is. Six of roughly thirty-four are genuine named single markers.</p>
+
+        <div class="tw">
+          <table>
+            <thead><tr><th>As written by Pandonia</th><th>What it is</th><th>Where</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="m">Vitamin D / D-vitamin</td><td>Single marker</td><td>Marquee ×5 · own product · FAQ</td><td><span class="tag t-ok">Verified</span></td></tr>
+              <tr><td class="m">TSH</td><td>Single marker</td><td>Marquee</td><td><span class="tag t-ok">Verified</span></td></tr>
+              <tr><td class="m">T3</td><td>Single marker</td><td>Marquee</td><td><span class="tag t-ok">Verified</span></td></tr>
+              <tr><td class="m">T4</td><td>Single marker</td><td>Marquee</td><td><span class="tag t-ok">Verified</span></td></tr>
+              <tr><td class="m">HbA1c</td><td>Single marker</td><td>Marquee</td><td><span class="tag t-ok">Verified</span></td></tr>
+              <tr><td class="m">Testosteron / Testosterone levels</td><td>Single marker</td><td>Marquee · <em>Mænds Sundhedstest</em></td><td><span class="tag t-ok">Verified</span></td></tr>
+              <tr><td class="m">Cholesterol Profile · Lipid Profile · Kolesterolprofil</td><td>Panel — components never listed<small>Standard composition would be total, HDL, LDL, triglycerides — but Pandonia states none of it.</small></td><td>Marquee ×3 · booking</td><td><span class="tag t-warn">Components unverified</span></td></tr>
+              <tr><td class="m">Blood sugar · Blodsukker · Langtidsblodsukker</td><td>Concept — likely glucose and HbA1c<small>"Langtidsblodsukker" is the Danish lay term for HbA1c, so these may be the same marker named twice.</small></td><td>Marquee · booking ×2</td><td><span class="tag t-warn">Needs verification</span></td></tr>
+              <tr><td class="m">Electrolyte balance · Elektrolytter og væskebalance</td><td>Panel — components never listed</td><td>Marquee ×3 · booking</td><td><span class="tag t-warn">Components unverified</span></td></tr>
+              <tr><td class="m">Liver function · Leverfunktion og proteinniveauer</td><td>Panel — components never listed</td><td>Marquee · booking</td><td><span class="tag t-warn">Components unverified</span></td></tr>
+              <tr><td class="m">Kidney function · Nyrernes filtreringskapacitet</td><td>Panel — components never listed</td><td>Marquee · booking</td><td><span class="tag t-warn">Components unverified</span></td></tr>
+              <tr><td class="m">Thyroid performance · Skjoldbruskkirtel</td><td>Grouping of TSH / T3 / T4</td><td>Marquee · own product</td><td><span class="tag t-warn">Composition unverified</span></td></tr>
+              <tr><td class="m">Metabolisk sundhed</td><td>Concept / product grouping</td><td>Booking ×2</td><td><span class="tag t-warn">Needs verification</span></td></tr>
+              <tr><td class="m">Glucose Tracking / Glukose Monitorering</td><td><strong>Not a blood marker</strong> — a 14-day CGM sensor product<small>Its presence in the biomarker marquee is misleading and should not carry into the new site.</small></td><td>Marquee · own product</td><td><span class="tag t-ok">Verified as product</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cols">
+          <div><h3>Recovered</h3><p><strong>6 single markers</strong> named unambiguously. Another 7 terms are panels or concepts whose components are never published.</p></div>
+          <div><h3>Not recovered</h3><p><strong>Roughly 28 markers.</strong> Every unit. Every reference range. Every sex or age variation. Every category assignment. All 34 plain-language descriptions.</p></div>
+          <div><h3>The marquee is decorative</h3><p>Twenty-one items, fourteen unique, several repeated up to five times, mixing markers with panels and one product. It should not be treated as a manifest — and the new site should replace it with something true.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCREPANCY TABLE -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">05 / Claims</span></div>
+      <div>
+        <h2 class="sec">Factual discrepancy table</h2>
+        <p class="dek">Every substantive claim currently live, with its evidence and its gap. I have not chosen between conflicting numbers — that is the point of the table.</p>
+
+        <div class="tw">
+          <table>
+            <thead><tr><th style="min-width:150px">Claim</th><th style="min-width:170px">Where it appears</th><th style="min-width:200px">Evidence</th><th>Status</th><th style="min-width:200px">Needs confirming</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>"34 biomarkers"</strong></td>
+                <td class="m">Both pricing cards, DK + EN. Your concept.</td>
+                <td>Stated flatly on the product Pandonia actually sells.</td>
+                <td><span class="tag t-warn">Conflicts</span></td>
+                <td>Is 34 the correct figure? It is the most specific number in circulation.</td>
+              </tr>
+              <tr>
+                <td><strong>"+30" / "over 30 biomarkører"</strong></td>
+                <td class="m">Stats band · process step 03 · biomarker FAQ · Blue Zone section. Both languages.</td>
+                <td>Appears four times — more often than "34".</td>
+                <td><span class="tag t-warn">Conflicts</span></td>
+                <td>Is this rounding down from 34, or a different (older) panel?</td>
+              </tr>
+              <tr>
+                <td><strong>"more than 30 unique biomarkers"</strong></td>
+                <td class="m">Biomarker FAQ, both languages.</td>
+                <td>The word <em>unique</em> may be doing work — e.g. 34 results from 30 distinct assays.</td>
+                <td><span class="tag t-warn">Ambiguous</span></td>
+                <td>Does "unique" distinguish measured from derived values? If so, the new site can state both honestly.</td>
+              </tr>
+              <tr>
+                <td><strong>Six health category scores</strong></td>
+                <td class="m">Both pricing cards. Stats band: "6 specifikke helbredsscorer".</td>
+                <td>Stated three times. Never named, never connected to the six systems.</td>
+                <td><span class="tag t-warn">Unlinked</span></td>
+                <td>Are the six scores the six biological systems, the user-facing areas, or a third set?</td>
+              </tr>
+              <tr>
+                <td><strong>Four Horsemen of Aging</strong></td>
+                <td class="m">Mission section, both languages.</td>
+                <td>Named as the inspiration for the Health Model. The four are never listed.</td>
+                <td><span class="tag t-warn">Unexplained</span></td>
+                <td>How do four horsemen produce six scores? Should the four be named on the new site, or is the reference dropped?</td>
+              </tr>
+              <tr>
+                <td><strong>Results in 2–4 hours</strong></td>
+                <td class="m">Process step 03 · stats band ("4 timer") · results FAQ. Both languages.</td>
+                <td><strong>Mechanism stated:</strong> "Vi har vores eget laboratorium i København, hvilket muliggør…"</td>
+                <td><span class="tag t-ok">Supported</span></td>
+                <td>Is 2–4 hours typical or best-case? A range presented as a promise needs a stated basis.</td>
+              </tr>
+              <tr>
+                <td><strong>Blood draw takes 5 minutes</strong></td>
+                <td class="m">Stats band · EN FAQ ("five minutes later you can get on with your day").</td>
+                <td>Consistent across sources.</td>
+                <td><span class="tag t-warn">Conflicts with slot length</span></td>
+                <td>The booking system allocates <strong>10 minutes</strong> for the Health Test and <strong>15</strong> for test + consultation. Which is the customer-facing number?</td>
+              </tr>
+              <tr>
+                <td><strong>Booking slot 10 / 15 min</strong></td>
+                <td class="m">Booking system, per product.</td>
+                <td>Live system data.</td>
+                <td><span class="tag t-ok">Verified</span></td>
+                <td>Nothing — but it should not contradict "5 minutes" on the new site.</td>
+              </tr>
+              <tr>
+                <td><strong>Morning sampling recommended</strong></td>
+                <td class="m">Preparation FAQ.</td>
+                <td><strong>Reason given:</strong> "flere biomarkører naturligt topper om morgenen."</td>
+                <td><span class="tag t-ok">Supported</span></td>
+                <td>Which markers? Naming even two would turn a good line into a credible one.</td>
+              </tr>
+              <tr>
+                <td><strong>Fast 12 hours, no coffee, no supplements, no hard exercise 48h</strong></td>
+                <td class="m">Preparation FAQ.</td>
+                <td>Specific and internally consistent.</td>
+                <td><span class="tag t-ok">Verified</span></td>
+                <td>Nothing — but it belongs on a page, not buried in a collapsed FAQ.</td>
+              </tr>
+              <tr>
+                <td><strong>Own laboratory in Copenhagen</strong></td>
+                <td class="m">Results FAQ only. Once, in DK.</td>
+                <td>Stated plainly as the reason for the turnaround.</td>
+                <td><span class="tag t-ok">Verified</span></td>
+                <td>Is it accredited, and under whose authorisation? <strong>The single highest-value fact on the site and it needs to be stated precisely, because it will be scrutinised.</strong> Also: is Langebrogade 3A both the draw station and the lab?</td>
+              </tr>
+              <tr>
+                <td><strong>20-minute doctor consultation</strong></td>
+                <td class="m">Both pricing cards · process step 04 · consultation FAQ.</td>
+                <td>Consistent everywhere.</td>
+                <td><span class="tag t-ok">Verified</span></td>
+                <td>Included in both products, or only the 4.750 kr. one? The cards list it under both, which makes the 1.250 kr. difference hard to explain.</td>
+              </tr>
+              <tr>
+                <td><strong>Minimum 3 hours between result and consultation</strong></td>
+                <td class="m">Consultation FAQ.</td>
+                <td>Specific operational constraint.</td>
+                <td><span class="tag t-ok">Verified</span></td>
+                <td>Nothing. It quietly supports the same-day story and should be visible.</td>
+              </tr>
+              <tr>
+                <td><strong>Coverage: 9 named areas + Langebrogade</strong></td>
+                <td class="m">Process step 02 · location FAQ · booking footer.</td>
+                <td>Consistent, listed identically in three places.</td>
+                <td><span class="tag t-ok">Verified</span></td>
+                <td>What happens outside the zone? The site says only "pt kun i og omkring København".</td>
+              </tr>
+              <tr>
+                <td><strong>Phlebotomist supervised by the responsible doctor</strong></td>
+                <td class="m">"Hvem foretager blodprøven?" FAQ.</td>
+                <td>Stated clearly.</td>
+                <td><span class="tag t-ok">Verified</span></td>
+                <td>Is the responsible doctor Benedikte Halle, or a separate role?</td>
+              </tr>
+              <tr>
+                <td><strong>"Health check + Female hormones"</strong></td>
+                <td class="m">Booking system.</td>
+                <td>Live and bookable — with no price and no description.</td>
+                <td><span class="tag t-warn">Incomplete</span></td>
+                <td>Price, contents, and whether it belongs on the new Priser page at all.</td>
+              </tr>
+              <tr>
+                <td><strong>Affaldssystem = detoxification</strong></td>
+                <td class="m">Biomarker FAQ, DK vs EN.</td>
+                <td>Direct mismatch in register. See §03.</td>
+                <td><span class="tag t-warn">Flagged</span></td>
+                <td>Deliberate translation, or an artefact? Determines copy fix vs taxonomy fix.</td>
+              </tr>
+              <tr>
+                <td><strong>Fordøjelse / digestion</strong></td>
+                <td class="m">Biomarker FAQ, both languages.</td>
+                <td>No digestive or gut marker published anywhere.</td>
+                <td><span class="tag t-warn">Flagged</span></td>
+                <td>What does the panel actually measure here? Potentially a heading describing something the test does not do.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <p style="margin:0"><strong>Eleven verified, seven open.</strong> The pattern is consistent: Pandonia's <em>operational</em> claims are specific and hold up well. The <em>scientific</em> claims — counts, categories, what sits where — are where the site is loose. That is a good problem to have, because the operations are the hard part and they are already solid.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLINICAL QUESTIONS -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">06 / Clinical</span></div>
+      <div>
+        <h2 class="sec">Taxonomy questions for a clinician</h2>
+        <p class="dek">These are medical and product questions, not design questions. Nothing in Phase 4 can proceed on a guess at any of them.</p>
+
+        <ul class="asks">
+          <li><p><strong>Do the six biological systems have a defined marker membership?</strong> Is there an internal document mapping each of the 34 markers to signalering / transport / fordøjelse / energi / immunforsvar / affaldssystem — or is the six-system language descriptive rather than structural?</p></li>
+          <li><p><strong>What are the six health category scores actually scored on?</strong> The six systems, a different set of user-facing areas, or something else entirely. This single answer determines whether Layer 1 and Layer 2 are two views of one model or two separate models.</p></li>
+          <li><p><strong>Is the intended Layer 1 set the one in the concept?</strong> Hjerte og kar, Blodsukker og stofskifte, Hormoner — plus three more. If so, what are the other three, and who decided them?</p></li>
+          <li><p><strong>Can a marker belong to more than one health area?</strong> Vitamin D plausibly touches immunity, bone and mood; cholesterol touches transport and cardiovascular. Function Health simply repeats a marker across categories. <strong>Whether Pandonia allows this changes the data model, not just the layout.</strong></p></li>
+          <li><p><strong>What do the panels contain?</strong> "Kolesterolprofil", "Elektrolytter og væskebalance", "Leverfunktion og proteinniveauer", "Nyrernes filtreringskapacitet", "Thyroid performance". Five named panels, zero published components. These may account for most of the 28 unrecovered markers.</p></li>
+          <li><p><strong>Which reference ranges vary by sex or age?</strong> Two sex-specific products exist, but no sex-specific range is published. The Nulpunkt band has to state variation on the chart itself, so this is a build requirement rather than a nicety.</p></li>
+          <li><p><strong>Which values are measured and which are derived?</strong> Drives the <code>BEREGNET VÆRDI</code> annotation. If, say, LDL is calculated rather than measured, saying so is worth more than any certification badge.</p></li>
+          <li><p><strong>What does the test deliberately not cover?</strong> Function has no equivalent section and it would be a genuine differentiator. It needs a clinician to write it.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="endmark">
+    <span class="lbl">Appendix A · Revision B — evidence, not conclusions</span>
+    <span class="lbl">UX architecture lives in the Homepage Direction, §01</span>
+  </div>
+
+</div>

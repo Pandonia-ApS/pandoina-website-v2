@@ -1,0 +1,1386 @@
+<title>Pandonia Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap">
+
+<style>
+  /* ============================================================
+     PANDONIA — Phase 2 design system specification
+     Rendered in stand-in faces: Newsreader (for GT Sectra Display),
+     DM Sans (for Degular), DM Mono (the real specified face).
+     ============================================================ */
+
+  :root {
+    /* grounds */
+    --g-cream:  #F6F1E8;
+    --g-sand:   #F4EADB;
+    --g-paper:  #FCFAF6;
+    --g-deep:   #18261A;
+
+    /* ink */
+    --ink:      #26201A;
+    --ink-2:    #5C554C;
+    --ink-3:    #8A8175;
+
+    /* brand */
+    --forest:      #415A3B;
+    --forest-deep: #2C3F28;
+    --forest-tint: #E7EADE;
+
+    /* functional */
+    --amber:     #E3A754;
+    --sage:      #A0B89F;
+    --sage-deep: #4E7050;
+    --brick:     #8C3B2E;
+    --clay:      #AE9D84;
+
+    /* derived page tokens */
+    --page:      var(--g-cream);
+    --surface:   var(--g-paper);
+    --surface-2: var(--g-sand);
+    --rule:      rgba(38, 32, 26, 0.14);
+    --rule-soft: rgba(38, 32, 26, 0.07);
+    --accent:    var(--forest);
+    --on-accent: #F6F1E8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page:      #141F13;
+      --surface:   #1C2A19;
+      --surface-2: #24301F;
+      --ink:       #EDE7DA;
+      --ink-2:     #B3B5A4;
+      --ink-3:     #8B9182;
+      --rule:      rgba(237, 231, 218, 0.18);
+      --rule-soft: rgba(237, 231, 218, 0.09);
+      --accent:    #9BBE90;
+      --on-accent: #141F13;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --page:      #141F13;
+    --surface:   #1C2A19;
+    --surface-2: #24301F;
+    --ink:       #EDE7DA;
+    --ink-2:     #B3B5A4;
+    --ink-3:     #8B9182;
+    --rule:      rgba(237, 231, 218, 0.18);
+    --rule-soft: rgba(237, 231, 218, 0.09);
+    --accent:    #9BBE90;
+    --on-accent: #141F13;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: "DM Sans", "Degular", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+
+  .sheet { max-width: 1240px; margin: 0 auto; padding-inline: 24px; padding-block: 0 110px; }
+
+  .serif { font-family: "Newsreader", "GT Sectra Display", Georgia, serif; font-weight: 400; }
+  .mono  { font-family: "DM Mono", ui-monospace, monospace; }
+
+  .lbl {
+    font-family: "DM Mono", ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    line-height: 1.5; color: var(--ink-3);
+  }
+
+  h1, h2, h3, h4 { margin: 0; }
+  p { margin: 0 0 1em; max-width: 68ch; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+  code {
+    font-family: "DM Mono", monospace; font-size: 0.85em;
+    background: var(--rule-soft); padding: 1px 5px; border-radius: 2px;
+  }
+  a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- masthead ---------- */
+  .masthead { border-bottom: 1px solid var(--ink); padding-block: 30px 0; }
+  .mast-bar {
+    display: flex; flex-wrap: wrap; gap: 14px 32px;
+    align-items: baseline; justify-content: space-between; padding-bottom: 52px;
+  }
+  .wordmark { font-family: "Newsreader", Georgia, serif; font-size: 24px; letter-spacing: -0.01em; }
+  h1.title {
+    font-family: "Newsreader", Georgia, serif; font-weight: 400;
+    font-size: clamp(40px, 7.4vw, 92px); line-height: 0.98; letter-spacing: -0.02em;
+    text-wrap: balance; padding-bottom: 30px;
+  }
+  h1.title i { font-style: italic; color: var(--ink-3); }
+  .standfirst {
+    font-size: clamp(17px, 2vw, 21px); line-height: 1.5; max-width: 52ch;
+    color: var(--ink-2); padding-bottom: 38px;
+  }
+  .colophon {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+    gap: 18px 30px; border-top: 1px solid var(--rule); padding-block: 16px 20px;
+  }
+  .colophon span { display: block; }
+  .colophon .v { font-family: "DM Sans", sans-serif; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink); margin-top: 5px; }
+
+  /* ---------- section scaffold ---------- */
+  section { border-top: 1px solid var(--ink); padding-block: 66px 14px; }
+  .row { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 40px; align-items: start; }
+  .rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); }
+
+  h2.sec {
+    font-family: "Newsreader", Georgia, serif; font-weight: 400;
+    font-size: clamp(30px, 4.4vw, 48px); line-height: 1.02; letter-spacing: -0.02em;
+    text-wrap: balance; padding-bottom: 10px;
+  }
+  .dek { font-family: "Newsreader", Georgia, serif; font-size: 19px; line-height: 1.5; color: var(--ink-2); max-width: 60ch; padding-bottom: 34px; }
+
+  h3 { font-size: 19px; font-weight: 500; letter-spacing: -0.012em; line-height: 1.25; margin-bottom: 8px; }
+  h4 { font-family: "DM Mono", monospace; font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+
+  .block { border-top: 1px solid var(--rule); padding-block: 34px; }
+  .block:first-of-type { border-top: none; padding-top: 2px; }
+
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 40px; }
+  .cols p, .cols li { font-size: 15.5px; line-height: 1.58; }
+  .cols ul { margin: 0; padding-left: 17px; }
+  .cols li { margin-bottom: 6px; }
+
+  .note {
+    border-left: 2px solid var(--accent); padding: 4px 0 4px 20px;
+    font-size: 15.5px; line-height: 1.58; margin-block: 22px;
+  }
+  .note.warn { border-left-color: var(--brick); }
+  :root[data-theme="dark"] .note.warn, :root:not([data-theme="light"]) .note.warn { border-left-color: #D98A73; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .note.warn { border-left-color: #D98A73; } }
+
+  /* ---------- spec tables ---------- */
+  .tw { overflow-x: auto; margin-block: 8px 22px; }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+  th { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; border-bottom-color: var(--rule); }
+  td.t { font-family: "DM Mono", monospace; font-size: 12px; white-space: nowrap; }
+  td.n { font-family: "DM Mono", monospace; font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .chip { display: inline-block; width: 15px; height: 15px; border: 1px solid var(--rule); vertical-align: -2px; margin-right: 8px; }
+
+  /* ---------- swatches ---------- */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(146px, 1fr)); gap: 14px; margin-bottom: 8px; }
+  .sw i { display: block; height: 78px; border: 1px solid var(--rule); }
+  .sw b { display: block; font-family: "DM Mono", monospace; font-size: 11px; font-weight: 400; margin-top: 8px; }
+  .sw em { display: block; font-style: normal; font-size: 12.5px; color: var(--ink-2); margin-top: 1px; }
+  .sw s { display: block; text-decoration: none; font-size: 12px; color: var(--ink-3); margin-top: 3px; line-height: 1.4; }
+
+  /* ---------- type specimen ---------- */
+  .spec { border-top: 1px solid var(--rule-soft); padding-block: 20px; display: grid; grid-template-columns: 104px minmax(0,1fr); gap: 26px; align-items: baseline; }
+  .spec > .k { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--ink-3); padding-top: 8px; }
+  .spec .sample { overflow: hidden; }
+  .spec .meta { font-family: "DM Mono", monospace; font-size: 11px; color: var(--ink-3); margin-top: 8px; letter-spacing: 0.02em; }
+
+  /* ---------- live component demos ---------- */
+  .demo {
+    background: var(--surface); border: 1px solid var(--rule-soft);
+    padding: clamp(20px, 3.4vw, 34px); margin-block: 18px 26px;
+  }
+  .demo + .demo { margin-top: -4px; }
+  .demo-cap { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 18px; }
+
+  /* range band component */
+  .band-row { max-width: 520px; }
+  .band-name { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
+  .band-what { font-family: "Newsreader", Georgia, serif; font-size: 15px; color: var(--ink-2); margin-bottom: 16px; max-width: 46ch; }
+  .band {
+    position: relative; height: 26px; border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule); margin-bottom: 8px;
+  }
+  .band .ref { position: absolute; top: 0; bottom: 0; background: rgba(160, 184, 159, 0.34); }
+  .band .tick { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--amber); }
+  .band .tick.out { background: var(--brick); }
+  .band .lead { position: absolute; top: 50%; height: 1px; background: var(--brick); }
+  .band-axis { display: flex; justify-content: space-between; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-3); }
+  .band-val { font-family: "DM Mono", monospace; font-variant-numeric: tabular-nums; font-size: 26px; letter-spacing: -0.01em; }
+  .band-val s { text-decoration: none; font-size: 13px; color: var(--ink-3); margin-left: 5px; }
+  .band-state { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .band-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+
+  .micro { display: inline-block; position: relative; width: 64px; height: 8px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); vertical-align: middle; }
+  .micro .ref { position: absolute; top: 0; bottom: 0; background: rgba(160, 184, 159, 0.4); }
+  .micro .tick { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--amber); }
+  .micro .tick.out { background: var(--brick); }
+
+  .mlist { list-style: none; margin: 0; padding: 0; max-width: 520px; }
+  .mlist li { display: flex; align-items: center; gap: 16px; justify-content: space-between; border-bottom: 1px solid var(--rule-soft); padding-block: 11px; font-size: 15px; }
+  .mlist .r { display: flex; align-items: center; gap: 14px; }
+  .mlist .v { font-family: "DM Mono", monospace; font-variant-numeric: tabular-nums; font-size: 13px; min-width: 52px; text-align: right; }
+
+  /* clock */
+  .clock { max-width: 520px; }
+  .clock-line { position: relative; height: 1px; background: var(--rule); margin-block: 26px 10px; }
+  .clock-line .fill { position: absolute; left: 0; top: 0; height: 1px; width: 100%; background: var(--forest); }
+  :root[data-theme="dark"] .clock-line .fill { background: var(--accent); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .clock-line .fill { background: var(--accent); } }
+  .clock-line .dot { position: absolute; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+  .clock-line .pip { position: absolute; top: -4px; width: 1px; height: 9px; background: var(--ink-3); }
+  .clock-row { display: flex; justify-content: space-between; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .clock-row b { display: block; font-family: "DM Sans", sans-serif; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink); font-weight: 500; margin-top: 4px; }
+
+  /* score */
+  .score-n { font-family: "DM Mono", monospace; font-variant-numeric: tabular-nums; font-size: clamp(54px, 9vw, 86px); line-height: 0.9; letter-spacing: -0.03em; }
+  .score-n s { text-decoration: none; font-size: 0.25em; color: var(--ink-3); letter-spacing: 0.08em; margin-left: 10px; }
+
+  /* buttons */
+  .btns { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn {
+    font-family: "DM Sans", sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -0.005em;
+    padding: 15px 28px; border-radius: 2px; border: 1px solid transparent; cursor: pointer;
+    transition: background 140ms cubic-bezier(.2,.6,.2,1), color 140ms cubic-bezier(.2,.6,.2,1);
+  }
+  .btn-1 { background: var(--forest); color: #F6F1E8; }
+  .btn-1:hover { background: var(--forest-deep); }
+  .btn-2 { background: transparent; color: var(--accent); border-color: var(--accent); }
+  .btn-2:hover { background: var(--accent); color: var(--on-accent); }
+  .btn-3 { background: transparent; color: var(--accent); border: none; padding: 15px 0; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
+  .btn-3:hover { text-decoration-color: currentColor; }
+
+  /* field */
+  .field { max-width: 320px; }
+  .field label { display: block; }
+  .field input {
+    width: 100%; font-family: "DM Sans", sans-serif; font-size: 17px; color: var(--ink);
+    background: transparent; border: none; border-bottom: 1px solid var(--rule);
+    padding: 9px 0; margin-top: 7px; border-radius: 0;
+  }
+  .field input:focus { outline: none; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+
+  /* rhythm table */
+  .beats { display: grid; gap: 0; }
+  .beat {
+    display: grid; grid-template-columns: 34px 150px minmax(0, 1fr);
+    gap: 10px 26px; border-top: 1px solid var(--rule-soft); padding-block: 20px; align-items: start;
+  }
+  .beat > .no { font-family: "DM Mono", monospace; font-size: 11px; color: var(--ink-3); padding-top: 4px; }
+  .beat h3 { margin-bottom: 4px; }
+  .beat .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag { font-family: "DM Mono", monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--rule); padding: 3px 7px; color: var(--ink-2); }
+  .tag.air { border-color: var(--sage-deep); color: var(--sage-deep); }
+  .tag.dense { border-color: var(--amber); color: var(--ink-2); }
+  :root[data-theme="dark"] .tag.air, :root:not([data-theme="light"]) .tag.air { border-color: var(--sage); color: var(--sage); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag.air { border-color: var(--sage); color: var(--sage); } }
+  .beat p { font-size: 15px; line-height: 1.55; }
+
+  /* rules list */
+  ol.rules { list-style: none; margin: 0; padding: 0; counter-reset: r; }
+  ol.rules > li {
+    counter-increment: r; display: grid; grid-template-columns: 46px minmax(0, 1fr);
+    gap: 22px; border-top: 1px solid var(--rule-soft); padding-block: 22px;
+  }
+  ol.rules > li::before {
+    content: counter(r, decimal-leading-zero);
+    font-family: "DM Mono", monospace; font-size: 12px; color: var(--accent); padding-top: 5px;
+  }
+  ol.rules h3 { font-size: 18px; }
+  ol.rules p { font-size: 15px; line-height: 1.55; }
+
+  ul.asks { list-style: none; margin: 0; padding: 0; }
+  ul.asks li { border-top: 1px solid var(--rule-soft); padding-block: 18px; display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 16px; max-width: 74ch; }
+  ul.asks li::before { content: "→"; color: var(--accent); }
+  ul.asks p { font-size: 15.5px; line-height: 1.55; margin: 0; }
+
+  /* summary card */
+  .summary { background: var(--g-deep); color: #EDE7DA; padding: clamp(26px, 4.6vw, 52px); margin-top: 8px; }
+  .summary h3 { color: #EDE7DA; }
+  .summary h4 { color: #8B9182; }
+  .summary .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 26px 40px; }
+  .summary p, .summary li { font-size: 14.5px; line-height: 1.55; color: #C9C7B6; }
+  .summary strong { color: #EDE7DA; font-weight: 500; }
+  .summary ul { margin: 0; padding-left: 16px; }
+  .summary li { margin-bottom: 5px; }
+  .summary code { background: rgba(237,231,218,0.1); color: #EDE7DA; }
+  .summary .big { font-family: "Newsreader", Georgia, serif; font-size: clamp(22px, 3.4vw, 34px); line-height: 1.2; color: #EDE7DA; max-width: 30ch; margin: 0 0 30px; }
+
+  .endmark { border-top: 1px solid var(--ink); margin-top: 70px; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+
+  @media (max-width: 860px) {
+    .row { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .rail { position: static; }
+    .spec { grid-template-columns: minmax(0,1fr); gap: 8px; }
+    .beat { grid-template-columns: 28px minmax(0,1fr); }
+    .beat > h3 { grid-column: 2; }
+    .beat > div:last-child { grid-column: 2; }
+    ol.rules > li { grid-template-columns: 32px minmax(0,1fr); gap: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="mast-bar">
+      <span class="wordmark">Pandonia</span>
+      <span class="lbl">Phase 02 · Design system · v1.0 · Internal</span>
+    </div>
+
+    <h1 class="title">Dagslys sets the room.<br><i>Nulpunkt sets the record.</i></h1>
+
+    <p class="standfirst">The working specification. Tokens, scales, component rules and page rhythm — specific enough that two designers building different pages would land on the same site.</p>
+
+    <div class="colophon lbl">
+      <div><span>Territory</span><span class="v">Dagslys × Nulpunkt</span></div>
+      <div><span>Status</span><span class="v">For approval</span></div>
+      <div><span>Blocked on</span><span class="v">3 category names</span></div>
+      <div><span>Next</span><span class="v">Phase 03 — IA</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">How to read this</span></div>
+      <div>
+        <div class="note">
+          <p style="margin-bottom:10px"><strong>"Dagslys" and "Nulpunkt" are internal names.</strong> They never appear on the website, in copy, or in a deck shown to a customer. They exist so that a design decision can be argued about in one word.</p>
+          <p style="margin-bottom:10px"><strong>Dagslys is the register that makes Pandonia desirable</strong> — ground, light, photography, the serif voice, air. <strong>Nulpunkt is the register that makes it credible</strong> — numbers, ranges, mono, density, precision. Neither wins. The governing ratio is in §11.</p>
+          <p><strong>Specimens here are rendered in stand-ins.</strong> GT Sectra Display and Degular are licensed faces not available to this document, so the serif shows as Newsreader and the sans as DM Sans. Sizes, weights, leading and tracking are the real specification. DM Mono <em>is</em> the specified face.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 COLOUR ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">01 / Colour</span></div>
+      <div>
+        <h2 class="sec">Palette</h2>
+        <p class="dek">Four grounds, three inks, three brand values, four functional values. Fourteen in total, and nothing may be added without removing something.</p>
+
+        <div class="block">
+          <h4>Grounds</h4>
+          <div class="swatches">
+            <div class="sw"><i style="background:#F6F1E8"></i><b>#F6F1E8</b><em>Cream</em><s>Default page ground. ~55% of all pixels.</s></div>
+            <div class="sw"><i style="background:#F4EADB"></i><b>#F4EADB</b><em>Sand</em><s>Alternating and working sections. ~20%.</s></div>
+            <div class="sw"><i style="background:#FCFAF6"></i><b>#FCFAF6</b><em>Paper</em><s>Raised surfaces and product cards. ~8%. Never pure white.</s></div>
+            <div class="sw"><i style="background:#18261A"></i><b>#18261A</b><em>Deep forest</em><s>Inversion ground. Once or twice per page, never more. ~12%.</s></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Ink</h4>
+          <div class="swatches">
+            <div class="sw"><i style="background:#26201A"></i><b>#26201A</b><em>Ink</em><s>All body and heading text on light grounds. Brown-biased — never a neutral black.</s></div>
+            <div class="sw"><i style="background:#5C554C"></i><b>#5C554C</b><em>Ink 2</em><s>Secondary text, standfirsts, captions.</s></div>
+            <div class="sw"><i style="background:#8A8175"></i><b>#8A8175</b><em>Ink 3</em><s>Mono labels, axis values, units, metadata.</s></div>
+            <div class="sw"><i style="background:#EDE7DA"></i><b>#EDE7DA</b><em>Ink inverse</em><s>All text on deep forest. Slightly cooler than cream so it doesn't vibrate.</s></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Brand</h4>
+          <div class="swatches">
+            <div class="sw"><i style="background:#415A3B"></i><b>#415A3B</b><em>Skovgrøn</em><s>The anchor. Wordmark, serif headlines, primary buttons, links.</s></div>
+            <div class="sw"><i style="background:#2C3F28"></i><b>#2C3F28</b><em>Skovgrøn deep</em><s>Hover and pressed only. Never a fill in its own right.</s></div>
+            <div class="sw"><i style="background:#E7EADE"></i><b>#E7EADE</b><em>Skovgrøn tint</em><s>Quiet wash behind a green element on cream. Use sparingly.</s></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Functional — Nulpunkt only</h4>
+          <div class="swatches">
+            <div class="sw"><i style="background:#E3A754"></i><b>#E3A754</b><em>Amber</em><s>The pointer. <strong>Your</strong> value, <strong>your</strong> selection. Never a judgement, never a decoration, never text on cream.</s></div>
+            <div class="sw"><i style="background:#A0B89F"></i><b>#A0B89F</b><em>Sage</em><s>Reference-range band fill, at 34% opacity. Never a text colour.</s></div>
+            <div class="sw"><i style="background:#4E7050"></i><b>#4E7050</b><em>Sage deep</em><s>"Inden for referenceområdet" label text.</s></div>
+            <div class="sw"><i style="background:#8C3B2E"></i><b>#8C3B2E</b><em>Brick</em><s>Outside reference range. Dark and desaturated on purpose — see the rule below.</s></div>
+          </div>
+          <div class="swatches" style="margin-top:14px">
+            <div class="sw"><i style="background:#AE9D84"></i><b>#AE9D84</b><em>Clay</em><s>Warm neutral carried over from the existing brand. Rules and dividers on sand.</s></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Usage rules</h4>
+          <div class="cols">
+            <div>
+              <h3>The ratio</h3>
+              <p>Roughly 55% cream, 20% sand, 12% deep forest, 8% paper, 4% green, <strong>under 1% amber</strong>. If amber is visible more than twice in a viewport, something has gone wrong.</p>
+            </div>
+            <div>
+              <h3>Amber is a pointer, not a paint</h3>
+              <p>It marks where <em>you</em> are: your value on a scale, your chosen time slot, the current step. It never means good, bad, new, or important. <strong>It is never a text colour on cream</strong> — the contrast fails. Where amber must read as text, use ink and let the tick carry the colour.</p>
+            </div>
+            <div>
+              <h3>Two clinical states, not three</h3>
+              <p>Within range (sage) or outside range (brick). No amber-as-borderline, no five-step severity ramp. Consumer health reports over-grade; two states plus the position on the band is more honest and far easier to read at a glance.</p>
+            </div>
+            <div>
+              <h3>Brick is rationed</h3>
+              <p>Brick sits in the rust band the whole category has converged on. It is permitted only because a health site needs an unambiguous out-of-range signal. Hard limit: <strong>never a fill larger than 24px, never a background, never a button, never more than two instances per viewport.</strong> At that scale it reads as a clinical mark, not a brand accent.</p>
+            </div>
+            <div>
+              <h3>Retired</h3>
+              <p>The existing electric blue is out of the system entirely — including links, focus rings and form states. Nothing in the palette is blue.</p>
+            </div>
+            <div>
+              <h3>Contrast floor</h3>
+              <p>Ink on cream is 12.4:1. Ink 2 on cream 6.1:1. Ink 3 on cream 3.4:1 — <strong>mono labels only, never body text</strong>. Forest on cream 6.8:1. Cream on deep forest 11.9:1. Every combination in the system passes AA for its size; the one that only passes for large text is flagged in the table.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Token reference</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Token</th><th>Hex</th><th>Role</th><th>Never</th></tr></thead>
+              <tbody>
+                <tr><td class="t">--g-cream</td><td class="n"><span class="chip" style="background:#F6F1E8"></span>#F6F1E8</td><td>Default page ground</td><td>Text colour</td></tr>
+                <tr><td class="t">--g-sand</td><td class="n"><span class="chip" style="background:#F4EADB"></span>#F4EADB</td><td>Alternating / working sections</td><td>Two adjacent sections</td></tr>
+                <tr><td class="t">--g-paper</td><td class="n"><span class="chip" style="background:#FCFAF6"></span>#FCFAF6</td><td>Product cards, tables</td><td>Full-section ground</td></tr>
+                <tr><td class="t">--g-deep</td><td class="n"><span class="chip" style="background:#18261A"></span>#18261A</td><td>Inversion moment</td><td>More than twice per page</td></tr>
+                <tr><td class="t">--ink</td><td class="n"><span class="chip" style="background:#26201A"></span>#26201A</td><td>Body and headings</td><td>On deep forest</td></tr>
+                <tr><td class="t">--ink-2</td><td class="n"><span class="chip" style="background:#5C554C"></span>#5C554C</td><td>Secondary text</td><td>Under 14px</td></tr>
+                <tr><td class="t">--ink-3</td><td class="n"><span class="chip" style="background:#8A8175"></span>#8A8175</td><td>Mono labels, units, axes</td><td>Body text — AA large only</td></tr>
+                <tr><td class="t">--forest</td><td class="n"><span class="chip" style="background:#415A3B"></span>#415A3B</td><td>Primary: mark, headlines, CTA</td><td>Data semantics</td></tr>
+                <tr><td class="t">--forest-deep</td><td class="n"><span class="chip" style="background:#2C3F28"></span>#2C3F28</td><td>Hover / pressed</td><td>Resting state</td></tr>
+                <tr><td class="t">--amber</td><td class="n"><span class="chip" style="background:#E3A754"></span>#E3A754</td><td>Your value / your selection</td><td>Text on cream; decoration</td></tr>
+                <tr><td class="t">--sage</td><td class="n"><span class="chip" style="background:#A0B89F"></span>#A0B89F</td><td>Range band fill @ 34%</td><td>Text; solid fill</td></tr>
+                <tr><td class="t">--sage-deep</td><td class="n"><span class="chip" style="background:#4E7050"></span>#4E7050</td><td>"In range" label</td><td>A button</td></tr>
+                <tr><td class="t">--brick</td><td class="n"><span class="chip" style="background:#8C3B2E"></span>#8C3B2E</td><td>Outside range mark</td><td>Fill &gt; 24px; any background</td></tr>
+                <tr><td class="t">--clay</td><td class="n"><span class="chip" style="background:#AE9D84"></span>#AE9D84</td><td>Rules and dividers on sand</td><td>Text</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 TYPOGRAPHY ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">02 / Type</span></div>
+      <div>
+        <h2 class="sec">Typography</h2>
+        <p class="dek">Three voices with three jobs. The serif is the brand's mouth, Degular is its hands, the mono is its instruments.</p>
+
+        <div class="block">
+          <h4>The three faces</h4>
+          <div class="cols">
+            <div>
+              <h3>GT Sectra Display — the editorial voice</h3>
+              <p>Regular 400 and Italic 400. <strong>Nothing else. Never bold.</strong> Chosen over Function's Financier because Sectra is cut with a scalpel edge rather than a broad nib — an unusually apt gesture for a company that takes blood, and a face nobody else in this category uses.</p>
+              <p style="color:var(--ink-2);font-size:14.5px">Fallback if the licence is blocked: <strong>Newsreader</strong> (Google Fonts, optical size 60+). Meaningful quality drop — it's softer and more bookish. Flag before Phase 5, not after.</p>
+            </div>
+            <div>
+              <h3>Degular — the interface voice</h3>
+              <p>Regular 400 and Medium 500. <strong>Two weights, no more.</strong> Kept from the existing brand, demoted from display to interface. Navigation, body copy, buttons, labels, working-section headings, everything with a job to do.</p>
+              <p style="color:var(--ink-2);font-size:14.5px">Fallback: DM Sans, then system sans. Degular Text for anything under 20px, Degular Display above.</p>
+            </div>
+            <div>
+              <h3>DM Mono — the instrument voice</h3>
+              <p>Light 300 and Regular 400. Reserved absolutely for measured fact: biomarker names in a list, values, units, reference ranges, timestamps, section labels, honesty annotations. <strong>The moment mono is used for atmosphere it stops meaning "this was measured."</strong></p>
+              <p style="color:var(--ink-2);font-size:14.5px">Free and open-source. It shares DM Sans's geometry, so it sits naturally against Degular.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>The division rule</h4>
+          <div class="note">
+            <p><strong>The serif owns everything above 44px. Degular owns everything below 24px. Between 24 and 44px the choice is by register:</strong> editorial and emotional → serif; working and functional → Degular.</p>
+            <p style="margin-top:8px;margin-bottom:0">Two consequences: the serif never appears at body size, where it would lose its character and start competing with Degular; and Degular never carries a hero, where it isn't distinctive enough to. A page that breaks this rule stops reading as Pandonia within one scroll.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Scale — desktop ≥1200px</h4>
+
+          <div class="spec">
+            <div class="k">D1</div>
+            <div class="sample">
+              <div class="serif" style="font-size:clamp(40px,7vw,88px);line-height:0.94;letter-spacing:-0.02em">Kend din krop.</div>
+              <div class="meta">Serif 400 · 88 / 82 · −0.02em · max 22ch · hero only, once per page</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">D2</div>
+            <div class="sample">
+              <div class="serif" style="font-size:clamp(32px,5.2vw,64px);line-height:1.0;letter-spacing:-0.02em">Før den siger til.</div>
+              <div class="meta">Serif 400 · 64 / 64 · −0.02em · max 26ch · editorial section openers</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">D3</div>
+            <div class="sample">
+              <div class="serif" style="font-size:clamp(26px,3.6vw,44px);line-height:1.06;letter-spacing:-0.015em">Ferritin fortæller om dine jernlagre</div>
+              <div class="meta">Serif 400 / Italic · 44 / 47 · −0.015em · max 34ch · sub-editorial, pull quotes, mobile nav</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">H1</div>
+            <div class="sample">
+              <div style="font-size:clamp(26px,3.3vw,40px);font-weight:500;line-height:1.1;letter-spacing:-0.02em">Sådan fungerer det</div>
+              <div class="meta">Degular 500 · 40 / 44 · −0.02em · working-section openers</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">H2</div>
+            <div class="sample">
+              <div style="font-size:28px;font-weight:500;line-height:1.2;letter-spacing:-0.015em">Hjerte og kar</div>
+              <div class="meta">Degular 500 · 28 / 34 · −0.015em · category and subsection headings</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">H3</div>
+            <div class="sample">
+              <div style="font-size:20px;font-weight:500;line-height:1.3;letter-spacing:-0.01em">Vi kommer til dig</div>
+              <div class="meta">Degular 500 · 20 / 26 · −0.01em · component and step headings</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">Body L</div>
+            <div class="sample">
+              <div style="font-size:20px;line-height:1.55;max-width:56ch">Vi kommer hjem til dig i København, tager en blodprøve på 5 minutter og sender dig en personlig sundhedsrapport samme dag.</div>
+              <div class="meta">Degular 400 · 20 / 31 · max 58ch · hero subhead and section standfirsts</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">Body</div>
+            <div class="sample">
+              <div style="font-size:17px;line-height:1.6;max-width:64ch">Ferritin er det protein, der lagrer jern i kroppen. Lave værdier kan vise sig som træthed længe før blodprocenten falder, og det er derfor ferritin ofte siger mere end en almindelig blodprocent alene.</div>
+              <div class="meta">Degular 400 · 17 / 27 · max 66ch · all running text</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">Body S</div>
+            <div class="sample">
+              <div style="font-size:15px;line-height:1.55;max-width:60ch;color:var(--ink-2)">Referenceområde for kvinder 18–50 år. Din værdi vurderes altid sammen med dine øvrige markører.</div>
+              <div class="meta">Degular 400 · 15 / 23 · captions, footnotes, legal</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">Value</div>
+            <div class="sample">
+              <div class="mono" style="font-size:32px;line-height:1;letter-spacing:-0.01em;font-variant-numeric:tabular-nums">78<s style="text-decoration:none;font-size:13px;color:var(--ink-3);margin-left:8px">µg/L</s></div>
+              <div class="meta">DM Mono 400 · 32 / 32 · tabular · unit at 0.4× in ink-3 · measured values</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">Data</div>
+            <div class="sample">
+              <div class="mono" style="font-size:13px;letter-spacing:0.02em">Hæmoglobin A1c &nbsp;·&nbsp; 34 mmol/mol &nbsp;·&nbsp; ref. 20–42</div>
+              <div class="meta">DM Mono 400 · 13 / 20 · +0.02em · marker rows, axis values</div>
+            </div>
+          </div>
+
+          <div class="spec">
+            <div class="k">Label</div>
+            <div class="sample">
+              <div class="mono" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3)">Beregnet værdi · Prøve 09:12 · Rapport 13:04</div>
+              <div class="meta">DM Mono 400 · 11 / 15 · +0.1em · uppercase · section labels and honesty annotations</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Mobile scale — &lt;640px</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Role</th><th>Desktop</th><th>Mobile</th><th>Fluid</th></tr></thead>
+              <tbody>
+                <tr><td>D1</td><td class="n">88 / 82</td><td class="n">44 / 44</td><td class="t">clamp(44px, 6.6vw + 18px, 88px)</td></tr>
+                <tr><td>D2</td><td class="n">64 / 64</td><td class="n">34 / 36</td><td class="t">clamp(34px, 4.4vw + 14px, 64px)</td></tr>
+                <tr><td>D3</td><td class="n">44 / 47</td><td class="n">27 / 31</td><td class="t">clamp(27px, 2.6vw + 14px, 44px)</td></tr>
+                <tr><td>H1</td><td class="n">40 / 44</td><td class="n">26 / 30</td><td class="t">clamp(26px, 2.4vw + 14px, 40px)</td></tr>
+                <tr><td>H2</td><td class="n">28 / 34</td><td class="n">21 / 27</td><td class="t">clamp(21px, 1.1vw + 17px, 28px)</td></tr>
+                <tr><td>H3</td><td class="n">20 / 26</td><td class="n">18 / 24</td><td class="t">clamp(18px, 0.4vw + 16px, 20px)</td></tr>
+                <tr><td>Body L</td><td class="n">20 / 31</td><td class="n">18 / 28</td><td class="t">clamp(18px, 0.4vw + 16px, 20px)</td></tr>
+                <tr><td>Body</td><td class="n">17 / 27</td><td class="n">16 / 26</td><td class="t">clamp(16px, 0.2vw + 15px, 17px)</td></tr>
+                <tr><td>Value</td><td class="n">32 / 32</td><td class="n">24 / 24</td><td class="t">clamp(24px, 1.4vw + 19px, 32px)</td></tr>
+                <tr><td>Data / Label</td><td class="n">13 / 11</td><td class="n">12 / 10.5</td><td class="t">fixed per breakpoint</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:15px;color:var(--ink-2)">Tracking stays constant across breakpoints; only size and leading change. Body never drops below 16px anywhere. Mono labels never below 10px.</p>
+        </div>
+
+        <div class="block">
+          <h4>Setting rules</h4>
+          <div class="cols">
+            <div><h3>Measure</h3><p>Body 62–68ch, never past 72. Serif display 22–34ch depending on level. A serif headline that runs past three lines is the wrong size, not the wrong copy.</p></div>
+            <div><h3>Case</h3><p>Sentence case everywhere except mono labels, which are uppercase with +0.1em. <strong>No all-caps headlines. No all-caps buttons.</strong></p></div>
+            <div><h3>Numerals</h3><p>Tabular in every table, band, axis and value. Proportional in running prose. Units always set 0.4× the value size in ink-3, never the same size as the number.</p></div>
+            <div><h3>Balance</h3><p><code>text-wrap: balance</code> on every display level, <code>text-wrap: pretty</code> on body. Danish compounds are long — check <em>sundhedsrapport</em> and <em>referenceområde</em> at every breakpoint before signing a layout off.</p></div>
+            <div><h3>Italic</h3><p>The serif italic marks the emotional half of a sentence, once per section at most. Never for emphasis inside body copy — use ink weight, not slant.</p></div>
+            <div><h3>Orphans</h3><p>No single-word last lines on any display level. Hard-break the headline in the markup rather than hoping.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 GRID ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">03 / Grid</span></div>
+      <div>
+        <h2 class="sec">Grid and spacing</h2>
+        <p class="dek">A 4px base, three section densities, and one rule about asymmetry that does most of the work.</p>
+
+        <div class="block">
+          <h4>Grid</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Breakpoint</th><th>Columns</th><th>Gutter</th><th>Page margin</th><th>Max content</th></tr></thead>
+              <tbody>
+                <tr><td class="t">≥1440</td><td class="n">12</td><td class="n">32px</td><td class="n">64px</td><td class="n">1320px</td></tr>
+                <tr><td class="t">1024–1439</td><td class="n">12</td><td class="n">28px</td><td class="n">40px</td><td class="n">fluid</td></tr>
+                <tr><td class="t">640–1023</td><td class="n">8</td><td class="n">24px</td><td class="n">32px</td><td class="n">fluid</td></tr>
+                <tr><td class="t">&lt;640</td><td class="n">4</td><td class="n">16px</td><td class="n">20px</td><td class="n">fluid</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:15px;color:var(--ink-2)">Full-bleed elements ignore the max content width and run to the viewport edge. At least one per page must.</p>
+        </div>
+
+        <div class="block">
+          <h4>Spacing scale</h4>
+          <p style="font-size:15px">Base unit 4px. Permitted steps only — nothing between them.</p>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Step</th><th>px</th><th>Use</th></tr></thead>
+              <tbody>
+                <tr><td class="t">2xs</td><td class="n">4</td><td>Value to unit; tick to label</td></tr>
+                <tr><td class="t">xs</td><td class="n">8</td><td>Label to element; inside a mono row</td></tr>
+                <tr><td class="t">s</td><td class="n">16</td><td>Heading to body; list rows</td></tr>
+                <tr><td class="t">m</td><td class="n">24</td><td>Between related blocks</td></tr>
+                <tr><td class="t">l</td><td class="n">40</td><td>Component to component</td></tr>
+                <tr><td class="t">xl</td><td class="n">64</td><td>Sub-section separation</td></tr>
+                <tr><td class="t">2xl</td><td class="n">96</td><td>Inside a dense section</td></tr>
+                <tr><td class="t">3xl</td><td class="n">128</td><td>Standard section padding</td></tr>
+                <tr><td class="t">4xl</td><td class="n">180</td><td>Air section padding</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Three section densities — the pacing mechanism</h4>
+          <div class="cols">
+            <div>
+              <h3><span class="tag air">Air</span></h3>
+              <p><strong>180px top and bottom desktop / 88px mobile.</strong> Editorial and photographic sections. One idea, one column, enormous surrounding space. This is where the brand feels expensive.</p>
+            </div>
+            <div>
+              <h3><span class="tag">Standard</span></h3>
+              <p><strong>128px / 64px.</strong> Process, pricing, anything explanatory. Multi-element but not tight.</p>
+            </div>
+            <div>
+              <h3><span class="tag dense">Dense</span></h3>
+              <p><strong>72px / 48px, with 16px internal rhythm.</strong> Nulpunkt sections: marker lists, bands, scores, tables. Deliberately tighter than everything around it — the compression <em>is</em> the signal that you've entered the instrument.</p>
+            </div>
+          </div>
+          <div class="note" style="margin-top:22px">
+            <p style="margin:0"><strong>The pacing rule:</strong> no section may repeat the previous section's ground <em>and</em> density. Either the colour changes or the breathing changes — and ideally both, alternating. This single rule is what stops the page becoming a stack of identical bands, which is the most common failure mode in this category.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Asymmetry</h4>
+          <div class="cols">
+            <div><h3>Editorial blocks are offset</h3><p>A serif headline with body sits on columns 1–6 or 3–8 or 6–12. Never 1–12 centred. Centred type is reserved for exactly one moment on the homepage — the closing statement — where it lands because nothing else was.</p></div>
+            <div><h3>Text and image never split 50/50</h3><p>Use 55/45 or 42/58. An even split reads as a template; an uneven one reads as a decision.</p></div>
+            <div><h3>Vertical offset</h3><p>In any two-part composition, the two parts never share a top edge. Offset by at least 64px, usually more.</p></div>
+            <div><h3>The baseline</h3><p>Type blocks sit on an 8px vertical grid. Images and full-bleed elements are exempt — they answer to the composition, not the grid.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 PHOTOGRAPHY ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">04 / Photo</span></div>
+      <div>
+        <h2 class="sec">Photography art direction</h2>
+        <p class="dek">This is the single largest gap between the current concept and the benchmark quality. The subject matter was already right; the treatment is what changes.</p>
+
+        <div class="block">
+          <h4>Light</h4>
+          <div class="cols">
+            <div><h3>One source, from a window</h3><p>North-facing daylight, morning to early afternoon. No fill, no reflector, no flash, no continuous LED. If the room is dark, shoot it dark.</p></div>
+            <div><h3>Shoot into it, not with it</h3><p>Backlight and hard sidelight, with visible falloff across the frame and bloom where the window edge enters. The current hero is lit flatly from the front, which is exactly what makes it read as stock.</p></div>
+            <div><h3>Let shadow exist</h3><p>Deep shadow is permitted and encouraged. Lifted blacks in the grade, never crushed, never a flat "clean" exposure across the whole frame.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>The five crops</h4>
+          <p style="font-size:15px;color:var(--ink-2);max-width:62ch">Every shoot delivers against these five named setups. A shot that fits none of them does not go on the site.</p>
+          <div class="cols">
+            <div><h3 class="mono" style="font-size:13px;letter-spacing:0.06em">HÅND</h3><p>A hand and one object: a mug, a phone, a glass, the edge of a table. The most-used crop on the site. No face.</p></div>
+            <div><h3 class="mono" style="font-size:13px;letter-spacing:0.06em">ARM</h3><p>Forearm and inner elbow — the draw site — in raking light. Skin texture, hair, a vein, a small plaster afterwards. The most Pandonia image possible and nobody else can use it.</p></div>
+            <div><h3 class="mono" style="font-size:13px;letter-spacing:0.06em">HALS</h3><p>Neck, jaw, collarbone, shoulder. Human and identifiable without a portrait's self-consciousness.</p></div>
+            <div><h3 class="mono" style="font-size:13px;letter-spacing:0.06em">RUM</h3><p>The whole room with the person small and off-centre. Used at full bleed, once or twice per page, as the breath.</p></div>
+            <div><h3 class="mono" style="font-size:13px;letter-spacing:0.06em">LYS</h3><p>No person at all. Light across a wooden table, a curtain, steam off a cup, a radiator. Used as connective tissue between heavy sections.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Subjects, styling, location</h4>
+          <div class="cols">
+            <div><h3>Real Danish adults, 30–65</h3><p>A genuine spread of age, body and gender. No model casting, no styling of hair or makeup beyond ordinary. <strong>Eyes to camera at most once on the entire site</strong> — and that one is the doctor.</p></div>
+            <div><h3>Wardrobe inside the palette</h3><p>Cream, sand, oatmeal, olive, warm grey, undyed linen and wool. No white shirts, no black, no logos, no pattern, no blue.</p></div>
+            <div><h3>Real Copenhagen apartments</h3><p>Worn parquet, a radiator under a window, a tiled kitchen, one plant, ceramic rather than glass. Never a set, never a rental studio dressed as a home, never a hotel.</p></div>
+            <div><h3>The procedure, plainly</h3><p>The draw shown as it is — a hand, a tourniquet, a kitchen table, five minutes. Undramatised, and never a needle in close-up. This is the sequence that proves the whole proposition, so it must be photographed properly rather than implied.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Banned</h4>
+          <div class="note warn">
+            <p style="margin:0">Laboratories. White coats. Scrubs. Stethoscopes. Clipboards. Microscopes. Petri dishes. Pipettes. DNA helices. Molecules. Glowing organs. Body diagrams. Pill bottles. Supplement flat-lays. Gym and fitness tropes. Running shoes. Smoothies. Someone smiling at the camera. Group shots of a "team" in a bright room. Before-and-after bodies. Anything shot on a white cyclorama. Any image where the light comes from more than one direction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 CROPPING ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">05 / Crop</span></div>
+      <div>
+        <h2 class="sec">Cropping and image treatment</h2>
+        <p class="dek">Rules about the frame itself, which is where the concept's images lost most of their energy.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div><h3>Square corners, always</h3><p><strong>Border radius on photography is 0.</strong> This is a hard change from the concept and the single cheapest upgrade available: a rounded photograph reads as a component, a square one reads as a plate in a magazine. Radius belongs to product cards only.</p></div>
+            <div><h3>The frame cuts the body</h3><p>Crop past the subject on at least two edges. If the whole person fits in the frame, it is the wrong crop. This is the specific fix for "lidt mere lækkert og levende".</p></div>
+            <div><h3>At least one bleed per page</h3><p>One image per page runs off a viewport edge — usually the right, occasionally both. Images that stop politely inside the grid on every section are what make a page feel like a template.</p></div>
+            <div><h3>Overlap the ground change</h3><p>An image may straddle the boundary between a cream and a sand section, half on each. This creates depth without a single shadow, and it makes the section transition an event rather than a seam.</p></div>
+            <div><h3>No shadows. Ever.</h3><p>Not on images, not on cards, not on buttons, not on the navigation. Depth comes from ground changes, bleed and overlap.</p></div>
+            <div><h3>One permitted scrim</h3><p>Where type must sit on a full-bleed image: a <strong>cream</strong> gradient, 0 → 60%, from the type's edge. Never a black scrim — it kills the warmth and instantly reads as a stock hero.</p></div>
+            <div><h3>No filters, no duotone</h3><p>Photographs are photographs. The grade is warm, lifted, slightly desaturated in the reds so skin stays natural. No teal-and-orange, no brand-colour overlay, no grain except an optional 2–3% on full-bleed heroes to kill the digital flatness.</p></div>
+            <div><h3>Aspect ratios</h3><p>4:5 in an editorial column. 3:2 at full bleed. 1:1 rarely, for a single portrait. <strong>16:9 never</strong> — it is the aspect ratio of a template.</p></div>
+            <div><h3>Mobile recrops, never rescales</h3><p>Every image ships with a declared mobile crop, almost always tighter and more vertical. A desktop 3:2 squeezed into a phone loses the subject and the point.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 GRAPHIC LANGUAGE ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">06 / Graphic</span></div>
+      <div>
+        <h2 class="sec">Graphic language</h2>
+        <p class="dek">Almost nothing. The identity comes from type, ground and photography — the graphic system exists only to keep those three honest.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div><h3>One rule weight</h3><p>1px, ink at 14%, at every scale. Section dividers are the same 1px, full-bleed. No 2px, no dashed, no double. On sand, rules take clay <code>#AE9D84</code> instead so they don't go muddy.</p></div>
+            <div><h3>No icon set</h3><p>No Feather, no Lucide, no Material, nothing. The permitted marks are a 1px arrow <span class="serif">→</span>, a plus, and a chevron, drawn to match Degular's stroke. <strong>Never an icon inside a circle.</strong> Never an icon above a heading above a paragraph.</p></div>
+            <div><h3>No anatomy illustration</h3><p>If the body needs to be shown, it is photographed and cropped. No outline figures, no highlighted organs, no schematic torso.</p></div>
+            <div><h3>The one proprietary mark</h3><p>The reference band in §07. It is the only drawn object the brand owns, and it is used at three scales for everything numeric — which is what makes it an identity rather than a chart style.</p></div>
+            <div><h3>Numbers carry units</h3><p>Every number on the site carries its unit, and every clinical number carries its reference range or its source. A bare figure is not permitted, including in marketing sections.</p></div>
+            <div><h3>The wordmark</h3><p>Serif, capital P, set in skovgrøn on light grounds and cream on deep forest. One size relationship to the navigation, never scaled independently. No symbol, no lockup, no icon version beyond a favicon.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 NULPUNKT ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">07 / Nulpunkt</span></div>
+      <div>
+        <h2 class="sec">The Nulpunkt data language</h2>
+        <p class="dek">One object, drawn at three scales, used for everything with a number in it. A biomarker and the Pandonia Score are visibly the same thing — which is what makes the system legible without a legend.</p>
+
+        <div class="block">
+          <h4>The band — standard scale</h4>
+          <div class="demo">
+            <div class="demo-cap">Marker detail · full column</div>
+            <div class="band-row">
+              <div class="band-name">Ferritin</div>
+              <div class="band-what serif">Fortæller hvor meget jern din krop har på lager — ofte længe før træthed viser sig i blodprocenten.</div>
+              <div class="band-head">
+                <div class="band-val">78<s>µg/L</s></div>
+                <div class="band-state" style="color:#4E7050">Inden for området</div>
+              </div>
+              <div class="band">
+                <div class="ref" style="left:18%;width:62%"></div>
+                <div class="tick" style="left:56%"></div>
+              </div>
+              <div class="band-axis"><span>15</span><span>REFERENCE 30–160 µg/L</span><span>250</span></div>
+            </div>
+          </div>
+
+          <div class="demo">
+            <div class="demo-cap">Same object · value outside the range</div>
+            <div class="band-row">
+              <div class="band-name">D-vitamin</div>
+              <div class="band-what serif">Lav om vinteren hos de fleste i Danmark. Påvirker knogler, muskler og immunforsvar.</div>
+              <div class="band-head">
+                <div class="band-val">38<s>nmol/L</s></div>
+                <div class="band-state" style="color:#8C3B2E">Under området</div>
+              </div>
+              <div class="band">
+                <div class="ref" style="left:34%;width:52%"></div>
+                <div class="lead" style="left:16%;width:18%"></div>
+                <div class="tick out" style="left:15%"></div>
+              </div>
+              <div class="band-axis"><span>0</span><span>REFERENCE 50–160 nmol/L</span><span>200</span></div>
+            </div>
+          </div>
+
+          <div class="cols" style="margin-top:6px">
+            <div><h3>Anatomy</h3><p>A 26px track with a 1px rule top and bottom. The reference range is a sage fill at 34% spanning the interval. Your value is a 2px amber tick running 5px past the track on both sides. The value sits above in mono, the range endpoints below in mono-S.</p></div>
+            <div><h3>Outside the range</h3><p>The tick turns brick and a 1px brick rule runs from the nearest band edge to the tick — so the eye measures <em>how far</em>, not just <em>that</em>. No red fill, no warning icon, no exclamation mark. The distance is the information.</p></div>
+            <div><h3>Why not a gauge</h3><p>Rings, donuts, dials and speedometers are dashboard furniture. They compress a continuous value into a shape you can't read precisely, and every health app has one. The band is precise, it scales from 64px to full width, and it's ours.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>The band — micro scale</h4>
+          <div class="demo">
+            <div class="demo-cap">Marker list · 64px track, no labels</div>
+            <ul class="mlist">
+              <li>
+                <span class="r"><span style="min-width:190px">Hæmoglobin A1c</span><span class="micro"><span class="ref" style="left:20%;width:55%"></span><span class="tick" style="left:38%"></span></span></span>
+                <span class="v">34 mmol/mol</span>
+              </li>
+              <li>
+                <span class="r"><span style="min-width:190px">LDL-kolesterol</span><span class="micro"><span class="ref" style="left:0%;width:48%"></span><span class="tick out" style="left:66%"></span></span></span>
+                <span class="v">4,1 mmol/L</span>
+              </li>
+              <li>
+                <span class="r"><span style="min-width:190px">TSH</span><span class="micro"><span class="ref" style="left:14%;width:60%"></span><span class="tick" style="left:44%"></span></span></span>
+                <span class="v">2,1 mIU/L</span>
+              </li>
+              <li>
+                <span class="r"><span style="min-width:190px">Ferritin</span><span class="micro"><span class="ref" style="left:18%;width:62%"></span><span class="tick" style="left:56%"></span></span></span>
+                <span class="v">78 µg/L</span>
+              </li>
+            </ul>
+          </div>
+          <p style="font-size:15px;color:var(--ink-2)">Marker name in Degular, band at 64px, value in mono tabular, right-aligned. One row per marker, a full-width rule between. Tapping or clicking expands the standard scale in place — <strong>never a modal</strong>.</p>
+        </div>
+
+        <div class="block">
+          <h4>The Pandonia Score</h4>
+          <div class="demo">
+            <div class="demo-cap">Composite and category scores · the same object</div>
+            <div class="band-row">
+              <div class="lbl" style="margin-bottom:6px">Din Pandonia Score</div>
+              <div class="score-n">78<s>/ 100</s></div>
+              <div class="band" style="margin-top:22px">
+                <div class="ref" style="left:60%;width:40%"></div>
+                <div class="tick" style="left:78%"></div>
+              </div>
+              <div class="band-axis" style="margin-bottom:26px"><span>0</span><span>TYPISK OMRÅDE 60–100</span><span>100</span></div>
+
+              <ul class="mlist">
+                <li><span class="r"><span style="min-width:190px">Hjerte og kar</span><span class="micro"><span class="ref" style="left:60%;width:40%"></span><span class="tick" style="left:82%"></span></span></span><span class="v">82</span></li>
+                <li><span class="r"><span style="min-width:190px">Blodsukker og stofskifte</span><span class="micro"><span class="ref" style="left:60%;width:40%"></span><span class="tick" style="left:74%"></span></span></span><span class="v">74</span></li>
+                <li><span class="r"><span style="min-width:190px">Hormoner</span><span class="micro"><span class="ref" style="left:60%;width:40%"></span><span class="tick" style="left:80%"></span></span></span><span class="v">80</span></li>
+                <li style="color:var(--ink-3)"><span class="r"><span class="mono" style="min-width:190px;font-size:12px;letter-spacing:0.08em">KATEGORI 4 — AFVENTER</span></span><span class="v">—</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="note">
+            <p style="margin:0"><strong>This replaces the ring in the concept.</strong> The score and a single biomarker are now visibly the same object, so a reader who has understood one has understood all of them. That is the whole argument for the system: one thing to learn, used everywhere.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>The clock</h4>
+          <div class="demo">
+            <div class="demo-cap">The time axis · process sections and marker history</div>
+            <div class="clock">
+              <div class="clock-row">
+                <div><span>Prøve</span><b>09:12</b></div>
+                <div style="text-align:right"><span>Rapport</span><b>13:04</b></div>
+              </div>
+              <div class="clock-line">
+                <div class="fill"></div>
+                <div class="pip" style="left:0"></div>
+                <div class="dot" style="right:-4px"></div>
+              </div>
+              <div class="clock-row"><span>5 minutter hjemme hos dig</span><span style="text-align:right">3 timer 52 minutter</span></div>
+            </div>
+          </div>
+          <p style="font-size:15px;color:var(--ink-2);max-width:64ch">The recurring device that carries proximity and speed without the brand ever <em>saying</em> fast. It is drawn once per page, in the process section, and reappears as the horizontal axis whenever a marker is shown over time. Times are real and specific — <code>09:12</code>, not <code>09:00</code> — because specificity is what makes it read as a record rather than a claim.</p>
+        </div>
+
+        <div class="block">
+          <h4>Chart rules</h4>
+          <div class="cols">
+            <div><h3>Trend over time</h3><p>1px line in forest, amber dot on the latest point only, mono date labels beneath. <strong>No area fill, no gradient, no smoothing, no second axis.</strong> The reference band runs behind it as a horizontal sage strip.</p></div>
+            <div><h3>Two colours maximum</h3><p>Any chart uses ink plus at most two of amber, sage, brick. A chart needing more colours is two charts.</p></div>
+            <div><h3>Banned chart types</h3><p>Donut. Ring. Gauge. Speedometer. Pie. Radar. Stacked area. Bar chart with rounded ends. Anything 3D. Anything with a drop shadow.</p></div>
+            <div><h3>Honesty annotations</h3><p><code>BEREGNET VÆRDI</code> in mono-S caps ink-3 under any value derived rather than measured. Taken directly from Function, and it buys more trust than any certification badge.</p></div>
+            <div><h3>Every chart is labelled</h3><p>Unit, reference interval, and where the interval comes from. If a range differs by sex or age, that is stated on the chart, not in a footnote.</p></div>
+            <div><h3>Tabular numerals</h3><p>Everywhere a number sits above or beside another number. Non-negotiable — proportional figures in a column is the clearest sign nobody checked.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 UI ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">08 / UI</span></div>
+      <div>
+        <h2 class="sec">Buttons, navigation, core UI</h2>
+        <p class="dek">Three button levels, a navigation that doesn't float, and one rule about cards that settles most arguments.</p>
+
+        <div class="block">
+          <h4>Buttons</h4>
+          <div class="demo">
+            <div class="demo-cap">Three levels · 2px radius · no shadow</div>
+            <div class="btns">
+              <button class="btn btn-1" type="button">Book din blodprøve</button>
+              <button class="btn btn-2" type="button">Se hvad vi måler</button>
+              <button class="btn btn-3" type="button">Læs om ferritin</button>
+            </div>
+          </div>
+          <div class="cols">
+            <div><h3>The radius decision</h3><p><strong>2px, not a pill.</strong> This is a deliberate change from the concept. The full-radius pill is the single most category-generic shape on the web — Superpower, Celto and the current Pandonia site all use it. A near-square button under a serif wordmark reads editorial rather than app. <em>Flag this one if you disagree; it's visible and it's reversible.</em></p></div>
+            <div><h3>Metrics</h3><p>Padding 15px / 28px. Degular Medium 16px. Primary: forest fill, cream text. Secondary: 1px forest border, no fill, inverts on hover. Tertiary: forest text with a 1px underline at 45% that reaches full opacity on hover.</p></div>
+            <div><h3>States</h3><p>Hover 140ms to <code>#2C3F28</code>. Focus: 2px forest outline, 3px offset — visible, never removed. Disabled: ink-3 text on a 6% ink fill, no border. No loading spinners inside buttons; the label changes to <code>Sender…</code> in mono.</p></div>
+            <div><h3>Never</h3><p>All-caps labels. Icons inside buttons except a trailing <span class="serif">→</span> on tertiary. Gradients. Shadows. More than one primary button in a viewport. A button wider than 320px.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Navigation</h4>
+          <div class="cols">
+            <div><h3>Desktop</h3><p>72px tall. Serif wordmark left, Degular Regular 15px links, actions right. Transparent over the hero; after 80px of scroll it takes the cream ground and a 1px bottom rule. <strong>No blur, no glass, no shadow, no shrinking.</strong> Active item carries a 1px forest underline.</p></div>
+            <div><h3>Mobile</h3><p>60px tall. Wordmark and a two-line toggle. Open state is a <strong>full-screen deep-forest overlay</strong> with items set in the serif at D3 (27px), stacked with generous leading, and the CTA at the bottom. Not a white drawer with a list of 15px links — that is the default and it throws away the one moment mobile gives you to feel like the brand.</p></div>
+            <div><h3>No sticky CTA bar</h3><p>The persistent bottom bar is a conversion pattern, and it's generic. Instead the primary CTA reappears at the end of each of the three acts (§12), which is where someone is actually ready.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Fields and forms</h4>
+          <div class="demo">
+            <div class="demo-cap">Underline only · no box</div>
+            <div class="field">
+              <label>
+                <span class="lbl">Din e-mail</span>
+                <input id="demo-email" type="email" placeholder="navn@eksempel.dk">
+              </label>
+            </div>
+          </div>
+          <p style="font-size:15px;color:var(--ink-2);max-width:64ch">Label above in mono-S. No border box, no fill, no radius — a 1px bottom rule that becomes a 2px forest rule on focus. Errors appear beneath in brick at 14px and say what to do, never just what is wrong. Booking is the one place a boxed field is permitted, because a date and time picker needs its own enclosure.</p>
+        </div>
+
+        <div class="block">
+          <h4>Cards — the single rule</h4>
+          <div class="note">
+            <p style="margin-bottom:8px"><strong>A card may exist only to hold a piece of real product.</strong> A date picker. A named person with their role. A score. A marker with its band. An actual report extract.</p>
+            <p style="margin:0"><strong>A card may never hold prose.</strong> No icon-above-heading-above-paragraph. No three equal cards describing benefits. No "why choose us" triptych. Everything explanatory is carried by type, rules, ground and whitespace — which is most of the page.</p>
+          </div>
+          <p style="font-size:15px;color:var(--ink-2)">Card spec when permitted: paper ground <code>#FCFAF6</code>, 8px radius, 1px rule at 8% ink, <strong>no shadow</strong>, 24px internal padding. Cards never sit in a row of four equal columns — see §12, beat 06, where the process becomes a timeline instead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09 MOTION ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">09 / Motion</span></div>
+      <div>
+        <h2 class="sec">Motion and interaction</h2>
+        <p class="dek">One easing curve, one orchestrated moment per page, and everything visible at rest.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div><h3>One curve, three durations</h3><p><code>cubic-bezier(0.2, 0.6, 0.2, 1)</code> for everything. Hover 140ms. Reveal 320ms. Orchestrated sequences 500–900ms. No bounce, no spring, no overshoot — the brand is calm, and easing is where calm is actually specified.</p></div>
+            <div><h3>Everything is visible at rest</h3><p>Reveals run from a <em>visible</em> state: 16px translate and opacity 0.6 → 1, staggered 60ms. <strong>Nothing is parked at opacity 0 waiting for an observer</strong>, and the first viewport never animates in. A shared link, a screenshot and a slow connection all have to show a finished page.</p></div>
+            <div><h3>Image motion</h3><p>A slow 1.06 → 1.00 scale across the scroll of its own section, or a mask that widens from the centre. <strong>Maximum 6% movement.</strong> Never parallax on text, never on more than two images per page.</p></div>
+            <div><h3>The one orchestrated moment</h3><p>The clock. As the process section enters, the line draws left to right over 900ms, the pips land, the amber dot arrives on the report time, and the elapsed figure counts up once. <strong>One moment, done properly, beats six scattered effects</strong> — and it's the moment that carries the proposition.</p></div>
+            <div><h3>Numbers count once</h3><p>Only where the number <em>is</em> the point: the Score, the elapsed time. Maximum two per page, 900ms, never on scroll-back.</p></div>
+            <div><h3>The band animates in</h3><p>The amber tick slides from the band's left edge to its position over 500ms, once, when the band first enters. It reads as a measurement being taken. Never loops.</p></div>
+            <div><h3>The permitted marquee</h3><p>One: a slow horizontal drift of biomarker names behind the featured marker, ~24s per loop, with a <strong>visible</strong> <code>PAUSE</code> control in mono — taken straight from Function, and the visibility of that control is half the point. Pauses on hover and on focus.</p></div>
+            <div><h3>Reduced motion</h3><p>All transforms off, opacity only. Numbers render final. The clock draws instantly. The marquee stops. This is implemented first, not retrofitted.</p></div>
+            <div><h3>Never</h3><p>Scroll-jacking. Page-transition overlays that delay content. Loaders on a static page. Autoplay video with sound. Cursor followers. Text that types itself. Anything that moves while being read.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 MOBILE ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">10 / Mobile</span></div>
+      <div>
+        <h2 class="sec">Mobile design principles</h2>
+        <p class="dek">Most of this traffic will be a phone in a kitchen. Four sections are redesigned rather than reflowed.</p>
+
+        <div class="block">
+          <h4>Redesigned, not reflowed</h4>
+          <div class="cols">
+            <div><h3>Hero inverts</h3><p>Desktop is type-left, image-right. Mobile is <strong>type first, image second</strong>, full-bleed edge to edge at 4:5, with the mono fact strip between them. The serif drops to 44px and hard-breaks over three lines maximum.</p></div>
+            <div><h3>The process becomes a timeline</h3><p>The four-step row of cards becomes a <strong>vertical timeline with the clock running down the left edge</strong> — times on the rail, content to the right. This is genuinely better than the desktop layout, and it's a candidate for replacing the desktop version too.</p></div>
+            <div><h3>Bands go full width</h3><p>Marker name above, band full width, value and state below. <strong>Never side-by-side under 400px.</strong> Micro-bands in lists stay, at 48px instead of 64px.</p></div>
+            <div><h3>Marker lists expand in place</h3><p>One marker per row, tap to open the standard band beneath it, in the flow. No modal, no new page, no bottom sheet.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Rules</h4>
+          <div class="cols">
+            <div><h3>Ground alternates more often</h3><p>In a narrow column, sections read as one continuous scroll unless the ground changes. Roughly every second beat on mobile against every third on desktop.</p></div>
+            <div><h3>Density compresses, contrast holds</h3><p>180 / 128 / 72 becomes 88 / 64 / 48. The <em>ratio</em> between air and dense is what carries the pacing, and it must survive the compression.</p></div>
+            <div><h3>Images recrop</h3><p>Every image has a declared mobile crop, tighter and more vertical. HÅND and ARM crops work at any width; RUM usually needs a different frame entirely.</p></div>
+            <div><h3>Touch targets</h3><p>44px minimum, achieved with padding rather than fill, so the visual weight stays light. Tap states are instant colour, never a ripple.</p></div>
+            <div><h3>Tables scroll, pages don't</h3><p>The body never scrolls horizontally. Wide marker tables get their own <code>overflow-x</code> container with a visible edge fade.</p></div>
+            <div><h3>Performance budget</h3><p>LCP under 2.0s on 4G. Hero image under 180KB in AVIF. Fonts: two weights of Degular, one of the serif, one mono — subset to Latin Extended for Danish. Total under 120KB. No font swaps visible above the fold.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 COEXISTENCE ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">11 / Both</span></div>
+      <div>
+        <h2 class="sec">How Dagslys and Nulpunkt coexist</h2>
+        <p class="dek">The governing ratio, then three worked examples on the same page.</p>
+
+        <div class="block">
+          <div class="note">
+            <p style="margin-bottom:8px"><strong>Dagslys sets the ground and the voice. Nulpunkt owns everything with a number in it.</strong></p>
+            <p style="margin:0">And the rule that stops either from taking over: <strong>every Nulpunkt section carries at least one serif line or one photograph; every Dagslys section carries at least one mono fact.</strong> No section is ever purely one register. That single constraint is what keeps the site from splitting into a brochure and a spreadsheet.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Example 1 — the hero</h4>
+          <div class="cols">
+            <div><h3>Dagslys carries it</h3><p>Cream ground, air density, serif D1 at 88px on columns 1–6, a photograph bleeding off the right edge, enormous space. This is the room.</p></div>
+            <div><h3>Nulpunkt appears once</h3><p>A single mono strip beneath the CTA: <code>5 MIN HJEMME · 34 MARKØRER · RAPPORT SAMME DAG</code>. One line of instrument in a room full of light. It is the only mono on the screen, and that is exactly why it lands.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Example 2 — the featured marker</h4>
+          <div class="cols">
+            <div><h3>Nulpunkt carries it</h3><p>Sand ground, dense, the standard band with its value, range, unit and source. Biomarker names drifting slowly behind at 12% opacity with a visible pause control.</p></div>
+            <div><h3>Dagslys appears twice</h3><p>One serif D3 line — <em>"Ferritin fortæller om dine jernlagre"</em> — and one ARM photograph bleeding off the left edge, cropped at the inner elbow. The editorial voice explains what it means; the instrument proves it. Neither could do the section alone.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Example 3 — the score</h4>
+          <div class="cols">
+            <div><h3>Deep forest ground</h3><p>The page's one inversion. Nulpunkt takes almost the whole screen: the score band and six category bands in cream, sage and amber, tabular, tight.</p></div>
+            <div><h3>Dagslys is the air around it</h3><p>A serif D2 headline in cream, and then nothing — no image, no card, no secondary content. On a dark ground with that much space, precision reads as confidence rather than coldness. The restraint <em>is</em> the Dagslys contribution.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 RHYTHM ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">12 / Rhythm</span></div>
+      <div>
+        <h2 class="sec">Homepage visual rhythm</h2>
+        <p class="dek">Eleven beats in three acts. Structure and pacing only — copy is Phase 3. No two adjacent beats share both ground and density.</p>
+
+        <div class="block">
+          <h4>Act I — the room <span class="lbl" style="display:inline;margin-left:8px">who we are, what this is</span></h4>
+          <div class="beats">
+            <div class="beat">
+              <div class="no">01</div>
+              <h3>Hero</h3>
+              <div>
+                <p>Serif D1 on columns 1–6, HÅND or RUM photograph bleeding off the right edge, primary and tertiary CTA, one mono fact strip. The most spacious thing on the site.</p>
+                <div class="tags"><span class="tag">Cream</span><span class="tag air">Air</span><span class="tag">Photography</span><span class="tag">Editorial</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">02</div>
+              <h3>The proof line</h3>
+              <div>
+                <p>A single full-width rule with three mono facts spaced across it — one line tall, nothing else. The abrupt compression after the hero is the point: it's the first time the instrument speaks.</p>
+                <div class="tags"><span class="tag">Cream</span><span class="tag dense">Dense</span><span class="tag">Data</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">03</div>
+              <h3>Why this exists</h3>
+              <div>
+                <p>Serif D2, one column at 55ch offset to columns 3–8, no image, nothing else on the screen. The quietest beat on the page and the one that establishes the brand as editorial rather than commercial.</p>
+                <div class="tags"><span class="tag">Sand</span><span class="tag air">Air</span><span class="tag">Editorial</span><span class="tag">Whitespace</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Act II — the instrument <span class="lbl" style="display:inline;margin-left:8px">what it tells you, how it works</span></h4>
+          <div class="beats">
+            <div class="beat">
+              <div class="no">04</div>
+              <h3>One marker, in depth</h3>
+              <div>
+                <p>The featured-marker composition from §11. Depth before volume — a reader meets one biomarker properly before being shown that there are 34. The marker rotates; the composition doesn't.</p>
+                <div class="tags"><span class="tag">Sand</span><span class="tag dense">Dense</span><span class="tag">Data</span><span class="tag">Photography</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">05</div>
+              <h3>The breath</h3>
+              <div>
+                <p>One full-bleed RUM or LYS photograph, 60vh, one serif caption bottom-left, no CTA, no heading, no link. Structurally necessary: it resets the eye between the page's two densest beats.</p>
+                <div class="tags"><span class="tag">Image</span><span class="tag air">Air</span><span class="tag">Photography</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">06</div>
+              <h3>The clock</h3>
+              <div>
+                <p>The four steps on a horizontal timeline rather than four cards, with the clock drawing across and real staff named and photographed. The page's one orchestrated motion moment.</p>
+                <div class="tags"><span class="tag">Cream</span><span class="tag">Standard</span><span class="tag">Process</span><span class="tag">Data</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">07</div>
+              <h3>Hvad vi måler — preview</h3>
+              <div>
+                <p>The inversion. Six categories as serif lines with counts and micro-bands, plus one marker nobody expects you to measure. Links out to the full page. Darkest and densest moment on the site.</p>
+                <div class="tags"><span class="tag">Deep forest</span><span class="tag">Standard</span><span class="tag">Data</span><span class="tag">Editorial</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">08</div>
+              <h3>Your score</h3>
+              <div>
+                <p>Continues on deep forest and tightens. Composite band, six category bands, nothing else. Resolves the inversion and answers "what do I actually get".</p>
+                <div class="tags"><span class="tag">Deep forest</span><span class="tag dense">Dense</span><span class="tag">Data</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Act III — the people <span class="lbl" style="display:inline;margin-left:8px">why trust it, what it costs, what now</span></h4>
+          <div class="beats">
+            <div class="beat">
+              <div class="no">09</div>
+              <h3>The doctor</h3>
+              <div>
+                <p>Back to cream and air after two dark beats. A named Danish doctor, cropped at the shoulder, one serif italic line. The only image on the site where eyes meet the lens.</p>
+                <div class="tags"><span class="tag">Cream</span><span class="tag air">Air</span><span class="tag">Photography</span><span class="tag">Editorial</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">10</div>
+              <h3>What it costs</h3>
+              <div>
+                <p>Two options stated plainly, mono numbers, framed against what the same testing costs privately. No table borders, no "most popular" badge, no three-tier pricing grid.</p>
+                <div class="tags"><span class="tag">Sand</span><span class="tag">Standard</span><span class="tag">Product</span></div>
+              </div>
+            </div>
+            <div class="beat">
+              <div class="no">11</div>
+              <h3>Close</h3>
+              <div>
+                <p>Serif D2 restating the hero promise, one primary CTA, nothing else on the screen. <strong>The only centred type on the entire page</strong> — which is why it lands.</p>
+                <div class="tags"><span class="tag">Cream</span><span class="tag air">Air</span><span class="tag">Editorial</span><span class="tag">Whitespace</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>The rhythm, checked</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Beat</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th><th>08</th><th>09</th><th>10</th><th>11</th></tr></thead>
+              <tbody>
+                <tr><td class="t">Ground</td><td class="t">Cr</td><td class="t">Cr</td><td class="t">Sa</td><td class="t">Sa</td><td class="t">Img</td><td class="t">Cr</td><td class="t">Dp</td><td class="t">Dp</td><td class="t">Cr</td><td class="t">Sa</td><td class="t">Cr</td></tr>
+                <tr><td class="t">Density</td><td class="t">Air</td><td class="t">Dns</td><td class="t">Air</td><td class="t">Dns</td><td class="t">Air</td><td class="t">Std</td><td class="t">Std</td><td class="t">Dns</td><td class="t">Air</td><td class="t">Std</td><td class="t">Air</td></tr>
+                <tr><td class="t">Mode</td><td class="t">Photo</td><td class="t">Data</td><td class="t">Edit</td><td class="t">Data</td><td class="t">Photo</td><td class="t">Proc</td><td class="t">Data</td><td class="t">Data</td><td class="t">Photo</td><td class="t">Prod</td><td class="t">Edit</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:15px;color:var(--ink-2);max-width:66ch">Ground repeats only where density changes (01→02, 07→08), and density repeats only where ground changes (06→07). Air appears five times, which is what makes the dense beats readable. <strong>Photography, editorial, data, process and whitespace each lead at least twice, and never twice in a row.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 HARD RULES ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">13 / Rules</span></div>
+      <div>
+        <h2 class="sec">Ten hard rules</h2>
+        <p class="dek">Each one exists because breaking it is how this site would become generic. If a design decision conflicts with one of these, the rule wins or the rule gets formally changed.</p>
+
+        <ol class="rules">
+          <li><div><h3>No section repeats the previous section's ground and density</h3><p>Either the colour changes or the breathing changes, ideally both. This one rule does more against the stacked-identical-bands failure than everything else combined.</p></div></li>
+          <li><div><h3>The serif above 44px, Degular below 24px</h3><p>Between them, register decides: editorial → serif, working → Degular. A page that breaks this stops reading as Pandonia within one scroll.</p></div></li>
+          <li><div><h3>Photography has square corners, always</h3><p>Radius belongs to product cards and nothing else. A rounded photograph reads as a component; a square one reads as a plate in a magazine.</p></div></li>
+          <li><div><h3>A card holds product, never prose</h3><p>A picker, a person, a score, a band, a report extract. Never icon-above-heading-above-paragraph, never a row of equal cards describing benefits.</p></div></li>
+          <li><div><h3>Never three equal columns</h3><p>Any three-up grid of matched blocks — features, benefits, values, reasons — is banned outright. Use an offset editorial block, a list on rules, or a timeline.</p></div></li>
+          <li><div><h3>Amber is a pointer, never a paint</h3><p>It marks where you are. It is never decoration, never a judgement, never a text colour on cream, and never visible more than twice in a viewport.</p></div></li>
+          <li><div><h3>No shadows, no gradients, no glass, no glow</h3><p>Depth comes from ground changes, bleed and overlap. Maximum radius anywhere on the site is 8px, on product cards only.</p></div></li>
+          <li><div><h3>No icon sets, no anatomy illustration, no molecules</h3><p>Permitted marks: arrow, plus, chevron, drawn to Degular's stroke. If the body must be shown, it is photographed and cropped.</p></div></li>
+          <li><div><h3>Every number carries its unit and its reference</h3><p>Clinical figures carry range and source; marketing figures carry their basis. A bare number is not permitted anywhere, including a hero.</p></div></li>
+          <li><div><h3>One orchestrated motion moment per page</h3><p>Everything else is a 320ms reveal from a visible resting state. Nothing loops, nothing moves while being read, and the first viewport never animates.</p></div></li>
+        </ol>
+
+        <div class="note" style="margin-top:26px">
+          <p style="margin:0"><strong>On speed:</strong> proximity and same-day results stay in the system as <em>evidence</em>, never as the pitch. They appear as the clock, as real timestamps, as the kitchen-table photography, and as one mono line in the hero. Pandonia is not a fast-testing brand — it is a premium health brand whose experience happens to be effortless, and the clock is how that gets proven rather than claimed. If a layout starts shouting about speed, cut it back to the timestamps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 BLOCKERS ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">14 / From you</span></div>
+      <div>
+        <h2 class="sec">What I need from you</h2>
+        <p class="dek">One hard blocker for Phase 4, and four smaller things.</p>
+
+        <div class="block">
+          <h4>The blocker — three category names</h4>
+          <div class="note warn">
+            <p style="margin-bottom:10px"><strong>Pandonia's health model has six categories. Your concept screenshot confirms three of them:</strong></p>
+            <ul style="margin:0 0 12px;padding-left:18px">
+              <li><strong>Hjerte og kar</strong> — score 82 in the example</li>
+              <li><strong>Blodsukker og stofskifte</strong> — 74</li>
+              <li><strong>Hormoner</strong> — 80</li>
+            </ul>
+            <p style="margin-bottom:10px"><strong>I need the remaining three, exactly as you use them</strong> — the real Danish labels, and their English equivalents if the site is bilingual. I am not going to guess them, because guessing here means inventing a clinical taxonomy and everything downstream inherits the mistake.</p>
+            <p style="margin:0"><strong>What they unblock:</strong> the six-band Score component (§07 currently renders one placeholder row); homepage beat 07, which is built entirely from six category lines; the navigation and anchor structure for "Hvad vi måler"; and all of Phase 4, whose information architecture is six doors — the number and the naming determine whether that page is one scrolling spread or six.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Also needed before Phase 4 — not blocking Phase 3</h4>
+          <ul class="asks">
+            <li><p><strong>The 34 markers, mapped to the six categories.</strong> A plain list is fine. Some markers will sit in more than one category, which is normal and worth knowing — Function handles it by simply repeating them.</p></li>
+            <li><p><strong>One plain-language sentence per marker</strong> — what it can tell you, in Danish, written for someone with no medical background. This is the single highest-value piece of content on the whole site and it should come from your clinicians, not from me. If it doesn't exist yet, I'll draft against a few and you correct the register.</p></li>
+            <li><p><strong>Which marker is the "unexpected" one per category</strong> — the one people don't expect a blood test to cover. Beats 04 and 07 are built on this, and it's the mechanism that makes 34 feel curated rather than small.</p></li>
+            <li><p><strong>Reference ranges and whether they vary by sex or age.</strong> The band cannot be drawn honestly without them, and §07 requires the variation to be stated on the chart rather than in a footnote.</p></li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h4>Four decisions</h4>
+          <ul class="asks">
+            <li><p><strong>The 2px button radius.</strong> A visible change from your concept's pill. I think it's right and I've argued why in §08 — but it's yours to veto, and it's a one-line change if you do.</p></li>
+            <li><p><strong>GT Sectra Display licensing.</strong> Commercial. If the budget is open-source only, say so now and the fallback is Newsreader with a real quality drop — better to design against the right face from the start than to substitute in Phase 6.</p></li>
+            <li><p><strong>Is Degular licensed for web already?</strong> It's in the current site, so probably — but confirm the webfont licence covers the traffic, and which optical sizes you have.</p></li>
+            <li><p><strong>Danish-first or fully parallel bilingual?</strong> Danish compounds break differently at 88px. It changes the hero layout, not just the copy.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 15 SUMMARY ============ -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">15 / Summary</span></div>
+      <div>
+        <h2 class="sec">The permanent reference</h2>
+        <p class="dek">One page. Everything later checks against this.</p>
+
+        <div class="summary">
+          <p class="big">Dagslys sets the ground and the voice. Nulpunkt owns everything with a number in it. Neither wins.</p>
+
+          <div class="grid">
+            <div>
+              <h4>Colour</h4>
+              <p>Cream <code>#F6F1E8</code> · Sand <code>#F4EADB</code> · Paper <code>#FCFAF6</code> · Deep forest <code>#18261A</code><br>
+              Ink <code>#26201A</code> / <code>#5C554C</code> / <code>#8A8175</code><br>
+              Skovgrøn <code>#415A3B</code>, hover <code>#2C3F28</code><br>
+              Amber <code>#E3A754</code> · Sage <code>#A0B89F</code> / <code>#4E7050</code> · Brick <code>#8C3B2E</code> · Clay <code>#AE9D84</code></p>
+              <p><strong>55% cream, 20% sand, 12% deep forest, 8% paper, 4% green, under 1% amber. No blue in the system.</strong></p>
+            </div>
+            <div>
+              <h4>Type</h4>
+              <p><strong>GT Sectra Display</strong> 400 + italic — editorial voice, above 44px only.<br>
+              <strong>Degular</strong> 400 + 500 — interface, below 24px only.<br>
+              <strong>DM Mono</strong> 300 + 400 — measured fact only.</p>
+              <p>D1 88/82 · D2 64/64 · D3 44/47 · H1 40/44 · Body 17/27 · Value 32 · Label 11 +0.1em.<br>Display tracking −0.02em. Body measure 62–68ch. Tabular numerals in every column.</p>
+            </div>
+            <div>
+              <h4>Grid &amp; pacing</h4>
+              <p>4px base · 12 / 8 / 4 columns · max 1320px · margins 64 / 40 / 32 / 20.</p>
+              <p>Three densities: <strong>Air 180</strong> · <strong>Standard 128</strong> · <strong>Dense 72</strong> (88 / 64 / 48 mobile).</p>
+              <p><strong>No section repeats the previous ground and density.</strong> Editorial blocks offset, never centred — except the close.</p>
+            </div>
+            <div>
+              <h4>Photography</h4>
+              <p>One window, shot into the light, one sharp plane, frame cuts the body. Five crops: <strong>HÅND · ARM · HALS · RUM · LYS.</strong> Real Copenhagen apartments, real adults 30–65, wardrobe inside the palette.</p>
+              <p><strong>Square corners. One bleed per page. No shadows. Cream scrim only. 16:9 never.</strong> No labs, coats, molecules or smiles to camera.</p>
+            </div>
+            <div>
+              <h4>Nulpunkt</h4>
+              <p>One object at three scales: <strong>micro 64px · standard full column · hero with time axis.</strong> Sage band = reference range. Amber tick = your value. Brick tick + lead rule = outside. Two clinical states, never three.</p>
+              <p>The Score is the same band, not a ring. The clock is the recurring device — real times, <code>09:12 → 13:04</code>. No donuts, gauges, pies, radars or rounded bars.</p>
+            </div>
+            <div>
+              <h4>UI &amp; motion</h4>
+              <p>Buttons 2px radius, three levels, no shadow, no caps. Fields are an underline, not a box. Nav doesn't blur or shrink; mobile nav is a full-screen forest overlay in the serif.</p>
+              <p>One curve <code>cubic-bezier(.2,.6,.2,1)</code>. Hover 140 · reveal 320 · orchestrated 500–900. <strong>Visible at rest. One orchestrated moment: the clock.</strong> Reduced motion built first.</p>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid rgba(237,231,218,0.2);margin-top:30px;padding-top:24px">
+            <h4>The ten rules, in one line each</h4>
+            <p style="max-width:none">01 Ground or density must change between sections · 02 Serif above 44, Degular below 24 · 03 Photography has square corners · 04 Cards hold product, never prose · 05 Never three equal columns · 06 Amber is a pointer, never a paint · 07 No shadows, gradients, glass or glow · 08 No icon sets, anatomy or molecules · 09 Every number carries its unit and reference · 10 One orchestrated motion moment per page.</p>
+            <p style="margin-top:14px"><strong>And the one that governs the rest:</strong> proximity and speed are evidence, never the pitch. Pandonia is a premium health brand whose experience happens to be effortless — the clock proves it so the copy never has to claim it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="endmark">
+    <span class="lbl">End of Phase 02 — holding for approval and three category names</span>
+    <span class="lbl">Next: 03 IA &amp; homepage hierarchy</span>
+  </div>
+
+</div>

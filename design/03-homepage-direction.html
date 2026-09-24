@@ -1,0 +1,1029 @@
+<title>Pandonia Homepage Direction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap">
+
+<style>
+  :root{
+    --cream:#F6F1E8; --sand:#F4EADB; --paper:#FCFAF6; --deep:#18261A;
+    --ink:#26201A; --ink2:#5C554C; --ink3:#8A8175; --inkInv:#EDE7DA;
+    --forest:#415A3B; --forestDeep:#2C3F28;
+    --amber:#E3A754; --sage:#A0B89F; --sageDeep:#4E7050; --brick:#8C3B2E; --clay:#AE9D84;
+    --page:#EDEEEA; --doc:#17191A; --doc2:#545A56; --doc3:#7C837E;
+    --rule:rgba(23,25,26,.15); --ruleSoft:rgba(23,25,26,.08); --mark:#3C5236; --flag:#9A3B2A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#131514; --doc:#E9EBE6; --doc2:#A0A7A2; --doc3:#7E857F;
+      --rule:rgba(233,235,230,.2); --ruleSoft:rgba(233,235,230,.1); --mark:#9BBE90; --flag:#E08B76;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#131514; --doc:#E9EBE6; --doc2:#A0A7A2; --doc3:#7E857F;
+    --rule:rgba(233,235,230,.2); --ruleSoft:rgba(233,235,230,.1); --mark:#9BBE90; --flag:#E08B76;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--page);color:var(--doc);margin:0;font-family:"DM Sans",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .sheet{max-width:1280px;margin:0 auto;padding-inline:24px;padding-block:0 110px}
+  .serif{font-family:"Newsreader",Georgia,serif;font-weight:400}
+  .mono{font-family:"DM Mono",ui-monospace,monospace}
+  .lbl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);line-height:1.5}
+
+  h1,h2,h3,h4{margin:0}
+  p{margin:0 0 1em;max-width:70ch} p:last-child{margin-bottom:0}
+  code{font-family:"DM Mono",monospace;font-size:.85em;background:var(--ruleSoft);padding:1px 5px}
+  a{color:inherit;text-underline-offset:3px} a:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+
+  .masthead{border-bottom:1px solid var(--doc);padding-block:30px 0}
+  .mb{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:baseline;justify-content:space-between;padding-bottom:48px}
+  .wordmark{font-family:"Newsreader",Georgia,serif;font-size:23px}
+  h1.title{font-family:"Newsreader",Georgia,serif;font-size:clamp(36px,6.6vw,84px);line-height:.98;letter-spacing:-.02em;text-wrap:balance;padding-bottom:26px}
+  h1.title i{font-style:italic;color:var(--doc3)}
+  .standfirst{font-size:clamp(17px,2vw,20px);line-height:1.5;max-width:56ch;color:var(--doc2);padding-bottom:34px}
+  .colophon{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 28px;border-top:1px solid var(--rule);padding-block:16px 20px}
+  .colophon span{display:block}
+  .colophon .v{font-family:"DM Sans",sans-serif;font-size:14px;letter-spacing:0;text-transform:none;color:var(--doc);margin-top:5px}
+
+  section{border-top:1px solid var(--doc);padding-block:60px 12px}
+  .row{display:grid;grid-template-columns:136px minmax(0,1fr);gap:34px;align-items:start}
+  .rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+  h2.sec{font-family:"Newsreader",Georgia,serif;font-size:clamp(29px,4.3vw,46px);line-height:1.03;letter-spacing:-.02em;text-wrap:balance;padding-bottom:10px}
+  .dek{font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.5;color:var(--doc2);max-width:64ch;padding-bottom:30px}
+  h3{font-size:18px;font-weight:500;letter-spacing:-.012em;line-height:1.25;margin-bottom:8px}
+  h4{font-family:"DM Mono",monospace;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);margin-bottom:10px}
+
+  .block{border-top:1px solid var(--rule);padding-block:30px}
+  .block:first-of-type{border-top:none;padding-top:2px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:24px 34px}
+  .cols p,.cols li{font-size:15px;line-height:1.56}
+  .cols ul{margin:0;padding-left:17px} .cols li{margin-bottom:6px}
+  .note{border-left:2px solid var(--mark);padding:4px 0 4px 20px;font-size:15.5px;line-height:1.58;margin-block:20px}
+  .note.warn{border-left-color:var(--flag)}
+  .note.new{border-left-color:var(--amber)}
+
+  /* ---------- photo placeholders ---------- */
+  .ph{position:relative;overflow:hidden;background:#C4A98C;isolation:isolate}
+  .ph::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.04) 0 1px,transparent 1px 3px);pointer-events:none}
+  .ph .cap{position:absolute;left:9px;right:9px;bottom:8px;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,252,246,.94);text-shadow:0 1px 3px rgba(40,28,16,.8);line-height:1.45;z-index:2}
+  .ph .tagx{position:absolute;left:9px;top:8px;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.14em;color:rgba(255,252,246,.92);text-shadow:0 1px 3px rgba(40,28,16,.8);z-index:2}
+  .ph-arm{background:radial-gradient(90% 120% at 88% 2%,rgba(255,250,238,.98),rgba(255,244,226,.35) 30%,rgba(0,0,0,0) 58%),linear-gradient(104deg,#6E5843,#9A7F62 30%,#C9AC89 58%,#E8D4B6 82%,#F7EBD6)}
+  .ph-hand{background:radial-gradient(70% 110% at 18% -6%,rgba(255,251,240,.96),rgba(255,243,224,.32) 34%,rgba(0,0,0,0) 62%),linear-gradient(160deg,#EFE0C7,#CDB393 40%,#8E7458 78%,#5F4C39)}
+  .ph-hals{background:radial-gradient(80% 100% at 78% 12%,rgba(255,248,236,.9),rgba(250,232,208,.3) 32%,rgba(0,0,0,0) 60%),linear-gradient(120deg,#5B4738,#9C7E63 42%,#D6B995 74%,#F2E1C6)}
+  .ph-rum{background:radial-gradient(58% 90% at 74% -2%,rgba(255,253,246,1),rgba(246,238,222,.55) 26%,rgba(0,0,0,0) 56%),linear-gradient(170deg,#E9E2D2,#CFC4AF 38%,#9E9481 72%,#6E6757)}
+  .ph-lys{background:radial-gradient(80% 110% at 62% -10%,rgba(255,254,250,1),rgba(250,244,231,.7) 34%,rgba(0,0,0,0) 70%),linear-gradient(190deg,#F7F1E3,#E6DAC4 46%,#C3B49A)}
+  .ph-tube{background:radial-gradient(32% 56% at 44% 36%,rgba(255,252,244,.95),rgba(236,222,198,.34) 36%,rgba(0,0,0,0) 62%),radial-gradient(110% 90% at 92% -8%,rgba(255,250,236,.65),rgba(0,0,0,0) 46%),linear-gradient(155deg,#3B2F23,#6A543E 42%,#3A2D22)}
+  .ph-portrait{background:radial-gradient(70% 100% at 26% 4%,rgba(255,250,240,.92),rgba(252,240,222,.3) 32%,rgba(0,0,0,0) 62%),linear-gradient(135deg,#C9AE8E,#9B8067 44%,#5E4C3B)}
+  .ph-lab{background:radial-gradient(56% 78% at 86% 4%,rgba(255,252,244,.92),rgba(244,236,220,.3) 30%,rgba(0,0,0,0) 58%),linear-gradient(145deg,#D8D0BE,#A9A290 46%,#6B6657)}
+  .ph-skaerm{background:radial-gradient(44% 60% at 50% 42%,rgba(252,250,246,.96),rgba(236,230,218,.4) 40%,rgba(0,0,0,0) 68%),linear-gradient(165deg,#BCB19C,#8C8271 52%,#514A3E)}
+
+  /* ---------- mock chrome ---------- */
+  .mock{border:1px solid var(--rule);overflow:hidden;margin-block:14px 8px}
+  .mockbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:9px 12px;background:var(--ruleSoft);border-bottom:1px solid var(--rule)}
+  .mtag{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--rule);padding:3px 7px;color:var(--doc2)}
+  .mtag.air{color:#4E7050;border-color:#4E7050}
+  .mtag.dns{color:#B07C2E;border-color:#B07C2E}
+  .mtag.dag{color:#7C6A4E;border-color:#7C6A4E}
+  .mtag.nul{color:#3F5A6B;border-color:#3F5A6B}
+  .mtag.chg{color:#B07C2E;border-color:#B07C2E;font-weight:500}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mtag.air{color:#9BBE90;border-color:#9BBE90}
+    :root:not([data-theme="light"]) .mtag.dns,:root:not([data-theme="light"]) .mtag.chg{color:#E3A754;border-color:#E3A754}
+    :root:not([data-theme="light"]) .mtag.dag{color:#CBB79A;border-color:#CBB79A}
+    :root:not([data-theme="light"]) .mtag.nul{color:#93B6C9;border-color:#93B6C9}}
+
+  .pg{background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+  .pg.sand{background:var(--sand)} .pg.deepbg{background:var(--deep);color:var(--inkInv)}
+  .pg .s{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.02em}
+  .pg .m{font-family:"DM Mono",monospace}
+  .pad{padding:clamp(18px,3.2vw,46px)} .padx{padding-inline:clamp(18px,3.2vw,46px)}
+
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px clamp(18px,3.2vw,46px);font-size:10.5px}
+  .nav .wm{font-family:"Newsreader",Georgia,serif;font-size:16px;color:var(--forest);letter-spacing:-.01em}
+  .nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;color:var(--ink2)}
+  .nav .cta{background:var(--forest);color:var(--cream);padding:6px 12px;border-radius:2px;font-size:10.5px;font-weight:500}
+
+  .b1{display:inline-block;background:var(--forest);color:var(--cream);padding:10px 18px;border-radius:2px;font-size:12px;font-weight:500}
+  .b3{display:inline-block;color:var(--forest);font-size:12px;font-weight:500;border-bottom:1px solid rgba(65,90,59,.45);padding-bottom:2px}
+  .pg.deepbg .b1{background:var(--cream);color:var(--deep)}
+  .pg.deepbg .b3{color:var(--inkInv);border-bottom-color:rgba(237,231,218,.45)}
+
+  .facts{display:flex;flex-wrap:wrap;gap:7px 24px;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2)}
+
+  /* time rule — static record, never animated */
+  .trule{position:relative;height:1px;background:rgba(38,32,26,.22)}
+  .trule .pip{position:absolute;top:-4px;width:1px;height:9px;background:rgba(38,32,26,.5)}
+  .trule .dot{position:absolute;top:-3.5px;width:8px;height:8px;border-radius:50%;background:var(--amber)}
+  .trow{display:flex;justify-content:space-between;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:9px}
+
+  /* nulpunkt */
+  .band{position:relative;height:22px;border-top:1px solid rgba(38,32,26,.2);border-bottom:1px solid rgba(38,32,26,.2)}
+  .pg.deepbg .band{border-color:rgba(237,231,218,.28)}
+  .band .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.36)}
+  .band .tick{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--amber)}
+  .axis{display:flex;justify-content:space-between;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.07em;color:var(--ink3);margin-top:6px}
+  .pg.deepbg .axis{color:rgba(237,231,218,.6)}
+  .micro{display:inline-block;position:relative;width:56px;height:7px;border-top:1px solid rgba(38,32,26,.22);border-bottom:1px solid rgba(38,32,26,.22);vertical-align:middle}
+  .pg.deepbg .micro{border-color:rgba(237,231,218,.3)}
+  .micro .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.4)}
+  .micro .tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--amber)}
+
+  .rowlist{list-style:none;margin:0;padding:0}
+  .rowlist li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:10px;border-bottom:1px solid rgba(38,32,26,.12)}
+  .pg.deepbg .rowlist li{border-bottom-color:rgba(237,231,218,.16)}
+  .rowlist .l{display:flex;align-items:center;gap:13px;min-width:0}
+  .rowlist .v{font-family:"DM Mono",monospace;font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  /* mobile frame */
+  .devices{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start}
+  @media (max-width:980px){.devices{grid-template-columns:minmax(0,1fr)}}
+  .mobframe{border:1px solid var(--rule);width:100%;max-width:300px;overflow:hidden}
+  .mobframe .mh{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);padding:7px 10px;border-bottom:1px solid var(--rule);background:var(--ruleSoft)}
+  .mobpg{background:var(--cream);color:var(--ink);padding:0}
+  .mobnav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;font-size:9px}
+  .mobnav .wm{font-family:"Newsreader",Georgia,serif;font-size:15px;color:var(--forest)}
+  .mobnav .bg{width:17px;height:9px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+
+  .anno{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px 30px;padding-block:20px 6px}
+  .anno h4{margin-bottom:6px} .anno p{font-size:14px;line-height:1.55;margin:0}
+
+  .beat{border-top:1px solid var(--rule);padding-block:34px}
+  .beat:first-of-type{border-top:none}
+  .beathead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:5px}
+  .beathead .n{font-family:"DM Mono",monospace;font-size:12px;color:var(--mark)}
+  .beathead h3{font-family:"Newsreader",Georgia,serif;font-size:25px;font-weight:400;letter-spacing:-.015em;margin:0}
+  .beatq{font-family:"Newsreader",Georgia,serif;font-style:italic;font-size:16.5px;color:var(--doc2);margin-bottom:6px}
+
+  /* layers diagram */
+  .layers{border:1px solid var(--rule);margin-block:14px 24px}
+  .layer{padding:clamp(16px,2.6vw,26px);border-bottom:1px solid var(--rule)}
+  .layer:last-child{border-bottom:none}
+  .layer .lh{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:6px}
+  .layer .lh .t{font-family:"Newsreader",Georgia,serif;font-size:21px}
+  .layer p{font-size:14.5px;line-height:1.55;color:var(--doc2)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-size:13px;border:1px solid var(--rule);padding:6px 11px}
+  .chip.pend{color:var(--doc3);border-style:dashed;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.07em}
+  .chip.sys{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--doc2)}
+
+  /* shot list */
+  .shot{border-top:1px solid var(--rule);padding-block:26px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:start}
+  .shot .thumb{width:100%;aspect-ratio:4/5}
+  .shot .sid{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.09em;color:var(--mark);margin-bottom:5px}
+  .shot h3{font-family:"Newsreader",Georgia,serif;font-size:22px;font-weight:400;letter-spacing:-.015em;margin-bottom:12px}
+  .shot dl{margin:0;display:grid;grid-template-columns:132px minmax(0,1fr);gap:0 18px;font-size:14px}
+  .shot dt{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--doc3);padding-block:7px;border-bottom:1px solid var(--ruleSoft)}
+  .shot dd{margin:0;padding-block:7px;border-bottom:1px solid var(--ruleSoft);line-height:1.5}
+  @media (max-width:760px){.shot{grid-template-columns:minmax(0,1fr)}.shot .thumb{max-width:180px}.shot dl{grid-template-columns:minmax(0,1fr)}.shot dt{border-bottom:none;padding-bottom:0}.shot dd{padding-top:2px}}
+
+  .tw{overflow-x:auto;margin-block:6px 20px}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+  th,td{text-align:left;padding:9px 14px 9px 0;border-bottom:1px solid var(--ruleSoft);vertical-align:top}
+  th{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);font-weight:400;border-bottom-color:var(--rule)}
+  td.m{font-family:"DM Mono",monospace;font-size:11.5px}
+  .cut{color:var(--flag)} .keep{color:var(--mark)}
+
+  ol.rules{list-style:none;margin:0;padding:0;counter-reset:r}
+  ol.rules>li{counter-increment:r;display:grid;grid-template-columns:42px minmax(0,1fr);gap:20px;border-top:1px solid var(--ruleSoft);padding-block:20px}
+  ol.rules>li::before{content:counter(r,decimal-leading-zero);font-family:"DM Mono",monospace;font-size:12px;color:var(--mark);padding-top:5px}
+  ol.rules h3{font-size:17px} ol.rules p{font-size:14.5px;line-height:1.55}
+
+  ul.asks{list-style:none;margin:0;padding:0}
+  ul.asks li{border-top:1px solid var(--ruleSoft);padding-block:17px;display:grid;grid-template-columns:24px minmax(0,1fr);gap:16px;max-width:78ch}
+  ul.asks li::before{content:"→";color:var(--mark)}
+  ul.asks p{font-size:15px;line-height:1.55;margin:0}
+
+  .endmark{border-top:1px solid var(--doc);margin-top:66px;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between}
+
+  @media (max-width:880px){
+    .row{grid-template-columns:minmax(0,1fr);gap:16px}
+    .rail{position:static}
+    .nav ul{display:none}
+    ol.rules>li{grid-template-columns:30px minmax(0,1fr);gap:14px}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="mb">
+      <span class="wordmark">Pandonia</span>
+      <span class="lbl">Phase 03 · Homepage direction · Revision B · Internal</span>
+    </div>
+    <h1 class="title">An ordinary Tuesday,<br><i>quietly recorded.</i></h1>
+    <p class="standfirst">Klokken × Dagslys in three executions, desktop and mobile. Plus the two-layer taxonomy, a shootable photography brief, and an honest audit of how often this page mentions time.</p>
+    <div class="colophon lbl">
+      <div><span>Hero direction</span><span class="v">Klokken × Dagslys — 3 executions</span></div>
+      <div><span>Time references</span><span class="v" style="color:#B07C2E">Cut from 9 to 4</span></div>
+      <div><span>Companion</span><span class="v">Appendix A · Revision B</span></div>
+      <div><span>Next</span><span class="v">Phase 04 — blocked on taxonomy</span></div>
+    </div>
+  </header>
+
+  <!-- 00 CHANGES -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">00 / Changes</span></div>
+      <div>
+        <h2 class="sec">What changed in this revision</h2>
+        <div class="cols">
+          <div><h3>Hero</h3><p>Directions A and C are retired. Three executions of <strong>Klokken × Dagslys</strong> replace them — Human, Editorial, Product — each drawn at desktop and mobile. §02.</p></div>
+          <div><h3>Taxonomy becomes two layers</h3><p>Health areas navigate; biological systems explain. Beat 07 is redrawn around it, and the evidence for both layers is in Appendix A §01. §01.</p></div>
+          <div><h3>Time cut by more than half</h3><p>Nine references across five beats, down to four across three. Beat 02 loses the hours entirely and gains the laboratory. §05.</p></div>
+          <div><h3>The lab becomes the spine</h3><p>Not a trust section at beat 09 but the thing the day is <em>built around</em> — named street, named mechanism, present at three points. §04.</p></div>
+          <div><h3>The day sequence rewritten</h3><p>Pandonia's own sentence preserved as structure, the operational tone replaced. §03.</p></div>
+          <div><h3>Photography brief</h3><p>Eleven shots, each with subject, light, angle, crop, depth of field, what stays out of frame, and where it lands. One shoot day. §07.</p></div>
+          <div><h3>One system change reversed</h3><p>I had the clock animating in the hero. That was wrong — <strong>a record should not perform.</strong> §08.</p></div>
+          <div><h3>Unchanged</h3><p>The sitemap. Beats 03, 04, 05, 10, 11. The Phase 2 palette, type and grid. Everything approved stays approved.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 TAXONOMY UX -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">01 / Taxonomy</span></div>
+      <div>
+        <h2 class="sec">Two layers, one navigation</h2>
+        <p class="dek">You were right that neither set should automatically win. Pandonia already speaks in two vocabularies — it has simply never put them on the same screen. The evidence is in Appendix A §01; this is the UX consequence.</p>
+
+        <div class="layers">
+          <div class="layer" style="background:var(--ruleSoft)">
+            <div class="lh"><span class="t serif">Layer 1 — health areas</span><span class="lbl">Navigation · comprehension · scores</span></div>
+            <p>Answers <em>"what part of my health am I learning about?"</em> Carries the navigation, the category pages, the six scores, and every count. Written the way a person would search.</p>
+            <div class="chips">
+              <span class="chip">Hjerte og kar</span><span class="chip">Blodsukker og stofskifte</span><span class="chip">Hormoner</span>
+              <span class="chip pend">Afventer</span><span class="chip pend">Afventer</span><span class="chip pend">Afventer</span>
+            </div>
+            <p style="margin-top:12px;font-size:13.5px;color:var(--doc3)">Three from your concept. <strong>The other three are Pandonia's to name, not mine to invent.</strong> Appendix A lists eight health-area terms Pandonia already uses in its own commercial copy — evidence, not a proposal.</p>
+          </div>
+          <div class="layer">
+            <div class="lh"><span class="t serif">Layer 2 — the Pandonia model</span><span class="lbl">Context · never navigation</span></div>
+            <p>Answers <em>"why do these markers belong together?"</em> Appears as a mono annotation on a category page, on a marker detail, and as a full explainer on Om os. <strong>It is an attribute, not a folder.</strong></p>
+            <div class="chips">
+              <span class="chip sys">SIGNALERING</span><span class="chip sys">TRANSPORT</span><span class="chip sys">FORDØJELSE</span>
+              <span class="chip sys">ENERGI</span><span class="chip sys">IMMUNFORSVAR</span><span class="chip sys">AFFALDSSYSTEM</span>
+            </div>
+            <p style="margin-top:12px;font-size:13.5px;color:var(--doc3)">Verified verbatim from the live site, both languages. Two of these six are flagged for review — see Appendix A §03.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Why this is the right answer, and what it costs</h4>
+          <div class="cols">
+            <div><h3>It optimises comprehension without losing the science</h3><p>A visitor who wants to know about their cholesterol finds "Hjerte og kar" and is done. A visitor who wants to know <em>why</em> cholesterol sits there finds one mono line saying it is a transport marker — and, if they follow it, the whole model. Neither reader is made to work for the other.</p></div>
+            <div><h3>The biological model is the ownable half</h3><p>Every competitor organises by organ. <strong>Nobody organises by what the body does.</strong> Demoting Layer 2 to navigation would throw away the only structural idea Pandonia already owns — but promoting it to navigation would make "where is my cholesterol?" unanswerable. Context is exactly the right altitude for it.</p></div>
+            <div><h3>The constraint: it is not a hierarchy</h3><p>A marker can be one health area and one system, and they cut across each other. <strong>Many-to-many, not a tree.</strong> Practically: Layer 1 is the URL structure; Layer 2 is a field on the marker record. Never a nested folder, never a breadcrumb.</p></div>
+            <div><h3>What it costs</h3><p>Every marker needs two attributions instead of one, and both need clinical sign-off. It is the more expensive answer, and I think it is worth it — but you should know that before approving it.</p></div>
+          </div>
+        </div>
+
+        <div class="note warn">
+          <p style="margin:0"><strong>One question decides whether this works at all:</strong> what are the six health category scores actually scored on? If they are computed per biological system, then Layer 2 is the scoring model and Layer 1 is only navigation — which is fine, but the score section has to be labelled honestly. If they are computed per health area, the two layers are genuinely independent. <strong>Appendix A §06 asks it properly. Nothing in Phase 4 can proceed on a guess.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 HERO -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">02 / Hero</span></div>
+      <div>
+        <h2 class="sec">Klokken × Dagslys</h2>
+        <p class="dek">The idea: an ordinary Copenhagen morning quietly turns into something worth knowing before the day is out. Time appears as a <strong>record</strong> — three marks on a hairline, sitting still, already there when you arrive. Never counting, never animating, never the headline.</p>
+
+        <div class="note">
+          <p style="margin:0"><strong>The rule that keeps it warm.</strong> In all three executions the timestamps are the smallest type on screen, set in ink-3, below the fold of the headline, and never accompanied by a duration. <em>08.40 · 12.14 · 16.00</em> is a record of a day. <em>"Svar på 4 timer"</em> is an advertisement. The first is in; the second appears nowhere in the hero.</p>
+        </div>
+
+        <!-- V1 HUMAN -->
+        <div class="beat">
+          <div class="beathead"><span class="n">V1</span><h3>Human</h3></div>
+          <p class="beatq">Photography leads. Data enters at the edge of the frame.</p>
+
+          <div class="devices">
+            <div>
+              <div class="mock">
+                <div class="mockbar"><span class="mtag">Desktop 1440</span><span class="mtag">Cream</span><span class="mtag air">Air</span><span class="mtag dag">Dagslys 75</span><span class="mtag nul">Nulpunkt 25</span></div>
+                <div class="pg">
+                  <div class="nav"><span class="wm">Pandonia</span><ul><li>Sådan fungerer det</li><li>Hvad vi måler</li><li>Priser</li><li>Om os</li></ul><span class="cta">Book din blodprøve</span></div>
+                  <div class="ph ph-hand" style="height:190px">
+                    <span class="tagx">HÅND-01</span>
+                    <span class="cap">Hand at rest on worn oak beside a ceramic cup. Elastic tourniquet coiled at the far edge, deliberately soft. Window light raking from upper left, falling off to shadow at right. f/2 — only the knuckles sharp. Bleeds both viewport edges.</span>
+                  </div>
+                  <div class="padx" style="padding-top:20px">
+                    <div class="trule"><div class="pip" style="left:9%"></div><div class="pip" style="left:47%"></div><div class="dot" style="left:calc(83% - 4px)"></div></div>
+                    <div class="trow"><span>08.40 prøven</span><span>12.14 rapporten</span><span>16.00 lægen</span></div>
+                  </div>
+                  <div class="pad" style="padding-top:26px;display:grid;grid-template-columns:58fr 42fr;gap:28px;align-items:end">
+                    <div>
+                      <div class="s" style="font-size:clamp(24px,3.9vw,46px);line-height:1;color:var(--forest)">Kend din krop.<br>Før den siger til.</div>
+                      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:22px"><span class="b1">Book din blodprøve</span><span class="b3">Se hvad vi måler →</span></div>
+                    </div>
+                    <div>
+                      <p style="font-size:clamp(11.5px,1.05vw,13px);line-height:1.6;color:var(--ink2);margin:0 0 14px">Vi kommer hjem til dig i København og tager blodprøven ved dit eget bord. Resten af dagen fortsætter, som den plejer.</p>
+                      <div class="facts"><span>34 markører</span><span>Eget laboratorium</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mobframe">
+              <div class="mh">Mobile 390 · V1</div>
+              <div class="mobpg">
+                <div class="mobnav"><span class="wm">Pandonia</span><span class="bg"></span></div>
+                <div class="ph ph-hand" style="aspect-ratio:4/5"><span class="tagx">HÅND-01 · mobile recrop</span><span class="cap">Tighter: hand and cup only. Tourniquet out of frame.</span></div>
+                <div style="padding:18px 16px 22px">
+                  <div class="trule" style="margin-bottom:0"><div class="pip" style="left:6%"></div><div class="pip" style="left:48%"></div><div class="dot" style="left:calc(88% - 4px)"></div></div>
+                  <div class="trow" style="font-size:8px"><span>08.40</span><span>12.14</span><span>16.00</span></div>
+                  <div class="s" style="font-size:30px;line-height:1.02;color:var(--forest);margin-top:20px">Kend din krop.<br>Før den siger til.</div>
+                  <p style="font-size:12px;line-height:1.6;color:var(--ink2);margin:14px 0 18px">Vi kommer hjem til dig i København og tager blodprøven ved dit eget bord.</p>
+                  <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start"><span class="b1">Book din blodprøve</span><span class="b3">Se hvad vi måler →</span></div>
+                  <div class="facts" style="margin-top:20px"><span>34 markører</span><span>Eget laboratorium</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="anno">
+            <div><h4>The idea</h4><p>Image <em>first</em>, headline second — the reverse of a conventional hero. You are in the room before you are told anything. The time rule sits between them like a caption under a photograph, which is exactly what it is.</p></div>
+            <div><h4>Typography</h4><p>Serif D1 at 46px, forest, two hard-broken lines, sitting on columns 1–7. The subhead moves to the <em>right</em> column so the headline keeps its air — an asymmetry that stops it reading as a standard stacked hero.</p></div>
+            <div><h4>Where Nulpunkt lives</h4><p>Three timestamps and two mono facts. Nothing else. It is 9.5px type in ink-3, below a 1px rule — present, precise, and impossible to mistake for a claim.</p></div>
+            <div><h4>Mobile</h4><p>Image tightens from landscape to 4:5 and loses the tourniquet. The time rule keeps only the numbers — the labels are dropped at 390px because three labelled marks would crowd. Buttons stack. Serif to 30px.</p></div>
+            <div><h4>Motion</h4><p>Nothing animates. A 14-second, 3% drift of the window highlight across the photograph and that is all. <strong>The time rule is static</strong> — see §08.</p></div>
+            <div><h4>Honest read</h4><p>The warmest and most immediately likeable. Also the most dependent on HÅND-01 being genuinely good; a mediocre frame makes this a stock hero with a nice rule under it.</p></div>
+          </div>
+        </div>
+
+        <!-- V2 EDITORIAL -->
+        <div class="beat">
+          <div class="beathead"><span class="n">V2</span><h3>Editorial</h3></div>
+          <p class="beatq">Typography leads. Time becomes marginalia.</p>
+
+          <div class="devices">
+            <div>
+              <div class="mock">
+                <div class="mockbar"><span class="mtag">Desktop 1440</span><span class="mtag">Cream</span><span class="mtag air">Air</span><span class="mtag dag">Dagslys 55</span><span class="mtag nul">Nulpunkt 45</span></div>
+                <div class="pg">
+                  <div class="nav"><span class="wm">Pandonia</span><ul><li>Sådan fungerer det</li><li>Hvad vi måler</li><li>Priser</li><li>Om os</li></ul><span class="cta">Book din blodprøve</span></div>
+                  <div class="pad" style="padding-top:clamp(22px,3.4vw,44px)">
+                    <div style="display:grid;grid-template-columns:62fr 38fr;gap:clamp(18px,3vw,44px);align-items:start">
+                      <div>
+                        <div style="display:grid;grid-template-columns:54px minmax(0,1fr);gap:0 18px;align-items:baseline">
+                          <span class="m" style="font-size:9.5px;letter-spacing:.1em;color:var(--ink3);text-align:right">08.40</span>
+                          <span class="s" style="font-size:clamp(26px,4.3vw,52px);line-height:1.04;color:var(--forest)">En tirsdag.</span>
+                          <span class="m" style="font-size:9.5px;letter-spacing:.1em;color:var(--ink3);text-align:right">09.30</span>
+                          <span class="s" style="font-size:clamp(26px,4.3vw,52px);line-height:1.04;color:var(--forest);padding-left:6%">Et køkkenbord.</span>
+                          <span class="m" style="font-size:9.5px;letter-spacing:.1em;color:var(--amber);text-align:right">12.14</span>
+                          <span class="s" style="font-size:clamp(26px,4.3vw,52px);line-height:1.04;color:var(--forest);padding-left:2%">Fireogtredive svar.</span>
+                        </div>
+                        <p style="font-size:clamp(11.5px,1.05vw,13.5px);line-height:1.62;color:var(--ink2);max-width:42ch;margin:30px 0 20px 72px">Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade. Du får tallene — og en læge til at læse dem sammen med dig.</p>
+                        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-left:72px"><span class="b1">Book din blodprøve</span><span class="b3">Se hvad vi måler →</span></div>
+                      </div>
+                      <div class="ph ph-arm" style="aspect-ratio:3/4;margin-top:-34px">
+                        <span class="tagx">ARM-01</span>
+                        <span class="cap">Forearm and inner elbow, raking low light, skin texture and one vein sharp. Frame cuts at wrist and mid-upper-arm. Runs past the headline baseline top and bottom.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mobframe">
+              <div class="mh">Mobile 390 · V2</div>
+              <div class="mobpg">
+                <div class="mobnav"><span class="wm">Pandonia</span><span class="bg"></span></div>
+                <div style="padding:20px 16px 0">
+                  <div class="m" style="font-size:8.5px;letter-spacing:.11em;color:var(--ink3)">08.40</div>
+                  <div class="s" style="font-size:33px;line-height:1.04;color:var(--forest)">En tirsdag.</div>
+                  <div class="m" style="font-size:8.5px;letter-spacing:.11em;color:var(--ink3);margin-top:12px">09.30</div>
+                  <div class="s" style="font-size:33px;line-height:1.04;color:var(--forest)">Et køkkenbord.</div>
+                </div>
+                <div class="ph ph-arm" style="aspect-ratio:16/10;margin-top:18px"><span class="tagx">ARM-01</span><span class="cap">Interrupts the headline</span></div>
+                <div style="padding:18px 16px 22px">
+                  <div class="m" style="font-size:8.5px;letter-spacing:.11em;color:var(--amber)">12.14</div>
+                  <div class="s" style="font-size:33px;line-height:1.04;color:var(--forest)">Fireogtredive svar.</div>
+                  <p style="font-size:12px;line-height:1.6;color:var(--ink2);margin:16px 0 18px">Taget hjemme hos dig i København, analyseret i vores eget laboratorium på Langebrogade.</p>
+                  <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start"><span class="b1">Book din blodprøve</span><span class="b3">Se hvad vi måler →</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="anno">
+            <div><h4>The idea</h4><p>Three fragments, three times, staggered indents. <strong>The timestamps are set as marginal annotations to the text</strong> — the way a footnote number sits beside a line in a book. Time is not a feature here; it is apparatus.</p></div>
+            <div><h4>Typography</h4><p>Serif D1 at 52px across three lines with indents at 0%, 6%, 2% — irregular on purpose, so the left edge reads as a considered ragged margin rather than a mistake. The subhead and CTA align to the <em>text</em> column, not the margin, which keeps the marginalia legible as marginalia.</p></div>
+            <div><h4>"Fireogtredive"</h4><p>Written out, not "34". At 52px in a serif it becomes a beautiful Danish word rather than a spec figure — and it removes the last trace of a stat line from the hero. The numeral survives everywhere else.</p></div>
+            <div><h4>Mobile — genuinely different</h4><p>Marginalia cannot survive at 390px, so the times move directly above each fragment. <strong>The photograph interrupts the headline</strong>, landing between fragment two and three. A magazine device, and it makes the mobile hero the more interesting of the two.</p></div>
+            <div><h4>Motion</h4><p>None at all. This is the only one of the three with no moving pixel anywhere.</p></div>
+            <div><h4>Honest read</h4><p>The most distinctive and the most demanding. It needs the serif to be excellent and the Danish to be set properly — <em>fireogtredive</em> must not break. Lowest photography risk of the three, because the image is supporting, not carrying.</p></div>
+          </div>
+        </div>
+
+        <!-- V3 PRODUCT -->
+        <div class="beat">
+          <div class="beathead"><span class="n">V3</span><h3>Product</h3></div>
+          <p class="beatq">The sample leads, and turns into data in front of you.</p>
+
+          <div class="devices">
+            <div>
+              <div class="mock">
+                <div class="mockbar"><span class="mtag">Desktop 1440</span><span class="mtag">Cream</span><span class="mtag air">Air</span><span class="mtag dag">Dagslys 50</span><span class="mtag nul">Nulpunkt 50</span></div>
+                <div class="pg">
+                  <div class="nav"><span class="wm">Pandonia</span><ul><li>Sådan fungerer det</li><li>Hvad vi måler</li><li>Priser</li><li>Om os</li></ul><span class="cta">Book din blodprøve</span></div>
+                  <div style="display:grid;grid-template-columns:54fr 46fr;align-items:center;gap:clamp(16px,2.6vw,38px)">
+                    <div class="pad">
+                      <div class="s" style="font-size:clamp(23px,3.7vw,44px);line-height:1.02;color:var(--forest);max-width:17ch">Fem milliliter, taget ved dit eget bord.</div>
+                      <p style="font-size:clamp(11.5px,1.05vw,13.5px);line-height:1.6;color:var(--ink2);max-width:40ch;margin:18px 0 22px">34 markører fra én blodprøve — analyseret i vores eget laboratorium på Langebrogade i København.</p>
+                      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><span class="b1">Book din blodprøve</span><span class="b3">Se hvad vi måler →</span></div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,32,26,.18);padding-right:0">
+                      <div style="background:var(--cream)">
+                        <div class="ph ph-tube" style="aspect-ratio:3/4"><span class="tagx">08.45</span><span class="cap">OBJ-01 · tube on oak</span></div>
+                        <div style="padding:9px 8px"><div class="m" style="font-size:8.5px;letter-spacing:.1em;color:var(--ink3)">HJEMME</div></div>
+                      </div>
+                      <div style="background:var(--cream)">
+                        <div class="ph ph-lab" style="aspect-ratio:3/4"><span class="tagx">09.30</span><span class="cap">LAB-01 · rack, window behind</span></div>
+                        <div style="padding:9px 8px"><div class="m" style="font-size:8.5px;letter-spacing:.1em;color:var(--ink3)">LANGEBROGADE</div></div>
+                      </div>
+                      <div style="background:var(--cream)">
+                        <div class="ph ph-skaerm" style="aspect-ratio:3/4"><span class="tagx">12.14</span><span class="cap">SKÆRM-01 · phone, midday</span></div>
+                        <div style="padding:9px 8px"><div class="m" style="font-size:8.5px;letter-spacing:.1em;color:var(--ink3);margin-bottom:5px">RAPPORTEN</div><div class="micro" style="width:100%"><span class="ref" style="left:24%;width:54%"></span><span class="tick" style="left:44%"></span></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mobframe">
+              <div class="mh">Mobile 390 · V3</div>
+              <div class="mobpg">
+                <div class="mobnav"><span class="wm">Pandonia</span><span class="bg"></span></div>
+                <div style="padding:20px 16px 18px">
+                  <div class="s" style="font-size:31px;line-height:1.04;color:var(--forest)">Fem milliliter, taget ved dit eget bord.</div>
+                  <p style="font-size:12px;line-height:1.6;color:var(--ink2);margin:14px 0 0">34 markører fra én blodprøve, analyseret i vores eget laboratorium på Langebrogade.</p>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(38,32,26,.18)">
+                  <div style="background:var(--cream)"><div class="ph ph-tube" style="aspect-ratio:1/1"><span class="tagx">08.45</span></div><div style="padding:8px"><div class="m" style="font-size:8px;letter-spacing:.1em;color:var(--ink3)">HJEMME</div></div></div>
+                  <div style="background:var(--cream)"><div class="ph ph-skaerm" style="aspect-ratio:1/1"><span class="tagx">12.14</span></div><div style="padding:8px"><div class="m" style="font-size:8px;letter-spacing:.1em;color:var(--ink3);margin-bottom:4px">RAPPORTEN</div><div class="micro" style="width:100%"><span class="ref" style="left:24%;width:54%"></span><span class="tick" style="left:44%"></span></div></div></div>
+                </div>
+                <div style="padding:18px 16px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start"><span class="b1">Book din blodprøve</span><span class="b3">Se hvad vi måler →</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="anno">
+            <div><h4>The idea</h4><p>One physical object photographed at three points on one day, hairline-separated, each with a time and a place. <strong>The third frame resolves into a Nulpunkt band</strong> — the tube literally becomes data in the first viewport. Home → laboratory → result, with no arrows and no diagram.</p></div>
+            <div><h4>Why it isn't product advertising</h4><p>The tube is never centred on white, never held up, never lit from two sides. It sits on a kitchen table in domestic light, then on a bench with a window behind it. <strong>The environment is the subject; the object is just what travels through it.</strong></p></div>
+            <div><h4>The laboratory, visible in the hero</h4><p>Of the three, this is the only execution that shows Langebrogade above the fold. The mechanism behind the day is stated before it is claimed.</p></div>
+            <div><h4>Mobile — two frames, not three</h4><p>Three columns collapse to a 2-up: home and result. <strong>The laboratory frame moves into beat 06</strong> where it has room to be a photograph rather than a thumbnail. A different composition, not a squeezed one.</p></div>
+            <div><h4>Motion</h4><p>The three frames are present at rest. The micro-band's tick slides in once, 500ms, after load. That is the entire budget.</p></div>
+            <div><h4>Honest read</h4><p>The most Nulpunkt-forward and the most explanatory. Risk: three frames plus a headline plus a band is a lot for a first viewport — it needs ruthless whitespace or it becomes a grid. <strong>Also the one that shows a blood tube in the first second</strong>, which is a real consideration for a squeamish visitor.</p></div>
+          </div>
+        </div>
+
+        <div class="note">
+          <p style="margin:0"><strong>Comparison.</strong> <strong>V1</strong> is the warmest and the safest, and rests entirely on one photograph. <strong>V2</strong> is the most distinctive and the most typographically demanding — and the only one with zero photography risk. <strong>V3</strong> explains the most and is the only one that puts the laboratory above the fold, at the cost of a busier first screen. All three carry the same three timestamps in the same register, so the Klokken idea survives whichever you pick.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 THE DAY -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">03 / The day</span></div>
+      <div>
+        <h2 class="sec">The day sequence, refined</h2>
+        <p class="dek">Pandonia's own sentence is the structure. Its tone is not.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div>
+              <h3>The source</h3>
+              <p class="serif" style="font-size:17px;color:var(--doc)">"Tag blodprøven om morgenen, modtag rapporten ved frokosttid, og få en lægekonsultation, inden du kører hjem fra arbejde."</p>
+              <p style="margin-top:8px;color:var(--doc3);font-size:14px">Verified, from the results FAQ. The sequence is perfect — morning, midday, understanding, the rest of your day. The register is a scheduling instruction.</p>
+            </div>
+            <div>
+              <h3>What changes</h3>
+              <p>The imperatives go ("tag", "modtag", "få") — they make the reader the operator of a process. The rewrite puts the day in the <strong>third person and the past tense</strong>, so it reads as something observed rather than something you must execute.</p>
+            </div>
+            <div>
+              <h3>What survives untouched</h3>
+              <p>The four-part shape, and the closing idea that it is done before you go home. That last clause is the whole proposition in six words and it stays.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Revised beat 06 copy — requires Pandonia sign-off</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Time</th><th>Line</th><th>Beneath</th><th>Light</th></tr></thead>
+              <tbody>
+                <tr><td class="m">08.40</td><td><strong>Deborah ringer på</strong></td><td>Fem minutter ved køkkenbordet. Så er dagen din igen.</td><td class="m">Low raking dawn</td></tr>
+                <tr><td class="m">09.05</td><td><strong>Prøven kører ind</strong></td><td>Til laboratoriet på Langebrogade.</td><td class="m">Morning, moving</td></tr>
+                <tr><td class="m">09.30</td><td><strong>Analysen begynder</strong></td><td>Vi laver den selv. Det er hele forskellen.</td><td class="m">Mid-morning, flatter</td></tr>
+                <tr><td class="m" style="color:#B07C2E">12.14</td><td><strong>Rapporten ligger klar</strong></td><td>34 markører, dine tal, dit sprog.</td><td class="m">Overhead midday</td></tr>
+                <tr><td class="m">16.00</td><td><strong>Benedikte gennemgår den med dig</strong></td><td>Tyve minutter, inden du kører hjem.</td><td class="m">Low warm afternoon</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="cols">
+            <div><h3>Daylight is the progress bar</h3><p>The five photographs are graded from cold raking dawn to warm low afternoon. <strong>Nothing labels the passage of time except the light and five small numbers.</strong> It works only because the story genuinely fits in one day.</p></div>
+            <div><h3>Density rises with the day</h3><p>No numbers on screen until 09.05. One mono line at 09.30. The first Nulpunkt band at 12.14. Dagslys hands over to Nulpunkt in front of the reader, at the same pace the day does.</p></div>
+            <div><h3>What I have not fabricated</h3><p>The times are illustrative of a real published window (2–4 hours, morning draw, consultation ≥3 hours after results) and must be labelled as an example — or replaced with a real anonymised case. <strong>Appendix A §05 flags that 2–4 hours may be typical rather than guaranteed.</strong></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 THE LAB -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">04 / The lab</span></div>
+      <div>
+        <h2 class="sec">The laboratory as mechanism</h2>
+        <p class="dek">Not a trust badge at the bottom of the page. The thing the whole day is built around, present at three points and named.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div><h3>Point one — the hero (V3 only)</h3><p>Frame two is the laboratory, timestamped and captioned <code>LANGEBROGADE</code>. In V1 and V2 the street name appears once in the subhead instead.</p></div>
+            <div><h3>Point two — beat 02</h3><p>The facts line now reads <code>EGET LABORATORIUM · KØBENHAVN</code> where it previously read <code>SVAR PÅ 2–4 TIMER</code>. <strong>The mechanism replaces the consequence.</strong> §05.</p></div>
+            <div><h3>Point three — beat 06, at 09.30</h3><p>A photograph of the bench, and one line: <em>"Vi laver den selv. Det er hele forskellen."</em> It arrives mid-sequence, where the reader is already wondering how this is possible.</p></div>
+            <div><h3>Point four — beat 09</h3><p>Where it is finally explained: a named street, a named doctor, and the sentence that connects them. Held back until the reader cares.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>How to photograph a laboratory without sterile stock</h4>
+          <div class="cols">
+            <div><h3>The rule</h3><p><strong>Shoot it like a workshop, not a cleanroom.</strong> A window in frame. Daylight, not overhead fluorescent. A hand labelling a tube. Depth of field so shallow that the room reads as warm shape rather than equipment. Worn surfaces.</p></div>
+            <div><h3>Deliberately out of frame</h3><p>Any wide shot of the room. Any full view of an analyser. Anybody in a full lab coat at a distance. Blue or green cast of any kind. Rows of identical instruments.</p></div>
+            <div><h3>Why this matters</h3><p>The lab has to add <em>locality</em>, not clinical coldness. A rack of tubes on a bench with a Copenhagen window behind it says "this is a real place three kilometres from your kitchen". A stock cleanroom says "this could be anywhere". <strong>The whole value of the fact is that it is here.</strong></p></div>
+            <div><h3>The claim to be careful with</h3><p>Appendix A flags that accreditation and authorisation are unstated. <strong>Do not write "certificeret" or "akkrediteret" anywhere until Pandonia confirms it</strong> — the lab is the most scrutinised claim on the site precisely because it is the most valuable.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 SPEED AUDIT -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">05 / Audit</span></div>
+      <div>
+        <h2 class="sec">Speed audit</h2>
+        <p class="dek">Revision A mentioned time nine times across five of eleven beats. That is a fast-testing brand. Here is every instance and what happened to it.</p>
+
+        <div class="tw">
+          <table>
+            <thead><tr><th>Beat</th><th>Revision A</th><th>Revision B</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td class="m">01 Hero</td><td>"på fem minutter" in subhead</td><td class="cut"><strong>Cut</strong></td><td>Duration is a sales number. The five minutes survives once, at 08.40 in beat 06, where it is a fact about a morning.</td></tr>
+              <tr><td class="m">01 Hero</td><td>"samme dag" in subhead</td><td class="cut"><strong>Cut</strong></td><td>Replaced with "Resten af dagen fortsætter, som den plejer" — same idea, no stopwatch.</td></tr>
+              <tr><td class="m">01 Hero</td><td><code>5 MIN HJEMME</code> in facts strip</td><td class="cut"><strong>Cut</strong></td><td>Facts strip now carries <code>34 MARKØRER · EGET LABORATORIUM</code>.</td></tr>
+              <tr><td class="m">01 Hero</td><td>—</td><td class="keep"><strong>Added:</strong> three timestamps</td><td>Record, not duration. No interval is stated or implied anywhere in the hero.</td></tr>
+              <tr><td class="m">02 Grundlaget</td><td><code>SVAR PÅ 2–4 TIMER</code></td><td class="cut"><strong>Replaced</strong> with <code>EGET LABORATORIUM · KØBENHAVN</code></td><td>The mechanism is more persuasive than the consequence, and it cannot be beaten by a competitor buying faster couriers.</td></tr>
+              <tr><td class="m">06 Dagen</td><td>Five timestamps + "Fem minutter"</td><td class="keep"><strong>Kept in full</strong></td><td>This is the one beat where time <em>is</em> the narrative. Everything else was cut so this could stay complete.</td></tr>
+              <tr><td class="m">06 Dagen</td><td>"Prøven tages, mens kaffen stadig er varm"</td><td class="keep"><strong>Kept</strong></td><td>Time expressed as a domestic detail rather than a number. The register the whole page should aim for.</td></tr>
+              <tr><td class="m">09 Lab</td><td>"svaret kommer samme dag"</td><td class="keep"><strong>Kept — once</strong></td><td>Here it is the <em>consequence of the laboratory</em>, which is the only place the claim earns its keep.</td></tr>
+              <tr><td class="m">11 Afslutning</td><td><code>KØBENHAVN · SVAR SAMME DAG</code></td><td class="cut"><strong>Reduced</strong> to <code>KØBENHAVN</code></td><td>The closing screen should leave you with the place, not the clock.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cols">
+          <div><h3>Before</h3><p><strong>9 references, 5 of 11 beats.</strong> Speed appeared in the first line the visitor read, in the facts strip, in the process, in the trust section and in the closing line.</p></div>
+          <div><h3>After</h3><p><strong>4 references, 3 of 11 beats</strong> — and each has a different job. Hero: a record. Beat 06: the narrative. Beat 09: the consequence of a mechanism. No duration is stated anywhere except inside beat 06.</p></div>
+          <div><h3>The test</h3><p>Read the page and ask what it was about. It should be: <em>"they come to your home in Copenhagen, they have their own lab, and a doctor explains it."</em> If "it's fast" is in the first three things a reader says back, cut another reference.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 REVISED ARCHITECTURE -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">06 / Homepage</span></div>
+      <div>
+        <h2 class="sec">Revised architecture</h2>
+        <p class="dek">Eleven beats, unchanged in sequence. Two are redrawn; the rest carry copy edits only.</p>
+
+        <div class="block">
+          <h4>Summary of changes</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Beat</th><th>Status</th><th>Change</th></tr></thead>
+              <tbody>
+                <tr><td class="m">01 Hero</td><td><span class="mtag chg">Redrawn</span></td><td>Klokken × Dagslys, three executions. §02.</td></tr>
+                <tr><td class="m">02 Grundlaget</td><td><span class="mtag chg">Redrawn</span></td><td>Hours out, laboratory in. Below.</td></tr>
+                <tr><td class="m">03 Hvorfor</td><td>Unchanged</td><td>—</td></tr>
+                <tr><td class="m">04 Én markør</td><td>Unchanged</td><td>Still vitamin D, still a value inside its band.</td></tr>
+                <tr><td class="m">05 Vejrtrækningen</td><td>Unchanged</td><td>—</td></tr>
+                <tr><td class="m">06 Dagen</td><td>Copy revised</td><td>New five-moment copy, §03. Composition unchanged.</td></tr>
+                <tr><td class="m">07 Hvad vi måler</td><td><span class="mtag chg">Redrawn</span></td><td>Two-layer structure. Below.</td></tr>
+                <tr><td class="m">08 Rapporten</td><td>Labels revised</td><td>Six rows become Layer 1 areas, pending names.</td></tr>
+                <tr><td class="m">09 Lab + læge</td><td>Copy revised</td><td>Street named. Mechanism stated before consequence.</td></tr>
+                <tr><td class="m">10 Pris</td><td>Unchanged</td><td>—</td></tr>
+                <tr><td class="m">11 Afslutning</td><td>Copy revised</td><td>"svar samme dag" removed.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- beat 02 redrawn -->
+        <div class="beat">
+          <div class="beathead"><span class="n">02</span><h3>Grundlaget — redrawn</h3></div>
+          <p class="beatq">"Is this actually serious, or is it a wellness product?"</p>
+          <div class="mock">
+            <div class="mockbar"><span class="mtag">Cream</span><span class="mtag dns">Dense</span><span class="mtag nul">Nulpunkt 100</span><span class="mtag chg">Hours removed</span></div>
+            <div class="pg">
+              <div class="padx" style="padding-block:24px">
+                <div style="display:flex;flex-wrap:wrap;gap:12px 40px;border-top:1px solid rgba(38,32,26,.2);border-bottom:1px solid rgba(38,32,26,.2);padding-block:16px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)">
+                  <span>34 biomarkører</span><span>Eget laboratorium · København</span><span>Læge inkluderet</span><span>Hjemme hos dig</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="anno">
+            <div><h4>What changed</h4><p><code>SVAR PÅ 2–4 TIMER</code> → <code>HJEMME HOS DIG</code>, and the laboratory moves up the line. The four facts are now <em>substance, place, person, proximity</em> — no duration at all.</p></div>
+            <div><h4>Why</h4><p>This line is the first thing a sceptic reads. "Own laboratory" survives scrutiny; "2–4 hours" invites it. And the hours are already implied by the timestamps directly above.</p></div>
+            <div><h4>Unchanged</h4><p>One line between two hairlines, ~90px tall against the hero's 700. The compression is still the point.</p></div>
+          </div>
+        </div>
+
+        <!-- beat 07 redrawn -->
+        <div class="beat">
+          <div class="beathead"><span class="n">07</span><h3>Hvad vi måler — redrawn for two layers</h3></div>
+          <p class="beatq">"How much of my body does this actually cover?"</p>
+          <div class="mock">
+            <div class="mockbar"><span class="mtag">Deep forest</span><span class="mtag">Standard</span><span class="mtag dag">Dagslys 35</span><span class="mtag nul">Nulpunkt 65</span><span class="mtag chg">Two layers</span></div>
+            <div class="pg deepbg">
+              <div class="pad">
+                <div class="s" style="font-size:clamp(18px,2.6vw,32px);line-height:1.1;max-width:24ch;margin-bottom:8px">Seks områder. Én blodprøve.</div>
+                <p style="font-size:12.5px;color:rgba(237,231,218,.72);max-width:52ch;margin-bottom:24px">Du finder dine tal der, hvor du ville lede efter dem.</p>
+                <ul class="rowlist">
+                  <li><span class="l"><span class="s" style="font-size:clamp(15px,1.9vw,23px);min-width:200px">Hjerte og kar</span><span class="micro"><span class="ref" style="left:22%;width:54%"></span><span class="tick" style="left:44%"></span></span></span><span class="v" style="color:rgba(237,231,218,.6)">— markører</span></li>
+                  <li><span class="l"><span class="s" style="font-size:clamp(15px,1.9vw,23px);min-width:200px">Blodsukker og stofskifte</span><span class="micro"><span class="ref" style="left:16%;width:58%"></span><span class="tick" style="left:52%"></span></span></span><span class="v" style="color:rgba(237,231,218,.6)">— markører</span></li>
+                  <li><span class="l"><span class="s" style="font-size:clamp(15px,1.9vw,23px);min-width:200px">Hormoner</span><span class="micro"><span class="ref" style="left:24%;width:52%"></span><span class="tick" style="left:38%"></span></span></span><span class="v" style="color:rgba(237,231,218,.6)">— markører</span></li>
+                  <li><span class="l"><span class="m" style="font-size:12px;letter-spacing:.09em;color:rgba(237,231,218,.45);min-width:200px">OMRÅDE 4 — AFVENTER</span></span><span class="v" style="color:rgba(237,231,218,.4)">—</span></li>
+                  <li><span class="l"><span class="m" style="font-size:12px;letter-spacing:.09em;color:rgba(237,231,218,.45);min-width:200px">OMRÅDE 5 — AFVENTER</span></span><span class="v" style="color:rgba(237,231,218,.4)">—</span></li>
+                  <li><span class="l"><span class="m" style="font-size:12px;letter-spacing:.09em;color:rgba(237,231,218,.45);min-width:200px">OMRÅDE 6 — AFVENTER</span></span><span class="v" style="color:rgba(237,231,218,.4)">—</span></li>
+                </ul>
+                <div style="border-top:1px solid rgba(237,231,218,.2);margin-top:22px;padding-top:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end">
+                  <div>
+                    <div class="m" style="font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:rgba(237,231,218,.45);margin-bottom:7px">Bag områderne — Pandonia-modellen</div>
+                    <div class="m" style="font-size:10.5px;letter-spacing:.07em;color:rgba(237,231,218,.68);line-height:1.7">SIGNALERING · TRANSPORT · FORDØJELSE · ENERGI · IMMUNFORSVAR · AFFALDSSYSTEM</div>
+                  </div>
+                  <span class="b3">Se hele listen →</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="anno">
+            <div><h4>Both layers, one screen</h4><p>Layer 1 owns the rows — serif, large, with counts and bands. <strong>Layer 2 is a single mono line beneath a rule</strong>, at 10.5px, labelled "Bag områderne". The instrument register carries the scientific model exactly as Phase 2 intended.</p></div>
+            <div><h4>Still not a grid</h4><p>Six full-width rows on rules, not a 3×2. The three pending areas render as explicit <code>AFVENTER</code> placeholders — <strong>showing a gap is honest; inventing a label is not.</strong></p></div>
+            <div><h4>The copy shift</h4><p>"Seks systemer" → "Seks områder", and the standfirst becomes <em>"Du finder dine tal der, hvor du ville lede efter dem."</em> That single line is the two-layer argument stated to a customer without ever mentioning a model.</p></div>
+            <div><h4>Mobile</h4><p>Rows stack with the band below the name. The Layer 2 line wraps to three lines in mono at 10px — it is the only place on mobile where a mono line is allowed to run long, because it reads as a list rather than a sentence.</p></div>
+            <div><h4>If the answer is Option A</h4><p>If Pandonia decides the biological systems <em>are</em> the user-facing six, the two lists swap and the layout is untouched. That is deliberate: the composition is taxonomy-agnostic.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 SHOT LIST -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">07 / Shot list</span></div>
+      <div>
+        <h2 class="sec">Photography brief</h2>
+        <p class="dek">Eleven shots. One shoot day, one real Copenhagen apartment, one real draw, one visit to Langebrogade. Handable to a photographer as it stands.</p>
+
+        <div class="note">
+          <p style="margin-bottom:8px"><strong>Governing instruction:</strong> shoot it as if you were there and nobody asked you to come. Observed, not staged. If a frame looks arranged, it is wrong.</p>
+          <p style="margin:0"><strong>Global:</strong> natural light only, single source, no fill, no reflector, no flash. Lifted blacks, no crushed contrast, reds slightly desaturated so skin stays natural. No teal-orange grade. Wardrobe in cream, sand, oatmeal, olive, warm grey — no white shirts, no black, no logos, no blue. Casting: real Danish adults 30–65, no model casting, no styling beyond ordinary. <strong>Eyes to lens exactly once on the entire site (PORTRÆT-01).</strong></p>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-hand thumb"><span class="tagx">HÅND-01</span></div></div>
+          <div>
+            <div class="sid">HÅND-01 · hero V1 · priority 1</div>
+            <h3>Hand at rest, kitchen table</h3>
+            <dl>
+              <dt>Subject</dt><dd>One adult hand resting flat on a table beside a ceramic cup. Elastic tourniquet coiled at the far edge of frame, soft.</dd>
+              <dt>Environment</dt><dd>Real Copenhagen apartment kitchen. Worn oak or painted table, tiled splashback, one plant on the sill.</dd>
+              <dt>Time of day</dt><dd>08.30–09.15. Actual morning, not simulated.</dd>
+              <dt>Light</dt><dd>Single window, upper left, raking across the table. Visible falloff into shadow at right. Let the window edge blow out.</dd>
+              <dt>Angle</dt><dd>Low, almost table height. The camera sits where a second cup would.</dd>
+              <dt>Crop</dt><dd>Landscape 3:2, bleeding both viewport edges. Frame cuts the arm at the wrist.</dd>
+              <dt>Depth of field</dt><dd>f/2. Knuckles sharp; cup and tourniquet dissolve.</dd>
+              <dt>Movement</dt><dd>Still. Optionally a barely-visible drift of steam.</dd>
+              <dt>Foreground</dt><dd>Table surface running out of focus into the bottom of frame.</dd>
+              <dt>Out of frame</dt><dd>Face. Torso. Any other person. The phlebotomist. Any clinical object beyond the tourniquet.</dd>
+              <dt>Emotion</dt><dd>Waiting, calmly, in your own kitchen. Nothing is happening yet.</dd>
+              <dt>Appears</dt><dd>Hero V1 desktop and mobile (tighter recrop, tourniquet dropped).</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-arm thumb"><span class="tagx">ARM-01</span></div></div>
+          <div>
+            <div class="sid">ARM-01 · hero V2 · beat 04 · priority 1</div>
+            <h3>Forearm and inner elbow</h3>
+            <dl>
+              <dt>Subject</dt><dd>Inner elbow and forearm, relaxed, palm up on a table. Skin texture, fine hair, one visible vein. Optionally a small plaster, after.</dd>
+              <dt>Environment</dt><dd>Same kitchen. Table edge and a suggestion of wall only.</dd>
+              <dt>Time of day</dt><dd>Morning, same session as HÅND-01.</dd>
+              <dt>Light</dt><dd>Hard raking sidelight, almost parallel to the skin, so texture reads as topography. Deep shadow permitted on the underside.</dd>
+              <dt>Angle</dt><dd>Directly above, perpendicular to the arm. Flat, almost anatomical — but warm.</dd>
+              <dt>Crop</dt><dd>Portrait 3:4. Frame cuts at wrist and mid-upper-arm. Body never resolves.</dd>
+              <dt>Depth of field</dt><dd>f/1.8–2. One narrow band across the elbow crease sharp; everything else falls away.</dd>
+              <dt>Movement</dt><dd>None.</dd>
+              <dt>Foreground</dt><dd>Nothing. Background is unreadable warm tone.</dd>
+              <dt>Out of frame</dt><dd>Face, needle, blood, gloves, any hint of procedure in progress.</dd>
+              <dt>Emotion</dt><dd>The body as landscape. Intimate without being invasive. <strong>This is the most Pandonia image on the list</strong> — no competitor can use it.</dd>
+              <dt>Appears</dt><dd>Hero V2 desktop (tall column) and mobile (16:10 interrupting the headline). Also usable at beat 04.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-tube thumb"><span class="tagx">OBJ-01</span></div></div>
+          <div>
+            <div class="sid">OBJ-01 · hero V3 frame 1 · beat 06 · priority 1</div>
+            <h3>The sample on the table</h3>
+            <dl>
+              <dt>Subject</dt><dd>One filled sample tube standing upright on the kitchen table, label facing slightly away so it is not legible as branding.</dd>
+              <dt>Environment</dt><dd>Same table. The cup still there, out of focus. Domestic clutter permitted and encouraged.</dd>
+              <dt>Time of day</dt><dd>Immediately after the draw, roughly 08.45.</dd>
+              <dt>Light</dt><dd>Backlit from the window so the tube edge catches. Room falls to warm dark behind. One specular highlight on the cap.</dd>
+              <dt>Angle</dt><dd>Table height, slightly below the cap. The object has presence without being heroic.</dd>
+              <dt>Crop</dt><dd>Portrait 3:4. Tube occupies roughly a third of frame width, off-centre.</dd>
+              <dt>Depth of field</dt><dd>f/1.8. Label and cap sharp; the room is warm bokeh.</dd>
+              <dt>Movement</dt><dd>None.</dd>
+              <dt>Foreground</dt><dd>Table edge dissolving at the bottom.</dd>
+              <dt>Out of frame</dt><dd>Hands. Any white surface. Any second tube. Any suggestion of a clinic. <strong>No product-shot lighting of any kind.</strong></dd>
+              <dt>Emotion</dt><dd>A small ordinary object that happens to contain the answer. Quiet, domestic, slightly still-life.</dd>
+              <dt>Appears</dt><dd>Hero V3 frame 1, desktop and mobile. Beat 06 at 08.45.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-lab thumb"><span class="tagx">LAB-01</span></div></div>
+          <div>
+            <div class="sid">LAB-01 · hero V3 frame 2 · beats 06 + 09 · priority 1</div>
+            <h3>The bench at Langebrogade</h3>
+            <dl>
+              <dt>Subject</dt><dd>A rack of tubes on a working bench, with a hand entering frame to label or lift one. Real lab, real work, mid-task.</dd>
+              <dt>Environment</dt><dd>Pandonia's own laboratory. <strong>A window must be in frame or clearly the light source.</strong> Worn bench surface preferred over pristine.</dd>
+              <dt>Time of day</dt><dd>Mid-morning, roughly 09.30, so the light matches the day sequence.</dd>
+              <dt>Light</dt><dd>Daylight from a window behind or beside the rack. Overhead fluorescents switched off if at all possible.</dd>
+              <dt>Angle</dt><dd>Close, at bench height, slightly across the rack.</dd>
+              <dt>Crop</dt><dd>Portrait 3:4 for the hero; a wider 3:2 variant for beat 09.</dd>
+              <dt>Depth of field</dt><dd>f/2. Two tubes sharp, the rest of the room dissolved. <strong>The room must not be readable as a room.</strong></dd>
+              <dt>Movement</dt><dd>A hand in slight motion is fine; a small amount of blur reads as work rather than a set.</dd>
+              <dt>Foreground</dt><dd>Out-of-focus tube or bench edge.</dd>
+              <dt>Out of frame</dt><dd>Wide shots of the room. Full analysers. Anyone in a full lab coat at distance. Blue or green cast. Rows of identical equipment. Screens with graphs on them.</dd>
+              <dt>Emotion</dt><dd>A workshop, not a cleanroom. Small, real, three kilometres away. <strong>Locality, not sterility.</strong></dd>
+              <dt>Appears</dt><dd>Hero V3 frame 2. Beat 06 at 09.30. Beat 09 as the wider variant.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-skaerm thumb"><span class="tagx">SKÆRM-01</span></div></div>
+          <div>
+            <div class="sid">SKÆRM-01 · hero V3 frame 3 · beat 06 · priority 1</div>
+            <h3>The report arrives</h3>
+            <dl>
+              <dt>Subject</dt><dd>A phone lying face-up on a desk or café table, report visible but not legible. A hand nearby, not holding it.</dd>
+              <dt>Environment</dt><dd>Wherever a working day actually happens — a desk, a canteen table, a windowsill. Not the kitchen; the day has moved on.</dd>
+              <dt>Time of day</dt><dd>Around midday. Must read as a different hour than the morning frames.</dd>
+              <dt>Light</dt><dd>Flat overhead midday light, cooler and less directional than the morning shots. <strong>The change in light is the storytelling device.</strong></dd>
+              <dt>Angle</dt><dd>Steep, almost overhead, slightly off-axis.</dd>
+              <dt>Crop</dt><dd>Portrait 3:4. Phone off-centre, cut by the frame edge.</dd>
+              <dt>Depth of field</dt><dd>f/2.2. Screen edge sharp, content deliberately soft — <strong>we are not shooting a UI screenshot.</strong></dd>
+              <dt>Movement</dt><dd>None.</dd>
+              <dt>Foreground</dt><dd>Table objects out of focus at the edge — a glass, a notebook, keys.</dd>
+              <dt>Out of frame</dt><dd>A face reacting. A legible interface. A hand holding the phone up. Any expression of surprise or relief.</dd>
+              <dt>Emotion</dt><dd>It simply arrived, in the middle of a normal day, and nobody made a moment of it.</dd>
+              <dt>Appears</dt><dd>Hero V3 frame 3, desktop and mobile. Beat 06 at 12.14.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-portrait thumb"><span class="tagx">PORTRÆT-01</span></div></div>
+          <div>
+            <div class="sid">PORTRÆT-01 · beat 09 · priority 1</div>
+            <h3>Benedikte Halle</h3>
+            <dl>
+              <dt>Subject</dt><dd>Pandonia's doctor, three-quarter, cropped at the shoulder. No coat, no stethoscope, no props.</dd>
+              <dt>Environment</dt><dd>A plain wall or an out-of-focus room. Not a clinic, not an office, not the lab.</dd>
+              <dt>Time of day</dt><dd>Any daylight hour.</dd>
+              <dt>Light</dt><dd>Soft window light from the left, shadow side intact. Do not fill.</dd>
+              <dt>Angle</dt><dd>Eye level, close.</dd>
+              <dt>Crop</dt><dd>4:5. Top of head may be cut.</dd>
+              <dt>Depth of field</dt><dd>f/2. Eyes sharp.</dd>
+              <dt>Movement</dt><dd>None. Between expressions rather than mid-smile.</dd>
+              <dt>Foreground</dt><dd>Nothing.</dd>
+              <dt>Out of frame</dt><dd>White coat, badge, stethoscope, desk, computer, any other person.</dd>
+              <dt>Emotion</dt><dd>Attentive, unperformed. <strong>The one frame on the entire site where eyes meet the lens.</strong> Requires her consent.</dd>
+              <dt>Appears</dt><dd>Beat 09 desktop and mobile.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-hand thumb"><span class="tagx">HÅND-02</span></div></div>
+          <div>
+            <div class="sid">HÅND-02 · beat 06 · priority 2</div>
+            <h3>The draw, undramatised</h3>
+            <dl>
+              <dt>Subject</dt><dd>Deborah's hands at work — the tourniquet being fastened, or the plaster being smoothed down afterwards.</dd>
+              <dt>Environment</dt><dd>The kitchen table. Same session.</dd>
+              <dt>Time of day</dt><dd>08.40.</dd>
+              <dt>Light</dt><dd>Same raking window light as HÅND-01.</dd>
+              <dt>Angle</dt><dd>Close, over the shoulder of neither person — an observer's position at the table.</dd>
+              <dt>Crop</dt><dd>Portrait 3:4. Two pairs of hands, no faces.</dd>
+              <dt>Depth of field</dt><dd>f/2. One pair of hands sharp.</dd>
+              <dt>Movement</dt><dd>Slight motion blur acceptable and preferred over a frozen pose.</dd>
+              <dt>Foreground</dt><dd>Table edge.</dd>
+              <dt>Out of frame</dt><dd><strong>The needle. Blood. The moment of insertion.</strong> Faces. Any grimace. Gloves in close-up.</dd>
+              <dt>Emotion</dt><dd>Competent, unhurried, ordinary. Two people at a kitchen table, one of whom happens to be very good at this.</dd>
+              <dt>Appears</dt><dd>Beat 06 at 08.40. Alternate for HÅND-01 in hero V1.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-rum thumb"><span class="tagx">RUM-01</span></div></div>
+          <div>
+            <div class="sid">RUM-01 · beat 05 · priority 1</div>
+            <h3>The room, wide</h3>
+            <dl>
+              <dt>Subject</dt><dd>The whole kitchen, person small and off-centre at the far left, not looking at the camera.</dd>
+              <dt>Environment</dt><dd>The same apartment. Everything ordinary and nothing tidied.</dd>
+              <dt>Time of day</dt><dd>Just before nine.</dd>
+              <dt>Light</dt><dd>Window filling the right third of frame, blown out. Everything else falling to shadow.</dd>
+              <dt>Angle</dt><dd>Standing height, from a doorway. The composition of someone who just walked in.</dd>
+              <dt>Crop</dt><dd>3:2 full bleed desktop. <strong>Recrop to 4:5 for mobile</strong> — the wide frame loses the person at 390px.</dd>
+              <dt>Depth of field</dt><dd>f/4. The room readable, the person soft.</dd>
+              <dt>Movement</dt><dd>None.</dd>
+              <dt>Foreground</dt><dd>A door frame or cabinet edge entering the left of frame, dark and out of focus. <strong>The foreground obstruction is what makes it observed rather than composed.</strong></dd>
+              <dt>Out of frame</dt><dd>Any Pandonia object. Any suggestion this is about health at all.</dd>
+              <dt>Emotion</dt><dd>The breath. The only beat on the page with nothing to sell.</dd>
+              <dt>Appears</dt><dd>Beat 05, full bleed, 60vh desktop / 52vh mobile.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-hals thumb"><span class="tagx">HALS-01</span></div></div>
+          <div>
+            <div class="sid">HALS-01 · beat 04 · priority 2</div>
+            <h3>Neck and collarbone</h3>
+            <dl>
+              <dt>Subject</dt><dd>Neck, jaw underside, collarbone, shoulder. Skin as surface.</dd>
+              <dt>Environment</dt><dd>Indoors, against a window. Winter.</dd>
+              <dt>Time of day</dt><dd>Low winter daylight — this frame accompanies the vitamin D marker, so the season should be legible.</dd>
+              <dt>Light</dt><dd>Cold, low, from the side. The thinnest light on the list.</dd>
+              <dt>Angle</dt><dd>Slightly below, looking up along the neck.</dd>
+              <dt>Crop</dt><dd>Portrait, bleeding off the left viewport edge. Frame cuts below the mouth.</dd>
+              <dt>Depth of field</dt><dd>f/2. Collarbone sharp.</dd>
+              <dt>Movement</dt><dd>None.</dd>
+              <dt>Foreground</dt><dd>Fabric — a jumper collar — entering the bottom of frame.</dd>
+              <dt>Out of frame</dt><dd>Eyes, mouth, full face, anything that makes it a portrait.</dd>
+              <dt>Emotion</dt><dd>A Danish winter body. Pale, real, unposed.</dd>
+              <dt>Appears</dt><dd>Beat 04, bleeding left. Mobile: full-bleed band above the text at 3:2.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-lys thumb"><span class="tagx">LYS-01</span></div></div>
+          <div>
+            <div class="sid">LYS-01 · connective · priority 2</div>
+            <h3>Light on a surface</h3>
+            <dl>
+              <dt>Subject</dt><dd>No person. Window light crossing a wooden table, a curtain moving, steam off a cup, a radiator under a sill.</dd>
+              <dt>Environment</dt><dd>The apartment. Shoot several; they are cheap and endlessly useful.</dd>
+              <dt>Time of day</dt><dd>Across the whole morning, so there is a graded set.</dd>
+              <dt>Light</dt><dd>The subject <em>is</em> the light.</dd>
+              <dt>Angle</dt><dd>Whatever the light asks for.</dd>
+              <dt>Crop</dt><dd>Any. These exist to be cropped hard later.</dd>
+              <dt>Depth of field</dt><dd>Shallow.</dd>
+              <dt>Movement</dt><dd>A curtain or steam moving is ideal — the one place slight motion is welcome.</dd>
+              <dt>Foreground</dt><dd>Often entirely foreground.</dd>
+              <dt>Out of frame</dt><dd>People. Objects with a function.</dd>
+              <dt>Emotion</dt><dd>Nothing is happening. That is the point — connective tissue between heavy sections.</dd>
+              <dt>Appears</dt><dd>Beat 06 at 12.14 as an alternative to SKÆRM-01; section transitions; Sådan fungerer det.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="shot">
+          <div><div class="ph ph-tube thumb"><span class="tagx">OBJ-02</span></div></div>
+          <div>
+            <div class="sid">OBJ-02 · beat 06 · priority 3</div>
+            <h3>The sample in transit</h3>
+            <dl>
+              <dt>Subject</dt><dd>The tube in a transport bag, on a passenger seat or in a hand on a bike.</dd>
+              <dt>Environment</dt><dd>Copenhagen streets visible but unreadable through a window.</dd>
+              <dt>Time of day</dt><dd>09.05.</dd>
+              <dt>Light</dt><dd>Moving daylight through glass. Reflections welcome.</dd>
+              <dt>Angle</dt><dd>Close, from above.</dd>
+              <dt>Crop</dt><dd>Portrait 3:4.</dd>
+              <dt>Depth of field</dt><dd>f/2.8. The bag sharp, the city dissolved.</dd>
+              <dt>Movement</dt><dd><strong>The one frame where motion blur in the background is required</strong> — it is the only image on the site that needs to feel like it is moving.</dd>
+              <dt>Foreground</dt><dd>Window frame or seat edge.</dd>
+              <dt>Out of frame</dt><dd>A branded vehicle. A courier uniform. A recognisable landmark — this is any street in Copenhagen, not a postcard.</dd>
+              <dt>Emotion</dt><dd>The link between the kitchen and the laboratory, shown rather than diagrammed.</dd>
+              <dt>Appears</dt><dd>Beat 06 at 09.05.</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Production notes</h4>
+          <div class="cols">
+            <div><h3>One day, one apartment</h3><p>Eight of eleven shots are the same kitchen in the same morning. The lab is a second half-day. The portrait is an hour. <strong>This is a realistic single-day brief, not a campaign.</strong></p></div>
+            <div><h3>Shoot the real draw</h3><p>Book a genuine appointment and photograph it. A restaged draw will look restaged, and the whole art direction rests on being observed.</p></div>
+            <div><h3>Consent</h3><p>Deborah Saren and Benedikte Halle appear by name and face. The subject whose arm is photographed needs a release for medical-adjacent imagery. Settle this before the shoot, not after.</p></div>
+            <div><h3>Deliver the recrops</h3><p>Every shot delivers desktop and mobile crops as separate frames, not one file scaled. The mobile crop is usually tighter and more vertical — specified per shot above.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 SYSTEM -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">08 / System</span></div>
+      <div>
+        <h2 class="sec">System changes</h2>
+        <p class="dek">One reversal, one confirmation, one addition.</p>
+
+        <ol class="rules">
+          <li><div><h3>Reversed: the hero clock does not animate</h3><p>In Revision A I proposed that if the hero carried the clock, the hero would animate and beat 06 would render complete. <strong>That was wrong, for a reason I missed:</strong> a record of something that already happened should not perform. A line that draws itself turns a timestamp into a countdown, which is precisely the stopwatch register we are avoiding.<br><strong>Settled:</strong> the hero's time rule is always static and present at rest. <strong>Beat 06 always carries the page's one orchestrated moment.</strong> This also restores the Phase 2 rule that the first viewport never animates.</p></div></li>
+          <li><div><h3>Confirmed: the hero need not be Dagslys-led</h3><p>All three executions carry photography, so no section is single-register and the §11 constraint holds. The Phase 2 wording changes from "the hero is photography-led" to "the hero is <em>one</em> valid place for either register to lead". V2 proves it — 55% Dagslys, 45% Nulpunkt, and it is the warmest-reading of the three on the page despite leading with type.</p></div></li>
+          <li><div><h3>Added, as you approved: no out-of-range values on the homepage</h3><p>The homepage demonstrates the Nulpunkt language with values inside their band. Reference ranges, out-of-range treatment and clinical interpretation live on Hvad vi måler and in the product. <strong>Brick is a clinical mark, never a marketing device.</strong> Now a standing rule, not a beat-level decision.</p></div></li>
+          <li><div><h3>Added: Layer 2 is always mono, always below a rule</h3><p>Wherever the biological model appears in the customer-facing site, it is set in DM Mono at 10–11px, below a hairline, under a label. It is never a heading, never a link target, never navigation. This is what keeps it reading as scientific context rather than a second menu.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 DECISIONS -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">09 / Decisions</span></div>
+      <div>
+        <h2 class="sec">Decisions before Phase 4</h2>
+        <p class="dek">Four design decisions you can make now, and five facts only Pandonia can supply.</p>
+
+        <div class="block">
+          <h4>Yours to decide</h4>
+          <ul class="asks">
+            <li><p><strong>1 · Hero execution — V1, V2 or V3.</strong> Human, Editorial or Product. V2 is the only one with no photography dependency; V3 is the only one showing the laboratory above the fold; V1 is the warmest and the most conventional.</p></li>
+            <li><p><strong>2 · The two-layer taxonomy.</strong> Health areas navigate, the Pandonia model explains. Approving this commits to two attributions per marker and therefore to a longer clinical review. §01.</p></li>
+            <li><p><strong>3 · The speed audit.</strong> Nine time references down to four. If you think beat 02 still needs the hours, say so — I think the laboratory beats them, but it is a commercial call as much as a design one.</p></li>
+            <li><p><strong>4 · The photography budget.</strong> One shoot day, one apartment, one real draw, one lab visit, one portrait. <strong>Without it, V1 and V3 are not viable and V2 becomes the only honest choice.</strong></p></li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h4>Only Pandonia can answer — all of Phase 4 waits on these</h4>
+          <ul class="asks">
+            <li><p><strong>5 · The three missing health areas.</strong> Your concept gives Hjerte og kar, Blodsukker og stofskifte, Hormoner. Beat 07 currently renders three <code>AFVENTER</code> rows. Appendix A §01 lists eight health-area terms Pandonia already uses — evidence to choose from, not a proposal.</p></li>
+            <li><p><strong>6 · What the six scores are scored on.</strong> Health areas, biological systems, or a third thing. <strong>This single answer decides whether the two-layer model works.</strong></p></li>
+            <li><p><strong>7 · The marker table.</strong> All ~34 with health area, biological system, unit, reference range, and whether it varies by sex or age. Every band on the site is a labelled placeholder until this exists.</p></li>
+            <li><p><strong>8 · Is it 30 or 34?</strong> Three figures currently in circulation. Appendix A §05 has the full discrepancy table — fifteen claims, eleven verified, seven open.</p></li>
+            <li><p><strong>9 · "Affaldssystem" / "detoxification", and "fordøjelse".</strong> Two of the six Layer 2 labels need clinical review before they go on a page. I have flagged both and deliberately proposed no replacement. Appendix A §03.</p></li>
+          </ul>
+        </div>
+
+        <div class="note warn">
+          <p style="margin:0"><strong>What I have not done, deliberately:</strong> named a single missing category, assigned a single biomarker to a single category, written a single reference range, or normalised "detoxification" into something more comfortable. Every one of those would have made this document look more finished and would have quietly turned a guess into a fact on a medical website.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="endmark">
+    <span class="lbl">End of Phase 03 Revision B — holding for approval</span>
+    <span class="lbl">Phase 04 blocked on decisions 5, 6 and 7</span>
+  </div>
+
+</div>

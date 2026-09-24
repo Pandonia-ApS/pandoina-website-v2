@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="da" data-locale="da">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Pandonia Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap">
+
+<style>
+:root{
+  --cream:#F6F1E8;--sand:#F4EADB;--paper:#FCFAF6;--deep:#18261A;
+  --ink:#26201A;--ink2:#5C554C;--ink3:#756C60;--inkInv:#EDE7DA;
+  --forest:#415A3B;--forestDeep:#2C3F28;
+  --amber:#E3A754;--sage:#A0B89F;--sageDeep:#4E7050;--brick:#8C3B2E;
+  --rule:rgba(38,32,26,.20);--ruleSoft:rgba(38,32,26,.11);
+  --ruleInv:rgba(237,231,218,.22);--ruleInvSoft:rgba(237,231,218,.16);
+  --onDeepMuted:rgba(237,231,218,.72);--onDeepQuiet:rgba(237,231,218,.55);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p,ul,ol,dl,figure{margin:0;padding:0}ul,ol{list-style:none}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--forest);outline-offset:3px}
+summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
+.s{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.02em}
+.m{font-family:"DM Mono",ui-monospace,monospace}
+.lab{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:1.5}
+.d1{font-size:clamp(42px,6.2vw + 16px,84px);line-height:1;letter-spacing:-.02em}
+.d2{font-size:clamp(34px,4.4vw + 14px,64px);line-height:1;letter-spacing:-.02em}
+.d3{font-size:clamp(27px,2.6vw + 14px,44px);line-height:1.06;letter-spacing:-.015em}
+.hh3{font-size:clamp(18px,.4vw + 16px,20px);font-weight:500;letter-spacing:-.01em;line-height:1.3}
+.bodyL{font-size:clamp(18px,.4vw + 16px,20px);line-height:1.55;color:var(--ink2)}
+.bd{font-size:clamp(16px,.2vw + 15px,17px);line-height:1.6;color:var(--ink2)}
+.bdS{font-size:15px;line-height:1.55;color:var(--ink2)}
+.meas{max-width:64ch}.measN{max-width:48ch}.measS{max-width:40ch}
+.fg{color:var(--forest)}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4vw,64px)}
+.air{padding-block:clamp(72px,11vw,180px)}
+.std{padding-block:clamp(52px,8vw,128px)}
+.dns{padding-block:clamp(40px,5vw,72px)}
+.gSand{background:var(--sand)}.gDeep{background:var(--deep);color:var(--inkInv)}
+.gDeep .lab{color:var(--onDeepQuiet)}
+.split{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,56px)}.gapNone{gap:0}
+@media(min-width:1024px){.sp4258{grid-template-columns:42fr 58fr}.sp6238{grid-template-columns:62fr 38fr}.sp5545{grid-template-columns:55fr 45fr}.sp3862{grid-template-columns:38fr 62fr}}
+.alStart{align-items:start}.alCenter{align-items:center}.alStretch{align-items:stretch}
+
+.bar{background:var(--deep);color:var(--inkInv);padding:8px clamp(20px,4vw,64px);display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;align-items:center}
+.bar span{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--onDeepQuiet)}
+.bar b{color:var(--amber);font-weight:400}
+
+.nav{position:sticky;top:0;z-index:40;background:var(--cream);border-bottom:1px solid transparent}
+.nav.stuck{border-bottom-color:var(--rule)}
+.navin{max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4vw,64px);min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+@media(min-width:1024px){.navin{min-height:72px}}
+.wm{font-family:"Newsreader",Georgia,serif;font-size:25px;letter-spacing:-.01em;color:var(--forest);cursor:pointer}
+.navlinks{display:none;gap:24px}@media(min-width:1024px){.navlinks{display:flex}}
+.navlinks a{font-size:15px;color:var(--ink2);border-bottom:1px solid transparent;padding-bottom:3px;cursor:pointer}
+.navlinks a:hover{color:var(--ink)}.navlinks a.on{color:var(--forest);border-bottom-color:var(--forest)}
+.navright{display:flex;align-items:center;gap:15px}
+.navutil{display:none;gap:10px;align-items:center;font-size:12.5px;color:var(--ink3)}@media(min-width:1024px){.navutil{display:flex}}
+.navutil a{cursor:pointer;padding-block:6px}
+.langsw{display:flex;align-items:center;gap:5px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em}
+.langsw button{background:none;border:none;padding:6px 2px;cursor:pointer;font:inherit;color:var(--ink3);letter-spacing:.1em}
+.langsw button[aria-current="true"]{color:var(--forest);border-bottom:1px solid var(--forest)}
+.sep{color:var(--ink3);opacity:.55}
+.navcta{background:var(--forest);color:var(--cream);padding:9px 16px;border-radius:2px;font-size:13.5px;font-weight:500;white-space:nowrap}
+.burger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:0}
+@media(min-width:1024px){.burger{display:none}}
+.burger i{display:block;width:26px;height:9px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.mobnav{position:fixed;inset:0;z-index:60;background:var(--deep);color:var(--inkInv);padding:clamp(20px,5vw,40px);display:flex;flex-direction:column;justify-content:space-between;overflow:auto}
+.mobnav[hidden]{display:none}
+.mobnav .x{align-self:flex-end;width:44px;height:44px;background:none;border:none;color:var(--inkInv);font-size:30px;line-height:1;cursor:pointer}
+.mobnav ul{display:flex;flex-direction:column;gap:14px}
+.mobnav ul a{font-family:"Newsreader",Georgia,serif;font-size:clamp(25px,6.6vw,36px);letter-spacing:-.02em;cursor:pointer}
+.mobnav .langrow{display:flex;gap:10px;align-items:center;margin-top:22px;font-family:"DM Mono",monospace;font-size:14px;letter-spacing:.1em}
+.mobnav .langrow button{background:none;border:none;color:var(--onDeepQuiet);font:inherit;padding:10px 4px;cursor:pointer}
+.mobnav .langrow button[aria-current="true"]{color:var(--inkInv);border-bottom:1px solid var(--inkInv)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:500;font-size:15px;border-radius:2px;cursor:pointer}
+.btn1{background:var(--forest);color:var(--cream);padding:14px 26px}.btn1:hover{background:var(--forestDeep)}
+.btn2{background:transparent;color:var(--forest);border:1px solid var(--forest);padding:13px 25px}
+.lnk{display:inline-flex;align-items:center;gap:8px;color:var(--forest);font-size:15px;font-weight:500;border-bottom:1px solid rgba(65,90,59,.4);padding-block:11px;cursor:pointer}
+.gDeep .lnk{color:var(--inkInv);border-bottom-color:rgba(237,231,218,.45)}
+.ext:after{content:"↗";font-size:.78em;margin-left:5px;opacity:.65}
+
+/* ── HERO TIMELINE ───────────────────────────────────────────────
+   One hairline down the marginal column. A short tick reaches from each
+   timestamp to the line. The line begins at the first tick and ends at the
+   last — it records a span that happened, it does not run off toward a
+   promise. Amber appears once, on the result. */
+.hg{display:grid;grid-template-columns:78px minmax(0,1fr);column-gap:26px;row-gap:0}
+@media(max-width:640px){.hg{grid-template-columns:56px minmax(0,1fr);column-gap:16px}}
+.hgt{position:relative;text-align:right;padding-top:.30em;font-family:"DM Mono",monospace;font-size:10.5px;line-height:1.6;letter-spacing:.1em;color:var(--ink3)}
+@media(max-width:640px){.hgt{font-size:9.5px}}
+/* the continuous hairline, at the right edge of the marginal column.
+   1.10em = padding-top .30em + half the .60em line box, so the line's two
+   ends land exactly on the first and last ticks and nowhere beyond them. */
+.hgt::before{content:"";position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(65,90,59,.26)}
+.hgt.first::before{top:1.10em}
+.hgt.last::before{bottom:auto;height:1.10em}
+/* the tick: reaches from the number across the gutter to the line */
+.hgt .t{position:relative;display:inline-block}
+.hgt .t::after{content:"";position:absolute;top:50%;left:100%;width:12px;height:1px;background:rgba(65,90,59,.45)}
+@media(max-width:640px){.hgt .t::after{width:9px}}
+.hgt.now{color:var(--ink2)}
+.hgt.now .t::after{background:rgba(65,90,59,.6)}
+/* the one amber emphasis: the result */
+.hgt.now::after{content:"";position:absolute;right:-2px;top:1.10em;margin-top:-2.5px;width:5px;height:5px;border-radius:50%;background:var(--amber)}
+.hgf{padding-bottom:.08em}
+.hgIndent{margin-left:104px}
+@media(max-width:640px){.hgIndent{margin-left:0}}
+
+.ph{display:block;width:100%;height:100%;object-fit:cover}
+.phBox{position:relative;overflow:hidden}
+.phTag{position:absolute;left:10px;top:9px;z-index:2;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(160,184,159,.9);color:#CFE0CD;padding:2px 6px;background:rgba(20,30,18,.5)}
+.phTag.lic{border-color:rgba(227,167,84,.85);color:#F0D3A6}
+.plate{position:relative;overflow:hidden;background:#DCD2C2;color:var(--ink3);outline:1px solid rgba(38,32,26,.14);outline-offset:-1px}
+.plate .inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:12px;z-index:2}
+.plate .sid{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.plate .brief{max-width:44ch;font-family:"DM Mono",monospace;font-size:9.5px;line-height:1.55;letter-spacing:.02em}
+.needShoot{position:absolute;right:10px;bottom:10px;z-index:3;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--brick);border:1px solid var(--brick);padding:2px 6px;background:rgba(220,210,194,.78)}
+.cap{position:relative;display:flex;height:100%;align-items:flex-end;z-index:2}
+.cap p{max-width:26ch;padding:0 clamp(20px,4vw,64px) clamp(26px,4vw,44px);font-family:"Newsreader",Georgia,serif;font-size:clamp(18px,2vw,26px);line-height:1.3;color:var(--cream);text-shadow:0 2px 14px rgba(30,22,14,.7)}
+
+.pl{border-left:1px dotted var(--brick);padding-left:12px;color:var(--ink3)}
+.pl b{display:block;margin-bottom:3px;font-family:"DM Mono",monospace;font-size:9px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--brick)}
+.gDeep .pl{border-left-color:var(--amber);color:var(--onDeepQuiet)}.gDeep .pl b{color:var(--amber)}
+.tagP{display:inline-block;border:1px solid var(--brick);color:var(--brick);padding:2px 6px;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase}
+.tagV{display:inline-block;border:1px solid var(--sageDeep);color:var(--sageDeep);padding:2px 6px;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase}
+.gDeep .tagP{color:var(--amber);border-color:var(--amber)}.gDeep .tagV{color:var(--sage);border-color:var(--sage)}
+.dash{font-family:"DM Mono",monospace;color:var(--ink3)}
+
+.band{position:relative;height:26px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.gDeep .band{border-color:var(--ruleInv)}
+.band .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.36)}
+.band .tick{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--amber)}
+.band .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.07) 0 5px,transparent 5px 10px)}
+.gDeep .band .none{background:repeating-linear-gradient(135deg,rgba(237,231,218,.09) 0 5px,transparent 5px 10px)}
+.axis{display:flex;justify-content:space-between;margin-top:6px;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.07em;color:var(--ink3)}
+.gDeep .axis{color:var(--onDeepQuiet)}
+.micro{position:relative;display:inline-block;width:64px;height:8px;flex:0 0 auto;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);vertical-align:middle}
+.gDeep .micro{border-color:var(--ruleInv)}
+.micro .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.4)}
+.micro .tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--amber)}
+.micro .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.09) 0 4px,transparent 4px 8px)}
+.gDeep .micro .none{background:repeating-linear-gradient(135deg,rgba(237,231,218,.11) 0 4px,transparent 4px 8px)}
+.val{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.val s{text-decoration:none;font-size:.42em;letter-spacing:.04em;color:var(--ink3);margin-left:6px}
+.rows li{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:13px;border-bottom:1px solid var(--ruleSoft)}
+.gDeep .rows li{border-bottom-color:var(--ruleInvSoft)}
+.rows .l{display:flex;align-items:center;gap:16px;min-width:0}
+.rows .v{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+.hr{border-top:1px solid var(--rule)}.hrInv{border-top:1px solid var(--ruleInv)}
+.hrs{border-top:1px solid var(--ruleSoft)}
+.onDeepMuted{color:var(--onDeepMuted)}.onDeepQuiet{color:var(--onDeepQuiet)}
+
+.mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
+.mk>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:12px;align-items:center;padding-block:15px}
+@media(min-width:1024px){.mk>summary{grid-template-columns:minmax(0,1fr) 92px 118px 20px;gap:18px}}
+.mk .nm{display:block;font-size:16px;font-weight:500}
+.mk[open] .nm,.mk>summary:hover .nm{color:var(--forest)}
+.mk .sub{display:block;margin-top:2px;max-width:54ch;font-family:"Newsreader",Georgia,serif;font-size:14.5px;line-height:1.45;color:var(--ink2)}
+.mk .col{display:none;text-align:right;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.07em;color:var(--ink3)}
+@media(min-width:1024px){.mk .col{display:block}}
+.mk .chev{text-align:right;font-size:17px;color:var(--ink3);transition:transform 140ms cubic-bezier(.2,.6,.2,1)}
+.mk[open] .chev{transform:rotate(45deg);color:var(--forest)}
+.mkbody{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:4px 0 28px}
+@media(min-width:1024px){.mkbody{grid-template-columns:minmax(0,1fr) 320px;gap:36px}}
+.mkbody dl{display:grid;grid-template-columns:minmax(0,1fr);gap:0 20px;font-size:15px}
+@media(min-width:1024px){.mkbody dl{grid-template-columns:150px minmax(0,1fr)}}
+.mkbody dt{padding-top:9px;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.mkbody dd{padding:2px 0 9px;line-height:1.5;border-bottom:1px solid var(--ruleSoft)}
+@media(min-width:1024px){.mkbody dt{padding-bottom:9px;border-bottom:1px solid var(--ruleSoft)}.mkbody dd{padding-top:9px}}
+.mkside{background:rgba(38,32,26,.035);padding:20px}
+.idx{position:sticky;top:60px;z-index:30;background:var(--cream);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-inline:calc(-1 * clamp(20px,4vw,64px));padding-inline:clamp(20px,4vw,64px)}
+@media(min-width:1024px){.idx{top:72px}}
+.idxin{display:flex;flex-wrap:wrap;align-items:center;gap:16px;min-height:50px}
+.idxin .find{margin-left:auto;display:flex;align-items:center;gap:10px;padding-block:9px}
+.idxin input{width:150px;padding:6px 0;border:none;border-bottom:1px solid var(--rule);border-radius:0;background:transparent;font-family:"DM Sans",sans-serif;font-size:14px;color:var(--ink)}
+.idxin input:focus{outline:none;border-bottom:2px solid var(--forest);padding-bottom:5px}
+
+.qa{border-bottom:1px solid var(--ruleSoft)}
+.qa>summary{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding-block:17px;font-size:17px}
+.qa>summary:hover,.qa[open]>summary{color:var(--forest)}
+.qa .chev{font-size:17px;color:var(--ink3);transition:transform 140ms cubic-bezier(.2,.6,.2,1)}
+.qa[open] .chev{transform:rotate(45deg);color:var(--forest)}
+.qa .ans{max-width:64ch;padding-bottom:22px}
+
+footer{background:var(--deep);color:var(--inkInv)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px 40px}
+@media(min-width:1024px){.fgrid{grid-template-columns:1.3fr repeat(3,1fr)}}
+.fgrid h2{margin-bottom:14px;font-family:"DM Mono",monospace;font-size:9.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--onDeepQuiet)}
+.fgrid ul{display:flex;flex-direction:column;gap:9px;font-size:14.5px}
+.fgrid a{color:var(--onDeepMuted);display:inline-block;padding-block:4px;cursor:pointer}
+.fgrid a:hover{color:var(--inkInv)}
+.fgrid li.gated{color:var(--onDeepQuiet);font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding-block:4px}
+
+html[data-locale="da"] [data-lang="en"]{display:none}
+html[data-locale="en"] [data-lang="da"]{display:none}
+[data-page][hidden]{display:none}
+@media(min-width:1024px){.dayGrid{grid-template-columns:repeat(5,1fr)!important}.teamGrid{grid-template-columns:repeat(4,1fr)!important}.labGrid{grid-template-columns:repeat(3,1fr)!important}.g2{grid-template-columns:1fr 1fr!important}.g4{grid-template-columns:repeat(4,1fr)!important}}
+@media(min-width:640px){.g2{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.001ms!important}}
+</style>
+
+<div class="bar">
+  <span data-da="Pandonia · klikbar prototype · DA + EN" data-en="Pandonia · clickable prototype · DA + EN">Pandonia</span>
+  <span class="m" id="routebar" style="color:var(--amber)">/da</span>
+</div>
+
+<header class="nav" id="nav"><div class="navin">
+  <a class="wm" data-route="home">Pandonia</a>
+  <nav class="navlinks" aria-label="Main">
+    <a data-nav="maaler" data-anchor="what-we-test" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a>
+    <a data-nav="saadan" data-anchor="how-it-works" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a>
+    <a data-nav="rapport" data-anchor="your-report" data-da="Din rapport" data-en="Your report">Din rapport</a>
+    <a data-nav="om" data-anchor="about-pandonia" data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</a>
+  </nav>
+  <div class="navright">
+    <div class="navutil">
+      <a data-route="faq">FAQ</a><span class="sep">·</span>
+      <a class="ext" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="Log ind" data-en="Log in">Log ind</a>
+      <span class="sep">·</span>
+      <span class="langsw"><button type="button" id="btnDa" aria-current="true" lang="da">DA</button><span class="sep">·</span><button type="button" id="btnEn" aria-current="false" lang="en">EN</button></span>
+    </div>
+    <a class="navcta" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mobnav" aria-label="Menu"><i></i></button>
+  </div>
+</div></header>
+
+<div class="mobnav" id="mobnav" hidden>
+  <button class="x" id="mobclose" aria-label="Luk">×</button>
+  <nav><ul>
+    <li><a data-route="maaler" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a></li>
+    <li><a data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a></li>
+    <li><a data-route="rapport" data-da="Din rapport" data-en="Your report">Din rapport</a></li>
+    <li><a data-route="om" data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</a></li>
+    <li><a data-route="faq">FAQ</a></li>
+    <li><a data-route="book" data-da="Priser" data-en="Prices">Priser</a></li>
+  </ul>
+  <div class="langrow"><button type="button" class="mlang" data-loc="da" aria-current="true">DANSK</button><span class="sep">·</span><button type="button" class="mlang" data-loc="en" aria-current="false">ENGLISH</button></div>
+  </nav>
+  <div style="margin-top:26px">
+    <a class="btn btn1" style="background:var(--cream);color:var(--deep);width:100%" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+    <a class="ext" style="display:block;margin-top:14px;color:var(--onDeepQuiet);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="LOG IND" data-en="LOG IN">LOG IND</a>
+  </div>
+</div>
+
+<main>
+<!-- ═══════════ HOME ═══════════ -->
+<div data-page="home"><span id="top"></span>
+
+<section class="wrap" style="padding-block:clamp(28px,5vw,66px) clamp(40px,6vw,80px)">
+  <div class="split sp6238 alStart">
+    <div>
+      <h1 class="hg">
+        <span class="hgt first"><span class="t">08.40</span></span>
+        <span class="s d1 fg hgf" data-da="En tirsdag." data-en="A Tuesday.">En tirsdag.</span>
+        <span class="hgt"><span class="t">09.30</span></span>
+        <span class="s d1 fg hgf" style="padding-left:5%" data-da="Et køkkenbord." data-en="A kitchen table.">Et køkkenbord.</span>
+        <span class="hgt now last"><span class="t">12.14</span></span>
+        <span class="s d1 fg hgf" style="padding-left:2%" data-da="Hvad blodet ved." data-en="What your blood knows.">Hvad blodet ved.</span>
+      </h1>
+      <p class="lab hgIndent" style="margin-top:16px" data-da="Én dag hos én person · ikke et løfte om tider" data-en="One day, one person · not a promise of times">Én dag hos én person</p>
+      <p class="bodyL measN hgIndent" style="margin-top:26px" data-da="Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade. Du får tallene — og en læge til at læse dem sammen med dig." data-en="The sample is taken at your home in Copenhagen and analysed in our own laboratory on Langebrogade. You get the numbers — and a doctor to read them with you.">Blodprøven tages hjemme hos dig i København.</p>
+      <div class="hgIndent" style="display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:26px">
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+        <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="phBox" style="aspect-ratio:3/4;margin-top:-28px">
+      <img class="ph" src="../public/images/hero.jpg" data-alt-da="En morgen ved et køkkenbord." data-alt-en="A morning at a kitchen table." alt="" style="object-position:50% 45%">
+      <span class="phTag lic" data-da="Licenseret · midlertidig" data-en="Licensed · holding image">Licenseret</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-block:6px 30px">
+  <div style="display:flex;flex-wrap:wrap;gap:12px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:18px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2)">
+    <span><span class="dash">—</span> <span data-da="biomarkører" data-en="biomarkers">biomarkører</span> <span class="tagP" style="margin-left:6px" data-da="Antal afventer" data-en="Count pending">Antal afventer</span></span>
+    <span data-da="Eget laboratorium · København" data-en="Our own laboratory · Copenhagen">Eget laboratorium · København</span>
+    <span data-da="Læge inkluderet" data-en="Doctor included">Læge inkluderet</span>
+    <span data-da="Hjemme hos dig" data-en="At your home">Hjemme hos dig</span>
+  </div>
+</section>
+
+<section class="gSand"><div class="wrap air"><div style="margin-left:8%;max-width:54ch">
+  <h2 class="s d2 fg" data-da="De fleste ting kroppen fortæller, fortæller den stille og i god tid." data-en="Most of what the body has to say, it says quietly and early.">De fleste ting kroppen fortæller, fortæller den stille og i god tid.</h2>
+  <p class="bd" style="margin-top:26px" data-da="Et blodprøvesvar er ikke en dom. Det er en beskrivelse af, hvor du står lige nu — og hvad der har flyttet sig, siden sidst du så efter. Det meste vil være, som det skal være. Det er også et svar." data-en="A blood test result is not a verdict. It is a description of where you stand right now — and of what has moved since you last looked. Most of it will be as it should be. That is an answer too.">Et blodprøvesvar er ikke en dom.</p>
+  <p class="lab" style="margin-top:26px" data-da="Ingen henvisning · ingen venteliste" data-en="No referral · no waiting list">Ingen henvisning · ingen venteliste</p>
+</div></div></section>
+
+<section class="gSand"><div class="split sp4258 alStretch gapNone">
+  <div class="phBox" style="min-height:340px">
+    <img class="ph" src="../public/images/skin.jpg" data-alt-da="Hænder ved et bord." data-alt-en="Hands at a table." alt="" style="position:absolute;inset:0;object-position:50% 40%">
+    <span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte · Pandonia</span>
+  </div>
+  <div class="dns" style="padding-inline:clamp(20px,4vw,64px)">
+    <p class="lab" style="margin-bottom:14px" data-da="Én af markørerne" data-en="One of the markers">Én af markørerne</p>
+    <div data-lang="da">
+      <h2 class="s d3 fg measS">Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret.</h2>
+      <p class="bd measN" style="margin:18px 0 8px">Påvirker immunforsvar, knoglestyrke og mental balance.</p>
+      <div style="margin-bottom:26px"><span class="tagV">Verificeret · dansk kilde</span></div>
+    </div>
+    <div data-lang="en">
+      <h2 class="s d3 measS pl" style="padding-left:14px"><b style="font-size:9px">Awaiting clinical review — English</b>Low vitamin D is common in Denmark, particularly through the winter.</h2>
+      <p class="bd measN pl" style="margin:18px 0 8px"><b>Awaiting clinical review — English</b>It affects the immune system, bone strength and mental balance.</p>
+      <div style="margin-bottom:26px"><span class="tagP">English not approved</span></div>
+    </div>
+    <div style="max-width:420px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
+        <span class="val" style="font-size:clamp(24px,1.4vw + 19px,32px);color:var(--ink3)">—<s data-da="enhed afventer" data-en="unit pending">enhed afventer</s></span>
+        <span class="lab" data-da="Referenceområde afventer" data-en="Reference range pending">Referenceområde afventer</span>
+      </div>
+      <div class="band"><div class="none"></div></div>
+      <div class="axis"><span>—</span><span data-da="AFVENTER LABORATORIET" data-en="AWAITING THE LABORATORY">AFVENTER LABORATORIET</span><span>—</span></div>
+    </div>
+    <div style="margin-top:26px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">Se alle markører</span> <span aria-hidden="true">→</span></a></div>
+  </div>
+</div></section>
+
+<section><div class="phBox" style="min-height:min(58vh,440px)">
+  <img class="ph" src="../public/images/rum.jpg" data-alt-da="Pandonias lokaler i København." data-alt-en="Pandonia's premises in Copenhagen." alt="" style="position:absolute;inset:0">
+  <span class="phTag" data-da="Ægte · Pandonias lokaler" data-en="Real · Pandonia's premises">Ægte · Pandonias lokaler</span>
+  <div class="cap"><p data-da="Et køkken i København, ti minutter i ni." data-en="A kitchen in Copenhagen, ten minutes to nine.">Et køkken i København, ti minutter i ni.</p></div>
+</div></section>
+
+<section class="wrap std" id="how-it-works">
+  <h2 class="s d3 fg measS" data-da="Prøven tages, mens kaffen stadig er varm." data-en="The sample is taken while the coffee is still warm.">Prøven tages, mens kaffen stadig er varm.</h2>
+  <p class="bd measN" style="margin:16px 0 40px" data-da="Fra din bordkant til dit svar — uden at du skulle andre steder hen." data-en="From your table to your answer — without going anywhere.">Fra din bordkant til dit svar.</p>
+  <ol style="display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.4vw,20px);align-items:end" class="dayGrid">
+    <li><div class="phBox" style="aspect-ratio:3/4"><img class="ph" src="../public/images/draw.jpg" data-alt-da="En blodprøve tages ved et bord." data-alt-en="A blood sample being taken at a table." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div></li>
+    <li style="padding-bottom:30px"><div class="plate" style="aspect-ratio:3/4"><span class="needShoot" data-da="Ny optagelse" data-en="New shoot">Ny optagelse</span><div class="inner"><div><span class="sid">OBJ-02</span></div><p class="brief">Sample in transit. Documentary object detail.</p></div></div></li>
+    <li><div class="plate" style="aspect-ratio:3/4"><span class="needShoot" data-da="Ny optagelse · skal være ægte" data-en="New shoot · must be real">Ny optagelse</span><div class="inner"><div><span class="sid">LAB-01</span></div><p class="brief">Pandonia's own laboratory. Never stock.</p></div></div></li>
+    <li style="padding-bottom:30px"><div class="phBox" style="aspect-ratio:3/4"><img class="ph" src="../public/images/laptop.jpg" data-alt-da="Pandonia-rapporten på en skærm." data-alt-en="The Pandonia report on a screen." alt=""><span class="phTag" data-da="Ægte · produkt" data-en="Real · product">Ægte · produkt</span></div></li>
+    <li><div class="plate" style="aspect-ratio:3/4"><span class="needShoot" data-da="Ny optagelse · lægen" data-en="New shoot · the doctor">Ny optagelse</span><div class="inner"><div><span class="sid">PORTRÆT-01</span></div><p class="brief">The real Pandonia doctor. Identity to be confirmed.</p></div></div></li>
+  </ol>
+  <div style="position:relative;height:1px;background:var(--rule);margin-top:26px">
+    <div style="position:absolute;inset:0;background:var(--forest)"></div>
+    <span style="position:absolute;top:-4px;left:8%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
+    <span style="position:absolute;top:-4px;left:29%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
+    <span style="position:absolute;top:-4px;left:50%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
+    <span style="position:absolute;top:-4px;left:calc(71% - 4px);width:9px;height:9px;border-radius:50%;background:var(--amber)"></span>
+    <span style="position:absolute;top:-4px;left:92%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
+  </div>
+  <ol style="display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.4vw,20px);margin-top:14px" class="dayGrid">
+    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">08.40</p><h3 class="hh3" style="margin-top:4px" data-da="Deborah ringer på" data-en="Deborah rings the doorbell">Deborah ringer på</h3><p class="bdS" style="margin-top:3px" data-da="Fem minutter ved køkkenbordet." data-en="Five minutes at the kitchen table.">Fem minutter ved køkkenbordet.</p></li>
+    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">09.05</p><h3 class="hh3" style="margin-top:4px" data-da="Prøven kører ind" data-en="The sample goes in">Prøven kører ind</h3><p class="bdS" style="margin-top:3px" data-da="Til laboratoriet på Langebrogade." data-en="To the laboratory on Langebrogade.">Til laboratoriet.</p></li>
+    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">09.30</p><h3 class="hh3" style="margin-top:4px" data-da="Analysen begynder" data-en="The analysis begins">Analysen begynder</h3><p class="bdS" style="margin-top:3px" data-da="Vi laver den selv." data-en="We do it ourselves.">Vi laver den selv.</p></li>
+    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--amber)">12.14</p><h3 class="hh3" style="margin-top:4px" data-da="Rapporten ligger klar" data-en="The report is ready">Rapporten ligger klar</h3><p class="bdS" style="margin-top:3px" data-da="Dine tal, dit sprog." data-en="Your numbers, in plain language.">Dine tal, dit sprog.</p></li>
+    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">16.00</p><h3 class="hh3" style="margin-top:4px" data-da="Benedikte gennemgår den" data-en="Benedikte goes through it">Benedikte gennemgår den</h3><p class="bdS" style="margin-top:3px" data-da="Tyve minutter." data-en="Twenty minutes.">Tyve minutter.</p></li>
+  </ol>
+  <div style="margin-top:32px"><a class="lnk" data-route="saadan"><span data-da="Hele forløbet, trin for trin" data-en="The whole process, step by step">Hele forløbet, trin for trin</span> <span aria-hidden="true">→</span></a></div>
+</section>
+
+<section class="gDeep" id="what-we-test"><div class="wrap std">
+  <h2 class="s d3 measS" data-da="Seks systemer. Én blodprøve." data-en="Six systems. One blood test.">Seks systemer. Én blodprøve.</h2>
+  <p class="bd onDeepMuted measN" style="margin:14px 0 8px" data-da="Pandonia-modellen følger de systemer, kroppen faktisk arbejder i." data-en="The Pandonia model follows the systems the body actually works in.">Pandonia-modellen følger de systemer, kroppen faktisk arbejder i.</p>
+  <p class="lab" style="margin-bottom:30px" data-da="Navne verificeret fra Pandonias FAQ og rapport-UI" data-en="Names verified from Pandonia's FAQ and report UI">Navne verificeret</p>
+  <ul class="rows" id="sysHome"></ul>
+  <div class="hrInv" style="margin-top:28px;padding-top:18px">
+    <p class="pl bdS" style="max-width:64ch" data-lang="da"><b>Terminologi til gennemsyn</b>Pandonias rapport-UI kalder de samme seks systemer Signaling · Highway · Digestion · Energy · Defense · Waste. To offentliggjorte engelske navnesæt er uenige om tre af seks.</p>
+    <p class="pl bdS" style="max-width:64ch" data-lang="en"><b>Terminology under review</b>Pandonia's report UI labels the same six systems Signaling · Highway · Digestion · Energy · Defense · Waste. Two published English label sets disagree on three of six.</p>
+    <div style="margin-top:18px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">Se alle markører</span> <span aria-hidden="true">→</span></a></div>
+  </div>
+</div></section>
+
+<section class="gDeep" id="your-report"><div class="wrap"><div class="hrInv" style="padding-top:clamp(44px,6vw,88px);padding-bottom:clamp(40px,5vw,72px)">
+  <div class="split sp4258 alStart">
+    <div>
+      <p class="lab" style="margin-bottom:10px" data-da="Pandonia Score · eksempel fra produktet" data-en="Pandonia Score · example from the product">Pandonia Score</p>
+      <span class="val" style="font-size:clamp(50px,7vw,86px);line-height:.9">96,1<s style="color:var(--onDeepQuiet)">/ 100</s></span>
+      <div class="band" style="margin-top:22px"><div class="ref" style="left:0;width:100%"></div><div class="tick" style="left:96.1%"></div></div>
+      <div class="axis"><span>0</span><span data-da="RIGTIGE VÆRDIER FRA PANDONIAS RAPPORT-UI" data-en="REAL VALUES FROM PANDONIA'S REPORT UI">RIGTIGE VÆRDIER</span><span>100</span></div>
+      <p class="pl bdS" style="margin-top:20px" data-lang="da"><b>Observation — ikke et designforslag</b>De seks rigtige scorer ligger mellem 94,9 og 97,2. På en 0–100-skala falder alle seks mærker oven i hinanden.</p>
+      <p class="pl bdS" style="margin-top:20px" data-lang="en"><b>Observation — not a design proposal</b>The six real scores fall between 94.9 and 97.2. On a 0–100 scale all six ticks collapse onto each other.</p>
+    </div>
+    <div style="margin-top:26px"><ul class="rows" id="scoreHome"></ul>
+      <p class="lab" style="margin-top:12px" data-da="Aflæst fra Pandonias eget rapport-UI · beregningsgrundlag afventer" data-en="Read from Pandonia's own report UI · calculation basis pending">Aflæst fra Pandonias eget rapport-UI</p>
+      <div style="margin-top:22px"><a class="lnk" data-route="rapport"><span data-da="Se hvordan rapporten ser ud" data-en="See what the report looks like">Se hvordan rapporten ser ud</span> <span aria-hidden="true">→</span></a></div>
+    </div>
+  </div>
+</div></div></section>
+
+<section id="about-pandonia"><div class="split sp4258 alCenter gapNone">
+  <div class="plate" style="min-height:380px">
+    <span class="needShoot" data-da="Ny optagelse · identitet bekræftes" data-en="New shoot · identity to confirm">Ny optagelse</span>
+    <div class="inner"><div><span class="sid">PORTRÆT-01</span></div><p class="brief">Benedikte Halle. Three-quarter, cropped at the shoulder, soft window light. Pandonia's nine studio portraits cannot be matched to names from public material.</p></div>
+  </div>
+  <div class="air" style="padding-inline:clamp(20px,4vw,64px)">
+    <h2 class="s d3 fg measS" data-da="Tallene bliver først til noget, når nogen sætter dem ind i dit liv." data-en="Numbers only mean something once someone puts them into your life.">Tallene bliver først til noget, når nogen sætter dem ind i dit liv.</h2>
+    <p class="bd measN" style="margin:20px 0 26px" data-da="Benedikte Halle er læge hos Pandonia. Hun gennemgår din rapport med dig i tyve minutter og peger på det, der er værd at gøre noget ved — og det, der ikke er." data-en="Benedikte Halle is a doctor at Pandonia. She goes through your report with you for twenty minutes and points out what is worth acting on — and what is not.">Benedikte Halle er læge hos Pandonia.</p>
+    <div class="hr" style="padding-top:18px;max-width:46ch">
+      <p class="lab" style="margin-bottom:8px" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</p>
+      <p class="bdS" data-lang="da">Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag.</p>
+      <p class="bdS pl" data-lang="en"><b>Awaiting sign-off — English wording</b>We have our own laboratory on Langebrogade in Copenhagen. That is why the answer can reach you the same day.</p>
+      <div style="margin-top:16px"><a class="lnk" data-route="om"><span data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</span> <span aria-hidden="true">→</span></a></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="gSand"><div class="wrap std">
+  <h2 class="s d3 fg measS" style="margin-bottom:26px" data-da="To måder at begynde på." data-en="Two ways to begin.">To måder at begynde på.</h2>
+  <ul class="rows" style="max-width:680px">
+    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test + Consultation</span><span class="bdS measN" data-da="Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation." data-en="Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.">Pandonia Score og seks systemscorer.</span></span><span class="v" style="font-size:15px"><span data-da="4.750 kr." data-en="DKK 4,750">4.750 kr.</span></span></li>
+    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test</span><span class="bdS measN" data-da="Samme markører, Pandonia Score og seks systemscorer." data-en="The same markers, Pandonia Score and six system scores.">Samme markører.</span></span><span class="v" style="font-size:15px"><span data-da="3.500 kr." data-en="DKK 3,500">3.500 kr.</span></span></li>
+  </ul>
+  <p class="bdS" style="margin-top:18px;max-width:54ch" data-da="Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som gavekort og virksomhedsordning." data-en="Single tests from DKK 1,000 if you would rather start smaller. Also available as a gift card or a workplace programme.">Enkelte tests fra 1.000 kr.</p>
+  <div style="margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:22px">
+    <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+    <a class="lnk" data-route="book"><span data-da="Se alle priser" data-en="See all prices">Se alle priser</span> <span aria-hidden="true">→</span></a>
+  </div>
+</div></section>
+
+<section><div class="wrap air" style="text-align:center">
+  <h2 class="s d2 fg" style="max-width:20ch;margin:0 auto" data-da="Kend din krop. Før den siger til." data-en="Know your body. Before it has to tell you.">Kend din krop. Før den siger til.</h2>
+  <div style="margin-top:32px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></div>
+  <p class="lab" style="margin-top:28px" data-da="København" data-en="Copenhagen">København</p>
+</div></section>
+</div>
+
+<!-- ═══════════ HVAD VI MÅLER ═══════════ -->
+<div data-page="maaler" hidden>
+  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
+    <div class="split sp6238 alStart">
+      <div>
+        <h1 class="s d2 fg measS" data-da="Ét tal fortæller sjældent noget alene." data-en="One number rarely says much on its own.">Ét tal fortæller sjældent noget alene.</h1>
+        <p class="bodyL measN" style="margin-top:28px" data-da="En blodprøve er ikke en facitliste. Den er en række målinger, der først bliver til noget, når man ser dem sammen." data-en="A blood test is not an answer sheet. It is a set of measurements that only mean something when you see them together.">En blodprøve er ikke en facitliste.</p>
+        <p class="lab" style="margin-top:22px" data-da="Markørnavne verificeret fra pandonia.com og Pandonias bookingsystem" data-en="Marker names verified from pandonia.com and Pandonia's booking system">Markørnavne verificeret</p>
+      </div>
+      <div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/skin.jpg" data-alt-da="Hænder ved et bord." data-alt-en="Hands at a table." alt="" style="object-position:50% 40%"><span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte</span></div>
+    </div>
+  </section>
+  <section class="wrap dns" style="padding-top:0">
+    <div class="idx"><div class="idxin">
+      <p class="lab" data-da="Alle markører" data-en="All markers">Alle markører</p>
+      <div class="find"><label class="lab" for="mkf" data-da="Find markør" data-en="Find marker">Find markør</label><input id="mkf" type="search" placeholder="fx kolesterol" autocomplete="off"></div>
+    </div></div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:18px;margin-top:30px;padding-bottom:10px;border-bottom:1px solid var(--rule)">
+      <span class="lab" data-da="Markør" data-en="Marker">Markør</span><span></span>
+    </div>
+    <div id="mklist"></div>
+    <p id="mkempty" hidden class="bd" style="padding-block:26px" data-da="Ingen markører matcher." data-en="No markers match.">Ingen markører matcher.</p>
+    <p id="mkcount" class="lab" style="margin-top:16px" aria-live="polite"></p>
+  </section>
+  <section class="gDeep"><div class="wrap std">
+    <h2 class="s d3 measS" data-da="Kroppen arbejder ikke i kasser." data-en="The body does not work in boxes.">Kroppen arbejder ikke i kasser.</h2>
+    <p class="bd onDeepMuted measN" style="margin-top:14px" data-da="Pandonia-modellen beskriver seks systemer. En markør hører sjældent kun ét sted til." data-en="The Pandonia model describes six systems. A marker rarely belongs to just one.">Pandonia-modellen beskriver seks systemer.</p>
+    <ul class="rows" id="sysPage" style="margin-top:30px"></ul>
+    <p class="pl bdS" style="max-width:66ch;margin-top:26px" data-lang="da"><b>Niveau 3 — afventer klinisk godkendelse</b>Enheder, referenceområder, markør-til-system-mapping, fortolkning og scoreberegning findes ikke offentligt og er ikke gættet.</p>
+    <p class="pl bdS" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
+  </div></section>
+  <section class="gSand"><div class="wrap std">
+    <h2 class="s d3 fg measS" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h2>
+    <p class="pl bd measN" style="margin-top:20px" data-lang="da"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet.</p>
+    <p class="pl bd measN" style="margin-top:20px" data-lang="en"><b>Awaiting clinical text</b>A short section on what the test does not cover, and when to speak to your own doctor instead.</p>
+    <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
+      <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+      <a class="lnk" data-route="rapport"><span data-da="Se hvordan resultatet ser ud" data-en="See what the result looks like">Se hvordan resultatet ser ud</span> <span aria-hidden="true">→</span></a>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════ SÅDAN FUNGERER DET ═══════════ -->
+<div data-page="saadan" hidden>
+  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,40px)">
+    <h1 class="s d2 fg" style="max-width:20ch" data-da="Fra dit køkkenbord til dit svar." data-en="From your kitchen table to your answer.">Fra dit køkkenbord til dit svar.</h1>
+    <p class="bodyL" style="margin-top:28px;max-width:52ch" data-da="Hele forløbet foregår på én dag. Her er hvad der sker, i den rækkefølge det sker." data-en="The whole process happens in one day. Here is what happens, in the order it happens.">Hele forløbet foregår på én dag.</p>
+  </section>
+  <section><div class="phBox" style="min-height:min(48vh,360px)"><img class="ph" src="../public/images/apron.jpg" data-alt-da="En Pandonia-medarbejder i forklæde." data-alt-en="A Pandonia employee in an apron." alt="" style="position:absolute;inset:0;object-position:50% 40%"><span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte · Pandonia</span></div></section>
+
+  <section class="wrap std"><div class="split sp4258 alStart">
+    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Før" data-en="Before">Før</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Aftenen inden" data-en="The evening before">Aftenen inden</h2></div>
+    <div>
+      <p class="bd meas" data-da="Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer." data-en="Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.">Fast i mindst 12 timer.</p>
+      <p class="bd meas" style="margin-top:16px" data-da="Vi anbefaler at prøven tages tidligt på dagen, da flere biomarkører naturligt topper om morgenen." data-en="We recommend taking the sample early in the day, as several biomarkers naturally peak in the morning.">Vi anbefaler at prøven tages tidligt på dagen.</p>
+      <div style="margin-top:16px"><span class="tagV" data-da="Verificeret · pandonia.com" data-en="Verified · pandonia.com">Verificeret</span></div>
+    </div>
+  </div></section>
+
+  <section class="gSand"><div class="wrap std"><div class="split sp4258 alStart">
+    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Morgenen" data-en="The morning">Morgenen</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Vi kommer til dig" data-en="We come to you">Vi kommer til dig</h2></div>
+    <div>
+      <p class="bd meas" data-da="Vores blodprøvetager har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge." data-en="Our phlebotomist has experience from several different hospitals and works under close supervision of our responsible doctor.">Vores blodprøvetager har erfaring fra flere hospitaler.</p>
+      <p class="pl bd meas" style="margin-top:16px" data-lang="da"><b>Afventer godkendelse</b>Bookingsystemet afsætter 10 minutter til Health Test og 15 til test med konsultation. Hjemmesiden siger fem minutter. Hvilket tal er det rigtige udadtil?</p>
+      <p class="pl bd meas" style="margin-top:16px" data-lang="en"><b>Awaiting sign-off</b>The booking system allocates 10 minutes for the Health Test and 15 for test with consultation. The site says five minutes. Which figure is customer-facing?</p>
+      <div class="hrs" style="margin-top:22px;padding-top:16px">
+        <p class="lab" style="margin-bottom:8px" data-da="Vi kommer i disse områder" data-en="We come to these areas">Vi kommer i disse områder</p>
+        <p class="bdS">København K, N, NV, V, S, SV, Ø, Frederiksberg <span data-da="og Hellerup — eller på Langebrogade 3A, 2. sal." data-en="and Hellerup — or at Langebrogade 3A, 2nd floor.">og Hellerup.</span></p>
+        <div style="margin-top:10px"><span class="tagV" data-da="Verificeret" data-en="Verified">Verificeret</span></div>
+      </div>
+    </div>
+  </div></div></section>
+
+  <section id="laboratoriet" class="gDeep"><div class="wrap std">
+    <div class="split sp4258 alStart">
+      <div><p class="m onDeepQuiet" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase" data-da="Midt på dagen" data-en="Midday">Midt på dagen</p><h2 class="s d3" style="margin-top:8px" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</h2></div>
+      <div>
+        <p class="bodyL meas" style="color:rgba(237,231,218,.85)" data-da="Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag." data-en="We have our own laboratory on Langebrogade in Copenhagen. That is why the answer can reach you the same day.">Vi har vores eget laboratorium på Langebrogade.</p>
+        <p class="bd onDeepMuted meas" style="margin-top:16px" data-da="De fleste sender blodprøver videre til et eksternt laboratorium og venter. Vi analyserer selv, i samme by som du bor i." data-en="Most send blood samples on to an external laboratory and wait. We analyse them ourselves, in the same city you live in.">Vi analyserer selv, i samme by som du bor i.</p>
+        <div style="margin-top:14px"><span class="tagV" data-da="Verificeret · dansk kilde" data-en="Verified · Danish source">Verificeret</span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:1px;background:var(--ruleInv);margin-top:clamp(28px,4vw,52px)" class="labGrid">
+      <div class="plate" style="aspect-ratio:4/3"><span class="needShoot" data-da="Ny optagelse" data-en="New shoot">Ny optagelse</span><div class="inner"><div><span class="sid">LAB-01</span></div><p class="brief">Rack of tubes, a hand labelling. Window in frame. Workshop, not cleanroom.</p></div></div>
+      <div class="plate" style="aspect-ratio:4/3"><span class="needShoot" data-da="Ny optagelse" data-en="New shoot">Ny optagelse</span><div class="inner"><div><span class="sid">LAB-02</span></div><p class="brief">Bench detail, shallow, daylight.</p></div></div>
+      <div class="plate" style="aspect-ratio:4/3"><span class="needShoot" data-da="Ny optagelse" data-en="New shoot">Ny optagelse</span><div class="inner"><div><span class="sid">LAB-03</span></div><p class="brief">Work surface, samples, materials mid-task.</p></div></div>
+    </div>
+    <dl style="display:grid;grid-template-columns:1fr;gap:26px 40px;margin-top:32px" class="g4">
+      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Adresse" data-en="Address">Adresse</dt><dd class="bdS onDeepMuted">Langebrogade 3A, 2. sal<br>1411 København K</dd></div>
+      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Akkreditering" data-en="Accreditation">Akkreditering</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Under hvilken godkendelse laboratoriet drives." data-en="Under what accreditation the laboratory operates.">Under hvilken godkendelse laboratoriet drives.</span></dd></div>
+      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Metode" data-en="Method">Metode</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvilke analyser køres i huset." data-en="Which analyses run in-house.">Hvilke analyser køres i huset.</span></dd></div>
+      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Kvalitetskontrol" data-en="Quality control">Kvalitetskontrol</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvordan resultater kontrolleres." data-en="How results are checked.">Hvordan resultater kontrolleres.</span></dd></div>
+    </dl>
+  </div></section>
+
+  <section class="wrap std"><div class="split sp4258 alStart">
+    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Efter frokost" data-en="After lunch">Efter frokost</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Rapporten" data-en="The report">Rapporten</h2></div>
+    <div>
+      <p class="pl bd meas" data-lang="da"><b>Afventer godkendelse</b>Er 2–4 timer typisk eller bedste tilfælde? Et interval præsenteret som et løfte har brug for et oplyst grundlag.</p>
+      <p class="pl bd meas" data-lang="en"><b>Awaiting sign-off</b>Is 2–4 hours typical or best case? A range presented as a promise needs a stated basis.</p>
+      <p class="bd meas" style="margin-top:14px" data-da="Den er skrevet til at blive læst af dig — ikke af en læge." data-en="It is written to be read by you — not by a doctor.">Den er skrevet til at blive læst af dig.</p>
+      <div style="margin-top:22px"><a class="lnk" data-route="rapport"><span data-da="Se hele rapporten" data-en="See the whole report">Se hele rapporten</span> <span aria-hidden="true">→</span></a></div>
+    </div>
+  </div></section>
+
+  <section class="gSand"><div class="wrap std"><div class="split sp4258 alStart">
+    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Senere samme dag" data-en="Later the same day">Senere samme dag</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Samtalen" data-en="The conversation">Samtalen</h2></div>
+    <div>
+      <p class="bd meas" data-da="Du booker konsultationen, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online." data-en="You book the consultation when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.">Du booker konsultationen, når det passer dig.</p>
+      <div style="margin-top:14px"><span class="tagV" data-da="Verificeret" data-en="Verified">Verificeret</span></div>
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+        <a class="lnk" data-route="faq"><span data-da="Praktiske spørgsmål" data-en="Practical questions">Praktiske spørgsmål</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div></div></section>
+</div>
+
+<!-- ═══════════ DIN RAPPORT ═══════════ -->
+<div data-page="rapport" hidden>
+  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
+    <div class="split sp6238 alStart">
+      <div>
+        <h1 class="s d2 fg" style="max-width:19ch" data-da="Det, du får, er ikke en liste med tal." data-en="What you get is not a list of numbers.">Det, du får, er ikke en liste med tal.</h1>
+        <p class="bodyL measN" style="margin-top:28px" data-da="Det er en rapport, hvor hver måling står sammen med sit referenceområde, en forklaring på almindeligt dansk, og — hvis du vil — en læge der læser den med dig." data-en="It is a report where every measurement sits beside its reference range, an explanation in plain language, and — if you want — a doctor who reads it with you.">Det er en rapport, hvor hver måling står sammen med sit referenceområde.</p>
+      </div>
+      <div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/laptop.jpg" data-alt-da="Pandonia-rapporten på en skærm." data-alt-en="The Pandonia report on a screen." alt=""><span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte</span></div>
+    </div>
+  </section>
+  <section class="gSand"><div class="wrap std">
+    <p class="lab" style="margin-bottom:16px" data-da="Pandonias nuværende rapport" data-en="Pandonia's current report">Pandonias nuværende rapport</p>
+    <div class="split sp5545 alStart">
+      <div class="phBox" style="border:1px solid var(--rule)"><img class="ph" src="../public/images/screen.jpg" data-alt-da="Nærbillede af Pandonias rapport." data-alt-en="Close-up of the Pandonia report." alt="" style="display:block"><span class="phTag" data-da="Ægte · produkt-UI" data-en="Real · product UI">Ægte · produkt-UI</span></div>
+      <div>
+        <p class="bd meas" data-da="Sådan ser rapporten ud i dag: en samlet Pandonia Score og seks systemscorer." data-en="This is how the report looks today: one overall Pandonia Score and six system scores.">Sådan ser rapporten ud i dag.</p>
+        <p class="pl bdS meas" style="margin-top:16px" data-lang="da"><b>Skærmbillede skal opdateres</b>Billedet er Pandonias eget produkt, men skal erstattes af et aktuelt skærmbillede før lancering.</p>
+        <p class="pl bdS meas" style="margin-top:16px" data-lang="en"><b>Updated product screenshot required</b>This is Pandonia's own product, but it must be replaced with a current screenshot before launch.</p>
+        <div class="hrs" style="margin-top:24px;padding-top:18px">
+          <p class="lab" style="margin-bottom:10px" data-da="I det nye design" data-en="In the new design">I det nye design</p>
+          <div style="max-width:420px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
+              <span class="val" style="font-size:28px">96,1<s>/ 100</s></span>
+              <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+            </div>
+            <div class="band"><div class="ref" style="left:0;width:100%"></div><div class="tick" style="left:96.1%"></div></div>
+            <div class="axis"><span>0</span><span data-da="RIGTIGE VÆRDIER" data-en="REAL VALUES">RIGTIGE VÆRDIER</span><span>100</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:760px;margin-top:48px" id="rangePrinciples"></div>
+  </div></section>
+  <section class="gDeep"><div class="wrap std">
+    <div class="split sp4258 alStart">
+      <div>
+        <p class="lab" style="margin-bottom:10px" data-da="De seks systemscorer" data-en="The six system scores">De seks systemscorer</p>
+        <ul class="rows" id="scoreReport"></ul>
+      </div>
+      <div>
+        <h2 class="s d3 measS" data-da="Samme figur, hele vejen igennem." data-en="The same figure, all the way through.">Samme figur, hele vejen igennem.</h2>
+        <p class="bd onDeepMuted meas" style="margin-top:16px" data-da="Din samlede score og de seks systemscorer tegnes på præcis samme måde som en enkelt markør. Har du forstået én, har du forstået dem alle." data-en="Your overall score and the six system scores are drawn exactly the same way as a single marker. Understand one and you understand them all.">Din samlede score og de seks systemscorer tegnes på samme måde som en enkelt markør.</p>
+        <p class="pl bd meas" style="margin-top:18px" data-lang="da"><b>Afventer klinisk bekræftelse</b>Hvad de seks scorer måler på, og hvordan Pandonia Score beregnes.</p>
+        <p class="pl bd meas" style="margin-top:18px" data-lang="en"><b>Awaiting clinical confirmation</b>What the six scores are scored on, and how the Pandonia Score is calculated.</p>
+      </div>
+    </div>
+  </div></section>
+  <section class="wrap std"><div class="split sp3862 alCenter">
+    <div class="plate" style="aspect-ratio:4/5"><span class="needShoot" data-da="Ny optagelse" data-en="New shoot">Ny optagelse</span><div class="inner"><div><span class="sid">PORTRÆT-01</span></div><p class="brief">The real Pandonia doctor.</p></div></div>
+    <div>
+      <h2 class="s d3 fg measS" data-da="Og så er der samtalen." data-en="And then there is the conversation.">Og så er der samtalen.</h2>
+      <p class="bd meas" style="margin-top:18px" data-da="Tyve minutter online med en læge, der har læst din rapport på forhånd. I gennemgår den sammen og finder ud af, hvad der giver mening at gøre — og hvad der ikke gør." data-en="Twenty minutes online with a doctor who has read your report beforehand. You go through it together and work out what makes sense to do — and what does not.">Tyve minutter online med en læge.</p>
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+        <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════ OM PANDONIA ═══════════ -->
+<div data-page="om" hidden>
+  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(30px,4vw,56px)">
+    <h1 class="s d2 fg" style="max-width:18ch" data-da="Vi ville gerne gøre det nemmere at se efter." data-en="We wanted to make it easier to look.">Vi ville gerne gøre det nemmere at se efter.</h1>
+    <p class="bodyL" style="margin-top:28px;max-width:52ch" data-da="Pandonia er et lille hold i København. Vi tager blodprøver hjemme hos folk, analyserer dem i vores eget laboratorium og hjælper med at forstå, hvad der står i svaret." data-en="Pandonia is a small team in Copenhagen. We take blood samples in people's homes, analyse them in our own laboratory, and help make sense of what the result says.">Pandonia er et lille hold i København.</p>
+  </section>
+  <section><div class="phBox" style="min-height:min(50vh,400px)"><img class="ph" src="../public/images/rum.jpg" data-alt-da="Pandonias lokaler i København." data-alt-en="Pandonia's premises in Copenhagen." alt="" style="position:absolute;inset:0"><span class="phTag" data-da="Ægte · Pandonias lokaler" data-en="Real · Pandonia's premises">Ægte · Pandonias lokaler</span></div></section>
+  <section class="wrap std"><div class="split sp4258 alStart">
+    <h2 class="s d3 fg" data-da="Hvorfor hjemme" data-en="Why at home">Hvorfor hjemme</h2>
+    <div>
+      <p class="bd meas" data-da="De fleste udskyder en blodprøve, fordi den koster en formiddag. Venteværelse, transport, fri fra arbejde. Vi flyttede prøven hen til køkkenbordet, fordi det er den eneste måde at gøre den til noget, man faktisk får gjort." data-en="Most people put off a blood test because it costs a morning. Waiting room, travel, time off work. We moved the sample to the kitchen table, because that is the only way to make it something people actually get done.">De fleste udskyder en blodprøve, fordi den koster en formiddag.</p>
+      <p class="bd meas" style="margin-top:16px" data-da="Fem minutter, og dagen fortsætter." data-en="Five minutes, and the day carries on.">Fem minutter, og dagen fortsætter.</p>
+    </div>
+  </div></section>
+  <section><div class="phBox" style="min-height:min(34vh,280px)"><img class="ph" src="../public/images/rum2.jpg" data-alt-da="Pandonias lokaler med navnetræk på væggen." data-alt-en="Pandonia's premises with the wordmark on the wall." alt="" style="position:absolute;inset:0;object-position:50% 40%"><span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte</span></div></section>
+  <section class="gSand"><div class="wrap std"><div class="split sp4258 alStart">
+    <h2 class="s d3 fg" data-da="Hvorfor vores eget laboratorium" data-en="Why our own laboratory">Hvorfor vores eget laboratorium</h2>
+    <div>
+      <p class="bd meas" data-da="Det havde været billigere at sende prøverne videre. Men så ville svaret komme om en uge, og det ville ikke længere handle om den dag, prøven blev taget." data-en="It would have been cheaper to send the samples on. But then the answer would arrive a week later, and it would no longer be about the day the sample was taken.">Det havde været billigere at sende prøverne videre.</p>
+      <p class="bd meas" style="margin-top:16px" data-da="Laboratoriet ligger på Langebrogade. Det er en beslutning, ikke en detalje." data-en="The laboratory is on Langebrogade. That is a decision, not a detail.">Laboratoriet ligger på Langebrogade.</p>
+      <div style="margin-top:20px"><a class="lnk" data-route="saadan"><span data-da="Se hvad der sker i laboratoriet" data-en="See what happens in the laboratory">Se hvad der sker i laboratoriet</span> <span aria-hidden="true">→</span></a></div>
+    </div>
+  </div></div></section>
+  <section class="wrap std"><div class="split sp4258 alStart">
+    <h2 class="s d3 fg" data-da="Modellen" data-en="The model">Modellen</h2>
+    <div>
+      <p class="bd meas" data-da="Pandonia Health-modellen er udviklet med udgangspunkt i det, der kaldes the four horsemen of aging — de fire største helbredsudfordringer, der oftest forbindes med alderdom." data-en="The Pandonia Health Model was developed from what is known as the four horsemen of aging — the four largest health challenges most often associated with ageing.">Pandonia Health-modellen.</p>
+      <p class="bd meas" style="margin-top:16px" data-da="Vi kan ikke love beskyttelse mod dem. Modellen hjælper dig med at opdage og følge dine egne tendenser." data-en="We cannot promise protection from them. The model helps you spot and follow your own trends.">Vi kan ikke love beskyttelse mod dem.</p>
+      <div style="margin-top:14px"><span class="tagV" data-da="Omskrevet fra Pandonias egen tekst" data-en="Adapted from Pandonia's own text">Omskrevet fra Pandonias egen tekst</span></div>
+    </div>
+  </div></section>
+  <section class="gDeep"><div class="wrap std">
+    <h2 class="s d3" style="margin-bottom:8px" data-da="Holdet" data-en="The team">Holdet</h2>
+    <p class="bd onDeepMuted meas" style="margin-bottom:30px" data-da="Seks mennesker i København. Du møder nogle af dem personligt." data-en="Six people in Copenhagen. You meet some of them in person.">Seks mennesker i København.</p>
+    <ul style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ruleInv)" class="teamGrid">
+      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t1.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
+      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t2.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
+      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t3.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
+      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t4.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
+    </ul>
+    <p class="bdS onDeepMuted" style="margin-top:22px">Benedikte Halle · Deborah Saren · Carol Melo · Laura D. Ellis-Aguilar · Cecilie Lange · Victor Prehn</p>
+    <p class="pl bdS" style="max-width:62ch;margin-top:14px" data-lang="da"><b>Skal bekræftes</b>Navne og roller er verificeret fra pandonia.com. Portrætterne er ægte Pandonia-medarbejdere, men kan ikke parres med navne ud fra offentligt materiale. Portrætter kræver desuden samtykke.</p>
+    <p class="pl bdS" style="max-width:62ch;margin-top:14px" data-lang="en"><b>To be confirmed</b>Names and roles are verified from pandonia.com. The portraits are genuine Pandonia staff but cannot be matched to names from public material. Portraits also require consent.</p>
+  </div></section>
+  <section><div class="wrap air" style="text-align:center">
+    <h2 class="s d3 fg" style="max-width:22ch;margin:0 auto">Healthier in body, happier in soul, longer in life.</h2>
+    <p class="lab" style="margin-top:20px" data-da="Pandonias egen linje" data-en="Pandonia's own line">Pandonias egen linje</p>
+    <div style="margin-top:30px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></div>
+  </div></section>
+</div>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<div data-page="faq" hidden>
+  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
+    <h1 class="s d2 fg" style="max-width:16ch" data-da="Spørgsmål, i den rækkefølge de plejer at komme." data-en="Questions, in the order they usually come.">Spørgsmål, i den rækkefølge de plejer at komme.</h1>
+  </section>
+  <section class="wrap" style="padding-bottom:clamp(50px,8vw,110px)" id="faqBody"></section>
+</div>
+
+<!-- ═══════════ BOOK ═══════════ -->
+<div data-page="book" hidden>
+  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
+    <h1 class="s d2 fg" style="max-width:17ch" data-da="Vælg en tid, så kommer vi." data-en="Choose a time and we will come.">Vælg en tid, så kommer vi.</h1>
+    <p class="bodyL" style="margin-top:24px;max-width:50ch" data-da="Alt herunder foregår i København. Du skal ikke bruge henvisning, og du behøver ikke vide på forhånd, hvad du leder efter." data-en="Everything below happens in Copenhagen. You do not need a referral, and you do not need to know in advance what you are looking for.">Alt herunder foregår i København.</p>
+  </section>
+  <section class="wrap" id="priser" style="padding-bottom:clamp(40px,6vw,80px)"><div class="hr" id="priceRows"></div>
+    <p class="bdS" style="margin-top:16px" data-da="Priser verificeret fra Pandonias bookingsystem. Antal biomarkører afventer." data-en="Prices verified from Pandonia's booking system. Biomarker count pending.">Priser verificeret fra Pandonias bookingsystem.</p>
+  </section>
+  <section class="gSand"><div class="wrap std">
+    <h2 class="s d3 fg" style="margin-bottom:8px" data-da="Vil du begynde mindre?" data-en="Would you rather start smaller?">Vil du begynde mindre?</h2>
+    <p class="bd meas" style="margin-bottom:26px" data-da="Syv enkelttests, hvis du har ét bestemt spørgsmål." data-en="Seven single tests, if you have one particular question.">Syv enkelttests.</p>
+    <ul class="rows" style="max-width:720px" id="singleTests"></ul>
+    <p class="bdS" style="margin-top:18px" data-da="Også som gavekort, klippekort og virksomhedsordning." data-en="Also available as gift cards, clip cards and workplace programmes.">Også som gavekort, klippekort og virksomhedsordning.</p>
+    <div style="margin-top:26px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Vælg tid" data-en="Choose a time">Vælg tid</a></div>
+  </div></section>
+  <section class="wrap std">
+    <h2 class="s d3 fg" style="margin-bottom:28px" data-da="Hvad der sker, når du har booket" data-en="What happens once you have booked">Hvad der sker, når du har booket</h2>
+    <ol style="max-width:720px" id="afterSteps"></ol>
+  </section>
+</div>
+</main>
+
+<footer><div class="wrap" style="padding-block:clamp(44px,6vw,76px) clamp(26px,3vw,40px)">
+  <div class="fgrid">
+    <div style="grid-column:1/-1">
+      <p class="s" style="font-size:26px;margin-bottom:14px">Pandonia</p>
+      <p class="bdS onDeepMuted" style="max-width:32ch" data-da="Blodprøver hjemme hos dig i København, analyseret i vores eget laboratorium." data-en="Blood tests at your home in Copenhagen, analysed in our own laboratory.">Blodprøver hjemme hos dig i København.</p>
+      <p class="bdS onDeepMuted" style="margin-top:16px">Langebrogade 3A, 2. sal<br>1411 København K<br><a href="mailto:labs@pandonia.com">labs@pandonia.com</a></p>
+    </div>
+    <nav><h2 data-da="Websted" data-en="Site">Websted</h2><ul>
+      <li><a data-route="maaler" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a></li>
+      <li><a data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a></li>
+      <li><a data-route="saadan" data-anchor="laboratoriet" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</a></li>
+      <li><a data-route="rapport" data-da="Din rapport" data-en="Your report">Din rapport</a></li>
+      <li><a data-route="om" data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</a></li>
+    </ul></nav>
+    <nav><h2 data-da="Praktisk" data-en="Practical">Praktisk</h2><ul>
+      <li><a data-route="book" data-da="Priser" data-en="Prices">Priser</a></li>
+      <li><a class="ext" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></li>
+      <li><a data-route="faq">FAQ</a></li>
+      <li><a class="ext" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Gavekort" data-en="Gift card">Gavekort</a></li>
+      <li><a class="ext" href="mailto:labs@pandonia.com" data-da="For virksomheder" data-en="For business">For virksomheder</a></li>
+      <li><a class="ext" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="Log ind" data-en="Log in">Log ind</a></li>
+    </ul></nav>
+    <nav><h2 data-da="Juridisk" data-en="Legal">Juridisk</h2><ul>
+      <li class="gated" data-da="Persondatapolitik — afventer" data-en="Privacy policy — pending">Persondatapolitik — afventer</li>
+      <li class="gated" data-da="Cookiepolitik — afventer" data-en="Cookie policy — pending">Cookiepolitik — afventer</li>
+      <li class="gated" data-da="Handelsbetingelser — afventer" data-en="Terms — pending">Handelsbetingelser — afventer</li>
+      <li><a href="mailto:labs@pandonia.com" data-da="Kontakt" data-en="Contact">Kontakt</a></li>
+    </ul></nav>
+  </div>
+  <div class="hrInv" style="margin-top:34px;padding-top:20px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between">
+    <p class="pl bdS" style="max-width:62ch" data-lang="da"><b>Afventer godkendelse</b>Pandonias tests erstatter ikke lægelig undersøgelse, diagnose eller behandling. Har du symptomer eller er du i tvivl, så kontakt din egen læge eller lægevagten.</p>
+    <p class="pl bdS" style="max-width:62ch" data-lang="en"><b>Awaiting legal approval — English</b>Pandonia's tests do not replace medical examination, diagnosis or treatment. If you have symptoms or are in any doubt, contact your own doctor or the out-of-hours medical service.</p>
+    <p class="lab onDeepQuiet">Dansk · English</p>
+  </div>
+</div></footer>
+
+<script>
+(function(){
+var root=document.documentElement,loc='da',page='home';
+
+var SYS=[
+ {da:'Signalering',en:'Cellular signalling',ui:'Signaling',score:97.0,flag:0},
+ {da:'Transport',en:'Transport',ui:'Highway',score:97.0,flag:1},
+ {da:'Fordøjelse',en:'Digestion',ui:'Digestion',score:96.0,flag:0},
+ {da:'Energi',en:'Energy production',ui:'Energy',score:95.9,flag:0},
+ {da:'Immunforsvar',en:'Immune defence',ui:'Defense',score:97.2,flag:1},
+ {da:'Affaldssystem',en:'Detoxification',ui:'Waste',score:94.9,flag:1}
+];
+var MARK=[
+ {k:'d-vitamin vitamin d',da:'D-vitamin',en:'Vitamin D',src:'pandonia.com · bookingsystem'},
+ {k:'hba1c langtidsblodsukker',da:'HbA1c',en:'HbA1c',src:'pandonia.com',aDa:'Langtidsblodsukker',aEn:'Long-term blood sugar'},
+ {k:'tsh stofskifte',da:'TSH',en:'TSH',src:'pandonia.com'},
+ {k:'t3 triiodthyronin',da:'T3',en:'T3',src:'pandonia.com'},
+ {k:'t4 thyroxin',da:'T4',en:'T4',src:'pandonia.com'},
+ {k:'testosteron testosterone',da:'Testosteron',en:'Testosterone',src:'pandonia.com · Mænds Sundhedstest'},
+ {k:'kolesterol cholesterol',da:'Kolesterolprofil',en:'Cholesterol profile',src:'pandonia.com · bookingsystem',p:1},
+ {k:'lipid lipidprofil',da:'Lipidprofil',en:'Lipid profile',src:'pandonia.com',p:1},
+ {k:'blodsukker blood sugar glukose',da:'Blodsukker',en:'Blood sugar',src:'pandonia.com',p:1},
+ {k:'elektrolytter vaeskebalance',da:'Elektrolytter og væskebalance',en:'Electrolytes and fluid balance',src:'bookingsystem',p:1},
+ {k:'lever leverfunktion protein',da:'Leverfunktion og proteinniveauer',en:'Liver function and protein levels',src:'bookingsystem',p:1},
+ {k:'nyre filtrering kidney',da:'Nyrernes filtreringskapacitet',en:'Kidney filtration capacity',src:'bookingsystem',p:1},
+ {k:'stofskifte thyroid skjoldbruskkirtel',da:'Stofskifte',en:'Thyroid performance',src:'pandonia.com · Skjoldbruskkirtel Test',p:1},
+ {k:'metabolisk metabolic',da:'Metabolisk sundhed',en:'Metabolic health',src:'bookingsystem',p:1},
+ {k:'glukose monitorering cgm',da:'Glukose Monitorering',en:'Glucose Tracking',src:'bookingsystem · 14-dages sensor',prod:1}
+];
+var SINGLE=[['D-vitamin Test',1000],['Metabolisk Sundheds Test',1250],['Blodsukker- og Kolesteroltest',1300],['Mænds Sundhedstest',1400],['Skjoldbruskkirtel Test',1600],['Glukose Monitorering · 14 dage',2000],['Health check + Female hormones',null]];
+var FAQ={da:[
+ ['Før du booker',[['Hvor kan prøven tages?','Vi kommer hjem til dig eller på din arbejdsplads i København K, N, NV, V, S, SV, Ø, Frederiksberg og Hellerup. Du kan også møde op på Langebrogade 3A, 2. sal.',1],['Hvad koster det?','Health Test koster 3.500 kr. Health Test med konsultation som samlet pakke koster 4.750 kr. Enkelte tests fra 1.000 kr.',1],['Er konsultationen med i prisen?','',0]]],
+ ['Prøvetagningen',[['Hvordan forbereder jeg mig?','Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer.',1],['Hvorfor om morgenen?','Flere biomarkører topper naturligt om morgenen.',1],['Hvem tager prøven?','Vores blodprøvetager har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge.',1],['Hvor lang tid tager det?','',0]]],
+ ['Laboratoriet',[['Hvor analyseres min prøve?','I vores eget laboratorium på Langebrogade i København.',1],['Hvordan sikrer I kvaliteten?','',0]]],
+ ['Resultater og samtale',[['Hvornår får jeg svar?','',0],['Hvordan foregår konsultationen?','Du booker den, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online.',1],['Kan resten af sundhedsvæsenet se mine svar?','',0]]],
+ ['Praktisk',[['Kan flere medarbejdere testes samtidig?','Ja. Vi kommer ud til arbejdspladsen og tager prøver på mange medarbejdere i ét samlet besøg. Skriv til labs@pandonia.com.',1],['Kan jeg give det som gave?','Ja, der findes gavekort.',1],['Kan jeg afbestille?','',0]]]
+],en:[
+ ['Before you book',[['Where can the sample be taken?','We come to your home or workplace in Copenhagen K, N, NV, V, S, SV, Ø, Frederiksberg and Hellerup. You can also come to Langebrogade 3A, 2nd floor.',1],['What does it cost?','The Health Test costs DKK 3,500. The Health Test with consultation as one package costs DKK 4,750. Single tests from DKK 1,000.',1],['Is the consultation included in the price?','',0]]],
+ ['The sample',[['How do I prepare?','Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.',1],['Why in the morning?','Several biomarkers naturally peak in the morning.',1],['Who takes the sample?','Our phlebotomist has experience from several different hospitals and works under close supervision of our responsible doctor.',1],['How long does it take?','',0]]],
+ ['The laboratory',[['Where is my sample analysed?','In our own laboratory on Langebrogade in Copenhagen.',1],['How do you ensure quality?','',0]]],
+ ['Results and conversation',[['When do I get my result?','',0],['How does the consultation work?','You book it when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.',1],['Can the rest of the health service see my results?','',0]]],
+ ['Practical',[['Can several employees be tested at once?','Yes. We come to the workplace and take samples from many employees in one visit. Write to labs@pandonia.com.',1],['Can I give it as a gift?','Yes, gift cards are available.',1],['Can I cancel?','',0]]]
+]};
+var PRIN={da:[['Hver måling har sit eget område','Ikke en karakter, ikke en farve der dømmer. Du kan se præcis hvor du ligger, og hvor langt der er til kanten.'],['Nogle markører har ikke ét område','Forhold mellem to værdier vises uden bånd. Rapporten siger det, i stedet for at lade som om.'],['Referenceområder kan variere','Hvor køn eller alder har betydning, vises begge områder.'],['Over tid','Tester du igen, lægger den nye måling sig oven på den gamle.']],
+ en:[['Every measurement has its own range','Not a grade, not a colour that judges. You can see exactly where you sit and how far it is to the edge.'],['Some markers have no single range','Ratios between two values are shown without a band. The report says so rather than pretending.'],['Reference ranges can vary','Where sex or age matters, both ranges are shown.'],['Over time','Test again and the new measurement lays over the old one.']]};
+var STEPS={da:[['01','Du får en bekræftelse','Med tid, adresse og hvad du skal gøre aftenen inden.'],['02','Vi ringer på','Fem minutter ved dit eget bord.'],['03','Rapporten kommer','Samme dag. Du får en mail, når den ligger klar.'],['04','Du booker samtalen','Når du har haft svaret i mindst tre timer.']],
+ en:[['01','You get a confirmation','With time, address and what to do the evening before.'],['02','We ring the doorbell','Five minutes at your own table.'],['03','The report arrives','The same day. You get an email when it is ready.'],['04','You book the conversation','Once you have had the result for at least three hours.']]};
+var T={da:{what:'Hvad er det',why:'Hvorfor måler vi det',unit:'Måleenhed',range:'Referenceområde',sysL:'System',also:'Også kaldet',source:'Kilde til navnet',panel:'Panel — indhold ikke offentliggjort',prod:'Produkt — ikke en blodmarkør',pend:'Afventer',awT:'Afventer klinisk tekst',awL:'Afventer laboratoriet',ver:'Navn verificeret',sub:'Klinisk beskrivelse afventer godkendelse.',mk:'markører',cnt:function(n,t){return n===t?t+' markører':n+' af '+t+' vist'},incl:'Health Test'},
+       en:{what:'What it is',why:'Why we measure it',unit:'Unit',range:'Reference range',sysL:'System',also:'Also called',source:'Source of the name',panel:'Panel — contents not published',prod:'Product — not a blood marker',pend:'Pending',awT:'Awaiting clinical text',awL:'Awaiting the laboratory',ver:'Name verified',sub:'Clinical description awaiting approval.',mk:'markers',cnt:function(n,t){return n===t?t+' markers':n+' of '+t+' shown'},incl:'Health Test'}};
+var ROUTES={da:{home:'/da',maaler:'/da/hvad-vi-maaler',saadan:'/da/saadan-fungerer-det',rapport:'/da/din-rapport',om:'/da/om-pandonia',faq:'/da/faq',book:'/da/book'},
+            en:{home:'/en',maaler:'/en/what-we-test',saadan:'/en/how-it-works',rapport:'/en/your-report',om:'/en/about-pandonia',faq:'/en/faq',book:'/en/book'}};
+var ANCHOR_PAGE={'what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','laboratoriet':'saadan'};
+
+function nf(n){return loc==='da'?n.toFixed(1).replace('.',','):n.toFixed(1);}
+function dkk(v){return v===null?null:(loc==='da'?new Intl.NumberFormat('da-DK').format(v)+' kr.':'DKK '+new Intl.NumberFormat('en-GB').format(v));}
+
+function renderAll(){
+  var t=T[loc];
+  var sysRows=SYS.map(function(s){var n=loc==='da'?s.da:s.en;
+    return '<li><span class="l"><span class="s" style="min-width:220px;font-size:clamp(19px,1.9vw,26px)">'+n+(s.flag&&loc==='en'?' <span class="tagP" style="margin-left:8px;vertical-align:middle">Conflict</span>':'')+(s.flag&&loc==='da'?' <span class="tagP" style="margin-left:8px;vertical-align:middle">Terminologi</span>':'')+'</span><span class="micro"><span class="ref" style="left:22%;width:54%"></span></span></span><span class="v onDeepQuiet"><span class="dash">—</span> '+t.mk+'</span></li>';}).join('');
+  ['sysHome','sysPage'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML=sysRows;});
+
+  var scoreRows=SYS.map(function(s){var n=loc==='da'?s.da:s.ui;
+    return '<li><span class="l"><span style="min-width:170px;font-size:15px">'+n+'</span><span class="micro"><span class="ref" style="left:0;width:100%"></span><span class="tick" style="left:'+s.score+'%"></span></span></span><span class="v">'+nf(s.score)+'</span></li>';}).join('');
+  ['scoreHome','scoreReport'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML=scoreRows;});
+
+  var ml=document.getElementById('mklist');
+  if(ml) ml.innerHTML=MARK.map(function(m){var n=loc==='da'?m.da:m.en,also=loc==='da'?m.aDa:m.aEn;
+    return '<details class="mk" data-k="'+m.k+' '+n.toLowerCase()+'"><summary><span><span class="nm">'+n+'</span><span class="sub pl"><b>'+t.awT+'</b>'+t.sub+'</span></span><span class="col">—</span><span class="col">'+(m.prod?'—':t.incl)+'</span><span class="chev">+</span></summary><div class="mkbody"><dl>'+
+    (m.p?'<dt>'+t.range+'</dt><dd><span class="tagP">'+t.panel+'</span></dd>':'')+
+    (m.prod?'<dt>'+t.range+'</dt><dd><span class="tagP">'+t.prod+'</span></dd>':'')+
+    (also?'<dt>'+t.also+'</dt><dd>'+also+'</dd>':'')+
+    '<dt>'+t.source+'</dt><dd>'+m.src+' <span class="tagV" style="margin-left:6px">'+t.ver+'</span></dd>'+
+    '<dt>'+t.what+'</dt><dd><span class="pl" style="display:block"><b>'+t.awT+'</b>'+t.sub+'</span></dd>'+
+    '<dt>'+t.why+'</dt><dd><span class="pl" style="display:block"><b>'+t.awT+'</b>'+t.sub+'</span></dd>'+
+    '<dt>'+t.unit+'</dt><dd><span class="tagP">'+t.awL+'</span></dd>'+
+    '<dt>'+t.range+'</dt><dd><span class="tagP">'+t.awL+'</span></dd>'+
+    '<dt>'+t.sysL+'</dt><dd><span class="tagP">'+t.pend+'</span></dd></dl>'+
+    '<div class="mkside"><p class="lab" style="margin-bottom:12px">'+t.range+'</p><div class="band"><div class="none"></div></div><div class="axis"><span>—</span><span>'+t.awL.toUpperCase()+'</span><span>—</span></div></div></div></details>';}).join('');
+  filter();
+
+  var rp=document.getElementById('rangePrinciples');
+  if(rp) rp.innerHTML=PRIN[loc].map(function(p,i){return '<div class="'+(i===0?'hr':'hrs')+'" style="display:grid;grid-template-columns:1fr;gap:14px 40px;padding-block:18px'+(i===PRIN[loc].length-1?';border-bottom:1px solid var(--ruleSoft)':'')+'"><h3 class="hh3">'+p[0]+'</h3><p class="bdS">'+p[1]+'</p></div>';}).join('');
+
+  var fb=document.getElementById('faqBody');
+  if(fb) fb.innerHTML=FAQ[loc].map(function(g){return '<div class="hr" style="padding-block:clamp(26px,4vw,44px)"><div class="split sp4258 alStart"><h2 class="s d3 fg">'+g[0]+'</h2><div>'+
+    g[1].map(function(q){return '<details class="qa"><summary><span>'+q[0]+'</span><span class="chev">+</span></summary><div class="ans">'+
+      (q[2]?'<p class="bd">'+q[1]+'</p><div style="margin-top:12px"><span class="tagV">'+(loc==='da'?'Verificeret · pandonia.com':'Verified · pandonia.com')+'</span></div>'
+           :'<p class="pl bd"><b>'+(loc==='da'?'Afventer godkendelse':'Awaiting sign-off')+'</b>'+(loc==='da'?'Svaret findes ikke bekræftet på pandonia.com, eller det modsiger andre kilder.':'The answer is not confirmed on pandonia.com, or it contradicts another source.')+'</p>')+
+      '</div></details>';}).join('')+'</div></div></div>';}).join('')+
+    '<div style="margin-top:40px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer">'+(loc==='da'?'Book din blodprøve':'Book your blood test')+'</a></div>';
+
+  var pr=document.getElementById('priceRows');
+  if(pr) pr.innerHTML=[['Health Test + Consultation',4750,3800,loc==='da'?'Anbefales første gang':'Recommended the first time',loc==='da'?'Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation.':'Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.'],
+    ['Health Test',3500,2800,loc==='da'?'Kun prøven':'The test only',loc==='da'?'Samme markører, Pandonia Score og seks systemscorer.':'The same markers, Pandonia Score and six system scores.']]
+    .map(function(p){return '<div style="display:grid;grid-template-columns:1fr;gap:20px 40px;align-items:start;padding-block:clamp(22px,3vw,32px);border-bottom:1px solid var(--rule)" class="g2"><div><p class="lab" style="margin-bottom:8px">'+p[3]+'</p><h2 style="font-size:clamp(21px,1.1vw + 17px,28px);font-weight:500;letter-spacing:-.015em">'+p[0]+'</h2><p class="bdS measN" style="margin-top:10px">'+p[4]+'</p></div><div><p class="val" style="font-size:clamp(26px,3vw,34px)">'+dkk(p[1])+'</p><p class="lab" style="margin-top:5px">'+(loc==='da'?'inkl. moms · '+new Intl.NumberFormat('da-DK').format(p[2])+' ekskl.':'incl. VAT · '+new Intl.NumberFormat('en-GB').format(p[2])+' excl.')+'</p><div style="margin-top:16px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer">'+(loc==='da'?'Vælg tid':'Choose a time')+'</a></div></div></div>';}).join('');
+
+  var st=document.getElementById('singleTests');
+  if(st) st.innerHTML=SINGLE.map(function(s){return '<li><span class="l"><span style="font-size:15.5px">'+s[0]+'</span></span><span class="v">'+(s[1]?dkk(s[1]):'<span class="tagP">'+(loc==='da'?'pris afventer':'price pending')+'</span>')+'</span></li>';}).join('');
+
+  var as=document.getElementById('afterSteps');
+  if(as) as.innerHTML=STEPS[loc].map(function(s,i){return '<li class="hrs" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:20px;padding-block:16px'+(i===3?';border-bottom:1px solid var(--ruleSoft)':'')+'"><span class="m" style="padding-top:4px;font-size:11px;letter-spacing:.09em;color:var(--ink3)">'+s[0]+'</span><div><h3 class="hh3">'+s[1]+'</h3><p class="bdS" style="margin-top:5px">'+s[2]+'</p></div></li>';}).join('');
+}
+
+function norm(s){return (s||'').toLowerCase().replace(/æ/g,'ae').replace(/ø/g,'oe').replace(/å/g,'aa').replace(/[^a-z0-9]+/g,' ').trim();}
+function filter(){var i=document.getElementById('mkf');if(!i)return;var q=norm(i.value),r=document.querySelectorAll('#mklist .mk'),n=0;
+  r.forEach(function(x){var h=!q||norm(x.getAttribute('data-k')).indexOf(q)!==-1;x.hidden=!h;if(!h)x.open=false;if(h)n++;});
+  document.getElementById('mkempty').hidden=n!==0;document.getElementById('mkcount').textContent=T[loc].cnt(n,r.length);}
+
+function setRoute(){document.getElementById('routebar').textContent=ROUTES[loc][page]||ROUTES[loc].home;}
+function show(p,anchor){
+  page=p;
+  document.querySelectorAll('[data-page]').forEach(function(x){x.hidden=x.getAttribute('data-page')!==p;});
+  document.querySelectorAll('.navlinks a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-nav')===p);});
+  setRoute();
+  requestAnimationFrame(function(){
+    if(anchor){var el=document.getElementById(anchor);
+      if(el){el.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}}
+    window.scrollTo(0,0);
+  });
+}
+function setLocale(l){
+  loc=l;root.setAttribute('data-locale',l);root.setAttribute('lang',l);
+  document.querySelectorAll('[data-da][data-en]').forEach(function(e){var v=e.getAttribute('data-'+l);if(v!==null)e.textContent=v;});
+  document.querySelectorAll('[data-alt-da][data-alt-en]').forEach(function(e){e.setAttribute('alt',e.getAttribute('data-alt-'+l)||'');});
+  document.getElementById('btnDa').setAttribute('aria-current',String(l==='da'));
+  document.getElementById('btnEn').setAttribute('aria-current',String(l==='en'));
+  document.querySelectorAll('.mlang').forEach(function(b){b.setAttribute('aria-current',String(b.getAttribute('data-loc')===l));});
+  document.title=l==='da'?'Pandonia — blodprøver hjemme hos dig i København':'Pandonia — blood tests at your home in Copenhagen';
+  renderAll();setRoute();
+  try{localStorage.setItem('pandonia-locale',l);}catch(e){}
+}
+
+var mob=document.getElementById('mobnav'),burger=document.getElementById('burger');
+function closeMob(){mob.hidden=true;burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('[data-route],[data-anchor],[data-nav]');
+  if(!a)return;
+  if(a.tagName==='A'&&a.getAttribute('href'))return;
+  e.preventDefault();closeMob();
+  var anchor=a.getAttribute('data-anchor');
+  var route=a.getAttribute('data-route')||a.getAttribute('data-nav');
+  // An anchor always resolves against the page that owns it, never the page
+  // you happen to be on — getElementById finds elements inside hidden routes.
+  if(anchor&&ANCHOR_PAGE[anchor]){show(ANCHOR_PAGE[anchor],anchor);return;}
+  if(route){show(route,null);return;}
+});
+burger.addEventListener('click',function(){var o=mob.hidden;mob.hidden=!o;burger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});
+document.getElementById('mobclose').addEventListener('click',function(){closeMob();burger.focus();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!mob.hidden){closeMob();burger.focus();}});
+document.getElementById('btnDa').addEventListener('click',function(){setLocale('da');});
+document.getElementById('btnEn').addEventListener('click',function(){setLocale('en');});
+document.querySelectorAll('.mlang').forEach(function(b){b.addEventListener('click',function(){setLocale(b.getAttribute('data-loc'));});});
+document.addEventListener('input',function(e){if(e.target.id==='mkf')filter();});
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('stuck',window.scrollY>8);},{passive:true});
+
+var saved=null;try{saved=localStorage.getItem('pandonia-locale');}catch(e){}
+setLocale(saved==='en'?'en':'da');
+})();
+</script>

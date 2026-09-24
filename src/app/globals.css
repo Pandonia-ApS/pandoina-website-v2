@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   PANDONIA — global base
+   The site commits to one visual world (cream). There is no dark theme:
+   this is a brand surface, not an application chrome.
+   ========================================================================== */
+
+@layer base {
+  :root {
+    --rule: rgba(38, 32, 26, 0.2);
+    --rule-soft: rgba(38, 32, 26, 0.11);
+    --rule-inv: rgba(237, 231, 218, 0.22);
+
+    /* Motion — one curve, three durations (Phase 2 §09) */
+    --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+    --dur-hover: 140ms;
+    --dur-reveal: 320ms;
+    --dur-orchestrated: 900ms;
+
+    /* On deep forest, 0.55 is the minimum readable opacity (Phase 5 a11y) */
+    --on-deep-muted: rgba(237, 231, 218, 0.72);
+    --on-deep-quiet: rgba(237, 231, 218, 0.55);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header + area index bar must not cover an anchor target */
+    scroll-padding-top: 130px;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Danish compounds: hyphenate body copy only. Never display type, where a
+     hyphen reads as an error. `lang="da"` is set on <html>. */
+  p,
+  li,
+  dd {
+    hyphens: auto;
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    hyphens: manual;
+    text-wrap: balance;
+  }
+
+  /* Single global focus treatment. Never removed. */
+  :focus-visible {
+    outline: 2px solid theme('colors.forest.DEFAULT');
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Remove the native disclosure marker; we draw our own. */
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Tabular figures wherever numbers stack (Phase 2 §07) */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* ---- text roles -------------------------------------------------------- */
+  .u-label {
+    @apply font-mono text-label uppercase text-ink-3;
+  }
+  .u-measure {
+    @apply max-w-meas;
+  }
+
+  /* ---- placeholder convention (BUILD-BLOCKING, see docs/clinical-content.md)
+     Any element carrying `.clinical-placeholder` must never reach production.
+     `npm run validate:clinical` fails the build while unresolved fields exist. */
+  .clinical-placeholder {
+    @apply border-l border-dotted border-brick pl-3 text-ink-3;
+  }
+  .clinical-placeholder--inv {
+    @apply border-l border-dotted pl-3;
+    border-color: theme('colors.amber');
+    color: var(--on-deep-quiet);
+  }
+
+  /* ---- Nulpunkt: the reference band ------------------------------------- */
+  .band {
+    @apply relative h-[26px] border-y;
+    border-color: var(--rule);
+  }
+  .band--inv {
+    border-color: var(--rule-inv);
+  }
+  .band__ref {
+    @apply absolute inset-y-0;
+    background: rgba(160, 184, 159, 0.36);
+  }
+  .band__tick {
+    @apply absolute w-0.5 bg-amber;
+    top: -5px;
+    bottom: -5px;
+  }
+  .band__tick--out {
+    @apply bg-brick;
+  }
+  .band__lead {
+    @apply absolute h-px bg-brick;
+    top: 50%;
+  }
+  .band__none {
+    @apply absolute inset-0;
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(38, 32, 26, 0.07) 0 5px,
+      transparent 5px 10px
+    );
+  }
+}
+
+@layer utilities {
+  .text-on-deep-muted {
+    color: var(--on-deep-muted);
+  }
+  .text-on-deep-quiet {
+    color: var(--on-deep-quiet);
+  }
+
+  /* Reveal-from-visible: elements start at opacity .6, never 0, so the page
+     is complete in its first paint (Phase 2 §09). */
+  .reveal {
+    opacity: 0.6;
+    transform: translateY(16px);
+    transition:
+      opacity var(--dur-reveal) var(--ease),
+      transform var(--dur-reveal) var(--ease);
+  }
+  .reveal[data-shown='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

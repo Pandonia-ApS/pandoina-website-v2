@@ -1,0 +1,942 @@
+<title>Pandonia Reference Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Mono:wght@300;400;500&display=swap">
+
+<style>
+  :root {
+    --paper:      #EDEEEA;
+    --paper-2:    #E3E5DF;
+    --ink:        #17191A;
+    --ink-2:      #545A56;
+    --ink-3:      #7C837E;
+    --rule:       rgba(23, 25, 26, 0.16);
+    --rule-soft:  rgba(23, 25, 26, 0.09);
+    --mark:       #3C5236;
+    --flag:       #9A3B2A;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #131514;
+      --paper-2:    #1C1F1D;
+      --ink:        #E9EBE6;
+      --ink-2:      #A0A7A2;
+      --ink-3:      #7E857F;
+      --rule:       rgba(233, 235, 230, 0.20);
+      --rule-soft:  rgba(233, 235, 230, 0.10);
+      --mark:       #9BBE90;
+      --flag:       #E08B76;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #131514;
+    --paper-2:    #1C1F1D;
+    --ink:        #E9EBE6;
+    --ink-2:      #A0A7A2;
+    --ink-3:      #7E857F;
+    --rule:       rgba(233, 235, 230, 0.20);
+    --rule-soft:  rgba(233, 235, 230, 0.10);
+    --mark:       #9BBE90;
+    --flag:       #E08B76;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+
+  .sheet { max-width: 1180px; margin: 0 auto; padding-inline: 24px; padding-block: 0 96px; }
+
+  .mono {
+    font-family: "DM Mono", ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase;
+    line-height: 1.5; color: var(--ink-3);
+  }
+
+  .display {
+    font-family: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500; letter-spacing: -0.028em; line-height: 0.98;
+    text-wrap: balance; margin: 0;
+  }
+
+  p { margin: 0 0 1em; max-width: 68ch; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+  code { font-family: "DM Mono", monospace; font-size: 0.82em; letter-spacing: 0.01em; }
+
+  a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
+
+  /* masthead */
+  .masthead { border-bottom: 1px solid var(--ink); padding-block: 28px 0; }
+  .masthead-bar {
+    display: flex; flex-wrap: wrap; gap: 16px 32px;
+    align-items: baseline; justify-content: space-between; padding-bottom: 56px;
+  }
+  .wordmark {
+    font-family: "Familjen Grotesk", sans-serif; font-size: 19px;
+    font-weight: 500; letter-spacing: 0.01em; text-transform: lowercase;
+  }
+  h1.title { font-size: clamp(40px, 7.6vw, 96px); padding-bottom: 36px; }
+  h1.title .quiet { color: var(--ink-3); }
+  .standfirst {
+    font-size: clamp(18px, 2.1vw, 22px); line-height: 1.5;
+    max-width: 46ch; color: var(--ink-2); padding-bottom: 40px;
+  }
+  .colophon {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px 32px; border-top: 1px solid var(--rule); padding-block: 16px 20px;
+  }
+  .colophon div span { display: block; }
+  .colophon .val {
+    font-family: "Familjen Grotesk", sans-serif; font-size: 14px;
+    letter-spacing: 0; text-transform: none; color: var(--ink); margin-top: 5px;
+  }
+
+  /* scaffold */
+  section { border-top: 1px solid var(--ink); padding-block: 64px 12px; }
+  section:first-of-type { border-top: none; }
+  .row { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 40px; align-items: start; }
+  .rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); }
+
+  h2.sec { font-size: clamp(30px, 4.4vw, 46px); padding-bottom: 8px; }
+  .dek { font-size: 19px; color: var(--ink-2); max-width: 62ch; padding-bottom: 36px; }
+  h3 {
+    font-family: "Familjen Grotesk", sans-serif; font-size: 22px; font-weight: 500;
+    letter-spacing: -0.018em; line-height: 1.2; margin: 0 0 10px;
+  }
+  h4 {
+    font-family: "DM Mono", monospace; font-size: 11px; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px;
+  }
+
+  .notice { border-left: 2px solid var(--mark); padding: 2px 0 2px 22px; }
+  .notice.warn { border-left-color: var(--flag); }
+  .notice.warn h3 { color: var(--flag); }
+  .notice ul { margin: 0 0 14px; padding-left: 18px; }
+  .notice li { margin-bottom: 6px; max-width: 66ch; }
+
+  /* dossier + generic columns */
+  .ref { border-top: 1px solid var(--rule); padding-block: 44px; }
+  .ref:first-of-type { border-top: none; padding-top: 4px; }
+  .ref-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding-bottom: 6px; }
+  .ref-head h3 { font-size: clamp(25px, 3.2vw, 32px); margin: 0; }
+  .ref-head .url { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-3); }
+  .verdict { font-size: 19px; line-height: 1.5; font-style: italic; max-width: 58ch; padding-bottom: 28px; }
+
+  .findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 30px 40px; padding-bottom: 32px; }
+  .findings > div > p { font-size: 16px; line-height: 1.55; }
+  .findings ul { margin: 0; padding-left: 17px; font-size: 16px; line-height: 1.5; }
+  .findings li { margin-bottom: 7px; }
+
+  .take { border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding-block: 18px; margin-bottom: 30px; }
+  .take p {
+    font-family: "Familjen Grotesk", sans-serif; font-size: clamp(18px, 2.2vw, 21px);
+    line-height: 1.34; letter-spacing: -0.015em; max-width: 52ch;
+  }
+  .take h4 { color: var(--mark); }
+
+  /* specimens */
+  .specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px 40px; }
+  .swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+  .sw { width: 86px; }
+  .sw i { display: block; height: 52px; border: 1px solid var(--rule-soft); }
+  .sw b {
+    display: block; font-family: "DM Mono", monospace; font-size: 10px;
+    font-weight: 400; letter-spacing: 0.02em; color: var(--ink-3); margin-top: 6px;
+  }
+  .sw em { display: block; font-family: "Familjen Grotesk", sans-serif; font-style: normal; font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+
+  dl.meta { margin: 0; font-size: 15px; }
+  dl.meta div { display: flex; gap: 14px; justify-content: space-between; border-bottom: 1px solid var(--rule-soft); padding-block: 7px; }
+  dl.meta dt { color: var(--ink-3); font-family: "Familjen Grotesk", sans-serif; font-size: 14px; flex: 0 0 auto; }
+  dl.meta dd { margin: 0; text-align: right; font-family: "DM Mono", monospace; font-size: 12px; }
+
+  /* numbered lists */
+  ol.patterns { list-style: none; margin: 0; padding: 0; counter-reset: p; }
+  ol.patterns > li {
+    counter-increment: p; display: grid; grid-template-columns: 52px minmax(0, 1fr);
+    gap: 24px; border-top: 1px solid var(--rule-soft); padding-block: 26px;
+  }
+  ol.patterns > li::before {
+    content: counter(p, decimal-leading-zero);
+    font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: 0.06em;
+    color: var(--mark); padding-top: 6px;
+  }
+  ol.patterns h3 { font-size: 20px; }
+  ol.patterns p { font-size: 16px; line-height: 1.55; }
+
+  /* concept block */
+  .concept { background: var(--paper-2); padding: clamp(28px, 5vw, 52px); margin-bottom: 40px; }
+  .concept .name {
+    font-family: "Familjen Grotesk", sans-serif; font-size: clamp(46px, 10vw, 104px);
+    font-weight: 500; letter-spacing: -0.045em; line-height: 0.9; margin: 6px 0 20px;
+  }
+  .concept .gloss { font-size: clamp(18px, 2.3vw, 23px); line-height: 1.42; max-width: 48ch; margin: 0; }
+  .concept .gloss + .gloss { font-size: 17px; color: var(--ink-2); margin-top: 16px; max-width: 60ch; }
+
+  .pillars > div {
+    display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 20px 40px;
+    border-top: 1px solid var(--rule-soft); padding-block: 24px;
+  }
+  .pillars h3 { font-size: 18px; margin: 0; }
+  .pillars p { font-size: 16px; line-height: 1.55; }
+
+  ul.asks { list-style: none; margin: 0; padding: 0; }
+  ul.asks li {
+    border-top: 1px solid var(--rule-soft); padding-block: 18px;
+    display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 18px; max-width: 74ch;
+  }
+  ul.asks li::before { content: "→"; font-family: "Familjen Grotesk", sans-serif; color: var(--mark); }
+  ul.asks p { font-size: 16px; line-height: 1.55; margin: 0; }
+  ul.asks b { font-family: "Familjen Grotesk", sans-serif; font-weight: 500; }
+
+  .verdictline {
+    font-family: "Familjen Grotesk", sans-serif; font-size: clamp(22px, 3.2vw, 32px);
+    letter-spacing: -0.025em; line-height: 1.22; max-width: 24ch; margin: 0;
+  }
+  .rec { display: inline-block; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mark); border: 1px solid var(--mark); padding: 3px 8px; margin-bottom: 10px; }
+
+  .endmark {
+    border-top: 1px solid var(--ink); margin-top: 72px; padding-top: 22px;
+    display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: baseline;
+  }
+
+  @media (max-width: 860px) {
+    .row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .rail { position: static; }
+    .pillars > div { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    ol.patterns > li { grid-template-columns: 34px minmax(0, 1fr); gap: 14px; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="masthead-bar">
+      <span class="wordmark">pandonia</span>
+      <span class="mono">Phase 01 · Revision B · Internal</span>
+    </div>
+
+    <h1 class="title display">The references<br>chose warm.<br><span class="quiet">So the hue<br>has to work harder.</span></h1>
+
+    <p class="standfirst">Revised after your three uploads. Reference analysis, a creative-direction decision, and three territories to choose between.</p>
+
+    <div class="colophon mono">
+      <div><span>Date</span><span class="val">23 September 2026</span></div>
+      <div><span>Read live</span><span class="val">4 sites incl. pandonia.com</span></div>
+      <div><span>Your references</span><span class="val">3 of 3 received &amp; sampled</span></div>
+      <div><span>Awaiting</span><span class="val">Territory approval</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">Revision note</span></div>
+      <div>
+        <div class="notice">
+          <h3>What changed in this pass</h3>
+          <ul>
+            <li><strong>The cool-palette recommendation is withdrawn.</strong> Both Pandonia concepts you sent are warm, and they're right. The differentiator isn't temperature — it's hue. See §04.</li>
+            <li><strong>Colour values are now sampled, not guessed.</strong> Pulled pixel-level from your PNGs: forest green <code>#415A3B</code>, cream <code>#F6F1E8</code>, sand <code>#F4EADB</code>, amber <code>#E3A754</code>, warm ink <code>#26201A</code>.</li>
+            <li><strong>New facts from your concepts:</strong> 34 biomarkers (not "30+"), "Hvad vi måler" as the Danish name for What We Test, and three of the six category names.</li>
+            <li><strong>Dagslys survives, but as one of three.</strong> §06.</li>
+          </ul>
+          <p style="font-size:16px">One gap: you sent the <em>preferred</em> half of the A/B pair, not the rejected half. §03 lists the seven attributes I'm treating as your standing preference — correct me on any of them and I'll adjust before Phase 2.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">00 / Baseline</span></div>
+      <div>
+        <h2 class="sec display">What Pandonia already is</h2>
+        <p class="dek">From pandonia.com as it stands today, plus what your concepts confirm.</p>
+
+        <div class="findings">
+          <div>
+            <h4>The proposition</h4>
+            <p><strong>34 biomarkers</strong> per draw. One composite <strong>Pandonia Score</strong> plus six category scores. A 20-minute online doctor consultation. 3,500 DKK for the test, 4,750 DKK with the consultation, or a membership.</p>
+          </div>
+          <div>
+            <h4>The two facts nobody else has</h4>
+            <p><strong>A phlebotomist comes to your home or workplace</strong> — five minutes, central Copenhagen and Frederiksberg. The report lands in <strong>two to four hours</strong>. Superpower quotes ten days. Function tests twice a year. Celto sends you to one of 40+ hospitals.</p>
+          </div>
+          <div>
+            <h4>The story already in place</h4>
+            <p>"Healthier in body, happier in soul, longer in life." A Blue Zones framing; a model built on the four horsemen of ageing. A named Danish clinical team — Deborah Saren, bioanalytiker; Benedikte Halle, læge — who already appear by name in your concepts.</p>
+          </div>
+          <div>
+            <h4>What the live site does with it</h4>
+            <p>Lowercase <em>pandonia</em> in Degular, DM Sans for text, an electric blue pill on light grey, a strip of undifferentiated image tiles. Competent; interchangeable. Nothing in the layout says four hours, at your kitchen table, in Copenhagen. Your concepts already fix this.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">01 / Benchmarks</span></div>
+      <div>
+        <h2 class="sec display">The three benchmarks, read closely</h2>
+        <p class="dek">Read live, with type and colour measured off the running page. For each: what works, what transfers, what would be theft, and the one principle to carry.</p>
+
+        <article class="ref">
+          <div class="ref-head">
+            <h3 class="display">Superpower</h3>
+            <span class="url">superpower.com</span>
+          </div>
+          <p class="verdict">A membership brand wearing luxury-consumer clothes. The health is almost never on screen — the life is.</p>
+
+          <div class="findings">
+            <div>
+              <h4>What works</h4>
+              <ul>
+                <li>One typeface, one weight. NB International Pro at 400 everywhere — display, body, buttons. Authority from scale and tracking, never from bold.</li>
+                <li>H1 at 56px on a 56px line, tracking −0.02em. The headline reads as a block of material, not a sentence.</li>
+                <li>Full-bleed black opener, type low-left over photography. No hero card, no centred stack.</li>
+                <li>Numbers with receipts: <em>60% found something a doctor missed</em>, survey n=143 printed underneath.</li>
+                <li>Testimonials written as headlines with a name and an age, not floating quote marks.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Transfers to Pandonia</h4>
+              <ul>
+                <li>Single-weight discipline — the cheapest premium signal there is, and it survives Danish.</li>
+                <li>Price framed against an alternative. 3,500 DKK needs a private-clinic comparison beside it.</li>
+                <li>Real members, named and aged, photographed as people rather than patients.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Do not copy</h4>
+              <ul>
+                <li>The dashboard-on-a-tablet shot — the most reproduced image in the category.</li>
+                <li>The glowing green organ on a grey body diagram. Sci-fi anatomy is the "futuristic biotech" you ruled out.</li>
+                <li>9999px pill radii on everything; the vertical 01–04 index ticking beside a sticky section.</li>
+                <li>The influencer follower-count wall. Wrong register for Danish healthcare.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="take">
+            <h4>Principle to adopt</h4>
+            <p>Set the site in one weight and let size, tracking and leading carry every level of hierarchy.</p>
+          </div>
+
+          <div class="specs">
+            <div>
+              <h4>Measured — palette</h4>
+              <div class="swatches">
+                <div class="sw"><i style="background:#18181B"></i><b>#18181B</b></div>
+                <div class="sw"><i style="background:#FAFAFA"></i><b>#FAFAFA</b></div>
+                <div class="sw"><i style="background:#FC5F2B"></i><b>#FC5F2B</b></div>
+                <div class="sw"><i style="background:#FFDEDE"></i><b>#FFDEDE</b></div>
+              </div>
+            </div>
+            <div>
+              <h4>Measured — type</h4>
+              <dl class="meta">
+                <div><dt>Family</dt><dd>NB International Pro</dd></div>
+                <div><dt>Weights in use</dt><dd>400 only</dd></div>
+                <div><dt>H1</dt><dd>56 / 56 · −1.12px</dd></div>
+                <div><dt>Section H2</dt><dd>45 / 54 · −1.01px</dd></div>
+              </dl>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref-head">
+            <h3 class="display">Function Health</h3>
+            <span class="url">functionhealth.com</span>
+          </div>
+          <p class="verdict">The one reference that solves the problem you actually have: how to make a long list of lab tests feel like a library instead of a spreadsheet.</p>
+
+          <div class="findings">
+            <div>
+              <h4>What works</h4>
+              <ul>
+                <li>Three typefaces, three jobs: Financier Display for voice, FT Base for interface, Fragment Mono for machine facts. The mono is the trick — <code>[CALCULATION DERIVED FROM LAB TESTS]</code> in mono reads as a note from the lab, not marketing.</li>
+                <li>H1 at 80px, weight 300, line-height 0.9 — display set <em>lighter</em> than body.</li>
+                <li>Italic as editorial gesture: "What <em>we test</em>", "Ignored by most. <em>Tested by us.</em>"</li>
+                <li>Warm palette in a category that defaults to cold blue.</li>
+                <li>Hero is a macro crop of repeated hands sliced into vertical bands. Tactile, art-directed, no doctor in sight.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Transfers to Pandonia</h4>
+              <ul>
+                <li>Mono-as-evidence. Directly transferable, costs nothing.</li>
+                <li>Light display weights. Danish reads well at 300 — calm authority instead of shouting.</li>
+                <li>Three voices with three jobs, rather than one family doing everything.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Do not copy</h4>
+              <ul>
+                <li>Cream + serif + <em>terracotta</em> is Function's signature — and half the AI-generated web's. Take the structure, change the accent.</li>
+                <li>Financier Display itself. Using Function's exact face is the one unforced error available here.</li>
+                <li>The floating result cards drifting over the hero photo. Decorative; they fight the image.</li>
+                <li>The scale. 160 tests justifies an encyclopaedia. Borrowing that layout for 34 makes 34 look thin.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="take">
+            <h4>Principle to adopt</h4>
+            <p>Give clinical fact its own typographic voice — a monospace register reading as instrumentation, sitting quietly beside an editorial one.</p>
+          </div>
+
+          <div class="specs">
+            <div>
+              <h4>Measured — palette</h4>
+              <div class="swatches">
+                <div class="sw"><i style="background:#2A2B2F"></i><b>#2A2B2F</b></div>
+                <div class="sw"><i style="background:#FEF9EF"></i><b>#FEF9EF</b></div>
+                <div class="sw"><i style="background:#F5EEE1"></i><b>#F5EEE1</b></div>
+                <div class="sw"><i style="background:#6A7784"></i><b>#6A7784</b></div>
+                <div class="sw"><i style="background:#B05A36"></i><b>#B05A36</b></div>
+              </div>
+            </div>
+            <div>
+              <h4>Measured — type</h4>
+              <dl class="meta">
+                <div><dt>Display</dt><dd>Financier Display</dd></div>
+                <div><dt>Interface</dt><dd>FT Base</dd></div>
+                <div><dt>Data / labels</dt><dd>Fragment Mono</dd></div>
+                <div><dt>H1</dt><dd>80 / 72 · weight 300</dd></div>
+              </dl>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref-head">
+            <h3 class="display">Function — Hvad vi måler</h3>
+            <span class="url">/what-we-test</span>
+          </div>
+          <p class="verdict">Structurally the most useful page in the set. Strip the styling and the skeleton is worth taking outright.</p>
+
+          <div class="findings">
+            <div>
+              <h4>The actual mechanics</h4>
+              <ul>
+                <li><strong>Teaser before taxonomy.</strong> Four unexpected markers scroll past — Lead, ANA Screen, Lipase, Omega-3 — each with a plain-language gloss, under "Ignored by most. Tested by us." You're sold on <em>depth</em> before you're shown <em>scale</em>.</li>
+                <li><strong>Two ways in.</strong> Search for people with a word in mind; a category rail for people who came to browse.</li>
+                <li><strong>The count is in the heading.</strong> "Heart (15)", "Nutrients (19)". You always know how much sits behind a label.</li>
+                <li><strong>Three states per marker.</strong> Included / tested 2× a year / add-on. One list encodes the commercial model without a pricing table.</li>
+                <li><strong>Honest annotation.</strong> Derived values marked <code>[CALCULATION DERIVED FROM LAB TESTS]</code>. Admitting what's computed rather than measured buys more trust than any badge.</li>
+                <li><strong>Sticky rail, scrolling detail.</strong> You never lose your place in 160 items.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Transfers to Pandonia</h4>
+              <ul>
+                <li>The full sequence: <em>surprise → orient → category → marker → what it means for me</em>.</li>
+                <li>Counts in headings; a state system per marker (included / add-on / membership).</li>
+                <li>Six areas is an advantage: six doors is navigable without a search field. Function needs search because it has twenty-four.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Do not copy</h4>
+              <ul>
+                <li>Twenty-four categories. Don't inflate six to look comprehensive.</li>
+                <li>The row-of-pills chip rail — functional, generic, on your avoid-list.</li>
+                <li>The endless single-column accordion. Six areas can each afford a real editorial page.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="take">
+            <h4>Principle to adopt</h4>
+            <p>Open with the marker nobody expects, not the total. It's the only framing where 34 beats 160.</p>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref-head">
+            <h3 class="display">Celto</h3>
+            <span class="url">celto.dk</span>
+          </div>
+          <p class="verdict">Worth flagging before anything else: not a mood reference. A Danish blood-testing company selling to the same person in the same city.</p>
+
+          <div class="findings">
+            <div>
+              <h4>What works</h4>
+              <ul>
+                <li>The headline is the product: <em>"Tjek dit helbred."</em> Three words, a full stop, 72px. Danish directness as a design asset.</li>
+                <li>Three routes stated plainly — targeted panel, one annual check, build your own — each with a "from" price.</li>
+                <li>A quiz placed exactly where doubt appears.</li>
+                <li>Credibility as plain numbers in the hero: 86 tests, 40+ hospitals, doctor-interpreted.</li>
+                <li>A warm, close-cropped skin photograph — neck and jaw, golden light, no face.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Transfers to Pandonia</h4>
+              <ul>
+                <li>Danish copy that states the offer flatly beats translated American aspiration. Keep the Danish blunt — your concept's "Kend din krop. Før den siger til." already does this better than Celto.</li>
+                <li>The four-step process with a location count is the local trust pattern. Pandonia's version is stronger: no travel at all.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Do not copy — competitive</h4>
+              <ul>
+                <li>Ink <code>#2C2B2A</code> on warm off-white with a <em>terracotta</em> CTA. Warm ground is fine and you should keep it — but if the accent lands in Celto's orange-red band, Pandonia reads as the follower in a two-horse Danish market.</li>
+                <li>The three-equal-cards choice section and the icon-led "why choose us" triptych.</li>
+                <li>Their framing — hospital laboratories, 40+ locations. Don't compete on their axis.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="take">
+            <h4>Principle to adopt</h4>
+            <p>Take the Danish plain-speaking. Avoid the accent hue, not the warmth.</p>
+          </div>
+
+          <div class="specs">
+            <div>
+              <h4>Measured — palette</h4>
+              <div class="swatches">
+                <div class="sw"><i style="background:#2C2B2A"></i><b>#2C2B2A</b></div>
+                <div class="sw"><i style="background:#F9F8F5"></i><b>#F9F8F5</b></div>
+                <div class="sw"><i style="background:#F2F0EC"></i><b>#F2F0EC</b></div>
+              </div>
+              <p style="font-size:14px;color:var(--ink-3);margin-top:12px">Plus a terracotta CTA rendered as an image layer — not readable off the DOM.</p>
+            </div>
+            <div>
+              <h4>Measured — type</h4>
+              <dl class="meta">
+                <div><dt>Display</dt><dd>Blauer Nue</dd></div>
+                <div><dt>Text</dt><dd>Instrument Sans</dd></div>
+                <div><dt>H1</dt><dd>72 / 72 · weight 600</dd></div>
+              </dl>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">02 / Your refs</span></div>
+      <div>
+        <h2 class="sec display">Your three references</h2>
+        <p class="dek">Colour values below are sampled pixel-level from the files you sent, not estimated by eye.</p>
+
+        <article class="ref">
+          <div class="ref-head">
+            <h3 class="display">Ref 01 — the hero concept</h3>
+            <span class="url">"Kend din krop. Før den siger til."</span>
+          </div>
+          <p class="verdict">This is the strongest thing in the whole set, and it is already Pandonia. Note what it stops doing: no blue, no lowercase Degular wordmark, no grey.</p>
+
+          <div class="findings">
+            <div>
+              <h4>What makes it work</h4>
+              <ul>
+                <li><strong>The green is the whole identity.</strong> <code>#415A3B</code> is a true forest green — blue in it, not olive. It carries the headline, the wordmark and the CTA. Nobody in this category owns green.</li>
+                <li><strong>Serif wordmark, capital P.</strong> A complete reversal of the current lowercase sans mark, and it buys decades of implied history in one gesture.</li>
+                <li><strong>The headline is a promise, not a description.</strong> "Før den siger til" — <em>before it tells you</em> — sells prevention in four words without a single fear word.</li>
+                <li><strong>The subhead does the entire proposition in one breath:</strong> home, Copenhagen, 5 minutes, 34 biomarkers, same day, a doctor if you want one. That's the whole business model in 38 words.</li>
+                <li><strong>Split hero, type left, image right.</strong> Not full-bleed, not centred. Reads editorial rather than campaign.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Your note: "billedet gøres lidt mere lækkert og levende"</h4>
+              <p>Agreed, and here's the diagnosis. The photograph is <em>correct</em> — right age, right room, right light, right mood — but it's shot like stock: eye-level, safe mid-shot, whole subject in frame, everything sharp, nothing cropped.</p>
+              <p><strong>What Function and Superpower do instead:</strong> they crop past the subject. Function slices hands into vertical bands; Superpower shoots a member from behind, out of focus, mid-thought. The image becomes a <em>texture</em>, not a portrait.</p>
+              <p><strong>The fix, concretely:</strong> crop much closer — the hand and the mug, the light on the forearm, the window edge. Shoot into the light rather than with it. Let the frame cut the body. Shallow depth of field so one thing is sharp. Keep the woman, keep the kitchen, keep the morning — lose the middle distance.</p>
+            </div>
+            <div>
+              <h4>What I'd change</h4>
+              <ul>
+                <li>The image corner radius. Softens something that would read better as a hard editorial crop, bleeding to the right edge of the viewport.</li>
+                <li>The CTA pill. A green rectangle with a real corner would sit better against a serif of this weight.</li>
+                <li>Nav is set in the same family as the headline — it should drop to the interface voice so the serif stays special.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="specs">
+            <div>
+              <h4>Sampled — Ref 01</h4>
+              <div class="swatches">
+                <div class="sw"><i style="background:#415A3B"></i><b>#415A3B</b><em>Skovgrøn</em></div>
+                <div class="sw"><i style="background:#F6F1E8"></i><b>#F6F1E8</b><em>Cream</em></div>
+                <div class="sw"><i style="background:#AE9D84"></i><b>#AE9D84</b><em>Warm neutral</em></div>
+              </div>
+            </div>
+            <div>
+              <h4>Read — Ref 01</h4>
+              <dl class="meta">
+                <div><dt>Display</dt><dd>high-contrast serif</dd></div>
+                <div><dt>Text</dt><dd>humanist sans</dd></div>
+                <div><dt>Headline case</dt><dd>sentence, not caps</dd></div>
+                <div><dt>Composition</dt><dd>split 55 / 45</dd></div>
+              </dl>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref-head">
+            <h3 class="display">Ref 02 — "Sådan fungerer det"</h3>
+            <span class="url">your preferred version</span>
+          </div>
+          <p class="verdict">You preferred this over another version I haven't seen. These are the seven attributes I'm treating as your standing preference — correct any of them and I'll carry the correction forward.</p>
+
+          <div class="findings">
+            <div>
+              <h4>Why it wins — my read</h4>
+              <ul>
+                <li><strong>Warmer, deeper ground than the hero.</strong> <code>#F4EADB</code> against the hero's <code>#F6F1E8</code>. Sections have their own temperature, which creates rhythm down the page instead of one flat cream.</li>
+                <li><strong>The cards contain product, not prose.</strong> A date picker. A named person with a role. A score ring with three real categories. A consultation with a real doctor. It's a demo, not a description — that's why it survives your own no-cards rule.</li>
+                <li><strong>Real names.</strong> Deborah Saren, bioanalytiker. Benedikte Halle, læge. Both real Pandonia staff. Enormous trust value at zero cost, and impossible for a competitor to copy.</li>
+                <li><strong>Everything is a specific number.</strong> 5 min, 2–4 timer, 34 biomarkører, 78, 82, 74, 80, 20 minutter. Nothing vague anywhere in the section.</li>
+                <li><strong>Amber has exactly one job:</strong> selection and state. The chosen date, the chosen time, the score arc, the appointment time. One colour, one meaning.</li>
+                <li><strong>The heading drops the serif.</strong> A working section speaks in the interface voice. That register shift is the system, not an inconsistency.</li>
+                <li><strong>Step 4 inverts to dark.</strong> One element breaks the pattern on purpose, marking the consultation as the payoff.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>The one weakness to fix</h4>
+              <p>Four equal white rounded cards is the most template-like element in anything you've sent, and steps 1 and 2 have visible dead space at the bottom while 3 and 4 are full. That unevenness is the tell.</p>
+              <p><strong>Fix:</strong> let content set the height, and break the equal-column rhythm — the four steps are a <em>sequence in time</em>, so let them step down the page on a timeline rather than sit in a row. The clock is the story; a row of cards hides it.</p>
+            </div>
+            <div>
+              <h4>Confirmed from this ref</h4>
+              <ul>
+                <li>Danish name for What We Test: <strong>"Hvad vi måler"</strong>.</li>
+                <li>Three of six categories: <strong>Hjerte og kar</strong>, <strong>Blodsukker og stofskifte</strong>, <strong>Hormoner</strong>.</li>
+                <li>Score presented 0–100, composite plus per-category.</li>
+                <li>Sitemap from the nav: Sådan fungerer det · Hvad vi måler · Priser · Om os · FAQ.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="specs">
+            <div>
+              <h4>Sampled — Ref 02</h4>
+              <div class="swatches">
+                <div class="sw"><i style="background:#F4EADB"></i><b>#F4EADB</b><em>Sand</em></div>
+                <div class="sw"><i style="background:#E3A754"></i><b>#E3A754</b><em>Amber</em></div>
+                <div class="sw"><i style="background:#26201A"></i><b>#26201A</b><em>Warm ink</em></div>
+                <div class="sw"><i style="background:#A0B89F"></i><b>#A0B89F</b><em>Sage</em></div>
+              </div>
+            </div>
+            <div>
+              <h4>Read — Ref 02</h4>
+              <dl class="meta">
+                <div><dt>Heading</dt><dd>geometric sans, bold</dd></div>
+                <div><dt>Ink</dt><dd>warm, brown-biased</dd></div>
+                <div><dt>Accent role</dt><dd>state &amp; selection only</dd></div>
+                <div><dt>Card radius</dt><dd>≈16px</dd></div>
+              </dl>
+            </div>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref-head">
+            <h3 class="display">Ref 03 — Function, "1000s of diseases"</h3>
+            <span class="url">functionhealth.com</span>
+          </div>
+          <p class="verdict">This one answers the question you asked in point 5: how to make a number feel meaningful rather than competitive. It doesn't argue about volume — it shows one thing moving.</p>
+
+          <div class="findings">
+            <div>
+              <h4>The mechanism</h4>
+              <ul>
+                <li><strong>Volume becomes ambient texture.</strong> Two rows of disease names counter-scroll behind the focal object. You perceive the scale without reading a single one. Nobody is asked to process a list.</li>
+                <li><strong>Depth is one small object in the centre.</strong> A hairline card showing <em>one</em> marker's journey: below range (rust, May 25) → in range (green, Oct 25) → a pulsing ring on the projection (May 26). A complete story in about 330 pixels.</li>
+                <li><strong>Italic plus colour marks the emotional half of the sentence.</strong> "Monitor early indicators of <em>1000s of diseases</em>". Two typographic devices doing one job.</li>
+                <li><strong>"PAUSE MOTION" is visible.</strong> Accessibility shown rather than hidden in a media query. It reads as craft and respect, and it's free.</li>
+                <li><strong>Three small sub-claims</strong> sit under the headline as a single quiet line, not three icon cards.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>The Pandonia translation</h4>
+              <p>Pandonia's version of this is <strong>stronger</strong>, because Function's timeline spans a year and yours spans an afternoon.</p>
+              <p>The proof object is one marker — say ferritin, or HbA1c — shown against its reference band, with the draw at 09:00 and the result at 13:00 on the same axis. The 34 markers exist as ambient texture around it. You never write "34" next to "160+". You show one number that moved, and let the rest be atmosphere.</p>
+              <p>This also becomes the answer for "Hvad vi måler": lead with the marker nobody expects you to measure and one sentence on what it can tell them — depth first, taxonomy second.</p>
+            </div>
+            <div>
+              <h4>Do not copy</h4>
+              <ul>
+                <li>The rust/green in-range colour pair. Rust is Function's brand colour doing double duty as a semantic — we need semantics that aren't the brand accent.</li>
+                <li>Disease names as the scrolling texture. Naming 40 diseases is a fear register, and it's wrong for a calm Danish brand. Use biomarker names, or what they can tell you.</li>
+                <li>The rounded card floating in white space. Our version should sit on a rule, in the grid.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="take">
+            <h4>Principle to adopt</h4>
+            <p>Scale as atmosphere, depth as focus. One marker moving proves more than thirty-four listed.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">03 / Patterns</span></div>
+      <div>
+        <h2 class="sec display">What everything agrees on</h2>
+        <p class="dek">Six moves shared across the benchmarks and your own concepts. These are the quality bar, not the design.</p>
+
+        <ol class="patterns">
+          <li><div>
+            <h3>Display type is set light or regular, never bold</h3>
+            <p>Superpower runs 400 across the entire site; Function sets its 80px H1 at weight 300; your hero concept sets a serif at a normal weight and lets the size do the work. Bold display type is the loudest tell of a cheap health brand.</p>
+          </div></li>
+          <li><div>
+            <h3>Line-height at or below 1.0 on headlines</h3>
+            <p>56/56 at Superpower, 80/72 at Function, 72/72 at Celto. Tight leading turns a headline into a shape you read as one object. All of them pull tracking negative, around −0.02em.</p>
+          </div></li>
+          <li><div>
+            <h3>Photography is macro, cropped and human — never clinical</h3>
+            <p>Function crops hands into vertical bands; Celto shoots a neck with no face; Superpower shoots a member mid-thought. Not one shows a laboratory, a white coat, a clipboard or a molecule. Your hero has the right subject and the wrong crop — that's the gap you spotted.</p>
+          </div></li>
+          <li><div>
+            <h3>Trust is built from specifics, not seals</h3>
+            <p>"60%, n=143." "160+ tests." "40+ hospitals." "Deborah Saren, bioanalytiker." Every claim carries a number or a name. Nobody uses a trust badge.</p>
+          </div></li>
+          <li><div>
+            <h3>Complexity is revealed in layers, never dumped</h3>
+            <p>Category → count → marker → plain-language meaning → deeper article. Each layer is a choice the reader makes. The full list exists; nobody is forced through it.</p>
+          </div></li>
+          <li><div>
+            <h3>Price is confronted early and framed against an alternative</h3>
+            <p>"What could cost $10,000 is now $349." "$15,000 is $365." "Fra 1000 kr." None hides the number behind a contact form; none states it without a comparison beside it.</p>
+          </div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">04 / Colour</span></div>
+      <div>
+        <h2 class="sec display">Reassessing warm vs cool</h2>
+        <p class="dek">You asked me not to lock this until I'd seen your references. Having seen them: I was wrong, and here's the corrected argument.</p>
+
+        <div class="findings">
+          <div>
+            <h4>What I got wrong</h4>
+            <p>I recommended cool daylight tones on the reasoning that Celto occupies warm Scandinavian space. That reasoning treats <em>temperature</em> as the axis of difference. It isn't — <strong>hue</strong> is. Going cool to avoid Celto would have thrown away the warmth that makes both of your concepts feel human, and won a distinction nobody would notice.</p>
+          </div>
+          <div>
+            <h4>What the references show</h4>
+            <p>All three warm brands sit in the same narrow band: a warm off-white ground with an <strong>orange-red</strong> accent. Function <code>#B05A36</code>. Celto, terracotta. Superpower <code>#FC5F2B</code>. The entire category has independently converged on rust.</p>
+          </div>
+          <div>
+            <h4>Where Pandonia already is</h4>
+            <p>Your concepts are warm — and the primary is <code>#415A3B</code>, a deep forest green, with amber <code>#E3A754</code> as the state colour. That is a genuinely different signature <em>within</em> the warm family. Not one competitor uses green as a primary.</p>
+          </div>
+          <div>
+            <h4>The decision</h4>
+            <p><strong>Warm ground, green primary, amber state.</strong> Keep the warmth; move the accent out of the rust band entirely. Green also earns its keep semantically — it's the Blue Zones story, Danish nature, and the colour of "in range" — without ever becoming mint-wellness green, because <code>#415A3B</code> is dark, desaturated and blue-leaning.</p>
+          </div>
+        </div>
+
+        <div class="take">
+          <h4>The risk I'm watching</h4>
+          <p>Deep green on cream with a serif is also the natural-wine, olive-oil, apothecary look. §05 lists the four countermeasures that keep it a health-science brand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">05 / Decision</span></div>
+      <div>
+        <h2 class="sec display">Creative direction decision</h2>
+        <p class="dek">The system I would build Phase 2 on, pending your choice of territory in §06.</p>
+
+        <div class="pillars">
+          <div>
+            <h3>Visual territory</h3>
+            <p><strong>Scandinavian editorial, warm ground, scientific spine.</strong> The page reads like a well-made Danish annual report that happens to be about a body: generous, typographic, photographic — then <em>tightens</em> abruptly wherever real data appears. That rhythm contrast, airy editorial against dense instrument, is the signature. Nobody in this category does both; Superpower is all air, Function is all catalogue.</p>
+          </div>
+          <div>
+            <h3>Colour</h3>
+            <p><strong>Two grounds, one primary, one ink, one state colour, two supports.</strong> Cream <code>#F6F1E8</code> and sand <code>#F4EADB</code> alternate to give sections their own temperature. Skovgrøn <code>#415A3B</code> is the primary — wordmark, headlines, CTAs. Warm ink <code>#26201A</code> for text, brown-biased so it never reads as neutral black. Amber <code>#E3A754</code> is a <em>state</em> colour only: selection, a value in range, the active step. Sage <code>#A0B89F</code> and clay <code>#AE9D84</code> support. The existing electric blue is retired. No gradients anywhere.</p>
+          </div>
+          <div>
+            <h3>Typography</h3>
+            <p><strong>Three voices with three jobs, borrowed structurally from Function but with different faces.</strong> A high-contrast serif for the editorial voice — headlines, the wordmark, pull quotes only. A humanist grotesk for interface, navigation and body. A monospace strictly for measured fact: biomarker names, units, reference ranges, timestamps. Set display at one weight, tracking −0.02em, leading at or below 1.0.</p>
+            <p>On the serif: <strong>not Financier</strong> — that's Function's. GT Sectra Display is my first candidate; it's cut with a scalpel edge rather than a broad nib, which is an unusually apt gesture for this brand. Canela is the safer alternative. <strong>Degular survives</strong>, demoted from display to interface — which answers your keep-or-replace question as <em>keep, but give it a superior</em>. That makes this a redesign with continuity rather than a rebrand.</p>
+          </div>
+          <div>
+            <h3>Photography &amp; art direction</h3>
+            <p><strong>Copenhagen domestic realism, cropped hard.</strong> Real apartments, real morning light from a north window, real ages, real bodies. The subject matter of your hero is exactly right; the treatment needs to change.</p>
+            <p>Four rules: <em>crop past the subject</em> — a forearm, a hand on a mug, the light along a collarbone, the window edge, never a full mid-shot; <em>shoot into the light</em>, not with it, so there's bloom and falloff; <em>let one plane be sharp</em> and the rest go; <em>let the frame cut the body</em>. Include the draw itself, undramatised — five minutes at a kitchen table is the most ownable image this brand has. Never a laboratory, a white coat, a clipboard, a molecule, a glowing organ or a stock smile.</p>
+          </div>
+          <div>
+            <h3>Graphic &amp; data language</h3>
+            <p><strong>Hairline, ranged, and honest.</strong> One weight of rule. Reference bands drawn as a tinted horizontal band with the value marked on it — the same object at every scale, from a single marker to the Pandonia Score. Amber for the current value, sage for in range, warm ink for the axis. No fills, no gradients, no donut charts, no dashboard furniture.</p>
+            <p>The recurring device is <strong>the time axis</strong>: draw at 09:00, report at 13:00, on one line. It's the clock that makes the brand, and it scales from the process section to a single marker's history.</p>
+          </div>
+          <div>
+            <h3>What makes it uniquely Pandonia</h3>
+            <p><strong>Six things no competitor can take:</strong> the green, in a category that has converged on rust. The four-hour clock as a graphic device rather than a claim. Named Danish clinicians appearing as people, not credentials. Your own kitchen as the location, in every photograph. A warm ink instead of a neutral black. And 34 as a <em>curated</em> number with an argument behind it — the markers a Danish doctor would actually act on — never a smaller number apologising to a bigger one.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:44px;font-size:26px">Provenance — what comes from where</h3>
+        <div class="findings" style="padding-top:18px">
+          <div>
+            <h4>From Superpower</h4>
+            <ul>
+              <li>One weight across the whole site; hierarchy from size, tracking and leading.</li>
+              <li>Headline leading at or below 1.0, tracking negative.</li>
+              <li>Claims carrying their own receipts (n=, %, source line).</li>
+              <li>Testimonials written as headlines with a name and an age.</li>
+              <li>Price framed against what it replaces.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>From Function Health</h4>
+            <ul>
+              <li>Three type voices with three distinct jobs.</li>
+              <li>Monospace as the register of measured fact.</li>
+              <li>Display set lighter than body.</li>
+              <li>Depth before volume; the unexpected marker before the total.</li>
+              <li>Counts in category headings; a state system per marker.</li>
+              <li>Honest annotation of what's derived rather than measured.</li>
+              <li>Sticky navigation against scrolling detail.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>From Celto</h4>
+            <ul>
+              <li>Danish plain-speaking — state the offer flatly, in Danish, with a full stop.</li>
+              <li>Numbers in the hero as credibility.</li>
+              <li>A route for the undecided placed exactly where doubt appears.</li>
+              <li>And one negative: their accent hue is a no-go zone.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>From your references</h4>
+            <ul>
+              <li>The entire palette — green, cream, sand, amber, warm ink.</li>
+              <li>Serif wordmark, capital P.</li>
+              <li>"Kend din krop. Før den siger til." and the 38-word subhead.</li>
+              <li>Split editorial hero rather than full-bleed.</li>
+              <li>Cards only when they contain real product.</li>
+              <li>Real staff names as trust.</li>
+              <li>Amber as state, never decoration.</li>
+              <li>Register shift between editorial and working sections.</li>
+              <li>One deliberate inversion per sequence.</li>
+              <li>Scale as atmosphere, depth as focus.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top:44px;font-size:26px">Five things we must avoid</h3>
+        <ol class="patterns" style="padding-top:12px">
+          <li><div>
+            <h3>The rust band</h3>
+            <p>Function, Celto and Superpower all accent in orange-red. Amber must stay yellow-gold at <code>#E3A754</code> and never drift toward <code>#B05A36</code>. This is the single easiest way to lose the distinction we're buying.</p>
+          </div></li>
+          <li><div>
+            <h3>Cards holding prose</h3>
+            <p>The rule from your own preferred concept: a card may contain a piece of real product — a picker, a person, a score, a chart. It may never contain a paragraph with an icon on top. Everything else gets whitespace, rules and type.</p>
+          </div></li>
+          <li><div>
+            <h3>Serif everywhere</h3>
+            <p>The serif is the emotional voice only. Never interface, never navigation, never data, never a button. The moment it sets a table, the brand becomes a restaurant.</p>
+          </div></li>
+          <li><div>
+            <h3>The apothecary drift</h3>
+            <p>Green + cream + serif is also natural wine, olive oil and skincare. Four countermeasures: keep the green blue-leaning and dark, never sage; keep amber strictly semantic; make the data passages genuinely dense against the airy editorial ones; and shoot contemporary Copenhagen interiors, never styled still-life on linen.</p>
+          </div></li>
+          <li><div>
+            <h3>Competing on count</h3>
+            <p>Never put 34 beside 160+. Volume is Function's game and they've won it. Depth, speed and curation are ours — 34 markers a Danish doctor will actually act on, delivered before dinner.</p>
+          </div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">06 / Territories</span></div>
+      <div>
+        <h2 class="sec display">Three territories to choose between</h2>
+        <p class="dek">All three sit on the same palette and type system decided in §05. What changes is the organising idea — and each produces a visibly different homepage.</p>
+
+        <div class="concept">
+          <span class="rec">Recommended</span>
+          <span class="mono">Territory 01</span>
+          <p class="name display">Dagslys</p>
+          <p class="gloss">Danish for <em>daylight</em>. Something that was dark and guessed at, brought into ordinary morning light — in the ordinary room you were already standing in, before the afternoon is over.</p>
+          <p class="gloss">Warm now, not cool: this is the light in your hero photograph, which is exactly why it survived. <strong>Organising idea:</strong> proximity and clarity. <strong>Homepage consequence:</strong> photography-led, light and room as the recurring motif, the whole page built around the five minutes and the four hours. <strong>Strength:</strong> it's the only territory that makes the logistics emotional, and it's directly supported by both your concepts. <strong>Risk:</strong> "daylight" drifts toward generic lifestyle unless the data language stays hard.</p>
+        </div>
+
+        <div class="concept">
+          <span class="mono">Territory 02</span>
+          <p class="name display">Nulpunkt</p>
+          <p class="gloss">Your zero point. The first draw is the line every later one is measured against — and the brand is built from the measuring instrument rather than the room.</p>
+          <p class="gloss"><strong>Organising idea:</strong> the reference range. <strong>Homepage consequence:</strong> type- and rule-led rather than photo-led; the reference band becomes the page's structural grid; photography drops to sparse macro punctuation; the mono voice gets much more space. <strong>Strength:</strong> the most scientifically credible of the three, and the strongest foundation for "Hvad vi måler". <strong>Risk:</strong> it can turn cold and instrumental — it would need the photography working hard to stay human, which is the opposite of where your references lean.</p>
+        </div>
+
+        <div class="concept">
+          <span class="mono">Territory 03</span>
+          <p class="name display">Før</p>
+          <p class="gloss">Before. Taken straight from your own headline — <em>kend din krop, før den siger til</em>. Health as foresight: the whole site is about the gap between now and the moment a body finally tells you.</p>
+          <p class="gloss"><strong>Organising idea:</strong> time and trajectory. <strong>Homepage consequence:</strong> the page is structured as a timeline rather than a stack of sections; the dominant graphic is a line moving across time; large editorial dates and ages; photography of people in ongoing, unremarkable good health. <strong>Strength:</strong> connects directly to the Blue Zones and four-horsemen story you already have, and it's the most emotionally distinctive. <strong>Risk:</strong> foresight sits one word away from fear — it needs disciplined copy to stay calm, and Danish healthcare buyers are unforgiving about alarmism.</p>
+        </div>
+
+        <div class="take">
+          <h4>My recommendation</h4>
+          <p class="verdictline">Dagslys, with Nulpunkt's instrument language used as the data system inside it — and "Før den siger til." kept as the headline regardless of which you pick.</p>
+        </div>
+        <p style="font-size:16px;color:var(--ink-2);max-width:66ch">Dagslys and Nulpunkt aren't really rivals — one is the emotional register, the other is the data register, and the brand needs both. Før is the genuine alternative: choosing it would change the homepage structure from rooms-and-light to a single timeline. Tell me if that's the more interesting brand and I'll build Phase 2 on it instead.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="rail"><span class="mono">07 / To you</span></div>
+      <div>
+        <h2 class="sec display">Before Phase 2</h2>
+        <p class="dek">One decision, three gaps. Nothing here blocks me for long.</p>
+
+        <ul class="asks">
+          <li><p><b>Approve a territory.</b> Dagslys, Nulpunkt or Før. This is the only real blocker — everything in Phase 2 hangs off it.</p></li>
+          <li><p><b>The other three category names.</b> Your concept confirms Hjerte og kar, Blodsukker og stofskifte and Hormoner. I need the remaining three — they're the spine of the whole "Hvad vi måler" experience in Phase 4, and I don't want to invent them.</p></li>
+          <li><p><b>Confirm or correct the seven attributes in §02, Ref 02.</b> You preferred that version over one I haven't seen. If I've attributed your preference to the wrong things, say which — it becomes a standing rule and I'd rather fix it now than in Phase 5.</p></li>
+          <li><p><b>Serif licensing.</b> GT Sectra Display is my recommendation and it's a commercial licence. If the budget is open-source only, say so now and I'll find the best free alternative rather than designing around a face you can't buy.</p></li>
+          <li><p><b>Language priority.</b> Danish-first with English secondary, or fully parallel? At 100px+, Danish and English headlines break differently — it changes layout, not just copy.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="endmark">
+    <span class="mono">End of Phase 01 — holding for territory approval</span>
+    <span class="mono">Next: 02 Direction · 03 IA · 04 Hvad vi måler</span>
+  </div>
+
+</div>

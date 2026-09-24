@@ -1,0 +1,1153 @@
+<title>Pandonia Website Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap">
+
+<style>
+  /* =========================================================
+     PANDONIA — master prototype
+     Deliberately single-theme: this is the brand's light world.
+     Serif = Newsreader (stand-in for GT Sectra Display)
+     Sans  = DM Sans (stand-in for Degular)
+     Mono  = DM Mono (the specified face)
+     ========================================================= */
+  :root{
+    --cream:#F6F1E8; --sand:#F4EADB; --paper:#FCFAF6; --deep:#18261A;
+    --ink:#26201A; --ink2:#5C554C; --ink3:#756C60; --inkInv:#EDE7DA;
+    /* --ink3 darkened from #8A8175 (3.4:1 — failed AA) to #756C60 (4.6:1) */
+    --forest:#415A3B; --forestDeep:#2C3F28;
+    --amber:#E3A754; --sage:#A0B89F; --sageDeep:#4E7050; --brick:#8C3B2E; --clay:#AE9D84;
+    --rule:rgba(38,32,26,.20); --ruleSoft:rgba(38,32,26,.11);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:"DM Sans",Helvetica,Arial,sans-serif; font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,p{margin:0}
+  .s{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:1.02;text-wrap:balance}
+  .m{font-family:"DM Mono",ui-monospace,monospace}
+  .lab{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink3);line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--forest);outline-offset:3px}
+  img{max-width:100%}
+
+  .wrap{max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4vw,64px)}
+  .pad-air{padding-block:clamp(72px,11vw,180px)}
+  .pad-std{padding-block:clamp(52px,8vw,128px)}
+  .pad-dns{padding-block:clamp(40px,5vw,72px)}
+  .sand{background:var(--sand)}
+  .deepbg{background:var(--deep);color:var(--inkInv)}
+  .deepbg .lab{color:rgba(237,231,218,.55)}
+
+  /* ---------- prototype banner ---------- */
+  .protobar{background:var(--deep);color:var(--inkInv);padding:8px clamp(20px,4vw,64px);display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;justify-content:space-between}
+  .protobar span{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:rgba(237,231,218,.75)}
+  .protobar b{color:var(--amber);font-weight:400}
+
+  /* ---------- nav ---------- */
+  .nav{position:sticky;top:0;z-index:40;background:var(--cream);border-bottom:1px solid transparent;transition:border-color 160ms}
+  .nav.stuck{border-bottom-color:var(--rule)}
+  .navin{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+  .wm{font-family:"Newsreader",Georgia,serif;font-size:25px;color:var(--forest);letter-spacing:-.01em}
+  .navlinks{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .navlinks a{font-size:15px;color:var(--ink2);padding-bottom:3px;border-bottom:1px solid transparent}
+  .navlinks a:hover{color:var(--ink)}
+  .navlinks a.on{color:var(--forest);border-bottom-color:var(--forest)}
+  .navright{display:flex;align-items:center;gap:18px}
+  .navutil{display:flex;gap:14px;align-items:center;font-size:12.5px;color:var(--ink3)}
+  .burger{display:none;width:26px;height:16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:none;cursor:pointer;padding:0}
+
+  .btn1{display:inline-block;background:var(--forest);color:var(--cream);padding:14px 26px;border-radius:2px;font-size:15px;font-weight:500;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;transition:background 140ms cubic-bezier(.2,.6,.2,1)}
+  .btn1:hover{background:var(--forestDeep)}
+  .btn1.sm{padding:9px 17px;font-size:13.5px}
+  .btn2{display:inline-block;background:transparent;color:var(--forest);border:1px solid var(--forest);padding:13px 25px;border-radius:2px;font-size:15px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif}
+  .btn2:hover{background:var(--forest);color:var(--cream)}
+  .lnk{display:inline-block;color:var(--forest);font-size:15px;font-weight:500;border-bottom:1px solid rgba(65,90,59,.42);padding-bottom:2px;cursor:pointer}
+  .lnk:hover{border-bottom-color:var(--forest)}
+  .deepbg .btn1{background:var(--cream);color:var(--deep)}
+  .deepbg .lnk{color:var(--inkInv);border-bottom-color:rgba(237,231,218,.45)}
+
+  /* mobile overlay nav */
+  .mobnav{position:fixed;inset:0;z-index:60;background:var(--deep);color:var(--inkInv);padding:clamp(20px,5vw,40px);display:flex;flex-direction:column;justify-content:space-between}
+  .mobnav[hidden]{display:none}
+  .mobnav .close{background:none;border:none;color:var(--inkInv);font-size:30px;line-height:1;cursor:pointer;align-self:flex-end;font-family:"DM Sans",sans-serif}
+  .mobnav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+  .mobnav ul a{font-family:"Newsreader",Georgia,serif;font-size:clamp(28px,8vw,40px);letter-spacing:-.02em}
+
+  /* ---------- type scale ---------- */
+  .d1{font-size:clamp(44px,6.6vw + 18px,88px);line-height:.94}
+  .d2{font-size:clamp(34px,4.4vw + 14px,64px);line-height:1.0}
+  .d3{font-size:clamp(27px,2.6vw + 14px,44px);line-height:1.06}
+  .h1{font-size:clamp(26px,2.4vw + 14px,40px);font-weight:500;letter-spacing:-.02em;line-height:1.1}
+  .h2{font-size:clamp(21px,1.1vw + 17px,28px);font-weight:500;letter-spacing:-.015em;line-height:1.2}
+  .h3{font-size:clamp(18px,.4vw + 16px,20px);font-weight:500;letter-spacing:-.01em;line-height:1.3}
+  .bodyL{font-size:clamp(18px,.4vw + 16px,20px);line-height:1.55;color:var(--ink2)}
+  .body{font-size:clamp(16px,.2vw + 15px,17px);line-height:1.6;color:var(--ink2)}
+  .bodyS{font-size:15px;line-height:1.55;color:var(--ink2)}
+  .meas{max-width:64ch} .measN{max-width:48ch} .measS{max-width:40ch}
+  .fg{color:var(--forest)} .deepbg .fg{color:var(--inkInv)}
+
+  /* ---------- placeholder convention (BUILD-BLOCKING) ---------- */
+  .pl{border-left:1px dotted var(--brick);padding-left:12px;color:var(--ink3)}
+  .pl b{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:400;display:block;margin-bottom:3px;color:var(--brick)}
+  .deepbg .pl{border-left-color:var(--amber);color:rgba(237,231,218,.6)}
+  .deepbg .pl b{color:var(--amber)}
+  .ptag{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--brick);border:1px solid currentColor;padding:2px 6px;white-space:nowrap;display:inline-block}
+  .vtag{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--sageDeep);border:1px solid currentColor;padding:2px 6px;white-space:nowrap;display:inline-block}
+  .deepbg .ptag{color:var(--amber)}
+
+  /* ---------- photography placeholders ---------- */
+  .ph{position:relative;overflow:hidden;background:#C4A98C;isolation:isolate}
+  .ph::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.035) 0 1px,transparent 1px 3px);pointer-events:none}
+  .ph .id{position:absolute;left:10px;top:9px;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.14em;color:rgba(255,252,246,.8);text-shadow:0 1px 3px rgba(40,28,16,.8);z-index:2}
+  .ph-arm{background:radial-gradient(90% 120% at 88% 2%,rgba(255,250,238,.98),rgba(255,244,226,.35) 30%,rgba(0,0,0,0) 58%),linear-gradient(104deg,#6E5843,#9A7F62 30%,#C9AC89 58%,#E8D4B6 82%,#F7EBD6)}
+  .ph-hand{background:radial-gradient(70% 110% at 18% -6%,rgba(255,251,240,.96),rgba(255,243,224,.32) 34%,rgba(0,0,0,0) 62%),linear-gradient(160deg,#EFE0C7,#CDB393 40%,#8E7458 78%,#5F4C39)}
+  .ph-hals{background:radial-gradient(80% 100% at 78% 12%,rgba(255,248,236,.9),rgba(250,232,208,.3) 32%,rgba(0,0,0,0) 60%),linear-gradient(120deg,#5B4738,#9C7E63 42%,#D6B995 74%,#F2E1C6)}
+  .ph-rum{background:radial-gradient(58% 90% at 74% -2%,rgba(255,253,246,1),rgba(246,238,222,.55) 26%,rgba(0,0,0,0) 56%),linear-gradient(170deg,#E9E2D2,#CFC4AF 38%,#9E9481 72%,#6E6757)}
+  .ph-lys{background:radial-gradient(80% 110% at 62% -10%,rgba(255,254,250,1),rgba(250,244,231,.7) 34%,rgba(0,0,0,0) 70%),linear-gradient(190deg,#F7F1E3,#E6DAC4 46%,#C3B49A)}
+  .ph-tube{background:radial-gradient(32% 56% at 44% 36%,rgba(255,252,244,.95),rgba(236,222,198,.34) 36%,rgba(0,0,0,0) 62%),radial-gradient(110% 90% at 92% -8%,rgba(255,250,236,.65),rgba(0,0,0,0) 46%),linear-gradient(155deg,#3B2F23,#6A543E 42%,#3A2D22)}
+  .ph-portrait{background:radial-gradient(70% 100% at 26% 4%,rgba(255,250,240,.92),rgba(252,240,222,.3) 32%,rgba(0,0,0,0) 62%),linear-gradient(135deg,#C9AE8E,#9B8067 44%,#5E4C3B)}
+  .ph-lab{background:radial-gradient(56% 78% at 86% 4%,rgba(255,252,244,.92),rgba(244,236,220,.3) 30%,rgba(0,0,0,0) 58%),linear-gradient(145deg,#D8D0BE,#A9A290 46%,#6B6657)}
+  .ph-skaerm{background:radial-gradient(44% 60% at 50% 42%,rgba(252,250,246,.96),rgba(236,230,218,.4) 40%,rgba(0,0,0,0) 68%),linear-gradient(165deg,#BCB19C,#8C8271 52%,#514A3E)}
+  .ph-by{background:radial-gradient(60% 80% at 30% 6%,rgba(255,252,246,.85),rgba(242,234,218,.3) 30%,rgba(0,0,0,0) 60%),linear-gradient(150deg,#B9B4A4,#8C897C 44%,#57544A)}
+
+  /* ---------- Nulpunkt ---------- */
+  .band{position:relative;height:26px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .band .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.36)}
+  .band .tick{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--amber)}
+  .band .tick.out{background:var(--brick)}
+  .band .lead{position:absolute;top:50%;height:1px;background:var(--brick)}
+  .band .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.07) 0 5px,transparent 5px 10px)}
+  .deepbg .band{border-color:rgba(237,231,218,.3)}
+  .axis{display:flex;justify-content:space-between;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.07em;color:var(--ink3);margin-top:6px}
+  .deepbg .axis{color:rgba(237,231,218,.55)}
+  .micro{display:inline-block;position:relative;width:64px;height:8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);vertical-align:middle;flex:0 0 auto}
+  .micro .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.4)}
+  .micro .tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--amber)}
+  .micro .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.09) 0 4px,transparent 4px 8px)}
+  .deepbg .micro{border-color:rgba(237,231,218,.32)}
+  .val{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .val s{text-decoration:none;font-size:.42em;color:var(--ink3);margin-left:6px;letter-spacing:.04em}
+
+  /* time rule — static record */
+  .trule{position:relative;height:1px;background:var(--rule)}
+  .trule .pip{position:absolute;top:-4px;width:1px;height:9px;background:rgba(38,32,26,.5)}
+  .trule .dot{position:absolute;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--amber)}
+
+  /* ---------- rows ---------- */
+  .rows{list-style:none;margin:0;padding:0}
+  .rows li{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:13px;border-bottom:1px solid var(--ruleSoft)}
+  .rows .l{display:flex;align-items:center;gap:16px;min-width:0}
+  .rows .v{font-family:"DM Mono",monospace;font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .deepbg .rows li{border-bottom-color:rgba(237,231,218,.16)}
+
+  /* marker details */
+  .mk{border-bottom:1px solid var(--ruleSoft)}
+  .mk[hidden]{display:none}
+  .mk>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 88px 110px 20px;gap:18px;align-items:center;padding-block:15px}
+  .mk>summary::-webkit-details-marker{display:none}
+  .mk>summary:hover .nm{color:var(--forest)}
+  .mk .nm{font-size:16px;font-weight:500}
+  .mk .sub{font-family:"Newsreader",Georgia,serif;font-size:14.5px;color:var(--ink2);line-height:1.45;margin-top:2px;max-width:54ch;display:block}
+  .mk .unit,.mk .inc{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.07em;color:var(--ink3);text-align:right}
+  .mk .chev{font-size:17px;color:var(--ink3);text-align:right;transition:transform 200ms cubic-bezier(.2,.6,.2,1)}
+  .mk[open] .chev{transform:rotate(45deg);color:var(--forest)}
+  .mk[open]>summary .nm{color:var(--forest)}
+  .mkbody{padding:6px 0 28px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:36px}
+  .mkbody dl{margin:0;display:grid;grid-template-columns:130px minmax(0,1fr);gap:0 20px;font-size:15px}
+  .mkbody dt{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-block:9px;border-bottom:1px solid var(--ruleSoft)}
+  .mkbody dd{margin:0;padding-block:9px;border-bottom:1px solid var(--ruleSoft);line-height:1.5}
+  .mkbody .side{background:rgba(38,32,26,.035);padding:20px}
+
+  /* index bar */
+  .idx{position:sticky;top:72px;z-index:30;background:var(--cream);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .idxin{display:flex;align-items:center;gap:20px;flex-wrap:wrap;min-height:50px}
+  .idxin .items{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--ink2);padding-block:11px}
+  .idxin .items a{cursor:pointer;white-space:nowrap;padding-bottom:2px;border-bottom:1px solid transparent}
+  .idxin .items a.on{color:var(--forest);font-weight:500;border-bottom-color:var(--forest)}
+  .idxin .items .pend{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--ink3)}
+  .idxin .find{margin-left:auto;display:flex;align-items:center;gap:10px;padding-block:9px}
+  .idxin input{font-family:"DM Sans",sans-serif;font-size:14px;color:var(--ink);background:transparent;border:none;border-bottom:1px solid var(--rule);padding:6px 0;width:150px;border-radius:0}
+  .idxin input:focus{outline:none;border-bottom:2px solid var(--forest);padding-bottom:5px}
+  .idxin input::placeholder{color:var(--ink3)}
+
+  /* FAQ */
+  .qa{border-bottom:1px solid var(--ruleSoft)}
+  .qa>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding-block:17px;font-size:17px}
+  .qa>summary::-webkit-details-marker{display:none}
+  .qa>summary:hover{color:var(--forest)}
+  .qa .chev{font-size:17px;color:var(--ink3);transition:transform 200ms cubic-bezier(.2,.6,.2,1)}
+  .qa[open] .chev{transform:rotate(45deg);color:var(--forest)}
+  .qa[open]>summary{color:var(--forest)}
+  .qa .a{padding:0 0 22px;max-width:64ch}
+
+  /* utility layout */
+  .split{display:grid;gap:clamp(24px,4vw,64px);align-items:center}
+  .sp5545{grid-template-columns:55fr 45fr}
+  .sp4258{grid-template-columns:42fr 58fr}
+  .sp6238{grid-template-columns:62fr 38fr}
+  .facts{display:flex;flex-wrap:wrap;gap:12px 40px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2)}
+  .hr{border-top:1px solid var(--rule)}
+  .hrs{border-top:1px solid var(--ruleSoft)}
+
+  /* footer */
+  footer{background:var(--deep);color:var(--inkInv)}
+  footer a{color:rgba(237,231,218,.78);cursor:pointer}
+  footer a:hover{color:var(--inkInv)}
+  .fgrid{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:34px 40px}
+  .fgrid h4{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:rgba(237,231,218,.5);margin-bottom:14px;font-weight:400}
+  .fgrid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:14.5px}
+
+  @media (max-width:900px){
+    .navlinks,.navutil{display:none}
+    .burger{display:block}
+    .split,.sp5545,.sp4258,.sp6238{grid-template-columns:minmax(0,1fr)}
+    .idx{top:60px}
+    .navin{min-height:60px}
+    .mkbody{grid-template-columns:minmax(0,1fr);gap:20px}
+    .mkbody dl{grid-template-columns:minmax(0,1fr)}
+    .mkbody dt{border-bottom:none;padding-bottom:0}
+    .mkbody dd{padding-top:2px}
+    .mk>summary{grid-template-columns:minmax(0,1fr) 20px;gap:12px}
+    .mk .unit,.mk .inc{display:none}
+    .fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
+</style>
+
+<div class="protobar">
+  <span>Prototype · Fase 5 — <b>fotografi er pladsholdere</b></span>
+  <span>Klinisk indhold uden godkendelse er markeret <b>sådan</b></span>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap navin">
+    <a class="wm" data-goto="home">Pandonia</a>
+    <ul class="navlinks">
+      <li><a data-goto="maaler">Hvad vi måler</a></li>
+      <li><a data-goto="saadan">Sådan fungerer det</a></li>
+      <li><a data-goto="rapport">Din rapport</a></li>
+      <li><a data-goto="om">Om Pandonia</a></li>
+    </ul>
+    <div class="navright">
+      <div class="navutil"><a data-goto="faq">FAQ</a><span>·</span><a>Log ind</a><span>·</span><a>EN</a></div>
+      <button class="btn1 sm" data-goto="book">Book din blodprøve</button>
+      <button class="burger" id="burger" aria-label="Åbn menu" aria-expanded="false"></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobnav" id="mobnav" hidden aria-label="Hovedmenu">
+  <button class="close" id="mobclose" aria-label="Luk menu">×</button>
+  <ul>
+    <li><a data-goto="maaler">Hvad vi måler</a></li>
+    <li><a data-goto="saadan">Sådan fungerer det</a></li>
+    <li><a data-goto="rapport">Din rapport</a></li>
+    <li><a data-goto="om">Om Pandonia</a></li>
+    <li><a data-goto="faq">FAQ</a></li>
+  </ul>
+  <div>
+    <button class="btn1" style="background:var(--cream);color:var(--deep);width:100%" data-goto="book">Book din blodprøve</button>
+    <div class="lab" style="color:rgba(237,231,218,.5);margin-top:16px">København · Log ind · EN</div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ================= FORSIDE ================= -->
+<section data-page="home">
+
+  <!-- 01 hero — V2 Editorial, Klokken × Dagslys -->
+  <div class="wrap" style="padding-block:clamp(28px,5vw,66px) clamp(40px,6vw,80px)">
+    <div class="split sp6238" style="align-items:start">
+      <div>
+        <div style="display:grid;grid-template-columns:62px minmax(0,1fr);gap:0 20px;align-items:baseline">
+          <span class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3);text-align:right">08.40</span>
+          <span class="s d1 fg">En tirsdag.</span>
+          <span class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3);text-align:right">09.30</span>
+          <span class="s d1 fg" style="padding-left:6%">Et køkkenbord.</span>
+          <span class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--amber);text-align:right">12.14<span style="display:block;font-size:8.5px;color:var(--brick);letter-spacing:.11em;margin-top:5px">ANTAL<br>AFVENTER</span></span>
+          <span class="s d1 fg" style="padding-left:2%">Fireogtredive svar.</span>
+        </div>
+        <p class="bodyL measN" style="margin:34px 0 26px 82px">Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade. Du får tallene — og en læge til at læse dem sammen med dig.</p>
+        <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-left:82px">
+          <button class="btn1" data-goto="book">Book din blodprøve</button>
+          <a class="lnk" data-goto="maaler">Se hvad vi måler →</a>
+        </div>
+      </div>
+      <div class="ph ph-arm" style="aspect-ratio:3/4;margin-top:-28px"><span class="id">ARM-01</span></div>
+    </div>
+  </div>
+
+  <!-- 02 grundlaget -->
+  <div class="wrap" style="padding-block:6px 30px">
+    <div class="hr" style="border-bottom:1px solid var(--rule);padding-block:18px">
+      <div class="facts"><span>34 biomarkører <span class="ptag" style="margin-left:6px">antal afventer</span></span><span>Eget laboratorium · København</span><span>Læge inkluderet</span><span>Hjemme hos dig</span></div>
+    </div>
+  </div>
+
+  <!-- 03 hvorfor -->
+  <div class="sand"><div class="wrap pad-air">
+    <div style="max-width:54ch;margin-left:8%">
+      <h2 class="s d2 fg">De fleste ting kroppen fortæller, fortæller den stille og i god tid.</h2>
+      <p class="body" style="margin-top:26px">Et blodprøvesvar er ikke en dom. Det er en beskrivelse af, hvor du står lige nu — og hvad der har flyttet sig, siden sidst du så efter. Det meste vil være, som det skal være. Det er også et svar.</p>
+      <div class="lab" style="margin-top:26px">Ingen henvisning · ingen venteliste</div>
+    </div>
+  </div></div>
+
+  <!-- 04 én markør -->
+  <div class="sand"><div class="split sp4258" style="align-items:stretch;gap:0">
+    <div class="ph ph-hals" style="min-height:340px"><span class="id">HALS-01</span></div>
+    <div class="pad-dns" style="padding-inline:clamp(20px,4vw,64px)">
+      <div class="lab" style="margin-bottom:14px">Én af markørerne</div>
+      <h2 class="s d3 fg measS">D-vitamin er lavt hos de fleste danskere om vinteren.</h2>
+      <p class="body measN" style="margin:18px 0 8px">Det påvirker immunforsvar, knoglestyrke og mental balance. Du mærker det sjældent som noget bestemt — det er derfor, det måles i stedet for at gættes.</p>
+      <div style="margin-bottom:26px"><span class="vtag">Verificeret · Pandonias egen tekst</span></div>
+      <div style="max-width:420px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
+          <span class="val" style="font-size:28px">62<s>nmol/L</s></span>
+          <span class="m" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sageDeep)">Inden for området</span>
+        </div>
+        <div class="band"><div class="ref" style="left:28%;width:56%"></div><div class="tick" style="left:37%"></div></div>
+        <div class="axis"><span>0</span><span>REFERENCEOMRÅDE AFVENTER LABORATORIET</span><span>200</span></div>
+      </div>
+      <div style="margin-top:26px"><a class="lnk" data-goto="maaler">Se alle markører →</a></div>
+    </div>
+  </div></div>
+
+  <!-- 05 vejrtrækningen -->
+  <div class="ph ph-rum" style="min-height:min(60vh,420px);display:flex;align-items:flex-end">
+    <span class="id">RUM-01</span>
+    <div style="padding:0 clamp(20px,4vw,64px) clamp(26px,4vw,44px);position:relative;z-index:2">
+      <p class="s" style="font-size:clamp(18px,2vw,26px);line-height:1.3;color:var(--cream);max-width:26ch;text-shadow:0 2px 14px rgba(30,22,14,.6)">Et køkken i København, ti minutter i ni.</p>
+    </div>
+  </div>
+
+  <!-- 06 dagen -->
+  <div class="wrap pad-std">
+    <h2 class="s d3 fg measS">Prøven tages, mens kaffen stadig er varm.</h2>
+    <p class="body measN" style="margin:16px 0 40px">Fra din bordkant til dit svar — uden at du skulle andre steder hen.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.4vw,20px);align-items:end">
+      <div class="ph ph-hand" style="aspect-ratio:3/4"><span class="id">HÅND-02</span></div>
+      <div style="padding-bottom:30px"><div class="ph ph-tube" style="aspect-ratio:3/4"><span class="id">OBJ-02</span></div></div>
+      <div class="ph ph-lab" style="aspect-ratio:3/4"><span class="id">LAB-01</span></div>
+      <div style="padding-bottom:30px"><div class="ph ph-skaerm" style="aspect-ratio:3/4"><span class="id">SKÆRM-01</span></div></div>
+      <div class="ph ph-portrait" style="aspect-ratio:3/4"><span class="id">PORTRÆT-01</span></div>
+    </div>
+
+    <div class="trule" style="margin-top:26px">
+      <div class="pip" style="left:8%"></div><div class="pip" style="left:29%"></div>
+      <div class="pip" style="left:50%"></div><div class="dot" style="left:calc(71% - 4px)"></div>
+      <div class="pip" style="left:92%"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.4vw,20px);margin-top:14px">
+      <div><div class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">08.40</div><div class="h3" style="margin-top:4px">Deborah ringer på</div><p class="bodyS" style="margin-top:3px">Fem minutter ved køkkenbordet. Så er dagen din igen.</p></div>
+      <div><div class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">09.05</div><div class="h3" style="margin-top:4px">Prøven kører ind</div><p class="bodyS" style="margin-top:3px">Til laboratoriet på Langebrogade.</p></div>
+      <div><div class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">09.30</div><div class="h3" style="margin-top:4px">Analysen begynder</div><p class="bodyS" style="margin-top:3px">Vi laver den selv. Det er hele forskellen.</p></div>
+      <div><div class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--amber)">12.14</div><div class="h3" style="margin-top:4px">Rapporten ligger klar</div><p class="bodyS" style="margin-top:3px">Dine tal, dit sprog.</p><div class="micro" style="width:100%;margin-top:8px"><span class="ref" style="left:26%;width:54%"></span><span class="tick" style="left:41%"></span></div></div>
+      <div><div class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">16.00</div><div class="h3" style="margin-top:4px">Benedikte gennemgår den</div><p class="bodyS" style="margin-top:3px">Tyve minutter, inden du kører hjem.</p></div>
+    </div>
+    <div style="margin-top:32px"><a class="lnk" data-goto="saadan">Hele forløbet, trin for trin →</a></div>
+  </div>
+
+  <!-- 07 hvad vi måler -->
+  <div class="deepbg"><div class="wrap pad-std">
+    <h2 class="s d3 fg measS">Seks områder. Én blodprøve.</h2>
+    <p class="body measN" style="color:rgba(237,231,218,.72);margin:14px 0 34px">Du finder dine tal der, hvor du ville lede efter dem.</p>
+    <ul class="rows">
+      <li><span class="l"><span class="s" style="font-size:clamp(19px,1.9vw,26px);min-width:230px">Hjerte og kar</span><span class="micro"><span class="ref" style="left:22%;width:54%"></span><span class="tick" style="left:44%"></span></span></span><span class="v" style="color:rgba(237,231,218,.6)">— markører</span></li>
+      <li><span class="l"><span class="s" style="font-size:clamp(19px,1.9vw,26px);min-width:230px">Blodsukker og stofskifte</span><span class="micro"><span class="ref" style="left:16%;width:58%"></span><span class="tick" style="left:52%"></span></span></span><span class="v" style="color:rgba(237,231,218,.6)">— markører</span></li>
+      <li><span class="l"><span class="s" style="font-size:clamp(19px,1.9vw,26px);min-width:230px">Hormoner</span><span class="micro"><span class="ref" style="left:24%;width:52%"></span><span class="tick" style="left:38%"></span></span></span><span class="v" style="color:rgba(237,231,218,.6)">— markører</span></li>
+      <li><span class="l"><span class="m" style="font-size:13px;letter-spacing:.09em;color:rgba(237,231,218,.45);min-width:230px">OMRÅDE 4 — AFVENTER</span></span><span class="v" style="color:rgba(237,231,218,.4)">—</span></li>
+      <li><span class="l"><span class="m" style="font-size:13px;letter-spacing:.09em;color:rgba(237,231,218,.45);min-width:230px">OMRÅDE 5 — AFVENTER</span></span><span class="v" style="color:rgba(237,231,218,.4)">—</span></li>
+      <li><span class="l"><span class="m" style="font-size:13px;letter-spacing:.09em;color:rgba(237,231,218,.45);min-width:230px">OMRÅDE 6 — AFVENTER</span></span><span class="v" style="color:rgba(237,231,218,.4)">—</span></li>
+    </ul>
+    <div style="border-top:1px solid rgba(237,231,218,.22);margin-top:28px;padding-top:18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end">
+      <div>
+        <div class="lab" style="margin-bottom:8px">Bag områderne — Pandonia-modellen</div>
+        <div class="m" style="font-size:11.5px;letter-spacing:.07em;color:rgba(237,231,218,.68);line-height:1.8">SIGNALERING · TRANSPORT · FORDØJELSE · ENERGI · IMMUNFORSVAR · AFFALDSSYSTEM</div>
+      </div>
+      <a class="lnk" data-goto="maaler">Se hele listen →</a>
+    </div>
+  </div></div>
+
+  <!-- 08 rapporten -->
+  <div class="deepbg"><div class="wrap pad-dns" style="padding-top:0">
+    <div class="hrs" style="border-top:1px solid rgba(237,231,218,.22);padding-top:clamp(36px,5vw,64px)">
+      <div class="split sp4258" style="align-items:start">
+        <div>
+          <div class="lab" style="margin-bottom:10px">Din Pandonia Score</div>
+          <div class="val" style="font-size:clamp(50px,7vw,86px);line-height:.9">78<s style="font-size:.24em;color:rgba(237,231,218,.5)">/ 100</s></div>
+          <div class="band" style="margin-top:22px"><div class="ref" style="left:58%;width:42%"></div><div class="tick" style="left:78%"></div></div>
+          <div class="axis"><span>0</span><span>EKSEMPELDATA</span><span>100</span></div>
+          <p class="pl bodyS" style="margin-top:20px"><b>Afventer klinisk bekræftelse</b>Hvad de seks scorer måler på, og hvordan de beregnes, er ikke bekræftet.</p>
+        </div>
+        <div style="margin-top:26px">
+          <ul class="rows">
+            <li><span class="l"><span style="font-size:15px;min-width:180px">Hjerte og kar</span><span class="micro"><span class="ref" style="left:58%;width:42%"></span><span class="tick" style="left:82%"></span></span></span><span class="v">82</span></li>
+            <li><span class="l"><span style="font-size:15px;min-width:180px">Blodsukker og stofskifte</span><span class="micro"><span class="ref" style="left:58%;width:42%"></span><span class="tick" style="left:74%"></span></span></span><span class="v">74</span></li>
+            <li><span class="l"><span style="font-size:15px;min-width:180px">Hormoner</span><span class="micro"><span class="ref" style="left:58%;width:42%"></span><span class="tick" style="left:80%"></span></span></span><span class="v">80</span></li>
+            <li><span class="l"><span class="m" style="font-size:12px;letter-spacing:.09em;color:rgba(237,231,218,.45);min-width:180px">OMRÅDE 4–6 AFVENTER</span></span><span class="v" style="color:rgba(237,231,218,.4)">—</span></li>
+          </ul>
+          <div style="margin-top:24px"><a class="lnk" data-goto="rapport">Se hvordan rapporten ser ud →</a></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- 09 lab + læge -->
+  <div class="split sp4258" style="align-items:center;gap:0">
+    <div class="ph ph-portrait" style="min-height:380px"><span class="id">PORTRÆT-01</span></div>
+    <div class="pad-air" style="padding-inline:clamp(20px,4vw,64px)">
+      <h2 class="s d3 fg measS">Tallene bliver først til noget, når nogen sætter dem ind i dit liv.</h2>
+      <p class="body measN" style="margin:20px 0 26px">Benedikte Halle er læge hos Pandonia. Hun gennemgår din rapport med dig i tyve minutter og peger på det, der er værd at gøre noget ved — og det, der ikke er.</p>
+      <div class="hr" style="padding-top:18px;max-width:46ch">
+        <div class="lab" style="margin-bottom:8px">Laboratoriet</div>
+        <p class="bodyS">Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag — ikke en logistikaftale, men et hus vi selv driver.</p>
+        <div style="margin-top:16px"><a class="lnk" data-goto="saadan">Se hvad der sker i laboratoriet →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 pris -->
+  <div class="sand"><div class="wrap pad-std">
+    <h2 class="s d3 fg measS" style="margin-bottom:26px">To måder at begynde på.</h2>
+    <ul class="rows" style="max-width:680px">
+      <li style="align-items:flex-start;padding-block:18px">
+        <span class="l" style="flex-direction:column;align-items:flex-start;gap:4px">
+          <span class="h3">Health Test</span>
+          <span class="bodyS measN">34 biomarkører · Pandonia Score · seks områdescorer · lægekonsultation på 20 minutter</span>
+        </span><span class="v" style="font-size:15px">3.500 kr.</span>
+      </li>
+      <li style="align-items:flex-start;padding-block:18px">
+        <span class="l" style="flex-direction:column;align-items:flex-start;gap:4px">
+          <span class="h3">Health Test + Consultation</span>
+          <span class="bodyS measN">Alt ovenstående, booket som én samlet pakke</span>
+        </span><span class="v" style="font-size:15px">4.750 kr.</span>
+      </li>
+    </ul>
+    <p class="bodyS" style="margin-top:18px;max-width:54ch">Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som gavekort og virksomhedsordning.</p>
+    <div style="margin-top:26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+      <button class="btn1" data-goto="book">Book din blodprøve</button>
+      <a class="lnk" data-goto="book">Se alle priser →</a>
+    </div>
+  </div></div>
+
+  <!-- 11 afslutning -->
+  <div class="wrap pad-air" style="text-align:center">
+    <h2 class="s d2 fg" style="max-width:20ch;margin:0 auto">Kend din krop. Før den siger til.</h2>
+    <div style="margin-top:32px"><button class="btn1" data-goto="book">Book din blodprøve</button></div>
+    <div class="lab" style="margin-top:28px">København</div>
+  </div>
+</section>
+
+<!-- ================= HVAD VI MÅLER ================= -->
+<section data-page="maaler" hidden>
+  <div class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(28px,4vw,52px)">
+    <div class="split sp6238" style="align-items:start">
+      <div>
+        <h1 class="s d2 fg measS">Ét tal fortæller sjældent noget alene.</h1>
+        <p class="bodyL measN" style="margin-top:28px">En blodprøve er ikke en facitliste. Den er en række målinger, der først bliver til noget, når man ser dem sammen — og sammen med det, du ved om dit eget liv.</p>
+        <p class="body measN" style="margin-top:16px">Tag D-vitamin. Én måling, der rører ved tre forskellige ting på én gang:</p>
+
+        <div class="hr" style="margin-top:30px;padding-top:22px;max-width:48ch">
+          <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px">
+            <span class="s" style="font-size:26px;color:var(--forest)">D-vitamin</span>
+            <span class="vtag">Verificeret · Pandonias egen tekst</span>
+          </div>
+          <p class="bodyS" style="margin-bottom:18px">Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret. Påvirker immunforsvar, knoglestyrke og mental balance.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)">
+            <div style="background:var(--cream);padding:11px 12px"><div class="lab" style="margin-bottom:4px">Rører ved</div><div style="font-size:14px;font-weight:500">Immunforsvar</div></div>
+            <div style="background:var(--cream);padding:11px 12px"><div class="lab" style="margin-bottom:4px">Rører ved</div><div style="font-size:14px;font-weight:500">Knoglestyrke</div></div>
+            <div style="background:var(--cream);padding:11px 12px"><div class="lab" style="margin-bottom:4px">Rører ved</div><div style="font-size:14px;font-weight:500">Mental balance</div></div>
+          </div>
+          <div class="lab" style="margin-top:12px">Derfor hører markører til flere steder på én gang</div>
+        </div>
+        <div style="margin-top:28px"><a class="lnk" data-goto="book">Se hvad et tjek koster →</a></div>
+      </div>
+      <div class="ph ph-hals" style="aspect-ratio:4/5"><span class="id">HALS-01</span></div>
+    </div>
+  </div>
+
+  <div class="idx"><div class="wrap idxin">
+    <div class="items">
+      <a class="on">Hjerte og kar</a><a>Blodsukker og stofskifte</a><a>Hormoner</a>
+      <span class="pend">OMRÅDE 4</span><span class="pend">5</span><span class="pend">6</span>
+    </div>
+    <div class="find">
+      <label for="mkfilter" class="lab">Find markør</label>
+      <input id="mkfilter" type="search" placeholder="fx kolesterol" autocomplete="off">
+    </div>
+  </div></div>
+
+  <div class="wrap pad-dns">
+    <div class="split sp5545" style="align-items:start;margin-bottom:30px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+          <h2 class="s d3 fg">Hjerte og kar</h2>
+          <span class="m" id="areaCount" style="font-size:12px;letter-spacing:.09em;color:var(--ink3)">7 MARKØRER</span>
+        </div>
+        <p class="pl body" style="margin-top:16px;max-width:48ch"><b>Afventer klinisk tekst</b>To til fire sætninger om hvad dette område dækker, og hvorfor det er værd at følge over tid — uden at love noget om sygdomsforebyggelse.</p>
+        <div class="lab" style="margin-top:16px">Områdenavn fra konceptet · ikke bekræftet på pandonia.com</div>
+      </div>
+      <div class="ph ph-arm" style="aspect-ratio:16/9"><span class="id">ARM-01</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 88px 110px 20px;gap:18px;padding-bottom:10px;border-bottom:1px solid var(--rule)">
+      <span class="lab">Markør</span><span class="lab" style="text-align:right">Enhed</span><span class="lab" style="text-align:right">Indgår i</span><span></span>
+    </div>
+
+    <div id="mklist">
+      <details class="mk" data-k="kolesterolprofil cholesterol lipid kolesterol hjerte">
+        <summary><span><span class="nm">Kolesterolprofil</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord om hvad markøren måler, og hvad den typisk bruges til.</span></span><span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span></summary>
+        <div class="mkbody">
+          <div><dl>
+            <dt>Hvad er det</dt><dd class="pl"><b>Afventer klinisk tekst</b>Tre til fem sætninger på almindeligt dansk.</dd>
+            <dt>Hvorfor måler vi det</dt><dd class="pl"><b>Afventer klinisk tekst</b>To sætninger.</dd>
+            <dt>Hvad kan det pege på</dt><dd class="pl"><b>Afventer klinisk godkendelse</b>Formuleres som "kan pege på" — aldrig som en liste af diagnoser.</dd>
+            <dt>Måleenhed</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+            <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+            <dt>Bemærk</dt><dd><span class="ptag">Panel — indhold ukendt</span> <span class="bodyS">Pandonia offentliggør ikke hvilke enkeltmarkører dette dækker.</span></dd>
+          </dl></div>
+          <div class="side">
+            <div class="lab" style="margin-bottom:12px">Referenceområde</div>
+            <div class="band"><div class="none"></div></div>
+            <div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div>
+            <div class="hrs" style="margin-top:18px;padding-top:14px">
+              <div class="lab" style="margin-bottom:6px">Områder</div>
+              <div style="font-size:14px">Hjerte og kar <span style="color:var(--ink3)">· flere mulige</span></div>
+              <div class="lab" style="margin:14px 0 6px">Biologisk system</div>
+              <div class="m" style="font-size:11.5px;letter-spacing:.06em;color:var(--ink2)">AFVENTER KLINISK MAPPING</div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="mk" data-k="d-vitamin vitamin d dvitamin">
+        <summary><span><span class="nm">D-vitamin</span><span class="sub">Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret.</span></span><span class="unit">nmol/L</span><span class="inc">Health Test</span><span class="chev">+</span></summary>
+        <div class="mkbody">
+          <div>
+            <p style="margin-bottom:14px"><span class="vtag">Verificeret</span> <span class="bodyS" style="margin-left:8px">Teksten nedenfor er Pandonias egen.</span></p>
+            <dl>
+              <dt>Hvad er det</dt><dd>Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret.</dd>
+              <dt>Rører ved</dt><dd>Immunforsvar · knoglestyrke · mental balance</dd>
+              <dt>Måleenhed</dt><dd>nmol/L <span class="ptag" style="margin-left:8px">bekræft med laboratoriet</span></dd>
+              <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+              <dt>Kan også købes</dt><dd>D-vitamin Test · 1.000 kr. <span class="vtag" style="margin-left:8px">Verificeret</span></dd>
+            </dl>
+          </div>
+          <div class="side">
+            <div class="lab" style="margin-bottom:12px">Referenceområde</div>
+            <div class="band"><div class="none"></div></div>
+            <div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div>
+            <div class="hrs" style="margin-top:18px;padding-top:14px">
+              <div class="lab" style="margin-bottom:6px">Områder</div>
+              <div style="font-size:14px;line-height:1.55">Immunforsvar · Knogler · Mental balance<br><span style="color:var(--ink3);font-size:13px">Tre områder — ikke ét</span></div>
+              <div class="lab" style="margin:14px 0 6px">Biologisk system</div>
+              <div class="m" style="font-size:11.5px;letter-spacing:.06em;color:var(--ink2)">AFVENTER KLINISK MAPPING</div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="mk" data-k="hba1c langtidsblodsukker blodsukker glucose stofskifte">
+        <summary><span><span class="nm">HbA1c</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord.</span></span><span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span></summary>
+        <div class="mkbody">
+          <div><dl>
+            <dt>Også kaldet</dt><dd>Langtidsblodsukker <span class="vtag" style="margin-left:8px">Verificeret · booking</span></dd>
+            <dt>Hvad er det</dt><dd class="pl"><b>Afventer klinisk tekst</b>Tre til fem sætninger.</dd>
+            <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+          </dl></div>
+          <div class="side"><div class="lab" style="margin-bottom:12px">Referenceområde</div><div class="band"><div class="none"></div></div><div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div></div>
+        </div>
+      </details>
+
+      <details class="mk" data-k="tsh skjoldbruskkirtel stofskifte thyroid t3 t4">
+        <summary><span><span class="nm">TSH</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord.</span></span><span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span></summary>
+        <div class="mkbody">
+          <div><dl>
+            <dt>Måles sammen med</dt><dd>T3 · T4 <span class="vtag" style="margin-left:8px">Verificeret som markører</span> <span class="ptag" style="margin-left:6px">gruppering afventer</span></dd>
+            <dt>Hvad er det</dt><dd class="pl"><b>Afventer klinisk tekst</b>Tre til fem sætninger.</dd>
+            <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+          </dl></div>
+          <div class="side"><div class="lab" style="margin-bottom:12px">Referenceområde</div><div class="band"><div class="none"></div></div><div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div></div>
+        </div>
+      </details>
+
+      <details class="mk" data-k="testosteron testosterone hormon">
+        <summary><span><span class="nm">Testosteron</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord.</span></span><span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span></summary>
+        <div class="mkbody">
+          <div><dl>
+            <dt>Varierer efter</dt><dd>Køn <span class="ptag" style="margin-left:8px">områder afventer</span> <span class="bodyS">— to referenceområder, vist stablet</span></dd>
+            <dt>Kan også købes</dt><dd>Mænds Sundhedstest · 1.400 kr. <span class="vtag" style="margin-left:8px">Verificeret</span></dd>
+          </dl></div>
+          <div class="side">
+            <div class="lab" style="margin-bottom:12px">Referenceområde · to sæt</div>
+            <div class="band" style="margin-bottom:6px"><div class="none"></div></div>
+            <div class="m" style="font-size:9.5px;letter-spacing:.09em;color:var(--ink3);margin-bottom:12px">KVINDER — AFVENTER</div>
+            <div class="band"><div class="none"></div></div>
+            <div class="m" style="font-size:9.5px;letter-spacing:.09em;color:var(--ink3);margin-top:6px">MÆND — AFVENTER</div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div id="nores" hidden style="padding:26px 0"><p class="body">Ingen markører matcher. <span class="lab">Prøv fx "kolesterol" eller "d-vitamin"</span></p></div>
+
+    <div class="hr" style="margin-top:30px;padding-top:18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end">
+      <div>
+        <div class="lab" style="margin-bottom:8px">Bag dette område — Pandonia-modellen</div>
+        <div class="m" style="font-size:11.5px;letter-spacing:.06em;color:var(--ink2)">AFVENTER KLINISK MAPPING · FORVENTET 1–3 AF SEKS SYSTEMER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- model chapter -->
+  <div class="deepbg"><div class="wrap pad-std">
+    <h2 class="s d3 fg measS">Kroppen arbejder ikke i kasser.</h2>
+    <p class="body measN" style="color:rgba(237,231,218,.72);margin-top:14px">Områderne ovenfor er den nemmeste måde at finde rundt på. Men en markør hører sjældent kun ét sted til — og det er dét, Pandonia-modellen beskriver.</p>
+    <p class="pl body measN" style="margin-top:14px"><b>Afventer klinisk tekst</b>To til tre afsnit om modellen, dens forhold til the four horsemen of aging, og hvad den ikke lover.</p>
+
+    <div style="border-top:1px solid rgba(237,231,218,.22);border-bottom:1px solid rgba(237,231,218,.22);padding-block:32px;margin-block:30px 22px">
+      <div class="lab" style="margin-bottom:24px">Én markør · flere områder · flere systemer</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,26px);align-items:center;max-width:680px">
+        <div style="font-size:14.5px;line-height:1.75">Immunforsvar<br>Knoglestyrke<br>Mental balance<div class="lab" style="margin-top:8px">Områder · lag 1</div></div>
+        <div style="text-align:center;position:relative">
+          <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(237,231,218,.3)"></div>
+          <span class="s" style="font-size:clamp(18px,2.2vw,28px);background:var(--deep);padding:0 14px;position:relative">D-vitamin</span>
+        </div>
+        <div class="m" style="font-size:12px;letter-spacing:.06em;line-height:1.85;color:rgba(237,231,218,.7);text-align:right">AFVENTER<br>KLINISK<br>MAPPING<div class="lab" style="margin-top:8px">Systemer · lag 2</div></div>
+      </div>
+      <p class="bodyS" style="color:rgba(237,231,218,.6);margin-top:20px;max-width:52ch">Venstre side er verificeret — Pandonias egen beskrivelse. Højre side afventer.</p>
+    </div>
+
+    <div class="m" style="font-size:11.5px;letter-spacing:.07em;color:rgba(237,231,218,.68);line-height:1.8">SIGNALERING · TRANSPORT · FORDØJELSE · ENERGI · IMMUNFORSVAR · AFFALDSSYSTEM</div>
+    <div class="m" style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:10px">To af disse seks navne er sendt til klinisk gennemsyn</div>
+  </div></div>
+
+  <!-- limits -->
+  <div class="sand"><div class="wrap pad-std">
+    <h2 class="s d3 fg measS">Hvad vi ikke måler.</h2>
+    <p class="pl body measN" style="margin-top:20px"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet. Ingen konkurrent har dette afsnit — det er den stærkeste tillidsmarkør på siden.</p>
+    <div style="margin-top:30px;display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+      <button class="btn1" data-goto="book">Book din blodprøve</button>
+      <a class="lnk" data-goto="rapport">Se hvordan resultatet ser ud →</a>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= SÅDAN FUNGERER DET ================= -->
+<section data-page="saadan" hidden>
+  <div class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,40px)">
+    <h1 class="s d2 fg" style="max-width:20ch">Fra dit køkkenbord til dit svar.</h1>
+    <p class="bodyL meas" style="margin-top:28px;max-width:52ch">Hele forløbet foregår på én dag. Her er hvad der sker, i den rækkefølge det sker.</p>
+  </div>
+
+  <div class="ph ph-hand" style="min-height:min(52vh,380px)"><span class="id">HÅND-01</span></div>
+
+  <!-- 1 før -->
+  <div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><div class="m" style="font-size:13px;letter-spacing:.1em;color:var(--ink3)">FØR</div><h2 class="s d3 fg" style="margin-top:8px">Aftenen inden</h2></div>
+      <div>
+        <p class="body meas">Du skal faste i mindst 12 timer før prøven — og lade være med kaffe og kosttilskud. Hård træning frarådes de sidste 48 timer.</p>
+        <p class="body meas" style="margin-top:14px">Vi anbefaler tid om morgenen, fordi flere biomarkører naturligt topper tidligt på dagen. Det er ikke for bekvemmelighedens skyld; det er for målingens.</p>
+        <div style="margin-top:16px"><span class="vtag">Verificeret · Pandonias egen FAQ</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 morgen -->
+  <div class="sand"><div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><div class="m" style="font-size:13px;letter-spacing:.1em;color:var(--ink3)">MORGENEN</div><h2 class="s d3 fg" style="margin-top:8px">Vi kommer til dig</h2></div>
+      <div>
+        <p class="body meas">Deborah Saren er bioanalytiker og blodprøvetager med erfaring fra flere hospitaler. Hun arbejder under supervision af vores ansvarlige læge.</p>
+        <p class="body meas" style="margin-top:14px">Selve prøven tager omkring fem minutter. Vi kommer hjem til dig eller på din arbejdsplads — eller du kan møde op på Langebrogade 3A.</p>
+        <div class="hrs" style="margin-top:22px;padding-top:16px">
+          <div class="lab" style="margin-bottom:8px">Vi kommer i disse områder</div>
+          <p class="bodyS">København K · N · NV · V · S · SV · Ø · Frederiksberg · Hellerup</p>
+          <div style="margin-top:10px"><span class="vtag">Verificeret</span></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- 3 byen -->
+  <div class="ph ph-by" style="min-height:min(46vh,340px);display:flex;align-items:flex-end">
+    <span class="id">OBJ-02</span>
+    <div style="padding:0 clamp(20px,4vw,64px) clamp(24px,4vw,40px);position:relative;z-index:2">
+      <p class="s" style="font-size:clamp(17px,1.9vw,24px);line-height:1.3;color:var(--cream);max-width:24ch;text-shadow:0 2px 14px rgba(30,22,14,.6)">Prøven kører ind gennem byen.</p>
+    </div>
+  </div>
+
+  <!-- 4 laboratoriet (anchor) -->
+  <div id="laboratoriet" class="deepbg"><div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><div class="m" style="font-size:13px;letter-spacing:.1em;color:rgba(237,231,218,.5)">MIDT PÅ DAGEN</div><h2 class="s d3 fg" style="margin-top:8px">Laboratoriet</h2></div>
+      <div>
+        <p class="bodyL meas" style="color:rgba(237,231,218,.85)">Vi har vores eget laboratorium på Langebrogade i København. Det er ikke en detalje — det er hele grunden til, at svaret kan nå frem samme dag.</p>
+        <p class="body meas" style="color:rgba(237,231,218,.7);margin-top:16px">De fleste sender blodprøver videre til et eksternt laboratorium og venter. Vi analyserer selv, i samme by som du bor i.</p>
+        <div style="margin-top:14px"><span class="vtag" style="color:var(--sage)">Verificeret · Pandonias egen FAQ</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(237,231,218,.2);margin-top:clamp(28px,4vw,52px)">
+      <div class="ph ph-lab" style="aspect-ratio:4/3"><span class="id">LAB-01</span></div>
+      <div class="ph ph-lab" style="aspect-ratio:4/3;filter:hue-rotate(-6deg)"><span class="id">LAB-02</span></div>
+      <div class="ph ph-lab" style="aspect-ratio:4/3;filter:brightness(.92)"><span class="id">LAB-03</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px 40px;margin-top:32px">
+      <div><div class="lab" style="margin-bottom:8px">Adresse</div><p class="bodyS" style="color:rgba(237,231,218,.78)">Langebrogade 3A, 2. sal<br>1411 København K</p><div class="lab" style="margin-top:8px">Verificeret</div></div>
+      <div><div class="lab" style="margin-bottom:8px">Akkreditering</div><p class="pl bodyS"><b>Afventer</b>Under hvilken godkendelse laboratoriet drives.</p></div>
+      <div><div class="lab" style="margin-bottom:8px">Udstyr og metode</div><p class="pl bodyS"><b>Afventer</b>Hvilke analyser køres i huset, og hvilke sendes videre.</p></div>
+      <div><div class="lab" style="margin-bottom:8px">Kvalitetskontrol</div><p class="pl bodyS"><b>Afventer</b>Hvordan resultaterne kontrolleres før de sendes.</p></div>
+    </div>
+  </div></div>
+
+  <!-- 5 rapporten -->
+  <div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><div class="m" style="font-size:13px;letter-spacing:.1em;color:var(--ink3)">EFTER FROKOST</div><h2 class="s d3 fg" style="margin-top:8px">Rapporten</h2></div>
+      <div>
+        <p class="body meas">Inden for to til fire timer ligger din rapport klar. Den er skrevet til at blive læst af dig — ikke af en læge.</p>
+        <div style="max-width:440px;margin-top:24px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
+            <span style="font-size:16px;font-weight:500">Eksempel på en markør</span>
+            <span class="m" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sageDeep)">Inden for området</span>
+          </div>
+          <div class="band"><div class="ref" style="left:26%;width:52%"></div><div class="tick" style="left:48%"></div></div>
+          <div class="axis"><span>0</span><span>DEMODATA</span><span>250</span></div>
+        </div>
+        <div style="margin-top:22px"><a class="lnk" data-goto="rapport">Se hele rapporten →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 lægen -->
+  <div class="sand"><div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><div class="m" style="font-size:13px;letter-spacing:.1em;color:var(--ink3)">SENERE SAMME DAG</div><h2 class="s d3 fg" style="margin-top:8px">Samtalen</h2></div>
+      <div>
+        <p class="body meas">Du booker konsultationen, når det passer dig — vi skal blot have mindst tre timer fra du får svaret, til vi taler sammen. Tyve minutter online. Lægen gennemgår rapporten og peger på det, der er værd at gøre noget ved.</p>
+        <div style="margin-top:14px"><span class="vtag">Verificeret</span></div>
+        <div style="margin-top:28px;display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+          <button class="btn1" data-goto="book">Book din blodprøve</button>
+          <a class="lnk" data-goto="faq">Praktiske spørgsmål →</a>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= DIN RAPPORT ================= -->
+<section data-page="rapport" hidden>
+  <div class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
+    <div class="split sp6238" style="align-items:start">
+      <div>
+        <h1 class="s d2 fg" style="max-width:19ch">Det, du får, er ikke en liste med tal.</h1>
+        <p class="bodyL meas" style="margin-top:28px;max-width:50ch">Det er en rapport, hvor hver måling står sammen med sit referenceområde, en forklaring på almindeligt dansk, og — hvis du vil — en læge der læser den med dig.</p>
+      </div>
+      <div class="ph ph-skaerm" style="aspect-ratio:4/5"><span class="id">SKÆRM-01</span></div>
+    </div>
+  </div>
+
+  <div class="sand"><div class="wrap pad-std">
+    <div class="lab" style="margin-bottom:18px">Sådan ser en markør ud i rapporten</div>
+    <div style="background:var(--paper);border:1px solid var(--rule);padding:clamp(20px,3vw,34px);max-width:720px">
+      <div style="display:flex;justify-content:space-between;gap:20px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px">
+        <span class="h2">Eksempelmarkør</span><span class="ptag">Demodata — ikke en Pandonia-værdi</span>
+      </div>
+      <p class="pl bodyS" style="margin-bottom:22px"><b>Afventer klinisk tekst</b>Én sætning om hvad markøren fortæller, på almindeligt dansk.</p>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:12px">
+        <span class="val" style="font-size:34px">78<s>enhed</s></span>
+        <span class="m" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sageDeep)">Inden for området</span>
+      </div>
+      <div class="band"><div class="ref" style="left:26%;width:52%"></div><div class="tick" style="left:48%"></div></div>
+      <div class="axis"><span>0</span><span>REFERENCE 30–160 · DEMODATA</span><span>250</span></div>
+      <div class="hrs" style="margin-top:22px;padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 26px">
+        <div><div class="lab" style="margin-bottom:5px">Områder</div><div style="font-size:14px">Hjerte og kar</div></div>
+        <div><div class="lab" style="margin-bottom:5px">Biologisk system</div><div class="m" style="font-size:11.5px;color:var(--ink2)">AFVENTER</div></div>
+        <div><div class="lab" style="margin-bottom:5px">Sidste måling</div><div class="m" style="font-size:12px;color:var(--ink3)">Første gang</div></div>
+      </div>
+    </div>
+
+    <div style="max-width:760px;margin-top:44px">
+      <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:14px 40px;padding-block:18px;border-top:1px solid var(--rule)">
+        <h3 class="h3">Hver måling har sit eget område</h3>
+        <p class="bodyS">Ikke en karakter, ikke en farve der dømmer. Du kan se præcis hvor du ligger, og hvor langt der er til kanten.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:14px 40px;padding-block:18px;border-top:1px solid var(--ruleSoft)">
+        <h3 class="h3">Nogle markører har ikke ét område</h3>
+        <p class="bodyS">Forhold mellem to værdier, eller markører der kun betyder noget sammen med andre, vises uden bånd. Rapporten siger det, i stedet for at lade som om.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:14px 40px;padding-block:18px;border-top:1px solid var(--ruleSoft)">
+        <h3 class="h3">Referenceområder kan variere</h3>
+        <p class="bodyS">Hvor køn eller alder har betydning, vises begge områder — så du kan se, at de er forskellige.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:14px 40px;padding-block:18px;border-block:1px solid var(--ruleSoft)">
+        <h3 class="h3">Over tid</h3>
+        <p class="bodyS">Tester du igen, lægger den nye måling sig oven på den gamle. Retningen er ofte mere interessant end tallet.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="deepbg"><div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div>
+        <div class="lab" style="margin-bottom:10px">Din Pandonia Score</div>
+        <div class="val" style="font-size:clamp(50px,7vw,86px);line-height:.9">78<s style="font-size:.24em;color:rgba(237,231,218,.5)">/ 100</s></div>
+        <div class="band" style="margin-top:22px"><div class="ref" style="left:58%;width:42%"></div><div class="tick" style="left:78%"></div></div>
+        <div class="axis"><span>0</span><span>EKSEMPELDATA</span><span>100</span></div>
+      </div>
+      <div>
+        <h2 class="s d3 fg measS">Samme figur, hele vejen igennem.</h2>
+        <p class="body meas" style="color:rgba(237,231,218,.72);margin-top:16px">Din samlede score og de seks områdescorer er tegnet på præcis samme måde som en enkelt markør. Har du forstået én, har du forstået dem alle.</p>
+        <p class="pl body meas" style="margin-top:16px"><b>Afventer klinisk bekræftelse</b>Hvad de seks scorer måler på, og hvordan de beregnes.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:center;gap:clamp(24px,4vw,56px)">
+      <div class="ph ph-portrait" style="aspect-ratio:4/5"><span class="id">PORTRÆT-01</span></div>
+      <div>
+        <h2 class="s d3 fg measS">Og så er der samtalen.</h2>
+        <p class="body meas" style="margin-top:18px">Tyve minutter online med en læge, der har læst din rapport på forhånd. I gennemgår den sammen og finder ud af, hvad der giver mening at gøre — og hvad der ikke gør.</p>
+        <p class="bodyS" style="margin-top:14px">Konsultationen er inkluderet. Du booker den, når du har haft svaret i mindst tre timer.</p>
+        <div style="margin-top:28px;display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+          <button class="btn1" data-goto="book">Book din blodprøve</button>
+          <a class="lnk" data-goto="maaler">Se hvad vi måler →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OM PANDONIA ================= -->
+<section data-page="om" hidden>
+  <div class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(30px,4vw,56px)">
+    <h1 class="s d2 fg" style="max-width:18ch">Vi ville gerne gøre det nemmere at se efter.</h1>
+    <p class="bodyL meas" style="margin-top:28px;max-width:52ch">Pandonia er et lille hold i København. Vi tager blodprøver hjemme hos folk, analyserer dem i vores eget laboratorium og hjælper med at forstå, hvad der står i svaret.</p>
+  </div>
+
+  <div class="ph ph-rum" style="min-height:min(52vh,400px)"><span class="id">RUM-02</span></div>
+
+  <div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><h2 class="s d3 fg">Hvorfor hjemme</h2></div>
+      <div>
+        <p class="body meas">De fleste udskyder en blodprøve, fordi den koster en formiddag. Venteværelse, transport, fri fra arbejde. Vi flyttede prøven hen til køkkenbordet, fordi det er den eneste måde at gøre den til noget, man faktisk får gjort.</p>
+        <p class="body meas" style="margin-top:14px">Fem minutter, og dagen fortsætter.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sand"><div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><h2 class="s d3 fg">Hvorfor vores eget laboratorium</h2></div>
+      <div>
+        <p class="body meas">Det havde været billigere at sende prøverne videre. Men så ville svaret komme om en uge, og det ville ikke længere handle om den dag, prøven blev taget.</p>
+        <p class="body meas" style="margin-top:14px">Laboratoriet ligger på Langebrogade. Det er en beslutning, ikke en detalje — og det er grunden til, at forløbet overhovedet kan se ud, som det gør.</p>
+        <div style="margin-top:20px"><a class="lnk" data-goto="saadan">Se hvad der sker i laboratoriet →</a></div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="wrap pad-std">
+    <div class="split sp4258" style="align-items:start">
+      <div><h2 class="s d3 fg">Modellen</h2></div>
+      <div>
+        <p class="body meas">Pandonia Health-modellen er udviklet med udgangspunkt i det, der kaldes <em>the four horsemen of aging</em> — de fire største helbredsudfordringer, der oftest forbindes med alderdom.</p>
+        <p class="body meas" style="margin-top:14px">Vi kan ikke love beskyttelse mod dem. Modellen hjælper dig med at opdage og følge dine egne tendenser, så du kan træffe valg på et oplyst grundlag frem for et gæt.</p>
+        <div style="margin-top:14px"><span class="vtag">Verificeret · omskrevet fra Pandonias egen tekst</span></div>
+        <p class="pl body meas" style="margin-top:20px"><b>Afventer klinisk tekst</b>Hvilke fire, og hvordan fire bliver til seks områder.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="deepbg"><div class="wrap pad-std">
+    <h2 class="s d3 fg" style="margin-bottom:8px">Holdet</h2>
+    <p class="body meas" style="color:rgba(237,231,218,.72);margin-bottom:34px">Seks mennesker i København. Du møder nogle af dem personligt.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:rgba(237,231,218,.2)">
+      <div style="background:var(--deep);padding-right:1px"><div class="ph ph-portrait" style="aspect-ratio:4/5"><span class="id">HOLD-01</span></div><div style="padding:14px 0 4px"><div style="font-size:15px;font-weight:500">Benedikte Halle</div><div class="lab" style="margin-top:3px">Læge</div></div></div>
+      <div style="background:var(--deep)"><div class="ph ph-portrait" style="aspect-ratio:4/5;filter:hue-rotate(6deg)"><span class="id">HOLD-02</span></div><div style="padding:14px 0 4px"><div style="font-size:15px;font-weight:500">Deborah Saren</div><div class="lab" style="margin-top:3px">Bioanalytiker · blodprøvetager</div></div></div>
+      <div style="background:var(--deep)"><div class="ph ph-portrait" style="aspect-ratio:4/5;filter:brightness(.94)"><span class="id">HOLD-03</span></div><div style="padding:14px 0 4px"><div style="font-size:15px;font-weight:500">Carol Melo</div><div class="lab" style="margin-top:3px">Leder af forskningsafdelingen</div></div></div>
+      <div style="background:var(--deep)"><div class="ph ph-portrait" style="aspect-ratio:4/5;filter:hue-rotate(-8deg)"><span class="id">HOLD-04</span></div><div style="padding:14px 0 4px"><div style="font-size:15px;font-weight:500">Laura D. Ellis-Aguilar</div><div class="lab" style="margin-top:3px">Biomedicinsk forsker</div></div></div>
+    </div>
+    <p class="bodyS" style="color:rgba(237,231,218,.6);margin-top:20px">Cecilie Lange, projektleder · Victor Prehn, SoMe og branding</p>
+    <div class="lab" style="margin-top:10px">Navne og titler verificeret · portrætter kræver samtykke</div>
+  </div></div>
+
+  <div class="wrap pad-air" style="text-align:center">
+    <h2 class="s d3 fg" style="max-width:22ch;margin:0 auto">Healthier in body, happier in soul, longer in life.</h2>
+    <div class="lab" style="margin-top:20px">Pandonias egen linje</div>
+    <div style="margin-top:30px"><button class="btn1" data-goto="book">Book din blodprøve</button></div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section data-page="faq" hidden>
+  <div class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
+    <h1 class="s d2 fg" style="max-width:16ch">Spørgsmål, i den rækkefølge de plejer at komme.</h1>
+  </div>
+
+  <div class="wrap" style="padding-bottom:clamp(50px,8vw,110px)">
+    <div class="split sp4258" style="align-items:start;padding-block:clamp(26px,4vw,44px);border-top:1px solid var(--rule)">
+      <div><h2 class="s d3 fg">Før du booker</h2></div>
+      <div>
+        <details class="qa"><summary><span>Hvem kan bestille en blodprøve?</span><span class="chev">+</span></summary><div class="a"><p class="pl body"><b>Afventer</b>Aldersgrænse, henvisning, graviditet, medicin.</p></div></details>
+        <details class="qa"><summary><span>Hvor kan prøven tages?</span><span class="chev">+</span></summary><div class="a"><p class="body">Vi kommer hjem til dig eller på din arbejdsplads i København K, N, NV, V, S, SV, Ø, Frederiksberg og Hellerup. Du kan også møde op på Langebrogade 3A, 2. sal. Vi tilbyder på nuværende tidspunkt kun prøver i og omkring København.</p><div style="margin-top:12px"><span class="vtag">Verificeret</span></div></div></details>
+        <details class="qa"><summary><span>Hvad koster det?</span><span class="chev">+</span></summary><div class="a"><p class="body">Health Test koster 3.500 kr. Health Test med konsultation som samlet pakke koster 4.750 kr. Enkelte tests fra 1.000 kr.</p><div style="margin-top:12px"><a class="lnk" data-goto="book">Se alle priser →</a></div></div></details>
+      </div>
+    </div>
+
+    <div class="split sp4258" style="align-items:start;padding-block:clamp(26px,4vw,44px);border-top:1px solid var(--rule)">
+      <div><h2 class="s d3 fg">Prøvetagningen</h2></div>
+      <div>
+        <details class="qa"><summary><span>Hvordan forbereder jeg mig?</span><span class="chev">+</span></summary><div class="a"><p class="body">Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer. Vi anbefaler at prøven tages tidligt på dagen, da flere biomarkører naturligt topper om morgenen.</p><div style="margin-top:12px"><span class="vtag">Verificeret</span></div></div></details>
+        <details class="qa"><summary><span>Hvem tager prøven?</span><span class="chev">+</span></summary><div class="a"><p class="body">Vores blodprøvetager har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge.</p><div style="margin-top:12px"><span class="vtag">Verificeret</span></div></div></details>
+        <details class="qa"><summary><span>Hvor lang tid tager det?</span><span class="chev">+</span></summary><div class="a"><p class="body">Selve prøven tager omkring fem minutter.</p><p class="pl bodyS" style="margin-top:12px"><b>Afventer</b>Bookingsystemet afsætter 10–15 minutter. Hvilket tal er det rigtige udadtil?</p></div></details>
+      </div>
+    </div>
+
+    <div class="split sp4258" style="align-items:start;padding-block:clamp(26px,4vw,44px);border-top:1px solid var(--rule)">
+      <div><h2 class="s d3 fg">Laboratoriet</h2></div>
+      <div>
+        <details class="qa"><summary><span>Hvor analyseres min prøve?</span><span class="chev">+</span></summary><div class="a"><p class="body">I vores eget laboratorium på Langebrogade i København. Det er derfor, svaret kan nå frem samme dag.</p><div style="margin-top:12px"><span class="vtag">Verificeret</span></div></div></details>
+        <details class="qa"><summary><span>Hvordan sikrer I kvaliteten?</span><span class="chev">+</span></summary><div class="a"><p class="pl body"><b>Afventer</b>Akkreditering, kvalitetskontrol, og hvilke analyser der eventuelt sendes videre.</p></div></details>
+      </div>
+    </div>
+
+    <div class="split sp4258" style="align-items:start;padding-block:clamp(26px,4vw,44px);border-top:1px solid var(--rule)">
+      <div><h2 class="s d3 fg">Resultater og samtale</h2></div>
+      <div>
+        <details class="qa"><summary><span>Hvornår får jeg svar?</span><span class="chev">+</span></summary><div class="a"><p class="body">Inden for to til fire timer efter prøven.</p><p class="pl bodyS" style="margin-top:12px"><b>Afventer</b>Er 2–4 timer typisk eller bedste tilfælde?</p></div></details>
+        <details class="qa"><summary><span>Hvordan foregår konsultationen?</span><span class="chev">+</span></summary><div class="a"><p class="body">Du booker den, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Du får et link til et onlinemøde. Lægen gennemgår dine resultater, og sammen finder I konkrete ting, du kan gøre.</p><div style="margin-top:12px"><span class="vtag">Verificeret</span></div></div></details>
+        <details class="qa"><summary><span>Kan resten af sundhedsvæsenet se mine svar?</span><span class="chev">+</span></summary><div class="a"><p class="pl body"><b>Afventer juridisk godkendelse</b>Databehandling, journalføring og deling.</p></div></details>
+      </div>
+    </div>
+
+    <div class="split sp4258" style="align-items:start;padding-block:clamp(26px,4vw,44px);border-top:1px solid var(--rule)">
+      <div><h2 class="s d3 fg">Praktisk</h2></div>
+      <div>
+        <details class="qa"><summary><span>Kan flere medarbejdere testes samtidig?</span><span class="chev">+</span></summary><div class="a"><p class="body">Ja. Vi kommer ud til arbejdspladsen og tager prøver på mange medarbejdere i ét samlet besøg, så tidsforbruget for den enkelte bliver minimalt. Skriv til labs@pandonia.com.</p><div style="margin-top:12px"><span class="vtag">Verificeret</span></div></div></details>
+        <details class="qa"><summary><span>Kan jeg give det som gave?</span><span class="chev">+</span></summary><div class="a"><p class="body">Ja, der findes gavekort.</p><div style="margin-top:12px"><span class="vtag">Verificeret</span></div></div></details>
+        <details class="qa"><summary><span>Kan jeg afbestille?</span><span class="chev">+</span></summary><div class="a"><p class="pl body"><b>Afventer</b>Afbestillingsvilkår og frist.</p></div></details>
+      </div>
+    </div>
+
+    <div style="margin-top:40px"><button class="btn1" data-goto="book">Book din blodprøve</button></div>
+  </div>
+</section>
+
+<!-- ================= BOOK ================= -->
+<section data-page="book" hidden>
+  <div class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
+    <h1 class="s d2 fg" style="max-width:17ch">Vælg en tid, så kommer vi.</h1>
+    <p class="bodyL meas" style="margin-top:26px;max-width:50ch">Alt herunder foregår i København. Du skal ikke bruge henvisning, og du behøver ikke vide på forhånd, hvad du leder efter.</p>
+  </div>
+
+  <div class="wrap" style="padding-bottom:clamp(40px,6vw,80px)">
+    <div style="border-top:1px solid var(--rule)">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:start;padding-block:clamp(22px,3vw,32px);border-bottom:1px solid var(--rule)">
+        <div>
+          <div class="lab" style="margin-bottom:8px">Anbefales første gang</div>
+          <h2 class="h2">Health Test + Consultation</h2>
+          <p class="bodyS measN" style="margin-top:10px">34 biomarkører <span class="ptag" style="margin-left:4px">antal afventer</span> · Pandonia Score og seks områdescorer · blodprøve hjemme hos dig · 20 minutters lægekonsultation, booket som én samlet pakke.</p>
+        </div>
+        <div style="text-align:right">
+          <div class="val" style="font-size:clamp(26px,3vw,34px)">4.750<s>kr.</s></div>
+          <div class="lab" style="margin-top:5px">inkl. moms · 3.800 ekskl.</div>
+          <div style="margin-top:16px"><button class="btn1">Vælg tid</button></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:start;padding-block:clamp(22px,3vw,32px);border-bottom:1px solid var(--rule)">
+        <div>
+          <div class="lab" style="margin-bottom:8px">Kun prøven</div>
+          <h2 class="h2">Health Test</h2>
+          <p class="bodyS measN" style="margin-top:10px">Samme 34 biomarkører, Pandonia Score og seks områdescorer.</p>
+          <p class="pl bodyS measN" style="margin-top:10px"><b>Afventer</b>Er konsultationen inkluderet her? Begge priskort på det nuværende website siger ja — hvilket gør forskellen på 1.250 kr. svær at forklare.</p>
+        </div>
+        <div style="text-align:right">
+          <div class="val" style="font-size:clamp(26px,3vw,34px)">3.500<s>kr.</s></div>
+          <div class="lab" style="margin-top:5px">inkl. moms · 2.800 ekskl.</div>
+          <div style="margin-top:16px"><button class="btn2">Vælg tid</button></div>
+        </div>
+      </div>
+    </div>
+    <p class="bodyS" style="margin-top:16px">Priser verificeret fra Pandonias bookingsystem. <span class="vtag" style="margin-left:8px">Verificeret</span></p>
+  </div>
+
+  <div class="sand"><div class="wrap pad-std">
+    <h2 class="s d3 fg" style="margin-bottom:8px">Vil du begynde mindre?</h2>
+    <p class="body meas" style="margin-bottom:26px">Syv enkelttests, hvis du har ét bestemt spørgsmål.</p>
+    <ul class="rows" style="max-width:720px">
+      <li><span class="l"><span style="font-size:15.5px">D-vitamin Test</span></span><span class="v">1.000 kr.</span></li>
+      <li><span class="l"><span style="font-size:15.5px">Metabolisk Sundheds Test</span></span><span class="v">1.250 kr.</span></li>
+      <li><span class="l"><span style="font-size:15.5px">Blodsukker- og Kolesteroltest</span></span><span class="v">1.300 kr.</span></li>
+      <li><span class="l"><span style="font-size:15.5px">Mænds Sundhedstest</span></span><span class="v">1.400 kr.</span></li>
+      <li><span class="l"><span style="font-size:15.5px">Skjoldbruskkirtel Test</span></span><span class="v">1.600 kr.</span></li>
+      <li><span class="l"><span style="font-size:15.5px">Glukose Monitorering · 14 dage</span></span><span class="v">2.000 kr.</span></li>
+      <li><span class="l"><span style="font-size:15.5px">Health check + Female hormones</span></span><span class="v"><span class="ptag">pris afventer</span></span></li>
+    </ul>
+    <p class="bodyS" style="margin-top:18px">Også som gavekort, klippekort og virksomhedsordning. <span class="vtag" style="margin-left:8px">Verificeret</span></p>
+  </div></div>
+
+  <div class="wrap pad-std">
+    <h2 class="s d3 fg" style="margin-bottom:28px">Hvad der sker, når du har booket</h2>
+    <div style="max-width:720px">
+      <div style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:20px;padding-block:16px;border-top:1px solid var(--ruleSoft)">
+        <span class="m" style="font-size:11px;letter-spacing:.09em;color:var(--ink3);padding-top:4px">01</span>
+        <div><h3 class="h3">Du får en bekræftelse</h3><p class="bodyS" style="margin-top:5px">Med tid, adresse og hvad du skal gøre aftenen inden.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:20px;padding-block:16px;border-top:1px solid var(--ruleSoft)">
+        <span class="m" style="font-size:11px;letter-spacing:.09em;color:var(--ink3);padding-top:4px">02</span>
+        <div><h3 class="h3">Vi ringer på</h3><p class="bodyS" style="margin-top:5px">Fem minutter ved dit eget bord. Du skal ikke forberede rummet.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:20px;padding-block:16px;border-top:1px solid var(--ruleSoft)">
+        <span class="m" style="font-size:11px;letter-spacing:.09em;color:var(--ink3);padding-top:4px">03</span>
+        <div><h3 class="h3">Rapporten kommer</h3><p class="bodyS" style="margin-top:5px">Samme dag. Du får en mail, når den ligger klar.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:20px;padding-block:16px;border-block:1px solid var(--ruleSoft)">
+        <span class="m" style="font-size:11px;letter-spacing:.09em;color:var(--ink3);padding-top:4px">04</span>
+        <div><h3 class="h3">Du booker samtalen</h3><p class="bodyS" style="margin-top:5px">Når du har haft svaret i mindst tre timer.</p></div>
+      </div>
+    </div>
+
+    <div class="hr" style="margin-top:44px;padding-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px 40px">
+      <div><div class="lab" style="margin-bottom:6px">Ingen henvisning</div><p class="bodyS">Du booker direkte.</p></div>
+      <div><div class="lab" style="margin-bottom:6px">Afbestilling</div><p class="pl bodyS"><b>Afventer</b>Vilkår og frist.</p></div>
+      <div><div class="lab" style="margin-bottom:6px">Dine data</div><p class="pl bodyS"><b>Afventer juridisk godkendelse</b>Hvordan svarene opbevares og deles.</p></div>
+      <div><div class="lab" style="margin-bottom:6px">Spørgsmål</div><p class="bodyS">labs@pandonia.com</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="padding-block:clamp(44px,6vw,76px) clamp(26px,3vw,40px)">
+    <div class="fgrid">
+      <div>
+        <div class="s" style="font-size:26px;margin-bottom:14px">Pandonia</div>
+        <p class="bodyS" style="color:rgba(237,231,218,.7);max-width:30ch">Blodprøver hjemme hos dig i København, analyseret i vores eget laboratorium.</p>
+        <p class="bodyS" style="color:rgba(237,231,218,.7);margin-top:16px">Langebrogade 3A, 2. sal<br>1411 København K<br>labs@pandonia.com</p>
+      </div>
+      <div>
+        <h4>Websted</h4>
+        <ul>
+          <li><a data-goto="maaler">Hvad vi måler</a></li>
+          <li><a data-goto="saadan">Sådan fungerer det</a></li>
+          <li><a data-goto="saadan">Laboratoriet</a></li>
+          <li><a data-goto="rapport">Din rapport</a></li>
+          <li><a data-goto="om">Om Pandonia</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Praktisk</h4>
+        <ul>
+          <li><a data-goto="book">Priser</a></li>
+          <li><a data-goto="book">Book din blodprøve</a></li>
+          <li><a data-goto="faq">FAQ</a></li>
+          <li><a>For virksomheder</a></li>
+          <li><a>Gavekort</a></li>
+          <li><a>Log ind</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Juridisk</h4>
+        <ul>
+          <li><a>Persondatapolitik</a></li>
+          <li><a>Cookiepolitik</a></li>
+          <li><a>Handelsbetingelser</a></li>
+          <li><a>Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(237,231,218,.2);margin-top:clamp(30px,4vw,46px);padding-top:20px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;align-items:flex-start">
+      <p class="bodyS" style="color:rgba(237,231,218,.55);max-width:62ch">Pandonias tests erstatter ikke lægelig undersøgelse, diagnose eller behandling. Har du symptomer eller er du i tvivl, så kontakt din egen læge eller lægevagten.</p>
+      <p class="lab" style="color:rgba(237,231,218,.4)">Dansk · English</p>
+    </div>
+    <p class="pl bodyS" style="margin-top:18px;max-width:62ch"><b>Afventer juridisk godkendelse</b>Ansvarsfraskrivelse, CVR, dataansvarlig og eventuelle krav til sundhedsfaglig markedsføring.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var pages = Array.prototype.slice.call(document.querySelectorAll('[data-page]'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.navlinks a'));
+  var nav = document.getElementById('nav');
+  var mobnav = document.getElementById('mobnav');
+  var burger = document.getElementById('burger');
+
+  function show(name) {
+    pages.forEach(function (p) { p.hidden = p.getAttribute('data-page') !== name; });
+    navLinks.forEach(function (a) {
+      a.classList.toggle('on', a.getAttribute('data-goto') === name);
+    });
+    if (mobnav) { mobnav.hidden = true; }
+    if (burger) { burger.setAttribute('aria-expanded', 'false'); }
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-goto]');
+    if (!t) return;
+    e.preventDefault();
+    show(t.getAttribute('data-goto'));
+  });
+
+  if (burger) {
+    burger.addEventListener('click', function () {
+      var open = mobnav.hidden;
+      mobnav.hidden = !open;
+      burger.setAttribute('aria-expanded', String(open));
+    });
+  }
+  var mc = document.getElementById('mobclose');
+  if (mc) mc.addEventListener('click', function () { mobnav.hidden = true; burger.setAttribute('aria-expanded','false'); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobnav && !mobnav.hidden) { mobnav.hidden = true; burger.setAttribute('aria-expanded','false'); }
+  });
+
+  window.addEventListener('scroll', function () {
+    if (nav) nav.classList.toggle('stuck', window.scrollY > 8);
+  }, { passive: true });
+
+  /* marker filter */
+  var input = document.getElementById('mkfilter');
+  var list = document.getElementById('mklist');
+  var none = document.getElementById('nores');
+  var count = document.getElementById('areaCount');
+  if (input && list) {
+    var rows = Array.prototype.slice.call(list.querySelectorAll('.mk'));
+    var total = rows.length;
+    function norm(s) {
+      return (s || '').toLowerCase().replace(/æ/g,'ae').replace(/ø/g,'oe').replace(/å/g,'aa').replace(/[^a-z0-9]+/g,' ').trim();
+    }
+    function apply() {
+      var q = norm(input.value), shown = 0;
+      rows.forEach(function (r) {
+        var nm = r.querySelector('.nm');
+        var hay = norm((r.getAttribute('data-k') || '') + ' ' + (nm ? nm.textContent : ''));
+        var hit = !q || hay.indexOf(q) !== -1;
+        r.hidden = !hit;
+        if (!hit) r.open = false;
+        if (hit) shown++;
+      });
+      if (none) none.hidden = shown !== 0;
+      if (count) count.textContent = q ? (shown + ' AF ' + total + ' VIST') : '7 MARKØRER';
+    }
+    input.addEventListener('input', apply);
+    apply();
+  }
+})();
+</script>

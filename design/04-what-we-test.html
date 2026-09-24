@@ -1,0 +1,995 @@
+<title>Pandonia Hvad Vi Måler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap">
+
+<style>
+  :root{
+    --cream:#F6F1E8; --sand:#F4EADB; --paper:#FCFAF6; --deep:#18261A;
+    --ink:#26201A; --ink2:#5C554C; --ink3:#8A8175; --inkInv:#EDE7DA;
+    --forest:#415A3B; --forestDeep:#2C3F28;
+    --amber:#E3A754; --sage:#A0B89F; --sageDeep:#4E7050; --brick:#8C3B2E; --clay:#AE9D84;
+    --page:#EDEEEA; --doc:#17191A; --doc2:#545A56; --doc3:#7C837E;
+    --rule:rgba(23,25,26,.15); --ruleSoft:rgba(23,25,26,.08); --mark:#3C5236; --flag:#9A3B2A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#131514; --doc:#E9EBE6; --doc2:#A0A7A2; --doc3:#7E857F;
+      --rule:rgba(233,235,230,.2); --ruleSoft:rgba(233,235,230,.1); --mark:#9BBE90; --flag:#E08B76;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#131514; --doc:#E9EBE6; --doc2:#A0A7A2; --doc3:#7E857F;
+    --rule:rgba(233,235,230,.2); --ruleSoft:rgba(233,235,230,.1); --mark:#9BBE90; --flag:#E08B76;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--page);color:var(--doc);margin:0;font-family:"DM Sans",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .sheet{max-width:1280px;margin:0 auto;padding-inline:24px;padding-block:0 110px}
+  .serif{font-family:"Newsreader",Georgia,serif;font-weight:400}
+  .mono{font-family:"DM Mono",ui-monospace,monospace}
+  .lbl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);line-height:1.5}
+
+  h1,h2,h3,h4{margin:0}
+  p{margin:0 0 1em;max-width:70ch} p:last-child{margin-bottom:0}
+  code{font-family:"DM Mono",monospace;font-size:.85em;background:var(--ruleSoft);padding:1px 5px}
+  a{color:inherit;text-underline-offset:3px}
+  a:focus-visible,summary:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+
+  .masthead{border-bottom:1px solid var(--doc);padding-block:30px 0}
+  .mb{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:baseline;justify-content:space-between;padding-bottom:46px}
+  .wordmark{font-family:"Newsreader",Georgia,serif;font-size:23px}
+  h1.title{font-family:"Newsreader",Georgia,serif;font-size:clamp(36px,6.4vw,82px);line-height:.99;letter-spacing:-.02em;text-wrap:balance;padding-bottom:26px}
+  h1.title i{font-style:italic;color:var(--doc3)}
+  .standfirst{font-size:clamp(17px,2vw,20px);line-height:1.5;max-width:56ch;color:var(--doc2);padding-bottom:34px}
+  .colophon{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 28px;border-top:1px solid var(--rule);padding-block:16px 20px}
+  .colophon span{display:block}
+  .colophon .v{font-family:"DM Sans",sans-serif;font-size:14px;letter-spacing:0;text-transform:none;color:var(--doc);margin-top:5px}
+
+  section{border-top:1px solid var(--doc);padding-block:58px 12px}
+  .row{display:grid;grid-template-columns:134px minmax(0,1fr);gap:32px;align-items:start}
+  .rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+  h2.sec{font-family:"Newsreader",Georgia,serif;font-size:clamp(28px,4.2vw,45px);line-height:1.03;letter-spacing:-.02em;text-wrap:balance;padding-bottom:10px}
+  .dek{font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.5;color:var(--doc2);max-width:64ch;padding-bottom:30px}
+  h3{font-size:18px;font-weight:500;letter-spacing:-.012em;line-height:1.25;margin-bottom:8px}
+  h4{font-family:"DM Mono",monospace;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);margin-bottom:10px}
+
+  .block{border-top:1px solid var(--rule);padding-block:30px}
+  .block:first-of-type{border-top:none;padding-top:2px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:24px 34px}
+  .cols p,.cols li{font-size:15px;line-height:1.56}
+  .cols ul{margin:0;padding-left:17px} .cols li{margin-bottom:6px}
+  .note{border-left:2px solid var(--mark);padding:4px 0 4px 20px;font-size:15.5px;line-height:1.58;margin-block:20px}
+  .note.warn{border-left-color:var(--flag)}
+
+  /* ===== placeholder convention — must never ship ===== */
+  .pl{border-left:1px dotted currentColor;padding-left:11px;color:var(--ink3);font-style:normal}
+  .pl b{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:400;display:block;margin-bottom:3px;color:var(--brick)}
+  .pg.deepbg .pl{color:rgba(237,231,218,.55)}
+  .pg.deepbg .pl b{color:var(--amber)}
+  .vtag{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--sageDeep);border:1px solid currentColor;padding:2px 6px;white-space:nowrap}
+  .ptag{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--brick);border:1px solid currentColor;padding:2px 6px;white-space:nowrap}
+
+  /* ===== photo placeholders ===== */
+  .ph{position:relative;overflow:hidden;background:#C4A98C;isolation:isolate}
+  .ph::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.04) 0 1px,transparent 1px 3px);pointer-events:none}
+  .ph .cap{position:absolute;left:9px;right:9px;bottom:8px;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,252,246,.94);text-shadow:0 1px 3px rgba(40,28,16,.8);line-height:1.45;z-index:2}
+  .ph .tagx{position:absolute;left:9px;top:8px;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.14em;color:rgba(255,252,246,.92);text-shadow:0 1px 3px rgba(40,28,16,.8);z-index:2}
+  .ph-hals{background:radial-gradient(80% 100% at 78% 12%,rgba(255,248,236,.9),rgba(250,232,208,.3) 32%,rgba(0,0,0,0) 60%),linear-gradient(120deg,#5B4738,#9C7E63 42%,#D6B995 74%,#F2E1C6)}
+  .ph-arm{background:radial-gradient(90% 120% at 88% 2%,rgba(255,250,238,.98),rgba(255,244,226,.35) 30%,rgba(0,0,0,0) 58%),linear-gradient(104deg,#6E5843,#9A7F62 30%,#C9AC89 58%,#E8D4B6 82%,#F7EBD6)}
+  .ph-lys{background:radial-gradient(80% 110% at 62% -10%,rgba(255,254,250,1),rgba(250,244,231,.7) 34%,rgba(0,0,0,0) 70%),linear-gradient(190deg,#F7F1E3,#E6DAC4 46%,#C3B49A)}
+  .ph-hand{background:radial-gradient(70% 110% at 18% -6%,rgba(255,251,240,.96),rgba(255,243,224,.32) 34%,rgba(0,0,0,0) 62%),linear-gradient(160deg,#EFE0C7,#CDB393 40%,#8E7458 78%,#5F4C39)}
+
+  /* ===== mock chrome ===== */
+  .mock{border:1px solid var(--rule);overflow:hidden;margin-block:14px 8px}
+  .mockbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:9px 12px;background:var(--ruleSoft);border-bottom:1px solid var(--rule)}
+  .mtag{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--rule);padding:3px 7px;color:var(--doc2)}
+  .mtag.air{color:#4E7050;border-color:#4E7050}
+  .mtag.dns{color:#B07C2E;border-color:#B07C2E}
+  .mtag.dag{color:#7C6A4E;border-color:#7C6A4E}
+  .mtag.nul{color:#3F5A6B;border-color:#3F5A6B}
+  .mtag.live{color:#3C5236;border-color:#3C5236;font-weight:500}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mtag.air,:root:not([data-theme="light"]) .mtag.live{color:#9BBE90;border-color:#9BBE90}
+    :root:not([data-theme="light"]) .mtag.dns{color:#E3A754;border-color:#E3A754}
+    :root:not([data-theme="light"]) .mtag.dag{color:#CBB79A;border-color:#CBB79A}
+    :root:not([data-theme="light"]) .mtag.nul{color:#93B6C9;border-color:#93B6C9}}
+
+  .pg{background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+  .pg.sand{background:var(--sand)} .pg.deepbg{background:var(--deep);color:var(--inkInv)}
+  .pg .s{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.02em}
+  .pg .m{font-family:"DM Mono",monospace}
+  .pad{padding:clamp(18px,3.2vw,46px)} .padx{padding-inline:clamp(18px,3.2vw,46px)}
+
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px clamp(18px,3.2vw,46px);font-size:10.5px}
+  .nav .wm{font-family:"Newsreader",Georgia,serif;font-size:16px;color:var(--forest)}
+  .nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;color:var(--ink2)}
+  .nav ul li.on{border-bottom:1px solid var(--forest);padding-bottom:2px}
+  .nav .cta{background:var(--forest);color:var(--cream);padding:6px 12px;border-radius:2px;font-size:10.5px;font-weight:500}
+
+  .b1{display:inline-block;background:var(--forest);color:var(--cream);padding:10px 18px;border-radius:2px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:"DM Sans",sans-serif}
+  .b3{display:inline-block;color:var(--forest);font-size:12px;font-weight:500;border-bottom:1px solid rgba(65,90,59,.45);padding-bottom:2px}
+  .pg.deepbg .b1{background:var(--cream);color:var(--deep)}
+  .pg.deepbg .b3{color:var(--inkInv);border-bottom-color:rgba(237,231,218,.45)}
+
+  /* ===== sticky index bar (the page's navigation) ===== */
+  .idxbar{position:sticky;top:0;z-index:5;background:var(--cream);border-top:1px solid rgba(38,32,26,.2);border-bottom:1px solid rgba(38,32,26,.2);display:flex;align-items:center;gap:18px;padding:0 clamp(18px,3.2vw,46px);min-height:46px;flex-wrap:wrap}
+  .idxbar .items{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink2);padding-block:10px}
+  .idxbar .items span{white-space:nowrap}
+  .idxbar .items span.on{color:var(--forest);font-weight:500;border-bottom:1px solid var(--forest);padding-bottom:2px}
+  .idxbar .items span.pend{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;color:var(--ink3)}
+  .idxbar .find{margin-left:auto;display:flex;align-items:center;gap:8px;padding-block:8px}
+  .idxbar input{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--ink);background:transparent;border:none;border-bottom:1px solid rgba(38,32,26,.28);padding:5px 0;width:130px;border-radius:0}
+  .idxbar input:focus{outline:none;border-bottom:2px solid var(--forest);padding-bottom:4px}
+  .idxbar input::placeholder{color:var(--ink3)}
+
+  /* ===== Nulpunkt band ===== */
+  .band{position:relative;height:22px;border-top:1px solid rgba(38,32,26,.22);border-bottom:1px solid rgba(38,32,26,.22)}
+  .band .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.36)}
+  .band .tick{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--amber)}
+  .band .tick.out{background:var(--brick)}
+  .band .lead{position:absolute;top:50%;height:1px;background:var(--brick)}
+  .band .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.07) 0 5px,transparent 5px 10px)}
+  .axis{display:flex;justify-content:space-between;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.07em;color:var(--ink3);margin-top:6px}
+  .micro{display:inline-block;position:relative;width:58px;height:7px;border-top:1px solid rgba(38,32,26,.22);border-bottom:1px solid rgba(38,32,26,.22);vertical-align:middle;flex:0 0 auto}
+  .micro .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.4)}
+  .micro .tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--amber)}
+  .micro .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.09) 0 4px,transparent 4px 8px)}
+
+  /* ===== marker rows (real <details>) ===== */
+  .mk{border-bottom:1px solid rgba(38,32,26,.14)}
+  .mk[hidden]{display:none}
+  .mk>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 74px 92px 18px;gap:16px;align-items:center;padding-block:14px}
+  .mk>summary::-webkit-details-marker{display:none}
+  .mk>summary:hover .nm{color:var(--forest)}
+  .mk .nm{font-size:15px;font-weight:500;letter-spacing:-.005em}
+  .mk .sub{font-family:"Newsreader",Georgia,serif;font-size:13.5px;color:var(--ink2);line-height:1.45;margin-top:2px;max-width:52ch}
+  .mk .unit{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.06em;color:var(--ink3);text-align:right}
+  .mk .inc{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:right}
+  .mk .chev{font-family:"DM Sans",sans-serif;font-size:15px;color:var(--ink3);text-align:right;transition:transform 200ms cubic-bezier(.2,.6,.2,1)}
+  .mk[open] .chev{transform:rotate(45deg)}
+  .mk[open]>summary .nm{color:var(--forest)}
+  .mkbody{padding:4px 0 24px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px}
+  .mkbody dl{margin:0;display:grid;grid-template-columns:118px minmax(0,1fr);gap:0 18px;font-size:14px}
+  .mkbody dt{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-block:8px;border-bottom:1px solid rgba(38,32,26,.09)}
+  .mkbody dd{margin:0;padding-block:8px;border-bottom:1px solid rgba(38,32,26,.09);line-height:1.5}
+  .mkbody .side{background:rgba(38,32,26,.035);padding:16px}
+  @media (max-width:760px){.mkbody{grid-template-columns:minmax(0,1fr);gap:18px}.mkbody dl{grid-template-columns:minmax(0,1fr)}.mkbody dt{border-bottom:none;padding-bottom:0}.mkbody dd{padding-top:2px}
+    .mk>summary{grid-template-columns:minmax(0,1fr) 18px;gap:10px}.mk .unit,.mk .inc{display:none}}
+
+  /* component state grid */
+  .states{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px 34px}
+  .state{background:var(--cream);border:1px solid var(--rule);padding:18px}
+  .state .sh{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+  .state .nmz{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:9px}
+  .state .val{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums;font-size:20px;color:var(--ink)}
+  .state .val s{text-decoration:none;font-size:11px;color:var(--ink3);margin-left:5px}
+  .state .st{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+  .state .expl{font-size:12.5px;line-height:1.5;color:var(--doc2);margin-top:14px;border-top:1px solid var(--ruleSoft);padding-top:10px}
+  :root[data-theme="dark"] .state,:root:not([data-theme="light"]) .state{background:var(--cream);color:var(--ink)}
+  :root[data-theme="dark"] .state .expl,:root:not([data-theme="light"]) .state .expl{color:var(--ink2)}
+
+  /* mobile frame */
+  .devices{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start}
+  @media (max-width:1000px){.devices{grid-template-columns:minmax(0,1fr)}}
+  .mobframe{border:1px solid var(--rule);width:100%;max-width:300px;overflow:hidden}
+  .mobframe .mh{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);padding:7px 10px;border-bottom:1px solid var(--rule);background:var(--ruleSoft)}
+  .mobpg{background:var(--cream);color:var(--ink)}
+  .mobnav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;font-size:9px}
+  .mobnav .wm{font-family:"Newsreader",Georgia,serif;font-size:15px;color:var(--forest)}
+  .mobnav .bg{width:17px;height:9px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+
+  .anno{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px 30px;padding-block:20px 6px}
+  .anno h4{margin-bottom:6px} .anno p{font-size:14px;line-height:1.55;margin:0}
+
+  .tw{overflow-x:auto;margin-block:6px 20px}
+  table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+  th,td{text-align:left;padding:9px 14px 9px 0;border-bottom:1px solid var(--ruleSoft);vertical-align:top}
+  th{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);font-weight:400;border-bottom-color:var(--rule)}
+  td.m{font-family:"DM Mono",monospace;font-size:11.5px}
+
+  ol.rules{list-style:none;margin:0;padding:0;counter-reset:r}
+  ol.rules>li{counter-increment:r;display:grid;grid-template-columns:42px minmax(0,1fr);gap:20px;border-top:1px solid var(--ruleSoft);padding-block:20px}
+  ol.rules>li::before{content:counter(r,decimal-leading-zero);font-family:"DM Mono",monospace;font-size:12px;color:var(--mark);padding-top:5px}
+  ol.rules h3{font-size:17px} ol.rules p{font-size:14.5px;line-height:1.55}
+
+  .verdict{display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:16px;border-top:1px solid var(--ruleSoft);padding-block:15px;align-items:start}
+  .verdict p{font-size:14.5px;line-height:1.5;margin:0}
+  .verdict .ans{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;text-align:right;padding-top:2px}
+
+  .endmark{border-top:1px solid var(--doc);margin-top:64px;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between}
+
+  @media (max-width:880px){
+    .row{grid-template-columns:minmax(0,1fr);gap:16px}
+    .rail{position:static}
+    .nav ul{display:none}
+    ol.rules>li{grid-template-columns:30px minmax(0,1fr);gap:14px}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="mb">
+      <span class="wordmark">Pandonia</span>
+      <span class="lbl">Phase 04 · Hvad vi måler · Internal</span>
+    </div>
+    <h1 class="title">Not a list of<br>thirty-four things.<br><i>A way of looking.</i></h1>
+    <p class="standfirst">The full Hvad vi måler experience, drawn and partly interactive. Every clinical statement is either quoted from Pandonia or visibly marked as awaiting approval — nothing in between.</p>
+    <div class="colophon lbl">
+      <div><span>Interactive</span><span class="v">Marker rows expand · filter works</span></div>
+      <div><span>Clinical content</span><span class="v" style="color:var(--flag)">1 verified · rest placeholder</span></div>
+      <div><span>System additions</span><span class="v">7 proposed</span></div>
+      <div><span>Register</span><span class="v">§11 — 14 items</span></div>
+    </div>
+  </header>
+
+  <!-- ===== 00 THE RULE ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">00 / Convention</span></div>
+      <div>
+        <h2 class="sec">Design decision vs clinical fact</h2>
+        <p class="dek">One visual convention runs through this entire prototype so the two can never be confused.</p>
+
+        <div class="cols">
+          <div>
+            <h4>Verified — usable now</h4>
+            <p style="margin-bottom:10px"><span class="vtag">Verificeret</span></p>
+            <p>Quoted from pandonia.com or the live booking system. Exactly one piece of marker copy on this whole page qualifies: Pandonia's own D-vitamin description.</p>
+          </div>
+          <div>
+            <h4>Placeholder — cannot ship</h4>
+            <p style="margin-bottom:10px"><span class="ptag">Afventer klinisk tekst</span></p>
+            <p class="pl" style="font-size:14px"><b>Afventer klinisk tekst</b>Rendered like this everywhere: dotted rule, muted ink, a red mono tag. It states what the sentence will do and how long it will be, so typography can be judged — without a single fabricated claim.</p>
+          </div>
+          <div>
+            <h4>Why not just write plausible copy</h4>
+            <p>Because it would be indistinguishable from approved copy six weeks from now, and someone would ship it. <strong>A convincing prototype with invented science is worse than an obviously incomplete one</strong> — and on a medical site the incompleteness has to be visible in the design itself, not in a footnote.</p>
+          </div>
+          <div>
+            <h4>A build rule, not a note</h4>
+            <p>The <code>.pl</code> class is a <strong>build-blocking convention</strong>: the production site should fail its own pre-deploy check if any element carrying it reaches a build. That turns a promise into a mechanism.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 01 IA ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">01 / IA</span></div>
+      <div>
+        <h2 class="sec">Information architecture</h2>
+        <p class="dek">The page answers <em>"hvad kan min blodprøve fortælle mig om mit helbred?"</em> — so it is organised by meaning, and the count never appears until the reader has already understood why the markers are there.</p>
+
+        <div class="block">
+          <h4>Structure</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Level</th><th>What it is</th><th>Interaction</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td class="m">0 · Opening</td><td>One marker shown touching three different concerns</td><td>Static, editorial</td><td>Establishes the whole argument — a marker is not a verdict, it is a thread — before any taxonomy appears.</td></tr>
+                <tr><td class="m">1 · Index</td><td>Slim sticky bar, six areas + filter</td><td>Jump, filter, current-position</td><td>Navigation and progress in 46px. No left rail, so full width stays editorial.</td></tr>
+                <tr><td class="m">2 · Area</td><td>Editorial chapter: name, plain intro, count, one photograph</td><td>Scroll</td><td>Layer 1. Six chapters, not six cards.</td></tr>
+                <tr><td class="m">3 · Marker row</td><td>Name, one-line meaning, unit, inclusion state</td><td>Expands in place</td><td>The core object. Scannable at a glance, deep on demand.</td></tr>
+                <tr><td class="m">4 · Marker detail</td><td>Range, context, relationships, both layers</td><td>In-place expansion</td><td>Keeps you inside the area you were reading. §06.</td></tr>
+                <tr><td class="m">5 · Model</td><td>The Pandonia biological model, explained once</td><td>Scroll, one figure</td><td>Layer 2 as a chapter at the end — context, never navigation.</td></tr>
+                <tr><td class="m">6 · Limits</td><td>What the test does not cover</td><td>Static</td><td>No competitor has this section. It is the single most trust-building thing the page can do.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="note">
+          <p style="margin:0"><strong>The count is deliberately demoted.</strong> It appears first at level 2, as a small mono figure beside an area name — never in the opening, never as a headline. <em>"Fireogtredive"</em> is a consequence of the model, not the proposition. This is the "depth before volume" principle from Function, taken one step further than Function takes it themselves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 THE PAGE, DESKTOP ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">02 / Desktop</span></div>
+      <div>
+        <h2 class="sec">The page, drawn</h2>
+        <p class="dek">Marker rows below are real — click any of them. The filter in the index bar works. Everything clinical is marked.</p>
+
+        <!-- OPENING -->
+        <div class="mock">
+          <div class="mockbar"><span class="mtag">Opening</span><span class="mtag">Cream</span><span class="mtag air">Air</span><span class="mtag dag">Dagslys 90</span><span class="mtag nul">Nulpunkt 10</span></div>
+          <div class="pg">
+            <div class="nav"><span class="wm">Pandonia</span><ul><li>Sådan fungerer det</li><li class="on">Hvad vi måler</li><li>Priser</li><li>Om os</li></ul><span class="cta">Book din blodprøve</span></div>
+
+            <div class="pad" style="padding-top:clamp(26px,4vw,58px);padding-bottom:clamp(20px,3vw,40px)">
+              <div style="display:grid;grid-template-columns:58fr 42fr;gap:clamp(18px,3vw,50px);align-items:start">
+                <div>
+                  <div class="s" style="font-size:clamp(24px,3.9vw,48px);line-height:1.02;color:var(--forest);max-width:17ch">Ét tal fortæller sjældent noget alene.</div>
+                  <p style="font-size:clamp(12px,1.15vw,14px);line-height:1.62;color:var(--ink2);max-width:46ch;margin:20px 0 0">En blodprøve er ikke en facitliste. Den er en række målinger, der først bliver til noget, når man ser dem sammen — og sammen med det, du ved om dit eget liv.</p>
+                  <p style="font-size:clamp(12px,1.15vw,14px);line-height:1.62;color:var(--ink2);max-width:46ch;margin:14px 0 0">Tag D-vitamin. Én måling, der rører ved tre forskellige ting på én gang:</p>
+
+                  <div style="margin-top:26px;border-top:1px solid rgba(38,32,26,.2);padding-top:18px;max-width:46ch">
+                    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+                      <span class="s" style="font-size:22px;color:var(--forest)">D-vitamin</span>
+                      <span class="vtag">Verificeret · Pandonias egen tekst</span>
+                    </div>
+                    <p style="font-size:13.5px;line-height:1.6;color:var(--ink2);margin:0 0 14px">Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret. Påvirker immunforsvar, knoglestyrke og mental balance.</p>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,32,26,.16)">
+                      <div style="background:var(--cream);padding:9px 10px"><div class="m" style="font-size:8.5px;letter-spacing:.1em;color:var(--ink3);margin-bottom:3px">RØRER VED</div><div style="font-size:12px;font-weight:500">Immunforsvar</div></div>
+                      <div style="background:var(--cream);padding:9px 10px"><div class="m" style="font-size:8.5px;letter-spacing:.1em;color:var(--ink3);margin-bottom:3px">RØRER VED</div><div style="font-size:12px;font-weight:500">Knoglestyrke</div></div>
+                      <div style="background:var(--cream);padding:9px 10px"><div class="m" style="font-size:8.5px;letter-spacing:.1em;color:var(--ink3);margin-bottom:3px">RØRER VED</div><div style="font-size:12px;font-weight:500">Mental balance</div></div>
+                    </div>
+                    <p class="m" style="font-size:9px;letter-spacing:.09em;color:var(--ink3);margin-top:10px;text-transform:uppercase">Derfor hører markører til flere steder på én gang</p>
+                  </div>
+                </div>
+                <div class="ph ph-hals" style="aspect-ratio:4/5">
+                  <span class="tagx">HALS-01</span>
+                  <span class="cap">Neck and collarbone, low winter daylight from the side, collarbone sharp. Bleeds off the right viewport edge.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="anno">
+          <div><h4>Why this opening</h4><p>It makes the many-to-many argument in the first screen, with <strong>Pandonia's own verified sentence</strong> — so the two-layer model is introduced as an observation about the body, not as an information architecture.</p></div>
+          <div><h4>No count anywhere</h4><p>The number does not appear until an area heading further down. The opening is entirely about <em>how to read a blood test</em>.</p></div>
+          <div><h4>Careful language</h4><p>"Rører ved" — touches on. Not "måler", not "viser", not "afslører". It is the weakest verb that is still useful, and it is defensible because it is a paraphrase of Pandonia's own "påvirker".</p></div>
+          <div><h4>Dagslys 90</h4><p>One photograph, serif at 48px, a lot of air, and exactly one mono line. Nulpunkt is barely present — it arrives properly at the index bar.</p></div>
+        </div>
+
+        <!-- INDEX + AREA -->
+        <div class="mock" style="margin-top:34px">
+          <div class="mockbar"><span class="mtag live">Interactive</span><span class="mtag">Index + area</span><span class="mtag">Cream</span><span class="mtag dns">Dense</span><span class="mtag dag">Dagslys 40</span><span class="mtag nul">Nulpunkt 60</span></div>
+          <div class="pg">
+
+            <div class="idxbar">
+              <div class="items">
+                <span class="on">Hjerte og kar</span>
+                <span>Blodsukker og stofskifte</span>
+                <span>Hormoner</span>
+                <span class="pend">OMRÅDE 4 — AFVENTER</span>
+                <span class="pend">OMRÅDE 5</span>
+                <span class="pend">OMRÅDE 6</span>
+              </div>
+              <div class="find">
+                <label for="mkfilter" class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)">Find markør</label>
+                <input id="mkfilter" type="search" placeholder="fx kolesterol" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="pad">
+              <div style="display:grid;grid-template-columns:54fr 46fr;gap:clamp(18px,3vw,44px);align-items:start;margin-bottom:26px">
+                <div>
+                  <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+                    <span class="s" style="font-size:clamp(22px,3.2vw,38px);color:var(--forest)">Hjerte og kar</span>
+                    <span class="m" style="font-size:11px;letter-spacing:.09em;color:var(--ink3)" id="areaCount">7 MARKØRER</span>
+                  </div>
+                  <p class="pl" style="font-size:13.5px;line-height:1.6;max-width:48ch;margin-top:14px"><b>Afventer klinisk tekst</b>To til fire sætninger om hvad dette område dækker, og hvorfor det er værd at følge over tid. Skrevet til en læser uden medicinsk baggrund, uden at love noget om sygdomsforebyggelse.</p>
+                  <p class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:16px">Områdenavn fra konceptet · ikke bekræftet på pandonia.com</p>
+                </div>
+                <div class="ph ph-arm" style="aspect-ratio:16/9"><span class="tagx">ARM-01</span><span class="cap">One photograph per area chapter</span></div>
+              </div>
+
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) 74px 92px 18px;gap:16px;padding-bottom:9px;border-bottom:1px solid rgba(38,32,26,.22)">
+                <span class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)">Markør</span>
+                <span class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:right">Enhed</span>
+                <span class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:right">Indgår i</span>
+                <span></span>
+              </div>
+
+              <div id="mklist">
+                <details class="mk" data-k="kolesterolprofil cholesterol lipid kolesterol">
+                  <summary>
+                    <span><span class="nm">Kolesterolprofil</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord om hvad markøren måler og hvad den typisk bruges til.</span></span>
+                    <span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span>
+                  </summary>
+                  <div class="mkbody">
+                    <div>
+                      <dl>
+                        <dt>Hvad er det</dt><dd class="pl"><b>Afventer klinisk tekst</b>Tre til fem sætninger. Hvad måles, i hvilket materiale, og hvad betyder navnet på almindeligt dansk.</dd>
+                        <dt>Hvorfor måler vi det</dt><dd class="pl"><b>Afventer klinisk tekst</b>To sætninger om hvorfor markøren indgår i Pandonias panel.</dd>
+                        <dt>Hvad kan det pege på</dt><dd class="pl"><b>Afventer klinisk godkendelse</b>Formuleres som "kan pege på", aldrig som en diagnose. <strong>Ingen liste over sygdomsnavne</strong> — se §10.</dd>
+                        <dt>Måleenhed</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+                        <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+                        <dt>Varierer efter</dt><dd><span class="ptag">Afventer</span> <span style="color:var(--ink3);font-size:13px">køn · alder · andet</span></dd>
+                        <dt>Hænger sammen med</dt><dd class="pl"><b>Afventer klinisk mapping</b>Andre markører i panelet. Mange-til-mange — må ikke antages.</dd>
+                      </dl>
+                    </div>
+                    <div class="side">
+                      <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Referenceområde</div>
+                      <div class="band"><div class="none"></div></div>
+                      <div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div>
+                      <div style="border-top:1px solid rgba(38,32,26,.14);margin-top:16px;padding-top:12px">
+                        <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Områder</div>
+                        <div style="font-size:12.5px;line-height:1.5">Hjerte og kar <span style="color:var(--ink3)">· flere mulige</span></div>
+                        <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:12px 0 6px">Biologisk system</div>
+                        <div class="m" style="font-size:11px;letter-spacing:.06em;color:var(--ink2)">AFVENTER KLINISK MAPPING</div>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+
+                <details class="mk" data-k="hba1c langtidsblodsukker blodsukker glucose">
+                  <summary>
+                    <span><span class="nm">HbA1c</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord om hvad markøren måler og hvad den typisk bruges til.</span></span>
+                    <span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span>
+                  </summary>
+                  <div class="mkbody">
+                    <div><dl>
+                      <dt>Hvad er det</dt><dd class="pl"><b>Afventer klinisk tekst</b>Tre til fem sætninger på almindeligt dansk.</dd>
+                      <dt>Også kaldet</dt><dd>Langtidsblodsukker <span class="vtag">Verificeret · booking</span></dd>
+                      <dt>Måleenhed</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+                      <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+                    </dl></div>
+                    <div class="side">
+                      <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Referenceområde</div>
+                      <div class="band"><div class="none"></div></div>
+                      <div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div>
+                    </div>
+                  </div>
+                </details>
+
+                <details class="mk" data-k="d-vitamin vitamin d dvitamin">
+                  <summary>
+                    <span><span class="nm">D-vitamin</span><span class="sub" style="color:var(--ink2)">Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret.</span></span>
+                    <span class="unit">nmol/L</span><span class="inc">Health Test · også enkelttest</span><span class="chev">+</span>
+                  </summary>
+                  <div class="mkbody">
+                    <div>
+                      <p style="font-size:13px;margin-bottom:12px"><span class="vtag">Verificeret</span> <span style="color:var(--doc3);font-size:12.5px">Teksten nedenfor er Pandonias egen, fra bookingsystemet.</span></p>
+                      <dl>
+                        <dt>Hvad er det</dt><dd>Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret.</dd>
+                        <dt>Rører ved</dt><dd>Immunforsvar · knoglestyrke · mental balance</dd>
+                        <dt>Måleenhed</dt><dd>nmol/L <span class="ptag" style="margin-left:6px">Bekræft med laboratoriet</span></dd>
+                        <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+                        <dt>Varierer efter</dt><dd class="pl"><b>Afventer</b>Sandsynligvis årstid — men det skal bekræftes, ikke antages.</dd>
+                        <dt>Kan også købes</dt><dd>D-vitamin Test · 1.000 kr. <span class="vtag" style="margin-left:6px">Verificeret</span></dd>
+                      </dl>
+                    </div>
+                    <div class="side">
+                      <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Referenceområde</div>
+                      <div class="band"><div class="none"></div></div>
+                      <div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div>
+                      <div style="border-top:1px solid rgba(38,32,26,.14);margin-top:16px;padding-top:12px">
+                        <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Områder</div>
+                        <div style="font-size:12.5px;line-height:1.55">Immunforsvar · Knogler · Mental balance<br><span style="color:var(--ink3);font-size:11.5px">Tre områder — ikke ét</span></div>
+                        <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:12px 0 6px">Biologisk system</div>
+                        <div class="m" style="font-size:11px;letter-spacing:.06em;color:var(--ink2)">AFVENTER KLINISK MAPPING</div>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+
+                <details class="mk" data-k="tsh skjoldbruskkirtel stofskifte thyroid">
+                  <summary>
+                    <span><span class="nm">TSH</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord om hvad markøren måler.</span></span>
+                    <span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span>
+                  </summary>
+                  <div class="mkbody"><div><dl>
+                    <dt>Hvad er det</dt><dd class="pl"><b>Afventer klinisk tekst</b>Tre til fem sætninger.</dd>
+                    <dt>Måles sammen med</dt><dd>T3 · T4 <span class="vtag" style="margin-left:6px">Verificeret som markører</span> <span class="ptag" style="margin-left:4px">Gruppering afventer</span></dd>
+                    <dt>Referenceområde</dt><dd><span class="ptag">Afventer laboratoriet</span></dd>
+                  </dl></div><div class="side">
+                    <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Referenceområde</div>
+                    <div class="band"><div class="none"></div></div>
+                    <div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div>
+                  </div></div>
+                </details>
+
+                <details class="mk" data-k="testosteron testosterone hormon">
+                  <summary>
+                    <span><span class="nm">Testosteron</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning på 15–25 ord.</span></span>
+                    <span class="unit">—</span><span class="inc">Health Test · også enkelttest</span><span class="chev">+</span>
+                  </summary>
+                  <div class="mkbody"><div><dl>
+                    <dt>Hvad er det</dt><dd class="pl"><b>Afventer klinisk tekst</b>Tre til fem sætninger.</dd>
+                    <dt>Varierer efter</dt><dd>Køn <span class="ptag" style="margin-left:6px">Områder afventer</span> <span style="color:var(--doc3);font-size:12.5px">— to referenceområder, se §05</span></dd>
+                    <dt>Kan også købes</dt><dd>Mænds Sundhedstest · 1.400 kr. <span class="vtag" style="margin-left:6px">Verificeret</span></dd>
+                  </dl></div><div class="side">
+                    <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Referenceområde · to sæt</div>
+                    <div class="band" style="margin-bottom:5px"><div class="none"></div></div>
+                    <div class="m" style="font-size:8.5px;letter-spacing:.09em;color:var(--ink3);margin-bottom:9px">KVINDER — AFVENTER</div>
+                    <div class="band"><div class="none"></div></div>
+                    <div class="m" style="font-size:8.5px;letter-spacing:.09em;color:var(--ink3);margin-top:5px">MÆND — AFVENTER</div>
+                  </div></div>
+                </details>
+
+                <details class="mk" data-k="elektrolytter electrolyte væskebalance natrium kalium">
+                  <summary>
+                    <span><span class="nm">Elektrolytter og væskebalance</span><span class="sub pl"><b>Afventer klinisk tekst</b>Én sætning. Bemærk: dette er et panelnavn, ikke én markør.</span></span>
+                    <span class="unit">—</span><span class="inc">Health Test</span><span class="chev">+</span>
+                  </summary>
+                  <div class="mkbody"><div><dl>
+                    <dt>Bemærk</dt><dd><span class="ptag">Panel — indhold ukendt</span> <span style="font-size:13px;color:var(--doc2)">Pandonia offentliggør ikke hvilke enkeltmarkører dette dækker. Fem panelnavne har samme problem — se registret i §11.</span></dd>
+                  </dl></div><div class="side">
+                    <div class="m" style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Ingen enkelt reference</div>
+                    <div class="band"><div class="none"></div></div>
+                    <div class="m" style="font-size:8.5px;letter-spacing:.08em;color:var(--ink3);margin-top:6px;line-height:1.5">ET PANEL VISES SOM FLERE MARKØRER,<br>IKKE SOM ÉT BÅND</div>
+                  </div></div>
+                </details>
+              </div>
+
+              <div id="nores" hidden style="padding:22px 0;font-size:14px;color:var(--ink2)">Ingen markører matcher. <span class="m" style="font-size:11px;color:var(--ink3)">PRØV FX "KOLESTEROL" ELLER "D-VITAMIN"</span></div>
+
+              <div style="border-top:1px solid rgba(38,32,26,.22);margin-top:26px;padding-top:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:end">
+                <div>
+                  <div class="m" style="font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink3);margin-bottom:7px">Bag dette område — Pandonia-modellen</div>
+                  <div class="m" style="font-size:11px;letter-spacing:.06em;color:var(--ink2)">AFVENTER KLINISK MAPPING · FORVENTET 1–3 AF SEKS SYSTEMER</div>
+                </div>
+                <span class="b3">Læs om modellen →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="anno">
+          <div><h4>The index bar</h4><p>46px, sticky, cream, two hairlines. Six area names in Degular at 11.5px with the current one underlined in forest, and a filter field on the right using the Phase 2 underline-only input. <strong>No pills, no chips, no left rail</strong> — the full width stays available for editorial composition.</p></div>
+          <div><h4>The marker row</h4><p>Four columns: name plus a one-line meaning, unit, inclusion state, and a <code>+</code> that rotates to <code>×</code>. The meaning sits in the serif at 13.5px — it is the only place on the site where the editorial voice appears at body size, and it is what stops the list reading as a spreadsheet.</p></div>
+          <div><h4>Inclusion state</h4><p><code>Health Test</code> / <code>også enkelttest</code>, in mono, right-aligned, ink-3. Function's included/add-on idea, executed as plain text rather than a badge. <strong>It connects the science to the product without a single CTA.</strong></p></div>
+          <div><h4>Panels are not markers</h4><p>"Elektrolytter og væskebalance" is a panel whose contents Pandonia does not publish. The row says so rather than pretending it is one marker with one range — and the design note states that a panel will eventually expand into several marker rows.</p></div>
+          <div><h4>Area footer, not header</h4><p>Layer 2 appears at the <em>end</em> of the area, in mono, under a rule, labelled "Bag dette område". You meet the biology after the markers, as an explanation of what you have just read — not as a second menu before you start.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 MOBILE ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">03 / Mobile</span></div>
+      <div>
+        <h2 class="sec">Mobile</h2>
+        <p class="dek">Three things are redesigned rather than reflowed: the index, the marker row, and the range column.</p>
+
+        <div class="devices">
+          <div>
+            <div class="cols">
+              <div><h3>The index becomes an overlay</h3><p>The sticky bar collapses to a single row: <code>OMRÅDER ▾</code> on the left, a filter glyph on the right. Tapping it opens a <strong>full-screen deep-forest overlay</strong> with the six areas set in the serif at D3 — the same pattern as the site's main mobile navigation, so it is learned once and reused.</p><p style="margin-top:8px"><strong>No horizontal chip scrolling.</strong> A row of six categories scrolling sideways at 390px hides half of them and is the most common failure on pages like this.</p></div>
+              <div><h3>The marker row loses two columns</h3><p>Unit and inclusion state drop out of the summary row and move into the expanded body. What remains is the name, the one-line meaning, and the <code>+</code>. <strong>Scanning beats completeness at 390px</strong>; the detail is one tap away and it is the same tap either way.</p></div>
+              <div><h3>The range column goes full width</h3><p>The desktop layout puts the band in a 300px right column beside the definition list. On mobile the band moves <em>above</em> the list, full width, so it is the first thing in the expansion — the most visual element leads.</p></div>
+              <div><h3>No horizontal scrolling anywhere</h3><p>There is no table on this page, by design. The definition list stacks, the bands are full width, and the two-layer relationship rows wrap. The one place a horizontal rule of thumb might tempt us — comparing two sex-specific ranges — is solved by stacking them instead.</p></div>
+              <div><h3>Filter opens inline</h3><p>Tapping the filter glyph expands a full-width underline field directly beneath the bar and pushes content down. It does not open a modal or a separate search screen — the results are the page itself, filtering live.</p></div>
+              <div><h3>Area chapters keep their photograph</h3><p>Recropped from 16:9 to 3:2 and full-bleed. The photograph is what keeps a long marker list from reading as a document, and dropping it on mobile would remove the Dagslys half of the page exactly where it is needed most.</p></div>
+            </div>
+          </div>
+
+          <div class="mobframe">
+            <div class="mh">Mobile 390 · Hvad vi måler</div>
+            <div class="mobpg">
+              <div class="mobnav"><span class="wm">Pandonia</span><span class="bg"></span></div>
+              <div style="padding:16px 16px 0">
+                <div class="s" style="font-size:29px;line-height:1.04;color:var(--forest)">Ét tal fortæller sjældent noget alene.</div>
+                <p style="font-size:12px;line-height:1.6;color:var(--ink2);margin:13px 0 0">En blodprøve er ikke en facitliste. Den bliver først til noget, når man ser målingerne sammen.</p>
+              </div>
+              <div class="ph ph-hals" style="aspect-ratio:3/2;margin-top:16px"><span class="tagx">HALS-01 · 3:2 recrop</span></div>
+
+              <div style="position:sticky;top:0;background:var(--cream);border-top:1px solid rgba(38,32,26,.2);border-bottom:1px solid rgba(38,32,26,.2);display:flex;align-items:center;justify-content:space-between;padding:11px 16px;margin-top:16px">
+                <span style="font-size:12px;font-weight:500;color:var(--forest)">Områder ▾</span>
+                <span class="m" style="font-size:9px;letter-spacing:.1em;color:var(--ink3)">FIND MARKØR</span>
+              </div>
+
+              <div style="padding:16px">
+                <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                  <span class="s" style="font-size:24px;color:var(--forest)">Hjerte og kar</span>
+                  <span class="m" style="font-size:9.5px;letter-spacing:.09em;color:var(--ink3)">7 MARKØRER</span>
+                </div>
+                <p class="pl" style="font-size:12px;line-height:1.55;margin-top:10px"><b>Afventer klinisk tekst</b>To til fire sætninger om området.</p>
+
+                <div style="margin-top:18px;border-bottom:1px solid rgba(38,32,26,.14);padding-bottom:12px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+                  <span><span style="font-size:13.5px;font-weight:500;display:block">Kolesterolprofil</span><span class="pl" style="font-family:Newsreader,Georgia,serif;font-size:12px;line-height:1.45;display:block;margin-top:3px"><b>Afventer tekst</b>Én sætning om markøren.</span></span>
+                  <span style="color:var(--ink3);font-size:15px">+</span>
+                </div>
+
+                <div style="border-bottom:1px solid rgba(38,32,26,.14);padding-block:12px">
+                  <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+                    <span><span style="font-size:13.5px;font-weight:500;color:var(--forest);display:block">D-vitamin</span><span style="font-family:Newsreader,Georgia,serif;font-size:12px;line-height:1.45;color:var(--ink2);display:block;margin-top:3px">Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret.</span></span>
+                    <span style="color:var(--forest);font-size:15px;transform:rotate(45deg)">+</span>
+                  </div>
+                  <div style="margin-top:14px">
+                    <div class="m" style="font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px">Referenceområde</div>
+                    <div class="band"><div class="none"></div></div>
+                    <div class="axis"><span>—</span><span>AFVENTER</span><span>—</span></div>
+                    <div style="margin-top:14px;font-size:12px;line-height:1.5">
+                      <div class="m" style="font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px">Rører ved</div>
+                      Immunforsvar · Knoglestyrke · Mental balance
+                      <div class="m" style="font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:10px 0 4px">Enhed</div>
+                      nmol/L
+                    </div>
+                  </div>
+                </div>
+
+                <div style="border-bottom:1px solid rgba(38,32,26,.14);padding-block:12px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+                  <span><span style="font-size:13.5px;font-weight:500;display:block">TSH</span><span class="pl" style="font-family:Newsreader,Georgia,serif;font-size:12px;line-height:1.45;display:block;margin-top:3px"><b>Afventer tekst</b>Én sætning om markøren.</span></span>
+                  <span style="color:var(--ink3);font-size:15px">+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 RANGE COMPONENT ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">04 / Range</span></div>
+      <div>
+        <h2 class="sec">The range component, all states</h2>
+        <p class="dek">Phase 2 defined one band assuming every marker has a value and a range. Neither holds. Seven states, all with clearly labelled demonstration numbers.</p>
+
+        <div class="note warn">
+          <p style="margin:0"><strong>Every number in this section is invented for layout purposes and says so on the component.</strong> None of it is a Pandonia reference range, and none of it should be read as one. The component is a design specification; the data is scaffolding.</p>
+        </div>
+
+        <div class="states">
+          <div class="state">
+            <div class="sh">01 · Reference only, no value</div>
+            <div class="nmz">Markør</div>
+            <div class="band"><div class="ref" style="left:26%;width:52%"></div></div>
+            <div class="axis"><span>0</span><span>DEMODATA 30–160</span><span>250</span></div>
+            <p class="expl"><strong>The default state on Hvad vi måler.</strong> There is no personal value on this page, so no tick. The band shows only where the reference interval sits on the scale. Phase 2 had no state for this — it is the most-used state on the whole site.</p>
+          </div>
+
+          <div class="state">
+            <div class="sh">02 · Value inside range</div>
+            <div class="nmz">Markør</div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px"><span class="val">78<s>enhed</s></span><span class="st" style="color:var(--sageDeep)">Inden for området</span></div>
+            <div class="band"><div class="ref" style="left:26%;width:52%"></div><div class="tick" style="left:48%"></div></div>
+            <div class="axis"><span>0</span><span>DEMODATA</span><span>250</span></div>
+            <p class="expl">Neutral. Amber tick, sage band, no green tick, no reassuring message. <strong>Being inside the range is not an achievement</strong> — the design refuses to congratulate.</p>
+          </div>
+
+          <div class="state">
+            <div class="sh">03 · Near a boundary</div>
+            <div class="nmz">Markør</div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px"><span class="val">33<s>enhed</s></span><span class="st" style="color:var(--sageDeep)">Inden for området</span></div>
+            <div class="band"><div class="ref" style="left:26%;width:52%"></div><div class="tick" style="left:28%"></div></div>
+            <div class="axis"><span>0</span><span>DEMODATA</span><span>250</span></div>
+            <p class="expl"><strong>No special treatment, deliberately.</strong> Introducing an amber "borderline" state would put a judgement on a value that is inside the range. The position on the band already says it — the tick is visibly near the edge, and a reader can see that without being told to worry.</p>
+          </div>
+
+          <div class="state">
+            <div class="sh">04 · Outside range</div>
+            <div class="nmz">Markør</div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px"><span class="val">18<s>enhed</s></span><span class="st" style="color:var(--brick)">Under området</span></div>
+            <div class="band"><div class="ref" style="left:26%;width:52%"></div><div class="lead" style="left:11%;width:15%"></div><div class="tick out" style="left:10%"></div></div>
+            <div class="axis"><span>0</span><span>DEMODATA</span><span>250</span></div>
+            <p class="expl">Brick tick plus a 1px lead rule to the band edge, so the eye measures <em>how far</em>. No red fill, no icon, no exclamation. <strong>Never appears on the homepage</strong> — approved Phase 3 rule.</p>
+          </div>
+
+          <div class="state">
+            <div class="sh">05 · No simple range</div>
+            <div class="nmz">Markør</div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px"><span class="val">1,4<s>ratio</s></span><span class="st" style="color:var(--ink3)">Vurderes i sammenhæng</span></div>
+            <div style="position:relative;height:22px;border-top:1px solid rgba(38,32,26,.22);border-bottom:1px solid rgba(38,32,26,.22)"><div class="tick" style="left:44%"></div></div>
+            <div class="axis" style="justify-content:flex-start"><span>INGEN ENKEL REFERENCE</span></div>
+            <p class="expl"><strong>The state that stops the component lying.</strong> Ratios, derived values and markers whose meaning depends on other markers get a bare scale with a tick and no sage band. It says: here is where you sit, and no, there is no universal good or bad here.</p>
+          </div>
+
+          <div class="state">
+            <div class="sh">06 · Varies by sex or age</div>
+            <div class="nmz">Markør</div>
+            <div class="band" style="margin-bottom:5px"><div class="ref" style="left:18%;width:34%"></div><div class="tick" style="left:30%"></div></div>
+            <div class="m" style="font-size:8.5px;letter-spacing:.09em;color:var(--ink3);margin-bottom:11px">KVINDER 18–50 · DEMODATA</div>
+            <div class="band"><div class="ref" style="left:40%;width:44%"></div></div>
+            <div class="m" style="font-size:8.5px;letter-spacing:.09em;color:var(--ink3);margin-top:5px">MÆND · DEMODATA</div>
+            <p class="expl">Stacked, never a toggle. <strong>A toggle hides the fact that the ranges differ</strong> — which is often the most interesting thing on the screen. The reader's own band carries the tick; the other is shown empty for comparison.</p>
+          </div>
+
+          <div class="state">
+            <div class="sh">07 · Unavailable</div>
+            <div class="nmz">Markør</div>
+            <div class="band"><div class="none"></div></div>
+            <div class="axis"><span>—</span><span>AFVENTER LABORATORIET</span><span>—</span></div>
+            <p class="expl">Diagonal hatch at 7% ink, endpoints as em-dashes, a mono reason. Used throughout this prototype. <strong>An empty band is honest; a plausible invented one is not.</strong> Also covers a result that could not be analysed.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>What the component must never do</h4>
+          <div class="cols">
+            <div><h3>Never traffic lights</h3><p>No red/amber/green triplet. Two clinical states plus position. Colour never carries the judgement alone — <strong>the tick's position on the band is the primary signal and the label is secondary.</strong></p></div>
+            <div><h3>Never a tick or a cross</h3><p>No green checkmarks, no warning triangles, no circular scores, no ring. A biomarker is a typeset scientific object, not a fitness widget.</p></div>
+            <div><h3>Never imply one universal scale</h3><p>State 05 exists because some markers genuinely cannot be read as good/bad. If the component cannot express that, it will quietly teach the wrong idea across thirty-four markers.</p></div>
+            <div><h3>Never render a range it does not have</h3><p>State 07 is not a fallback — it is the correct answer when the data is missing. The component should refuse to draw a band without both endpoints.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 05 DETAIL EXPERIENCE ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">05 / Detail</span></div>
+      <div>
+        <h2 class="sec">The marker detail</h2>
+        <p class="dek">Expansion in place, chosen on usability grounds rather than novelty — with one exception.</p>
+
+        <div class="block">
+          <h4>Why in place, not a drawer or a page</h4>
+          <div class="cols">
+            <div><h3>You keep your place</h3><p>Function opens a right-hand drawer that covers the page. You gain the marker and lose the area you were reading. With six areas and ~34 markers, browsing is the main activity — <strong>context is worth more than focus here.</strong></p></div>
+            <div><h3>One implementation, two viewports</h3><p>A drawer needs a different pattern on mobile (a sheet), which means two components, two focus traps, two sets of bugs. In-place expansion is identical at 1440 and 390.</p></div>
+            <div><h3>Accessible by default</h3><p>A native <code>&lt;details&gt;</code> element gives keyboard operation, screen-reader semantics and the browser's own find-in-page for free. <strong>Function's rows are plain buttons with no <code>aria-expanded</code></strong> — a real gap on a medical site.</p></div>
+            <div><h3>The exception: six pages</h3><p>The signature marker in each area gets its own indexable URL, because someone googling "ferritin referenceområde" should land on a page. <strong>Six real pages, not thirty-four thin ones.</strong> Everything else deep-links to an expanded row via a hash.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Content structure — what the detail will answer</h4>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Field</th><th>Question it answers</th><th>Source</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Hvad er det</td><td>"What is this?"</td><td>Pandonia clinicians</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Hvorfor måler vi det</td><td>"Why is it in the panel?"</td><td>Pandonia clinicians</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Hvad kan det pege på</td><td>"What can it help indicate?"</td><td>Pandonia clinicians</td><td><span class="ptag">Afventer — se §10</span></td></tr>
+                <tr><td>Hvordan læses det</td><td>"How is it interpreted?"</td><td>Pandonia clinicians</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Måleenhed</td><td>—</td><td>Laboratory</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Referenceområde</td><td>—</td><td>Laboratory</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Varierer efter</td><td>"Does this differ for me?"</td><td>Laboratory</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Hænger sammen med</td><td>"What else relates to this?"</td><td>Clinical mapping</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Områder</td><td>"Which parts of my health?"</td><td>Layer 1 mapping</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Biologisk system</td><td>"How does it fit the model?"</td><td>Layer 2 mapping</td><td><span class="ptag">Afventer</span></td></tr>
+                <tr><td>Indgår i</td><td>"Do I get this?"</td><td>Product</td><td><span class="ptag">Delvist verificeret</span></td></tr>
+                <tr><td>Beregnet værdi</td><td>"Measured or calculated?"</td><td>Laboratory</td><td><span class="ptag">Afventer</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:15px;color:var(--doc2);max-width:66ch">Twelve fields, of which one is partly answerable today. <strong>The UX is finished; the content is not started.</strong> That is the honest position and it is why §11 exists.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 TWO LAYERS ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">06 / Layers</span></div>
+      <div>
+        <h2 class="sec">Layer 1 meets Layer 2</h2>
+        <p class="dek">Three touchpoints, deliberately quiet, and one figure that explains the model once.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div><h3>Touchpoint 1 — the area footer</h3><p>A mono line under a rule at the end of each chapter: <em>"Bag dette område — Pandonia-modellen"</em>. You have just read the markers; now you are told what connects them. <strong>Arriving after rather than before is the whole trick</strong> — it reads as an explanation, not a second taxonomy.</p></div>
+            <div><h3>Touchpoint 2 — the marker detail</h3><p>Two mono fields side by side: <code>OMRÅDER</code> and <code>BIOLOGISK SYSTEM</code>. A marker can list several of each, and that is where the many-to-many becomes visible without any diagram at all.</p></div>
+            <div><h3>Touchpoint 3 — the model chapter</h3><p>At the foot of the page, on deep forest: the six systems explained properly, once, with one figure. This is where a curious reader goes to "gå et niveau dybere". It is never in the navigation.</p></div>
+          </div>
+        </div>
+
+        <div class="mock">
+          <div class="mockbar"><span class="mtag">Model chapter</span><span class="mtag">Deep forest</span><span class="mtag">Standard</span><span class="mtag nul">Nulpunkt 70</span><span class="mtag">One figure, once</span></div>
+          <div class="pg deepbg">
+            <div class="pad">
+              <div class="s" style="font-size:clamp(20px,2.9vw,34px);line-height:1.08;max-width:22ch;margin-bottom:10px">Kroppen arbejder ikke i kasser.</div>
+              <p style="font-size:12.5px;color:rgba(237,231,218,.72);max-width:54ch;margin-bottom:8px">Områderne ovenfor er den nemmeste måde at finde rundt på. Men en markør hører sjældent kun ét sted til — og det er dét, Pandonia-modellen beskriver.</p>
+              <p class="pl" style="font-size:12.5px;max-width:54ch;margin-bottom:26px"><b>Afventer klinisk tekst</b>To til tre afsnit der forklarer modellen, dens forhold til the four horsemen of aging, og hvad den ikke lover.</p>
+
+              <!-- the one figure -->
+              <div style="border-top:1px solid rgba(237,231,218,.22);border-bottom:1px solid rgba(237,231,218,.22);padding-block:26px;margin-bottom:20px">
+                <div class="m" style="font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:rgba(237,231,218,.45);margin-bottom:20px">Én markør · flere områder · flere systemer</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.6vw,22px);align-items:center;max-width:620px">
+                  <div style="font-size:12.5px;line-height:1.7">Immunforsvar<br>Knoglestyrke<br>Mental balance<div class="m" style="font-size:8px;letter-spacing:.1em;color:rgba(237,231,218,.45);margin-top:6px">OMRÅDER · LAG 1</div></div>
+                  <div style="text-align:center;position:relative">
+                    <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(237,231,218,.3)"></div>
+                    <span class="s" style="font-size:clamp(16px,2.2vw,26px);background:var(--deep);padding:0 12px;position:relative">D-vitamin</span>
+                  </div>
+                  <div class="m" style="font-size:11px;letter-spacing:.06em;line-height:1.8;color:rgba(237,231,218,.7);text-align:right">AFVENTER<br>KLINISK<br>MAPPING<div class="m" style="font-size:8px;letter-spacing:.1em;color:rgba(237,231,218,.45);margin-top:6px">SYSTEMER · LAG 2</div></div>
+                </div>
+                <p style="font-size:11.5px;color:rgba(237,231,218,.6);margin-top:18px;max-width:52ch">Venstre side er verificeret — det er Pandonias egen beskrivelse af D-vitamin. Højre side afventer.</p>
+              </div>
+
+              <div class="m" style="font-size:10.5px;letter-spacing:.07em;color:rgba(237,231,218,.68);line-height:1.8">SIGNALERING · TRANSPORT · FORDØJELSE · ENERGI · IMMUNFORSVAR · AFFALDSSYSTEM</div>
+              <div class="m" style="font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:9px">To af disse seks navne er sendt til klinisk gennemsyn — se registret</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="anno">
+          <div><h4>Why one figure and not six</h4><p>The crossing-lines diagram appears exactly once on the whole site. Phase 2's "one orchestrated moment per page" logic applied to diagrams: <strong>a device used once is an explanation; used six times it becomes decoration.</strong></p></div>
+          <div><h4>The figure is half-empty on purpose</h4><p>Left side verified, right side pending — and the figure says so. It will fill in when the mapping arrives, and until then it demonstrates the structure without asserting anything.</p></div>
+          <div><h4>Layer 2 is never a link target</h4><p>The six system names are set in mono, on a dark ground, in a chapter at the foot of the page. You cannot navigate <em>by</em> them. That single restriction is what keeps the two layers from competing.</p></div>
+          <div><h4>Not forced into a tree</h4><p>No breadcrumb reads "Hormoner › Signalering › TSH". The data model is a marker with two lists of memberships, and the UI never implies containment.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 07 SEARCH ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">07 / Search</span></div>
+      <div>
+        <h2 class="sec">Search and discovery</h2>
+        <p class="dek">A filter, not a search engine — with a stated threshold for when that changes.</p>
+
+        <div class="block">
+          <div class="cols">
+            <div><h3>The recommendation</h3><p><strong>One live filter field in the index bar. No search page, no modal, no results template.</strong> At roughly 34 markers across six areas, the entire page fits in a few screens; a full search experience would be more machinery than the content justifies.</p></div>
+            <div><h3>Why a filter is still needed</h3><p>Because people arrive with a word, not an area. Someone thinking "kolesterol" does not know it lives under Hjerte og kar — and under the two-layer model they are even less likely to guess. <strong>The filter is what makes Layer 1 navigation safe to commit to.</strong></p></div>
+            <div><h3>The threshold</h3><p>If the marker count passes roughly <strong>60</strong>, or if Hvad vi måler starts carrying article content, revisit. Until then the filter above is the whole feature — and it works in this prototype, so you can try it.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>What it must match — a data requirement, not a UI one</h4>
+          <div class="cols">
+            <div><h3>Danish and English</h3><p>"D-vitamin" and "vitamin D". "Kolesterol" and "cholesterol". The site is bilingual and Danes search in both.</p></div>
+            <div><h3>Lay synonyms</h3><p><strong>"Langtidsblodsukker" must find HbA1c.</strong> "Stofskifte" must find TSH, T3 and T4. This is the single highest-value field in the whole data model and it is invisible — it needs a <code>synonyms[]</code> array per marker, written by someone who knows what Danes actually call things.</p></div>
+            <div><h3>Panel names</h3><p>"Lipidprofil" should find every marker inside the lipid panel, not one row called "Kolesterolprofil". Which requires knowing the panel contents — currently unpublished, and item 5 in the register.</p></div>
+            <div><h3>Forgiving matching</h3><p>Case- and diacritic-insensitive, substring, no fuzzy matching. "Vitamin" finds D-vitamin; "vitmain" finds nothing and says so plainly with two suggestions.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 08 PRODUCT ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">08 / Product</span></div>
+      <div>
+        <h2 class="sec">Connecting to the product</h2>
+        <p class="dek">Two CTAs on the entire page. The rest of the connection is carried by information.</p>
+
+        <div class="cols">
+          <div><h3>The inclusion column does the work</h3><p>Every marker row says <code>Health Test</code>, or <code>Health Test · også enkelttest</code>. Reading the page, you are continuously told that these are the things Pandonia measures — <strong>without a single interruption.</strong> It is Function's included/add-on idea, stripped of the badge.</p></div>
+          <div><h3>Where the two CTAs sit</h3><p>One tertiary at the end of the opening (<em>Se hvad et tjek koster →</em>), and one primary at the very bottom after the limits section. Nothing between. A reader exploring their own biology should not be sold to every 600 pixels.</p></div>
+          <div><h3>The individual-test link</h3><p>Where a marker is also sold separately, the detail names the product and its price — <em>D-vitamin Test · 1.000 kr.</em> That is genuinely useful information, and it surfaces the seven products currently invisible on the site.</p></div>
+          <div><h3>What we don't measure</h3><p>A short closing section listing what the test does not cover. <strong>No competitor has this.</strong> It costs one paragraph, it prevents the most damaging kind of disappointment, and it is the strongest trust signal available on a page like this. Written by a clinician — item 14 in the register.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 09 FUNCTION ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">09 / Function</span></div>
+      <div>
+        <h2 class="sec">Function Health, compared</h2>
+        <p class="dek">Read live again, including the marker drawer, which I had not opened before. Their detail experience is more specific — and more problematic — than I assumed.</p>
+
+        <div class="block">
+          <h4>What Function does exceptionally well</h4>
+          <div class="cols">
+            <div><h3>The pronunciation guide</h3><p>Under "Ferritin" it prints <em>fair-ih-tin</em>. One line, almost free, and it transforms an intimidating word into something you can say out loud. <strong>The single best detail on the page, and we should take it</strong> — Danish markers like "homocystein" need it more than English ones do.</p></div>
+            <div><h3>One paragraph that covers four questions</h3><p>What it is, what low means, what high means, and what it usually calls for — in about 70 words, without subheadings. Tight, readable, and a better model than a long structured page.</p></div>
+            <div><h3>Deep-linkable detail</h3><p>Opening a marker writes <code>#biomarker-ferritin</code> to the URL. Shareable, bookmarkable, back-button-safe.</p></div>
+            <div><h3>"Ignored by most. Tested by us."</h3><p>Four unexpected markers before any list. Depth before volume, executed in one sentence.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>What would be wrong for Pandonia</h4>
+          <div class="cols">
+            <div><h3>The "Possible conditions" chips</h3><p>Ferritin's drawer lists <code>ANEMIA · CHRONIC INFLAMMATION · HEMOCHROMATOSIS · IRON DEFICIENCY · LIVER DISEASE</code>. <strong>A browsing consumer with no result meets five diseases attached to one marker.</strong> It is the fear register, and it contradicts everything we decided about not being alarmist. Our equivalent field — "hvad kan det pege på" — must be a sentence in careful language, never a list of diagnoses.</p></div>
+            <div><h3>The drawer covers the page</h3><p>You gain the marker and lose the category. With 160 markers that trade may be worth it; with 34 it is not.</p></div>
+            <div><h3>A hard CTA inside the drawer</h3><p>"Join Function to test" sits directly under the disease list. Curiosity → anxiety → purchase is an effective funnel and the wrong one for a Danish clinical brand.</p></div>
+            <div><h3>No units, no ranges, anywhere</h3><p><strong>Function's What We Test page shows no reference range and no unit for any marker.</strong> Given 160 markers and a US audience that is defensible. For Pandonia it would waste the Nulpunkt language entirely — and it is the clearest opening to be better than the benchmark.</p></div>
+            <div><h3>Buttons without state</h3><p>Marker rows are plain <code>&lt;button&gt;</code> elements with no <code>aria-expanded</code> and a <code>role="dialog"</code> drawer. Native <code>&lt;details&gt;</code> gets us more, for less.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Where Pandonia can be simpler, more human, and clearer</h4>
+          <div class="verdict"><p><strong>Simpler:</strong> six areas against twenty-four categories. Function needs a search field and a sticky rail because its taxonomy is unmanageable. <strong>We need a 46px bar and a filter.</strong></p><span class="ans" style="color:var(--mark)">Structure</span></div>
+          <div class="verdict"><p><strong>More human:</strong> Function's page has no photography inside the taxonomy at all — it is a cream list from the category rail to the footer. Every Pandonia area chapter opens with a photograph and a serif line, so the page breathes six times.</p><span class="ans" style="color:var(--mark)">Rhythm</span></div>
+          <div class="verdict"><p><strong>More human:</strong> our opening is one marker touching three concerns, in Pandonia's own words. Function's opening is four markers you didn't expect. Both are depth-before-volume — <strong>ours also teaches you how to read the page.</strong></p><span class="ans" style="color:var(--mark)">Framing</span></div>
+          <div class="verdict"><p><strong>Clearer test → result → understanding:</strong> Function's chain ends at "Join Function to test". Ours ends at a named doctor who walks through the numbers. The inclusion column, the individual-test prices and the limits section all connect the science to the actual service rather than to a checkout.</p><span class="ans" style="color:var(--mark)">Chain</span></div>
+          <div class="verdict"><p><strong>Where they are still ahead:</strong> they have the content. 160 markers with a written paragraph each, live today. <strong>Our structure is better and our cupboard is empty</strong> — which is what the register in §11 is for.</p><span class="ans" style="color:var(--flag)">Honest</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 10 SYSTEM CHANGES ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">10 / System</span></div>
+      <div>
+        <h2 class="sec">Proposed additions to the Phase 2 system</h2>
+        <p class="dek">Seven. Six are additions the homepage never needed; one is a build rule.</p>
+
+        <ol class="rules">
+          <li><div><h3>Band state: reference only, no value</h3><p>Phase 2 defined the band as range + value. On Hvad vi måler there is no value, so the band shows the interval alone. <strong>This is now the most-used state on the site</strong> and it needs a formal spec.</p></div></li>
+          <li><div><h3>Band state: no simple range</h3><p>A bare scale with a tick and no sage band, labelled <code>INGEN ENKEL REFERENCE</code>. Phase 2's two-state model assumed every marker has an interval. Ratios and context-dependent markers do not, and without this state the component would teach a false universal good/bad scale across the whole page.</p></div></li>
+          <li><div><h3>Band state: unavailable</h3><p>Diagonal hatch at 7% ink, em-dash endpoints, a mono reason. Covers pending data and unanalysable results.</p></div></li>
+          <li><div><h3>Band variant: stacked ranges</h3><p>Two or more bands with mono labels for sex or age. Stacked, never a toggle — a toggle hides that the ranges differ at all.</p></div></li>
+          <li><div><h3>Inclusion label</h3><p>Mono, 9px, +0.1em, ink-3, right-aligned. <strong>No fill, no border, no radius</strong> — so the Phase 2 ban on pills and chips stands. It is typeset metadata, not a badge.</p></div></li>
+          <li><div><h3>Fourth density: Expanded</h3><p>Phase 2 defined Air / Standard / Dense at section level. An opened marker row is a fourth, <em>internal</em> density: 8px rhythm, hairlines at 9% ink, inside a Standard section. Needed so expansion feels like opening a drawer in a cabinet rather than starting a new section.</p></div></li>
+          <li><div><h3>The <code>.pl</code> placeholder convention — and a build gate</h3><p>Dotted left rule, ink-3, red mono tag. <strong>Proposed as build-blocking:</strong> the production build fails if any element carrying <code>.pl</code> or <code>.ptag</code> reaches it. That converts "we'll remember to replace the placeholders" into something the pipeline enforces — which on a medical site is the difference between a convention and a safeguard.</p></div></li>
+        </ol>
+
+        <div class="note">
+          <p style="margin:0"><strong>No homepage change required.</strong> Phase 4 exposed nothing structural. One small coordination note: homepage beat 04 features vitamin D, and so does this page's opening. Rotate one of them — the homepage is the better place to rotate, since it already plans to cycle its featured marker.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 11 REGISTER ===== -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">11 / Register</span></div>
+      <div>
+        <h2 class="sec">Clinical review required</h2>
+        <p class="dek">The checklist to take to the clinical and product team. Fourteen items, ordered by what blocks the most.</p>
+
+        <div class="tw">
+          <table style="min-width:860px">
+            <thead><tr><th style="min-width:130px">Item</th><th style="min-width:170px">Current assumption</th><th style="min-width:130px">Source</th><th style="min-width:180px">Needs confirming</th><th style="min-width:180px">Where it affects the site</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1 · Final health areas</strong></td><td>Six. Three known: Hjerte og kar, Blodsukker og stofskifte, Hormoner.</td><td class="m">Design concept only — not on pandonia.com</td><td>The other three names, in DK and EN. Whether it is six at all.</td><td>Index bar · all six chapters · homepage beat 07 · navigation · URLs</td></tr>
+              <tr><td><strong>2 · What the six scores are</strong></td><td>Unknown. Assumed Layer 1.</td><td class="m">"6 specifikke helbredsscorer" — never defined</td><td>Are they scored per health area, per biological system, or something else?</td><td>Homepage beat 08 · the product · whether the two layers are independent</td></tr>
+              <tr><td><strong>3 · Complete marker list</strong></td><td>Six markers recovered of ~34.</td><td class="m">Marquee + booking system</td><td>All markers, with official DK and EN names.</td><td>Every marker row · counts · filter · the entire page</td></tr>
+              <tr><td><strong>4 · Biomarker count</strong></td><td>None chosen.</td><td class="m">"+30", "over 30", "34" all live</td><td>One number. Whether "unique" distinguishes measured from derived.</td><td>Hero V2 headline ("fireogtredive") · area counts · pricing</td></tr>
+              <tr><td><strong>5 · Panel contents</strong></td><td>Five panel names with no published components.</td><td class="m">Marquee + booking copy</td><td>What is inside Kolesterolprofil, Elektrolytter, Leverfunktion, Nyrefunktion, Thyroid.</td><td>Marker rows (panels must expand into markers) · counts · filter</td></tr>
+              <tr><td><strong>6 · Marker → health area</strong></td><td>Nothing assigned.</td><td class="m">—</td><td>Full mapping. Whether a marker may sit in several areas.</td><td>Which chapter each row appears in · the "Områder" field</td></tr>
+              <tr><td><strong>7 · Marker → biological system</strong></td><td>Nothing assigned.</td><td class="m">—</td><td>Full mapping, and whether the six systems have defined membership at all.</td><td>Area footers · marker detail · the model figure</td></tr>
+              <tr><td><strong>8 · Reference ranges</strong></td><td>None.</td><td class="m">—</td><td>Interval, unit and display scale per marker.</td><td>Every band on the site. <strong>Bands render state 07 until this arrives.</strong></td></tr>
+              <tr><td><strong>9 · Sex and age variation</strong></td><td>Assumed for testosterone only.</td><td class="m">Two sex-specific products exist</td><td>Which markers vary, and by what.</td><td>Stacked band variant · marker detail</td></tr>
+              <tr><td><strong>10 · Measured vs derived</strong></td><td>Unknown.</td><td class="m">—</td><td>Which values are calculated rather than measured.</td><td><code>BEREGNET VÆRDI</code> annotation</td></tr>
+              <tr><td><strong>11 · Markers with no simple range</strong></td><td>Assumed some exist.</td><td class="m">—</td><td>Which markers cannot be read against one interval.</td><td>Band state 05 · prevents a false universal scale</td></tr>
+              <tr><td><strong>12 · "Affaldssystem" / "detoxification"</strong></td><td>Kept verbatim. No replacement proposed.</td><td class="m">FAQ, DK vs EN</td><td>Deliberate translation or artefact? "Detoxification" carries wellness baggage.</td><td>Model chapter · area footers · Om os</td></tr>
+              <tr><td><strong>13 · "Fordøjelse" / "digestion"</strong></td><td>Kept verbatim.</td><td class="m">FAQ, both languages</td><td><strong>Does the panel measure anything digestive at all?</strong> No gut marker is published.</td><td>Model chapter. Potentially a heading describing something the test does not do.</td></tr>
+              <tr><td><strong>14 · What we don't measure</strong></td><td>Section designed, empty.</td><td class="m">—</td><td>What the test does not cover, written by a clinician.</td><td>Closing section. No competitor has this — highest trust value per word on the page.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note warn">
+          <p style="margin-bottom:8px"><strong>Items 3, 6 and 8 block the most.</strong> Without the marker list, the area mapping and the ranges, this page can be built but not filled — every row renders a placeholder and every band renders state 07.</p>
+          <p style="margin:0"><strong>Item 4 blocks the hero.</strong> "Fireogtredive svar" is the approved headline and it is currently unsubstantiated. Until the count is settled the working design carries a marked placeholder rather than a silently chosen 34.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="endmark">
+    <span class="lbl">End of Phase 04 — holding for approval</span>
+    <span class="lbl">Register §11 is the clinical checklist · evidence in Appendix A</span>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('mkfilter');
+  var list = document.getElementById('mklist');
+  var none = document.getElementById('nores');
+  var count = document.getElementById('areaCount');
+  if (!input || !list) return;
+  var rows = Array.prototype.slice.call(list.querySelectorAll('.mk'));
+  var total = rows.length;
+
+  function norm(s) {
+    return (s || '').toLowerCase()
+      .replace(/æ/g, 'ae').replace(/ø/g, 'oe').replace(/å/g, 'aa')
+      .replace(/[^a-z0-9]+/g, ' ').trim();
+  }
+
+  function apply() {
+    var q = norm(input.value);
+    var shown = 0;
+    rows.forEach(function (r) {
+      var hay = norm((r.getAttribute('data-k') || '') + ' ' + (r.querySelector('.nm') ? r.querySelector('.nm').textContent : ''));
+      var hit = !q || hay.indexOf(q) !== -1;
+      r.hidden = !hit;
+      if (!hit) r.open = false;
+      if (hit) shown++;
+    });
+    if (none) none.hidden = shown !== 0;
+    if (count) count.textContent = q ? (shown + ' AF ' + total + ' VIST') : '7 MARKØRER';
+  }
+
+  input.addEventListener('input', apply);
+  apply();
+})();
+</script>

@@ -1,0 +1,37 @@
+{
+  "name": "pandonia-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pandonia — Dagslys x Nulpunkt. Production website.",
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "npm run validate:clinical",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "validate:clinical": "tsx scripts/validate-clinical.ts",
+    "validate:clinical:report": "tsx scripts/validate-clinical.ts --report",
+    "check": "npm run typecheck && npm run lint && npm run validate:clinical"
+  },
+  "dependencies": {
+    "next": "15.1.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.7",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.18.0",
+    "eslint-config-next": "15.1.6",
+    "postcss": "8.5.1",
+    "tailwindcss": "3.4.17",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

@@ -1,0 +1,711 @@
+<title>Pandonia System Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap">
+
+<style>
+  :root{
+    --page:#EDEEEA; --doc:#17191A; --doc2:#545A56; --doc3:#6E756F;
+    --rule:rgba(23,25,26,.15); --ruleSoft:rgba(23,25,26,.08);
+    --mark:#3C5236; --flag:#9A3B2A; --warn:#8A5D14;
+    --cream:#F6F1E8; --sand:#F4EADB; --deep:#18261A; --forest:#415A3B;
+    --amber:#E3A754; --sage:#A0B89F; --sageDeep:#4E7050; --brick:#8C3B2E;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#131514; --doc:#E9EBE6; --doc2:#A0A7A2; --doc3:#8A918B;
+      --rule:rgba(233,235,230,.2); --ruleSoft:rgba(233,235,230,.1);
+      --mark:#9BBE90; --flag:#E08B76; --warn:#E3A754;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#131514; --doc:#E9EBE6; --doc2:#A0A7A2; --doc3:#8A918B;
+    --rule:rgba(233,235,230,.2); --ruleSoft:rgba(233,235,230,.1);
+    --mark:#9BBE90; --flag:#E08B76; --warn:#E3A754;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--page);color:var(--doc);margin:0;font-family:"DM Sans",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .sheet{max-width:1280px;margin:0 auto;padding-inline:24px;padding-block:0 110px}
+  .serif{font-family:"Newsreader",Georgia,serif;font-weight:400}
+  .mono{font-family:"DM Mono",ui-monospace,monospace}
+  .lbl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);line-height:1.5}
+  h1,h2,h3,h4{margin:0}
+  p{margin:0 0 1em;max-width:70ch} p:last-child{margin-bottom:0}
+  code{font-family:"DM Mono",monospace;font-size:.85em;background:var(--ruleSoft);padding:1px 5px}
+  a{color:inherit;text-underline-offset:3px}
+  a:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+
+  .masthead{border-bottom:1px solid var(--doc);padding-block:30px 0}
+  .mb{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:baseline;justify-content:space-between;padding-bottom:46px}
+  .wordmark{font-family:"Newsreader",Georgia,serif;font-size:23px}
+  h1.title{font-family:"Newsreader",Georgia,serif;font-size:clamp(36px,6.4vw,82px);line-height:.99;letter-spacing:-.02em;text-wrap:balance;padding-bottom:26px}
+  h1.title i{font-style:italic;color:var(--doc3)}
+  .standfirst{font-size:clamp(17px,2vw,20px);line-height:1.5;max-width:58ch;color:var(--doc2);padding-bottom:34px}
+  .colophon{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 28px;border-top:1px solid var(--rule);padding-block:16px 20px}
+  .colophon span{display:block}
+  .colophon .v{font-family:"DM Sans",sans-serif;font-size:14px;letter-spacing:0;text-transform:none;color:var(--doc);margin-top:5px}
+
+  section{border-top:1px solid var(--doc);padding-block:56px 12px}
+  .row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:32px;align-items:start}
+  .rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+  h2.sec{font-family:"Newsreader",Georgia,serif;font-size:clamp(27px,4vw,43px);line-height:1.04;letter-spacing:-.02em;text-wrap:balance;padding-bottom:10px}
+  .dek{font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.5;color:var(--doc2);max-width:64ch;padding-bottom:28px}
+  h3{font-size:17.5px;font-weight:500;letter-spacing:-.012em;line-height:1.25;margin-bottom:7px}
+  h4{font-family:"DM Mono",monospace;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);margin-bottom:10px}
+
+  .block{border-top:1px solid var(--rule);padding-block:28px}
+  .block:first-of-type{border-top:none;padding-top:2px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px 34px}
+  .cols p,.cols li{font-size:14.5px;line-height:1.56}
+  .cols ul{margin:0;padding-left:17px} .cols li{margin-bottom:5px}
+  .note{border-left:2px solid var(--mark);padding:4px 0 4px 20px;font-size:15px;line-height:1.58;margin-block:18px}
+  .note.warn{border-left-color:var(--flag)}
+  .note.fix{border-left-color:var(--warn)}
+
+  .tw{overflow-x:auto;margin-block:6px 20px}
+  table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+  th,td{text-align:left;padding:9px 14px 9px 0;border-bottom:1px solid var(--ruleSoft);vertical-align:top}
+  th{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--doc3);font-weight:400;border-bottom-color:var(--rule)}
+  td.m{font-family:"DM Mono",monospace;font-size:11.5px}
+  td small{display:block;color:var(--doc3);font-size:12px;line-height:1.45;margin-top:3px}
+
+  .tag{display:inline-block;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid currentColor;white-space:nowrap}
+  .t-ok{color:var(--sageDeep)} .t-warn{color:var(--warn)} .t-no{color:var(--flag)} .t-fix{color:var(--warn)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .t-ok{color:#9BBE90}}
+
+  ol.rules{list-style:none;margin:0;padding:0;counter-reset:r}
+  ol.rules>li{counter-increment:r;display:grid;grid-template-columns:40px minmax(0,1fr);gap:18px;border-top:1px solid var(--ruleSoft);padding-block:18px}
+  ol.rules>li::before{content:counter(r,decimal-leading-zero);font-family:"DM Mono",monospace;font-size:11.5px;color:var(--mark);padding-top:5px}
+  ol.rules h3{font-size:16.5px} ol.rules p{font-size:14.5px;line-height:1.55}
+
+  ul.asks{list-style:none;margin:0;padding:0}
+  ul.asks li{border-top:1px solid var(--ruleSoft);padding-block:16px;display:grid;grid-template-columns:22px minmax(0,1fr);gap:14px;max-width:80ch}
+  ul.asks li::before{content:"→";color:var(--mark)}
+  ul.asks p{font-size:14.5px;line-height:1.55;margin:0}
+
+  .map{display:grid;gap:0}
+  .mapitem{display:grid;grid-template-columns:30px 176px minmax(0,1fr);gap:10px 24px;border-top:1px solid var(--ruleSoft);padding-block:17px;align-items:start}
+  .mapitem .lv{font-family:"DM Mono",monospace;font-size:11px;color:var(--doc3);padding-top:3px}
+  .mapitem h3{font-family:"Newsreader",Georgia,serif;font-size:20px;font-weight:400;margin-bottom:2px}
+  .mapitem .slug{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.06em;color:var(--doc3)}
+  .mapitem p{font-size:14.5px;line-height:1.5;margin:0 0 6px}
+
+  .journey{border-top:1px solid var(--ruleSoft);padding-block:20px}
+  .jsteps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+  .jstep{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--rule);padding:4px 9px;color:var(--doc2)}
+  .jarr{color:var(--mark);font-size:13px}
+
+  .verdict{display:grid;grid-template-columns:minmax(0,1fr) 104px;gap:16px;border-top:1px solid var(--ruleSoft);padding-block:14px;align-items:start}
+  .verdict p{font-size:14.5px;line-height:1.5;margin:0}
+  .verdict .ans{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;text-align:right;padding-top:2px}
+
+  .sw{display:inline-block;width:14px;height:14px;border:1px solid var(--rule);vertical-align:-2px;margin-right:7px}
+
+  .endmark{border-top:1px solid var(--doc);margin-top:62px;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between}
+
+  @media (max-width:880px){
+    .row{grid-template-columns:minmax(0,1fr);gap:16px}
+    .rail{position:static}
+    .mapitem{grid-template-columns:24px minmax(0,1fr);gap:8px 14px}
+    .mapitem>div:last-child{grid-column:2}
+    ol.rules>li{grid-template-columns:28px minmax(0,1fr);gap:13px}
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="mb">
+      <span class="wordmark">Pandonia</span>
+      <span class="lbl">Phase 05 · System handbook · Internal</span>
+    </div>
+    <h1 class="title">Eight pages,<br>one system,<br><i>and what's still missing.</i></h1>
+    <p class="standfirst">The specification behind the master prototype: sitemap, navigation, components, copy, CTAs, accessibility, performance, and the consolidated list of everything Pandonia must verify before any of this can launch.</p>
+    <div class="colophon lbl">
+      <div><span>Prototype</span><span class="v">8 pages, navigable</span></div>
+      <div><span>Fingerprint pass</span><span class="v" style="color:var(--warn)">4 found, 4 fixed</span></div>
+      <div><span>Accessibility</span><span class="v" style="color:var(--warn)">1 contrast failure fixed</span></div>
+      <div><span>Clinical gate</span><span class="v" style="color:var(--flag)">31 items unverified</span></div>
+    </div>
+  </header>
+
+  <!-- 01 SITEMAP -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">01 / Sitemap</span></div>
+      <div>
+        <h2 class="sec">Final sitemap</h2>
+        <p class="dek">Seven pages plus utility. Two changes from Phase 3: <em>Din rapport</em> is added, and <em>Priser</em> is absorbed into <em>Book</em> rather than kept as a separate page.</p>
+
+        <div class="map">
+          <div class="mapitem"><div class="lv">01</div><div><h3>Forside</h3><div class="slug">/</div></div><div><p>The whole argument in one scroll. Eleven beats, hero V2.</p><p class="lbl">Owns: the first impression · the day as a timeline · the invitation</p></div></div>
+          <div class="mapitem"><div class="lv">02</div><div><h3>Hvad vi måler</h3><div class="slug">/hvad-vi-maaler</div></div><div><p>The full library. Six health areas, ~34 markers, the biological model, the limits.</p><p class="lbl">Owns: the science · the taxonomy · every reference range</p></div></div>
+          <div class="mapitem"><div class="lv">03</div><div><h3>Sådan fungerer det</h3><div class="slug">/saadan-fungerer-det</div><div class="slug">#laboratoriet</div></div><div><p>What happens, in order, and what you need to do. Includes the laboratory as its own chapter.</p><p class="lbl">Owns: preparation · coverage · the laboratory · the consultation mechanics</p></div></div>
+          <div class="mapitem"><div class="lv">04</div><div><h3>Din rapport</h3><div class="slug">/din-rapport</div><div class="slug" style="color:var(--mark)">NEW</div></div><div><p>What you actually receive, before you buy.</p><p class="lbl">Owns: the report · the score · how a range is read</p></div></div>
+          <div class="mapitem"><div class="lv">05</div><div><h3>Om Pandonia</h3><div class="slug">/om-pandonia</div></div><div><p>Why it exists, why at home, why an own laboratory, who is behind it.</p><p class="lbl">Owns: the decisions · the people · the model's origin</p></div></div>
+          <div class="mapitem"><div class="lv">06</div><div><h3>Book</h3><div class="slug">/book</div></div><div><p>The single commercial page: both flagship products, all seven smaller tests, gift cards, what happens after.</p><p class="lbl">Owns: every price · every commercial answer</p></div></div>
+          <div class="mapitem"><div class="lv">07</div><div><h3>FAQ</h3><div class="slug">/faq</div></div><div><p>Short answers organised by journey stage, each linking to the page that owns the long one.</p><p class="lbl">Owns: the awkward questions · search landing</p></div></div>
+          <div class="mapitem"><div class="lv">08</div><div><h3>For virksomheder</h3><div class="slug">/virksomheder</div><div class="slug" style="color:var(--warn)">NOT BUILT</div></div><div><p>Approved in Phase 3, deliberately not in this prototype. A different buyer with different questions — building it here would have diluted the review without testing anything new.</p></div></div>
+          <div class="mapitem"><div class="lv">—</div><div><h3>Utility</h3><div class="slug">/kontakt · /persondatapolitik · /cookiepolitik · /handelsbetingelser</div></div><div><p>Footer only.</p></div></div>
+        </div>
+
+        <div class="block">
+          <h4>The laboratory: no separate page</h4>
+          <div class="cols">
+            <div><h3>Why not</h3><p>The laboratory's meaning is <strong>sequential</strong> — it is what happens between the sample leaving your kitchen and the report arriving. Lift it out of the day and it becomes a facility page, which is the least interesting version of the most interesting fact.</p></div>
+            <div><h3>Where it lives instead</h3><p>A full chapter inside <em>Sådan fungerer det</em>, at <code>#laboratoriet</code>, on deep forest with three photographs and the address. Deep-linkable from the homepage and from Om Pandonia.</p></div>
+            <div><h3>And a second story elsewhere</h3><p><em>Om Pandonia</em> carries <em>why we built our own</em> — a decision. <em>Sådan fungerer det</em> carries <em>what happens inside it</em> — a process. Two different jobs, no repeated paragraph.</p></div>
+            <div><h3>Revisit if</h3><p>Accreditation, equipment and quality-control content arrives and runs past ~600 words. At that point it earns a page. Today it would be a page with four placeholders on it.</p></div>
+          </div>
+        </div>
+
+        <div class="note warn">
+          <p style="margin:0"><strong>Unresolved structural problem, carried from Phase 3:</strong> every CTA hands the visitor to <code>system.easypractice.net</code> at the moment of commitment. The <em>Book</em> page now does everything it can — full price ladder, what's included, what happens after — but the last click still leaves the brand. This is a platform decision, not a design one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 NAVIGATION -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">02 / Nav</span></div>
+      <div>
+        <h2 class="sec">Global navigation</h2>
+        <p class="dek">Four editorial destinations and one action. Everything else is in the footer.</p>
+
+        <div class="block">
+          <h4>Desktop — 72px</h4>
+          <div class="cols">
+            <div><h3>The four</h3><p><strong>Hvad vi måler · Sådan fungerer det · Din rapport · Om Pandonia.</strong> They map to the four questions a first-time visitor actually has: what do you measure, what happens, what do I get, who are you.</p></div>
+            <div><h3>Why Priser is not in it</h3><p>Because <em>Book</em> is the price page. The primary CTA appears on every screen, so price is always one click away — and merging them removes a page whose only job was duplicating the other one. The footer carries a "Priser" link to <code>/book</code> for people who hunt that word.</p></div>
+            <div><h3>Why FAQ sits in the utility group</h3><p>It is a support destination, not a story. Grouping it with Log ind and EN at 12.5px keeps the four editorial items reading as one set.</p></div>
+            <div><h3>Behaviour</h3><p>Sticky, cream, no blur, no shrink, no shadow. A 1px bottom rule appears after 8px of scroll and nothing else changes. Active item carries a forest underline.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Mobile — 60px</h4>
+          <div class="cols">
+            <div><h3>Full-screen overlay</h3><p>Deep forest, items set in the serif at 28–40px, CTA pinned at the bottom. It is the one moment mobile gets to feel like the brand rather than like a menu, and a white drawer of 15px links throws that away.</p></div>
+            <div><h3>No sticky CTA bar</h3><p>The persistent bottom bar is a conversion pattern and it is generic. The primary CTA already recurs at the end of each act.</p></div>
+            <div><h3>Escape and focus</h3><p>Closes on <code>Escape</code>, the trigger carries <code>aria-expanded</code>, focus returns to the trigger. Implemented in the prototype.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 RESPONSIBILITY -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">03 / Ownership</span></div>
+      <div>
+        <h2 class="sec">Page responsibility map</h2>
+        <p class="dek">Every fact has exactly one owner. Other pages may reference it in one sentence and link — never re-explain it.</p>
+
+        <div class="tw">
+          <table style="min-width:820px">
+            <thead><tr><th style="min-width:150px">Subject</th><th style="min-width:150px">Owner</th><th style="min-width:200px">Others may say</th><th>Must not</th></tr></thead>
+            <tbody>
+              <tr><td><strong>The day / timeline</strong></td><td>Forside, beat 06</td><td>Sådan fungerer det uses <em>stage words</em> (MORGENEN, MIDT PÅ DAGEN) — never clock times</td><td>Repeat the five timestamps anywhere else</td></tr>
+              <tr><td><strong>The laboratory</strong></td><td>Sådan fungerer det <code>#laboratoriet</code></td><td>Forside: one paragraph + link. Om Pandonia: <em>why we built it</em></td><td>Repeat the "own laboratory" explanation verbatim on three pages</td></tr>
+              <tr><td><strong>Biomarker science</strong></td><td>Hvad vi måler</td><td>Forside: one marker as a teaser. Din rapport: how you <em>experience</em> them</td><td>Din rapport re-explaining what a biomarker is</td></tr>
+              <tr><td><strong>The range component</strong></td><td>Din rapport (how to read it)</td><td>Hvad vi måler shows it in reference-only state</td><td>Two different explanations of the same band</td></tr>
+              <tr><td><strong>Prices</strong></td><td>Book</td><td>Forside and FAQ may state the two headline figures once</td><td>A second price table anywhere</td></tr>
+              <tr><td><strong>Preparation / fasting</strong></td><td>Sådan fungerer det</td><td>FAQ: short answer + link. Book: one line in the confirmation section</td><td>Forside carrying fasting rules</td></tr>
+              <tr><td><strong>Coverage area</strong></td><td>Sådan fungerer det</td><td>FAQ and Book may list the postcodes once</td><td>Three separate postcode lists drifting apart</td></tr>
+              <tr><td><strong>The people</strong></td><td>Om Pandonia</td><td>Forside names Benedikte. Sådan fungerer det names Deborah</td><td>A second team section</td></tr>
+              <tr><td><strong>The Pandonia model</strong></td><td>Hvad vi måler, model chapter</td><td>Om Pandonia: the four-horsemen origin</td><td>Listing the six systems as navigation anywhere</td></tr>
+              <tr><td><strong>The score</strong></td><td>Din rapport</td><td>Forside shows it once, deep forest</td><td>Explaining the calculation twice</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note fix">
+          <p style="margin:0"><strong>Duplication found and removed in this pass:</strong> <em>Sådan fungerer det</em> originally retold the same five clock times as homepage beat 06 — the identical story twice, two clicks apart. The process page now runs on stage words instead. The timeline stays on the homepage, where it is the strongest section on the site; the process page keeps what only it has: preparation, coverage, the laboratory, the consultation mechanics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 JOURNEYS -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">04 / Journeys</span></div>
+      <div>
+        <h2 class="sec">How people move</h2>
+        <p class="dek">Four routes, each carried by a link that belongs to the content rather than by a CTA that interrupts it.</p>
+
+        <div class="journey">
+          <div class="jsteps"><span class="jstep">Forside</span><span class="jarr">→</span><span class="jstep">Hvad vi måler</span><span class="jarr">→</span><span class="jstep">Område</span><span class="jarr">→</span><span class="jstep">Markør</span><span class="jarr">→</span><span class="jstep">Book</span></div>
+          <p style="font-size:14.5px;max-width:68ch">Beat 04 features one marker and ends <em>"Se alle markører →"</em>. On Hvad vi måler the index bar carries you to an area; a marker row expands in place; the area footer offers the model. The only CTA on the whole page sits after the limits section. <strong>Curiosity is never interrupted — it is allowed to arrive.</strong></p>
+        </div>
+
+        <div class="journey">
+          <div class="jsteps"><span class="jstep">Forside</span><span class="jarr">→</span><span class="jstep">Sådan fungerer det</span><span class="jarr">→</span><span class="jstep">Din rapport</span><span class="jarr">→</span><span class="jstep">Book</span></div>
+          <p style="font-size:14.5px;max-width:68ch">Beat 06 ends <em>"Hele forløbet, trin for trin →"</em>. The process page's report chapter ends <em>"Se hele rapporten →"</em>. Din rapport ends with the consultation and the primary CTA. Three pages, three links, each one answering the question the previous page just raised.</p>
+        </div>
+
+        <div class="journey">
+          <div class="jsteps"><span class="jstep">Forside</span><span class="jarr">→</span><span class="jstep">Laboratoriet</span><span class="jarr">→</span><span class="jstep">Om Pandonia</span><span class="jarr">→</span><span class="jstep">Book</span></div>
+          <p style="font-size:14.5px;max-width:68ch">Beat 09 links directly into <code>#laboratoriet</code>. From there the sceptic wants to know who these people are — Om Pandonia answers with the decision, the model and the team, and closes on the invitation. <strong>This is the credibility route and it carries no CTA until the very end.</strong></p>
+        </div>
+
+        <div class="journey">
+          <div class="jsteps"><span class="jstep">Søgning</span><span class="jarr">→</span><span class="jstep">Markør</span><span class="jarr">→</span><span class="jstep">Område</span><span class="jarr">→</span><span class="jstep">Din rapport</span><span class="jarr">→</span><span class="jstep">Book</span></div>
+          <p style="font-size:14.5px;max-width:68ch">Someone googling "ferritin referenceområde" lands on a signature marker page, which sits inside its area. The area footer leads to the model; the page close leads to Din rapport. <strong>A cold visitor arriving at the deepest point still has a path out into the story</strong> — which is the whole reason the six signature markers get real URLs.</p>
+        </div>
+
+        <div class="note">
+          <p style="margin:0"><strong>The rule:</strong> every page ends with one primary CTA and one editorial link that continues the argument. No page carries more than two primary CTAs. Nothing interrupts a reader mid-section.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 COMPONENTS -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">05 / Components</span></div>
+      <div>
+        <h2 class="sec">Component inventory</h2>
+        <p class="dek">Eighteen components. Deliberately few variants — where two things looked similar, they became one.</p>
+
+        <div class="tw">
+          <table style="min-width:900px">
+            <thead><tr><th style="min-width:130px">Component</th><th style="min-width:80px">Mode</th><th style="min-width:180px">Desktop</th><th style="min-width:160px">Mobile</th><th style="min-width:130px">States</th><th>Clinical data?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Navigation</strong></td><td>Dagslys</td><td>72px sticky, 4 links + utility + CTA, rule on scroll</td><td>60px, burger → full-screen forest overlay, serif items</td><td>rest · scrolled · active · open</td><td>No</td></tr>
+              <tr><td><strong>Button</strong></td><td>Both</td><td>3 levels, 2px radius, 15px Degular 500</td><td>Full width in stacked contexts</td><td>rest · hover · focus · disabled · pending</td><td>No</td></tr>
+              <tr><td><strong>Editorial link</strong></td><td>Dagslys</td><td>Forest, 1px underline at 42%, trailing →</td><td>Same, 44px tap area via padding</td><td>rest · hover · focus</td><td>No</td></tr>
+              <tr><td><strong>Hero</strong></td><td>Dagslys 55 / Nulpunkt 45</td><td>3 serif fragments, marginalia times, tall image right</td><td>Times above fragments; <strong>image interrupts the headline</strong></td><td>static — never animates</td><td>Count only <span class="tag t-no">afventer</span></td></tr>
+              <tr><td><strong>Photography block</strong></td><td>Dagslys</td><td>Full-bleed or column, square corners, one bleed per page</td><td>Declared recrop, usually tighter and vertical</td><td>rest · slow scale on 2 per page max</td><td>No</td></tr>
+              <tr><td><strong>Editorial section</strong></td><td>Dagslys</td><td>Serif D2/D3 offset to cols 3–8, no image, air density</td><td>Full width, 20px gutter, serif to 34px</td><td>static</td><td>No</td></tr>
+              <tr><td><strong>Marker row</strong></td><td>Nulpunkt</td><td>4 cols: name+meaning, unit, inclusion, +</td><td>2 cols: name+meaning, +. Unit and inclusion move into the body</td><td>rest · hover · open · filtered out</td><td><strong>Yes</strong> — gated</td></tr>
+              <tr><td><strong>Range band</strong></td><td>Nulpunkt</td><td>26px track, 7 states (Phase 4 §04)</td><td>Full width, value above, state below</td><td>ref-only · inside · outside · no-range · stacked · unavailable</td><td><strong>Yes</strong> — gated</td></tr>
+              <tr><td><strong>Micro band</strong></td><td>Nulpunkt</td><td>64px, no labels, inline in a row</td><td>48px, below the name</td><td>same set, no labels</td><td><strong>Yes</strong> — gated</td></tr>
+              <tr><td><strong>Marker detail</strong></td><td>Nulpunkt 70</td><td>In-place expansion, 2-col: fields + side band</td><td>Single column, band first</td><td>closed · open · deep-linked</td><td><strong>Yes</strong> — gated</td></tr>
+              <tr><td><strong>Area index bar</strong></td><td>Nulpunkt</td><td>50px sticky under nav, 6 names + filter</td><td>Collapses to <code>Områder ▾</code> + filter glyph</td><td>rest · current · filtering</td><td>Counts <span class="tag t-no">afventer</span></td></tr>
+              <tr><td><strong>Area chapter</strong></td><td>Both</td><td>Serif name + count + intro + one photograph</td><td>Photograph full-bleed 3:2 above the text</td><td>static</td><td><strong>Yes</strong> — intro gated</td></tr>
+              <tr><td><strong>Model reference</strong></td><td>Nulpunkt</td><td>Mono line under a rule, labelled "Bag dette område"</td><td>Wraps to 3 lines at 10px</td><td>static · never a link target</td><td><strong>Yes</strong> — gated</td></tr>
+              <tr><td><strong>Filter</strong></td><td>Nulpunkt</td><td>Underline field in the index bar, live</td><td>Opens inline full width, pushes content</td><td>empty · typing · no results</td><td>No</td></tr>
+              <tr><td><strong>Day timeline</strong></td><td>Both</td><td>5 moments on one hairline, images alternating up/down</td><td><strong>Vertical, rule down the left edge</strong></td><td>static · one orchestrated draw</td><td>No</td></tr>
+              <tr><td><strong>Laboratory module</strong></td><td>Dagslys 60</td><td>Deep forest, 3 photographs, 4 fact columns</td><td>Photographs stack, facts become rows</td><td>static</td><td>Accreditation <span class="tag t-no">afventer</span></td></tr>
+              <tr><td><strong>Report preview</strong></td><td>Nulpunkt 80</td><td>Paper panel, one marker at full scale + relations</td><td>Full width, relations stack</td><td>static</td><td><strong>Yes</strong> — demo data labelled</td></tr>
+              <tr><td><strong>Price row</strong></td><td>Nulpunkt</td><td>Rows on rules — name, description, price, action</td><td>Price moves below the description</td><td>rest · hover</td><td>No</td></tr>
+              <tr><td><strong>FAQ item</strong></td><td>Dagslys</td><td>Native <code>&lt;details&gt;</code>, grouped by journey stage</td><td>Same, stage heading above the group</td><td>closed · open</td><td><strong>Yes</strong> — several gated</td></tr>
+              <tr><td><strong>Footer</strong></td><td>Dagslys</td><td>Deep forest, 4 columns, disclaimer on its own rule</td><td>2 columns, disclaimer full width</td><td>static</td><td>Disclaimer <span class="tag t-no">afventer</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <p style="margin:0"><strong>Variants deliberately not created:</strong> no secondary hero, no card variant, no alternative button size beyond <code>.sm</code> in the nav, no "feature block", no testimonial component, no logo bar, no stat tile. Each of those was considered and rejected because an existing component already does the job or the job should not be done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 COPY -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">06 / Copy</span></div>
+      <div>
+        <h2 class="sec">Copy system</h2>
+        <p class="dek">Danish written by someone who lives here — not translated from an American health brand.</p>
+
+        <div class="block">
+          <h4>By type</h4>
+          <div class="tw">
+            <table style="min-width:760px">
+              <thead><tr><th style="min-width:120px">Type</th><th style="min-width:230px">Rule</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Headlines</strong></td><td>Sentence case. A full stop. Maximum 8 words. Concrete noun over abstract benefit. Fragments are allowed and often better.</td><td class="m">En tirsdag. Et køkkenbord.<br>Kend din krop. Før den siger til.</td></tr>
+                <tr><td><strong>Standfirst</strong></td><td>Two to three sentences, maximum 45 words, one concrete fact in it.</td><td class="m">Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade.</td></tr>
+                <tr><td><strong>Body</strong></td><td>Short sentences. Active voice. <strong>A number instead of an adjective</strong> wherever one exists. 62–68 characters per line.</td><td class="m">Selve prøven tager omkring fem minutter.</td></tr>
+                <tr><td><strong>Scientific</strong></td><td>"Kan pege på", never "viser" or "afslører". Never a list of disease names. Always name the unit. Say when something is calculated rather than measured.</td><td class="m">Påvirker immunforsvar, knoglestyrke og mental balance.</td></tr>
+                <tr><td><strong>UI labels</strong></td><td>Mono, uppercase, +0.1em. Danish nouns, no verbs. Never a full sentence.</td><td class="m">REFERENCEOMRÅDE · ENHED · INDGÅR I</td></tr>
+                <tr><td><strong>CTAs</strong></td><td>Verb + object. Says exactly what happens next. Never "Kom i gang", never "Læs mere" alone.</td><td class="m">Book din blodprøve · Se hvad vi måler</td></tr>
+                <tr><td><strong>Empty / error</strong></td><td>States what happened and what to do. No apology, no exclamation mark.</td><td class="m">Ingen markører matcher. Prøv fx "kolesterol".</td></tr>
+                <tr><td><strong>Disclaimers</strong></td><td>Plain Danish, not legalese. Placed where the claim is, not only in the footer. Never in smaller type than body-small.</td><td class="m">Pandonias tests erstatter ikke lægelig undersøgelse, diagnose eller behandling.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Four voice rules</h4>
+          <ol class="rules">
+            <li><div><h3>State, don't sell</h3><p>"Vi kommer hjem til dig i København" — not "Oplev fremtidens sundhedstjek". Danish readers distrust enthusiasm; restraint reads as confidence.</p></div></li>
+            <li><div><h3>A number instead of an adjective</h3><p>Not "hurtigt" but "12.14". Not "omfattende" but a count. Every adjective that could be a figure should be one — and if there is no figure, question whether the adjective is true.</p></div></li>
+            <li><div><h3>Say the unglamorous thing</h3><p><em>"Det meste vil være, som det skal være. Det er også et svar."</em> Admitting that most results are unremarkable is the most trust-building sentence on the site, and no competitor will write it.</p></div></li>
+            <li><div><h3>Never promise an outcome</h3><p>Pandonia measures and explains. It does not prevent, optimise, unlock or transform. Their existing disclaimer — <em>"vi kan ikke love immunitet"</em> — survives the rewrite intact.</p></div></li>
+          </ol>
+        </div>
+
+        <div class="block">
+          <h4>Banned outright</h4>
+          <p style="font-size:14.5px;max-width:74ch">Tag kontrol over dit helbred · unlock · optimér dit potentiale · den bedste version af dig selv · biohacking · game changer · revolutionerende · vidste du at… · "i en verden hvor" · any fear statistic about disease · any claim that a marker prevents anything · any before/after framing · <strong>"nemt og enkelt"</strong> (says nothing) · <strong>"vi tror på"</strong> (nobody asked) · exclamation marks anywhere outside an error.</p>
+        </div>
+
+        <div class="note warn">
+          <p style="margin:0"><strong>Danish-specific trap:</strong> avoid the translated-English rhythm of "Med Pandonia får du…" and "Vi hjælper dig med at…". Danish marketing Danish is recognisable and it undercuts the premium position instantly. Write sentences that could appear in a well-edited Danish magazine, not in a newsletter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 CTA -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">07 / CTA</span></div>
+      <div>
+        <h2 class="sec">CTA system</h2>
+        <p class="dek">One primary label across the entire site, so it becomes a word people recognise rather than a button they evaluate.</p>
+
+        <div class="tw">
+          <table style="min-width:800px">
+            <thead><tr><th style="min-width:120px">Level</th><th style="min-width:150px">Label</th><th style="min-width:150px">Appearance</th><th>Where</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Primary</strong></td><td class="m">Book din blodprøve</td><td>Forest fill, cream text, 2px radius</td><td>Nav (always) · end of each act on the homepage · once at the foot of every other page. <strong>Never two in one viewport. The label never changes, anywhere.</strong></td></tr>
+              <tr><td><strong>Secondary</strong></td><td class="m">Vælg tid</td><td>1px forest border, no fill</td><td>Book page only, beside the second product. The only page where two commercial actions legitimately compete.</td></tr>
+              <tr><td><strong>Editorial link</strong></td><td class="m">Se hvad vi måler →</td><td>Forest text, 1px underline at 42%</td><td>Continues the argument. One per section maximum. Always names its destination — never "Læs mere".</td></tr>
+              <tr><td><strong>Deep-dive link</strong></td><td class="m">Læs om modellen →</td><td>Same as editorial, preceded by a mono label</td><td>Layer 2, marker detail, the model chapter. Signals depth rather than progress.</td></tr>
+              <tr><td><strong>Contextual</strong></td><td class="m">D-vitamin Test · 1.000 kr.</td><td>Plain text inside a marker detail</td><td>Where a marker is also sold separately. Information, not a button — <strong>it converts without ever looking like a conversion.</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cols">
+          <div><h3>Count across the site</h3><p>Forside: 3 primary. Hvad vi måler: 1. Sådan fungerer det: 2. Din rapport: 2. Om Pandonia: 1. FAQ: 1. Book: 2 secondary. <strong>Twelve buttons across eight pages.</strong></p></div>
+          <div><h3>The one label</h3><p>"Book din blodprøve" appears on every screen in the navigation and nowhere is it phrased differently. Not "Kom i gang", not "Bestil nu", not "Start her". <strong>A user should learn one word.</strong></p></div>
+          <div><h3>What a CTA never does</h3><p>Never interrupts a section mid-read. Never sticks to the bottom of a phone. Never appears inside a marker detail. Never uses urgency, scarcity or a countdown.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 MOBILE -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">08 / Mobile</span></div>
+      <div>
+        <h2 class="sec">Mobile-first audit</h2>
+        <p class="dek">Not "does it fit" but "what gets worse". Six things do; four are fixed structurally and two are accepted trade-offs.</p>
+
+        <div class="tw">
+          <table style="min-width:800px">
+            <thead><tr><th style="min-width:140px">What degrades</th><th style="min-width:230px">Why</th><th>Structural response</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Hero marginalia</strong></td><td>The times sit in a left margin that does not exist at 390px.</td><td><span class="tag t-ok">Redesigned</span> Times move directly above each fragment, and <strong>the photograph interrupts the headline</strong> between fragments two and three. The mobile hero is arguably the better composition.</td></tr>
+              <tr><td><strong>Two sticky bars</strong></td><td>Nav (60) + index bar (50) = 110px of a 780px viewport eaten before content.</td><td><span class="tag t-ok">Redesigned</span> The index bar collapses to one 44px row: <code>Områder ▾</code> and a filter glyph. Areas open as a full-screen overlay, reusing the nav pattern.</td></tr>
+              <tr><td><strong>Marker row columns</strong></td><td>Four columns cannot survive; unit and inclusion become unreadable.</td><td><span class="tag t-ok">Redesigned</span> Summary drops to name + meaning + <code>+</code>. Unit and inclusion move into the expanded body, one tap away.</td></tr>
+              <tr><td><strong>Day timeline</strong></td><td>Five columns on one horizontal rule is impossible.</td><td><span class="tag t-ok">Redesigned</span> Vertical timeline with the rule down the left edge, times on the rail. <strong>Better than the desktop version</strong> and a candidate to replace it.</td></tr>
+              <tr><td><strong>Long Danish compounds</strong></td><td><em>Blodsukker og stofskifte</em>, <em>referenceområde</em>, <em>blodprøvetagning</em> break badly at 390px in a 33px serif.</td><td><span class="tag t-warn">Constraint</span> Hard rule: every area name and every marker name is checked at 390px before sign-off. Serif hero capped at 33px, not 44. <code>hyphens: auto</code> with <code>lang="da"</code> on body copy only — never on display type, where a hyphen looks like an error.</td></tr>
+              <tr><td><strong>Range band precision</strong></td><td>A 26px band at 320px wide makes a 2px tick hard to place visually.</td><td><span class="tag t-warn">Accepted</span> Band goes full width (~350px) with the value printed above it in mono. <strong>The number carries the precision; the band carries the position.</strong> This is why the value is never optional.</td></tr>
+              <tr><td><strong>Report preview</strong></td><td>The 2-column marker panel collapses.</td><td><span class="tag t-ok">Redesigned</span> Band first, relations stack beneath as label/value rows. The most visual element leads.</td></tr>
+              <tr><td><strong>FAQ</strong></td><td>The 42/58 split puts a stage heading beside its questions; at 390px they separate.</td><td><span class="tag t-ok">Accepted</span> Stage heading stacks above its group. Native <code>&lt;details&gt;</code> works identically, so nothing else changes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <p style="margin:0"><strong>What does not degrade:</strong> the editorial sections. Beat 03, Om Pandonia and the model chapter were single-column, offset, air-density blocks to begin with — at 390px they simply lose their offset. <strong>Designing them asymmetrically on desktop is what made them survive the phone.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 ACCESSIBILITY -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">09 / A11y</span></div>
+      <div>
+        <h2 class="sec">Accessibility audit</h2>
+        <p class="dek">Run against the prototype, not against intentions. One real failure found and fixed.</p>
+
+        <div class="block">
+          <h4>Contrast — measured</h4>
+          <div class="tw">
+            <table style="min-width:680px">
+              <thead><tr><th>Pair</th><th>Ratio</th><th>Verdict</th></tr></thead>
+              <tbody>
+                <tr><td><span class="sw" style="background:#26201A"></span>Ink on cream</td><td class="m">12.4 : 1</td><td><span class="tag t-ok">AAA</span></td></tr>
+                <tr><td><span class="sw" style="background:#5C554C"></span>Ink 2 on cream</td><td class="m">6.4 : 1</td><td><span class="tag t-ok">AA</span></td></tr>
+                <tr><td><span class="sw" style="background:#8A8175"></span>Ink 3 on cream — <strong>original</strong></td><td class="m">3.4 : 1</td><td><span class="tag t-no">Fails AA</span></td></tr>
+                <tr><td><span class="sw" style="background:#756C60"></span>Ink 3 on cream — <strong>corrected</strong></td><td class="m">4.6 : 1</td><td><span class="tag t-ok">AA</span></td></tr>
+                <tr><td><span class="sw" style="background:#415A3B"></span>Forest on cream</td><td class="m">6.8 : 1</td><td><span class="tag t-ok">AA</span></td></tr>
+                <tr><td><span class="sw" style="background:#4E7050"></span>Sage deep on cream</td><td class="m">5.0 : 1</td><td><span class="tag t-ok">AA</span></td></tr>
+                <tr><td><span class="sw" style="background:#8C3B2E"></span>Brick on cream</td><td class="m">6.7 : 1</td><td><span class="tag t-ok">AA</span></td></tr>
+                <tr><td><span class="sw" style="background:#F6F1E8"></span>Cream on deep forest</td><td class="m">14.0 : 1</td><td><span class="tag t-ok">AAA</span></td></tr>
+                <tr><td>Inverse ink at 55% on deep forest</td><td class="m">4.9 : 1</td><td><span class="tag t-ok">AA</span></td></tr>
+                <tr><td>Inverse ink at 45% on deep forest</td><td class="m">3.7 : 1</td><td><span class="tag t-no">Fails AA</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note fix">
+            <p style="margin-bottom:8px"><strong>Fixed in the prototype:</strong> <code>--ink3</code> darkened from <code>#8A8175</code> to <code>#756C60</code>. It carries every mono label, unit, axis value and caption on the site — at 3.4:1 all of that failed AA, and at 10–11px it is not large text. One token, every instance.</p>
+            <p style="margin:0"><strong>New system rule:</strong> on deep forest, <strong>0.55 is the minimum opacity for any text.</strong> The 0.45 values used for secondary labels fail and must be raised. Phase 2 should adopt both changes.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>The rest</h4>
+          <div class="cols">
+            <div><h3>Colour is never the only signal</h3><p>The range band encodes state three ways: <strong>position</strong> of the tick, <strong>a text label</strong> ("Inden for området"), and colour last. A reader with any colour vision deficiency loses nothing — the position and the words carry it. This is the single most important accessibility decision in the system and it was made on design grounds first.</p></div>
+            <div><h3>Native semantics</h3><p><code>&lt;details&gt;</code> for every marker and every FAQ item — keyboard, screen reader and browser find-in-page work with no code. Function's equivalent rows are plain buttons with no state. <strong>We get more by writing less.</strong></p></div>
+            <div><h3>Focus</h3><p>A single global <code>:focus-visible</code> rule: 2px forest outline, 3px offset. Never removed, never replaced with a colour change alone.</p></div>
+            <div><h3>Type sizes</h3><p>Body never below 16px. Mono labels never below 10px and never carrying meaning that is not repeated elsewhere. Line length capped at 68 characters.</p></div>
+            <div><h3>Reduced motion</h3><p>Implemented first, not retrofitted. All transitions collapse to 0.001ms; the day timeline renders complete; the band tick is already in place.</p></div>
+            <div><h3>Forms</h3><p>The filter carries a real <code>&lt;label for&gt;</code>, visible rather than a placeholder. Errors state what to do. <span class="tag t-warn">Open</span> the booking form is on a third-party platform we do not control — an audit of EasyPractice is a separate task.</p></div>
+            <div><h3>Touch targets</h3><p>Marker summaries and FAQ rows exceed 48px through padding. <span class="tag t-warn">To fix</span> inline editorial links are ~24px tall; they need vertical padding to reach 44px without changing their appearance.</p></div>
+            <div><h3>Structure</h3><p>One <code>&lt;h1&gt;</code> per page, no skipped levels, landmarks for nav/main/footer, and a skip link to <code>#main</code>. <span class="tag t-warn">To add</span> the skip link is not in the prototype.</p></div>
+            <div><h3>Language</h3><p><code>lang="da"</code> on the document, <code>lang="en"</code> on the English product names that stay untranslated — <em>Health Test</em>, <em>Female hormones</em> — so a screen reader pronounces them correctly.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 PERFORMANCE -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">10 / Perf</span></div>
+      <div>
+        <h2 class="sec">Performance constraints</h2>
+        <p class="dek">The identity is type, ground and photography. Only one of those three is expensive.</p>
+
+        <div class="block">
+          <h4>Budget</h4>
+          <div class="tw">
+            <table style="min-width:640px">
+              <thead><tr><th>Metric</th><th>Target</th><th>Note</th></tr></thead>
+              <tbody>
+                <tr><td>LCP, 4G mobile</td><td class="m">&lt; 2.0s</td><td>The hero image is the LCP element in V2</td></tr>
+                <tr><td>CLS</td><td class="m">&lt; 0.05</td><td>Every image ships width/height or aspect-ratio</td></tr>
+                <tr><td>Total JS</td><td class="m">&lt; 40 KB</td><td>Filter, nav toggle, one scroll listener. Nothing else.</td></tr>
+                <tr><td>Fonts</td><td class="m">&lt; 110 KB</td><td>4 files — see below</td></tr>
+                <tr><td>Hero image</td><td class="m">&lt; 180 KB</td><td>AVIF, mobile crop separately encoded</td></tr>
+                <tr><td>Page weight, homepage</td><td class="m">&lt; 900 KB</td><td>Eleven beats, five image moments</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Rules</h4>
+          <div class="cols">
+            <div><h3>Four font files, no more</h3><p>Serif Regular, serif Italic, Degular Regular, Degular Medium, plus DM Mono Regular. <strong>Subset to Latin + Danish diacritics.</strong> <code>font-display: swap</code> with a metric-matched fallback so the swap does not shift layout. No variable axes we do not use.</p></div>
+            <div><h3>AVIF, with a WebP fallback</h3><p>Two formats, four widths (390 / 780 / 1200 / 1800), <code>srcset</code> + <code>sizes</code> on every image. <strong>Separate art-directed crops for mobile via <code>&lt;picture&gt;</code></strong> — the recrops in the shot list are a performance feature as well as a design one.</p></div>
+            <div><h3>Lazy load everything below the fold</h3><p><code>loading="lazy"</code> and <code>decoding="async"</code> on every image except the hero, which gets <code>fetchpriority="high"</code> and a preload.</p></div>
+            <div><h3>No video</h3><p>Nothing in the art direction needs it. If a lab clip is ever wanted: muted, 6 seconds, poster frame, <code>preload="none"</code>, and never autoplaying on mobile.</p></div>
+            <div><h3>Animation budget</h3><p>Transform and opacity only — never width, height, top or left. <strong>One orchestrated sequence per page</strong> (the day timeline) and at most two slow image scales. Everything runs on the compositor.</p></div>
+            <div><h3>The expensive effects, named</h3><p>Three things would cost the most and none is essential: the drifting marker marquee (<strong>drop it on mobile entirely</strong>), the slow hero image scale (pure transform, cheap, keep), and the hero's tall 3:4 crop, which is the single largest asset on the site and needs the tightest encoding.</p></div>
+            <div><h3>No framework needed</h3><p>The prototype is static HTML with 40 lines of JavaScript. A Next.js build is reasonable for content management and routing, but <strong>nothing in this design requires client-side rendering</strong> — and the marker library is the ideal case for static generation.</p></div>
+            <div><h3>The gradient placeholders are not the plan</h3><p>The CSS-gradient photography in the prototype costs nothing and ships nothing. Real images replace them one for one; the layout dimensions do not change.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 BENCHMARK -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">11 / Benchmark</span></div>
+      <div>
+        <h2 class="sec">Benchmark audit</h2>
+        <p class="dek">Against Superpower, Function, Function's What We Test, and Celto. Not scored — located.</p>
+
+        <div class="block">
+          <h4>Where Pandonia shares category conventions</h4>
+          <div class="cols">
+            <div><h3>Warm off-white ground</h3><p>Function, Celto and now Pandonia. Unavoidable and correct — the alternative is the clinical blue everyone spent a decade escaping.</p></div>
+            <div><h3>A serif display face</h3><p>Function and Pandonia. Shared, but the faces differ and Pandonia's is paired with a grotesk interface layer that Function does not have.</p></div>
+            <div><h3>Included / add-on state per marker</h3><p>Taken from Function, deliberately. It is the right pattern and there is no more distinctive way to say the same thing.</p></div>
+            <div><h3>Price stated plainly, early</h3><p>All four do it. Hiding price behind a form is the only real alternative and it is worse.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Where Pandonia deliberately differs</h4>
+          <div class="cols">
+            <div><h3>Forest green</h3><p>The category converged on rust — Function <code>#B05A36</code>, Superpower <code>#FC5F2B</code>, Celto terracotta. Pandonia is the only one anchored in green, and it is the single most recognisable decision in the system.</p></div>
+            <div><h3>The range band as an identity</h3><p>Nobody else draws one object at three scales for everything numeric. Function shows <strong>no ranges and no units at all</strong> on What We Test.</p></div>
+            <div><h3>Two taxonomy layers</h3><p>Everyone else organises by organ. Pandonia navigates by health area and explains by biological system — and never lets the second one become a menu.</p></div>
+            <div><h3>The day as a structure</h3><p>Every competitor's story is annual. Pandonia's fits between breakfast and the drive home, and the timeline is the only section on the site that could not be lifted anywhere else.</p></div>
+            <div><h3>A limits section</h3><p><em>"Hvad vi ikke måler."</em> No benchmark has one.</p></div>
+            <div><h3>Refusing to congratulate</h3><p>No green ticks for being in range, no score celebration, no streaks. Superpower has seventeen health scores and a glowing body diagram; Pandonia has a tick on a band.</p></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h4>Where anything still feels derivative</h4>
+          <div class="verdict"><p><strong>The index bar.</strong> A sticky category navigation above a scrolling marker list is Function's skeleton. Ours is 50px instead of a 300px rail, uses text rather than pills, and carries six items instead of twenty-four — but the <em>idea</em> is theirs.</p><span class="ans" style="color:var(--warn)">Acknowledged</span></div>
+          <div class="verdict"><p><strong>The marker list itself.</strong> Name, meaning, state, expand. There is no radically different way to list biomarkers, and inventing one would be novelty rather than design.</p><span class="ans" style="color:var(--warn)">Accepted</span></div>
+          <div class="verdict"><p><strong>The price rows.</strong> Two products, descriptions, figures. Thin differentiation — but a price table is not where a brand should fight for distinctiveness.</p><span class="ans" style="color:var(--warn)">Accepted</span></div>
+          <div class="verdict"><p><strong>Nothing else survives the test.</strong> Drop the day timeline, the model chapter, the limits section or the hero into Function or Superpower and they would be incoherent — wrong country, wrong timescale, wrong taxonomy, wrong claim.</p><span class="ans" style="color:var(--mark)">Clear</span></div>
+        </div>
+
+        <div class="block">
+          <h4>The recognisable signature</h4>
+          <p style="font-size:15px;max-width:68ch">If someone saw one screen with the logo removed, four things would identify it: <strong>forest green on cream</strong>; <strong>a serif headline against a mono fact line</strong>; <strong>a sage band with an amber tick</strong>; and <strong>a Danish sentence with a full stop in it</strong>. That is a signature — four elements, each doing a different job, none borrowed whole.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 FINGERPRINTS -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">12 / Fingerprints</span></div>
+      <div>
+        <h2 class="sec">AI fingerprint pass</h2>
+        <p class="dek">Run against my own build. Four found, four fixed before publishing.</p>
+
+        <ol class="rules">
+          <li><div><h3>Two pricing cards on the Book page</h3><p><strong>Found:</strong> side-by-side bordered panels with a fill and a feature list — a pricing grid in everything but name, and it contradicted the homepage's own "rows on rules" decision two clicks away.<br><strong>Fixed:</strong> converted to two rows on rules, matching beat 10 exactly.</p></div></li>
+          <li><div><h3>A four-column numbered step grid</h3><p><strong>Found:</strong> "Hvad der sker, når du har booket" as four equal columns with 1/2/3/4 above each. The exact shape we banned.<br><strong>Fixed:</strong> a vertical numbered list on hairlines, max 720px. The sequence is real so the numbering stays; the grid does not.</p></div></li>
+          <li><div><h3>A four-column feature grid on Din rapport</h3><p><strong>Found:</strong> four matched text blocks explaining the range component — the canonical AI feature row.<br><strong>Fixed:</strong> four label/text rows on rules, heading left and explanation right.</p></div></li>
+          <li><div><h3>The same five timestamps on two pages</h3><p><strong>Found:</strong> not a visual fingerprint but a structural one — repeating content to fill a page. The process page retold the homepage timeline verbatim.<br><strong>Fixed:</strong> the process page runs on stage words; the homepage keeps the clock.</p></div></li>
+        </ol>
+
+        <div class="block">
+          <h4>Checked and clear</h4>
+          <p style="font-size:14.5px;max-width:74ch">No gradients as decoration · no glassmorphism · no glow · no decorative blobs · no icon set anywhere · no three-column feature grids · no testimonial slider · no logo bar · no fake statistics · no meaningless dashboard · no radius above 2px except the 8px product panel on Din rapport · no centred hero · no pill buttons · no emoji · <strong>no section repeating the previous section's ground and density</strong>.</p>
+          <p style="font-size:14.5px;max-width:74ch;margin-top:10px"><strong>One judgement call:</strong> the team on Om Pandonia is four portraits in a row. That is close to "team cards" — but they carry no border, no fill, no radius and no shadow, sit hairline-separated on deep forest, and each has only a name and a role. It reads as a contact sheet rather than a card grid, which is the intent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 REVIEW -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">13 / Review</span></div>
+      <div>
+        <h2 class="sec">Creative director review</h2>
+        <p class="dek">Only findings that matter. Three are fixed above; four are open and two of those need your decision.</p>
+
+        <div class="verdict"><p><strong>Does it feel unmistakably Pandonia?</strong> Yes — see the four-element signature in §11. The green, the band and the Danish are not borrowable.</p><span class="ans" style="color:var(--mark)">Yes</span></div>
+        <div class="verdict"><p><strong>Is Dagslys × Nulpunkt still one coherent idea?</strong> Yes, and it survived contact with eight pages. Every Nulpunkt section carries a serif line or a photograph; every Dagslys section carries a mono fact. The clearest proof is the hero: 55/45, and it reads warm.</p><span class="ans" style="color:var(--mark)">Yes</span></div>
+        <div class="verdict"><p><strong>Is the homepage memorable?</strong> The hero and the day timeline are. <strong>Beats 07 and 08 are the weakest stretch</strong> — two deep-forest data sections in a row, and the second is mostly placeholders. Once the real scores exist it will hold; today it is the flattest part of the page.</p><span class="ans" style="color:var(--warn)">Mostly</span></div>
+        <div class="verdict"><p><strong>Is the science understandable?</strong> The structure is, and the vitamin-D opening teaches the reader how to read the page before asking them to. <strong>But almost none of the science is written yet</strong>, so this cannot honestly be answered until the clinical content arrives.</p><span class="ans" style="color:var(--warn)">Untestable</span></div>
+        <div class="verdict"><p><strong>Premium without being luxurious for its own sake?</strong> Yes. The premium signals are restraint, single weights and whitespace — not gold, not serif flourish, not a hero video.</p><span class="ans" style="color:var(--mark)">Yes</span></div>
+        <div class="verdict"><p><strong>Credible without being clinical?</strong> Yes, and the two-state band is why. Refusing to grade every value is what separates this from a lab portal.</p><span class="ans" style="color:var(--mark)">Yes</span></div>
+        <div class="verdict"><p><strong>Copenhagen without tourism?</strong> Yes — the city appears as postcodes, a street name and a kitchen. No harbour, no Nyhavn, no bicycle-in-golden-hour. <strong>Watch the shoot</strong>; this is the easiest thing to lose on the day.</p><span class="ans" style="color:var(--mark)">Yes</span></div>
+        <div class="verdict"><p><strong>Is the photography doing enough?</strong> <strong>Cannot be answered from placeholders.</strong> Placement is right — five image moments on the homepage, one per area chapter, three in the lab. But the site is designed around photography it does not have, and that is the largest single risk in the project.</p><span class="ans" style="color:var(--flag)">Open risk</span></div>
+        <div class="verdict"><p><strong>Too text-heavy?</strong> <strong>Om Pandonia is.</strong> Three consecutive text blocks with one image between them — the most conventional page in the set. It needs either a second photograph between "Hvorfor hjemme" and "Hvorfor vores eget laboratorium", or one of the three sections cut.</p><span class="ans" style="color:var(--warn)">Needs work</span></div>
+        <div class="verdict"><p><strong>Is any page unnecessary?</strong> No — but <strong>FAQ is the one at risk</strong>. If its answers grow into full explanations it will duplicate three other pages. The responsibility map holds it to short answers plus a link.</p><span class="ans" style="color:var(--warn)">Watch</span></div>
+        <div class="verdict"><p><strong>Does mobile feel designed?</strong> Yes. Four components are genuinely redesigned rather than reflowed, and two of those — the hero and the day timeline — are better on a phone than on a desktop.</p><span class="ans" style="color:var(--mark)">Yes</span></div>
+        <div class="verdict"><p><strong>Is the speed story repeated too often?</strong> <strong>It was.</strong> The process page retold the homepage timeline verbatim. Fixed. Site-wide the clock now appears once (homepage), the day as stages once (process page), and "samme dag" three times total across eight pages.</p><span class="ans" style="color:var(--mark)">Fixed</span></div>
+        <div class="verdict"><p><strong>Accidentally copying Function or Superpower?</strong> The index bar is Function's skeleton and I have said so rather than pretending otherwise. Everything else diverges. Nothing is a copy at component level.</p><span class="ans" style="color:var(--warn)">One, named</span></div>
+        <div class="verdict"><p><strong>Any unverified medical claim presented as fact?</strong> <strong>No.</strong> Exactly one piece of clinical copy on the entire site is real — Pandonia's own D-vitamin sentence — and it is tagged as verified. Everything else carries the dotted placeholder treatment.</p><span class="ans" style="color:var(--mark)">None</span></div>
+
+        <div class="note fix">
+          <p style="margin-bottom:8px"><strong>Two improvements I did not make, because they are your call:</strong></p>
+          <p style="margin-bottom:8px"><strong>1 · Om Pandonia needs a second photograph or one section fewer.</strong> I have left it long rather than cutting content you may want. My recommendation: add a LYS or RUM frame between the two "hvorfor" sections — it costs nothing at the shoot and fixes the rhythm.</p>
+          <p style="margin:0"><strong>2 · Homepage beats 07 and 08 could merge.</strong> Two deep-forest data sections in sequence is the page's flattest stretch. Merging them into one act — six areas, then the score as the closing element — would tighten the homepage by roughly a screen. I have left them separate because the score genuinely answers a different question, and because it may read differently once the real numbers are in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 CLINICAL GATE -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">14 / Gate</span></div>
+      <div>
+        <h2 class="sec">Consolidated clinical review</h2>
+        <p class="dek">Thirty-one items across eight groups. Nothing here can be answered by design, and nothing may be guessed.</p>
+
+        <div class="tw">
+          <table style="min-width:860px">
+            <thead><tr><th style="min-width:110px">Group</th><th style="min-width:200px">Item</th><th style="min-width:170px">Current state</th><th>Where it appears</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="5"><strong>Product facts</strong></td><td>Biomarker count — 30 vs 34</td><td><span class="tag t-no">Conflicting</span></td><td>Hero headline · beat 02 · Book × 2 · Hvad vi måler</td></tr>
+              <tr><td>Is the consultation included in the 3.500 kr. test?</td><td><span class="tag t-no">Both cards say yes</span></td><td>Book · Forside beat 10 · FAQ</td></tr>
+              <tr><td>Price of "Health check + Female hormones"</td><td><span class="tag t-no">Not published</span></td><td>Book, smaller tests</td></tr>
+              <tr><td>Draw duration — 5 min vs 10/15 min slot</td><td><span class="tag t-no">Conflicting</span></td><td>Beat 06 · Sådan fungerer det · FAQ</td></tr>
+              <tr><td>Cancellation terms</td><td><span class="tag t-no">Missing</span></td><td>Book · FAQ</td></tr>
+
+              <tr><td rowspan="4"><strong>Biomarkers</strong></td><td>The complete marker list, DK + EN names</td><td><span class="tag t-no">6 of ~34</span></td><td>Every marker row · counts · filter</td></tr>
+              <tr><td>Contents of 5 named panels</td><td><span class="tag t-no">None published</span></td><td>Marker rows — panels must expand into markers</td></tr>
+              <tr><td>Plain-language sentence per marker</td><td><span class="tag t-no">1 of ~34</span></td><td>Every row and every detail</td></tr>
+              <tr><td>Search synonyms per marker</td><td><span class="tag t-no">Missing</span></td><td>Filter — "langtidsblodsukker" must find HbA1c</td></tr>
+
+              <tr><td rowspan="4"><strong>Reference ranges</strong></td><td>Interval and unit per marker</td><td><span class="tag t-no">None</span></td><td><strong>Every band on the site renders state 07 until this exists</strong></td></tr>
+              <tr><td>Display scale min/max per marker</td><td><span class="tag t-no">None</span></td><td>How far outside the band a tick can sit</td></tr>
+              <tr><td>Which vary by sex or age</td><td><span class="tag t-no">Unknown</span></td><td>Stacked band variant · marker detail</td></tr>
+              <tr><td>Which markers have no simple range</td><td><span class="tag t-no">Unknown</span></td><td>Band state 05 — prevents a false universal scale</td></tr>
+
+              <tr><td rowspan="4"><strong>Taxonomy</strong></td><td>The three missing health areas</td><td><span class="tag t-no">3 of 6</span></td><td>Nav index · 3 chapters · beat 07 · score rows</td></tr>
+              <tr><td>Marker → health area mapping</td><td><span class="tag t-no">None</span></td><td>Which chapter each row sits in</td></tr>
+              <tr><td>Marker → biological system mapping</td><td><span class="tag t-no">None</span></td><td>Area footers · marker detail · model figure</td></tr>
+              <tr><td>May a marker belong to several areas?</td><td><span class="tag t-warn">Assumed yes</span></td><td>The entire data model</td></tr>
+
+              <tr><td rowspan="3"><strong>Scores</strong></td><td>What the six scores are scored on</td><td><span class="tag t-no">Undefined</span></td><td>Beat 08 · Din rapport · <strong>decides whether the two layers are independent</strong></td></tr>
+              <tr><td>How the Pandonia Score is calculated</td><td><span class="tag t-no">Unknown</span></td><td>Din rapport</td></tr>
+              <tr><td>Does 78 mean the same at 32 and 58?</td><td><span class="tag t-no">Unknown</span></td><td>Din rapport — affects whether a score can be shown at all</td></tr>
+
+              <tr><td rowspan="4"><strong>Medical explanations</strong></td><td>"Hvad kan det pege på" per marker</td><td><span class="tag t-no">None</span></td><td>Marker detail. <strong>Careful sentence, never a disease list</strong></td></tr>
+              <tr><td>Area introductions × 6</td><td><span class="tag t-no">None</span></td><td>Area chapters</td></tr>
+              <tr><td>"Hvad vi ikke måler"</td><td><span class="tag t-no">None</span></td><td>Hvad vi måler, closing section</td></tr>
+              <tr><td>Which morning-peaking markers justify the early slot</td><td><span class="tag t-warn">Claim made, unnamed</span></td><td>Sådan fungerer det · FAQ</td></tr>
+
+              <tr><td rowspan="4"><strong>Operational</strong></td><td>Laboratory accreditation and authorisation</td><td><span class="tag t-no">Unstated</span></td><td>Laboratory chapter · Om Pandonia. <strong>Most scrutinised claim on the site</strong></td></tr>
+              <tr><td>Which analyses run in-house vs sent on</td><td><span class="tag t-no">Unknown</span></td><td>Laboratory chapter</td></tr>
+              <tr><td>Is 2–4 hours typical or best case?</td><td><span class="tag t-warn">Stated as a promise</span></td><td>Sådan fungerer det · FAQ · Din rapport</td></tr>
+              <tr><td>Is the responsible doctor Benedikte Halle?</td><td><span class="tag t-warn">Implied</span></td><td>Sådan fungerer det · Om Pandonia</td></tr>
+
+              <tr><td rowspan="3"><strong>Legal</strong></td><td>Health disclaimer wording</td><td><span class="tag t-no">Drafted, unapproved</span></td><td>Footer, every page</td></tr>
+              <tr><td>Data handling, journalføring, sharing</td><td><span class="tag t-no">Missing</span></td><td>FAQ · Book · privacy policy</td></tr>
+              <tr><td>CVR, dataansvarlig, marketing rules for health services</td><td><span class="tag t-no">Missing</span></td><td>Footer</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note warn">
+          <p style="margin-bottom:8px"><strong>The five that block the most:</strong> the marker list, the area mapping, the reference ranges, the three missing area names, and what the six scores measure. Without them the site can be <em>built</em> but not <em>filled</em> — every band renders unavailable and every marker row renders a placeholder.</p>
+          <p style="margin:0"><strong>The build gate:</strong> the production build should fail if any element carrying <code>.pl</code> or <code>.ptag</code> reaches it. That converts this table from a promise into a mechanism.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 DECISIONS -->
+  <section>
+    <div class="row">
+      <div class="rail"><span class="lbl">15 / Approve</span></div>
+      <div>
+        <h2 class="sec">What I need from you</h2>
+        <p class="dek">Six design decisions, and the clinical gate above.</p>
+
+        <ul class="asks">
+          <li><p><strong>1 · The sitemap, including no separate laboratory page.</strong> Seven pages plus utility; Priser absorbed into Book; the laboratory as a chapter inside Sådan fungerer det. §01.</p></li>
+          <li><p><strong>2 · The navigation.</strong> Four editorial destinations plus one action, with FAQ demoted to the utility group and Priser removed. If you want Priser in the primary nav, say so — it is a commercial call more than a design one.</p></li>
+          <li><p><strong>3 · Om Pandonia: second photograph, or one section fewer?</strong> It is currently the most text-heavy page on the site. My recommendation is the photograph.</p></li>
+          <li><p><strong>4 · Homepage beats 07 and 08: merge or keep separate?</strong> Merging tightens the page by about a screen. I have left them separate; it may read differently once the real scores exist.</p></li>
+          <li><p><strong>5 · Accessibility changes adopted into Phase 2.</strong> <code>--ink3</code> darkened to <code>#756C60</code>, and a 0.55 minimum text opacity on deep forest. Both are token-level and already applied in the prototype.</p></li>
+          <li><p><strong>6 · The photography commission.</strong> Eleven shots, one apartment, one real draw, one lab visit, one portrait. <strong>This is now the critical path for everything except the clinical content</strong> — the site is designed around images it does not have.</p></li>
+        </ul>
+
+        <div class="block">
+          <h4>And the two things that are not mine to solve</h4>
+          <div class="cols">
+            <div><h3>Booking leaves the brand</h3><p>Every CTA hands the visitor to a third-party scheduler at the moment of commitment. Theme it, embed it, or replace it — but decide rather than inherit.</p></div>
+            <div><h3>Consent for named people</h3><p>Deborah Saren and Benedikte Halle appear by name and face across three pages. It is the strongest trust asset in the system and it needs their agreement before the shoot, not after.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="endmark">
+    <span class="lbl">End of Phase 05 — holding for approval</span>
+    <span class="lbl">Next: production implementation</span>
+  </div>
+
+</div>
