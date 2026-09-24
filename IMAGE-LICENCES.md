@@ -3,7 +3,7 @@
 Every file in `public/images/`. Nothing is in this repository whose commercial
 rights are unclear.
 
-## Pandonia's own material — 12 files
+## Pandonia's own material — 13 files
 
 Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 
@@ -20,7 +20,22 @@ Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 | `t2.jpg` | Pandonia `16-55e9dd65` | 480×600 | Team portrait |
 | `t3.jpg` | Pandonia `18-e78c841d` | 480×600 | Team portrait |
 | `t4.jpg` | Pandonia `20-bb5ac064` | 480×600 | Team portrait |
-| `review.png` | Pandonia product render, supplied 24 Sep 2026 | 539×709, as supplied | Day sequence frame 5 — 16.00, the consultation |
+| `review.png` | Pandonia product render, supplied 24 Sep 2026 | 539×709, as supplied | Homepage — "Numbers only mean something…" |
+| `doctor.jpg` | Portrait supplied 24 Sep 2026 | 98×131 crop from a 164×164 avatar, upscaled to 480×640 | Day sequence frame 5 — 16.00, the consultation |
+
+`doctor.jpg` is **too low-resolution for production.** The source was a 164×164
+circular avatar. The largest 3:4 rectangle that fits inside that circle is
+98×131, which is what the crop uses, upscaled 4.9× to 480×640. It renders around
+250×330 in the day sequence, so it is being shown at roughly twice its real
+detail and will look soft next to the other photographs. It is tagged "Ægte ·
+lav opløsning / Real · low resolution" so the gap is visible. **Ask for the
+original file.**
+
+Two further points on it. The identification is the client's: it sits under copy
+naming Benedikte Halle because it was placed there on request, not because the
+match was verified from source material — the earlier finding that Pandonia's
+studio portraits cannot be paired with names from public material still stands.
+And as an identifiable person on a public page, it needs her consent for web use.
 
 `review.png` is a **device mockup, not a photograph** — Pandonia's Health
 Assessment Overview on a tablet. It is Pandonia's own product, so rights are
@@ -95,12 +110,13 @@ not as photographs. These are the categories where stock imagery is forbidden
 because it would misrepresent Pandonia's actual operation:
 
 - **Laboratory ×4** — `LAB-01` … `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress.
-- **The doctor ×2** — `PORTRÆT-01`, on the homepage and on *Din rapport*. Must be the real Pandonia doctor. The day-sequence frame that previously carried a third now shows `review.png`, so the consultation is represented by the report rather than by the person.
+- **The doctor ×1** — `PORTRÆT-01` on *Din rapport*. Must be the real Pandonia doctor, at print resolution.
 
-Filled since the original brief, with the real shots still outstanding:
+Filled since the original brief, with better source files still needed:
 
 - `OBJ-02`, sample in transit — now `transit.webp`, stock, rights undocumented.
-- Day-sequence frame 5, the consultation — now `review.png`, a product render rather than a photograph of the doctor.
+- Day-sequence frame 5, the consultation — now `doctor.jpg`, upscaled from a 164px avatar. Needs the original.
+- Homepage, "Numbers only mean something…" — now `review.png`, a product render carrying two empty placeholder panels.
 
 Stock imagery may be used for atmosphere — a home in the morning, Copenhagen
 residential exteriors, light and transitions. It may never stand in for

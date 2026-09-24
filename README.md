@@ -115,9 +115,11 @@ Never set that in production.
 
 - Node has never run here — budget time for a first real `tsc` and `next build`
 - The four legal pages have no content; they are inert labels in the preview, not links
-- 6 placements are art-direction plates marked "new shoot required" — laboratory ×4, the doctor ×2
+- 5 placements are art-direction plates marked "new shoot required" — laboratory ×4, the doctor ×1
 - The sample-in-transit frame uses a client-supplied stock image with **no documented licence** — clear the rights or replace it; see `IMAGE-LICENCES.md`
-- The consultation frame shows a product render carrying two empty placeholder panels; the doctor photograph is still outstanding
+- The doctor portrait is upscaled 4.9× from a 164px avatar and will look soft — **ask for the original file**
+- The product render on the homepage carries two empty placeholder panels
+- Identifiable people appear on a public page; confirm consent for web use
 - The hero photograph is a licensed holding image, not Pandonia's own
 - Team portraits need consent as well as name pairing
 - Danish URLs move under the `/da/` prefix; 301s are listed in `docs/i18n.md`
