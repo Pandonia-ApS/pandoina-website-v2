@@ -3,7 +3,7 @@
 Every file in `public/images/`. Nothing is in this repository whose commercial
 rights are unclear.
 
-## Real Pandonia photography — 11 files
+## Pandonia's own material — 12 files
 
 Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 
@@ -20,6 +20,19 @@ Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 | `t2.jpg` | Pandonia `16-55e9dd65` | 480×600 | Team portrait |
 | `t3.jpg` | Pandonia `18-e78c841d` | 480×600 | Team portrait |
 | `t4.jpg` | Pandonia `20-bb5ac064` | 480×600 | Team portrait |
+| `review.png` | Pandonia product render, supplied 24 Sep 2026 | 539×709, as supplied | Day sequence frame 5 — 16.00, the consultation |
+
+`review.png` is a **device mockup, not a photograph** — Pandonia's Health
+Assessment Overview on a tablet. It is Pandonia's own product, so rights are
+Pandonia's, and it is tagged "Ægte · produktrender / Real · product render"
+rather than as photography.
+
+Two things to note about it. The render carries **two empty placeholder panels**,
+*Overall Score Timeline* and *Health Area's Score Evolution*, drawn as blank
+cream rectangles; on a public page these read as unfinished product. And it sits
+under the caption *"Benedikte gennemgår den / Benedikte goes through it"*, so it
+shows what is reviewed rather than the person reviewing — the doctor photograph
+is still outstanding.
 
 **The four portraits are not paired with names.** Pandonia publishes nine studio
 portraits and six names; no public material connects them. They render under a
@@ -82,8 +95,12 @@ not as photographs. These are the categories where stock imagery is forbidden
 because it would misrepresent Pandonia's actual operation:
 
 - **Laboratory ×4** — `LAB-01` … `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress.
-- **The doctor ×3** — `PORTRÆT-01`. Must be the real Pandonia doctor.
-- **Sample in transit ×1** — `OBJ-02`. Documentary object detail. Currently filled by `transit.webp`, a stock image with undocumented rights; the real shot is still outstanding.
+- **The doctor ×2** — `PORTRÆT-01`, on the homepage and on *Din rapport*. Must be the real Pandonia doctor. The day-sequence frame that previously carried a third now shows `review.png`, so the consultation is represented by the report rather than by the person.
+
+Filled since the original brief, with the real shots still outstanding:
+
+- `OBJ-02`, sample in transit — now `transit.webp`, stock, rights undocumented.
+- Day-sequence frame 5, the consultation — now `review.png`, a product render rather than a photograph of the doctor.
 
 Stock imagery may be used for atmosphere — a home in the morning, Copenhagen
 residential exteriors, light and transitions. It may never stand in for
