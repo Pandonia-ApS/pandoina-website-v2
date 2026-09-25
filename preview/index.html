@@ -223,6 +223,55 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 
 .ovtCta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:22px;margin-top:clamp(52px,7vw,88px)}
 
+/* ── PRICING ─────────────────────────────────────────────────────
+   Three categories as an editorial contents line, not SaaS tabs: serif
+   names, one mono line each saying what it is for, a forest rule under
+   the one you are reading. */
+.prTabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.prTab{position:relative;background:none;border:none;text-align:left;font:inherit;cursor:pointer;padding:22px 20px 20px 0;color:inherit}
+.prTab+.prTab{padding-left:24px;border-left:1px solid var(--ruleSoft)}
+.prName{display:block;font-family:"Newsreader",Georgia,serif;font-size:clamp(20px,1.3vw + 14px,28px);letter-spacing:-.015em;line-height:1.12;color:var(--ink2);transition:color 140ms}
+.prSub{display:block;margin-top:7px;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.prTab:hover .prName{color:var(--ink)}
+.prTab[aria-selected="true"] .prName{color:var(--forest)}
+.prTab[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--forest)}
+.prTab+.prTab[aria-selected="true"]::after{left:24px}
+@media(max-width:720px){.prTabs{grid-template-columns:1fr}.prTab+.prTab{padding-left:0;border-left:none;border-top:1px solid var(--ruleSoft)}.prTab+.prTab[aria-selected="true"]::after{left:0}.prTab[aria-selected="true"]::after{bottom:0}}
+.prPanel[hidden]{display:none}
+.prIntro{padding-block:clamp(32px,4vw,52px) clamp(18px,2vw,26px)}
+
+.mbTop{padding-top:clamp(36px,5vw,64px)}
+.mbPrice{border-top:2px solid var(--forest);padding-top:22px}
+@media(min-width:1024px){.mbPrice{margin-top:6px}}
+.mbName{margin-top:10px;font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,1vw + 17px,28px);letter-spacing:-.015em;color:var(--ink)}
+.mbVal{margin-top:18px;font-size:clamp(46px,5vw,72px);line-height:.95}
+.mbPer{margin-top:6px;font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+
+/* measure → understand → follow → measure again, on the hero timeline's hairline */
+.cyc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(28px,3vw,40px);border-top:1px solid rgba(65,90,59,.3)}
+.cyc li{position:relative;padding:16px 10px 0 0;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2)}
+.cyc li::before{content:"";position:absolute;left:0;top:-5px;width:1px;height:9px;background:var(--forest)}
+.cyc li.now{color:var(--ink)}
+.cyc li.now::before{width:5px;height:5px;top:-3px;left:-2px;border-radius:50%;background:var(--amber)}
+@media(max-width:560px){.cyc{grid-template-columns:1fr;border-top:none;border-left:1px solid rgba(65,90,59,.3);margin-left:4px}.cyc li{padding:0 0 14px 16px}.cyc li::before{left:-5px;top:6px;width:9px;height:1px}.cyc li.now::before{left:-3px;top:4px}}
+
+/* benefit rows — and the Essential Tests list, which uses the same pattern */
+.mbRows li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n f" "d d";gap:5px 20px;padding-block:18px;border-bottom:1px solid var(--ruleSoft)}
+.mbRows li:first-child{border-top:1px solid var(--rule)}
+@media(min-width:900px){.mbRows li{grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr) auto;grid-template-areas:"n d f";align-items:baseline;gap:0 32px;padding-block:20px}}
+.mbN{grid-area:n;font-family:"Newsreader",Georgia,serif;font-size:clamp(19px,.7vw + 15px,23px);letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
+.mbD{grid-area:d;font-size:15px;line-height:1.5;color:var(--ink2)}
+.mbF{grid-area:f;justify-self:end;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--forest);white-space:nowrap;text-align:right}
+.mbF.price{font-size:14px;letter-spacing:.02em;text-transform:none;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* comparison: rows are attributes, columns are the three ways in */
+.cmp{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.cmp>div{padding:16px 20px 16px 0;border-bottom:1px solid var(--ruleSoft);font-size:15px;line-height:1.5;color:var(--ink2)}
+.cmp>.ch{font-family:"Newsreader",Georgia,serif;font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;color:var(--forest);border-bottom-color:var(--rule)}
+.cmp>.rl{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-top:19px}
+.cmp>.pv{font-family:"DM Mono",monospace;font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+@media(max-width:860px){.cmp{grid-template-columns:1fr}.cmp>.ch,.cmp>.corner{display:none}.cmp>.rl{padding-top:22px;border-bottom:none;padding-bottom:4px;color:var(--ink)}.cmp>div:not(.rl){padding:8px 0}.cmp>div[data-p]::before{content:attr(data-p);display:block;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}}
+
 .mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
 .mk>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:12px;align-items:center;padding-block:15px}
 @media(min-width:1024px){.mk>summary{grid-template-columns:minmax(0,1fr) 92px 118px 20px;gap:18px}}
@@ -498,6 +547,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test</span><span class="bdS measN" data-da="Samme markører, Pandonia Score og seks systemscorer." data-en="The same markers, Pandonia Score and six system scores.">Samme markører.</span></span><span class="v" style="font-size:15px"><span data-da="3.500 kr." data-en="DKK 3,500">3.500 kr.</span></span></li>
   </ul>
   <p class="bdS" style="margin-top:18px;max-width:54ch" data-da="Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som gavekort og virksomhedsordning." data-en="Single tests from DKK 1,000 if you would rather start smaller. Also available as a gift card or a workplace programme.">Enkelte tests fra 1.000 kr.</p>
+  <p class="bdS" style="margin-top:10px;max-width:54ch"><span data-da="Eller følg din sundhed løbende med et medlemskab — 2.000 kr. pr. måned." data-en="Or follow your health continuously with a membership — DKK 2,000 per month.">Eller følg din sundhed løbende med et medlemskab.</span> <a class="lnk" style="padding-block:4px" data-route="book" data-anchor="pr-mb"><span data-da="Se medlemskabet" data-en="See the membership">Se medlemskabet</span> <span aria-hidden="true">→</span></a></p>
   <div style="margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:22px">
     <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
     <a class="lnk" data-route="book"><span data-da="Se alle priser" data-en="See all prices">Se alle priser</span> <span aria-hidden="true">→</span></a>
@@ -789,23 +839,98 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 
 <!-- ═══════════ BOOK ═══════════ -->
 <div data-page="book" hidden>
-  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
-    <h1 class="s d2 fg" style="max-width:17ch" data-da="Vælg en tid, så kommer vi." data-en="Choose a time and we will come.">Vælg en tid, så kommer vi.</h1>
-    <p class="bodyL" style="margin-top:24px;max-width:50ch" data-da="Alt herunder foregår i København. Du skal ikke bruge henvisning, og du behøver ikke vide på forhånd, hvad du leder efter." data-en="Everything below happens in Copenhagen. You do not need a referral, and you do not need to know in advance what you are looking for.">Alt herunder foregår i København.</p>
+  <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(28px,4vw,52px)">
+    <h1 class="s d2 fg" style="max-width:16ch" data-da="Tre måder at bruge Pandonia." data-en="Three ways to use Pandonia.">Tre måder at bruge Pandonia.</h1>
+    <p class="bodyL" style="margin-top:24px;max-width:52ch" data-da="Test én gang, vælg en fokuseret test — eller følg din sundhed løbende med et medlemskab. Alt foregår i København, og du skal ikke bruge henvisning." data-en="Test once, choose a focused test — or follow your health continuously with a membership. Everything happens in Copenhagen, and you do not need a referral.">Test én gang, vælg en fokuseret test — eller følg din sundhed løbende.</p>
   </section>
-  <section class="wrap" id="priser" style="padding-bottom:clamp(40px,6vw,80px)"><div class="hr" id="priceRows"></div>
-    <p class="bdS" style="margin-top:16px" data-da="Priser verificeret fra Pandonias bookingsystem." data-en="Prices verified from Pandonia's booking system.">Priser verificeret fra Pandonias bookingsystem.</p>
+
+  <section class="wrap" id="priser" style="padding-bottom:clamp(56px,8vw,112px)">
+    <div class="prTabs" id="prTabs" role="tablist">
+      <button type="button" role="tab" class="prTab" id="tab-ht" aria-controls="pr-ht" aria-selected="true" tabindex="0">
+        <span class="prName">Pandonia Health Test</span>
+        <span class="prSub" data-da="Test én gang" data-en="Test once">Test én gang</span>
+      </button>
+      <button type="button" role="tab" class="prTab" id="tab-et" aria-controls="pr-et" aria-selected="false" tabindex="-1">
+        <span class="prName">Essential Tests</span>
+        <span class="prSub" data-da="Ét bestemt spørgsmål" data-en="One particular question">Ét bestemt spørgsmål</span>
+      </button>
+      <button type="button" role="tab" class="prTab" id="tab-mb" aria-controls="pr-mb" aria-selected="false" tabindex="-1">
+        <span class="prName" data-da="Medlemskab" data-en="Membership">Medlemskab</span>
+        <span class="prSub" data-da="Følg din sundhed løbende" data-en="Follow your health continuously">Følg din sundhed løbende</span>
+      </button>
+    </div>
+
+    <!-- HEALTH TEST -->
+    <div class="prPanel" id="pr-ht" role="tabpanel" aria-labelledby="tab-ht">
+      <div id="priceRows"></div>
+      <p class="pl bdS revonly" style="margin-top:22px;max-width:66ch" data-lang="da"><b>Afvigelse på pandonia.com</b>Hjemmesiden lister "20-minute online doctor consultation" under The Health Test (3.500 kr.), men konsultationen er netop det, der adskiller Health Test + Consultation. Vist her uden konsultation. Priser verificeret fra Pandonias bookingsystem.</p>
+      <p class="pl bdS revonly" style="margin-top:22px;max-width:66ch" data-lang="en"><b>Discrepancy on pandonia.com</b>The site lists "20-minute online doctor consultation" under The Health Test (DKK 3,500), but the consultation is precisely what distinguishes Health Test + Consultation. Shown here without it. Prices verified from Pandonia's booking system.</p>
+    </div>
+
+    <!-- ESSENTIAL TESTS -->
+    <div class="prPanel" id="pr-et" role="tabpanel" aria-labelledby="tab-et" hidden>
+      <div class="prIntro">
+        <h2 class="s d3 fg" data-da="Når du har ét bestemt spørgsmål." data-en="When you have one particular question.">Når du har ét bestemt spørgsmål.</h2>
+        <p class="bd meas" style="margin-top:14px" data-da="Seks fokuserede tests. Prøven tages på samme måde som en Health Test — hjemme hos dig eller på Langebrogade." data-en="Six focused tests. The sample is taken the same way as a Health Test — at your home or on Langebrogade.">Seks fokuserede tests.</p>
+      </div>
+      <ul class="mbRows" id="singleTests"></ul>
+      <div style="margin-top:28px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Vælg test og tid" data-en="Choose a test and a time">Vælg test og tid</a></div>
+      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="da"><b>Kommerciel gennemgang påkrævet</b>Priserne her er fra Pandonias bookingsystem, hvor kunden faktisk betaler. Den engelske hjemmeside viser andre priser for tre af seks: D-vitamin 950 kr. (bookingsystem 1.000), glukosemonitorering 1.350 kr. (2.000) og "Digestion Health Test" 1.800 kr. (Blodsukker- og Kolesteroltest, 1.300). Den engelske side angiver også Thyroid Health Test som 1.600 inkl. og 1.800 ekskl. moms — ekskl. kan ikke være højere end inkl. De engelske testnavne er Pandonias egne; "Digestion" dækker en kolesterol- og HbA1c-test. "Health check + Female hormones" findes ikke længere i bookingsystemet og er fjernet.</p>
+      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="en"><b>Commercial review required</b>These prices come from Pandonia's booking system, where the customer actually pays. The English website shows different prices for three of six: Vitamin D DKK 950 (booking system 1,000), glucose monitoring DKK 1,350 (2,000) and "Digestion Health Test" DKK 1,800 (Blodsukker- og Kolesteroltest, 1,300). It also lists Thyroid Health Test as 1,600 incl. and 1,800 excl. VAT — excl. cannot exceed incl. The English test names are Pandonia's own; "Digestion" covers a cholesterol and HbA1c test. "Health check + Female hormones" no longer exists in the booking system and has been removed.</p>
+    </div>
+
+    <!-- MEMBERSHIP -->
+    <div class="prPanel" id="pr-mb" role="tabpanel" aria-labelledby="tab-mb" hidden>
+      <div class="split sp5545 alStart mbTop">
+        <div>
+          <p class="lab" data-da="Medlemskab" data-en="Membership">Medlemskab</p>
+          <h2 class="s d2 fg" style="margin-top:14px;max-width:13ch" data-da="Et løbende billede af din sundhed." data-en="A running picture of your health.">Et løbende billede af din sundhed.</h2>
+          <p class="bodyL" style="margin-top:22px;max-width:44ch" data-da="En enkelt Health Test viser, hvor du står i dag. Med medlemskabet tester du hvert kvartal og følger op hver gang — så du kan se, hvad der flytter sig, og hvad der bliver, hvor det er." data-en="A single Health Test shows where you stand today. With membership you test every quarter and follow up each time — so you can see what moves, and what stays where it is.">En enkelt Health Test viser, hvor du står i dag.</p>
+          <ol class="cyc" id="mbCycle">
+            <li><span data-da="Mål" data-en="Measure">Mål</span></li>
+            <li><span data-da="Forstå" data-en="Understand">Forstå</span></li>
+            <li><span data-da="Følg udviklingen" data-en="Follow the change">Følg udviklingen</span></li>
+            <li class="now"><span data-da="Mål igen" data-en="Measure again">Mål igen</span></li>
+          </ol>
+        </div>
+        <div class="mbPrice">
+          <p class="lab">All inclusive</p>
+          <p class="mbName">The Pandonia Membership</p>
+          <p class="val mbVal" id="mbVal">2.000 kr.</p>
+          <p class="mbPer" data-da="pr. måned" data-en="per month">pr. måned</p>
+          <p class="lab" style="margin-top:14px" id="mbVat">inkl. moms · 1.600 kr. ekskl. moms</p>
+          <p class="lab" style="margin-top:4px" data-da="Betales månedligt" data-en="Billed monthly">Betales månedligt</p>
+          <div style="margin-top:24px"><a class="btn btn1" href="https://system.easypractice.net/subscription/806" target="_blank" rel="noopener noreferrer" data-da="Bliv medlem" data-en="Become a member">Bliv medlem</a></div>
+        </div>
+      </div>
+      <div style="margin-top:clamp(44px,6vw,76px)">
+        <p class="lab" style="margin-bottom:14px" data-da="Inkluderet" data-en="Included">Inkluderet</p>
+        <ul class="mbRows" id="mbRows"></ul>
+      </div>
+      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="da"><b>Afklaret — kilder</b>Bookingsystemets eneste aktive abonnement (806, "The Pandonia Membership", 2.000 kr./md.) og den engelske hjemmeside ("All inclusive", 2.000 inkl. / 1.600 ekskl. moms) viser samme medlemskab med samme ni fordele. Den danske pandonia.com viser stadig tre udgåede planer — 3.000, 3.699 og 6.100 kr./md. — og deres Tilmeld-knapper fører til abonnementer, der ikke findes (404). De skal fjernes fra den nuværende side. Ikke offentliggjort: bindingsperiode og opsigelse. Medlemskabets konsultation er beskrevet som "personlig rådgivning og opfølgning", ikke som en lægekonsultation.</p>
+      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="en"><b>Resolved — sources</b>The booking system's only active subscription (806, "The Pandonia Membership", DKK 2,000/mo) and the English website ("All inclusive", 2,000 incl. / 1,600 excl. VAT) show the same membership with the same nine benefits. The Danish pandonia.com still shows three retired plans — DKK 3,000, 3,699 and 6,100/mo — whose Subscribe buttons lead to subscriptions that do not exist (404). They should come off the current site. Not published: binding period and cancellation. The membership consultation is described as "personal advice and follow-up", not as a doctor consultation.</p>
+    </div>
   </section>
+
   <section class="gSand"><div class="wrap std">
-    <h2 class="s d3 fg" style="margin-bottom:8px" data-da="Vil du begynde mindre?" data-en="Would you rather start smaller?">Vil du begynde mindre?</h2>
-    <p class="bd meas" style="margin-bottom:26px" data-da="Syv enkelttests, hvis du har ét bestemt spørgsmål." data-en="Seven single tests, if you have one particular question.">Syv enkelttests.</p>
-    <ul class="rows" style="max-width:720px" id="singleTests"></ul>
-    <p class="bdS" style="margin-top:18px" data-da="Også som gavekort, klippekort og virksomhedsordning." data-en="Also available as gift cards, clip cards and workplace programmes.">Også som gavekort, klippekort og virksomhedsordning.</p>
-    <div style="margin-top:26px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Vælg tid" data-en="Choose a time">Vælg tid</a></div>
+    <h2 class="s d3 fg" style="margin-bottom:clamp(24px,3vw,36px)" data-da="Forskellen, kort fortalt." data-en="The difference, briefly.">Forskellen, kort fortalt.</h2>
+    <div class="cmp" id="prCmp" role="table"></div>
   </div></section>
-  <section class="wrap std">
-    <h2 class="s d3 fg" style="margin-bottom:28px" data-da="Hvad der sker, når du har booket" data-en="What happens once you have booked">Hvad der sker, når du har booket</h2>
-    <ol style="max-width:720px" id="afterSteps"></ol>
+
+  <section class="wrap std" style="text-align:center">
+    <p class="s d3 fg" style="max-width:18ch;margin:0 auto" data-da="Begynd med én prøve. Eller bliv ved." data-en="Start with one test. Or keep going.">Begynd med én prøve. Eller bliv ved.</p>
+    <div class="ovtCta" style="margin-top:30px">
+      <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+      <a class="btn btn2" href="https://system.easypractice.net/subscription/806" target="_blank" rel="noopener noreferrer" data-da="Bliv medlem" data-en="Become a member">Bliv medlem</a>
+    </div>
+  </section>
+
+  <section class="wrap std" style="padding-top:0">
+    <div class="hr" style="padding-top:clamp(40px,5vw,64px)">
+      <h2 class="s d3 fg" style="margin-bottom:28px" data-da="Hvad der sker, når du har booket" data-en="What happens once you have booked">Hvad der sker, når du har booket</h2>
+      <ol style="max-width:720px" id="afterSteps"></ol>
+      <p class="bdS" style="margin-top:22px;max-width:60ch" data-da="Også som gavekort og klippekort. Skal flere på arbejdspladsen testes, så skriv til labs@pandonia.com." data-en="Also available as gift cards and clip cards. If several people at your workplace want testing, write to labs@pandonia.com.">Også som gavekort og klippekort.</p>
+    </div>
   </section>
 </div>
 </main>
@@ -875,15 +1000,53 @@ var MARK=[
  {k:'metabolisk metabolic',da:'Metabolisk sundhed',en:'Metabolic health',src:'bookingsystem',p:1},
  {k:'glukose monitorering cgm',da:'Glukose Monitorering',en:'Glucose Tracking',src:'bookingsystem · 14-dages sensor',prod:1}
 ];
-var SINGLE=[['D-vitamin Test',1000],['Metabolisk Sundheds Test',1250],['Blodsukker- og Kolesteroltest',1300],['Mænds Sundhedstest',1400],['Skjoldbruskkirtel Test',1600],['Glukose Monitorering · 14 dage',2000],['Health check + Female hormones',null]];
+// ── Commercial data. Source for every figure: Pandonia's booking system,
+// system.easypractice.net/book/pandonia, read 25 Sep 2026 — the place the
+// customer actually pays. English names are Pandonia's own, from pandonia.com/en.
+var ESS=[
+ {da:'D-vitamin Test',en:'Vitamin D Test',p:1000,mDa:'Dit niveau af D-vitamin',mEn:'Your vitamin D level'},
+ {da:'Metabolisk Sundheds Test',en:'Basic Metabolic Test',p:1250,mDa:'Blodsukker, elektrolytter og væskebalance · leverfunktion og proteinniveauer · nyrernes filtreringskapacitet',mEn:'Blood sugar and electrolyte balance · liver and kidney function'},
+ {da:'Blodsukker- og Kolesteroltest',en:'Digestion Health Test',p:1300,mDa:'Metabolisk sundhed · kolesterolprofil · langtidsblodsukker',mEn:'Cholesterol and lipid profile · long-term blood sugar (HbA1c)'},
+ {da:'Mænds Sundhedstest',en:"Men's Health Test",p:1400,mDa:'Testosteron · D-vitamin',mEn:'Testosterone · vitamin D'},
+ {da:'Skjoldbruskkirtel Test',en:'Thyroid Health Test',p:1600,mDa:'TSH, T3 og T4',mEn:'TSH, T3 and T4'},
+ {da:'Glukose Monitorering',en:'Glucose monitoring',p:2000,mDa:'En sensor måler dit blodsukker i 14 dage · detaljeret rapport og en score',mEn:'A sensor tracks your blood sugar for 14 days · a detailed report and a score'}
+];
+// Membership: booking-system subscription 806, confirmed identical on pandonia.com/en.
+// The three plans still on the Danish pandonia.com are retired — their links 404.
+var MB={inc:2000,exc:1600,url:'https://system.easypractice.net/subscription/806',
+ rows:[
+  ['Health Test','Health Test','Løbende test med vores Pandonia Health Test','Ongoing testing with our Pandonia Health Test','Hvert kvartal · 4 × om året','Quarterly · 4 times a year'],
+  ['Konsultation','Consultation','Personlig rådgivning og opfølgning','Personal advice and follow-up','Hvert kvartal','Quarterly'],
+  ['Mikrobiom-test','Microbiome test','Indsigt i dit mikrobioms sundhed','Insight into the health of your microbiome','2 × om året','Twice a year'],
+  ['CGM-analyse','CGM analysis','En 14-dages analyse af dit blodsukker','A 14-day analysis of your blood sugar','1 × om året','Once a year'],
+  ['Essential Tests','Essential Tests','En af vores essentielle testpakker','One of our Essential Tests panels','2 × om året','Twice a year'],
+  ['Pandonia Box','Pandonia Box','Personligt tilpassede sundhedsbokse, leveret til dig','Personally tailored health boxes, delivered to you','2 × om året','Twice a year'],
+  ['DEXA-scanning','DEXA scan','Én DEXA-scanning om året','One DEXA scan a year','1 × om året','Once a year'],
+  ['HBOT','HBOT','Mulighed for at købe HBOT-behandlinger hos Rechargelife','Option to buy HBOT treatments at Rechargelife','20 % rabat','20% discount'],
+  ['Årsafslutning','Annual report','Samlet opsummering af dit sundhedsforløb ved årets udgang','A summary of your health over the year, at year end','1 × om året','Once a year']
+ ]};
+var CMP={
+ cols:{da:['Pandonia Health Test','Essential Tests','Medlemskab'],en:['Pandonia Health Test','Essential Tests','Membership']},
+ rows:{
+  da:[['Passer til',['Et samlet overblik, én gang','Ét bestemt spørgsmål','At følge udviklingen over tid']],
+      ['Du får',['30+ biomarkører, Pandonia Score og seks systemscorer','Én fokuseret testpakke','En Health Test hvert kvartal — og otte ting mere']],
+      ['Konsultation',['20 minutter med en læge, i Health Test + Consultation','Ikke inkluderet','Hvert kvartal']],
+      ['Betaling',['Én gang','Én gang','Månedligt']],
+      ['Pris',['Fra 3.500 kr.','Fra 1.000 kr.','2.000 kr. pr. måned'],1]],
+  en:[['Suits',['A full overview, once','One particular question','Following the change over time']],
+      ['You get',['30+ biomarkers, the Pandonia Score and six system scores','One focused test panel','A Health Test every quarter — and eight things more']],
+      ['Consultation',['20 minutes with a doctor, in Health Test + Consultation','Not included','Quarterly']],
+      ['Payment',['Once','Once','Monthly']],
+      ['Price',['From DKK 3,500','From DKK 1,000','DKK 2,000 per month'],1]]
+ }};
 var FAQ={da:[
- ['Før du booker',[['Hvor kan prøven tages?','Vi kommer hjem til dig eller på din arbejdsplads i København K, N, NV, V, S, SV, Ø, Frederiksberg og Hellerup. Du kan også møde op på Langebrogade 3A, 2. sal.',1],['Hvad koster det?','Health Test koster 3.500 kr. Health Test med konsultation som samlet pakke koster 4.750 kr. Enkelte tests fra 1.000 kr.',1],['Er konsultationen med i prisen?','',0]]],
+ ['Før du booker',[['Hvor kan prøven tages?','Vi kommer hjem til dig eller på din arbejdsplads i København K, N, NV, V, S, SV, Ø, Frederiksberg og Hellerup. Du kan også møde op på Langebrogade 3A, 2. sal.',1],['Hvad koster det?','Health Test koster 3.500 kr. Health Test med konsultation som samlet pakke koster 4.750 kr. Enkelte tests fra 1.000 kr. Medlemskabet koster 2.000 kr. pr. måned.',1],['Er konsultationen med i prisen?','',0]]],
  ['Prøvetagningen',[['Hvordan forbereder jeg mig?','Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer.',1],['Hvorfor om morgenen?','Flere biomarkører topper naturligt om morgenen.',1],['Hvem tager prøven?','Vores blodprøvetager har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge.',1],['Hvor lang tid tager det?','',0]]],
  ['Laboratoriet',[['Hvor analyseres min prøve?','I vores eget laboratorium på Langebrogade i København.',1],['Hvordan sikrer I kvaliteten?','',0]]],
  ['Resultater og samtale',[['Hvornår får jeg svar?','',0],['Hvordan foregår konsultationen?','Du booker den, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online.',1],['Kan resten af sundhedsvæsenet se mine svar?','',0]]],
  ['Praktisk',[['Kan flere medarbejdere testes samtidig?','Ja. Vi kommer ud til arbejdspladsen og tager prøver på mange medarbejdere i ét samlet besøg. Skriv til labs@pandonia.com.',1],['Kan jeg give det som gave?','Ja, der findes gavekort.',1],['Kan jeg afbestille?','',0]]]
 ],en:[
- ['Before you book',[['Where can the sample be taken?','We come to your home or workplace in Copenhagen K, N, NV, V, S, SV, Ø, Frederiksberg and Hellerup. You can also come to Langebrogade 3A, 2nd floor.',1],['What does it cost?','The Health Test costs DKK 3,500. The Health Test with consultation as one package costs DKK 4,750. Single tests from DKK 1,000.',1],['Is the consultation included in the price?','',0]]],
+ ['Before you book',[['Where can the sample be taken?','We come to your home or workplace in Copenhagen K, N, NV, V, S, SV, Ø, Frederiksberg and Hellerup. You can also come to Langebrogade 3A, 2nd floor.',1],['What does it cost?','The Health Test costs DKK 3,500. The Health Test with consultation as one package costs DKK 4,750. Single tests from DKK 1,000. Membership costs DKK 2,000 per month.',1],['Is the consultation included in the price?','',0]]],
  ['The sample',[['How do I prepare?','Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.',1],['Why in the morning?','Several biomarkers naturally peak in the morning.',1],['Who takes the sample?','Our phlebotomist has experience from several different hospitals and works under close supervision of our responsible doctor.',1],['How long does it take?','',0]]],
  ['The laboratory',[['Where is my sample analysed?','In our own laboratory on Langebrogade in Copenhagen.',1],['How do you ensure quality?','',0]]],
  ['Results and conversation',[['When do I get my result?','',0],['How does the consultation work?','You book it when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.',1],['Can the rest of the health service see my results?','',0]]],
@@ -901,7 +1064,7 @@ var T={da:{what:'Hvad er det',why:'Hvorfor måler vi det',unit:'Måleenhed',rang
         sysNote:'We are still assigning the markers to each system. Until then you can see them all together.'}};
 var ROUTES={da:{home:'/da',maaler:'/da/hvad-vi-maaler',saadan:'/da/saadan-fungerer-det',rapport:'/da/din-rapport',om:'/da/om-pandonia',faq:'/da/faq',book:'/da/book'},
             en:{home:'/en',maaler:'/en/what-we-test',saadan:'/en/how-it-works',rapport:'/en/your-report',om:'/en/about-pandonia',faq:'/en/faq',book:'/en/book'}};
-var ANCHOR_PAGE={'what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','pricing':'home','laboratoriet':'saadan'};
+var ANCHOR_PAGE={'what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','pricing':'home','laboratoriet':'saadan','pr-ht':'book','pr-et':'book','pr-mb':'book'};
 
 function nf(n){return loc==='da'?n.toFixed(1).replace('.',','):n.toFixed(1);}
 function dkk(v){return v===null?null:(loc==='da'?new Intl.NumberFormat('da-DK').format(v)+' kr.':'DKK '+new Intl.NumberFormat('en-GB').format(v));}
@@ -974,8 +1137,22 @@ function renderAll(){
     ['Health Test',3500,2800,loc==='da'?'Kun prøven':'The test only',loc==='da'?'Samme markører, Pandonia Score og seks systemscorer.':'The same markers, Pandonia Score and six system scores.']]
     .map(function(p){return '<div style="display:grid;grid-template-columns:1fr;gap:20px 40px;align-items:start;padding-block:clamp(22px,3vw,32px);border-bottom:1px solid var(--rule)" class="g2"><div><p class="lab" style="margin-bottom:8px">'+p[3]+'</p><h2 style="font-size:clamp(21px,1.1vw + 17px,28px);font-weight:500;letter-spacing:-.015em">'+p[0]+'</h2><p class="bdS measN" style="margin-top:10px">'+p[4]+'</p></div><div><p class="val" style="font-size:clamp(26px,3vw,34px)">'+dkk(p[1])+'</p><p class="lab" style="margin-top:5px">'+(loc==='da'?'inkl. moms · '+new Intl.NumberFormat('da-DK').format(p[2])+' ekskl.':'incl. VAT · '+new Intl.NumberFormat('en-GB').format(p[2])+' excl.')+'</p><div style="margin-top:16px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer">'+(loc==='da'?'Vælg tid':'Choose a time')+'</a></div></div></div>';}).join('');
 
+  var da=loc==='da';
   var st=document.getElementById('singleTests');
-  if(st) st.innerHTML=SINGLE.map(function(s){return '<li><span class="l"><span style="font-size:15.5px">'+s[0]+'</span></span><span class="v">'+(s[1]?dkk(s[1]):'<span class="tagP">'+(loc==='da'?'pris afventer':'price pending')+'</span>')+'</span></li>';}).join('');
+  if(st) st.innerHTML=ESS.map(function(s){return '<li><span class="mbN">'+(da?s.da:s.en)+'</span><span class="mbD">'+(da?s.mDa:s.mEn)+'</span><span class="mbF price">'+dkk(s.p)+'</span></li>';}).join('');
+
+  var mr=document.getElementById('mbRows');
+  if(mr) mr.innerHTML=MB.rows.map(function(r){return '<li><span class="mbN">'+(da?r[0]:r[1])+'</span><span class="mbD">'+(da?r[2]:r[3])+'</span><span class="mbF">'+(da?r[4]:r[5])+'</span></li>';}).join('');
+  var mv=document.getElementById('mbVal'); if(mv) mv.textContent=dkk(MB.inc);
+  var mt=document.getElementById('mbVat');
+  if(mt) mt.textContent=da?'inkl. moms · '+new Intl.NumberFormat('da-DK').format(MB.exc)+' kr. ekskl. moms':'incl. VAT · DKK '+new Intl.NumberFormat('en-GB').format(MB.exc)+' excl. VAT';
+
+  var cm=document.getElementById('prCmp');
+  if(cm){ var cols=CMP.cols[loc];
+    cm.innerHTML='<div class="corner" role="columnheader"></div>'+cols.map(function(c){return '<div class="ch" role="columnheader">'+c+'</div>';}).join('')+
+      CMP.rows[loc].map(function(r){return '<div class="rl" role="rowheader">'+r[0]+'</div>'+r[1].map(function(v,i){return '<div'+(r[2]?' class="pv"':'')+' role="cell" data-p="'+cols[i]+'">'+v+'</div>';}).join('');}).join('');
+  }
+  var tl=document.getElementById('prTabs'); if(tl) tl.setAttribute('aria-label',da?'Vælg hvordan du vil bruge Pandonia':'Choose how you want to use Pandonia');
 
   var as=document.getElementById('afterSteps');
   if(as) as.innerHTML=STEPS[loc].map(function(s,i){return '<li class="hrs" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:20px;padding-block:16px'+(i===3?';border-bottom:1px solid var(--ruleSoft)':'')+'"><span class="m" style="padding-top:4px;font-size:11px;letter-spacing:.09em;color:var(--ink3)">'+s[0]+'</span><div><h3 class="hh3">'+s[1]+'</h3><p class="bdS" style="margin-top:5px">'+s[2]+'</p></div></li>';}).join('');
@@ -987,11 +1164,35 @@ function filter(){var i=document.getElementById('mkf');if(!i)return;var q=norm(i
   document.getElementById('mkempty').hidden=n!==0;document.getElementById('mkcount').textContent=T[loc].cnt(n,r.length);}
 
 function setRoute(){document.getElementById('routebar').textContent=ROUTES[loc][page]||ROUTES[loc].home;}
+// Pricing categories — an ARIA tablist: one tab stop, arrows move between.
+function selectPricing(id,focus){
+  document.querySelectorAll('#prTabs [role="tab"]').forEach(function(t){
+    var on=t.getAttribute('aria-controls')===id;
+    t.setAttribute('aria-selected',String(on)); t.tabIndex=on?0:-1; if(on&&focus)t.focus();
+  });
+  document.querySelectorAll('.prPanel').forEach(function(p){p.hidden=p.id!==id;});
+}
+(function(){
+  var list=document.getElementById('prTabs'); if(!list)return;
+  var tabs=[].slice.call(list.querySelectorAll('[role="tab"]'));
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selectPricing(t.getAttribute('aria-controls'),false);});
+    t.addEventListener('keydown',function(e){
+      var j=null;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%tabs.length;
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i-1+tabs.length)%tabs.length;
+      else if(e.key==='Home')j=0; else if(e.key==='End')j=tabs.length-1;
+      if(j!==null){e.preventDefault();selectPricing(tabs[j].getAttribute('aria-controls'),true);}
+    });
+  });
+})();
 function show(p,anchor){
   page=p;
   document.querySelectorAll('[data-page]').forEach(function(x){x.hidden=x.getAttribute('data-page')!==p;});
   document.querySelectorAll('.navlinks a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-nav')===p);});
   setRoute();
+  // A link to one of the pricing categories opens that category and lands on the selector.
+  if(anchor&&anchor.indexOf('pr-')===0){selectPricing(anchor,false);anchor='prTabs';}
   requestAnimationFrame(function(){
     if(anchor){var el=document.getElementById(anchor);
       if(el){el.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}}
