@@ -115,10 +115,10 @@ Never set that in production.
 
 - Node has never run here — budget time for a first real `tsc` and `next build`
 - The four legal pages have no content; they are inert labels in the preview, not links
-- **1** art-direction plate remains, down from eight — the laboratory day-sequence frame. The doctor shoot has no plate left to signal it and survives only in `IMAGE-LICENCES.md`
-- **Nine** client-supplied images have **no documented licence** — see `IMAGE-LICENCES.md` for the list. Clearing this is one conversation with whoever sourced them, not nine separate problems
-- **No image of Pandonia's actual doctor remains on the site.** Both consultation moments now show stock models
-- Both blood-draw beats use staged photography. `draw.jpg`, in day-sequence frame 1, is the **only** real Pandonia blood draw left
+- **No art-direction plates remain**, down from eight. Every slot is filled, so nothing in the interface signals that photography is outstanding — `IMAGE-LICENCES.md` is now the only record of the shot list
+- **Ten** client-supplied images have **no documented licence**. Clearing this is one conversation with whoever sourced them, not ten separate problems
+- **No image of Pandonia's actual doctor or laboratory remains on the site.** Both are represented entirely by stock, including the frame captioned *"Vi laver den selv"*
+- `draw.jpg`, in day-sequence frame 1, is the **only** real Pandonia blood draw left
 - `skin.jpg`, `screen.jpg` and `doctor.jpg` are Pandonia's own material now sitting **unused** in the repository
 - The report photograph shows the deck's cover slide, not the score view its caption describes; `screen.jpg`, the only real capture of the score dashboard, is now unused
 - The building photograph reads as Pandonia's own premises but that is **unverified**

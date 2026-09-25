@@ -66,6 +66,30 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `lab-analyser.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 867 × 1039 |
+| Placement | Homepage → day-sequence frame 3, 09.30, "Analysen begynder" |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+0.83 into a 3:4 frame keeps 90% of the width, framed at `45% 50%` to favour the
+tube rack over the technician's back.
+
+The plate it replaced carried the most explicit instruction in the whole build —
+*"Pandonia's own laboratory. Rack of tubes, a hand labelling, window in frame.
+Workshop, not cleanroom. **Never stock.**"* — and it sits under the caption
+*"Analysen begynder / Vi laver den selv"*, the sentence that states the
+own-laboratory differentiator. This image is a cleanroom-style analyser bay in
+someone else's facility.
+
+**This was the last art-direction plate on the site.** Nothing in the interface
+now indicates that any photography is outstanding. The shot list below is the
+only remaining record of it.
+
 | File | `consultation.webp` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
@@ -286,12 +310,18 @@ version* — they were not used. They are not in this repository.
 
 ## Still to shoot
 
-**One** art-direction plate now remains on the site, down from eight. These are
-still the categories where stock imagery is forbidden because it misrepresents
-Pandonia's actual operation — but the interface has almost stopped saying so:
+**No art-direction plates remain on the site**, down from eight. Every slot is
+filled. These are still the categories where stock imagery misrepresents
+Pandonia's actual operation, and **this list is now the only place that says so** —
+the interface has stopped signalling it entirely.
 
-- **Laboratory** — the day-sequence frame, `LAB-01`, the last plate standing. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress, a rack of tubes and a hand labelling. **None of the three images now filling the laboratory row replaces it** — one is a building exterior, the other two are not Pandonia's laboratory.
-- **The doctor** — **no plate remains to signal this.** Benedikte Halle, three-quarter, cropped at the shoulder, soft window light, at print resolution. The consultation frame on *Din rapport* now shows a stock model; the day-sequence frame shows a 164px avatar upscaled 4.9×. Neither is a usable photograph of the real doctor.
+- **Laboratory ×4** — the day-sequence frame plus the three on *Sådan fungerer det*. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress, a rack of tubes and a hand labelling. All four slots currently show a building exterior or someone else's laboratory.
+- **The doctor ×2** — Benedikte Halle, three-quarter, cropped at the shoulder, soft window light, at print resolution. Both consultation moments currently show stock models. No image of Pandonia's actual doctor remains anywhere on the site.
+- **Blood draw ×2** — the *Hvad vi måler* opener and the homepage D-vitamin beat both use staged photography. `draw.jpg`, in day-sequence frame 1, is the only real one left.
+- **Sample in transit ×1** — `OBJ-02`, documentary object detail.
+
+One afternoon at Langebrogade with a photographer covers the laboratory, the
+doctor and the transit frame together.
 
 Filled since the original brief, with better source files still needed:
 
