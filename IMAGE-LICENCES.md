@@ -68,6 +68,29 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `samtale.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1069 × 1042, used as supplied |
+| Placement | *Din rapport* → "Og så er der samtalen", replacing `PORTRÆT-01` |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+A model in a white coat now stands where the brief said *the real Pandonia
+doctor*. The surrounding copy says "a doctor" rather than naming anyone, so this
+does not put a stranger's face under Benedikte Halle's name — but the page does
+present her as Pandonia's doctor. Tagged "Stock · ikke Pandonia".
+
+Near-square at 1.03 in a 4:5 frame, so 78% of the width survives; framed at
+`45% 50%` to keep the doctor central and let the crop take the foreground
+shoulder instead.
+
+**This was the last portrait plate on the site.** Nothing in the interface now
+signals that the doctor photograph is outstanding — the requirement survives
+only in this file and in the README.
+
 | File | `lab-rack.webp` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
@@ -177,12 +200,12 @@ version* — they were not used. They are not in this repository.
 
 ## Still to shoot
 
-Eight placements render as art-direction plates carrying a shot ID and a brief,
-not as photographs. These are the categories where stock imagery is forbidden
-because it would misrepresent Pandonia's actual operation:
+**One** art-direction plate now remains on the site, down from eight. These are
+still the categories where stock imagery is forbidden because it misrepresents
+Pandonia's actual operation — but the interface has almost stopped saying so:
 
-- **Laboratory ×1** — the day-sequence frame, `LAB-01`. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress, a rack of tubes and a hand labelling. **None of the three images now filling the laboratory row replaces it** — one is a building exterior, the other two are not Pandonia's laboratory.
-- **The doctor ×1** — `PORTRÆT-01` on *Din rapport*. Must be the real Pandonia doctor, at print resolution.
+- **Laboratory** — the day-sequence frame, `LAB-01`, the last plate standing. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress, a rack of tubes and a hand labelling. **None of the three images now filling the laboratory row replaces it** — one is a building exterior, the other two are not Pandonia's laboratory.
+- **The doctor** — **no plate remains to signal this.** Benedikte Halle, three-quarter, cropped at the shoulder, soft window light, at print resolution. The consultation frame on *Din rapport* now shows a stock model; the day-sequence frame shows a 164px avatar upscaled 4.9×. Neither is a usable photograph of the real doctor.
 
 Filled since the original brief, with better source files still needed:
 

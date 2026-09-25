@@ -115,8 +115,8 @@ Never set that in production.
 
 - Node has never run here — budget time for a first real `tsc` and `next build`
 - The four legal pages have no content; they are inert labels in the preview, not links
-- 2 placements are art-direction plates marked "new shoot required" — the laboratory ×1, the doctor ×1
-- Four client-supplied images have **no documented licence** — sample in transit, the building, and both laboratory frames; clear the rights or replace them; see `IMAGE-LICENCES.md`
+- **1** art-direction plate remains, down from eight — the laboratory day-sequence frame. The doctor shoot has no plate left to signal it and survives only in `IMAGE-LICENCES.md`
+- Five client-supplied images have **no documented licence** — sample in transit, the building, both laboratory frames and the consultation; clear the rights or replace them; see `IMAGE-LICENCES.md`
 - The building photograph reads as Pandonia's own premises but that is **unverified**
 - **The entire laboratory row is now non-Pandonia imagery** — a building exterior plus two stock interiors, one of which may be AI-generated. This conflicts with the project's own rule against stock standing in for the real laboratory, and the own-laboratory claim is the brand's central differentiator
 - The doctor portrait is upscaled 4.9× from a 164px avatar and will look soft — **ask for the original file**
