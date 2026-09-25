@@ -115,9 +115,9 @@ Never set that in production.
 
 - Node has never run here — budget time for a first real `tsc` and `next build`
 - The four legal pages have no content; they are inert labels in the preview, not links
-- 5 placements are art-direction plates marked "new shoot required" — laboratory ×4, the doctor ×1
-- Two client-supplied images have **no documented licence** — the sample-in-transit frame and the building beside the laboratory address; clear the rights or replace them; see `IMAGE-LICENCES.md`
-- The building photograph is presented as Langebrogade 3A but that match is **unverified**
+- 4 placements are art-direction plates marked "new shoot required" — laboratory ×3, the doctor ×1
+- Two client-supplied images have **no documented licence** — the sample-in-transit frame and the building leading the laboratory section; clear the rights or replace them; see `IMAGE-LICENCES.md`
+- The building photograph reads as Pandonia's own premises but that is **unverified**
 - The doctor portrait is upscaled 4.9× from a 164px avatar and will look soft — **ask for the original file**
 - The product render on the homepage carries two empty placeholder panels
 - Identifiable people appear on a public page; confirm consent for web use

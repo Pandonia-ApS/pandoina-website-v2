@@ -75,14 +75,18 @@ consent for web use regardless.
 | Licence | **Unknown** |
 | Commercial use | **Not confirmed** |
 | Dimensions | 978 × 633, used as supplied |
-| Placement | *Sådan fungerer det* → the laboratory, paired with the address |
+| Placement | *Sådan fungerer det* → the laboratory, first of the three frames (`LAB-01`) |
 | Status | **Placed on request. Clear the rights before launch.** |
 
-It sits directly beside "Langebrogade 3A, 2. sal", which makes it a factual
-claim that this is the building. **That match has not been verified** — the
-identification is the client's. A quay-side brick warehouse is not distinctive
-enough to confirm from the photograph alone, and putting the wrong building
-beside a street address is the kind of error a local reader notices immediately.
+It leads the laboratory section, so it reads as Pandonia's own building.
+**That has not been verified** — the identification is the client's. A quay-side
+brick warehouse is not distinctive enough to confirm from the photograph alone,
+and the wrong building on the laboratory page is the kind of error a Copenhagen
+reader notices immediately.
+
+It is also an exterior in a row briefed for interiors. The `LAB-01` brief it
+replaced — *rack of tubes, a hand labelling, window in frame, workshop not
+cleanroom* — has moved onto `LAB-02` so the shot is still requested.
 
 | File | `transit.webp` |
 |---|---|
@@ -125,7 +129,7 @@ Eight placements render as art-direction plates carrying a shot ID and a brief,
 not as photographs. These are the categories where stock imagery is forbidden
 because it would misrepresent Pandonia's actual operation:
 
-- **Laboratory ×4** — `LAB-01` … `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress.
+- **Laboratory ×3** — `LAB-02` and `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress. All three are interiors; the exterior now leading the section does not replace them.
 - **The doctor ×1** — `PORTRÆT-01` on *Din rapport*. Must be the real Pandonia doctor, at print resolution.
 
 Filled since the original brief, with better source files still needed:
