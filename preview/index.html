@@ -6,32 +6,64 @@
 <title>Pandonia Website</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap">
+<!-- Arimo and Tinos are the same designs as Liberation Sans and Liberation Serif,
+     the faces embedded in Pandonia's own brand documents. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,700;1,400&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
 
 <style>
+/* ── PANDONIA BRAND SYSTEM ───────────────────────────────────────
+   Taken from the fill and stroke operators of Pandonia's feed and
+   landing-page PDFs, which use the identical palette. Token names are kept
+   from the earlier system so the page structure did not have to change;
+   the values are the new brand. */
 :root{
-  --cream:#F6F1E8;--sand:#F4EADB;--paper:#FCFAF6;--deep:#18261A;
-  --ink:#26201A;--ink2:#5C554C;--ink3:#756C60;--inkInv:#EDE7DA;
-  --forest:#415A3B;--forestDeep:#2C3F28;
-  --amber:#E3A754;--sage:#A0B89F;--sageDeep:#4E7050;--brick:#8C3B2E;
-  --rule:rgba(38,32,26,.20);--ruleSoft:rgba(38,32,26,.11);
-  --ruleInv:rgba(237,231,218,.22);--ruleInvSoft:rgba(237,231,218,.16);
-  --onDeepMuted:rgba(237,231,218,.72);--onDeepQuiet:rgba(237,231,218,.55);
+  /* paper */
+  --cream:#FAFAF7;       /* paper — main ground                         */
+  --sand:#F1EDE4;        /* warm paper — alternating sections            */
+  --paper:#FFFFFF;       /* report sheet — the product's own white       */
+  --deep:#0A0A0A;        /* black blocks, footer                          */
+  /* ink */
+  --ink:#0A0A0A;
+  --ink2:#5E5E58;        /* body copy                                     */
+  --ink3:#65655F;        /* labels. Brand grey #6E6E68 is 4.4:1 on warm
+                            paper, so darkened one step to pass AA (5.0:1) */
+  --inkInv:#FAFAF7;
+  /* "forest" was the old accent; in the new identity interaction is ink */
+  --forest:#0A0A0A;--forestDeep:#2B2B28;
+  /* marks on light grounds are ink; the acid accent is only ever a fill */
+  --amber:#0A0A0A;
+  --acid:#F1EC7A;        /* 1.2:1 on paper: fills behind ink, dots on black */
+  --sage:#A7D185;--sageDeep:#3E6B34;--brick:#8C3B2E;   /* review layer only */
+  --rule:#0A0A0A;        /* strong hairline — list and table tops         */
+  --ruleSoft:#E1DCCE;    /* brand rule #E8E3D6, one step darker to read on warm paper */
+  --ruleInv:rgba(250,250,247,.22);--ruleInvSoft:rgba(250,250,247,.14);
+  --onDeepMuted:rgba(250,250,247,.72);--onDeepQuiet:#9A9A94;
+  /* report — sampled from Pandonia's health report */
+  --rOpt:#A7D185;--rRef:#EDD293;--rOut:#D7998F;--rMid:#E9B27E;
+  --rUp:#8CC28B;--rDown:#E86A68;--rFlat:#B4B4AE;--rRadar:#EBF2F8;--rNavy:#141F61;
+  /* type */
+  --sans:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Tinos","Times New Roman",Times,serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:120px}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4,p,ul,ol,dl,figure{margin:0;padding:0}ul,ol{list-style:none}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--forest);outline-offset:3px}
 summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
-.s{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.02em}
-.m{font-family:"DM Mono",ui-monospace,monospace}
-.lab{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:1.5}
-.d1{font-size:clamp(42px,6.2vw + 16px,84px);line-height:1;letter-spacing:-.02em}
-.d2{font-size:clamp(34px,4.4vw + 14px,64px);line-height:1;letter-spacing:-.02em}
-.d3{font-size:clamp(27px,2.6vw + 14px,44px);line-height:1.06;letter-spacing:-.015em}
-.hh3{font-size:clamp(18px,.4vw + 16px,20px);font-weight:500;letter-spacing:-.01em;line-height:1.3}
+/* Type roles, from the feed and landing page:
+   · statements and page openers — black grotesk, tight (d1, d2)
+   · section headings and quiet lines — serif, the editorial contrast (d3)
+   · metadata — small tracked capitals in the same grotesk            */
+.s{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;text-wrap:balance}
+.s.d1,.s.d2,.x{font-family:var(--sans);font-weight:700;letter-spacing:-.045em}
+.m{font-family:var(--sans);font-variant-numeric:tabular-nums}
+.lab{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);line-height:1.5}
+.d1{font-size:clamp(46px,6.6vw + 16px,104px);line-height:.94}
+.d2{font-size:clamp(36px,4.8vw + 14px,76px);line-height:.96}
+.d3{font-size:clamp(28px,2.7vw + 14px,48px);line-height:1.04;letter-spacing:-.03em}
+.hh3{font-size:clamp(18px,.4vw + 16px,20px);font-weight:700;letter-spacing:-.02em;line-height:1.25}
 .bodyL{font-size:clamp(18px,.4vw + 16px,20px);line-height:1.55;color:var(--ink2)}
 .bd{font-size:clamp(16px,.2vw + 15px,17px);line-height:1.6;color:var(--ink2)}
 .bdS{font-size:15px;line-height:1.55;color:var(--ink2)}
@@ -48,14 +80,14 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .alStart{align-items:start}.alCenter{align-items:center}.alStretch{align-items:stretch}
 
 .bar{background:var(--deep);color:var(--inkInv);padding:8px clamp(20px,4vw,64px);display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;align-items:center}
-.bar span{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--onDeepQuiet)}
-.bar b{color:var(--amber);font-weight:400}
+.bar span{font-family:var(--sans);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--onDeepQuiet)}
+.bar b{color:var(--acid);font-weight:400}
 
-.nav{position:sticky;top:0;z-index:40;background:var(--cream);border-bottom:1px solid transparent}
-.nav.stuck{border-bottom-color:var(--rule)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--cream);border-bottom:1px solid transparent}
+.nav.stuck{border-bottom-color:var(--ruleSoft)}
 .navin{max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4vw,64px);min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 @media(min-width:1024px){.navin{min-height:72px}}
-.wm{font-family:"Newsreader",Georgia,serif;font-size:25px;letter-spacing:-.01em;color:var(--forest);cursor:pointer}
+.wm{font-family:var(--serif);font-size:25px;letter-spacing:-.01em;color:var(--forest);cursor:pointer}
 /* Five Danish labels plus the utility group do not fit at 1024px, so the
    desktop nav starts at 1140 and the full-screen menu covers everything below. */
 .navlinks{display:none;gap:20px}@media(min-width:1140px){.navlinks{display:flex}}
@@ -65,7 +97,7 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .navright{display:flex;align-items:center;gap:15px}
 .navutil{display:none;gap:10px;align-items:center;font-size:12.5px;color:var(--ink3)}@media(min-width:1140px){.navutil{display:flex}}
 .navutil a{cursor:pointer;padding-block:6px}
-.langsw{display:flex;align-items:center;gap:5px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em}
+.langsw{display:flex;align-items:center;gap:5px;font-family:var(--sans);font-size:11px;letter-spacing:.1em}
 .langsw button{background:none;border:none;padding:6px 2px;cursor:pointer;font:inherit;color:var(--ink3);letter-spacing:.1em}
 .langsw button[aria-current="true"]{color:var(--forest);border-bottom:1px solid var(--forest)}
 .sep{color:var(--ink3);opacity:.55}
@@ -77,57 +109,57 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .mobnav[hidden]{display:none}
 .mobnav .x{align-self:flex-end;width:44px;height:44px;background:none;border:none;color:var(--inkInv);font-size:30px;line-height:1;cursor:pointer}
 .mobnav ul{display:flex;flex-direction:column;gap:14px}
-.mobnav ul a{font-family:"Newsreader",Georgia,serif;font-size:clamp(25px,6.6vw,36px);letter-spacing:-.02em;cursor:pointer}
-.mobnav .langrow{display:flex;gap:10px;align-items:center;margin-top:22px;font-family:"DM Mono",monospace;font-size:14px;letter-spacing:.1em}
+.mobnav ul a{font-family:var(--serif);font-size:clamp(25px,6.6vw,36px);letter-spacing:-.02em;cursor:pointer}
+.mobnav .langrow{display:flex;gap:10px;align-items:center;margin-top:22px;font-family:var(--sans);font-size:14px;letter-spacing:.1em}
 .mobnav .langrow button{background:none;border:none;color:var(--onDeepQuiet);font:inherit;padding:10px 4px;cursor:pointer}
 .mobnav .langrow button[aria-current="true"]{color:var(--inkInv);border-bottom:1px solid var(--inkInv)}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:500;font-size:15px;border-radius:2px;cursor:pointer}
 .btn1{background:var(--forest);color:var(--cream);padding:14px 26px}.btn1:hover{background:var(--forestDeep)}
 .btn2{background:transparent;color:var(--forest);border:1px solid var(--forest);padding:13px 25px}
-.lnk{display:inline-flex;align-items:center;gap:8px;color:var(--forest);font-size:15px;font-weight:500;border-bottom:1px solid rgba(65,90,59,.4);padding-block:11px;cursor:pointer}
-.gDeep .lnk{color:var(--inkInv);border-bottom-color:rgba(237,231,218,.45)}
+.lnk{display:inline-flex;align-items:center;gap:8px;color:var(--forest);font-size:15px;font-weight:500;border-bottom:1px solid rgba(10,10,10,.4);padding-block:11px;cursor:pointer}
+.gDeep .lnk{color:var(--inkInv);border-bottom-color:rgba(250,250,247,.45)}
 .ext:after{content:"↗";font-size:.78em;margin-left:5px;opacity:.65}
 
 
 .ph{display:block;width:100%;height:100%;object-fit:cover}
 .phBox{position:relative;overflow:hidden}
-.phTag{position:absolute;left:10px;top:9px;z-index:2;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(160,184,159,.9);color:#CFE0CD;padding:2px 6px;background:rgba(20,30,18,.5)}
+.phTag{position:absolute;left:10px;top:9px;z-index:2;font-family:var(--sans);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(160,184,159,.9);color:#CFE0CD;padding:2px 6px;background:rgba(20,30,18,.5)}
 .phTag.lic{border-color:rgba(227,167,84,.85);color:#F0D3A6}
-.plate{position:relative;overflow:hidden;background:#DCD2C2;color:var(--ink3);outline:1px solid rgba(38,32,26,.14);outline-offset:-1px}
+.plate{position:relative;overflow:hidden;background:#DCD2C2;color:var(--ink3);outline:1px solid rgba(10,10,10,.14);outline-offset:-1px}
 .plate .inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:12px;z-index:2}
-.plate .sid{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-.plate .brief{max-width:44ch;font-family:"DM Mono",monospace;font-size:9.5px;line-height:1.55;letter-spacing:.02em}
-.needShoot{position:absolute;right:10px;bottom:10px;z-index:3;font-family:"DM Mono",monospace;font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--brick);border:1px solid var(--brick);padding:2px 6px;background:rgba(220,210,194,.78)}
+.plate .sid{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.plate .brief{max-width:44ch;font-family:var(--sans);font-size:9.5px;line-height:1.55;letter-spacing:.02em}
+.needShoot{position:absolute;right:10px;bottom:10px;z-index:3;font-family:var(--sans);font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--brick);border:1px solid var(--brick);padding:2px 6px;background:rgba(220,210,194,.78)}
 
 .pl{border-left:1px dotted var(--brick);padding-left:12px;color:var(--ink3)}
-.pl b{display:block;margin-bottom:3px;font-family:"DM Mono",monospace;font-size:9px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--brick)}
-.gDeep .pl{border-left-color:var(--amber);color:var(--onDeepQuiet)}.gDeep .pl b{color:var(--amber)}
-.tagP{display:inline-block;border:1px solid var(--brick);color:var(--brick);padding:2px 6px;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase}
-.tagV{display:inline-block;border:1px solid var(--sageDeep);color:var(--sageDeep);padding:2px 6px;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase}
-.gDeep .tagP{color:var(--amber);border-color:var(--amber)}.gDeep .tagV{color:var(--sage);border-color:var(--sage)}
-.dash{font-family:"DM Mono",monospace;color:var(--ink3)}
+.pl b{display:block;margin-bottom:3px;font-family:var(--sans);font-size:9px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--brick)}
+.gDeep .pl{border-left-color:var(--acid);color:var(--onDeepQuiet)}.gDeep .pl b{color:var(--acid)}
+.tagP{display:inline-block;border:1px solid var(--brick);color:var(--brick);padding:2px 6px;font-family:var(--sans);font-size:9px;letter-spacing:.11em;text-transform:uppercase}
+.tagV{display:inline-block;border:1px solid var(--sageDeep);color:var(--sageDeep);padding:2px 6px;font-family:var(--sans);font-size:9px;letter-spacing:.11em;text-transform:uppercase}
+.gDeep .tagP{color:var(--acid);border-color:var(--acid)}.gDeep .tagV{color:var(--sage);border-color:var(--sage)}
+.dash{font-family:var(--sans);color:var(--ink3)}
 
 .band{position:relative;height:26px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .gDeep .band{border-color:var(--ruleInv)}
 .band .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.36)}
 .band .tick{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--amber)}
-.band .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.07) 0 5px,transparent 5px 10px)}
-.gDeep .band .none{background:repeating-linear-gradient(135deg,rgba(237,231,218,.09) 0 5px,transparent 5px 10px)}
-.axis{display:flex;justify-content:space-between;margin-top:6px;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.07em;color:var(--ink3)}
+.band .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(10,10,10,.07) 0 5px,transparent 5px 10px)}
+.gDeep .band .none{background:repeating-linear-gradient(135deg,rgba(250,250,247,.09) 0 5px,transparent 5px 10px)}
+.axis{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--sans);font-size:9.5px;letter-spacing:.07em;color:var(--ink3)}
 .gDeep .axis{color:var(--onDeepQuiet)}
 .micro{position:relative;display:inline-block;width:64px;height:8px;flex:0 0 auto;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);vertical-align:middle}
 .gDeep .micro{border-color:var(--ruleInv)}
 .micro .ref{position:absolute;top:0;bottom:0;background:rgba(160,184,159,.4)}
 .micro .tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--amber)}
-.micro .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(38,32,26,.09) 0 4px,transparent 4px 8px)}
-.gDeep .micro .none{background:repeating-linear-gradient(135deg,rgba(237,231,218,.11) 0 4px,transparent 4px 8px)}
-.val{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.micro .none{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(10,10,10,.09) 0 4px,transparent 4px 8px)}
+.gDeep .micro .none{background:repeating-linear-gradient(135deg,rgba(250,250,247,.11) 0 4px,transparent 4px 8px)}
+.val{font-family:var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .val s{text-decoration:none;font-size:.42em;letter-spacing:.04em;color:var(--ink3);margin-left:6px}
 .rows li{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:13px;border-bottom:1px solid var(--ruleSoft)}
 .gDeep .rows li{border-bottom-color:var(--ruleInvSoft)}
 .rows .l{display:flex;align-items:center;gap:16px;min-width:0}
-.rows .v{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+.rows .v{font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
 .hr{border-top:1px solid var(--rule)}.hrInv{border-top:1px solid var(--ruleInv)}
 .hrs{border-top:1px solid var(--ruleSoft)}
 .onDeepMuted{color:var(--onDeepMuted)}.onDeepQuiet{color:var(--onDeepQuiet)}
@@ -140,10 +172,10 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .sysRow:first-child{border-top:1px solid var(--ruleInvSoft)}
 .sysRow>details>summary{display:grid;grid-template-columns:minmax(0,1fr) 22px;grid-template-areas:"name plus" "ctx plus" "act plus";gap:7px 22px;align-items:start;padding:20px 12px 20px 0;margin-inline:-12px;padding-left:12px;transition:background 140ms cubic-bezier(.2,.6,.2,1)}
 @media(min-width:900px){.sysRow>details>summary{grid-template-columns:minmax(0,1.05fr) minmax(0,1.55fr) auto 22px;grid-template-areas:"name ctx act plus";align-items:center;gap:0 28px;padding-block:24px}}
-.sysRow>details>summary:hover{background:rgba(237,231,218,.035)}
-.sysName{grid-area:name;font-family:"Newsreader",Georgia,serif;font-weight:400;font-size:clamp(21px,1.5vw + 15px,29px);letter-spacing:-.015em;line-height:1.1}
-.sysCtx{grid-area:ctx;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--onDeepQuiet);line-height:1.5}
-.sysAct{grid-area:act;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--onDeepMuted);white-space:nowrap}
+.sysRow>details>summary:hover{background:rgba(250,250,247,.035)}
+.sysName{grid-area:name;font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.5vw + 15px,29px);letter-spacing:-.015em;line-height:1.1}
+.sysCtx{grid-area:ctx;font-family:var(--sans);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--onDeepQuiet);line-height:1.5}
+.sysAct{grid-area:act;font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--onDeepMuted);white-space:nowrap}
 .sysPlus{grid-area:plus;justify-self:end;align-self:start;font-size:17px;line-height:1.2;color:var(--onDeepQuiet);transition:transform 140ms cubic-bezier(.2,.6,.2,1)}
 @media(min-width:900px){.sysPlus{align-self:center}}
 .sysRow>details[open] .sysPlus{transform:rotate(45deg);color:var(--inkInv)}
@@ -162,7 +194,7 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .ovtPts li{display:flex;align-items:center;gap:10px}
 /* the same tick-on-hairline mark as the hero timeline */
 .ovtGl{position:relative;display:inline-block;width:16px;height:9px;flex:0 0 auto}
-.ovtGl::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(65,90,59,.45)}
+.ovtGl::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(10,10,10,.45)}
 .ovtGl::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--forest)}
 @media(max-width:640px){.ovtPts{flex-direction:column;align-items:center;gap:10px}}
 
@@ -171,25 +203,25 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .mq1{top:31%}.mq2{top:69%}
 .mqTrack{display:inline-flex;width:max-content;animation:mqL 170s linear infinite}
 .mqTrack.rev{animation-name:mqR;animation-duration:200s}
-.mqTrack span{font-family:"Newsreader",Georgia,serif;font-size:clamp(26px,2.4vw + 12px,46px);letter-spacing:-.015em;line-height:1.25;color:rgba(38,32,26,.30);padding-inline:.42em}
-.mqTrack .dot{color:rgba(65,90,59,.38);padding-inline:0}
+.mqTrack span{font-family:var(--serif);font-size:clamp(26px,2.4vw + 12px,46px);letter-spacing:-.015em;line-height:1.25;color:rgba(10,10,10,.30);padding-inline:.42em}
+.mqTrack .dot{color:rgba(10,10,10,.38);padding-inline:0}
 @keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes mqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @media(prefers-reduced-motion:reduce){.mqTrack,.mqTrack.rev{animation:none}}
 
-.rcard{position:relative;z-index:2;width:min(88vw,420px);margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:clamp(18px,2vw,26px);box-shadow:0 30px 60px -34px rgba(38,32,26,.28)}
+.rcard{position:relative;z-index:2;width:min(88vw,420px);margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:clamp(18px,2vw,26px);box-shadow:0 30px 60px -34px rgba(10,10,10,.28)}
 .rcHead{display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--ruleSoft)}
 .rcHead .lab{font-size:9.5px}
-.rcTitle{margin-top:16px;font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,1vw + 17px,27px);letter-spacing:-.015em;line-height:1.15;color:var(--forest)}
+.rcTitle{margin-top:16px;font-family:var(--serif);font-size:clamp(22px,1vw + 17px,27px);letter-spacing:-.015em;line-height:1.15;color:var(--forest)}
 .rcRows{margin-top:18px;display:grid;gap:12px}
 .rcRows li{display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px;align-items:center}
-.rcL{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.rcL{font-family:var(--sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
 .rcBand{position:relative;display:block;height:14px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .rcBand .ref{position:absolute;top:0;bottom:0;left:30%;width:44%;background:rgba(160,184,159,.36)}
-.rcBand .tk{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:rgba(38,32,26,.42)}
+.rcBand .tk{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:rgba(10,10,10,.42)}
 .rcRows li.now .rcL{color:var(--ink)}
 .rcRows li.now .tk{background:var(--amber)}
-.rcAxis{display:flex;justify-content:space-between;margin:10px 0 0 106px;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.rcAxis{display:flex;justify-content:space-between;margin:10px 0 0 106px;font-family:var(--sans);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
 .rcCap{margin-top:16px;padding-top:12px;border-top:1px solid var(--ruleSoft);font-size:13px;line-height:1.5;color:var(--ink3)}
 @media(max-width:480px){.rcRows li{grid-template-columns:78px minmax(0,1fr);gap:10px}.rcAxis{margin-left:88px}}
 
@@ -202,8 +234,8 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .prTabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .prTab{position:relative;background:none;border:none;text-align:left;font:inherit;cursor:pointer;padding:22px 20px 20px 0;color:inherit}
 .prTab+.prTab{padding-left:24px;border-left:1px solid var(--ruleSoft)}
-.prName{display:block;font-family:"Newsreader",Georgia,serif;font-size:clamp(20px,1.3vw + 14px,28px);letter-spacing:-.015em;line-height:1.12;color:var(--ink2);transition:color 140ms}
-.prSub{display:block;margin-top:7px;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.prName{display:block;font-family:var(--serif);font-size:clamp(20px,1.3vw + 14px,28px);letter-spacing:-.015em;line-height:1.12;color:var(--ink2);transition:color 140ms}
+.prSub{display:block;margin-top:7px;font-family:var(--sans);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
 .prTab:hover .prName{color:var(--ink)}
 .prTab[aria-selected="true"] .prName{color:var(--forest)}
 .prTab[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--forest)}
@@ -215,17 +247,17 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .mbTop{padding-top:clamp(36px,5vw,64px)}
 .mbPrice{border-top:2px solid var(--forest);padding-top:22px}
 @media(min-width:1024px){.mbPrice{margin-top:6px}}
-.mbName{margin-top:10px;font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,1vw + 17px,28px);letter-spacing:-.015em;color:var(--ink)}
+.mbName{margin-top:10px;font-family:var(--serif);font-size:clamp(22px,1vw + 17px,28px);letter-spacing:-.015em;color:var(--ink)}
 .mbVal{margin-top:18px;font-size:clamp(46px,5vw,72px);line-height:.95}
-.mbPer{margin-top:6px;font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.mbPer{margin-top:6px;font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
 
 /* measure → understand → follow → measure again, on the hero timeline's hairline */
-.cyc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(28px,3vw,40px);border-top:1px solid rgba(65,90,59,.3)}
-.cyc li{position:relative;padding:16px 10px 0 0;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2)}
+.cyc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(28px,3vw,40px);border-top:1px solid rgba(10,10,10,.3)}
+.cyc li{position:relative;padding:16px 10px 0 0;font-family:var(--sans);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2)}
 .cyc li::before{content:"";position:absolute;left:0;top:-5px;width:1px;height:9px;background:var(--forest)}
 .cyc li.now{color:var(--ink)}
 .cyc li.now::before{width:5px;height:5px;top:-3px;left:-2px;border-radius:50%;background:var(--amber)}
-@media(max-width:560px){.cyc{grid-template-columns:1fr;border-top:none;border-left:1px solid rgba(65,90,59,.3);margin-left:4px}.cyc li{padding:0 0 14px 16px}.cyc li::before{left:-5px;top:6px;width:9px;height:1px}.cyc li.now::before{left:-3px;top:4px}}
+@media(max-width:560px){.cyc{grid-template-columns:1fr;border-top:none;border-left:1px solid rgba(10,10,10,.3);margin-left:4px}.cyc li{padding:0 0 14px 16px}.cyc li::before{left:-5px;top:6px;width:9px;height:1px}.cyc li.now::before{left:-3px;top:4px}}
 
 /* benefit rows — and the Essential Tests list, which uses the same pattern */
 .mbRows li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n f" "d d";gap:5px 20px;padding-block:18px;border-bottom:1px solid var(--ruleSoft)}
@@ -233,35 +265,35 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 /* fixed last column: each row is its own grid, so an auto column would let a
    longer frequency label shift that row's description out of line */
 @media(min-width:900px){.mbRows li{grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr) 220px;grid-template-areas:"n d f";align-items:baseline;gap:0 32px;padding-block:20px}}
-.mbN{grid-area:n;font-family:"Newsreader",Georgia,serif;font-size:clamp(19px,.7vw + 15px,23px);letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
+.mbN{grid-area:n;font-family:var(--serif);font-size:clamp(19px,.7vw + 15px,23px);letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
 .mbD{grid-area:d;font-size:15px;line-height:1.5;color:var(--ink2)}
-.mbF{grid-area:f;justify-self:end;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--forest);white-space:nowrap;text-align:right}
+.mbF{grid-area:f;justify-self:end;font-family:var(--sans);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--forest);white-space:nowrap;text-align:right}
 .mbF.price{font-size:14px;letter-spacing:.02em;text-transform:none;color:var(--ink);font-variant-numeric:tabular-nums}
 
 /* comparison: rows are attributes, columns are the three ways in */
 .cmp{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
 .cmp>div{padding:16px 20px 16px 0;border-bottom:1px solid var(--ruleSoft);font-size:15px;line-height:1.5;color:var(--ink2)}
-.cmp>.ch{font-family:"Newsreader",Georgia,serif;font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;color:var(--forest);border-bottom-color:var(--rule)}
-.cmp>.rl{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-top:19px}
-.cmp>.pv{font-family:"DM Mono",monospace;font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums}
-@media(max-width:860px){.cmp{grid-template-columns:1fr}.cmp>.ch,.cmp>.corner{display:none}.cmp>.rl{padding-top:22px;border-bottom:none;padding-bottom:4px;color:var(--ink)}.cmp>div:not(.rl){padding:8px 0}.cmp>div[data-p]::before{content:attr(data-p);display:block;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}}
+.cmp>.ch{font-family:var(--serif);font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;color:var(--forest);border-bottom-color:var(--rule)}
+.cmp>.rl{font-family:var(--sans);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-top:19px}
+.cmp>.pv{font-family:var(--sans);font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+@media(max-width:860px){.cmp{grid-template-columns:1fr}.cmp>.ch,.cmp>.corner{display:none}.cmp>.rl{padding-top:22px;border-bottom:none;padding-bottom:4px;color:var(--ink)}.cmp>div:not(.rl){padding:8px 0}.cmp>div[data-p]::before{content:attr(data-p);display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}}
 
 /* team: name in serif under each portrait, role in mono */
 .tm{background:var(--deep);padding-bottom:20px}
-.tmN{padding:14px 12px 0;font-family:"Newsreader",Georgia,serif;font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;line-height:1.2;color:var(--inkInv)}
-.tmR{padding:4px 12px 0;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;line-height:1.5;color:var(--onDeepQuiet)}
+.tmN{padding:14px 12px 0;font-family:var(--serif);font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;line-height:1.2;color:var(--inkInv)}
+.tmR{padding:4px 12px 0;font-family:var(--sans);font-size:10px;letter-spacing:.09em;text-transform:uppercase;line-height:1.5;color:var(--onDeepQuiet)}
 
 /* hero: three lines, one per clause */
 .heroLine span{display:block}
-.heroLine{padding-top:clamp(8px,1.5vw,24px)}
+.heroLine{padding-top:clamp(8px,1.5vw,24px);font-size:clamp(40px,4.6vw + 12px,80px)}   /* one clause per line on desktop */
 
 .mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
 .mk>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:12px;align-items:center;padding-block:15px}
 @media(min-width:1024px){.mk>summary{grid-template-columns:minmax(0,1fr) 92px 118px 20px;gap:18px}}
 .mk .nm{display:block;font-size:16px;font-weight:500}
 .mk[open] .nm,.mk>summary:hover .nm{color:var(--forest)}
-.mk .sub{display:block;margin-top:2px;max-width:54ch;font-family:"Newsreader",Georgia,serif;font-size:14.5px;line-height:1.45;color:var(--ink2)}
-.mk .col{display:none;text-align:right;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.07em;color:var(--ink3)}
+.mk .sub{display:block;margin-top:2px;max-width:54ch;font-family:var(--serif);font-size:14.5px;line-height:1.45;color:var(--ink2)}
+.mk .col{display:none;text-align:right;font-family:var(--sans);font-size:10.5px;letter-spacing:.07em;color:var(--ink3)}
 @media(min-width:1024px){.mk .col{display:block}}
 .mk .chev{text-align:right;font-size:17px;color:var(--ink3);transition:transform 140ms cubic-bezier(.2,.6,.2,1)}
 .mk[open] .chev{transform:rotate(45deg);color:var(--forest)}
@@ -269,15 +301,15 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 @media(min-width:1024px){.mkbody{grid-template-columns:minmax(0,1fr) 320px;gap:36px}}
 .mkbody dl{display:grid;grid-template-columns:minmax(0,1fr);gap:0 20px;font-size:15px}
 @media(min-width:1024px){.mkbody dl{grid-template-columns:150px minmax(0,1fr)}}
-.mkbody dt{padding-top:9px;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.mkbody dt{padding-top:9px;font-family:var(--sans);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
 .mkbody dd{padding:2px 0 9px;line-height:1.5;border-bottom:1px solid var(--ruleSoft)}
 @media(min-width:1024px){.mkbody dt{padding-bottom:9px;border-bottom:1px solid var(--ruleSoft)}.mkbody dd{padding-top:9px}}
-.mkside{background:rgba(38,32,26,.035);padding:20px}
+.mkside{background:rgba(10,10,10,.035);padding:20px}
 .idx{position:sticky;top:60px;z-index:30;background:var(--cream);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-inline:calc(-1 * clamp(20px,4vw,64px));padding-inline:clamp(20px,4vw,64px)}
 @media(min-width:1024px){.idx{top:72px}}
 .idxin{display:flex;flex-wrap:wrap;align-items:center;gap:16px;min-height:50px}
 .idxin .find{margin-left:auto;display:flex;align-items:center;gap:10px;padding-block:9px}
-.idxin input{width:150px;padding:6px 0;border:none;border-bottom:1px solid var(--rule);border-radius:0;background:transparent;font-family:"DM Sans",sans-serif;font-size:14px;color:var(--ink)}
+.idxin input{width:150px;padding:6px 0;border:none;border-bottom:1px solid var(--rule);border-radius:0;background:transparent;font-family:var(--sans);font-size:14px;color:var(--ink)}
 .idxin input:focus{outline:none;border-bottom:2px solid var(--forest);padding-bottom:5px}
 
 .qa{border-bottom:1px solid var(--ruleSoft)}
@@ -290,11 +322,124 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 footer{background:var(--deep);color:var(--inkInv)}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px 40px}
 @media(min-width:1024px){.fgrid{grid-template-columns:1.3fr repeat(3,1fr)}}
-.fgrid h2{margin-bottom:14px;font-family:"DM Mono",monospace;font-size:9.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--onDeepQuiet)}
+.fgrid h2{margin-bottom:14px;font-family:var(--sans);font-size:9.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--onDeepQuiet)}
 .fgrid ul{display:flex;flex-direction:column;gap:9px;font-size:14.5px}
 .fgrid a{color:var(--onDeepMuted);display:inline-block;padding-block:4px;cursor:pointer}
 .fgrid a:hover{color:var(--inkInv)}
-.fgrid li.gated{color:var(--onDeepQuiet);font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding-block:4px}
+.fgrid li.gated{color:var(--onDeepQuiet);font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding-block:4px}
+
+/* ── BRAND LAYER ─────────────────────────────────────────────────
+   The new identity inside the existing structure. */
+body{font-size:16.5px;line-height:1.55}
+.wm{font-family:var(--sans);font-weight:700;font-size:28px;letter-spacing:-.06em;color:var(--ink);line-height:1}
+.navlinks a{font-size:14.5px}
+.navcta{border-radius:0;background:var(--ink);color:var(--inkInv);padding:11px 18px;font-weight:400;font-size:13.5px}
+.btn{border-radius:0;font-weight:400;letter-spacing:.005em}
+.btn1{padding:15px 26px}
+.btn2{border-color:var(--ink);color:var(--ink)}
+.gDeep .btn1,.stmt .btn1{background:var(--inkInv);color:var(--ink)}
+.lnk{font-weight:400;border-bottom-color:var(--ink);padding-block:6px}
+.mobnav ul a{font-family:var(--sans);font-weight:700;letter-spacing:-.045em}
+.val{font-weight:700;letter-spacing:-.04em}
+.mbVal{letter-spacing:-.055em}
+.prName,.sysName{font-family:var(--sans);font-weight:700;letter-spacing:-.04em}
+.idx{top:calc(env(safe-area-inset-top,0px) + 60px)}
+.rcard{border-radius:0;width:min(88vw,440px);box-shadow:0 30px 60px -36px rgba(10,10,10,.30)}
+.rcTitle{font-family:var(--serif)}
+@media(min-width:1024px){.idx{top:calc(env(safe-area-inset-top,0px) + 72px)}}
+.navlinks .navFaq{display:none}
+/* Between tablet and wide desktop the links do not fit beside the wordmark,
+   so they drop to a second row of the header instead of into the menu button. */
+@media(min-width:760px) and (max-width:1139px){
+  .navin{flex-wrap:wrap;column-gap:18px;row-gap:0}
+  .navright{order:2;margin-left:auto}
+  .navlinks{display:flex;order:3;flex-basis:100%;gap:24px;padding:11px 0 12px;border-top:1px solid var(--ruleSoft)}
+  .navutil{display:flex}
+  .burger{display:none}
+  .navlinks .navFaq{display:inline}.navutil .utilFaq{display:none}   /* FAQ joins the row, after Priser */
+  .idx{top:calc(env(safe-area-inset-top,0px) + var(--navH,94px))}
+}
+
+/* Image language. Documentary Pandonia photography stays sharp; stock and
+   atmosphere are softened toward the blurred, warm grading of the feed and
+   landing page, so they read as atmosphere rather than as Pandonia's own. */
+.gSoft{filter:blur(2.4px) saturate(.72) sepia(.14) contrast(.96) brightness(1.02);transform:scale(1.04)}
+.gAtmos{filter:blur(22px) sepia(.5) saturate(.95) brightness(1.08) contrast(.88);transform:scale(1.2)}
+
+/* Statement block — "Measure. Understand. Act.", inset black on paper */
+.stmt{background:var(--deep);color:var(--inkInv);padding:clamp(40px,7vw,112px) clamp(24px,7vw,112px);position:relative}
+.stmt .x{display:block;font-size:clamp(54px,10.5vw,168px);line-height:.88;letter-spacing:-.065em}
+.stmt .ghost{color:#62625E}   /* the brand ghosts "Act." at ~1.6:1; lifted to 3.2:1 so it still reads */
+.stmt .dotA{position:absolute;right:clamp(24px,7vw,112px);bottom:clamp(40px,7vw,112px);width:16px;height:16px;border-radius:50%;background:var(--acid)}
+
+/* White sheet — the report's own ground */
+.gSheet{background:var(--paper)}
+.sheet{background:var(--paper);border:1px solid var(--ruleSoft);padding:clamp(20px,3vw,36px)}
+.gSheet .sheet{border-color:var(--ruleSoft)}
+
+/* six-system rows on a light ground */
+.sysRow{border-bottom:1px solid var(--ruleSoft)}
+.sysRow:first-child{border-top:1px solid var(--rule)}
+.sysRow>details>summary:hover{background:rgba(10,10,10,.025)}
+.sysCtx{color:var(--ink3)}.sysAct{color:var(--ink2)}.sysPlus{color:var(--ink3)}
+.sysRow>details[open] .sysPlus,.sysRow>details[open]>summary .sysAct{color:var(--ink)}
+.sysBody p{color:var(--ink2)}
+
+/* ── REPORT LANGUAGE ─────────────────────────────────────────────
+   Pandonia's health report in web form: the six-system radar, the zoned
+   biomarker bar, the hexagon value, the three range definitions, change
+   arrows, score over time. Colours sampled from the report itself. */
+.radar{display:block;width:100%;max-width:440px;height:auto;margin-inline:auto}
+.radar text{font-family:var(--sans)}
+.rLegend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px;margin-top:8px;font-size:12.5px;color:var(--ink2)}
+.rLegend span{display:inline-flex;align-items:center;gap:7px}
+.tri{display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent}
+.tri.up{border-bottom:8px solid var(--rUp)}.tri.dn{border-top:8px solid var(--rDown)}
+.dotF{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--rFlat)}
+.rbar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px clamp(12px,2vw,22px);align-items:center}
+.rbar .ac{font:700 clamp(22px,1.6vw + 14px,34px)/1 var(--sans);letter-spacing:-.03em}
+.zb{position:relative;height:clamp(22px,1.6vw + 12px,30px);border:1px solid rgba(10,10,10,.08)}
+.zb.glu{background:linear-gradient(90deg,var(--rOut) 0%,var(--rMid) 9%,var(--rOpt) 17%,var(--rOpt) 26%,var(--rMid) 34%,var(--rOut) 44%,var(--rOut) 100%)}
+.zb.gen{background:linear-gradient(90deg,var(--rOpt) 0%,var(--rOpt) 44%,var(--rRef) 56%,var(--rOut) 66%,var(--rOut) 100%)}
+.zv{position:absolute;top:-6px;bottom:-6px;width:2px;margin-left:-1px;background:var(--ink)}
+.zax{position:relative;height:18px;margin-top:6px;font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.zax span{position:absolute;top:0;transform:translateX(-50%)}
+.hex{display:inline-grid;place-content:center;width:clamp(72px,6vw + 30px,92px);aspect-ratio:.88;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--rRef);color:var(--ink);text-align:center;line-height:1}
+.hex b{font:700 clamp(20px,1.2vw + 14px,27px)/1 var(--sans);letter-spacing:-.03em}
+.hex small{display:block;margin-top:4px;font-size:11px}
+.hex.opt{background:var(--rOpt)}.hex.out{background:var(--rOut)}
+.anno{font-size:12px;line-height:1.35;color:var(--ink2)}
+.annoTop{display:flex;justify-content:space-between;gap:16px;margin-bottom:16px}
+.annoBot{margin-top:14px}
+.anno b{display:block;font-weight:700;color:var(--ink)}
+.rcards{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:760px){.rcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rcards>div{padding:22px 20px 24px;color:var(--ink)}
+.rcards h3{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.rcards p{margin-top:10px;font-size:14.5px;line-height:1.5}
+.rc-opt{background:var(--rOpt)}.rc-ref{background:var(--rRef)}.rc-out{background:var(--rOut)}
+.trend{display:block;width:100%;height:auto}
+.trend text{font-family:var(--sans)}
+.prev{display:flex;gap:clamp(14px,2vw,26px);align-items:flex-end}
+.prev div{display:grid;gap:5px}
+.prev small{font-size:11px;letter-spacing:.06em;color:var(--ink3)}
+.prev b{font-size:clamp(20px,1vw + 15px,26px);line-height:1;letter-spacing:-.03em;color:var(--ink2)}
+@media(max-width:560px){.rbar{grid-template-columns:auto minmax(0,1fr)}.rbar .hex{grid-column:1/-1;justify-self:start}}
+
+/* four-step row (home) — LP "Four steps" composition */
+.stepHead{display:grid;gap:18px;margin-bottom:clamp(40px,6vw,80px)}
+@media(min-width:900px){.stepHead{grid-template-columns:1fr 1fr;align-items:end;gap:40px}}
+.stepHead .lab{margin-bottom:clamp(16px,2vw,26px)}
+.stepHead .bdS{max-width:36ch}
+.steps{--sg:clamp(24px,3vw,44px);display:grid;grid-template-columns:1fr 1fr;column-gap:var(--sg);border-top:1px solid var(--rule)}
+.steps li{position:relative;padding-top:clamp(18px,2vw,26px);display:flex;flex-direction:column}
+.steps li:nth-child(even)::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--sg) / -2);border-left:1px solid var(--ruleSoft)}
+.stepN{font-family:var(--sans);font-weight:700;font-size:clamp(40px,2.6vw + 22px,64px);line-height:1;letter-spacing:-.05em}
+.stepT{font-family:var(--serif);font-weight:400;font-size:clamp(19px,.5vw + 16px,23px);line-height:1.2;letter-spacing:-.015em;margin-top:clamp(18px,2vw,26px)}
+.steps .bdS{font-size:14px;margin-top:10px;max-width:30ch}
+.steps li{padding-bottom:clamp(8px,1vw,12px)}
+@media(max-width:1023px){.steps li{padding-bottom:32px}.steps li:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media(min-width:1024px){.steps{grid-template-columns:repeat(4,1fr)}.steps li+li::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--sg) / -2);border-left:1px solid var(--ruleSoft)}}
 
 /* ── REVIEW LAYER ────────────────────────────────────────────────
    Customer view is the default. The clinical gate is NOT relaxed here:
@@ -313,8 +458,8 @@ html[data-review="off"] .pl:not(.keep){display:none}
 html[data-review="off"][data-locale="en"] .enGate{display:none}
 html[data-review="off"] .pl.keep{border-left:none;padding-left:0;color:var(--onDeepQuiet)}
 html[data-review="off"] .pl.keep b{display:none}
-.revBtn{background:none;border:1px solid rgba(237,231,218,.3);color:var(--onDeepQuiet);font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;cursor:pointer;border-radius:2px}
-.revBtn[aria-pressed="true"]{color:var(--amber);border-color:var(--amber)}
+.revBtn{background:none;border:1px solid rgba(250,250,247,.3);color:var(--onDeepQuiet);font-family:var(--sans);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;cursor:pointer;border-radius:2px}
+.revBtn[aria-pressed="true"]{color:var(--acid);border-color:var(--acid)}
 html[data-locale="da"] [data-lang="en"]{display:none}
 html[data-locale="en"] [data-lang="da"]{display:none}
 [data-page][hidden]{display:none}
@@ -327,22 +472,23 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <span data-da="Pandonia · klikbar prototype · DA + EN" data-en="Pandonia · clickable prototype · DA + EN">Pandonia</span>
   <span style="display:flex;align-items:center;gap:14px">
     <button type="button" class="revBtn" id="revToggle" aria-pressed="false" data-da="Review-lag" data-en="Review layer">Review-lag</button>
-    <span class="m" id="routebar" style="color:var(--amber)">/da</span>
+    <span class="m" id="routebar" style="color:var(--acid)">/da</span>
   </span>
 </div>
 
 <header class="nav" id="nav"><div class="navin">
-  <a class="wm" data-route="home">Pandonia</a>
+  <a class="wm" data-route="home" aria-label="Pandonia">Pandonia</a>
   <nav class="navlinks" aria-label="Main">
     <a data-nav="saadan" data-anchor="how-it-works" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a>
     <a data-nav="maaler" data-anchor="what-we-test" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a>
     <a data-nav="rapport" data-anchor="your-report" data-da="Din rapport" data-en="Your report">Din rapport</a>
     <a data-nav="om" data-anchor="about-pandonia" data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</a>
     <a data-nav="book" data-anchor="pricing" data-da="Priser" data-en="Pricing">Priser</a>
+    <a class="navFaq" data-nav="faq" data-route="faq">FAQ</a>
   </nav>
   <div class="navright">
     <div class="navutil">
-      <a data-route="faq">FAQ</a><span class="sep">·</span>
+      <a class="utilFaq" data-route="faq">FAQ</a><span class="sep utilFaq">·</span>
       <a class="ext" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="Log ind" data-en="Log in">Log ind</a>
       <span class="sep">·</span>
       <span class="langsw"><button type="button" id="btnDa" aria-current="true" lang="da">DA</button><span class="sep">·</span><button type="button" id="btnEn" aria-current="false" lang="en">EN</button></span>
@@ -366,7 +512,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </nav>
   <div style="margin-top:26px">
     <a class="btn btn1" style="background:var(--cream);color:var(--deep);width:100%" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-    <a class="ext" style="display:block;margin-top:14px;color:var(--onDeepQuiet);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="LOG IND" data-en="LOG IN">LOG IND</a>
+    <a class="ext" style="display:block;margin-top:14px;color:var(--onDeepQuiet);font-family:var(--sans);font-size:12px;letter-spacing:.1em" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="LOG IND" data-en="LOG IN">LOG IND</a>
   </div>
 </div>
 
@@ -383,21 +529,21 @@ html[data-locale="en"] [data-lang="da"]{display:none}
         <span>happier in soul,</span>
         <span>longer in life.</span>
       </h1>
-      <p class="bodyL measN" style="margin-top:32px" data-da="Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade. Du får tallene — og en læge til at læse dem sammen med dig." data-en="The sample is taken at your home in Copenhagen and analysed in our own laboratory on Langebrogade. You get the numbers — and a doctor to read them with you.">Blodprøven tages hjemme hos dig i København.</p>
+      <p class="bodyL measN" style="margin-top:32px" data-da="En blodprøve hjemme hos dig. Analyseret i vores eget laboratorium i København. Gennemgået med en læge, hvis du vil." data-en="A blood test at your home. Analysed in our own laboratory in Copenhagen. Reviewed with a doctor, if you want.">En blodprøve hjemme hos dig.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:28px">
         <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
         <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="phBox" style="aspect-ratio:3/4;margin-top:-28px">
-      <img class="ph" src="../public/images/hero.jpg" data-alt-da="En morgen ved et køkkenbord." data-alt-en="A morning at a kitchen table." alt="" style="object-position:50% 45%">
+      <img class="ph gAtmos" src="../public/images/hero.jpg" data-alt-da="" data-alt-en="" alt="" style="object-position:50% 45%">
       <span class="phTag lic" data-da="Licenseret · midlertidig" data-en="Licensed · holding image">Licenseret</span>
     </div>
   </div>
 </section>
 
 <section class="wrap" style="padding-block:6px 30px">
-  <div style="display:flex;flex-wrap:wrap;gap:12px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:18px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2)">
+  <div style="display:flex;flex-wrap:wrap;gap:12px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:18px;font-family:var(--sans);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2)">
     <span data-da="30+ biomarkører" data-en="30+ biomarkers">30+ biomarkører</span>
     <span data-da="Eget laboratorium · København" data-en="Our own laboratory · Copenhagen">Eget laboratorium · København</span>
     <span data-da="Læge inkluderet" data-en="Doctor included">Læge inkluderet</span>
@@ -406,14 +552,14 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 </section>
 
 <section class="gSand"><div class="wrap air"><div style="margin-left:8%;max-width:54ch">
-  <h2 class="s d2 fg" data-da="De fleste ting kroppen fortæller, fortæller den stille og i god tid." data-en="Most of what the body has to say, it says quietly and early.">De fleste ting kroppen fortæller, fortæller den stille og i god tid.</h2>
-  <p class="bd" style="margin-top:26px" data-da="Et blodprøvesvar er ikke en dom. Det er en beskrivelse af, hvor du står lige nu — og hvad der har flyttet sig, siden sidst du så efter. Det meste vil være, som det skal være. Det er også et svar." data-en="A blood test result is not a verdict. It is a description of where you stand right now — and of what has moved since you last looked. Most of it will be as it should be. That is an answer too.">Et blodprøvesvar er ikke en dom.</p>
+  <h2 class="s d2 fg" data-da="Kend dine tal." data-en="Know your numbers.">Kend dine tal.</h2>
+  <p class="bd" style="margin-top:26px;max-width:44ch" data-da="Et blodprøvesvar er ikke en dom. Det viser, hvor du står i dag — og hvad der har flyttet sig siden sidst." data-en="A blood test result is not a verdict. It shows where you stand today — and what has moved since last time.">Et blodprøvesvar er ikke en dom.</p>
   <p class="lab" style="margin-top:26px" data-da="Ingen henvisning · ingen venteliste" data-en="No referral · no waiting list">Ingen henvisning · ingen venteliste</p>
 </div></div></section>
 
 <section class="gSand enGate"><div class="split sp4258 alStretch gapNone">
   <div class="phBox" style="min-height:340px">
-    <img class="ph" src="../public/images/draw-home.webp" data-alt-da="En blodprøve tages i en arm med staseslange, hjemme ved et bord." data-alt-en="A blood sample being taken from an arm with a tourniquet, at home." alt="" style="position:absolute;inset:0;object-position:55% 50%">
+    <img class="ph gSoft" src="../public/images/draw-home.webp" data-alt-da="En blodprøve tages i en arm med staseslange, hjemme ved et bord." data-alt-en="A blood sample being taken from an arm with a tourniquet, at home." alt="" style="position:absolute;inset:0;object-position:55% 50%">
     <span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span>
   </div>
   <div class="dns" style="padding-inline:clamp(20px,4vw,64px)">
@@ -428,7 +574,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
       <p class="bd measN pl" style="margin:18px 0 8px"><b>Awaiting clinical review — English</b>It affects the immune system, bone strength and mental balance.</p>
       <div style="margin-bottom:26px"><span class="tagP">English not approved</span></div>
     </div>
-    <div style="max-width:420px">
+    <div class="revonly" style="max-width:420px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
         <span class="val" style="font-size:clamp(24px,1.4vw + 19px,32px);color:var(--ink3)">—<s data-da="enhed afventer" data-en="unit pending">enhed afventer</s></span>
         <span class="lab" data-da="Referenceområde afventer" data-en="Reference range pending">Referenceområde afventer</span>
@@ -446,61 +592,60 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 </div></section>
 
 <section class="wrap std" id="how-it-works">
-  <h2 class="s d3 fg measS" data-da="Prøven tages, mens kaffen stadig er varm." data-en="The sample is taken while the coffee is still warm.">Prøven tages, mens kaffen stadig er varm.</h2>
-  <p class="bd measN" style="margin:16px 0 40px" data-da="Fra din bordkant til dit svar — uden at du skulle andre steder hen." data-en="From your table to your answer — without going anywhere.">Fra din bordkant til dit svar.</p>
-  <ol style="display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.4vw,20px);align-items:end" class="dayGrid">
-    <li><div class="phBox" style="aspect-ratio:3/4"><img class="ph" src="../public/images/draw.jpg" data-alt-da="En blodprøve tages ved et bord." data-alt-en="A blood sample being taken at a table." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div></li>
-    <li style="padding-bottom:30px"><div class="phBox" style="aspect-ratio:3/4"><img class="ph" src="../public/images/transit-case.webp" data-alt-da="Et mærket blodprøverør sættes ned i et stativ i en transportkuffert." data-alt-en="A labelled blood tube being placed into a rack inside a transport case." alt="" style="object-position:45% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div></li>
-    <li><div class="phBox" style="aspect-ratio:3/4"><img class="ph" src="../public/images/lab-analyser.webp" data-alt-da="En laborant sætter et stativ med blodprøverør ind i en analysemaskine." data-alt-en="A laboratory technician loading a rack of blood tubes into an analyser." alt="" style="object-position:45% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div></li>
-    <li style="padding-bottom:30px"><div class="phBox" style="aspect-ratio:3/4"><img class="ph" src="../public/images/laptop.jpg" data-alt-da="Pandonia-rapporten på en skærm." data-alt-en="The Pandonia report on a screen." alt=""><span class="phTag" data-da="Ægte · produkt" data-en="Real · product">Ægte · produkt</span></div></li>
-    <li><div class="phBox" style="aspect-ratio:3/4"><img class="ph" src="../public/images/consultation.webp" data-alt-da="En videokonsultation med en læge, vist på en bærbar computer." data-alt-en="A video consultation with a doctor, shown on a laptop." alt="" style="object-position:38% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div></li>
-  </ol>
-  <div style="position:relative;height:1px;background:var(--rule);margin-top:26px">
-    <div style="position:absolute;inset:0;background:var(--forest)"></div>
-    <span style="position:absolute;top:-4px;left:8%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
-    <span style="position:absolute;top:-4px;left:29%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
-    <span style="position:absolute;top:-4px;left:50%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
-    <span style="position:absolute;top:-4px;left:calc(71% - 4px);width:9px;height:9px;border-radius:50%;background:var(--amber)"></span>
-    <span style="position:absolute;top:-4px;left:92%;width:1px;height:9px;background:rgba(38,32,26,.5)"></span>
+  <div class="stepHead">
+    <div>
+      <p class="lab" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</p>
+      <h2 class="s d2 fg"><span style="display:block" data-da="Fire trin." data-en="Four steps.">Fire trin.</span><span style="display:block" data-da="Otteogfyrre timer." data-en="Forty-eight hours.">Otteogfyrre timer.</span></h2>
+    </div>
+    <p class="bdS" data-da="Fra bestilling til en rapport, der er klar til klinikeren. Samme arbejdsgang, uanset om du kører fem tests om måneden eller fem hundrede." data-en="From order to clinician-ready report. The same workflow whether you run five tests a month or five hundred.">Fra bestilling til en rapport, der er klar til klinikeren.</p>
   </div>
-  <ol style="display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.4vw,20px);margin-top:14px" class="dayGrid">
-    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">08.40</p><h3 class="hh3" style="margin-top:4px" data-da="Deborah ringer på" data-en="Deborah rings the doorbell">Deborah ringer på</h3><p class="bdS" style="margin-top:3px" data-da="Fem minutter ved køkkenbordet." data-en="Five minutes at the kitchen table.">Fem minutter ved køkkenbordet.</p></li>
-    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">09.05</p><h3 class="hh3" style="margin-top:4px" data-da="Prøven kører ind" data-en="The sample goes in">Prøven kører ind</h3><p class="bdS" style="margin-top:3px" data-da="Til laboratoriet på Langebrogade." data-en="To the laboratory on Langebrogade.">Til laboratoriet.</p></li>
-    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">09.30</p><h3 class="hh3" style="margin-top:4px" data-da="Analysen begynder" data-en="The analysis begins">Analysen begynder</h3><p class="bdS" style="margin-top:3px" data-da="Vi laver den selv." data-en="We do it ourselves.">Vi laver den selv.</p></li>
-    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--amber)">12.14</p><h3 class="hh3" style="margin-top:4px" data-da="Rapporten ligger klar" data-en="The report is ready">Rapporten ligger klar</h3><p class="bdS" style="margin-top:3px" data-da="Dine tal, dit sprog." data-en="Your numbers, in plain language.">Dine tal, dit sprog.</p></li>
-    <li><p class="m" style="font-size:10.5px;letter-spacing:.1em;color:var(--ink3)">16.00</p><h3 class="hh3" style="margin-top:4px" data-da="Benedikte gennemgår den" data-en="Benedikte goes through it">Benedikte gennemgår den</h3><p class="bdS" style="margin-top:3px" data-da="Tyve minutter." data-en="Twenty minutes.">Tyve minutter.</p></li>
+  <ol class="steps">
+    <li><p class="stepN">01</p><h3 class="stepT" data-da="Du bestiller" data-en="You order">Du bestiller</h3><p class="bdS" data-da="Vælg et panel, eller sammensæt dit eget fra markørbiblioteket, i partnerportalen." data-en="Pick a panel or build your own from the marker library, in the partner portal.">Vælg et panel, eller sammensæt dit eget.</p></li>
+    <li><p class="stepN">02</p><h3 class="stepT" data-da="Vi indsamler" data-en="We collect">Vi indsamler</h3><p class="bdS" data-da="Blodprøvetagning hjemme hos dig, på vores prøvetagningssted i København eller i din klinik." data-en="Concierge phlebotomy at home, our Copenhagen draw station, or at your clinic.">Blodprøvetagning hjemme hos dig.</p></li>
+    <li><p class="stepN">03</p><h3 class="stepT" data-da="Vi analyserer" data-en="We analyse">Vi analyserer</h3><p class="bdS" data-da="Analyseret i vores eget laboratorium på Randox-udstyr. Kvalitetskontrolleret og godkendt." data-en="Processed in our own lab on Randox equipment. Quality controlled, signed off.">Analyseret i vores eget laboratorium.</p></li>
+    <li><p class="stepN">04</p><h3 class="stepT" data-da="Svar på 48 timer" data-en="Results in 48h">Svar på 48 timer</h3><p class="bdS" data-da="En rapport, der er klar til klinikeren, leveret i din portal. Klar til at dele med din klient." data-en="Clinician-ready report delivered to your portal. Ready to share with your client.">En rapport, der er klar til klinikeren.</p></li>
   </ol>
-  <div style="margin-top:32px"><a class="lnk" data-route="saadan"><span data-da="Hele forløbet, trin for trin" data-en="The whole process, step by step">Hele forløbet, trin for trin</span> <span aria-hidden="true">→</span></a></div>
+  <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="da"><b>Til gennemsyn — tekst fra landingssiden</b>Teksten er taget ordret fra Pandonias landingsside (B2B) efter ønske; den danske er en oversættelse og skal godkendes. Den modsiger resten af sitet på fire punkter: 48 timer (sitet siger svar samme dag / 2–4 timer), Randox (ikke nævnt andre steder), partnerportal og "din klient" (henvender sig til klinikker, ikke til private), og prøvetagning "i din klinik" (ikke et tilbud til private). Skal afklares før lancering.</p>
+  <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="en"><b>For review — copy from the landing page</b>This text is taken verbatim from Pandonia's landing page (B2B), as requested. It contradicts the rest of the site on four points: 48 hours (the site says same-day / 2–4 hours), Randox (not mentioned anywhere else), partner portal and "your client" (addresses clinics, not private customers), and collection "at your clinic" (not offered to private customers). To be resolved before launch.</p>
+  <div style="margin-top:clamp(32px,4vw,48px)"><a class="lnk" data-route="saadan"><span data-da="Hele forløbet, trin for trin" data-en="The whole process, step by step">Hele forløbet, trin for trin</span> <span aria-hidden="true">→</span></a></div>
 </section>
 
-<section class="gDeep" id="what-we-test"><div class="wrap std">
-  <h2 class="s d3 measS" data-da="Seks systemer. Én blodprøve." data-en="Six systems. One blood test.">Seks systemer. Én blodprøve.</h2>
-  <p class="bd onDeepMuted measN" style="margin:14px 0 34px" data-da="Pandonia-modellen følger de systemer, kroppen faktisk arbejder i." data-en="The Pandonia model follows the systems the body actually works in.">Pandonia-modellen følger de systemer, kroppen faktisk arbejder i.</p>
+<section class="gSheet" id="what-we-test"><div class="wrap std">
+  <div class="split sp5545 alCenter" style="margin-bottom:clamp(28px,4vw,48px)">
+    <div>
+      <h2 class="s d2 fg" style="max-width:12ch" data-da="Seks systemer. Én blodprøve." data-en="Six systems. One blood test.">Seks systemer. Én blodprøve.</h2>
+      <p class="bd measN" style="margin-top:20px" data-da="Rapporten scorer hvert system ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder." data-en="Your report scores each system on how close your values are to Pandonia's optimal ranges.">Rapporten scorer hvert system.</p>
+    </div>
+    <div><div class="radarSlot"></div></div>
+  </div>
   <ul id="sysHome"></ul>
   <div style="margin-top:30px">
     <p class="lab revonly" style="margin-bottom:14px" data-da="Navne verificeret fra Pandonias FAQ og rapport-UI" data-en="Names verified from Pandonia's FAQ and report UI">Navne verificeret</p>
-    <p class="pl bdS revonly" style="max-width:64ch" data-lang="da"><b>Terminologi til gennemsyn</b>To offentliggjorte engelske navnesæt er uenige om tre af seks. Rækkerne viser rapport-UI'ets navne, fordi det er dem kunden faktisk møder.</p>
-    <p class="pl bdS revonly" style="max-width:64ch" data-lang="en"><b>Terminology under review</b>Two published English label sets disagree on three of six. The rows show the report UI's names, because those are the ones a customer actually meets.</p>
+    <p class="pl bdS revonly" style="max-width:64ch" data-lang="da"><b>Terminologi til gennemsyn</b>Rækkerne bruger nu rapportens navne — Signaling, Highway, Digestion, Energy, Defense, Waste — som hovednavn, fordi det er dem kunden møder i sin rapport. FAQ'ens danske navne står under som forklaring. Ingen nye oversættelser. Scoregrundlaget er citeret fra rapportens vejledning; den danske formulering er en oversættelse og skal godkendes. Radarens tal er fra Pandonias rapport-UI-mockup, ikke en patient.</p>
+    <p class="pl bdS revonly" style="max-width:64ch" data-lang="en"><b>Terminology under review</b>The rows now lead with the report's names — Signaling, Highway, Digestion, Energy, Defense, Waste — because those are what a customer meets in their report. The English FAQ names sit underneath as a gloss; two published English sets still disagree on three of six. The score basis is quoted from the report's guide. The radar values come from Pandonia's report-UI mockup, not from a patient.</p>
     <div style="margin-top:18px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">Se alle markører</span> <span aria-hidden="true">→</span></a></div>
   </div>
 </div></section>
 
-<section class="gDeep" id="your-report"><div class="wrap"><div class="hrInv" style="padding-top:clamp(44px,6vw,88px);padding-bottom:clamp(40px,5vw,72px)">
-  <div class="split sp4258 alStart">
+<section class="gSand" id="your-report"><div class="wrap std">
+  <div class="split sp4258 alCenter">
     <div>
-      <p class="lab" style="margin-bottom:10px" data-da="Pandonia Score · eksempel fra produktet" data-en="Pandonia Score · example from the product">Pandonia Score</p>
-      <span class="val" style="font-size:clamp(50px,7vw,86px);line-height:.9">96,1<s style="color:var(--onDeepQuiet)">/ 100</s></span>
-      <div class="band" style="margin-top:22px"><div class="ref" style="left:0;width:100%"></div><div class="tick" style="left:96.1%"></div></div>
-      <div class="axis"><span>0</span><span data-da="RIGTIGE VÆRDIER FRA PANDONIAS RAPPORT-UI" data-en="REAL VALUES FROM PANDONIA'S REPORT UI">RIGTIGE VÆRDIER</span><span>100</span></div>
-      <p class="pl bdS" style="margin-top:20px" data-lang="da"><b>Observation — ikke et designforslag</b>De seks rigtige scorer ligger mellem 94,9 og 97,2. På en 0–100-skala falder alle seks mærker oven i hinanden.</p>
-      <p class="pl bdS" style="margin-top:20px" data-lang="en"><b>Observation — not a design proposal</b>The six real scores fall between 94.9 and 97.2. On a 0–100 scale all six ticks collapse onto each other.</p>
+      <p class="lab" style="margin-bottom:14px" data-da="Din rapport" data-en="Your report">Din rapport</p>
+      <h2 class="s d3 fg" style="max-width:16ch" data-da="Hver måling, med sine områder ved siden af." data-en="Every measurement, with its ranges beside it.">Hver måling, med sine områder ved siden af.</h2>
+      <p class="bd measN" style="margin-top:18px" data-da="Optimalt område, referenceområde og uden for området — tegnet på samme bjælke, med dagens måling ved siden af." data-en="Optimal range, reference range and outside range — drawn on one bar, with today's measurement beside it.">Optimalt område, referenceområde og uden for området.</p>
+      <div style="margin-top:24px"><a class="lnk" data-route="rapport"><span data-da="Se hvordan rapporten ser ud" data-en="See what the report looks like">Se hvordan rapporten ser ud</span> <span aria-hidden="true">→</span></a></div>
     </div>
-    <div style="margin-top:26px"><ul class="rows" id="scoreHome"></ul>
-      <p class="lab" style="margin-top:12px" data-da="Aflæst fra Pandonias eget rapport-UI · beregningsgrundlag afventer" data-en="Read from Pandonia's own report UI · calculation basis pending">Aflæst fra Pandonias eget rapport-UI</p>
-      <div style="margin-top:22px"><a class="lnk" data-route="rapport"><span data-da="Se hvordan rapporten ser ud" data-en="See what the report looks like">Se hvordan rapporten ser ud</span> <span aria-hidden="true">→</span></a></div>
+    <div class="sheet">
+      <div class="rbarSlot" data-kind="glu"></div>
+      <div class="rLegend" style="justify-content:flex-start;margin-top:18px">
+        <span><i class="dotF" style="background:var(--rOpt)"></i><span data-da="Optimalt" data-en="Optimal">Optimalt</span></span>
+        <span><i class="dotF" style="background:var(--rRef)"></i><span data-da="Reference" data-en="Reference">Reference</span></span>
+        <span><i class="dotF" style="background:var(--rOut)"></i><span data-da="Uden for området" data-en="Outside range">Uden for området</span></span>
+      </div>
+      <p class="lab" style="margin-top:16px" data-da="Eksempel fra rapportens vejledning" data-en="Example from the report's guide">Eksempel fra rapportens vejledning</p>
     </div>
   </div>
-</div></div></section>
+</div></section>
 
 <section id="about-pandonia"><div class="split sp4258 alCenter gapNone">
   <div class="phBox" style="aspect-ratio:3/4">
@@ -508,8 +653,8 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <span class="phTag" data-da="Ægte · produktrender" data-en="Real · product render">Ægte · produktrender</span>
   </div>
   <div class="air" style="padding-inline:clamp(20px,4vw,64px)">
-    <h2 class="s d3 fg measS" data-da="Tallene bliver først til noget, når nogen sætter dem ind i dit liv." data-en="Numbers only mean something once someone puts them into your life.">Tallene bliver først til noget, når nogen sætter dem ind i dit liv.</h2>
-    <p class="bd measN" style="margin:20px 0 26px" data-da="Benedikte Halle er læge hos Pandonia. Hun gennemgår din rapport med dig i tyve minutter og peger på det, der er værd at gøre noget ved — og det, der ikke er." data-en="Benedikte Halle is a doctor at Pandonia. She goes through your report with you for twenty minutes and points out what is worth acting on — and what is not.">Benedikte Halle er læge hos Pandonia.</p>
+    <h2 class="s d3 fg measS" data-da="En læge læser tallene med dig." data-en="A doctor reads the numbers with you.">En læge læser tallene med dig.</h2>
+    <p class="bd measN" style="margin:20px 0 26px" data-da="Benedikte Halle er læge hos Pandonia. Tyve minutter online, med din rapport foran jer — hvad der er værd at gøre noget ved, og hvad der ikke er." data-en="Benedikte Halle is a doctor at Pandonia. Twenty minutes online, with your report in front of you both — what is worth acting on, and what is not.">Benedikte Halle er læge hos Pandonia.</p>
     <div class="hr" style="padding-top:18px;max-width:46ch">
       <p class="lab" style="margin-bottom:8px" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</p>
       <p class="bdS" data-lang="da">Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag.</p>
@@ -533,10 +678,18 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div>
 </div></section>
 
-<section><div class="wrap air" style="text-align:center">
-  <h2 class="s d2 fg" style="max-width:20ch;margin:0 auto" data-da="Kend din krop. Før den siger til." data-en="Know your body. Before it has to tell you.">Kend din krop. Før den siger til.</h2>
-  <div style="margin-top:32px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></div>
-  <p class="lab" style="margin-top:28px" data-da="København" data-en="Copenhagen">København</p>
+<section><div class="wrap" style="padding-block:clamp(40px,6vw,88px)">
+  <div class="stmt">
+    <p class="lab" style="color:var(--onDeepQuiet);margin-bottom:clamp(28px,4vw,56px)" data-da="Pandonia · tilgang" data-en="Pandonia · approach">Pandonia · tilgang</p>
+    <h2>
+      <span class="x" data-da="Mål." data-en="Measure.">Mål.</span>
+      <span class="x" data-da="Forstå." data-en="Understand.">Forstå.</span>
+      <span class="x ghost" data-da="Handl." data-en="Act.">Handl.</span>
+    </h2>
+    <p class="s" style="margin-top:clamp(24px,3vw,40px);font-size:clamp(18px,1vw + 14px,22px);font-style:italic;color:var(--onDeepMuted)" data-da="Det tredje skridt er dit." data-en="The third step is yours.">Det tredje skridt er dit.</p>
+    <div style="margin-top:clamp(28px,3vw,40px)"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></div>
+    <span class="dotA" aria-hidden="true"></span>
+  </div>
 </div></section>
 </div>
 
@@ -547,9 +700,9 @@ html[data-locale="en"] [data-lang="da"]{display:none}
       <div>
         <h1 class="s d2 fg measS" data-da="Ét tal fortæller sjældent noget alene." data-en="One number rarely says much on its own.">Ét tal fortæller sjældent noget alene.</h1>
         <p class="bodyL measN" style="margin-top:28px" data-da="En blodprøve er ikke en facitliste. Den er en række målinger, der først bliver til noget, når man ser dem sammen." data-en="A blood test is not an answer sheet. It is a set of measurements that only mean something when you see them together.">En blodprøve er ikke en facitliste.</p>
-        <p class="lab" style="margin-top:22px" data-da="Markørnavne verificeret fra pandonia.com og Pandonias bookingsystem" data-en="Marker names verified from pandonia.com and Pandonia's booking system">Markørnavne verificeret</p>
+        <p class="lab revonly" style="margin-top:22px" data-da="Markørnavne verificeret fra pandonia.com og Pandonias bookingsystem" data-en="Marker names verified from pandonia.com and Pandonia's booking system">Markørnavne verificeret</p>
       </div>
-      <div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/tourniquet.webp" data-alt-da="En staseslange og et prøvetagningssæt lægges til rette på en underarm ved et bord." data-alt-en="A tourniquet and sampling device being set on a forearm at a table." alt="" style="object-position:55% 42%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
+      <div class="phBox" style="aspect-ratio:4/5"><img class="ph gSoft" src="../public/images/tourniquet.webp" data-alt-da="En staseslange og et prøvetagningssæt lægges til rette på en underarm ved et bord." data-alt-en="A tourniquet and sampling device being set on a forearm at a table." alt="" style="object-position:55% 42%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
     </div>
   </section>
   <section class="wrap dns" style="padding-top:0">
@@ -564,10 +717,15 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <p id="mkempty" hidden class="bd" style="padding-block:26px" data-da="Ingen markører matcher." data-en="No markers match.">Ingen markører matcher.</p>
     <p id="mkcount" class="lab" style="margin-top:16px" aria-live="polite"></p>
   </section>
-  <section class="gDeep"><div class="wrap std">
-    <h2 class="s d3 measS" data-da="Kroppen arbejder ikke i kasser." data-en="The body does not work in boxes.">Kroppen arbejder ikke i kasser.</h2>
-    <p class="bd onDeepMuted measN" style="margin-top:14px" data-da="Pandonia-modellen beskriver seks systemer. En markør hører sjældent kun ét sted til." data-en="The Pandonia model describes six systems. A marker rarely belongs to just one.">Pandonia-modellen beskriver seks systemer.</p>
-    <ul id="sysPage" style="margin-top:30px"></ul>
+  <section class="gSheet"><div class="wrap std">
+    <div class="split sp5545 alCenter" style="margin-bottom:clamp(28px,4vw,48px)">
+      <div>
+        <h2 class="s d3 fg measS" data-da="Kroppen arbejder ikke i kasser." data-en="The body does not work in boxes.">Kroppen arbejder ikke i kasser.</h2>
+        <p class="bd measN" style="margin-top:16px" data-da="Pandonia-modellen beskriver seks systemer. En markør hører sjældent kun ét sted til. Rapporten giver hvert system sin egen score." data-en="The Pandonia model describes six systems. A marker rarely belongs to just one. The report gives each system its own score.">Pandonia-modellen beskriver seks systemer.</p>
+      </div>
+      <div><div class="radarSlot"></div></div>
+    </div>
+    <ul id="sysPage"></ul>
     <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="da"><b>Niveau 3 — afventer klinisk godkendelse</b>Enheder, referenceområder, markør-til-system-mapping, fortolkning og scoreberegning findes ikke offentligt og er ikke gættet.</p>
     <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
   </div></section>
@@ -589,25 +747,24 @@ html[data-locale="en"] [data-lang="da"]{display:none}
       <div class="mq mq2" aria-hidden="true"><div class="mqTrack rev" id="mqB"></div></div>
       <figure class="rcard" aria-labelledby="rcTitle">
         <div class="rcHead">
-          <span class="lab" data-da="Én markør · tre målinger" data-en="One marker · three measurements">Én markør · tre målinger</span>
-          <span class="lab" data-da="Illustration" data-en="Illustration">Illustration</span>
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
         </div>
         <p class="rcTitle" id="rcTitle" data-da="Det, der har flyttet sig." data-en="What has moved.">Det, der har flyttet sig.</p>
-        <ol class="rcRows">
-          <li><span class="rcL" data-da="Måling 1" data-en="Measurement 1">Måling 1</span><span class="rcBand"><span class="ref"></span><span class="tk" style="left:16%"></span></span></li>
-          <li><span class="rcL" data-da="Måling 2" data-en="Measurement 2">Måling 2</span><span class="rcBand"><span class="ref"></span><span class="tk" style="left:33%"></span></span></li>
-          <li class="now"><span class="rcL" data-da="Måling 3" data-en="Measurement 3">Måling 3</span><span class="rcBand"><span class="ref"></span><span class="tk" style="left:51%"></span></span></li>
-        </ol>
-        <div class="rcAxis"><span data-da="Under" data-en="Below">Under</span><span data-da="Inden for området" data-en="Within range">Inden for området</span><span data-da="Over" data-en="Above">Over</span></div>
-        <figcaption class="rcCap" data-da="Ingen værdier eller enheder — kun hvordan en måling kan flytte sig mellem to prøver." data-en="No values or units — only how a measurement can move between two tests.">Ingen værdier eller enheder.</figcaption>
+        <div class="rbarSlot" data-kind="glu" style="margin-top:20px"></div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <div class="trendSlot" data-small="1"></div>
+        </div>
+        <figcaption class="rcCap" data-da="Målingen er rapportens eget vejledningseksempel. Forløbet er skematisk." data-en="The measurement is the report's own guide example. The trend is schematic.">Målingen er rapportens eget vejledningseksempel.</figcaption>
       </figure>
     </div>
 
     <div class="wrap">
       <div class="revonly" style="max-width:64ch;margin:40px auto 0">
         <p class="lab" style="margin-bottom:10px" data-da="Til gennemsyn" data-en="For review">Til gennemsyn</p>
-        <p class="bdS" data-lang="da">"Baseline" er ikke et ord fra Pandonias eget materiale — de to andre punkter er støttet af "følge dine egne tendenser" og rapportens tidslinje-paneler. Kortet er skematisk: ingen markørnavn, ingen værdier, intet referenceområde.</p>
-        <p class="bdS" data-lang="en">"Baseline" is not a word from Pandonia's own material — the other two points are supported by "follow your own trends" and the report's timeline panels. The card is schematic: no marker name, no values, no reference range.</p>
+        <p class="bdS" data-lang="da">"Baseline" er ikke et ord fra Pandonias eget materiale — de to andre punkter er støttet af "følge dine egne tendenser" og rapportens "Score over time". Kortet bruger rapportens eget vejledningseksempel, GLU 5,1. <b>Enheden er rettet:</b> vejledningen skriver nmol/L, men glukose måles i mmol/L. Bjælkens zoner er gengivet fra vejledningen og er ikke et verificeret referenceområde for glukose. Score-forløbet er skematisk, uden tal.</p>
+        <p class="bdS" data-lang="en">"Baseline" is not a word from Pandonia's own material — the other two points are supported by "follow your own trends" and the report's "Score over time". The card uses the report's own guide example, GLU 5.1. <b>The unit is corrected:</b> the guide says nmol/L, but glucose is measured in mmol/L. The bar's zones are reproduced from the guide and are not a verified reference range for glucose. The score trace is schematic, with no numbers.</p>
         <h3 class="hh3" style="margin-top:22px" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h3>
         <p class="pl bd" style="margin-top:10px" data-lang="da"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet.</p>
         <p class="pl bd" style="margin-top:10px" data-lang="en"><b>Awaiting clinical text</b>A short section on what the test does not cover, and when to speak to your own doctor instead.</p>
@@ -623,13 +780,13 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <!-- ═══════════ SÅDAN FUNGERER DET ═══════════ -->
 <div data-page="saadan" hidden>
   <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,40px)">
-    <h1 class="s d2 fg" style="max-width:20ch" data-da="Fra dit køkkenbord til dit svar." data-en="From your kitchen table to your answer.">Fra dit køkkenbord til dit svar.</h1>
-    <p class="bodyL" style="margin-top:28px;max-width:52ch" data-da="Hele forløbet foregår på én dag. Her er hvad der sker, i den rækkefølge det sker." data-en="The whole process happens in one day. Here is what happens, in the order it happens.">Hele forløbet foregår på én dag.</p>
+    <h1 class="s d2 fg" style="max-width:14ch" data-da="Hvad der sker med din prøve." data-en="What happens to your sample.">Hvad der sker med din prøve.</h1>
+    <p class="bodyL" style="margin-top:28px;max-width:52ch" data-da="Fire trin, på én dag: indsamling, transport, analyse og gennemgang." data-en="Four steps, in one day: collect, transport, analyse, review.">Fire trin, på én dag.</p>
   </section>
   <section><div class="phBox" style="min-height:min(48vh,360px)"><img class="ph" src="../public/images/apron.jpg" data-alt-da="En Pandonia-medarbejder i forklæde." data-alt-en="A Pandonia employee in an apron." alt="" style="position:absolute;inset:0;object-position:50% 40%"><span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte · Pandonia</span></div></section>
 
   <section class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Før" data-en="Before">Før</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Aftenen inden" data-en="The evening before">Aftenen inden</h2></div>
+    <div><p class="lab" data-da="Inden" data-en="Before">Inden</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Aftenen inden" data-en="The evening before">Aftenen inden</h2></div>
     <div>
       <p class="bd meas" data-da="Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer." data-en="Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.">Fast i mindst 12 timer.</p>
       <p class="bd meas" style="margin-top:16px" data-da="Vi anbefaler at prøven tages tidligt på dagen, da flere biomarkører naturligt topper om morgenen." data-en="We recommend taking the sample early in the day, as several biomarkers naturally peak in the morning.">Vi anbefaler at prøven tages tidligt på dagen.</p>
@@ -638,7 +795,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div></section>
 
   <section class="gSand"><div class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Morgenen" data-en="The morning">Morgenen</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Vi kommer til dig" data-en="We come to you">Vi kommer til dig</h2></div>
+    <div><p class="lab" data-da="01 · Indsamling" data-en="01 · Collect">01 · Indsamling</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Vi kommer til dig" data-en="We come to you">Vi kommer til dig</h2></div>
     <div>
       <p class="bd meas" data-da="Vores blodprøvetager har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge." data-en="Our phlebotomist has experience from several different hospitals and works under close supervision of our responsible doctor.">Vores blodprøvetager har erfaring fra flere hospitaler.</p>
       <p class="pl bd meas" style="margin-top:16px" data-lang="da"><b>Afventer godkendelse</b>Bookingsystemet afsætter 10 minutter til Health Test og 15 til test med konsultation. Hjemmesiden siger fem minutter. Hvilket tal er det rigtige udadtil?</p>
@@ -651,19 +808,26 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     </div>
   </div></div></section>
 
+  <section class="wrap std"><div class="split sp4258 alStart">
+    <div><p class="lab" data-da="02 · Transport" data-en="02 · Transport">02 · Transport</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Direkte til laboratoriet" data-en="Straight to the laboratory">Direkte til laboratoriet</h2></div>
+    <div>
+      <p class="bd meas" data-da="Prøven bringes direkte til vores eget laboratorium på Langebrogade. Den sendes ikke videre til et eksternt laboratorium." data-en="The sample is brought straight to our own laboratory on Langebrogade. It is not sent on to an external laboratory.">Prøven bringes direkte til vores eget laboratorium.</p>
+    </div>
+  </div></section>
+
   <section id="laboratoriet" class="gDeep"><div class="wrap std">
     <div class="split sp4258 alStart">
-      <div><p class="m onDeepQuiet" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase" data-da="Midt på dagen" data-en="Midday">Midt på dagen</p><h2 class="s d3" style="margin-top:8px" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</h2></div>
+      <div><p class="lab" data-da="03 · Analyse" data-en="03 · Analyse">03 · Analyse</p><h2 class="s d3" style="margin-top:8px" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</h2></div>
       <div>
-        <p class="bodyL meas" style="color:rgba(237,231,218,.85)" data-da="Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag." data-en="We have our own laboratory on Langebrogade in Copenhagen. That is why the answer can reach you the same day.">Vi har vores eget laboratorium på Langebrogade.</p>
+        <p class="bodyL meas" style="color:rgba(250,250,247,.85)" data-da="Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag." data-en="We have our own laboratory on Langebrogade in Copenhagen. That is why the answer can reach you the same day.">Vi har vores eget laboratorium på Langebrogade.</p>
         <p class="bd onDeepMuted meas" style="margin-top:16px" data-da="De fleste sender blodprøver videre til et eksternt laboratorium og venter. Vi analyserer selv, i samme by som du bor i." data-en="Most send blood samples on to an external laboratory and wait. We analyse them ourselves, in the same city you live in.">Vi analyserer selv, i samme by som du bor i.</p>
         <div style="margin-top:14px"><span class="tagV" data-da="Verificeret · dansk kilde" data-en="Verified · Danish source">Verificeret</span></div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr;gap:1px;background:var(--ruleInv);margin-top:clamp(28px,4vw,52px)" class="labGrid">
-      <div class="phBox" style="aspect-ratio:4/3"><img class="ph" src="../public/images/bygning.webp" data-alt-da="Bygningen på Langebrogade set fra havnen." data-alt-en="The building on Langebrogade seen from the harbour." alt=""><span class="phTag" data-da="Ægte · bygningen" data-en="Real · the building">Ægte · bygningen</span></div>
-      <div class="phBox" style="aspect-ratio:4/3"><img class="ph" src="../public/images/lab-interior.jpg" data-alt-da="Laboratoriemedarbejdere i kittel ved et vindue." data-alt-en="Laboratory staff in coats by a window." alt="" style="object-position:50% 45%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
-      <div class="phBox" style="aspect-ratio:4/3"><img class="ph" src="../public/images/lab-rack.webp" data-alt-da="En hånd løfter et mærket blodprøverør op af et stativ." data-alt-en="A hand lifts a labelled blood tube from a rack." alt="" style="object-position:54% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
+      <div class="phBox" style="aspect-ratio:4/3"><img class="ph gSoft" src="../public/images/bygning.webp" data-alt-da="Bygningen på Langebrogade set fra havnen." data-alt-en="The building on Langebrogade seen from the harbour." alt=""><span class="phTag" data-da="Ægte · bygningen" data-en="Real · the building">Ægte · bygningen</span></div>
+      <div class="phBox" style="aspect-ratio:4/3"><img class="ph gAtmos" src="../public/images/lab-interior.jpg" data-alt-da="Laboratoriemedarbejdere i kittel ved et vindue." data-alt-en="Laboratory staff in coats by a window." alt="" style="object-position:50% 45%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
+      <div class="phBox" style="aspect-ratio:4/3"><img class="ph gSoft" src="../public/images/lab-rack.webp" data-alt-da="En hånd løfter et mærket blodprøverør op af et stativ." data-alt-en="A hand lifts a labelled blood tube from a rack." alt="" style="object-position:54% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
     </div>
     <dl style="display:grid;grid-template-columns:1fr;gap:26px 40px;margin-top:32px" class="g4">
       <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Adresse" data-en="Address">Adresse</dt><dd class="bdS onDeepMuted">Langebrogade 3A, 2. sal<br>1411 København K</dd></div>
@@ -674,7 +838,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div></section>
 
   <section class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Efter frokost" data-en="After lunch">Efter frokost</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Rapporten" data-en="The report">Rapporten</h2></div>
+    <div><p class="lab" data-da="04 · Gennemgang" data-en="04 · Review">04 · Gennemgang</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Rapporten" data-en="The report">Rapporten</h2></div>
     <div>
       <p class="pl bd meas" data-lang="da"><b>Afventer godkendelse</b>Er 2–4 timer typisk eller bedste tilfælde? Et interval præsenteret som et løfte har brug for et oplyst grundlag.</p>
       <p class="pl bd meas" data-lang="en"><b>Awaiting sign-off</b>Is 2–4 hours typical or best case? A range presented as a promise needs a stated basis.</p>
@@ -684,7 +848,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div></section>
 
   <section class="gSand"><div class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="m" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)" data-da="Senere samme dag" data-en="Later the same day">Senere samme dag</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Samtalen" data-en="The conversation">Samtalen</h2></div>
+    <div><p class="lab" data-da="04 · Gennemgang" data-en="04 · Review">04 · Gennemgang</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Samtalen" data-en="The conversation">Samtalen</h2></div>
     <div>
       <p class="bd meas" data-da="Du booker konsultationen, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online." data-en="You book the consultation when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.">Du booker konsultationen, når det passer dig.</p>
       <div style="margin-top:14px"><span class="tagV" data-da="Verificeret" data-en="Verified">Verificeret</span></div>
@@ -702,53 +866,77 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <div class="split sp6238 alStart">
       <div>
         <h1 class="s d2 fg" style="max-width:19ch" data-da="Det, du får, er ikke en liste med tal." data-en="What you get is not a list of numbers.">Det, du får, er ikke en liste med tal.</h1>
-        <p class="bodyL measN" style="margin-top:28px" data-da="Det er en rapport, hvor hver måling står sammen med sit referenceområde, en forklaring på almindeligt dansk, og — hvis du vil — en læge der læser den med dig." data-en="It is a report where every measurement sits beside its reference range, an explanation in plain language, and — if you want — a doctor who reads it with you.">Det er en rapport, hvor hver måling står sammen med sit referenceområde.</p>
+        <p class="bodyL measN" style="margin-top:28px" data-da="Hver måling står med sit optimale område og sit referenceområde. Seks systemer får hver sin score. Og en læge læser det med dig, hvis du vil." data-en="Every measurement sits beside its optimal range and its reference range. Six systems each get a score. And a doctor reads it with you, if you want.">Hver måling står med sit optimale område og sit referenceområde.</p>
       </div>
       <div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/laptop.jpg" data-alt-da="Pandonia-rapporten på en skærm." data-alt-en="The Pandonia report on a screen." alt=""><span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte</span></div>
     </div>
   </section>
-  <section class="gSand"><div class="wrap std">
-    <p class="lab" style="margin-bottom:16px" data-da="Pandonias nuværende rapport" data-en="Pandonia's current report">Pandonias nuværende rapport</p>
-    <div class="split sp5545 alStart">
-      <div class="phBox" style="border:1px solid var(--rule)"><img class="ph" src="../public/images/report-deck.webp" data-alt-da="Pandonias rapport åbnet på en bærbar computer." data-alt-en="The Pandonia report open on a laptop." alt="" style="display:block"><span class="phTag" data-da="Ægte UI · stock-foto" data-en="Real UI · stock photo">Ægte UI · stock-foto</span></div>
-      <div>
-        <p class="bd meas" data-da="Sådan ser rapporten ud i dag: en samlet Pandonia Score og seks systemscorer." data-en="This is how the report looks today: one overall Pandonia Score and six system scores.">Sådan ser rapporten ud i dag.</p>
-        <p class="pl bdS meas" style="margin-top:16px" data-lang="da"><b>Skærmbillede skal opdateres</b>Skærmen viser forsiden af Pandonias rapport-deck — ikke scorevisningen, som teksten her beskriver. Erstattes af et aktuelt skærmbillede før lancering.</p>
-        <p class="pl bdS meas" style="margin-top:16px" data-lang="en"><b>Updated product screenshot required</b>The screen shows the cover of Pandonia's report deck — not the score view this text describes. Replace with a current screenshot before launch.</p>
-        <div class="hrs" style="margin-top:24px;padding-top:18px">
-          <p class="lab" style="margin-bottom:10px" data-da="I det nye design" data-en="In the new design">I det nye design</p>
-          <div style="max-width:420px">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
-              <span class="val" style="font-size:28px">96,1<s>/ 100</s></span>
-              <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
-            </div>
-            <div class="band"><div class="ref" style="left:0;width:100%"></div><div class="tick" style="left:96.1%"></div></div>
-            <div class="axis"><span>0</span><span data-da="RIGTIGE VÆRDIER" data-en="REAL VALUES">RIGTIGE VÆRDIER</span><span>100</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="max-width:760px;margin-top:48px" id="rangePrinciples"></div>
-  </div></section>
-  <section class="gDeep"><div class="wrap std">
+  <!-- A · OVERVIEW — the report's "Health assessment overview" -->
+  <section class="gSheet" id="rp-overview"><div class="wrap std">
     <div class="split sp4258 alStart">
       <div>
-        <p class="lab" style="margin-bottom:10px" data-da="De seks systemscorer" data-en="The six system scores">De seks systemscorer</p>
-        <ul class="rows" id="scoreReport"></ul>
+        <p class="lab" data-da="Oversigt" data-en="Overview">Oversigt</p>
+        <h2 class="s d3 fg" style="margin-top:12px;max-width:14ch" data-da="Seks systemer. Én samlet score." data-en="Six systems. One overall score.">Seks systemer. Én samlet score.</h2>
+        <p class="bd meas" style="margin-top:18px" data-da="Hvert område afspejler et centralt system i kroppen. Det scores ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder." data-en="Each health area reflects a core system in your body. It is scored on how close your values are to Pandonia's optimal ranges.">Hvert område afspejler et centralt system i kroppen.</p>
+        <p class="bd meas" style="margin-top:12px" data-da="Pilen ved hver score viser, hvordan den har ændret sig siden din sidste måling." data-en="The arrow beside each score shows how it has changed since your last measurement.">Pilen viser ændringen siden sidste måling.</p>
+        <div class="phBox" style="margin-top:30px;border:1px solid var(--ruleSoft)"><img class="ph" src="../public/images/report-deck.webp" data-alt-da="Pandonias rapport åbnet på en bærbar computer." data-alt-en="The Pandonia report open on a laptop." alt="" style="display:block"><span class="phTag" data-da="Ægte UI · stock-foto" data-en="Real UI · stock photo">Ægte UI · stock-foto</span></div>
+      </div>
+      <div class="sheet">
+        <div class="radarSlot"></div>
+        <div class="rLegend">
+          <span><i class="tri up"></i><span data-da="Forbedret" data-en="Improved">Forbedret</span></span>
+          <span><i class="dotF"></i><span data-da="Uændret" data-en="No change">Uændret</span></span>
+          <span><i class="tri dn"></i><span data-da="Forværret" data-en="Worsened">Forværret</span></span>
+        </div>
+        <p class="lab" style="text-align:center;margin-top:16px" data-da="Eksempel fra Pandonias rapport-UI" data-en="Example from Pandonia's report UI">Eksempel fra Pandonias rapport-UI</p>
+      </div>
+    </div>
+    <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="da"><b>Kilde</b>Forklaringsteksten er oversat fra rapportens "How to read my results?" og skal godkendes på dansk. Radarens tal er fra Pandonias rapport-UI-mockup — ikke fra en patientrapport. At de seks scorer ligger tæt ved 100 er også sådan, Pandonias egen rapport tegner dem.</p>
+    <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="en"><b>Source</b>The explanation is quoted from the report's "How to read my results?", lightly edited for grammar. The radar values come from Pandonia's report-UI mockup — not from a patient report. Six scores sitting close to 100 is also how Pandonia's own report draws them.</p>
+  </div></section>
+
+  <!-- B · ONE MARKER — the report's bar anatomy and its three ranges -->
+  <section class="gSand"><div class="wrap std">
+    <p class="lab" data-da="Én markør" data-en="One marker">Én markør</p>
+    <h2 class="s d3 fg" style="margin-top:12px" data-da="Sådan læser du en måling." data-en="How to read a measurement.">Sådan læser du en måling.</h2>
+    <div class="sheet" style="margin-top:clamp(24px,3vw,36px)">
+      <div class="rbarSlot" data-kind="glu" data-anno="1"></div>
+    </div>
+    <div class="rcards" style="margin-top:8px">
+      <div class="rc-opt"><h3 data-da="Optimalt område" data-en="Optimal range">Optimalt område</h3><p data-da="Viser de niveauer, hvor vi vurderer, at kroppen fungerer mest balanceret og robust — både her og nu og på lang sigt." data-en="Shows the levels where we assess that the body functions most balanced and robustly, both here and now and in the long term.">Hvor kroppen fungerer mest balanceret.</p></div>
+      <div class="rc-ref"><h3 data-da="Referenceområde" data-en="Reference range">Referenceområde</h3><p data-da="De værdier, sundhedsvæsenet i Danmark bruger som normale. For nogle biomarkører svarer referenceområdet til det optimale område." data-en="The values that the healthcare system in Denmark uses as normal. For some biomarkers, the reference range corresponds to the optimal range.">Sundhedsvæsenets normalværdier.</p></div>
+      <div class="rc-out"><h3 data-da="Uden for området" data-en="Outside range">Uden for området</h3><p data-da="Værdier uden for de anbefalede grænser. Det kan være tegn på en ubalance eller mangel og bør ses i sammenhæng med dit samlede helbred." data-en="Values outside the recommended limits. This may be a sign of an imbalance or deficiency and should be viewed in the context of your overall health.">Uden for de anbefalede grænser.</p></div>
+    </div>
+    <p class="lab" style="margin-top:14px" data-da="Definitionerne er fra Pandonias rapport · eksemplet er rapportens eget" data-en="Definitions from Pandonia's report · the example is the report's own">Definitionerne er fra Pandonias rapport</p>
+    <p class="pl bdS revonly" style="max-width:70ch;margin-top:20px" data-lang="da"><b>Til gennemsyn</b>De tre definitioner er citeret fra rapportens vejledning (engelsk) og oversat til dansk — den danske tekst skal godkendes. Rapportens farver er grøn / gul / rød; det erstatter den tidligere regel om ingen trafiklys, fordi det er produktets eget sprog. GLU-eksemplet: vejledningen skriver nmol/L, her rettet til mmol/L.</p>
+    <p class="pl bdS revonly" style="max-width:70ch;margin-top:20px" data-lang="en"><b>For review</b>The three definitions are quoted from the report's guide. The report uses green / yellow / red; this supersedes the earlier no-traffic-light rule, because it is the product's own language. GLU example: the guide says nmol/L, corrected here to mmol/L.</p>
+  </div></section>
+
+  <!-- C · OVER TIME — score over time, results worth paying attention to -->
+  <section class="gSheet"><div class="wrap std">
+    <div class="split sp5545 alStart">
+      <div>
+        <p class="lab" data-da="Over tid" data-en="Over time">Over tid</p>
+        <h2 class="s d3 fg" style="margin-top:12px" data-da="Score over tid." data-en="Score over time.">Score over tid.</h2>
+        <p class="bd meas" style="margin-top:16px" data-da="Hver ny måling lægger et punkt til din samlede score. Du ser udviklingen fra test til test." data-en="Each new measurement adds a point to your overall score. You see it develop from test to test.">Hver ny måling lægger et punkt til.</p>
+        <div class="sheet" style="margin-top:24px"><div class="trendSlot"></div></div>
       </div>
       <div>
-        <h2 class="s d3 measS" data-da="Samme figur, hele vejen igennem." data-en="The same figure, all the way through.">Samme figur, hele vejen igennem.</h2>
-        <p class="bd onDeepMuted meas" style="margin-top:16px" data-da="Din samlede score og de seks systemscorer tegnes på præcis samme måde som en enkelt markør. Har du forstået én, har du forstået dem alle." data-en="Your overall score and the six system scores are drawn exactly the same way as a single marker. Understand one and you understand them all.">Din samlede score og de seks systemscorer tegnes på samme måde som en enkelt markør.</p>
-        <p class="pl bd meas" style="margin-top:18px" data-lang="da"><b>Afventer klinisk bekræftelse</b>Hvad de seks scorer måler på, og hvordan Pandonia Score beregnes.</p>
-        <p class="pl bd meas" style="margin-top:18px" data-lang="en"><b>Awaiting clinical confirmation</b>What the six scores are scored on, and how the Pandonia Score is calculated.</p>
+        <p class="lab" data-da="Opmærksomhed" data-en="Attention">Opmærksomhed</p>
+        <h2 class="s d3 fg" style="margin-top:12px" data-da="Resultater værd at holde øje med." data-en="Results worth paying attention to.">Resultater værd at holde øje med.</h2>
+        <p class="bd meas" style="margin-top:16px" data-da="Målinger uden for området samles ét sted — med dine tidligere målinger ved siden af." data-en="Measurements outside the range are gathered in one place — with your previous measurements beside them.">Målinger uden for området samles ét sted.</p>
+        <div class="sheet" style="margin-top:24px"><div class="rbarSlot" data-kind="gen"></div></div>
+        <p class="lab" style="margin-top:12px" data-da="Eksempel · anonymiseret" data-en="Example · anonymised">Eksempel · anonymiseret</p>
       </div>
     </div>
   </div></section>
+
   <section class="wrap std"><div class="split sp3862 alCenter">
-    <div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/samtale.webp" data-alt-da="En læge i kittel taler med en person ved et bord." data-alt-en="A doctor in a white coat talking with someone across a table." alt="" style="object-position:45% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
+    <div class="phBox" style="aspect-ratio:4/5"><img class="ph gSoft" src="../public/images/samtale.webp" data-alt-da="En læge i kittel taler med en person ved et bord." data-alt-en="A doctor in a white coat talking with someone across a table." alt="" style="object-position:45% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
     <div>
       <h2 class="s d3 fg measS" data-da="Og så er der samtalen." data-en="And then there is the conversation.">Og så er der samtalen.</h2>
       <p class="bd meas" style="margin-top:18px" data-da="Tyve minutter online med en læge, der har læst din rapport på forhånd. I gennemgår den sammen og finder ud af, hvad der giver mening at gøre — og hvad der ikke gør." data-en="Twenty minutes online with a doctor who has read your report beforehand. You go through it together and work out what makes sense to do — and what does not.">Tyve minutter online med en læge.</p>
+      <p class="bd meas" style="margin-top:14px" data-da="Er du i tvivl om dine resultater, anbefaler vi altid, at du booker en konsultation med vores læge." data-en="If you have doubts about your results, we always recommend booking a consultation with our doctor.">Er du i tvivl, så book en konsultation.</p>
       <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
         <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
         <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
@@ -803,7 +991,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <p class="pl bdS revonly" style="max-width:66ch;margin-top:22px" data-lang="en"><b>Matched — source</b>Each portrait is matched against the team section on pandonia.com/en, where the same studio photographs appear with name and role. Pandonia already publishes them itself. Deborah's Danish title is not on the Danish page — "blodprøvetager" is Pandonia's own word from its FAQ. A portrait of a man (original 12) does not appear on the team page and has been removed.</p>
   </div></section>
   <section><div class="wrap air" style="text-align:center">
-    <h2 class="s d3 fg" style="max-width:22ch;margin:0 auto">Healthier in body, happier in soul, longer in life.</h2>
+    <h2 class="s d2 fg" style="max-width:14ch;margin:0 auto" lang="en">A healthy, longer life — measured.</h2>
     <p class="lab" style="margin-top:20px" data-da="Pandonias egen linje" data-en="Pandonia's own line">Pandonias egen linje</p>
     <div style="margin-top:30px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></div>
   </div></section>
@@ -918,7 +1106,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <footer><div class="wrap" style="padding-block:clamp(44px,6vw,76px) clamp(26px,3vw,40px)">
   <div class="fgrid">
     <div style="grid-column:1/-1">
-      <p class="s" style="font-size:26px;margin-bottom:14px">Pandonia</p>
+      <p class="wm" style="color:var(--inkInv);font-size:34px;margin-bottom:16px">Pandonia</p>
       <p class="bdS onDeepMuted" style="max-width:32ch" data-da="Blodprøver hjemme hos dig i København, analyseret i vores eget laboratorium." data-en="Blood tests at your home in Copenhagen, analysed in our own laboratory.">Blodprøver hjemme hos dig i København.</p>
       <p class="bdS onDeepMuted" style="margin-top:16px">Langebrogade 3A, 2. sal<br>1411 København K<br><a href="mailto:labs@pandonia.com">labs@pandonia.com</a></p>
     </div>
@@ -1023,13 +1211,13 @@ var FAQ={da:[
  ['Før du booker',[['Hvor kan prøven tages?','Vi kommer hjem til dig eller på din arbejdsplads i København K, N, NV, V, S, SV, Ø, Frederiksberg og Hellerup. Du kan også møde op på Langebrogade 3A, 2. sal.',1],['Hvad koster det?','Health Test koster 3.500 kr. Health Test med konsultation som samlet pakke koster 4.750 kr. Enkelte tests fra 1.000 kr. Medlemskabet koster 2.000 kr. pr. måned.',1],['Er konsultationen med i prisen?','',0]]],
  ['Prøvetagningen',[['Hvordan forbereder jeg mig?','Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer.',1],['Hvorfor om morgenen?','Flere biomarkører topper naturligt om morgenen.',1],['Hvem tager prøven?','Vores blodprøvetager har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge.',1],['Hvor lang tid tager det?','',0]]],
  ['Laboratoriet',[['Hvor analyseres min prøve?','I vores eget laboratorium på Langebrogade i København.',1],['Hvordan sikrer I kvaliteten?','',0]]],
- ['Resultater og samtale',[['Hvornår får jeg svar?','',0],['Hvordan foregår konsultationen?','Du booker den, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online.',1],['Kan resten af sundhedsvæsenet se mine svar?','',0]]],
+ ['Resultater og samtale',[['Hvornår får jeg svar?','',0],['Hvad gør jeg, hvis jeg er i tvivl om mine resultater?','Vi anbefaler altid, at du booker en konsultation med vores læge, som gennemgår rapporten med dig.',1],['Hvordan foregår konsultationen?','Du booker den, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online.',1],['Kan resten af sundhedsvæsenet se mine svar?','',0]]],
  ['Praktisk',[['Kan flere medarbejdere testes samtidig?','Ja. Vi kommer ud til arbejdspladsen og tager prøver på mange medarbejdere i ét samlet besøg. Skriv til labs@pandonia.com.',1],['Kan jeg give det som gave?','Ja, der findes gavekort.',1],['Kan jeg afbestille?','',0]]]
 ],en:[
  ['Before you book',[['Where can the sample be taken?','We come to your home or workplace in Copenhagen K, N, NV, V, S, SV, Ø, Frederiksberg and Hellerup. You can also come to Langebrogade 3A, 2nd floor.',1],['What does it cost?','The Health Test costs DKK 3,500. The Health Test with consultation as one package costs DKK 4,750. Single tests from DKK 1,000. Membership costs DKK 2,000 per month.',1],['Is the consultation included in the price?','',0]]],
  ['The sample',[['How do I prepare?','Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.',1],['Why in the morning?','Several biomarkers naturally peak in the morning.',1],['Who takes the sample?','Our phlebotomist has experience from several different hospitals and works under close supervision of our responsible doctor.',1],['How long does it take?','',0]]],
  ['The laboratory',[['Where is my sample analysed?','In our own laboratory on Langebrogade in Copenhagen.',1],['How do you ensure quality?','',0]]],
- ['Results and conversation',[['When do I get my result?','',0],['How does the consultation work?','You book it when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.',1],['Can the rest of the health service see my results?','',0]]],
+ ['Results and conversation',[['When do I get my result?','',0],['What should I do if I have doubts about my results?','We always recommend that you book a consultation with our doctor to review the report.',1],['How does the consultation work?','You book it when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.',1],['Can the rest of the health service see my results?','',0]]],
  ['Practical',[['Can several employees be tested at once?','Yes. We come to the workplace and take samples from many employees in one visit. Write to labs@pandonia.com.',1],['Can I give it as a gift?','Yes, gift cards are available.',1],['Can I cancel?','',0]]]
 ]};
 var PRIN={da:[['Hver måling har sit eget område','Ikke en karakter, ikke en farve der dømmer. Du kan se præcis hvor du ligger, og hvor langt der er til kanten.'],['Nogle markører har ikke ét område','Forhold mellem to værdier vises uden bånd. Rapporten siger det, i stedet for at lade som om.'],['Referenceområder kan variere','Hvor køn eller alder har betydning, vises begge områder.'],['Over tid','Tester du igen, lægger den nye måling sig oven på den gamle.']],
@@ -1051,13 +1239,13 @@ function dkk(v){return v===null?null:(loc==='da'?new Intl.NumberFormat('da-DK').
 
 function renderAll(){
   var t=T[loc];
-  // No marker-to-system mapping is published, so no counts and no
-  // representative markers. The one verified per-system fact that helps a
-  // customer is the label their own report uses.
-  var sysRows=SYS.map(function(s,i){var n=loc==='da'?s.da:s.en;
+  // The report's own names lead, because that is what the customer meets in
+  // their report; Pandonia's FAQ name for the same system sits underneath as
+  // a gloss. No marker-to-system mapping is published, so no counts.
+  var sysRows=SYS.map(function(s,i){
     return '<li class="sysRow"><details><summary>'+
-      '<span class="sysName">'+n+'</span>'+
-      '<span class="sysCtx">'+t.inReport+' '+s.ui+'</span>'+
+      '<span class="sysName">'+s.ui+'</span>'+
+      '<span class="sysCtx">'+(loc==='da'?s.da:s.en)+'</span>'+
       '<span class="sysAct">'+t.seeMk+'</span>'+
       '<span class="sysPlus" aria-hidden="true">+</span></summary>'+
       '<div class="sysBody"><p>'+t.sysNote+'</p>'+
@@ -1076,6 +1264,73 @@ function renderAll(){
   var mqA=document.getElementById('mqA'),mqB=document.getElementById('mqB');
   if(mqA)mqA.innerHTML=stream([0,1,2,3,4,5,6,8]);
   if(mqB)mqB.innerHTML=stream([7,10,11,9,12,13]);
+
+  var da=loc==='da';   // assigned here: the pricing block below reuses it
+  // ── Report components, drawn the way Pandonia's health report draws them.
+  // Six-system radar: clockwise from the top, overall score in the centre,
+  // a change arrow at every system. Values are the report-UI mockup's
+  // (review.png), never a patient's.
+  var ARW=[1,-1,-1,1,1,1], OVERALL=96.1;
+  function tri(x,y,d){
+    var c=d>0?'var(--rUp)':d<0?'var(--rDown)':'var(--rFlat)';
+    if(!d) return '<circle cx="'+x+'" cy="'+y+'" r="4" fill="'+c+'"/>';
+    var b=d>0?4:-4; return '<polygon points="'+(x-5)+','+(y+b)+' '+(x+5)+','+(y+b)+' '+x+','+(y-b)+'" fill="'+c+'"/>';
+  }
+  function radarSVG(){
+    var W=360,H=380,cx=180,cy=190,R=112,grid='#C9CED6',o='';
+    function pt(i,r){var a=(-90+60*i)*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+    function poly(r){var p=[];for(var i=0;i<6;i++){var q=pt(i,r);p.push(q[0].toFixed(1)+','+q[1].toFixed(1));}return p.join(' ');}
+    o+='<polygon points="'+poly(R)+'" fill="var(--rRadar)" stroke="'+grid+'"/>';
+    for(var k=1;k<5;k++) o+='<polygon points="'+poly(R*k/5)+'" fill="none" stroke="'+grid+'" stroke-width=".8"/>';
+    for(var i=0;i<6;i++){var e=pt(i,R);o+='<line x1="'+cx+'" y1="'+cy+'" x2="'+e[0].toFixed(1)+'" y2="'+e[1].toFixed(1)+'" stroke="'+grid+'" stroke-width=".8"/>';}
+    o+='<polygon points="'+SYS.map(function(s,i){var q=pt(i,R*s.score/100);return q[0].toFixed(1)+','+q[1].toFixed(1);}).join(' ')+'" fill="rgba(20,31,97,.06)" stroke="var(--rNavy)" stroke-width="1.4" stroke-linejoin="round"/>';
+    SYS.forEach(function(s,i){var q=pt(i,R+40),x=q[0].toFixed(1),y=q[1];
+      o+='<text x="'+x+'" y="'+(y-10).toFixed(1)+'" text-anchor="middle" font-size="13" fill="var(--ink)">'+s.ui+'</text>'+
+         '<text x="'+x+'" y="'+(y+7).toFixed(1)+'" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">'+nf(s.score)+'</text>'+tri(+x,Math.round(y+18),ARW[i]);});
+    o+='<text x="'+cx+'" y="'+(cy+9)+'" text-anchor="middle" font-size="31" font-weight="700" letter-spacing="-1" fill="var(--ink)">'+nf(OVERALL)+'</text>'+tri(cx,cy+26,1);
+    var lbl=(da?'Seks-system-radar. Samlet score ':'Six-system radar. Overall score ')+nf(OVERALL)+'. '+SYS.map(function(s){return s.ui+' '+nf(s.score);}).join(', ')+'.';
+    return '<svg class="radar" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+lbl+'">'+o+'</svg>';
+  }
+  document.querySelectorAll('.radarSlot').forEach(function(e){e.innerHTML=radarSVG();});
+
+  // Biomarker bar: acronym, zoned bar, axis, today's value in a hexagon.
+  // "glu" is the report guide's own example (unit corrected to mmol/L);
+  // "gen" is anonymised, in the outside-range state.
+  function n1(n){var s=String(Math.round(n*10)/10);return da?s.replace('.',','):s;}
+  var XX=da?'X,X':'X.X';
+  function rbarHTML(kind,anno){
+    if(kind==='glu'){
+      var ax=[3,4.5,6,7.5,9].map(function(n){return '<span style="left:'+((n-3)/6*100)+'%">'+n1(n)+'</span>';}).join('');
+      var bar='<div class="rbar"><span class="ac">GLU</span><div><div class="zb glu"><i class="zv" style="left:35%"></i></div><div class="zax">'+ax+'</div></div><span class="hex"><b>'+n1(5.1)+'</b><small>mmol/L</small></span></div>';
+      if(!anno) return bar;
+      return '<div class="annoTop"><span class="anno"><b>'+(da?'Biomarkør':'Biomarker')+'</b>'+(da?'Forkortelse — her glukose':'Acronym — here, glucose')+'</span>'+
+             '<span class="anno" style="text-align:right"><b>'+(da?'Dagens måling':"Today's measurement")+'</b>'+(da?'Værdi og måleenhed':'Value and unit')+'</span></div>'+bar+
+             '<div class="annoBot"><span class="anno"><b>'+(da?'Områderne':'The ranges')+'</b>'+(da?'Optimalt, reference og uden for området — på samme bjælke':'Optimal, reference and outside range — on one bar')+'</span></div>';
+    }
+    return '<div class="rbar"><span class="ac">ABC</span><div><div class="zb gen"><i class="zv" style="left:76%"></i></div></div><span class="hex out"><b>'+XX+'</b><small>'+(da?'enhed':'unit')+'</small></span></div>'+
+           '<div class="prev" style="margin-top:18px"><div><small>'+(da?'Forrige måling':'Previous')+'</small><b>'+XX+'</b></div><div><small>'+(da?'Måling før':'Before that')+'</small><b>'+XX+'</b></div></div>';
+  }
+  document.querySelectorAll('.rbarSlot').forEach(function(e){e.innerHTML=rbarHTML(e.getAttribute('data-kind'),e.getAttribute('data-anno'));});
+
+  // Score over time: the shape of the report's chart and nothing more — no
+  // values, no dates. Dots are coloured by level, as the report colours them.
+  function trendSVG(small){
+    var pts=[.62,.70,.64,.72,.74,.71,.78,.76,.80];
+    var W=small?360:520,H=small?90:220,pl=small?8:42,pr=10,pt=small?10:14,pb=small?12:34,iw=W-pl-pr,ih=H-pt-pb,n=pts.length,o='';
+    function X(i){return pl+iw*i/(n-1);}
+    // the full chart keeps the report's headroom; the compact trace spreads the same shape over its own height
+    function Y(v){return pt+ih*(1-(small?(v-.6)/.22*.7+.15:v));}
+    if(!small){
+      o+='<rect x="'+pl+'" y="'+pt+'" width="'+iw+'" height="'+ih+'" fill="none" stroke="var(--ink)" stroke-width="1"/>';
+      o+='<text x="'+(pl-12)+'" y="'+(pt+ih/2)+'" text-anchor="middle" font-size="11" fill="var(--ink3)" transform="rotate(-90 '+(pl-12)+' '+(pt+ih/2)+')">'+(da?'Samlet score':'Overall score')+'</text>';
+      o+='<text x="'+(pl+iw/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="11" fill="var(--ink3)">'+(da?'Måling for måling':'Test by test')+'</text>';
+    }
+    o+='<polyline points="'+pts.map(function(v,i){return X(i).toFixed(1)+','+Y(v).toFixed(1);}).join(' ')+'" fill="none" stroke="var(--ink)" stroke-width="1.5"/>';
+    var cols=['#E9D95B','#9BCB6A','#4FB29B','#2C7F8E','#1F4A77','#141F61'];
+    pts.forEach(function(v,i){var c=cols[Math.max(0,Math.min(5,Math.floor((v-.6)/.035)))];o+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(v).toFixed(1)+'" r="'+(small?4.5:7)+'" fill="'+c+'"/>';});
+    return '<svg class="trend" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(da?'Skematisk forløb af den samlede score over flere målinger':'Schematic trend of the overall score across several tests')+'">'+o+'</svg>';
+  }
+  document.querySelectorAll('.trendSlot').forEach(function(e){e.innerHTML=trendSVG(!!e.getAttribute('data-small'));});
 
   var scoreRows=SYS.map(function(s){var n=loc==='da'?s.da:s.ui;
     return '<li><span class="l"><span style="min-width:170px;font-size:15px">'+n+'</span><span class="micro"><span class="ref" style="left:0;width:100%"></span><span class="tick" style="left:'+s.score+'%"></span></span></span><span class="v">'+nf(s.score)+'</span></li>';}).join('');

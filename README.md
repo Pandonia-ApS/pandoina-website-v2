@@ -1,4 +1,22 @@
-# Pandonia — website v2
+# Pandonia — website v3
+
+**v3 is the brand and content migration of v2.** Same routes, navigation,
+DA/EN switching, booking links and clinical gate. What changed: the identity
+(off-white, black, warm sand, acid-yellow accent; Arimo and Tinos, the web
+versions of the fonts in Pandonia's own brand documents), the report language
+(six-system radar, zoned biomarker bar, range definitions, score over time),
+image grading (sharp = Pandonia, soft = atmosphere) and copy tone. The full
+plan and every open conflict are in [`docs/brand-migration.md`](docs/brand-migration.md).
+
+Live preview: https://pandonia-aps.github.io/pandoina-website-v2/ (now v3).
+
+**v2 is kept, not overwritten.** The last v2 commit is tagged `v2`
+(`8852aa4`), so the two can always be compared or restored:
+
+- see v2's files on GitHub: switch the branch selector to the `v2` tag
+- compare: `git diff v2 main`
+- open v2 locally: `git checkout v2`, then open `preview/index.html`
+- publish v2 again later, e.g. in its own repository: `git push <new-remote> v2:main`
 
 Complete redesign: design system, content architecture, clinical content gate,
 bilingual production codebase, and a clickable preview.

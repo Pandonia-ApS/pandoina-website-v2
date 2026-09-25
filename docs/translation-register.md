@@ -137,3 +137,34 @@ English legal copy rather than translation.
 **The English site is further from launch than the Danish one**, and not because
 of translation. Every clinical sentence needs separate English sign-off, and
 the six model labels have a published conflict that no translator can resolve.
+
+---
+
+## v3 · Brand & content migration — new strings
+
+Added in v3. Danish marked `requires_review` is Claude's translation of English
+source material and has not been signed off.
+
+| Section | Danish | English | Translation | Source |
+|---|---|---|---|---|
+| Hero sub | En blodprøve hjemme hos dig. Analyseret i vores eget laboratorium i København. Gennemgået med en læge, hvis du vil. | A blood test at your home. Analysed in our own laboratory in Copenhagen. Reviewed with a doctor, if you want. | `translated` | site facts |
+| Beat 03 h | Kend dine tal. | Know your numbers. | `translated` | Pandonia feed |
+| Four steps h | Fire trin. Otteogfyrre timer. | Four steps. Forty-eight hours. | `requires_review` | landing page (B2B), verbatim EN |
+| Four steps sub | Fra bestilling til en rapport, der er klar til klinikeren. Samme arbejdsgang, uanset om du kører fem tests om måneden eller fem hundrede. | From order to clinician-ready report. The same workflow whether you run five tests a month or five hundred. | `requires_review` | landing page (B2B), verbatim EN |
+| Step 01 | Du bestiller — Vælg et panel, eller sammensæt dit eget fra markørbiblioteket, i partnerportalen. | You order — Pick a panel or build your own from the marker library, in the partner portal. | `requires_review` | landing page (B2B) |
+| Step 02 | Vi indsamler — Blodprøvetagning hjemme hos dig, på vores prøvetagningssted i København eller i din klinik. | We collect — Concierge phlebotomy at home, our Copenhagen draw station, or at your clinic. | `requires_review` | landing page (B2B) |
+| Step 03 | Vi analyserer — Analyseret i vores eget laboratorium på Randox-udstyr. Kvalitetskontrolleret og godkendt. | We analyse — Processed in our own lab on Randox equipment. Quality controlled, signed off. | `requires_review` | landing page (B2B) |
+| Step 04 | Svar på 48 timer — En rapport, der er klar til klinikeren, leveret i din portal. Klar til at dele med din klient. | Results in 48h — Clinician-ready report delivered to your portal. Ready to share with your client. | `requires_review` | landing page (B2B) |
+| Systems h | Seks systemer. Én blodprøve. | Six systems. One blood test. | `translated` | — |
+| Score basis | Rapporten scorer hvert system ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder. | Your report scores each system on how close your values are to Pandonia's optimal ranges. | `requires_review` | report guide |
+| Range: optimal | Viser de niveauer, hvor vi vurderer, at kroppen fungerer mest balanceret og robust — både her og nu og på lang sigt. | Shows the levels where we assess that the body functions most balanced and robustly, both here and now and in the long term. | `requires_review` | report guide |
+| Range: reference | De værdier, sundhedsvæsenet i Danmark bruger som normale. For nogle biomarkører svarer referenceområdet til det optimale område. | The values that the healthcare system in Denmark uses as normal. For some biomarkers, the reference range corresponds to the optimal range. | `requires_review` | report guide |
+| Range: outside | Værdier uden for de anbefalede grænser. Det kan være tegn på en ubalance eller mangel og bør ses i sammenhæng med dit samlede helbred. | Values outside the recommended limits. This may be a sign of an imbalance or deficiency and should be viewed in the context of your overall health. | `requires_review` | report guide |
+| Closing | Mål. Forstå. Handl. — Det tredje skridt er dit. | Measure. Understand. Act. — The third step is yours. | `translated` | Pandonia feed |
+| Saadan H1 | Hvad der sker med din prøve. | What happens to your sample. | `translated` | Pandonia feed |
+| FAQ | Hvad gør jeg, hvis jeg er i tvivl om mine resultater? | What should I do if I have doubts about my results? | `requires_review` | report guide |
+
+**Conflict to resolve before launch:** the four-step copy on the homepage is
+the B2B landing page's. It states 48 hours (elsewhere: same day, 2–4 hours),
+names Randox, and addresses clinics ("partner portal", "your client",
+"at your clinic"). Flagged in the preview's review layer.
