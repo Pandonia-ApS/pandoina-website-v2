@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="da" data-locale="da">
+<html lang="da" data-locale="da" data-review="off">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
@@ -160,6 +160,26 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .hrs{border-top:1px solid var(--ruleSoft)}
 .onDeepMuted{color:var(--onDeepMuted)}.onDeepQuiet{color:var(--onDeepQuiet)}
 
+/* ── SIX SYSTEMS ─────────────────────────────────────────────────
+   An editorial index, not a dashboard. Full-width rows: serif name,
+   one line of verified mono context, an action, a hairline +. No bars:
+   the old ones implied data nobody could explain. */
+.sysRow{border-bottom:1px solid var(--ruleInvSoft)}
+.sysRow:first-child{border-top:1px solid var(--ruleInvSoft)}
+.sysRow>details>summary{display:grid;grid-template-columns:minmax(0,1fr) 22px;grid-template-areas:"name plus" "ctx plus" "act plus";gap:7px 22px;align-items:start;padding:20px 12px 20px 0;margin-inline:-12px;padding-left:12px;transition:background 140ms cubic-bezier(.2,.6,.2,1)}
+@media(min-width:900px){.sysRow>details>summary{grid-template-columns:minmax(0,1.05fr) minmax(0,1.55fr) auto 22px;grid-template-areas:"name ctx act plus";align-items:center;gap:0 28px;padding-block:24px}}
+.sysRow>details>summary:hover{background:rgba(237,231,218,.035)}
+.sysName{grid-area:name;font-family:"Newsreader",Georgia,serif;font-weight:400;font-size:clamp(21px,1.5vw + 15px,29px);letter-spacing:-.015em;line-height:1.1}
+.sysCtx{grid-area:ctx;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--onDeepQuiet);line-height:1.5}
+.sysAct{grid-area:act;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--onDeepMuted);white-space:nowrap}
+.sysPlus{grid-area:plus;justify-self:end;align-self:start;font-size:17px;line-height:1.2;color:var(--onDeepQuiet);transition:transform 140ms cubic-bezier(.2,.6,.2,1)}
+@media(min-width:900px){.sysPlus{align-self:center}}
+.sysRow>details[open] .sysPlus{transform:rotate(45deg);color:var(--inkInv)}
+.sysRow>details[open]>summary .sysAct{color:var(--inkInv)}
+.sysBody{padding:0 0 26px;max-width:58ch}
+@media(min-width:900px){.sysBody{padding-left:calc(1.05 / 3.6 * 100%)}}
+.sysBody p{font-size:15px;line-height:1.55;color:var(--onDeepMuted)}
+
 .mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
 .mk>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:12px;align-items:center;padding-block:15px}
 @media(min-width:1024px){.mk>summary{grid-template-columns:minmax(0,1fr) 92px 118px 20px;gap:18px}}
@@ -201,6 +221,25 @@ footer{background:var(--deep);color:var(--inkInv)}
 .fgrid a:hover{color:var(--inkInv)}
 .fgrid li.gated{color:var(--onDeepQuiet);font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding-block:4px}
 
+/* ── REVIEW LAYER ────────────────────────────────────────────────
+   Customer view is the default. The clinical gate is NOT relaxed here:
+   a .pl block holds copy that is unapproved, so hiding its badge must
+   hide the copy too. Promoting a draft to plain body text by dropping
+   its label would be the one thing this whole system exists to prevent.
+   .pl.keep is the exception — the legal disclaimer, which a customer
+   should see even while its wording is unapproved. */
+html[data-review="off"] .tagP,
+html[data-review="off"] .tagV,
+html[data-review="off"] .phTag,
+html[data-review="off"] .revonly{display:none}
+html[data-review="off"] .pl:not(.keep){display:none}
+/* No approved English clinical copy exists for this beat, so in the English
+   customer view the section does not run at all. Fewer pages, not a lower bar. */
+html[data-review="off"][data-locale="en"] .enGate{display:none}
+html[data-review="off"] .pl.keep{border-left:none;padding-left:0;color:var(--onDeepQuiet)}
+html[data-review="off"] .pl.keep b{display:none}
+.revBtn{background:none;border:1px solid rgba(237,231,218,.3);color:var(--onDeepQuiet);font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;cursor:pointer;border-radius:2px}
+.revBtn[aria-pressed="true"]{color:var(--amber);border-color:var(--amber)}
 html[data-locale="da"] [data-lang="en"]{display:none}
 html[data-locale="en"] [data-lang="da"]{display:none}
 [data-page][hidden]{display:none}
@@ -211,7 +250,10 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 
 <div class="bar">
   <span data-da="Pandonia · klikbar prototype · DA + EN" data-en="Pandonia · clickable prototype · DA + EN">Pandonia</span>
-  <span class="m" id="routebar" style="color:var(--amber)">/da</span>
+  <span style="display:flex;align-items:center;gap:14px">
+    <button type="button" class="revBtn" id="revToggle" aria-pressed="false" data-da="Review-lag" data-en="Review layer">Review-lag</button>
+    <span class="m" id="routebar" style="color:var(--amber)">/da</span>
+  </span>
 </div>
 
 <header class="nav" id="nav"><div class="navin">
@@ -297,7 +339,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <p class="lab" style="margin-top:26px" data-da="Ingen henvisning · ingen venteliste" data-en="No referral · no waiting list">Ingen henvisning · ingen venteliste</p>
 </div></div></section>
 
-<section class="gSand"><div class="split sp4258 alStretch gapNone">
+<section class="gSand enGate"><div class="split sp4258 alStretch gapNone">
   <div class="phBox" style="min-height:340px">
     <img class="ph" src="../public/images/draw-home.webp" data-alt-da="En blodprøve tages i en arm med staseslange, hjemme ved et bord." data-alt-en="A blood sample being taken from an arm with a tourniquet, at home." alt="" style="position:absolute;inset:0;object-position:55% 50%">
     <span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span>
@@ -362,12 +404,12 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 
 <section class="gDeep" id="what-we-test"><div class="wrap std">
   <h2 class="s d3 measS" data-da="Seks systemer. Én blodprøve." data-en="Six systems. One blood test.">Seks systemer. Én blodprøve.</h2>
-  <p class="bd onDeepMuted measN" style="margin:14px 0 8px" data-da="Pandonia-modellen følger de systemer, kroppen faktisk arbejder i." data-en="The Pandonia model follows the systems the body actually works in.">Pandonia-modellen følger de systemer, kroppen faktisk arbejder i.</p>
-  <p class="lab" style="margin-bottom:30px" data-da="Navne verificeret fra Pandonias FAQ og rapport-UI" data-en="Names verified from Pandonia's FAQ and report UI">Navne verificeret</p>
-  <ul class="rows" id="sysHome"></ul>
-  <div class="hrInv" style="margin-top:28px;padding-top:18px">
-    <p class="pl bdS" style="max-width:64ch" data-lang="da"><b>Terminologi til gennemsyn</b>Pandonias rapport-UI kalder de samme seks systemer Signaling · Highway · Digestion · Energy · Defense · Waste. To offentliggjorte engelske navnesæt er uenige om tre af seks.</p>
-    <p class="pl bdS" style="max-width:64ch" data-lang="en"><b>Terminology under review</b>Pandonia's report UI labels the same six systems Signaling · Highway · Digestion · Energy · Defense · Waste. Two published English label sets disagree on three of six.</p>
+  <p class="bd onDeepMuted measN" style="margin:14px 0 34px" data-da="Pandonia-modellen følger de systemer, kroppen faktisk arbejder i." data-en="The Pandonia model follows the systems the body actually works in.">Pandonia-modellen følger de systemer, kroppen faktisk arbejder i.</p>
+  <ul id="sysHome"></ul>
+  <div style="margin-top:30px">
+    <p class="lab revonly" style="margin-bottom:14px" data-da="Navne verificeret fra Pandonias FAQ og rapport-UI" data-en="Names verified from Pandonia's FAQ and report UI">Navne verificeret</p>
+    <p class="pl bdS revonly" style="max-width:64ch" data-lang="da"><b>Terminologi til gennemsyn</b>To offentliggjorte engelske navnesæt er uenige om tre af seks. Rækkerne viser rapport-UI'ets navne, fordi det er dem kunden faktisk møder.</p>
+    <p class="pl bdS revonly" style="max-width:64ch" data-lang="en"><b>Terminology under review</b>Two published English label sets disagree on three of six. The rows show the report UI's names, because those are the ones a customer actually meets.</p>
     <div style="margin-top:18px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">Se alle markører</span> <span aria-hidden="true">→</span></a></div>
   </div>
 </div></section>
@@ -453,12 +495,12 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <section class="gDeep"><div class="wrap std">
     <h2 class="s d3 measS" data-da="Kroppen arbejder ikke i kasser." data-en="The body does not work in boxes.">Kroppen arbejder ikke i kasser.</h2>
     <p class="bd onDeepMuted measN" style="margin-top:14px" data-da="Pandonia-modellen beskriver seks systemer. En markør hører sjældent kun ét sted til." data-en="The Pandonia model describes six systems. A marker rarely belongs to just one.">Pandonia-modellen beskriver seks systemer.</p>
-    <ul class="rows" id="sysPage" style="margin-top:30px"></ul>
-    <p class="pl bdS" style="max-width:66ch;margin-top:26px" data-lang="da"><b>Niveau 3 — afventer klinisk godkendelse</b>Enheder, referenceområder, markør-til-system-mapping, fortolkning og scoreberegning findes ikke offentligt og er ikke gættet.</p>
-    <p class="pl bdS" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
+    <ul id="sysPage" style="margin-top:30px"></ul>
+    <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="da"><b>Niveau 3 — afventer klinisk godkendelse</b>Enheder, referenceområder, markør-til-system-mapping, fortolkning og scoreberegning findes ikke offentligt og er ikke gættet.</p>
+    <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
   </div></section>
   <section class="gSand"><div class="wrap std">
-    <h2 class="s d3 fg measS" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h2>
+    <h2 class="s d3 fg measS revonly" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h2>
     <p class="pl bd measN" style="margin-top:20px" data-lang="da"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet.</p>
     <p class="pl bd measN" style="margin-top:20px" data-lang="en"><b>Awaiting clinical text</b>A short section on what the test does not cover, and when to speak to your own doctor instead.</p>
     <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
@@ -515,9 +557,9 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     </div>
     <dl style="display:grid;grid-template-columns:1fr;gap:26px 40px;margin-top:32px" class="g4">
       <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Adresse" data-en="Address">Adresse</dt><dd class="bdS onDeepMuted">Langebrogade 3A, 2. sal<br>1411 København K</dd></div>
-      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Akkreditering" data-en="Accreditation">Akkreditering</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Under hvilken godkendelse laboratoriet drives." data-en="Under what accreditation the laboratory operates.">Under hvilken godkendelse laboratoriet drives.</span></dd></div>
-      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Metode" data-en="Method">Metode</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvilke analyser køres i huset." data-en="Which analyses run in-house.">Hvilke analyser køres i huset.</span></dd></div>
-      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Kvalitetskontrol" data-en="Quality control">Kvalitetskontrol</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvordan resultater kontrolleres." data-en="How results are checked.">Hvordan resultater kontrolleres.</span></dd></div>
+      <div class="revonly"><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Akkreditering" data-en="Accreditation">Akkreditering</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Under hvilken godkendelse laboratoriet drives." data-en="Under what accreditation the laboratory operates.">Under hvilken godkendelse laboratoriet drives.</span></dd></div>
+      <div class="revonly"><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Metode" data-en="Method">Metode</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvilke analyser køres i huset." data-en="Which analyses run in-house.">Hvilke analyser køres i huset.</span></dd></div>
+      <div class="revonly"><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Kvalitetskontrol" data-en="Quality control">Kvalitetskontrol</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvordan resultater kontrolleres." data-en="How results are checked.">Hvordan resultater kontrolleres.</span></dd></div>
     </dl>
   </div></section>
 
@@ -717,8 +759,8 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     </ul></nav>
   </div>
   <div class="hrInv" style="margin-top:34px;padding-top:20px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between">
-    <p class="pl bdS" style="max-width:62ch" data-lang="da"><b>Afventer godkendelse</b>Pandonias tests erstatter ikke lægelig undersøgelse, diagnose eller behandling. Har du symptomer eller er du i tvivl, så kontakt din egen læge eller lægevagten.</p>
-    <p class="pl bdS" style="max-width:62ch" data-lang="en"><b>Awaiting legal approval — English</b>Pandonia's tests do not replace medical examination, diagnosis or treatment. If you have symptoms or are in any doubt, contact your own doctor or the out-of-hours medical service.</p>
+    <p class="pl keep bdS" style="max-width:62ch" data-lang="da"><b>Afventer godkendelse</b>Pandonias tests erstatter ikke lægelig undersøgelse, diagnose eller behandling. Har du symptomer eller er du i tvivl, så kontakt din egen læge eller lægevagten.</p>
+    <p class="pl keep bdS" style="max-width:62ch" data-lang="en"><b>Awaiting legal approval — English</b>Pandonia's tests do not replace medical examination, diagnosis or treatment. If you have symptoms or are in any doubt, contact your own doctor or the out-of-hours medical service.</p>
     <p class="lab onDeepQuiet">Dansk · English</p>
   </div>
 </div></footer>
@@ -770,8 +812,12 @@ var PRIN={da:[['Hver måling har sit eget område','Ikke en karakter, ikke en fa
  en:[['Every measurement has its own range','Not a grade, not a colour that judges. You can see exactly where you sit and how far it is to the edge.'],['Some markers have no single range','Ratios between two values are shown without a band. The report says so rather than pretending.'],['Reference ranges can vary','Where sex or age matters, both ranges are shown.'],['Over time','Test again and the new measurement lays over the old one.']]};
 var STEPS={da:[['01','Du får en bekræftelse','Med tid, adresse og hvad du skal gøre aftenen inden.'],['02','Vi ringer på','Fem minutter ved dit eget bord.'],['03','Rapporten kommer','Samme dag. Du får en mail, når den ligger klar.'],['04','Du booker samtalen','Når du har haft svaret i mindst tre timer.']],
  en:[['01','You get a confirmation','With time, address and what to do the evening before.'],['02','We ring the doorbell','Five minutes at your own table.'],['03','The report arrives','The same day. You get an email when it is ready.'],['04','You book the conversation','Once you have had the result for at least three hours.']]};
-var T={da:{what:'Hvad er det',why:'Hvorfor måler vi det',unit:'Måleenhed',range:'Referenceområde',sysL:'System',also:'Også kaldet',source:'Kilde til navnet',panel:'Panel — indhold ikke offentliggjort',prod:'Produkt — ikke en blodmarkør',pend:'Afventer',awT:'Afventer klinisk tekst',awL:'Afventer laboratoriet',ver:'Navn verificeret',sub:'Klinisk beskrivelse afventer godkendelse.',mk:'markører',cnt:function(n,t){return n===t?t+' markører':n+' af '+t+' vist'},incl:'Health Test'},
-       en:{what:'What it is',why:'Why we measure it',unit:'Unit',range:'Reference range',sysL:'System',also:'Also called',source:'Source of the name',panel:'Panel — contents not published',prod:'Product — not a blood marker',pend:'Pending',awT:'Awaiting clinical text',awL:'Awaiting the laboratory',ver:'Name verified',sub:'Clinical description awaiting approval.',mk:'markers',cnt:function(n,t){return n===t?t+' markers':n+' of '+t+' shown'},incl:'Health Test'}};
+var T={da:{what:'Hvad er det',why:'Hvorfor måler vi det',unit:'Måleenhed',range:'Referenceområde',sysL:'System',also:'Også kaldet',source:'Kilde til navnet',panel:'Panel — indhold ikke offentliggjort',prod:'Produkt — ikke en blodmarkør',pend:'Afventer',awT:'Afventer klinisk tekst',awL:'Afventer laboratoriet',ver:'Navn verificeret',sub:'Klinisk beskrivelse afventer godkendelse.',mk:'markører',cnt:function(n,t){return n===t?t+' markører':n+' af '+t+' vist'},incl:'Health Test',inclL:'Indgår i',prodL:'Selvstændigt produkt',
+        inReport:'I rapporten:',seeMk:'Se markører',allMk:'Se alle markører',
+        sysNote:'Vi er ved at lægge markørerne ind under hvert system. Indtil da kan du se dem alle samlet.'},
+       en:{what:'What it is',why:'Why we measure it',unit:'Unit',range:'Reference range',sysL:'System',also:'Also called',source:'Source of the name',panel:'Panel — contents not published',prod:'Product — not a blood marker',pend:'Pending',awT:'Awaiting clinical text',awL:'Awaiting the laboratory',ver:'Name verified',sub:'Clinical description awaiting approval.',mk:'markers',cnt:function(n,t){return n===t?t+' markers':n+' of '+t+' shown'},incl:'Health Test',inclL:'Included in',prodL:'Separate product',
+        inReport:'In your report:',seeMk:'See markers',allMk:'See all markers',
+        sysNote:'We are still assigning the markers to each system. Until then you can see them all together.'}};
 var ROUTES={da:{home:'/da',maaler:'/da/hvad-vi-maaler',saadan:'/da/saadan-fungerer-det',rapport:'/da/din-rapport',om:'/da/om-pandonia',faq:'/da/faq',book:'/da/book'},
             en:{home:'/en',maaler:'/en/what-we-test',saadan:'/en/how-it-works',rapport:'/en/your-report',om:'/en/about-pandonia',faq:'/en/faq',book:'/en/book'}};
 var ANCHOR_PAGE={'what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','pricing':'home','laboratoriet':'saadan'};
@@ -781,8 +827,18 @@ function dkk(v){return v===null?null:(loc==='da'?new Intl.NumberFormat('da-DK').
 
 function renderAll(){
   var t=T[loc];
-  var sysRows=SYS.map(function(s){var n=loc==='da'?s.da:s.en;
-    return '<li><span class="l"><span class="s" style="min-width:220px;font-size:clamp(19px,1.9vw,26px)">'+n+(s.flag&&loc==='en'?' <span class="tagP" style="margin-left:8px;vertical-align:middle">Conflict</span>':'')+(s.flag&&loc==='da'?' <span class="tagP" style="margin-left:8px;vertical-align:middle">Terminologi</span>':'')+'</span><span class="micro"><span class="ref" style="left:22%;width:54%"></span></span></span><span class="v onDeepQuiet"><span class="dash">—</span> '+t.mk+'</span></li>';}).join('');
+  // No marker-to-system mapping is published, so no counts and no
+  // representative markers. The one verified per-system fact that helps a
+  // customer is the label their own report uses.
+  var sysRows=SYS.map(function(s,i){var n=loc==='da'?s.da:s.en;
+    return '<li class="sysRow"><details><summary>'+
+      '<span class="sysName">'+n+'</span>'+
+      '<span class="sysCtx">'+t.inReport+' '+s.ui+'</span>'+
+      '<span class="sysAct">'+t.seeMk+'</span>'+
+      '<span class="sysPlus" aria-hidden="true">+</span></summary>'+
+      '<div class="sysBody"><p>'+t.sysNote+'</p>'+
+      '<div style="margin-top:14px"><a class="lnk" data-route="maaler"><span>'+t.allMk+'</span> <span aria-hidden="true">→</span></a></div>'+
+      '</div></details></li>';}).join('');
   ['sysHome','sysPage'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML=sysRows;});
 
   var scoreRows=SYS.map(function(s){var n=loc==='da'?s.da:s.ui;
@@ -790,18 +846,23 @@ function renderAll(){
   ['scoreHome','scoreReport'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML=scoreRows;});
 
   var ml=document.getElementById('mklist');
+  // Customer view never shows an em-dash where a value is missing, and never
+  // shows a QA badge. Only verified fields survive: what the marker is called,
+  // and which product it is part of.
   if(ml) ml.innerHTML=MARK.map(function(m){var n=loc==='da'?m.da:m.en,also=loc==='da'?m.aDa:m.aEn;
-    return '<details class="mk" data-k="'+m.k+' '+n.toLowerCase()+'"><summary><span><span class="nm">'+n+'</span><span class="sub pl"><b>'+t.awT+'</b>'+t.sub+'</span></span><span class="col">—</span><span class="col">'+(m.prod?'—':t.incl)+'</span><span class="chev">+</span></summary><div class="mkbody"><dl>'+
-    (m.p?'<dt>'+t.range+'</dt><dd><span class="tagP">'+t.panel+'</span></dd>':'')+
-    (m.prod?'<dt>'+t.range+'</dt><dd><span class="tagP">'+t.prod+'</span></dd>':'')+
+    var inc=m.prod?t.prodL:t.incl;
+    return '<details class="mk" data-k="'+m.k+' '+n.toLowerCase()+'"><summary><span><span class="nm">'+n+'</span><span class="sub pl"><b>'+t.awT+'</b>'+t.sub+'</span></span><span class="col revonly">'+t.pend+'</span><span class="col">'+inc+'</span><span class="chev">+</span></summary><div class="mkbody"><dl>'+
+    '<dt>'+t.inclL+'</dt><dd>'+inc+'</dd>'+
     (also?'<dt>'+t.also+'</dt><dd>'+also+'</dd>':'')+
-    '<dt>'+t.source+'</dt><dd>'+m.src+' <span class="tagV" style="margin-left:6px">'+t.ver+'</span></dd>'+
-    '<dt>'+t.what+'</dt><dd><span class="pl" style="display:block"><b>'+t.awT+'</b>'+t.sub+'</span></dd>'+
-    '<dt>'+t.why+'</dt><dd><span class="pl" style="display:block"><b>'+t.awT+'</b>'+t.sub+'</span></dd>'+
-    '<dt>'+t.unit+'</dt><dd><span class="tagP">'+t.awL+'</span></dd>'+
-    '<dt>'+t.range+'</dt><dd><span class="tagP">'+t.awL+'</span></dd>'+
-    '<dt>'+t.sysL+'</dt><dd><span class="tagP">'+t.pend+'</span></dd></dl>'+
-    '<div class="mkside"><p class="lab" style="margin-bottom:12px">'+t.range+'</p><div class="band"><div class="none"></div></div><div class="axis"><span>—</span><span>'+t.awL.toUpperCase()+'</span><span>—</span></div></div></div></details>';}).join('');
+    (m.p?'<dt class="revonly">'+t.range+'</dt><dd class="revonly"><span class="tagP">'+t.panel+'</span></dd>':'')+
+    (m.prod?'<dt class="revonly">'+t.range+'</dt><dd class="revonly"><span class="tagP">'+t.prod+'</span></dd>':'')+
+    '<dt class="revonly">'+t.source+'</dt><dd class="revonly">'+m.src+' <span class="tagV" style="margin-left:6px">'+t.ver+'</span></dd>'+
+    '<dt class="revonly">'+t.what+'</dt><dd class="revonly"><span class="pl" style="display:block"><b>'+t.awT+'</b>'+t.sub+'</span></dd>'+
+    '<dt class="revonly">'+t.why+'</dt><dd class="revonly"><span class="pl" style="display:block"><b>'+t.awT+'</b>'+t.sub+'</span></dd>'+
+    '<dt class="revonly">'+t.unit+'</dt><dd class="revonly"><span class="tagP">'+t.awL+'</span></dd>'+
+    '<dt class="revonly">'+t.range+'</dt><dd class="revonly"><span class="tagP">'+t.awL+'</span></dd>'+
+    '<dt class="revonly">'+t.sysL+'</dt><dd class="revonly"><span class="tagP">'+t.pend+'</span></dd></dl>'+
+    '<div class="mkside revonly"><p class="lab" style="margin-bottom:12px">'+t.range+'</p><div class="band"><div class="none"></div></div><div class="axis"><span>—</span><span>'+t.awL.toUpperCase()+'</span><span>—</span></div></div></div></details>';}).join('');
   filter();
 
   var rp=document.getElementById('rangePrinciples');
@@ -809,7 +870,7 @@ function renderAll(){
 
   var fb=document.getElementById('faqBody');
   if(fb) fb.innerHTML=FAQ[loc].map(function(g){return '<div class="hr" style="padding-block:clamp(26px,4vw,44px)"><div class="split sp4258 alStart"><h2 class="s d3 fg">'+g[0]+'</h2><div>'+
-    g[1].map(function(q){return '<details class="qa"><summary><span>'+q[0]+'</span><span class="chev">+</span></summary><div class="ans">'+
+    g[1].map(function(q){return '<details class="qa'+(q[2]?'':' revonly')+'"><summary><span>'+q[0]+'</span><span class="chev">+</span></summary><div class="ans">'+
       (q[2]?'<p class="bd">'+q[1]+'</p><div style="margin-top:12px"><span class="tagV">'+(loc==='da'?'Verificeret · pandonia.com':'Verified · pandonia.com')+'</span></div>'
            :'<p class="pl bd"><b>'+(loc==='da'?'Afventer godkendelse':'Awaiting sign-off')+'</b>'+(loc==='da'?'Svaret findes ikke bekræftet på pandonia.com, eller det modsiger andre kilder.':'The answer is not confirmed on pandonia.com, or it contradicts another source.')+'</p>')+
       '</div></details>';}).join('')+'</div></div></div>';}).join('')+
@@ -878,6 +939,20 @@ document.getElementById('btnEn').addEventListener('click',function(){setLocale('
 document.querySelectorAll('.mlang').forEach(function(b){b.addEventListener('click',function(){setLocale(b.getAttribute('data-loc'));});});
 document.addEventListener('input',function(e){if(e.target.id==='mkf')filter();});
 window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('stuck',window.scrollY>8);},{passive:true});
+
+// Review layer. Customer view is the default; the gate itself is untouched —
+// unapproved copy is hidden here, never promoted to plain body text.
+var revBtn=document.getElementById('revToggle');
+function setReview(on){
+  root.setAttribute('data-review',on?'on':'off');
+  revBtn.setAttribute('aria-pressed',String(on));
+  try{localStorage.setItem('pandonia-review',on?'1':'0');}catch(e){}
+}
+revBtn.addEventListener('click',function(){setReview(root.getAttribute('data-review')!=='on');});
+var revStart=false;
+try{revStart=localStorage.getItem('pandonia-review')==='1';}catch(e){}
+if(/[?&#]review=1\b/.test(location.search+location.hash))revStart=true;
+setReview(revStart);
 
 var saved=null;try{saved=localStorage.getItem('pandonia-locale');}catch(e){}
 setLocale(saved==='en'?'en':'da');
