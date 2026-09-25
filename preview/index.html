@@ -258,7 +258,9 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 /* benefit rows — and the Essential Tests list, which uses the same pattern */
 .mbRows li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n f" "d d";gap:5px 20px;padding-block:18px;border-bottom:1px solid var(--ruleSoft)}
 .mbRows li:first-child{border-top:1px solid var(--rule)}
-@media(min-width:900px){.mbRows li{grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr) auto;grid-template-areas:"n d f";align-items:baseline;gap:0 32px;padding-block:20px}}
+/* fixed last column: each row is its own grid, so an auto column would let a
+   longer frequency label shift that row's description out of line */
+@media(min-width:900px){.mbRows li{grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr) 220px;grid-template-areas:"n d f";align-items:baseline;gap:0 32px;padding-block:20px}}
 .mbN{grid-area:n;font-family:"Newsreader",Georgia,serif;font-size:clamp(19px,.7vw + 15px,23px);letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
 .mbD{grid-area:d;font-size:15px;line-height:1.5;color:var(--ink2)}
 .mbF{grid-area:f;justify-self:end;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--forest);white-space:nowrap;text-align:right}
