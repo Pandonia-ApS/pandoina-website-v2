@@ -15,7 +15,7 @@ Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 | `rum.jpg` | Pandonia `02-2c6a38a3` (1800×1200) | 3:2, full frame | Premises — full-bleed |
 | `rum2.jpg` | Pandonia `02-2c6a38a3` | 1100,0 · 700×933 → 3:4 | Premises, wordmark wall |
 | `laptop.jpg` | Pandonia `15-8d9cdda1` | 3:4, full frame | Report on screen |
-| `screen.jpg` | Pandonia `15-8d9cdda1` | 120,2000 · 1100×825 → 4:3 | Product UI detail |
+| `screen.jpg` | Pandonia `15-8d9cdda1` | 120,2000 · 1100×825 → 4:3 | **Unused** — was the product UI detail |
 | `t1.jpg` | Pandonia `12-09df526c` | 480×600 | Team portrait |
 | `t2.jpg` | Pandonia `16-55e9dd65` | 480×600 | Team portrait |
 | `t3.jpg` | Pandonia `18-e78c841d` | 480×600 | Team portrait |
@@ -67,6 +67,30 @@ consent for web use regardless.
 | Status | **Holding image.** Replace with Pandonia's own hero photograph |
 
 ## Supplied by the client — rights not documented
+
+| File | `report-deck.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1339 × 1036, used as supplied, displayed uncropped |
+| Placement | *Din rapport* → "Pandonias nuværende rapport", replacing `screen.jpg` |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+A hybrid: the content on screen is genuinely Pandonia's — the Health Model & Lab
+Results deck, with the Pandonia Score radar and the biomarker slides visible in
+the rail — but the photograph around it is a staged scene. Tagged "Ægte UI ·
+stock-foto / Real UI · stock photo" to separate the two claims.
+
+**It does not show what the copy beside it describes.** That paragraph reads
+*"en samlet Pandonia Score og seks systemscorer"*, and this is the deck's cover
+slide. The image it replaced, `screen.jpg`, was a crop of the actual score
+dashboard. The placeholder note in that section has been rewritten to say so
+rather than leaving the mismatch unmarked.
+
+`screen.jpg` stays in the repository — it is the only genuine capture of the
+score dashboard — but is **no longer referenced by any page.**
 
 | File | `samtale.webp` |
 |---|---|
