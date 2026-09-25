@@ -180,6 +180,49 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 @media(min-width:900px){.sysBody{padding-left:calc(1.05 / 3.6 * 100%)}}
 .sysBody p{font-size:15px;line-height:1.55;color:var(--onDeepMuted)}
 
+/* ── OVER TIME ───────────────────────────────────────────────────
+   Centred headline, three points, two marker streams running past the
+   viewport edges, one result card in front of both. */
+.ovt{overflow:hidden;padding-block:clamp(72px,10vw,150px) clamp(64px,8vw,120px)}
+.ovtHead{text-align:center}
+.ovtTitle{max-width:17ch;margin:0 auto}
+.ovtPts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 44px;margin-top:clamp(24px,3vw,34px);font-size:15px;color:var(--ink2)}
+.ovtPts li{display:flex;align-items:center;gap:10px}
+/* the same tick-on-hairline mark as the hero timeline */
+.ovtGl{position:relative;display:inline-block;width:16px;height:9px;flex:0 0 auto}
+.ovtGl::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(65,90,59,.45)}
+.ovtGl::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--forest)}
+@media(max-width:640px){.ovtPts{flex-direction:column;align-items:center;gap:10px}}
+
+.ovtStage{position:relative;display:flex;justify-content:center;margin-top:clamp(52px,7vw,92px);padding-block:10px}
+.mq{position:absolute;left:0;right:0;overflow:hidden;white-space:nowrap;transform:translateY(-50%);pointer-events:none}
+.mq1{top:31%}.mq2{top:69%}
+.mqTrack{display:inline-flex;width:max-content;animation:mqL 170s linear infinite}
+.mqTrack.rev{animation-name:mqR;animation-duration:200s}
+.mqTrack span{font-family:"Newsreader",Georgia,serif;font-size:clamp(26px,2.4vw + 12px,46px);letter-spacing:-.015em;line-height:1.25;color:rgba(38,32,26,.30);padding-inline:.42em}
+.mqTrack .dot{color:rgba(65,90,59,.38);padding-inline:0}
+@keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.mqTrack,.mqTrack.rev{animation:none}}
+
+.rcard{position:relative;z-index:2;width:min(88vw,420px);margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:clamp(18px,2vw,26px);box-shadow:0 30px 60px -34px rgba(38,32,26,.28)}
+.rcHead{display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--ruleSoft)}
+.rcHead .lab{font-size:9.5px}
+.rcTitle{margin-top:16px;font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,1vw + 17px,27px);letter-spacing:-.015em;line-height:1.15;color:var(--forest)}
+.rcRows{margin-top:18px;display:grid;gap:12px}
+.rcRows li{display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px;align-items:center}
+.rcL{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.rcBand{position:relative;display:block;height:14px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.rcBand .ref{position:absolute;top:0;bottom:0;left:30%;width:44%;background:rgba(160,184,159,.36)}
+.rcBand .tk{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:rgba(38,32,26,.42)}
+.rcRows li.now .rcL{color:var(--ink)}
+.rcRows li.now .tk{background:var(--amber)}
+.rcAxis{display:flex;justify-content:space-between;margin:10px 0 0 106px;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.rcCap{margin-top:16px;padding-top:12px;border-top:1px solid var(--ruleSoft);font-size:13px;line-height:1.5;color:var(--ink3)}
+@media(max-width:480px){.rcRows li{grid-template-columns:78px minmax(0,1fr);gap:10px}.rcAxis{margin-left:88px}}
+
+.ovtCta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:22px;margin-top:clamp(52px,7vw,88px)}
+
 .mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
 .mk>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:12px;align-items:center;padding-block:15px}
 @media(min-width:1024px){.mk>summary{grid-template-columns:minmax(0,1fr) 92px 118px 20px;gap:18px}}
@@ -499,15 +542,53 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="da"><b>Niveau 3 — afventer klinisk godkendelse</b>Enheder, referenceområder, markør-til-system-mapping, fortolkning og scoreberegning findes ikke offentligt og er ikke gættet.</p>
     <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
   </div></section>
-  <section class="gSand"><div class="wrap std">
-    <h2 class="s d3 fg measS revonly" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h2>
-    <p class="pl bd measN" style="margin-top:20px" data-lang="da"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet.</p>
-    <p class="pl bd measN" style="margin-top:20px" data-lang="en"><b>Awaiting clinical text</b>A short section on what the test does not cover, and when to speak to your own doctor instead.</p>
-    <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
-      <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-      <a class="lnk" data-route="rapport"><span data-da="Se hvordan resultatet ser ud" data-en="See what the result looks like">Se hvordan resultatet ser ud</span> <span aria-hidden="true">→</span></a>
+  <section class="gSand ovt">
+    <!-- Over time: centred headline, three points, two slow marker streams
+         with a result card sitting in front of them. -->
+    <div class="wrap ovtHead">
+      <h2 class="s d2 fg ovtTitle" data-da="Følg dine egne tendenser over tid." data-en="Follow your own trends over time.">Følg dine egne tendenser over tid.</h2>
+      <p class="lab revonly" style="margin-top:12px" data-da="Omskrevet fra Pandonias egen tekst · Om Pandonia" data-en="Adapted from Pandonia's own text · About Pandonia">Omskrevet fra Pandonias egen tekst</p>
+      <ul class="ovtPts">
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Skab din baseline" data-en="Set your baseline">Skab din baseline</span></li>
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Følg udviklingen over tid" data-en="Follow the change over time">Følg udviklingen over tid</span></li>
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Se dine markører i sammenhæng" data-en="See your markers in context">Se dine markører i sammenhæng</span></li>
+      </ul>
     </div>
-  </div></section>
+
+    <div class="ovtStage">
+      <div class="mq mq1" aria-hidden="true"><div class="mqTrack" id="mqA"></div></div>
+      <div class="mq mq2" aria-hidden="true"><div class="mqTrack rev" id="mqB"></div></div>
+      <figure class="rcard" aria-labelledby="rcTitle">
+        <div class="rcHead">
+          <span class="lab" data-da="Én markør · tre målinger" data-en="One marker · three measurements">Én markør · tre målinger</span>
+          <span class="lab" data-da="Illustration" data-en="Illustration">Illustration</span>
+        </div>
+        <p class="rcTitle" id="rcTitle" data-da="Det, der har flyttet sig." data-en="What has moved.">Det, der har flyttet sig.</p>
+        <ol class="rcRows">
+          <li><span class="rcL" data-da="Måling 1" data-en="Measurement 1">Måling 1</span><span class="rcBand"><span class="ref"></span><span class="tk" style="left:16%"></span></span></li>
+          <li><span class="rcL" data-da="Måling 2" data-en="Measurement 2">Måling 2</span><span class="rcBand"><span class="ref"></span><span class="tk" style="left:33%"></span></span></li>
+          <li class="now"><span class="rcL" data-da="Måling 3" data-en="Measurement 3">Måling 3</span><span class="rcBand"><span class="ref"></span><span class="tk" style="left:51%"></span></span></li>
+        </ol>
+        <div class="rcAxis"><span data-da="Under" data-en="Below">Under</span><span data-da="Inden for området" data-en="Within range">Inden for området</span><span data-da="Over" data-en="Above">Over</span></div>
+        <figcaption class="rcCap" data-da="Ingen værdier eller enheder — kun hvordan en måling kan flytte sig mellem to prøver." data-en="No values or units — only how a measurement can move between two tests.">Ingen værdier eller enheder.</figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap">
+      <div class="revonly" style="max-width:64ch;margin:40px auto 0">
+        <p class="lab" style="margin-bottom:10px" data-da="Til gennemsyn" data-en="For review">Til gennemsyn</p>
+        <p class="bdS" data-lang="da">"Baseline" er ikke et ord fra Pandonias eget materiale — de to andre punkter er støttet af "følge dine egne tendenser" og rapportens tidslinje-paneler. Kortet er skematisk: ingen markørnavn, ingen værdier, intet referenceområde.</p>
+        <p class="bdS" data-lang="en">"Baseline" is not a word from Pandonia's own material — the other two points are supported by "follow your own trends" and the report's timeline panels. The card is schematic: no marker name, no values, no reference range.</p>
+        <h3 class="hh3" style="margin-top:22px" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h3>
+        <p class="pl bd" style="margin-top:10px" data-lang="da"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet.</p>
+        <p class="pl bd" style="margin-top:10px" data-lang="en"><b>Awaiting clinical text</b>A short section on what the test does not cover, and when to speak to your own doctor instead.</p>
+      </div>
+      <div class="ovtCta">
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+        <a class="lnk" data-route="rapport"><span data-da="Se hvordan resultatet ser ud" data-en="See what the result looks like">Se hvordan resultatet ser ud</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- ═══════════ SÅDAN FUNGERER DET ═══════════ -->
@@ -840,6 +921,18 @@ function renderAll(){
       '<div style="margin-top:14px"><a class="lnk" data-route="maaler"><span>'+t.allMk+'</span> <span aria-hidden="true">→</span></a></div>'+
       '</div></details></li>';}).join('');
   ['sysHome','sysPage'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML=sysRows;});
+
+  // Marker streams: verified names only, drawn from MARK so they cannot drift
+  // from the marker list. Glucose Tracking is a product, not a blood marker,
+  // and the HbA1c alias is left out so no marker is counted twice.
+  function stream(idx){
+    var seq=idx.map(function(i){return '<span>'+(loc==='da'?MARK[i].da:MARK[i].en)+'</span><span class="dot">·</span>';}).join('');
+    var half=seq+seq+seq;              // wide enough to overrun a 2560px screen
+    return half+half;                  // two identical halves: -50% loops seamlessly
+  }
+  var mqA=document.getElementById('mqA'),mqB=document.getElementById('mqB');
+  if(mqA)mqA.innerHTML=stream([0,1,2,3,4,5,6,8]);
+  if(mqB)mqB.innerHTML=stream([7,10,11,9,12,13]);
 
   var scoreRows=SYS.map(function(s){var n=loc==='da'?s.da:s.ui;
     return '<li><span class="l"><span style="min-width:170px;font-size:15px">'+n+'</span><span class="micro"><span class="ref" style="left:0;width:100%"></span><span class="tick" style="left:'+s.score+'%"></span></span></span><span class="v">'+nf(s.score)+'</span></li>';}).join('');
