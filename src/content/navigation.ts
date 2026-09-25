@@ -42,7 +42,6 @@ export const footerNav = {
     { href: '/book', label: 'Book din blodprøve' },
     { href: '/faq', label: 'FAQ' },
     { href: '/virksomheder', label: 'For virksomheder' },
-    { href: '#', label: 'Gavekort' },
   ],
   juridisk: [
     { href: '/persondatapolitik', label: 'Persondatapolitik' },

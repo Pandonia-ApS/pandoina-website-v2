@@ -137,7 +137,7 @@ export const doctorAndLab = {
 export const pricing = {
   heading: 'To måder at begynde på.',
   footnote:
-    'Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som gavekort og virksomhedsordning.',
+    'Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som virksomhedsordning.',
   linkLabel: 'Se alle priser',
   linkHref: '/book',
 } as const;

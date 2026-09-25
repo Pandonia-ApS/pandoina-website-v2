@@ -110,7 +110,7 @@ export const bookingPage = {
     'Alt herunder foregår i København. Du skal ikke bruge henvisning, og du behøver ikke vide på forhånd, hvad du leder efter.',
   singleTestsHeading: 'Vil du begynde mindre?',
   singleTestsLead: 'Syv enkelttests, hvis du har ét bestemt spørgsmål.',
-  extrasNote: 'Også som gavekort, klippekort og virksomhedsordning.',
+  extrasNote: 'Også som klippekort og virksomhedsordning.',
   afterHeading: 'Hvad der sker, når du har booket',
   afterSteps: [
     { n: '01', title: 'Du får en bekræftelse', body: 'Med tid, adresse og hvad du skal gøre aftenen inden.' },
