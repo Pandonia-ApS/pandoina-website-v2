@@ -56,11 +56,14 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .navin{max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4vw,64px);min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 @media(min-width:1024px){.navin{min-height:72px}}
 .wm{font-family:"Newsreader",Georgia,serif;font-size:25px;letter-spacing:-.01em;color:var(--forest);cursor:pointer}
-.navlinks{display:none;gap:24px}@media(min-width:1024px){.navlinks{display:flex}}
-.navlinks a{font-size:15px;color:var(--ink2);border-bottom:1px solid transparent;padding-bottom:3px;cursor:pointer}
+/* Five Danish labels plus the utility group do not fit at 1024px, so the
+   desktop nav starts at 1140 and the full-screen menu covers everything below. */
+.navlinks{display:none;gap:20px}@media(min-width:1140px){.navlinks{display:flex}}
+@media(min-width:1280px){.navlinks{gap:26px}}
+.navlinks a{font-size:15px;white-space:nowrap;color:var(--ink2);border-bottom:1px solid transparent;padding-bottom:3px;cursor:pointer}
 .navlinks a:hover{color:var(--ink)}.navlinks a.on{color:var(--forest);border-bottom-color:var(--forest)}
 .navright{display:flex;align-items:center;gap:15px}
-.navutil{display:none;gap:10px;align-items:center;font-size:12.5px;color:var(--ink3)}@media(min-width:1024px){.navutil{display:flex}}
+.navutil{display:none;gap:10px;align-items:center;font-size:12.5px;color:var(--ink3)}@media(min-width:1140px){.navutil{display:flex}}
 .navutil a{cursor:pointer;padding-block:6px}
 .langsw{display:flex;align-items:center;gap:5px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em}
 .langsw button{background:none;border:none;padding:6px 2px;cursor:pointer;font:inherit;color:var(--ink3);letter-spacing:.1em}
@@ -68,7 +71,7 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .sep{color:var(--ink3);opacity:.55}
 .navcta{background:var(--forest);color:var(--cream);padding:9px 16px;border-radius:2px;font-size:13.5px;font-weight:500;white-space:nowrap}
 .burger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:0}
-@media(min-width:1024px){.burger{display:none}}
+@media(min-width:1140px){.burger{display:none}}
 .burger i{display:block;width:26px;height:9px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
 .mobnav{position:fixed;inset:0;z-index:60;background:var(--deep);color:var(--inkInv);padding:clamp(20px,5vw,40px);display:flex;flex-direction:column;justify-content:space-between;overflow:auto}
 .mobnav[hidden]{display:none}
@@ -214,10 +217,11 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <header class="nav" id="nav"><div class="navin">
   <a class="wm" data-route="home">Pandonia</a>
   <nav class="navlinks" aria-label="Main">
-    <a data-nav="maaler" data-anchor="what-we-test" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a>
     <a data-nav="saadan" data-anchor="how-it-works" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a>
+    <a data-nav="maaler" data-anchor="what-we-test" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a>
     <a data-nav="rapport" data-anchor="your-report" data-da="Din rapport" data-en="Your report">Din rapport</a>
     <a data-nav="om" data-anchor="about-pandonia" data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</a>
+    <a data-nav="book" data-anchor="pricing" data-da="Priser" data-en="Pricing">Priser</a>
   </nav>
   <div class="navright">
     <div class="navutil">
@@ -234,12 +238,12 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <div class="mobnav" id="mobnav" hidden>
   <button class="x" id="mobclose" aria-label="Luk">×</button>
   <nav><ul>
-    <li><a data-route="maaler" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a></li>
     <li><a data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a></li>
+    <li><a data-route="maaler" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a></li>
     <li><a data-route="rapport" data-da="Din rapport" data-en="Your report">Din rapport</a></li>
     <li><a data-route="om" data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</a></li>
+    <li><a data-route="book" data-da="Priser" data-en="Pricing">Priser</a></li>
     <li><a data-route="faq">FAQ</a></li>
-    <li><a data-route="book" data-da="Priser" data-en="Prices">Priser</a></li>
   </ul>
   <div class="langrow"><button type="button" class="mlang" data-loc="da" aria-current="true">DANSK</button><span class="sep">·</span><button type="button" class="mlang" data-loc="en" aria-current="false">ENGLISH</button></div>
   </nav>
@@ -402,7 +406,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div>
 </div></section>
 
-<section class="gSand"><div class="wrap std">
+<section class="gSand" id="pricing"><div class="wrap std">
   <h2 class="s d3 fg measS" style="margin-bottom:26px" data-da="To måder at begynde på." data-en="Two ways to begin.">To måder at begynde på.</h2>
   <ul class="rows" style="max-width:680px">
     <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test + Consultation</span><span class="bdS measN" data-da="Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation." data-en="Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.">Pandonia Score og seks systemscorer.</span></span><span class="v" style="font-size:15px"><span data-da="4.750 kr." data-en="DKK 4,750">4.750 kr.</span></span></li>
@@ -698,7 +702,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
       <li><a data-route="om" data-da="Om Pandonia" data-en="About Pandonia">Om Pandonia</a></li>
     </ul></nav>
     <nav><h2 data-da="Praktisk" data-en="Practical">Praktisk</h2><ul>
-      <li><a data-route="book" data-da="Priser" data-en="Prices">Priser</a></li>
+      <li><a data-route="book" data-da="Priser" data-en="Pricing">Priser</a></li>
       <li><a class="ext" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></li>
       <li><a data-route="faq">FAQ</a></li>
       <li><a class="ext" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Gavekort" data-en="Gift card">Gavekort</a></li>
@@ -770,7 +774,7 @@ var T={da:{what:'Hvad er det',why:'Hvorfor måler vi det',unit:'Måleenhed',rang
        en:{what:'What it is',why:'Why we measure it',unit:'Unit',range:'Reference range',sysL:'System',also:'Also called',source:'Source of the name',panel:'Panel — contents not published',prod:'Product — not a blood marker',pend:'Pending',awT:'Awaiting clinical text',awL:'Awaiting the laboratory',ver:'Name verified',sub:'Clinical description awaiting approval.',mk:'markers',cnt:function(n,t){return n===t?t+' markers':n+' of '+t+' shown'},incl:'Health Test'}};
 var ROUTES={da:{home:'/da',maaler:'/da/hvad-vi-maaler',saadan:'/da/saadan-fungerer-det',rapport:'/da/din-rapport',om:'/da/om-pandonia',faq:'/da/faq',book:'/da/book'},
             en:{home:'/en',maaler:'/en/what-we-test',saadan:'/en/how-it-works',rapport:'/en/your-report',om:'/en/about-pandonia',faq:'/en/faq',book:'/en/book'}};
-var ANCHOR_PAGE={'what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','laboratoriet':'saadan'};
+var ANCHOR_PAGE={'what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','pricing':'home','laboratoriet':'saadan'};
 
 function nf(n){return loc==='da'?n.toFixed(1).replace('.',','):n.toFixed(1);}
 function dkk(v){return v===null?null:(loc==='da'?new Intl.NumberFormat('da-DK').format(v)+' kr.':'DKK '+new Intl.NumberFormat('en-GB').format(v));}
