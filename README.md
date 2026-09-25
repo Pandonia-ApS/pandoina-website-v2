@@ -115,9 +115,10 @@ Never set that in production.
 
 - Node has never run here — budget time for a first real `tsc` and `next build`
 - The four legal pages have no content; they are inert labels in the preview, not links
-- 4 placements are art-direction plates marked "new shoot required" — laboratory ×3, the doctor ×1
-- Two client-supplied images have **no documented licence** — the sample-in-transit frame and the building leading the laboratory section; clear the rights or replace them; see `IMAGE-LICENCES.md`
+- 3 placements are art-direction plates marked "new shoot required" — laboratory ×2, the doctor ×1
+- Three client-supplied images have **no documented licence** — sample in transit, the building, and the laboratory interior; clear the rights or replace them; see `IMAGE-LICENCES.md`
 - The building photograph reads as Pandonia's own premises but that is **unverified**
+- The laboratory interior shows people who are not Pandonia staff, in a room that is not Pandonia's, and **may be AI-generated** — it conflicts with the project's own rule against stock standing in for the real laboratory
 - The doctor portrait is upscaled 4.9× from a 164px avatar and will look soft — **ask for the original file**
 - The product render on the homepage carries two empty placeholder panels
 - Identifiable people appear on a public page; confirm consent for web use

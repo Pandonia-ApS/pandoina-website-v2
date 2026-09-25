@@ -68,6 +68,39 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `lab-interior.jpg` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 402 × 709, re-encoded from a 424 KB PNG to 48 KB JPEG |
+| Placement | *Sådan fungerer det* → the laboratory, second frame (`LAB-02`) |
+| Status | **Placed on request. This one conflicts with a standing project rule.** |
+
+This is the sharpest conflict in the set, and it should be a deliberate
+decision rather than an oversight.
+
+**It depicts Pandonia's laboratory and staff with imagery that is not theirs.**
+Unidentified people in lab coats, in an unidentified room, sitting in the row
+that presents Pandonia's own laboratory. The standing rule is explicit: *never
+use stock imagery to falsely represent Pandonia's actual laboratory, staff,
+doctor, blood draw or product.* Tagged "Stock · ikke Pandonia / Stock · not
+Pandonia" so the page does not claim otherwise.
+
+**It is also the look the original brief ruled out** — "generic lab scientist"
+was on the avoid list, alongside the doctor-with-clipboard and the smiling
+patient. Heavy backlight, lens flare, coats in silhouette.
+
+**It may be AI-generated.** The window mullions do not resolve consistently and
+the lighting behaves oddly around the figures. For a company publishing clinical
+results, a generated photograph of fictional staff presented as its own
+laboratory is a credibility risk well beyond the licensing question.
+
+**The crop is severe.** A 0.57 portrait in a 4:3 frame shows 43% of the image —
+a horizontal band through the middle. Framed at `50% 45%` to hold the faces and
+the window; the sky and the foreground are gone.
+
 | File | `bygning.webp` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
@@ -129,7 +162,7 @@ Eight placements render as art-direction plates carrying a shot ID and a brief,
 not as photographs. These are the categories where stock imagery is forbidden
 because it would misrepresent Pandonia's actual operation:
 
-- **Laboratory ×3** — `LAB-02` and `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress. All three are interiors; the exterior now leading the section does not replace them.
+- **Laboratory ×2** — `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress. Both are interiors. Neither the exterior leading the section nor the stock interior beside it replaces them — one is a building, the other is not Pandonia.
 - **The doctor ×1** — `PORTRÆT-01` on *Din rapport*. Must be the real Pandonia doctor, at print resolution.
 
 Filled since the original brief, with better source files still needed:
