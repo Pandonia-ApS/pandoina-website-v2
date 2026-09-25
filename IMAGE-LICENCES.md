@@ -66,6 +66,30 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `transit-case.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1036 × 1036, square |
+| Placement | Homepage → day-sequence frame 2, 09.05, "Prøven kører ind" |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+This answers the `OBJ-02` brief — *sample in transit, documentary object
+detail* — far better than the rack shot it replaces: a labelled tube going into
+a padded transport case, which is what the caption describes. Square into a 3:4
+frame keeps 75% of the width, framed at `45% 50%`.
+
+`transit.webp` is now **unused**, joining `skin.jpg`, `screen.jpg` and
+`doctor.jpg`. Unlike those three it was never Pandonia's own material, so
+nothing authentic is idle here.
+
+Its tag also moves from "Stock · rettigheder afventer" to "Stock · ikke
+Pandonia", so all stock tags on the site now read the same. The rights question
+applies to every one of them and lives in this file rather than in ten
+separate labels.
+
 | File | `lab-analyser.webp` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
@@ -279,7 +303,7 @@ cleanroom* — has moved onto `LAB-02` so the shot is still requested.
 | Photographer | **Unknown** |
 | Licence | **Unknown** |
 | Commercial use | **Not confirmed** |
-| Placement | Day sequence frame 2 — 09.05, "the sample goes in" |
+| Placement | **Unused** — was day-sequence frame 2 |
 | Status | **Placed on request. Clear the rights before launch.** |
 
 Two things to settle before this ships.
@@ -318,7 +342,7 @@ the interface has stopped signalling it entirely.
 - **Laboratory ×4** — the day-sequence frame plus the three on *Sådan fungerer det*. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress, a rack of tubes and a hand labelling. All four slots currently show a building exterior or someone else's laboratory.
 - **The doctor ×2** — Benedikte Halle, three-quarter, cropped at the shoulder, soft window light, at print resolution. Both consultation moments currently show stock models. No image of Pandonia's actual doctor remains anywhere on the site.
 - **Blood draw ×2** — the *Hvad vi måler* opener and the homepage D-vitamin beat both use staged photography. `draw.jpg`, in day-sequence frame 1, is the only real one left.
-- **Sample in transit ×1** — `OBJ-02`, documentary object detail.
+- **Sample in transit ×1** — `OBJ-02`, documentary object detail. Currently a stock transport case.
 
 One afternoon at Langebrogade with a photographer covers the laboratory, the
 doctor and the transit frame together.
