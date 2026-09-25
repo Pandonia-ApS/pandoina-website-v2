@@ -116,7 +116,8 @@ Never set that in production.
 - Node has never run here — budget time for a first real `tsc` and `next build`
 - The four legal pages have no content; they are inert labels in the preview, not links
 - 5 placements are art-direction plates marked "new shoot required" — laboratory ×4, the doctor ×1
-- The sample-in-transit frame uses a client-supplied stock image with **no documented licence** — clear the rights or replace it; see `IMAGE-LICENCES.md`
+- Two client-supplied images have **no documented licence** — the sample-in-transit frame and the building beside the laboratory address; clear the rights or replace them; see `IMAGE-LICENCES.md`
+- The building photograph is presented as Langebrogade 3A but that match is **unverified**
 - The doctor portrait is upscaled 4.9× from a 164px avatar and will look soft — **ask for the original file**
 - The product render on the homepage carries two empty placeholder panels
 - Identifiable people appear on a public page; confirm consent for web use

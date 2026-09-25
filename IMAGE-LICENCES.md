@@ -68,6 +68,22 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `bygning.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 978 × 633, used as supplied |
+| Placement | *Sådan fungerer det* → the laboratory, paired with the address |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+It sits directly beside "Langebrogade 3A, 2. sal", which makes it a factual
+claim that this is the building. **That match has not been verified** — the
+identification is the client's. A quay-side brick warehouse is not distinctive
+enough to confirm from the photograph alone, and putting the wrong building
+beside a street address is the kind of error a local reader notices immediately.
+
 | File | `transit.webp` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 24 September 2026 |
