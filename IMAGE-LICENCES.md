@@ -68,6 +68,26 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `tourniquet.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1072 × 1048, near square |
+| Placement | *Hvad vi måler* → opening image, replacing `skin.jpg` |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+**This is the first replacement that removes genuine Pandonia photography.**
+`skin.jpg` was a real crop from Pandonia's own blood-draw shoot; this is not.
+Blood draw is on the list where real Pandonia imagery is mandatory precisely
+because a staged substitute misrepresents how the service actually looks. The
+tag changed from "Ægte · Pandonia" to "Stock · ikke Pandonia" accordingly.
+
+`skin.jpg` remains in use on the homepage, so the real shoot is still visible
+there. 1.02 into a 4:5 frame keeps 78% of the width, framed at `55% 42%` to hold
+the forearm and the device rather than the glass in the foreground.
+
 | File | `report-deck.webp` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
