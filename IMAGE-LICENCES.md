@@ -3,7 +3,7 @@
 Every file in `public/images/`. Nothing is in this repository whose commercial
 rights are unclear.
 
-## Pandonia's own material — 13 files
+## Pandonia's own material — 15 files
 
 Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 
@@ -16,10 +16,12 @@ Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 | `rum2.jpg` | Pandonia `02-2c6a38a3` | 1100,0 · 700×933 → 3:4 | Premises, wordmark wall |
 | `laptop.jpg` | Pandonia `15-8d9cdda1` | 3:4, full frame | Report on screen |
 | `screen.jpg` | Pandonia `15-8d9cdda1` | 120,2000 · 1100×825 → 4:3 | **Unused** — was the product UI detail |
-| `t1.jpg` | Pandonia `12-09df526c` | 480×600 | Team portrait |
-| `t2.jpg` | Pandonia `16-55e9dd65` | 480×600 | Team portrait |
-| `t3.jpg` | Pandonia `18-e78c841d` | 480×600 | Team portrait |
-| `t4.jpg` | Pandonia `20-bb5ac064` | 480×600 | Team portrait |
+| `team-cecilie.jpg` | Pandonia `16-55e9dd65` | 27,0 · 827×1034 → 480×600 | Team — Cecilie Lange |
+| `team-victor.jpg` | Pandonia `17-fac388d3` | 112,60 · 1420×1775 → 480×600 | Team — Victor Prehn |
+| `team-deborah.jpg` | Pandonia `18-e78c841d` | 60,60 · 760×950 → 480×600 | Team — Deborah Saren |
+| `team-carol.jpg` | Pandonia `19-a4b3bec1` | 120,100 · 1520×1900 → 480×600 | Team — Carol Melo |
+| `team-laura.jpg` | Pandonia `20-bb5ac064` | 90,90 · 780×975 → 480×600 | Team — Laura D. Ellis-Aguilar |
+| `team-benedikte.jpg` | Pandonia `21-c6a81f7f` | 0,30 · 853×1066 → 480×600 | Team — Benedikte Halle |
 | `review.png` | Pandonia product render, supplied 24 Sep 2026 | 539×709, as supplied | Homepage — "Numbers only mean something…" |
 | `doctor.jpg` | Portrait supplied 24 Sep 2026 | 98×131 crop from a 164×164 avatar, upscaled to 480×640 | **Unused** — was day-sequence frame 5 |
 
@@ -47,10 +49,20 @@ under the caption *"Benedikte gennemgår den / Benedikte goes through it"*, so i
 shows what is reviewed rather than the person reviewing — the doctor photograph
 is still outstanding.
 
-**The four portraits are not paired with names.** Pandonia publishes nine studio
-portraits and six names; no public material connects them. They render under a
-"name pairing pending" label. Do not guess — and portraits need the subject's
-consent for web use regardless.
+**The six team portraits are matched to names.** Each was paired against the
+team section on pandonia.com/en, where the same studio photographs appear with
+name and role — same shot, same clothing, same backdrop. Pandonia already
+publishes these photographs with names on its own site, which largely answers
+the consent question for web use.
+
+The earlier crops `t1`–`t4` are removed. Three were duplicates of Cecilie,
+Deborah and Laura; the fourth, from original `12-09df526c`, shows a man who does
+not appear on Pandonia's team page and has not been identified. Original
+`13-1883646a` is also a man not on the team page. Neither is used.
+
+`21-c6a81f7f` is the full-resolution version of the avatar behind the unused
+`doctor.jpg`, so a proper photograph of Benedikte Halle now exists if the
+consultation frames should show her rather than stock.
 
 ## Licensed — 1 file
 

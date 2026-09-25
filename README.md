@@ -86,7 +86,7 @@ from Pandonia, not from a designer or a developer.
 | Is 2–4 hours typical or best case? | Presented as a promise with no stated basis |
 | English names for the six systems | Two published English label sets disagree on three of six |
 | The six scores cluster 94.9–97.2 | On a 0–100 band all six ticks collapse — the scale or the scoring is wrong |
-| Which portrait is which person? | Nine studio portraits, none matchable to a name from public material |
+| ~~Which portrait is which person?~~ | **Resolved 25 Sep 2026.** All six team members matched against the team section on pandonia.com/en, which pairs the same studio photographs with names |
 
 "30+" resolves the stat strip but **not** the numeral variant of the hero
 headline, which needs an exact figure — *"Fireogtredive svar / Thirty-four
@@ -125,9 +125,9 @@ Never set that in production.
 - The report photograph shows the deck's cover slide, not the score view its caption describes; `screen.jpg`, the only real capture of the score dashboard, is now unused
 - The building photograph reads as Pandonia's own premises but that is **unverified**
 - **The entire laboratory row is now non-Pandonia imagery** — a building exterior plus two stock interiors, one of which may be AI-generated. This conflicts with the project's own rule against stock standing in for the real laboratory, and the own-laboratory claim is the brand's central differentiator
-- The doctor portrait is upscaled 4.9× from a 164px avatar and will look soft — **ask for the original file**
+- A full-resolution portrait of Benedikte Halle now exists (`team-benedikte.jpg`); the two consultation frames still show stock models and could use it instead
 - The product render on the homepage carries two empty placeholder panels
 - Identifiable people appear on a public page; confirm consent for web use
 - The hero photograph is a licensed holding image, not Pandonia's own
-- Team portraits need consent as well as name pairing
+- Team portraits are matched to names from pandonia.com, where Pandonia already publishes them
 - Danish URLs move under the `/da/` prefix; 301s are listed in `docs/i18n.md`

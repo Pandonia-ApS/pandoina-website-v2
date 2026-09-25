@@ -274,6 +274,11 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .cmp>.pv{font-family:"DM Mono",monospace;font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums}
 @media(max-width:860px){.cmp{grid-template-columns:1fr}.cmp>.ch,.cmp>.corner{display:none}.cmp>.rl{padding-top:22px;border-bottom:none;padding-bottom:4px;color:var(--ink)}.cmp>div:not(.rl){padding:8px 0}.cmp>div[data-p]::before{content:attr(data-p);display:block;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}}
 
+/* team: name in serif under each portrait, role in mono */
+.tm{background:var(--deep);padding-bottom:20px}
+.tmN{padding:14px 12px 0;font-family:"Newsreader",Georgia,serif;font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;line-height:1.2;color:var(--inkInv)}
+.tmR{padding:4px 12px 0;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;line-height:1.5;color:var(--onDeepQuiet)}
+
 .mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
 .mk>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:12px;align-items:center;padding-block:15px}
 @media(min-width:1024px){.mk>summary{grid-template-columns:minmax(0,1fr) 92px 118px 20px;gap:18px}}
@@ -337,7 +342,7 @@ html[data-review="off"] .pl.keep b{display:none}
 html[data-locale="da"] [data-lang="en"]{display:none}
 html[data-locale="en"] [data-lang="da"]{display:none}
 [data-page][hidden]{display:none}
-@media(min-width:1024px){.dayGrid{grid-template-columns:repeat(5,1fr)!important}.teamGrid{grid-template-columns:repeat(4,1fr)!important}.labGrid{grid-template-columns:repeat(3,1fr)!important}.g2{grid-template-columns:1fr 1fr!important}.g4{grid-template-columns:repeat(4,1fr)!important}}
+@media(min-width:1024px){.dayGrid{grid-template-columns:repeat(5,1fr)!important}.teamGrid{grid-template-columns:repeat(3,1fr)!important}.labGrid{grid-template-columns:repeat(3,1fr)!important}.g2{grid-template-columns:1fr 1fr!important}.g4{grid-template-columns:repeat(4,1fr)!important}}
 @media(min-width:640px){.g2{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.001ms!important}}
 </style>
@@ -815,14 +820,15 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <h2 class="s d3" style="margin-bottom:8px" data-da="Holdet" data-en="The team">Holdet</h2>
     <p class="bd onDeepMuted meas" style="margin-bottom:30px" data-da="Seks mennesker i København. Du møder nogle af dem personligt." data-en="Six people in Copenhagen. You meet some of them in person.">Seks mennesker i København.</p>
     <ul style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ruleInv)" class="teamGrid">
-      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t1.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
-      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t2.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
-      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t3.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
-      <li style="background:var(--deep)"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/t4.jpg" data-alt-da="Portræt af en Pandonia-medarbejder." data-alt-en="Portrait of a Pandonia employee." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="lab" style="padding-top:12px" data-da="Navn afventer parring" data-en="Name pairing pending">Navn afventer parring</p></li>
+      <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-cecilie.jpg" data-alt-da="Cecilie Lange." data-alt-en="Cecilie Lange." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Cecilie Lange</p><p class="tmR" data-da="Projektleder" data-en="Project manager">Projektleder</p></li>
+      <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-victor.jpg" data-alt-da="Victor Prehn." data-alt-en="Victor Prehn." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Victor Prehn</p><p class="tmR" data-da="Ansvarlig for SoMe og branding" data-en="Social media and branding">Ansvarlig for SoMe og branding</p></li>
+      <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-deborah.jpg" data-alt-da="Deborah Saren." data-alt-en="Deborah Saren." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Deborah Saren</p><p class="tmR" data-da="Blodprøvetager og bioanalytiker" data-en="Blood draw specialist and bioanalyst">Blodprøvetager og bioanalytiker</p></li>
+      <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-carol.jpg" data-alt-da="Carol Melo." data-alt-en="Carol Melo." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Carol Melo</p><p class="tmR" data-da="Leder af forskningsafdelingen" data-en="Lead research scientist">Leder af forskningsafdelingen</p></li>
+      <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-laura.jpg" data-alt-da="Laura D. Ellis-Aguilar." data-alt-en="Laura D. Ellis-Aguilar." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Laura D. Ellis-Aguilar</p><p class="tmR">Biomedical Research Scientist</p></li>
+      <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-benedikte.jpg" data-alt-da="Benedikte Halle." data-alt-en="Benedikte Halle." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Benedikte Halle</p><p class="tmR" data-da="Læge" data-en="Company doctor">Læge</p></li>
     </ul>
-    <p class="bdS onDeepMuted" style="margin-top:22px">Benedikte Halle · Deborah Saren · Carol Melo · Laura D. Ellis-Aguilar · Cecilie Lange · Victor Prehn</p>
-    <p class="pl bdS" style="max-width:62ch;margin-top:14px" data-lang="da"><b>Skal bekræftes</b>Navne og roller er verificeret fra pandonia.com. Portrætterne er ægte Pandonia-medarbejdere, men kan ikke parres med navne ud fra offentligt materiale. Portrætter kræver desuden samtykke.</p>
-    <p class="pl bdS" style="max-width:62ch;margin-top:14px" data-lang="en"><b>To be confirmed</b>Names and roles are verified from pandonia.com. The portraits are genuine Pandonia staff but cannot be matched to names from public material. Portraits also require consent.</p>
+    <p class="pl bdS revonly" style="max-width:66ch;margin-top:22px" data-lang="da"><b>Parret — kilde</b>Hvert portræt er matchet mod holdsiden på pandonia.com/en, hvor de samme studiefotos står med navn og rolle. Pandonia offentliggør dem allerede selv. Deborahs danske titel står ikke på den danske side — "blodprøvetager" er Pandonias eget ord fra deres FAQ. Et portræt af en mand (original 12) optræder ikke på holdsiden og er fjernet.</p>
+    <p class="pl bdS revonly" style="max-width:66ch;margin-top:22px" data-lang="en"><b>Matched — source</b>Each portrait is matched against the team section on pandonia.com/en, where the same studio photographs appear with name and role. Pandonia already publishes them itself. Deborah's Danish title is not on the Danish page — "blodprøvetager" is Pandonia's own word from its FAQ. A portrait of a man (original 12) does not appear on the team page and has been removed.</p>
   </div></section>
   <section><div class="wrap air" style="text-align:center">
     <h2 class="s d3 fg" style="max-width:22ch;margin:0 auto">Healthier in body, happier in soul, longer in life.</h2>
