@@ -68,6 +68,25 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `lab-rack.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1520 × 989, used as supplied |
+| Placement | *Sådan fungerer det* → the laboratory, third frame (`LAB-03`) |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+Of the images added in this session this is the one that best answers its own
+brief: a rack of labelled tubes, a hand lifting one, a window in frame, daylight,
+work in progress. Workshop rather than cleanroom, which is what was specified.
+It crops well too — 1.54 into a 4:3 frame keeps 87% of the width.
+
+It is still not Pandonia's laboratory, and it sits in the row that presents
+Pandonia's laboratory, so it carries the same "Stock · ikke Pandonia" tag as the
+frame beside it. Rights are undocumented.
+
 | File | `lab-interior.jpg` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
@@ -162,7 +181,7 @@ Eight placements render as art-direction plates carrying a shot ID and a brief,
 not as photographs. These are the categories where stock imagery is forbidden
 because it would misrepresent Pandonia's actual operation:
 
-- **Laboratory ×2** — `LAB-03`, plus the day-sequence frame. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress. Both are interiors. Neither the exterior leading the section nor the stock interior beside it replaces them — one is a building, the other is not Pandonia.
+- **Laboratory ×1** — the day-sequence frame, `LAB-01`. Shoot it like a workshop, not a cleanroom: daylight, a window in frame, work in progress, a rack of tubes and a hand labelling. **None of the three images now filling the laboratory row replaces it** — one is a building exterior, the other two are not Pandonia's laboratory.
 - **The doctor ×1** — `PORTRÆT-01` on *Din rapport*. Must be the real Pandonia doctor, at print resolution.
 
 Filled since the original brief, with better source files still needed:
