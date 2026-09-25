@@ -89,32 +89,6 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .gDeep .lnk{color:var(--inkInv);border-bottom-color:rgba(237,231,218,.45)}
 .ext:after{content:"↗";font-size:.78em;margin-left:5px;opacity:.65}
 
-/* ── HERO TIMELINE ───────────────────────────────────────────────
-   One hairline down the marginal column. A short tick reaches from each
-   timestamp to the line. The line begins at the first tick and ends at the
-   last — it records a span that happened, it does not run off toward a
-   promise. Amber appears once, on the result. */
-.hg{display:grid;grid-template-columns:78px minmax(0,1fr);column-gap:26px;row-gap:0}
-@media(max-width:640px){.hg{grid-template-columns:56px minmax(0,1fr);column-gap:16px}}
-.hgt{position:relative;text-align:right;padding-top:.30em;font-family:"DM Mono",monospace;font-size:10.5px;line-height:1.6;letter-spacing:.1em;color:var(--ink3)}
-@media(max-width:640px){.hgt{font-size:9.5px}}
-/* the continuous hairline, at the right edge of the marginal column.
-   1.10em = padding-top .30em + half the .60em line box, so the line's two
-   ends land exactly on the first and last ticks and nowhere beyond them. */
-.hgt::before{content:"";position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(65,90,59,.26)}
-.hgt.first::before{top:1.10em}
-.hgt.last::before{bottom:auto;height:1.10em}
-/* the tick: reaches from the number across the gutter to the line */
-.hgt .t{position:relative;display:inline-block}
-.hgt .t::after{content:"";position:absolute;top:50%;left:100%;width:12px;height:1px;background:rgba(65,90,59,.45)}
-@media(max-width:640px){.hgt .t::after{width:9px}}
-.hgt.now{color:var(--ink2)}
-.hgt.now .t::after{background:rgba(65,90,59,.6)}
-/* the one amber emphasis: the result */
-.hgt.now::after{content:"";position:absolute;right:-2px;top:1.10em;margin-top:-2.5px;width:5px;height:5px;border-radius:50%;background:var(--amber)}
-.hgf{padding-bottom:.08em}
-.hgIndent{margin-left:104px}
-@media(max-width:640px){.hgIndent{margin-left:0}}
 
 .ph{display:block;width:100%;height:100%;object-fit:cover}
 .phBox{position:relative;overflow:hidden}
@@ -279,6 +253,10 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .tmN{padding:14px 12px 0;font-family:"Newsreader",Georgia,serif;font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;line-height:1.2;color:var(--inkInv)}
 .tmR{padding:4px 12px 0;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;line-height:1.5;color:var(--onDeepQuiet)}
 
+/* hero: three lines, one per clause */
+.heroLine span{display:block}
+.heroLine{padding-top:clamp(8px,1.5vw,24px)}
+
 .mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
 .mk>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:12px;align-items:center;padding-block:15px}
 @media(min-width:1024px){.mk>summary{grid-template-columns:minmax(0,1fr) 92px 118px 20px;gap:18px}}
@@ -401,17 +379,14 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <section class="wrap" style="padding-block:clamp(28px,5vw,66px) clamp(40px,6vw,80px)">
   <div class="split sp6238 alStart">
     <div>
-      <h1 class="hg">
-        <span class="hgt first"><span class="t">08.40</span></span>
-        <span class="s d1 fg hgf" data-da="En tirsdag." data-en="A Tuesday.">En tirsdag.</span>
-        <span class="hgt"><span class="t">09.30</span></span>
-        <span class="s d1 fg hgf" style="padding-left:5%" data-da="Et køkkenbord." data-en="A kitchen table.">Et køkkenbord.</span>
-        <span class="hgt now last"><span class="t">12.14</span></span>
-        <span class="s d1 fg hgf" style="padding-left:2%" data-da="Hvad blodet ved." data-en="What your blood knows.">Hvad blodet ved.</span>
+      <!-- Pandonia's own line, used in English on the Danish site as well -->
+      <h1 class="s d1 fg heroLine" lang="en">
+        <span>Healthier in body,</span>
+        <span>happier in soul,</span>
+        <span>longer in life.</span>
       </h1>
-      <p class="lab hgIndent" style="margin-top:16px" data-da="Én dag hos én person · ikke et løfte om tider" data-en="One day, one person · not a promise of times">Én dag hos én person</p>
-      <p class="bodyL measN hgIndent" style="margin-top:26px" data-da="Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade. Du får tallene — og en læge til at læse dem sammen med dig." data-en="The sample is taken at your home in Copenhagen and analysed in our own laboratory on Langebrogade. You get the numbers — and a doctor to read them with you.">Blodprøven tages hjemme hos dig i København.</p>
-      <div class="hgIndent" style="display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:26px">
+      <p class="bodyL measN" style="margin-top:32px" data-da="Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade. Du får tallene — og en læge til at læse dem sammen med dig." data-en="The sample is taken at your home in Copenhagen and analysed in our own laboratory on Langebrogade. You get the numbers — and a doctor to read them with you.">Blodprøven tages hjemme hos dig i København.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:28px">
         <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
         <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
       </div>

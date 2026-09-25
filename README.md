@@ -88,10 +88,9 @@ from Pandonia, not from a designer or a developer.
 | The six scores cluster 94.9–97.2 | On a 0–100 band all six ticks collapse — the scale or the scoring is wrong |
 | ~~Which portrait is which person?~~ | **Resolved 25 Sep 2026.** All six team members matched against the team section on pandonia.com/en, which pairs the same studio photographs with names |
 
-"30+" resolves the stat strip but **not** the numeral variant of the hero
-headline, which needs an exact figure — *"Fireogtredive svar / Thirty-four
-answers"* only works if 34 is confirmed. The preview ships the variant that does
-not depend on it.
+The hero now carries Pandonia's own line, *"Healthier in body, happier in soul,
+longer in life."*, and no longer depends on the biomarker count. "30+" is used in
+the stat strip.
 
 ---
 

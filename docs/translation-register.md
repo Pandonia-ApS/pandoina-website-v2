@@ -17,9 +17,7 @@ language. Statuses: `translated` · `requires_translation` · `requires_review` 
 | Nav | Om Pandonia | About Pandonia | `translated` | n/a |
 | Nav CTA | Book din blodprøve | Book your blood test | `translated` | n/a |
 | Nav | Log ind | Log in | `translated` | n/a |
-| Hero 1 | En tirsdag. | A Tuesday. | `translated` | n/a |
-| Hero 2 | Et køkkenbord. | A kitchen table. | `translated` | n/a |
-| Hero 3 | Fireogtredive svar. | Thirty-four answers. | `translated` | **blocked on the count** |
+| Hero | Healthier in body, / happier in soul, / longer in life. | *same — Pandonia uses the English line on its Danish site* | n/a | n/a |
 | Hero sub | Blodprøven tages hjemme hos dig i København og analyseres i vores eget laboratorium på Langebrogade. Du får tallene — og en læge til at læse dem sammen med dig. | The sample is taken at your home in Copenhagen and analysed in our own laboratory on Langebrogade. You get the numbers — and a doctor to read them with you. | `translated` | operational — see §C |
 | Hero link | Se hvad vi måler | See what we test | `translated` | n/a |
 | Beat 02 | Læge inkluderet · Hjemme hos dig | Doctor included · At your home | `translated` | n/a |
@@ -60,13 +58,11 @@ only speaks when something is wrong. Alternatives considered and rejected:
 "Before it tells you" (loses the implication), "Before it speaks up" (too
 jaunty).
 
-**Hero line 3 fallback.** If the count stays unresolved, use
-**"A Tuesday. / A kitchen table. / What your blood knows."**
-(Danish: *"En tirsdag. / Et køkkenbord. / Hvad blodet ved."*) — three fragments,
-same composition, no number.
+**Hero.** Changed 25 Sep 2026 to Pandonia's own line, *"Healthier in body, happier in soul,
+longer in life."*, set in English in both locales because that is how Pandonia uses it on
+pandonia.com. The earlier *"En tirsdag. / Et køkkenbord. / Hvad blodet ved."* and its
+timestamp rail are retired; the hero no longer depends on the biomarker count.
 
-**Line lengths.** Hero: DA 11/14/19 characters, EN 10/16/20. The composition is
-preserved; the English hero is marginally wider on line two and needs no change.
 
 ---
 
