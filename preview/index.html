@@ -281,7 +281,7 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 /* team: name in serif under each portrait, role in mono */
 .tm{background:var(--deep);padding-bottom:20px}
 .tmN{padding:14px 12px 0;font-family:var(--serif);font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;line-height:1.2;color:var(--inkInv)}
-.tmR{padding:4px 12px 0;font-family:var(--sans);font-size:10px;letter-spacing:.09em;text-transform:uppercase;line-height:1.5;color:var(--onDeepQuiet)}
+.tmR{overflow-wrap:break-word;hyphens:auto;padding:4px 12px 0;font-family:var(--sans);font-size:10px;letter-spacing:.09em;text-transform:uppercase;line-height:1.5;color:var(--onDeepQuiet)}
 
 /* hero: three lines, one per clause */
 .heroLine span{display:block}
@@ -348,6 +348,8 @@ body{font-size:16.5px;line-height:1.55}
 .rcTitle{font-family:var(--serif)}
 @media(min-width:1024px){.idx{top:calc(env(safe-area-inset-top,0px) + 72px)}}
 .navlinks .navFaq{display:none}
+/* phones: wordmark, CTA and menu button must share 320px, in both languages */
+@media(max-width:420px){.navin{gap:10px}.navright{gap:6px}.wm{font-size:24px}.navcta{padding:9px 11px;font-size:12.5px}.burger{width:40px}}
 /* Between tablet and wide desktop the links do not fit beside the wordmark,
    so they drop to a second row of the header instead of into the menu button. */
 @media(min-width:760px) and (max-width:1139px){
@@ -440,6 +442,33 @@ body{font-size:16.5px;line-height:1.55}
 .steps li{padding-bottom:clamp(8px,1vw,12px)}
 @media(max-width:1023px){.steps li{padding-bottom:32px}.steps li:nth-child(n+3){border-top:1px solid var(--rule)}}
 @media(min-width:1024px){.steps{grid-template-columns:repeat(4,1fr)}.steps li+li::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--sg) / -2);border-left:1px solid var(--ruleSoft)}}
+
+/* Tests — the landing page's "Curated panels" composition with Pandonia's own
+   consumer tests. The card tops are soft tonal fields, not photographs. */
+.pk{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:560px){.pk{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.pk{grid-template-columns:repeat(4,1fr)}}
+.pkC{display:flex;flex-direction:column;background:var(--cream);color:var(--ink);cursor:pointer}
+.pkA{position:relative;aspect-ratio:4/5;overflow:hidden}
+@media(max-width:559px){.pkA{aspect-ratio:16/10}}
+.pkA::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 62%,rgba(0,0,0,.34))}
+.pkA span{position:absolute;bottom:14px;z-index:1;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,250,247,.9)}
+.pkA span:first-child{left:16px}.pkA span:last-child{right:16px}
+.pkC:hover .pkA{filter:brightness(1.05)}
+.a1{background:radial-gradient(ellipse 34% 38% at 52% 50%,#E9D9B8,rgba(233,217,184,0) 72%),radial-gradient(ellipse 72% 68% at 50% 55%,#A48C6A,rgba(164,140,106,0) 78%),linear-gradient(180deg,#8A7454,#4B3B29)}
+.a2{background:radial-gradient(ellipse 34% 38% at 50% 50%,#B9A48A,rgba(185,164,138,0) 72%),radial-gradient(ellipse 72% 68% at 50% 55%,#5E5043,rgba(94,80,67,0) 78%),linear-gradient(180deg,#2E2822,#15110D)}
+.a3{background:radial-gradient(ellipse 34% 38% at 54% 54%,#E6BFA0,rgba(230,191,160,0) 72%),radial-gradient(ellipse 72% 68% at 50% 55%,#B18567,rgba(177,133,103,0) 78%),linear-gradient(180deg,#8C664A,#5B3F2C)}
+.a4{background:radial-gradient(ellipse 34% 38% at 50% 48%,#DCE3CF,rgba(220,227,207,0) 72%),radial-gradient(ellipse 72% 68% at 50% 55%,#8E9A84,rgba(142,154,132,0) 78%),linear-gradient(180deg,#5E6A58,#2E352C)}
+.pkB{display:flex;flex-direction:column;flex:1;padding:22px 20px 18px}
+.pkT{font:700 clamp(24px,1.1vw + 16px,30px)/1 var(--sans);letter-spacing:-.045em}
+.pkM{margin:14px 0 24px;font-size:13px;line-height:1.5;color:var(--ink2)}
+.pkF{margin-top:auto;padding-top:14px;border-top:1px solid var(--ruleSoft);display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.pkF b{color:var(--ink);font-weight:700}
+.pkX{margin-top:14px;background:var(--deep);color:var(--inkInv);padding:clamp(28px,3vw,40px) clamp(24px,3vw,36px);display:grid;gap:24px}
+@media(min-width:900px){.pkX{grid-template-columns:1fr auto;align-items:end}}
+.pkX h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,1.2vw + 18px,30px);letter-spacing:-.02em;line-height:1.15}
+.pkX p{margin-top:12px;max-width:44ch;font-size:14.5px;line-height:1.55;color:var(--onDeepMuted)}
+.pkX a{justify-self:start;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--inkInv);border-bottom:1px solid var(--inkInv);padding-bottom:5px;cursor:pointer}
 
 /* ── REVIEW LAYER ────────────────────────────────────────────────
    Customer view is the default. The clinical gate is NOT relaxed here:
@@ -586,9 +615,41 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div>
 </div></section>
 
-<section><div class="phBox" style="min-height:min(58vh,440px)">
-  <img class="ph" src="../public/images/rum.jpg" data-alt-da="Pandonias lokaler i København." data-alt-en="Pandonia's premises in Copenhagen." alt="" style="position:absolute;inset:0">
-  <span class="phTag" data-da="Ægte · Pandonias lokaler" data-en="Real · Pandonia's premises">Ægte · Pandonias lokaler</span>
+<section class="gSand" id="tests"><div class="wrap std">
+  <div class="stepHead">
+    <div>
+      <p class="lab" data-da="Tests og priser" data-en="Tests and prices">Tests og priser</p>
+      <h2 class="s fg" style="font-size:clamp(38px,3.6vw + 16px,70px);line-height:1.02;letter-spacing:-.03em"><span style="display:block" data-da="Én samlet test." data-en="One complete test.">Én samlet test.</span><span style="display:block" data-da="Eller ét spørgsmål ad gangen." data-en="Or one question at a time.">Eller ét spørgsmål ad gangen.</span></h2>
+    </div>
+    <p class="bdS" data-da="Health Test giver det samlede overblik. De fokuserede tests svarer på ét bestemt spørgsmål. Prøven tages på samme måde — hjemme hos dig eller på Langebrogade." data-en="The Health Test gives the full overview. The focused tests answer one particular question. The sample is taken the same way — at your home or on Langebrogade.">Health Test giver det samlede overblik.</p>
+  </div>
+  <div class="pk">
+    <a class="pkC" data-route="book" data-anchor="pr-ht">
+      <div class="pkA a1"><span data-da="Samlet overblik" data-en="Full overview">Samlet overblik</span><span>Test · 01</span></div>
+      <div class="pkB"><h3 class="pkT">Health Test.</h3><p class="pkM" data-da="30+ biomarkører, Pandonia Score og seks systemscorer." data-en="30+ biomarkers, the Pandonia Score and six system scores.">30+ biomarkører.</p><p class="pkF"><span data-da="30+ markører" data-en="30+ markers">30+ markører</span><b data-da="3.500 kr." data-en="DKK 3,500">3.500 kr.</b></p></div>
+    </a>
+    <a class="pkC" data-route="book" data-anchor="pr-et">
+      <div class="pkA a2"><span data-da="Mænd" data-en="Men">Mænd</span><span>Test · 02</span></div>
+      <div class="pkB"><h3 class="pkT" data-da="Mænds sundhed." data-en="Men's health.">Mænds sundhed.</h3><p class="pkM" data-da="Testosteron · D-vitamin" data-en="Testosterone · vitamin D">Testosteron · D-vitamin</p><p class="pkF"><span data-da="2 markører" data-en="2 markers">2 markører</span><b data-da="1.400 kr." data-en="DKK 1,400">1.400 kr.</b></p></div>
+    </a>
+    <a class="pkC" data-route="book" data-anchor="pr-et">
+      <div class="pkA a3"><span data-da="Skjoldbruskkirtel" data-en="Thyroid">Skjoldbruskkirtel</span><span>Test · 03</span></div>
+      <div class="pkB"><h3 class="pkT" data-da="Stofskifte." data-en="Thyroid.">Stofskifte.</h3><p class="pkM" data-da="TSH, T3 og T4" data-en="TSH, T3 and T4">TSH, T3 og T4</p><p class="pkF"><span data-da="3 markører" data-en="3 markers">3 markører</span><b data-da="1.600 kr." data-en="DKK 1,600">1.600 kr.</b></p></div>
+    </a>
+    <a class="pkC" data-route="book" data-anchor="pr-et">
+      <div class="pkA a4"><span data-da="Vitaminer" data-en="Vitamins">Vitaminer</span><span>Test · 04</span></div>
+      <div class="pkB"><h3 class="pkT" data-da="D-vitamin." data-en="Vitamin D.">D-vitamin.</h3><p class="pkM" data-da="Dit niveau af D-vitamin" data-en="Your vitamin D level">Dit niveau af D-vitamin</p><p class="pkF"><span data-da="1 markør" data-en="1 marker">1 markør</span><b data-da="1.000 kr." data-en="DKK 1,000">1.000 kr.</b></p></div>
+    </a>
+  </div>
+  <div class="pkX">
+    <div>
+      <h3 data-da="Eller følg det over tid." data-en="Or follow it over time.">Eller følg det over tid.</h3>
+      <p data-da="Med medlemskabet får du en Health Test hvert kvartal — og otte ting mere. 2.000 kr. pr. måned." data-en="With membership you get a Health Test every quarter — and eight things more. DKK 2,000 per month.">Med medlemskabet får du en Health Test hvert kvartal.</p>
+    </div>
+    <a data-route="book" data-anchor="pr-mb"><span data-da="Se medlemskabet" data-en="See the membership">Se medlemskabet</span> <span aria-hidden="true">→</span></a>
+  </div>
+  <p class="pl bdS revonly" style="max-width:70ch;margin-top:24px" data-lang="da"><b>Til gennemsyn</b>Opbygget som landingssidens "Curated panels", men med Pandonias egne tests og priser fra bookingsystemet. Landingssidens paneler (Core health 42 markører, Women's hormone m.fl.) findes ikke i bookingsystemet og er ikke brugt. Kortenes toppe er toneflader i CSS, ikke fotos.</p>
+  <p class="pl bdS revonly" style="max-width:70ch;margin-top:24px" data-lang="en"><b>For review</b>Built like the landing page's "Curated panels", but with Pandonia's own tests and the booking system's prices. The landing page's panels (Core health 42 markers, Women's hormone and others) do not exist in the booking system and are not used. The card tops are CSS tonal fields, not photographs.</p>
 </div></section>
 
 <section class="wrap std" id="how-it-works">
@@ -979,7 +1040,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <section class="gDeep"><div class="wrap std">
     <h2 class="s d3" style="margin-bottom:8px" data-da="Holdet" data-en="The team">Holdet</h2>
     <p class="bd onDeepMuted meas" style="margin-bottom:30px" data-da="Seks mennesker i København. Du møder nogle af dem personligt." data-en="Six people in Copenhagen. You meet some of them in person.">Seks mennesker i København.</p>
-    <ul style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ruleInv)" class="teamGrid">
+    <ul style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--ruleInv)" class="teamGrid">
       <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-cecilie.jpg" data-alt-da="Cecilie Lange." data-alt-en="Cecilie Lange." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Cecilie Lange</p><p class="tmR" data-da="Projektleder" data-en="Project manager">Projektleder</p></li>
       <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-victor.jpg" data-alt-da="Victor Prehn." data-alt-en="Victor Prehn." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Victor Prehn</p><p class="tmR" data-da="Ansvarlig for SoMe og branding" data-en="Social media and branding">Ansvarlig for SoMe og branding</p></li>
       <li class="tm"><div class="phBox" style="aspect-ratio:4/5"><img class="ph" src="../public/images/team-deborah.jpg" data-alt-da="Deborah Saren." data-alt-en="Deborah Saren." alt=""><span class="phTag" data-da="Ægte" data-en="Real">Ægte</span></div><p class="tmN">Deborah Saren</p><p class="tmR" data-da="Blodprøvetager og bioanalytiker" data-en="Blood draw specialist and bioanalyst">Blodprøvetager og bioanalytiker</p></li>

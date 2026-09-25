@@ -140,3 +140,17 @@ Changes made during review, before approval:
 
 Released to the existing repository, `Pandonia-ApS/pandoina-website-v2`, on top
 of v2. The last v2 commit is tagged `v2` (`8852aa4`) so it can be restored.
+
+### After release
+
+- **Homepage tests section** replaces the full-width premises photo (two
+  blurred people). Built in the landing page's "Curated panels" layout —
+  serif headline, four cards with soft tonal tops, a black bar below — but
+  with Pandonia's own consumer tests and booking-system prices: Health Test
+  3.500 kr., Mænds Sundhedstest 1.400 kr., Skjoldbruskkirtel Test 1.600 kr.,
+  D-vitamin Test 1.000 kr., and the membership at 2.000 kr./md. The
+  landing page's clinic panels are not used. The premises photo stays on
+  Om Pandonia.
+- **Small phones:** header tightened below 420px so the capitalised wordmark,
+  CTA and menu button fit in both languages; team grid no longer overflows at
+  320px.
