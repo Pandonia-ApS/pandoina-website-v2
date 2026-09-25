@@ -116,8 +116,9 @@ Never set that in production.
 - Node has never run here — budget time for a first real `tsc` and `next build`
 - The four legal pages have no content; they are inert labels in the preview, not links
 - **1** art-direction plate remains, down from eight — the laboratory day-sequence frame. The doctor shoot has no plate left to signal it and survives only in `IMAGE-LICENCES.md`
-- Seven client-supplied images have **no documented licence** — sample in transit, the building, both laboratory frames, the consultation, the report photograph and the *Hvad vi måler* opener; clear the rights or replace them; see `IMAGE-LICENCES.md`
-- The *Hvad vi måler* opener replaced a real Pandonia blood-draw crop with a staged one; blood draw is a category where real imagery is mandatory
+- **Eight** client-supplied images have **no documented licence** — sample in transit, the building, both laboratory frames, the consultation, the report photograph, the *Hvad vi måler* opener and the homepage D-vitamin beat; clear the rights or replace them; see `IMAGE-LICENCES.md`
+- Both blood-draw beats now use staged photography. `draw.jpg`, in day-sequence frame 1, is the **only** real Pandonia blood draw left on the site — blood draw is a category where real imagery is mandatory
+- `skin.jpg` and `screen.jpg` are genuine Pandonia photography now sitting **unused** in the repository
 - The report photograph shows the deck's cover slide, not the score view its caption describes; `screen.jpg`, the only real capture of the score dashboard, is now unused
 - The building photograph reads as Pandonia's own premises but that is **unverified**
 - **The entire laboratory row is now non-Pandonia imagery** — a building exterior plus two stock interiors, one of which may be AI-generated. This conflicts with the project's own rule against stock standing in for the real laboratory, and the own-laboratory claim is the brand's central differentiator

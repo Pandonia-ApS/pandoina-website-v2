@@ -10,7 +10,7 @@ Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 | File | Source | Crop | Used for |
 |---|---|---|---|
 | `draw.jpg` | Pandonia `07-97a1009b` (3072×4096) | 3:4, full frame | Blood draw — the day sequence |
-| `skin.jpg` | Pandonia `07-97a1009b` | 520,1450 · 2070×2588 → 4:5 | Hands and skin |
+| `skin.jpg` | Pandonia `07-97a1009b` | 520,1450 · 2070×2588 → 4:5 | **Unused** — was hands and skin |
 | `apron.jpg` | Pandonia `07-97a1009b` | 200,100 · 2700×1800 → 3:2 | Branded apron — How it works |
 | `rum.jpg` | Pandonia `02-2c6a38a3` (1800×1200) | 3:2, full frame | Premises — full-bleed |
 | `rum2.jpg` | Pandonia `02-2c6a38a3` | 1100,0 · 700×933 → 3:4 | Premises, wordmark wall |
@@ -68,6 +68,26 @@ consent for web use regardless.
 
 ## Supplied by the client — rights not documented
 
+| File | `draw-home.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1505 × 1017 |
+| Placement | Homepage → the D-vitamin beat, replacing `skin.jpg` |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+Framed at `55% 50%` to hold the needle and the hands as the column crops.
+
+This was the second and last use of `skin.jpg`, which is now **unreferenced**
+alongside `screen.jpg`. Both are genuine Pandonia photography sitting unused in
+the repository.
+
+`draw.jpg` — the real blood draw from Pandonia's own shoot — is still displayed
+in day-sequence frame 1, so the site has not lost its authentic blood-draw
+image entirely. It is now the only one.
+
 | File | `tourniquet.webp` |
 |---|---|
 | Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
@@ -84,9 +104,9 @@ Blood draw is on the list where real Pandonia imagery is mandatory precisely
 because a staged substitute misrepresents how the service actually looks. The
 tag changed from "Ægte · Pandonia" to "Stock · ikke Pandonia" accordingly.
 
-`skin.jpg` remains in use on the homepage, so the real shoot is still visible
-there. 1.02 into a 4:5 frame keeps 78% of the width, framed at `55% 42%` to hold
-the forearm and the device rather than the glass in the foreground.
+1.02 into a 4:5 frame keeps 78% of the width, framed at `55% 42%` to hold the
+forearm and the device rather than the glass in the foreground. `skin.jpg` was
+subsequently replaced on the homepage too and is now unused entirely.
 
 | File | `report-deck.webp` |
 |---|---|
