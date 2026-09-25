@@ -21,15 +21,13 @@ Cropped from photographs supplied by Pandonia. Rights are Pandonia's own.
 | `t3.jpg` | Pandonia `18-e78c841d` | 480×600 | Team portrait |
 | `t4.jpg` | Pandonia `20-bb5ac064` | 480×600 | Team portrait |
 | `review.png` | Pandonia product render, supplied 24 Sep 2026 | 539×709, as supplied | Homepage — "Numbers only mean something…" |
-| `doctor.jpg` | Portrait supplied 24 Sep 2026 | 98×131 crop from a 164×164 avatar, upscaled to 480×640 | Day sequence frame 5 — 16.00, the consultation |
+| `doctor.jpg` | Portrait supplied 24 Sep 2026 | 98×131 crop from a 164×164 avatar, upscaled to 480×640 | **Unused** — was day-sequence frame 5 |
 
-`doctor.jpg` is **too low-resolution for production.** The source was a 164×164
+`doctor.jpg` is no longer displayed, but it is **too low-resolution for production** if it returns. The source was a 164×164
 circular avatar. The largest 3:4 rectangle that fits inside that circle is
-98×131, which is what the crop uses, upscaled 4.9× to 480×640. It renders around
-250×330 in the day sequence, so it is being shown at roughly twice its real
-detail and will look soft next to the other photographs. It is tagged "Ægte ·
-lav opløsning / Real · low resolution" so the gap is visible. **Ask for the
-original file.**
+98×131, which is what the crop uses, upscaled 4.9× to 480×640. In the slot it
+occupied it rendered around 250×330, roughly twice its real detail. **Ask for
+the original file** before using it anywhere.
 
 Two further points on it. The identification is the client's: it sits under copy
 naming Benedikte Halle because it was placed there on request, not because the
@@ -67,6 +65,30 @@ consent for web use regardless.
 | Status | **Holding image.** Replace with Pandonia's own hero photograph |
 
 ## Supplied by the client — rights not documented
+
+| File | `consultation.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 25 September 2026 |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1076 × 1047, near square |
+| Placement | Homepage → day-sequence frame 5, 16.00, replacing `doctor.jpg` |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+It answers the caption better than what it replaced: *"Tyve minutter"* beside a
+video call on a laptop, rather than a cropped avatar. 1.03 into a 3:4 frame keeps
+73% of the width, framed at `38% 50%` so the laptop screen survives and the crop
+takes the foreground shoulder.
+
+**Two consequences.** The low-resolution problem is gone, because `doctor.jpg` is
+no longer displayed — it is now unreferenced, joining `skin.jpg` and
+`screen.jpg`. And with it goes the last image on the site of the person who may
+actually be Pandonia's doctor: the consultation is now represented by a stock
+model here and another on *Din rapport*.
+
+The on-screen report panel resembles Pandonia's own UI but has not been verified
+as it.
 
 | File | `draw-home.webp` |
 |---|---|
