@@ -104,7 +104,7 @@ Declared once as `SharedFact`, formatted per locale. They cannot drift.
 
 | Fact | Value | DA format | EN format | Status |
 |---|---|---|---|---|
-| Biomarker count | — | `34 biomarkører` | `34 biomarkers` | **blocked** — 30 vs 34 |
+| Biomarker count | 30+ | `30+ biomarkører` | `30+ biomarkers` | **decided 25 Sep 2026** — conservative form; exact count still unverified |
 | Health Test | 3500 | `3.500 kr.` | `DKK 3,500` | verified |
 | Health Test + Consultation | 4750 | `4.750 kr.` | `DKK 4,750` | verified |
 | Single tests from | 1000 | `fra 1.000 kr.` | `from DKK 1,000` | verified |

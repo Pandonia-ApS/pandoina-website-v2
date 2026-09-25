@@ -81,15 +81,17 @@ from Pandonia, not from a designer or a developer.
 
 | Question | The conflict |
 |---|---|
-| How many biomarkers? | 30 vs 34 vs "over 30" — three published figures for one product |
+| ~~How many biomarkers?~~ | **Decided 25 Sep 2026: the site says "30+".** Three figures were published — 30, 34 and "over 30". The client chose the conservative form, which holds whichever exact number is right. An exact count is still unverified |
 | How long does the draw take? | Site says 5 minutes; the booking system allocates 10 and 15 |
 | Is 2–4 hours typical or best case? | Presented as a promise with no stated basis |
 | English names for the six systems | Two published English label sets disagree on three of six |
 | The six scores cluster 94.9–97.2 | On a 0–100 band all six ticks collapse — the scale or the scoring is wrong |
 | Which portrait is which person? | Nine studio portraits, none matchable to a name from public material |
 
-The biomarker count blocks the numeral variant of the hero headline. The
-preview ships the variant that does not depend on it.
+"30+" resolves the stat strip but **not** the numeral variant of the hero
+headline, which needs an exact figure — *"Fireogtredive svar / Thirty-four
+answers"* only works if 34 is confirmed. The preview ships the variant that does
+not depend on it.
 
 ---
 

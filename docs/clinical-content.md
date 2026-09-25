@@ -143,7 +143,7 @@ mechanics, the corporate programme, and the laboratory itself.
 4. **The three missing health area names** — the concept gives three; Pandonia must name three more.
 5. **What the six scores are scored on** — decides whether the two taxonomy layers are independent.
 
-Also blocked: the biomarker count (30 vs 34, three figures currently live),
+Also blocked: the biomarker count for an exact figure — the site now states "30+", chosen 25 Sep 2026 as the conservative form of three published figures (30, 34, "over 30") —
 laboratory accreditation, whether the consultation is included in the 3.500 kr.
 test, the `affaldssystem`/`detoxification` and `fordøjelse` terminology reviews,
 and all legal copy.
