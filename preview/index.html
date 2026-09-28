@@ -285,6 +285,11 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 
 /* hero: three lines, one per clause */
 .heroLine span{display:block}
+/* hero card: the feed's quiet serif square, in place of the holding photo */
+.heroCard{aspect-ratio:3/4;margin-top:-28px;background:var(--sand);display:flex;align-items:center;padding:0 9%}
+.heroCard p{font-family:var(--serif);font-size:clamp(24px,1.5vw + 12px,34px);line-height:1.12;letter-spacing:-.015em;color:var(--ink)}
+.heroCard span{display:block}
+@media(max-width:1023px){.heroCard{aspect-ratio:auto;min-height:260px;margin-top:0}}
 .heroLine{padding-top:clamp(8px,1.5vw,24px);font-size:clamp(40px,4.6vw + 12px,80px)}   /* one clause per line on desktop */
 
 .mk{border-bottom:1px solid var(--ruleSoft)}.mk[hidden]{display:none}
@@ -564,9 +569,9 @@ html[data-locale="en"] [data-lang="da"]{display:none}
         <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    <div class="phBox" style="aspect-ratio:3/4;margin-top:-28px">
-      <img class="ph gAtmos" src="../public/images/hero.jpg" data-alt-da="" data-alt-en="" alt="" style="object-position:50% 45%">
-      <span class="phTag lic" data-da="Licenseret · midlertidig" data-en="Licensed · holding image">Licenseret</span>
+    <!-- Pandonia's own line from the feed, in English on both sites like the hero -->
+    <div class="heroCard" lang="en">
+      <p><span>You can't</span><span>optimise</span><span>what you</span><span>haven't measured.</span></p>
     </div>
   </div>
 </section>
