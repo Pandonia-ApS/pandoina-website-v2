@@ -289,6 +289,12 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .heroCard{aspect-ratio:3/4;margin-top:-28px;background:var(--sand);display:flex;align-items:center;padding:0 9%}
 .heroCard p{font-family:var(--serif);font-size:clamp(24px,1.5vw + 12px,34px);line-height:1.12;letter-spacing:-.015em;color:var(--ink)}
 .heroCard span{display:block}
+
+/* "Test." — the feed's black square: huge white grotesk, serif line in a pastel gradient */
+.testBlock{padding-block:clamp(96px,14vw,210px);text-align:center}
+.testBlock .x{font-size:clamp(96px,15vw + 20px,250px);line-height:.88;letter-spacing:-.065em;color:var(--inkInv)}
+.testSub{margin-top:clamp(18px,2.2vw,32px);font-family:var(--serif);font-size:clamp(20px,1.2vw + 14px,30px);line-height:1.25;letter-spacing:-.01em;background:linear-gradient(90deg,#9EC3F7 0%,#F0A9C8 48%,#F6C79A 74%,#F1EC7A 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.testSub span{display:block}
 @media(max-width:1023px){.heroCard{aspect-ratio:auto;min-height:260px;margin-top:0}}
 .heroLine{padding-top:clamp(8px,1.5vw,24px);font-size:clamp(40px,4.6vw + 12px,80px)}   /* one clause per line on desktop */
 
@@ -882,26 +888,11 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     </div>
   </div></section>
 
-  <section id="laboratoriet" class="gDeep"><div class="wrap std">
-    <div class="split sp4258 alStart">
-      <div><p class="lab" data-da="03 · Analyse" data-en="03 · Analyse">03 · Analyse</p><h2 class="s d3" style="margin-top:8px" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</h2></div>
-      <div>
-        <p class="bodyL meas" style="color:rgba(250,250,247,.85)" data-da="Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag." data-en="We have our own laboratory on Langebrogade in Copenhagen. That is why the answer can reach you the same day.">Vi har vores eget laboratorium på Langebrogade.</p>
-        <p class="bd onDeepMuted meas" style="margin-top:16px" data-da="De fleste sender blodprøver videre til et eksternt laboratorium og venter. Vi analyserer selv, i samme by som du bor i." data-en="Most send blood samples on to an external laboratory and wait. We analyse them ourselves, in the same city you live in.">Vi analyserer selv, i samme by som du bor i.</p>
-        <div style="margin-top:14px"><span class="tagV" data-da="Verificeret · dansk kilde" data-en="Verified · Danish source">Verificeret</span></div>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr;gap:1px;background:var(--ruleInv);margin-top:clamp(28px,4vw,52px)" class="labGrid">
-      <div class="phBox" style="aspect-ratio:4/3"><img class="ph gSoft" src="../public/images/bygning.webp" data-alt-da="Bygningen på Langebrogade set fra havnen." data-alt-en="The building on Langebrogade seen from the harbour." alt=""><span class="phTag" data-da="Ægte · bygningen" data-en="Real · the building">Ægte · bygningen</span></div>
-      <div class="phBox" style="aspect-ratio:4/3"><img class="ph gAtmos" src="../public/images/lab-interior.jpg" data-alt-da="Laboratoriemedarbejdere i kittel ved et vindue." data-alt-en="Laboratory staff in coats by a window." alt="" style="object-position:50% 45%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
-      <div class="phBox" style="aspect-ratio:4/3"><img class="ph gSoft" src="../public/images/lab-rack.webp" data-alt-da="En hånd løfter et mærket blodprøverør op af et stativ." data-alt-en="A hand lifts a labelled blood tube from a rack." alt="" style="object-position:54% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
-    </div>
-    <dl style="display:grid;grid-template-columns:1fr;gap:26px 40px;margin-top:32px" class="g4">
-      <div><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Adresse" data-en="Address">Adresse</dt><dd class="bdS onDeepMuted">Langebrogade 3A, 2. sal<br>1411 København K</dd></div>
-      <div class="revonly"><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Akkreditering" data-en="Accreditation">Akkreditering</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Under hvilken godkendelse laboratoriet drives." data-en="Under what accreditation the laboratory operates.">Under hvilken godkendelse laboratoriet drives.</span></dd></div>
-      <div class="revonly"><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Metode" data-en="Method">Metode</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvilke analyser køres i huset." data-en="Which analyses run in-house.">Hvilke analyser køres i huset.</span></dd></div>
-      <div class="revonly"><dt class="lab onDeepQuiet" style="margin-bottom:8px" data-da="Kvalitetskontrol" data-en="Quality control">Kvalitetskontrol</dt><dd class="pl bdS"><b data-da="Afventer" data-en="Pending">Afventer</b><span data-da="Hvordan resultater kontrolleres." data-en="How results are checked.">Hvordan resultater kontrolleres.</span></dd></div>
-    </dl>
+  <!-- Pandonia's own line from the feed, in English on both sites like the other brand lines.
+       Keeps id="laboratoriet" so the footer's Laboratoriet link still lands here. -->
+  <section id="laboratoriet" class="gDeep"><div class="wrap testBlock" lang="en">
+    <h2 class="x">Test.</h2>
+    <p class="testSub"><span>It's the cheapest way</span><span>to a better decision.</span></p>
   </div></section>
 
   <section class="wrap std"><div class="split sp4258 alStart">
