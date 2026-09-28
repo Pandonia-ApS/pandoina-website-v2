@@ -151,9 +151,9 @@ source material and has not been signed off.
 | Beat 03 h | Kend dine tal. | Know your numbers. | `translated` | Pandonia feed |
 | Four steps h | Fire trin. Otteogfyrre timer. | Four steps. Forty-eight hours. | `requires_review` | landing page (B2B), verbatim EN |
 | Four steps sub | Fra bestilling til en rapport, der er klar til klinikeren. Samme arbejdsgang, uanset om du tager én eller flere tests om måneden. | From order to clinician-ready report. The same workflow whether you take one test a month or several. | `requires_review` | landing page (B2B); last sentence rewritten by Pandonia |
-| Step 01 | Du bestiller — Vælg et panel, eller sammensæt dit eget fra markørbiblioteket, i partnerportalen. | You order — Pick a panel or build your own from the marker library, in the partner portal. | `requires_review` | landing page (B2B) |
-| Step 02 | Vi indsamler — Blodprøvetagning hjemme hos dig, på vores prøvetagningssted i København eller i din klinik. | We collect — Concierge phlebotomy at home, our Copenhagen draw station, or at your clinic. | `requires_review` | landing page (B2B) |
-| Step 03 | Vi analyserer — Analyseret i vores eget laboratorium på Randox-udstyr. Kvalitetskontrolleret og godkendt. | We analyse — Processed in our own lab on Randox equipment. Quality controlled, signed off. | `requires_review` | landing page (B2B) |
+| Step 01 | Du bestiller — Vælg din ønskede test, eller sammensæt dit eget fra markørbiblioteket, i partnerportalen. | You order — Choose the test you want, or build your own from the marker library, in the partner portal. | `requires_review` | landing page (B2B), DA wording by Pandonia |
+| Step 02 | Vi indsamler — Blodprøvetagning hjemme hos dig, eller på vores laboratorium i København. | We collect — Blood draw at your home, or at our laboratory in Copenhagen. | `translated` | DA wording by Pandonia |
+| Step 03 | Vi analyserer — Analyseret i vores eget laboratorium. Kvalitetskontrolleret og godkendt. | We analyse — Processed in our own lab. Quality controlled, signed off. | `requires_review` | landing page (B2B), Randox removed by Pandonia |
 | Step 04 | Svar på 48 timer — En rapport, der er klar til klinikeren, leveret i din portal. Klar til at dele med din klient. | Results in 48h — Clinician-ready report delivered to your portal. Ready to share with your client. | `requires_review` | landing page (B2B) |
 | Systems h | Seks systemer. Én blodprøve. | Six systems. One blood test. | `translated` | — |
 | Score basis | Rapporten scorer hvert system ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder. | Your report scores each system on how close your values are to Pandonia's optimal ranges. | `requires_review` | report guide |
@@ -165,6 +165,7 @@ source material and has not been signed off.
 | FAQ | Hvad gør jeg, hvis jeg er i tvivl om mine resultater? | What should I do if I have doubts about my results? | `requires_review` | report guide |
 
 **Conflict to resolve before launch:** the four-step copy on the homepage is
-the B2B landing page's. It states 48 hours (elsewhere: same day, 2–4 hours),
-names Randox, and addresses clinics ("partner portal", "your client",
-"at your clinic"). Flagged in the preview's review layer.
+based on the B2B landing page's. It states 48 hours (elsewhere: same day,
+2–4 hours) and still addresses clinics ("partner portal", "your client").
+Randox and "at your clinic" were removed by Pandonia. Flagged in the
+preview's review layer.
