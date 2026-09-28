@@ -70,8 +70,8 @@ timestamp rail are retired; the hero no longer depends on the biomarker count.
 
 | Section | Danish | English draft | Translation | Clinical (DA) | Clinical (EN) |
 |---|---|---|---|---|---|
-| Beat 04 heading | Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret. | Low vitamin D is common in Denmark, particularly through the winter. | `requires_review` | **verified** (Pandonia booking system) | **requires_review** |
-| Beat 04 body | …Påvirker immunforsvar, knoglestyrke og mental balance. | …It affects the immune system, bone strength and mental balance. | `requires_review` | **verified** | **requires_review** |
+| Beat 04 heading | Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret. | Low vitamin D is common in Denmark, particularly through the winter. | `translated` | **verified** (Pandonia booking system) | **published at Pandonia's request, 28 Sep 2026** |
+| Beat 04 body | …Påvirker immunforsvar, knoglestyrke og mental balance. | …It affects the immune system, bone strength and mental balance. | `translated` | **verified** | **published at Pandonia's request, 28 Sep 2026** |
 | Beat 07 areas 1–6 | *not named* | *not named* | `requires_translation` | pending | pending |
 | Beat 07 model | signalering · transport · fordøjelse · energi · immunforsvar · affaldssystem | **two conflicting published sets** — see below | `requires_review` | 4 verified, 2 flagged | **conflict** |
 | Beat 08 score basis | *not written* | *not written* | `requires_translation` | pending | pending |
