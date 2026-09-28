@@ -91,7 +91,7 @@ Not used: "You can't optimise what you haven't measured." (optimise-language),
 | Turnaround | Landing page says **48 hours** / "Four steps. Forty-eight hours." Consumer site says 2–4 hours | Keeps consumer copy; 48h is likely the B2B figure — confirm |
 | Location | Feed footer: "Copenhagen — Palo Alto" | Not used |
 | Lab equipment | "Powered by Randox" | Not used until confirmed |
-| Female hormone panel | Booking system lists "Health check + Female hormones" (category "Pandonia test") with no published price | **Shown** as "Health Test + Female Hormones", price "at booking", until the price is confirmed |
+| Female hormone panel | Booking system lists "Health check + Female hormones" (category "Pandonia test") with no published price | **Shown** as "Health Test + Female Hormones", DKK 4,500 (confirmed by Pandonia, 28 Sep 2026) |
 | B2B panels | Core 42 markers / 1,290 · Men's 28 / 1,490 · Women's 32 / 1,490 · Longevity 36 / 1,890 · 200+ marker library | B2B only — not on consumer pages |
 | Heart claim | "The number that predicts your heart." | Not used |
 | Grip strength | Appears in the report's radar page (kgf) | Not described on the site |
