@@ -198,7 +198,7 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .ovtGl::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--forest)}
 @media(max-width:640px){.ovtPts{flex-direction:column;align-items:center;gap:10px}}
 
-.ovtStage{position:relative;display:flex;justify-content:center;margin-top:clamp(52px,7vw,92px);padding-block:10px}
+.ovtStage{position:relative;display:flex;justify-content:center;margin-top:0;padding-block:10px}
 .ovt{position:relative}
 .ovtBg{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;justify-content:space-evenly;pointer-events:none}
 .ovt>*:not(.ovtBg){position:relative;z-index:1}
@@ -830,15 +830,6 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     </div>
     <!-- Over time: centred headline, three points, two slow marker streams
          with a result card sitting in front of them. -->
-    <div class="wrap ovtHead">
-      <h2 class="s d2 fg ovtTitle" data-da="Følg dine egne tendenser over tid." data-en="Follow your own trends over time.">Følg dine egne tendenser over tid.</h2>
-      <p class="lab revonly" style="margin-top:12px" data-da="Omskrevet fra Pandonias egen tekst · Om Pandonia" data-en="Adapted from Pandonia's own text · About Pandonia">Omskrevet fra Pandonias egen tekst</p>
-      <ul class="ovtPts">
-        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Skab din baseline" data-en="Set your baseline">Skab din baseline</span></li>
-        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Følg udviklingen over tid" data-en="Follow the change over time">Følg udviklingen over tid</span></li>
-        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Se dine markører i sammenhæng" data-en="See your markers in context">Se dine markører i sammenhæng</span></li>
-      </ul>
-    </div>
 
     <div class="ovtStage">
       <!-- Six marker cards on one rail: swipe on phones, arrows or scroll on desktop.
@@ -1560,7 +1551,7 @@ function selectPricing(id,focus){
 // Marker-card rail: arrows step one card, the counter follows scroll and swipe.
 (function(){
   var rail=document.getElementById('rcRail'),prev=document.getElementById('rcPrev'),next=document.getElementById('rcNext'),count=document.getElementById('rcCount');
-  if(!rail)return;
+  if(!rail||!prev||!next||!count)return;   // arrows removed: the rail is swiped or scrolled
   var cards=[].slice.call(rail.children);
   function current(){var mid=rail.scrollLeft+rail.clientWidth/2,best=0,d=1e9;
     cards.forEach(function(c,i){var x=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(x<d){d=x;best=i;}});return best;}
