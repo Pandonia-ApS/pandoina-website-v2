@@ -361,7 +361,7 @@ body{font-size:16.5px;line-height:1.55}
 .navlinks .navFaq{display:none}
 /* phones: wordmark, CTA and menu button must share 320px, in both languages */
 /* phones: no header CTA (booking stays in the menu); the menu button sits alone */
-@media(max-width:759px){.navcta{display:none}}
+@media(max-width:759px){.navcta{display:none}.heroSee{display:none}}
 @media(max-width:420px){.navin{gap:10px}.navright{gap:6px}.wm{font-size:22px}.burger{width:40px}}
 /* Between tablet and wide desktop the links do not fit beside the wordmark,
    so they drop to a second row of the header instead of into the menu button. */
@@ -572,7 +572,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
       <p class="bodyL measN" style="margin-top:32px" data-da="35+ biomarkører analyseret fra en blodprøve taget hos os eller hjemme hos dig. Analyseret i vores eget laboratorium i København. Hvis ønsket, gennemgang med læge." data-en="35+ biomarkers analysed from a blood sample taken with us or at your home. Analysed in our own laboratory in Copenhagen. A review with a doctor, if you wish.">35+ biomarkører analyseret fra en blodprøve taget hos os eller hjemme hos dig.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:28px">
         <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-        <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
+        <a class="lnk heroSee" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <!-- Pandonia's own line from the feed, in English on both sites like the hero -->
