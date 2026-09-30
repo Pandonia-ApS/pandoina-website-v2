@@ -342,7 +342,7 @@ footer{background:var(--deep);color:var(--inkInv)}
 /* ── BRAND LAYER ─────────────────────────────────────────────────
    The new identity inside the existing structure. */
 body{font-size:16.5px;line-height:1.55}
-.wm{font-family:var(--sans);font-weight:700;font-size:28px;letter-spacing:-.06em;color:var(--ink);line-height:1}
+.wm{font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-.03em;text-transform:uppercase;color:var(--ink);line-height:1}
 .navlinks a{font-size:14.5px}
 .navcta{border-radius:0;background:var(--ink);color:var(--inkInv);padding:11px 18px;font-weight:400;font-size:13.5px}
 .btn{border-radius:0;font-weight:400;letter-spacing:.005em}
@@ -360,7 +360,9 @@ body{font-size:16.5px;line-height:1.55}
 @media(min-width:1024px){.idx{top:calc(env(safe-area-inset-top,0px) + 72px)}}
 .navlinks .navFaq{display:none}
 /* phones: wordmark, CTA and menu button must share 320px, in both languages */
-@media(max-width:420px){.navin{gap:10px}.navright{gap:6px}.wm{font-size:24px}.navcta{padding:9px 11px;font-size:12.5px}.burger{width:40px}}
+/* phones: no header CTA (booking stays in the menu); the menu button sits alone */
+@media(max-width:759px){.navcta{display:none}}
+@media(max-width:420px){.navin{gap:10px}.navright{gap:6px}.wm{font-size:22px}.burger{width:40px}}
 /* Between tablet and wide desktop the links do not fit beside the wordmark,
    so they drop to a second row of the header instead of into the menu button. */
 @media(min-width:760px) and (max-width:1139px){
