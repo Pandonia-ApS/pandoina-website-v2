@@ -382,10 +382,11 @@ body{font-size:16.5px;line-height:1.55}
 .navlinks .navFaq{display:none}
 /* phones: wordmark, CTA and menu button must share 320px, in both languages */
 /* phones: no header CTA (booking stays in the menu); the menu button sits alone */
-@media(max-width:759px){.navcta{display:none}.heroSee{display:none}}
-/* Mobile only: the homepage block from the "measured" card through
-   "Mål. Forstå. Handl." is withheld on phones while its replacement is decided. */
-@media(max-width:759px){.mCut{display:none!important}}
+@media(max-width:759px){.navcta{display:none}}
+.heroSee{display:none}
+/* All widths: the homepage block from the "measured" card through
+   "Mål. Forstå. Handl." is withheld; Hvad vi måler runs in its place. */
+.mCut{display:none!important}
 @media(max-width:420px){.navin{gap:10px}.navright{gap:6px}.wm{font-size:22px}.burger{width:40px}}
 /* Between tablet and wide desktop the links do not fit beside the wordmark,
    so they drop to a second row of the header instead of into the menu button. */
@@ -545,10 +546,10 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <header class="nav" id="nav"><div class="navin">
   <a class="wm" data-route="home" aria-label="Pandonia">Pandonia</a>
   <nav class="navlinks" aria-label="Main">
-    <a data-nav="saadan" data-anchor="how-it-works" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a>
-    <a data-nav="maaler" data-anchor="what-we-test" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a>
-    <a data-nav="rapport" data-anchor="your-report" data-da="Din rapport" data-en="Your report">Din rapport</a>
-    <a data-nav="book" data-anchor="pricing" data-da="Priser" data-en="Pricing">Priser</a>
+    <a data-nav="saadan" data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a>
+    <a data-nav="maaler" data-anchor="mMaalerSlot" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a>
+    <a data-nav="rapport" data-route="rapport" data-da="Din rapport" data-en="Your report">Din rapport</a>
+    <a data-nav="book" data-route="book" data-da="Priser" data-en="Pricing">Priser</a>
     <a class="navFaq" data-nav="faq" data-route="faq">FAQ</a>
   </nav>
   <div class="navright">
@@ -605,7 +606,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div>
 </section>
 
-<!-- Mobile only: the Hvad vi måler page is moved in here (see placeMaaler). -->
+<!-- The Hvad vi måler page is moved in here (see placeMaaler). -->
 <div id="mMaalerSlot"></div>
 
 <section class="mCut wrap" style="padding-block:6px 30px">
@@ -1344,7 +1345,7 @@ var T={da:{what:'Hvad er det',why:'Hvorfor måler vi det',unit:'Måleenhed',rang
         sysNote:'We are still assigning the markers to each system. Until then you can see them all together.'}};
 var ROUTES={da:{home:'/da',maaler:'/da/hvad-vi-maaler',saadan:'/da/saadan-fungerer-det',rapport:'/da/din-rapport',faq:'/da/faq',book:'/da/book'},
             en:{home:'/en',maaler:'/en/what-we-test',saadan:'/en/how-it-works',rapport:'/en/your-report',faq:'/en/faq',book:'/en/book'}};
-var ANCHOR_PAGE={'what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','pricing':'home','laboratoriet':'saadan','pr-ht':'book','pr-et':'book','pr-mb':'book'};
+var ANCHOR_PAGE={'mMaalerSlot':'home','what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','pricing':'home','laboratoriet':'saadan','pr-ht':'book','pr-et':'book','pr-mb':'book'};
 
 function nf(n){return loc==='da'?n.toFixed(1).replace('.',','):n.toFixed(1);}
 function dkk(v){return v===null?null:(loc==='da'?new Intl.NumberFormat('da-DK').format(v)+' kr.':'DKK '+new Intl.NumberFormat('en-GB').format(v));}
@@ -1555,10 +1556,10 @@ function selectPricing(id,focus){
     });
   });
 })();
-// On phones the homepage carries the Hvad vi måler content in place of the
+// The homepage carries the Hvad vi måler content in place of the
 // withheld block. The nodes are moved, not copied, so every id (search field,
 // marker list, system rows, marquees) stays unique and keeps working. They go
-// back to their own page whenever that page is open, or above phone width.
+// back to their own page whenever that page is open.
 // Marker-card rail: arrows step one card, the counter follows scroll and swipe.
 (function(){
   var rail=document.getElementById('rcRail'),prev=document.getElementById('rcPrev'),next=document.getElementById('rcNext'),count=document.getElementById('rcCount');
@@ -1578,7 +1579,7 @@ var phoneMq=window.matchMedia('(max-width:759px)');
 var maalerPage=document.querySelector('[data-page="maaler"]'),maalerSlot=document.getElementById('mMaalerSlot');
 function placeMaaler(){
   if(!maalerPage||!maalerSlot)return;
-  var toHome=phoneMq.matches&&page!=='maaler';
+  var toHome=page!=='maaler';
   var from=toHome?maalerPage:maalerSlot,to=toHome?maalerSlot:maalerPage;
   while(from.firstChild)to.appendChild(from.firstChild);
 }
