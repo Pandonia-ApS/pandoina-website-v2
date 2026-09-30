@@ -356,6 +356,18 @@ body{font-size:16.5px;line-height:1.55}
 .prName,.sysName{font-family:var(--sans);font-weight:700;letter-spacing:-.04em}
 .idx{top:calc(env(safe-area-inset-top,0px) + 60px)}
 .rcard{border-radius:0;width:min(88vw,440px);box-shadow:0 30px 60px -36px rgba(10,10,10,.30)}
+/* six marker cards on one rail: the first sits centred, the next peeks in */
+.ovtStage{display:block}
+.rcRail{position:relative;z-index:2;display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;padding:10px calc((100% - min(88vw,440px)) / 2) 44px;scrollbar-width:none}
+.rcRail::-webkit-scrollbar{display:none}
+.rcRail:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.rcRail .rcard{flex:0 0 min(88vw,440px);scroll-snap-align:center}
+.rcNav{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:4px}
+.rcBtn{width:44px;height:44px;display:inline-grid;place-content:center;background:none;border:1px solid var(--ink);color:var(--ink);font-size:17px;cursor:pointer}
+.rcBtn:disabled{opacity:.3;cursor:default}
+.rcCount{min-width:5ch;text-align:center;font-size:11px;letter-spacing:.16em;color:var(--ink3);font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.rcRail{scroll-behavior:auto}}
 .rcTitle{font-family:var(--serif)}
 @media(min-width:1024px){.idx{top:calc(env(safe-area-inset-top,0px) + 72px)}}
 .navlinks .navFaq{display:none}
@@ -814,6 +826,9 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <div class="ovtStage">
       <div class="mq mq1" aria-hidden="true"><div class="mqTrack" id="mqA"></div></div>
       <div class="mq mq2" aria-hidden="true"><div class="mqTrack rev" id="mqB"></div></div>
+      <!-- Six marker cards on one rail: swipe on phones, arrows or scroll on desktop.
+           GLU is the report guide's own example; the other five are illustrative. -->
+      <div class="rcRail" id="rcRail" tabindex="0" role="region" aria-label="Eksempler på markører over tid">
       <figure class="rcard" aria-labelledby="rcTitle">
         <div class="rcHead">
           <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
@@ -827,13 +842,84 @@ html[data-locale="en"] [data-lang="da"]{display:none}
         </div>
         <figcaption class="rcCap" data-da="Målingen er rapportens eget vejledningseksempel. Forløbet er skematisk." data-en="The measurement is the report's own guide example. The trend is schematic.">Målingen er rapportens eget vejledningseksempel.</figcaption>
       </figure>
+      <figure class="rcard" aria-labelledby="rcTitle2">
+        <div class="rcHead">
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+        </div>
+        <p class="rcTitle" id="rcTitle2" data-da="Langtidsblodsukker." data-en="Long-term blood sugar.">Langtidsblodsukker.</p>
+        <div class="rbarSlot" data-kind="a1c" style="margin-top:20px"></div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <div class="trendSlot" data-small="1" data-pts=".66,.68,.67,.70,.73,.72,.76,.78,.79"></div>
+        </div>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+      </figure>
+      <figure class="rcard" aria-labelledby="rcTitle3">
+        <div class="rcHead">
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+        </div>
+        <p class="rcTitle" id="rcTitle3" data-da="D-vitamin." data-en="Vitamin D.">D-vitamin.</p>
+        <div class="rbarSlot" data-kind="vit" style="margin-top:20px"></div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <div class="trendSlot" data-small="1" data-pts=".78,.72,.64,.62,.66,.72,.77,.70,.63"></div>
+        </div>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+      </figure>
+      <figure class="rcard" aria-labelledby="rcTitle4">
+        <div class="rcHead">
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+        </div>
+        <p class="rcTitle" id="rcTitle4" data-da="Stofskifte." data-en="Thyroid.">Stofskifte.</p>
+        <div class="rbarSlot" data-kind="tsh" style="margin-top:20px"></div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <div class="trendSlot" data-small="1" data-pts=".70,.71,.69,.72,.71,.73,.72,.74,.73"></div>
+        </div>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+      </figure>
+      <figure class="rcard" aria-labelledby="rcTitle5">
+        <div class="rcHead">
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+        </div>
+        <p class="rcTitle" id="rcTitle5" data-da="Testosteron." data-en="Testosterone.">Testosteron.</p>
+        <div class="rbarSlot" data-kind="tes" style="margin-top:20px"></div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <div class="trendSlot" data-small="1" data-pts=".64,.66,.65,.69,.71,.70,.74,.76,.78"></div>
+        </div>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+      </figure>
+      <figure class="rcard" aria-labelledby="rcTitle6">
+        <div class="rcHead">
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+        </div>
+        <p class="rcTitle" id="rcTitle6" data-da="Kolesterol." data-en="Cholesterol.">Kolesterol.</p>
+        <div class="rbarSlot" data-kind="tc" style="margin-top:20px"></div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <div class="trendSlot" data-small="1" data-pts=".62,.64,.66,.65,.69,.72,.71,.75,.77"></div>
+        </div>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="rcNav">
+      <button type="button" class="rcBtn" id="rcPrev"><span aria-hidden="true">←</span><span class="sr" data-da="Forrige markør" data-en="Previous marker">Forrige markør</span></button>
+      <span class="rcCount" id="rcCount" aria-live="polite">1 / 6</span>
+      <button type="button" class="rcBtn" id="rcNext"><span aria-hidden="true">→</span><span class="sr" data-da="Næste markør" data-en="Next marker">Næste markør</span></button>
     </div>
 
     <div class="wrap">
       <div class="revonly" style="max-width:64ch;margin:40px auto 0">
         <p class="lab" style="margin-bottom:10px" data-da="Til gennemsyn" data-en="For review">Til gennemsyn</p>
-        <p class="bdS" data-lang="da">"Baseline" er ikke et ord fra Pandonias eget materiale — de to andre punkter er støttet af "følge dine egne tendenser" og rapportens "Score over time". Kortet bruger rapportens eget vejledningseksempel, GLU 5,1. <b>Enheden er rettet:</b> vejledningen skriver nmol/L, men glukose måles i mmol/L. Bjælkens zoner er gengivet fra vejledningen og er ikke et verificeret referenceområde for glukose. Score-forløbet er skematisk, uden tal.</p>
-        <p class="bdS" data-lang="en">"Baseline" is not a word from Pandonia's own material — the other two points are supported by "follow your own trends" and the report's "Score over time". The card uses the report's own guide example, GLU 5.1. <b>The unit is corrected:</b> the guide says nmol/L, but glucose is measured in mmol/L. The bar's zones are reproduced from the guide and are not a verified reference range for glucose. The score trace is schematic, with no numbers.</p>
+        <p class="bdS" data-lang="da">"Baseline" er ikke et ord fra Pandonias eget materiale — de to andre punkter er støttet af "følge dine egne tendenser" og rapportens "Score over time". Kortet bruger rapportens eget vejledningseksempel, GLU 5,1. <b>Enheden er rettet:</b> vejledningen skriver nmol/L, men glukose måles i mmol/L. Bjælkens zoner er gengivet fra vejledningen og er ikke et verificeret referenceområde for glukose. Score-forløbet er skematisk, uden tal. <b>De fem øvrige kort</b> (HbA1c, D-vitamin, TSH, testosteron, kolesterol) er lavet på Pandonias ønske: værdier og zoner er illustrative og bygger på almindeligt anvendte grænser, ikke på laboratoriets egne områder. Skal tjekkes af laboratoriet før lancering.</p>
+        <p class="bdS" data-lang="en">"Baseline" is not a word from Pandonia's own material — the other two points are supported by "follow your own trends" and the report's "Score over time". The card uses the report's own guide example, GLU 5.1. <b>The unit is corrected:</b> the guide says nmol/L, but glucose is measured in mmol/L. The bar's zones are reproduced from the guide and are not a verified reference range for glucose. The score trace is schematic, with no numbers. <b>The five further cards</b> (HbA1c, vitamin D, TSH, testosterone, cholesterol) were made at Pandonia's request: values and zones are illustrative, based on commonly used limits, not the laboratory's own ranges. To be checked by the laboratory before launch.</p>
         <h3 class="hh3" style="margin-top:22px" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h3>
         <p class="pl bd" style="margin-top:10px" data-lang="da"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet.</p>
         <p class="pl bd" style="margin-top:10px" data-lang="en"><b>Awaiting clinical text</b>A short section on what the test does not cover, and when to speak to your own doctor instead.</p>
@@ -1308,6 +1394,27 @@ function renderAll(){
   function n1(n){var s=String(Math.round(n*10)/10);return da?s.replace('.',','):s;}
   var XX=da?'X,X':'X.X';
   function rbarHTML(kind,anno){
+    // Five further example markers for the over-time rail. Values and zones
+    // are illustrative, drawn from commonly used general limits — not
+    // Pandonia's own laboratory ranges, which are not yet published.
+    var MK={
+      a1c:{ac:'A1C',u:'mmol/mol',min:20,max:60,ticks:[20,30,40,50,60],v:36,hex:'opt',
+           z:'var(--rOpt) 0%,var(--rOpt) 44%,var(--rRef) 52%,var(--rRef) 62%,var(--rOut) 70%,var(--rOut) 100%'},
+      vit:{ac:'VIT',u:'nmol/L',min:0,max:150,ticks:[0,50,100,150],v:62,hex:'',
+           z:'var(--rOut) 0%,var(--rOut) 12%,var(--rMid) 20%,var(--rRef) 28%,var(--rRef) 44%,var(--rOpt) 54%,var(--rOpt) 84%,var(--rRef) 94%,var(--rRef) 100%'},
+      tsh:{ac:'TSH',u:'mIU/L',min:0,max:6,ticks:[0,1.5,3,4.5,6],v:1.8,hex:'opt',
+           z:'var(--rOut) 0%,var(--rRef) 7%,var(--rOpt) 14%,var(--rOpt) 46%,var(--rRef) 56%,var(--rRef) 66%,var(--rOut) 74%,var(--rOut) 100%'},
+      tes:{ac:'TES',u:'nmol/L',min:0,max:40,ticks:[0,10,20,30,40],v:18,hex:'opt',
+           z:'var(--rOut) 0%,var(--rOut) 14%,var(--rRef) 21%,var(--rRef) 26%,var(--rOpt) 33%,var(--rOpt) 80%,var(--rRef) 90%,var(--rRef) 100%'},
+      tc:{ac:'TC',u:'mmol/L',min:2,max:8,ticks:[2,4,6,8],v:4.6,hex:'opt',
+           z:'var(--rOpt) 0%,var(--rOpt) 46%,var(--rRef) 54%,var(--rRef) 60%,var(--rOut) 68%,var(--rOut) 100%'}
+    };
+    var M=MK[kind];
+    if(M){
+      var sp=M.max-M.min;
+      var axM=M.ticks.map(function(n){return '<span style="left:'+((n-M.min)/sp*100)+'%">'+n1(n)+'</span>';}).join('');
+      return '<div class="rbar"><span class="ac">'+M.ac+'</span><div><div class="zb" style="background:linear-gradient(90deg,'+M.z+')"><i class="zv" style="left:'+((M.v-M.min)/sp*100).toFixed(1)+'%"></i></div><div class="zax">'+axM+'</div></div><span class="hex '+M.hex+'"><b>'+n1(M.v)+'</b><small>'+M.u+'</small></span></div>';
+    }
     if(kind==='glu'){
       var ax=[3,4.5,6,7.5,9].map(function(n){return '<span style="left:'+((n-3)/6*100)+'%">'+n1(n)+'</span>';}).join('');
       var bar='<div class="rbar"><span class="ac">GLU</span><div><div class="zb glu"><i class="zv" style="left:35%"></i></div><div class="zax">'+ax+'</div></div><span class="hex"><b>'+n1(5.1)+'</b><small>mmol/L</small></span></div>';
@@ -1323,8 +1430,8 @@ function renderAll(){
 
   // Score over time: the shape of the report's chart and nothing more — no
   // values, no dates. Dots are coloured by level, as the report colours them.
-  function trendSVG(small){
-    var pts=[.62,.70,.64,.72,.74,.71,.78,.76,.80];
+  function trendSVG(small,given){
+    var pts=given||[.62,.70,.64,.72,.74,.71,.78,.76,.80];
     var W=small?360:520,H=small?90:220,pl=small?8:42,pr=10,pt=small?10:14,pb=small?12:34,iw=W-pl-pr,ih=H-pt-pb,n=pts.length,o='';
     function X(i){return pl+iw*i/(n-1);}
     // the full chart keeps the report's headroom; the compact trace spreads the same shape over its own height
@@ -1339,7 +1446,7 @@ function renderAll(){
     pts.forEach(function(v,i){var c=cols[Math.max(0,Math.min(5,Math.floor((v-.6)/.035)))];o+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(v).toFixed(1)+'" r="'+(small?4.5:7)+'" fill="'+c+'"/>';});
     return '<svg class="trend" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(da?'Skematisk forløb af den samlede score over flere målinger':'Schematic trend of the overall score across several tests')+'">'+o+'</svg>';
   }
-  document.querySelectorAll('.trendSlot').forEach(function(e){e.innerHTML=trendSVG(!!e.getAttribute('data-small'));});
+  document.querySelectorAll('.trendSlot').forEach(function(e){var p=e.getAttribute('data-pts');e.innerHTML=trendSVG(!!e.getAttribute('data-small'),p?p.split(',').map(Number):null);});
 
   var scoreRows=SYS.map(function(s){var n=loc==='da'?s.da:s.ui;
     return '<li><span class="l"><span style="min-width:170px;font-size:15px">'+n+'</span><span class="micro"><span class="ref" style="left:0;width:100%"></span><span class="tick" style="left:'+s.score+'%"></span></span></span><span class="v">'+nf(s.score)+'</span></li>';}).join('');
@@ -1436,6 +1543,21 @@ function selectPricing(id,focus){
 // withheld block. The nodes are moved, not copied, so every id (search field,
 // marker list, system rows, marquees) stays unique and keeps working. They go
 // back to their own page whenever that page is open, or above phone width.
+// Marker-card rail: arrows step one card, the counter follows scroll and swipe.
+(function(){
+  var rail=document.getElementById('rcRail'),prev=document.getElementById('rcPrev'),next=document.getElementById('rcNext'),count=document.getElementById('rcCount');
+  if(!rail)return;
+  var cards=[].slice.call(rail.children);
+  function current(){var mid=rail.scrollLeft+rail.clientWidth/2,best=0,d=1e9;
+    cards.forEach(function(c,i){var x=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(x<d){d=x;best=i;}});return best;}
+  function update(){var i=current();count.textContent=(i+1)+' / '+cards.length;prev.disabled=i===0;next.disabled=i===cards.length-1;}
+  function go(i){i=Math.max(0,Math.min(cards.length-1,i));var c=cards[i];rail.scrollTo({left:c.offsetLeft-(rail.clientWidth-c.offsetWidth)/2});}
+  prev.addEventListener('click',function(){go(current()-1);});
+  next.addEventListener('click',function(){go(current()+1);});
+  var tick=false;rail.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){tick=false;update();});},{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
 var phoneMq=window.matchMedia('(max-width:759px)');
 var maalerPage=document.querySelector('[data-page="maaler"]'),maalerSlot=document.getElementById('mMaalerSlot');
 function placeMaaler(){
