@@ -199,6 +199,8 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 @media(max-width:640px){.ovtPts{flex-direction:column;align-items:center;gap:10px}}
 
 .ovtStage{position:relative;display:flex;justify-content:center;margin-top:0;padding-block:10px}
+.ovtLower{position:relative;margin-top:clamp(28px,4vw,56px);padding-top:clamp(24px,3vw,40px)}
+.ovtLower>*:not(.ovtBg){position:relative;z-index:1}
 .ovt{position:relative}
 .ovtBg{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;justify-content:space-evenly;pointer-events:none}
 .ovt>*:not(.ovtBg){position:relative;z-index:1}
@@ -818,10 +820,18 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
   </div></section>
   <section class="gSand ovt">
-    <!-- Marker names run behind the whole section, headline included. -->
+    <div class="wrap ovtHead">
+      <h2 class="s d2 fg ovtTitle" data-da="Følg dine egne tendenser over tid." data-en="Follow your own trends over time.">Følg dine egne tendenser over tid.</h2>
+      <p class="lab revonly" style="margin-top:12px" data-da="Omskrevet fra Pandonias egen tekst · Om Pandonia" data-en="Adapted from Pandonia's own text · About Pandonia">Omskrevet fra Pandonias egen tekst</p>
+      <ul class="ovtPts">
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Skab din baseline" data-en="Set your baseline">Skab din baseline</span></li>
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Følg udviklingen over tid" data-en="Follow the change over time">Følg udviklingen over tid</span></li>
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Se dine markører i sammenhæng" data-en="See your markers in context">Se dine markører i sammenhæng</span></li>
+      </ul>
+    </div>
+    <div class="ovtLower">
+    <!-- Marker names run behind the cards, the arrows and the buttons — not behind the headline. -->
     <div class="ovtBg" aria-hidden="true">
-      <div class="mq"><div class="mqTrack" style="animation-duration:190s"></div></div>
-      <div class="mq"><div class="mqTrack rev" style="animation-duration:230s"></div></div>
       <div class="mq"><div class="mqTrack" style="animation-duration:170s"></div></div>
       <div class="mq"><div class="mqTrack rev" style="animation-duration:210s"></div></div>
       <div class="mq"><div class="mqTrack" style="animation-duration:250s"></div></div>
@@ -934,6 +944,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
         <a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
         <a class="lnk" data-route="rapport"><span data-da="Se hvordan resultatet ser ud" data-en="See what the result looks like">Se hvordan resultatet ser ud</span> <span aria-hidden="true">→</span></a>
       </div>
+    </div>
     </div>
   </section>
   <section class="wrap" style="padding-block:clamp(52px,8vw,128px)">
