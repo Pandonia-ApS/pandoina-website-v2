@@ -199,8 +199,15 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 @media(max-width:640px){.ovtPts{flex-direction:column;align-items:center;gap:10px}}
 
 .ovtStage{position:relative;display:flex;justify-content:center;margin-top:clamp(52px,7vw,92px);padding-block:10px}
-.mq{position:absolute;left:0;right:0;overflow:hidden;white-space:nowrap;transform:translateY(-50%);pointer-events:none}
-.mq1{top:31%}.mq2{top:69%}
+.ovt{position:relative}
+.ovtBg{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;justify-content:space-evenly;pointer-events:none}
+.ovt>*:not(.ovtBg){position:relative;z-index:1}
+.mq{overflow:hidden;white-space:nowrap;pointer-events:none}
+/* small text sits on a sand chip so it stays legible over the running names */
+.ovtPts li{background:var(--sand);padding:4px 10px}
+.ovtCta .lnk{background:var(--sand);padding-inline:8px}
+.rcCount{background:var(--sand);padding:6px 8px}
+
 .mqTrack{display:inline-flex;width:max-content;animation:mqL 170s linear infinite}
 .mqTrack.rev{animation-name:mqR;animation-duration:200s}
 .mqTrack span{font-family:var(--serif);font-size:clamp(26px,2.4vw + 12px,46px);letter-spacing:-.015em;line-height:1.25;color:rgba(10,10,10,.30);padding-inline:.42em}
@@ -811,6 +818,16 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
   </div></section>
   <section class="gSand ovt">
+    <!-- Marker names run behind the whole section, headline included. -->
+    <div class="ovtBg" aria-hidden="true">
+      <div class="mq"><div class="mqTrack" style="animation-duration:190s"></div></div>
+      <div class="mq"><div class="mqTrack rev" style="animation-duration:230s"></div></div>
+      <div class="mq"><div class="mqTrack" style="animation-duration:170s"></div></div>
+      <div class="mq"><div class="mqTrack rev" style="animation-duration:210s"></div></div>
+      <div class="mq"><div class="mqTrack" style="animation-duration:250s"></div></div>
+      <div class="mq"><div class="mqTrack rev" style="animation-duration:180s"></div></div>
+      <div class="mq"><div class="mqTrack" style="animation-duration:220s"></div></div>
+    </div>
     <!-- Over time: centred headline, three points, two slow marker streams
          with a result card sitting in front of them. -->
     <div class="wrap ovtHead">
@@ -824,8 +841,6 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     </div>
 
     <div class="ovtStage">
-      <div class="mq mq1" aria-hidden="true"><div class="mqTrack" id="mqA"></div></div>
-      <div class="mq mq2" aria-hidden="true"><div class="mqTrack rev" id="mqB"></div></div>
       <!-- Six marker cards on one rail: swipe on phones, arrows or scroll on desktop.
            GLU is the report guide's own example; the other five are illustrative. -->
       <div class="rcRail" id="rcRail" tabindex="0" role="region" aria-label="Eksempler på markører over tid">
@@ -1356,9 +1371,8 @@ function renderAll(){
     var half=seq+seq+seq;              // wide enough to overrun a 2560px screen
     return half+half;                  // two identical halves: -50% loops seamlessly
   }
-  var mqA=document.getElementById('mqA'),mqB=document.getElementById('mqB');
-  if(mqA)mqA.innerHTML=stream([0,1,2,3,4,5,6,8]);
-  if(mqB)mqB.innerHTML=stream([7,10,11,9,12,13]);
+  var mqSets=[[0,1,2,3,4,5,6,8],[7,10,11,9,12,13],[3,8,0,6,1,5],[12,9,13,7,11,10],[5,2,8,4,0,6,3],[10,13,7,12,9,11],[1,6,4,0,8,2]];
+  document.querySelectorAll('.ovtBg .mqTrack').forEach(function(t,i){t.innerHTML=stream(mqSets[i%mqSets.length]);});
 
   var da=loc==='da';   // assigned here: the pricing block below reuses it
   // ── Report components, drawn the way Pandonia's health report draws them.
