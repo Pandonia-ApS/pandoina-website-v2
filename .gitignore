@@ -16,3 +16,13 @@ next-env.d.ts
 *.tsbuildinfo
 .idea/
 .vscode/
+
+# Impeccable — ephemeral output (screenshots, live sessions, caches, per-developer overrides).
+# PRODUCT.md, DESIGN.md, .impeccable/config.json, surfaces/ and critique/ stay tracked.
+.impeccable/*.png
+.impeccable/live/
+.impeccable/cache/
+.impeccable/sessions/
+.impeccable/previews/
+.impeccable/pending/
+.impeccable/config.local.json
