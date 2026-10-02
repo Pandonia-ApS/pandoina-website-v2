@@ -85,4 +85,4 @@ attention · ⛔ blocker before connecting the real domain.
   - existing site suite — Chromium 322/322; WebKit 321/322 (the Safari Tab setting above);
   - production suite (SEO, no review/demo content, booking and login links, footer, routes, deep links, reload, back/forward, language switching, mobile menu, marker search and expansion, images, console errors, overflow, 404, demo not published) — 214/214 in both;
   - prices suite — 66/66 in both.
-- ✅ Re-run against the live public address after deployment (see the final report).
+- ✅ Re-run against the **live public address** after deployment (commit f6a565d, 2 Oct 2026): existing suite Chromium 322/322, WebKit 321/322 (Safari Tab setting); production suite 214/214 in both; prices 66/66 in both. Opened without login on desktop and mobile; booking, login, membership and policy links answer 200.
