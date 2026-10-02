@@ -1,19 +1,25 @@
-name: Deploy preview to GitHub Pages
+name: Deploy public site to GitHub Pages
 
-# Publishes ONLY preview/index.html, preview/booking.html and their photographs.
+# Publishes ONLY the public production site: site/ (Danish at /, English at
+# /en/, 404 page, icons, social image) plus the photographs it uses, with
+# robots.txt and sitemap.xml generated for the site address.
 #
-# Deliberately NOT published: design/ (internal phase documents, including the
-# internal-only territory names), docs/, src/, scripts/. A GitHub Pages site is
-# reachable by anyone with the URL even when the repository is private, unless
-# the organisation is on Enterprise Cloud with Pages access control. Keep the
-# published surface to the preview itself.
+# Never published: preview/ (the internal review build and the booking demo
+# with demo availability), design/, docs/, src/, scripts/.
+#
+# The site address comes from GitHub Pages itself (actions/configure-pages),
+# so once a custom domain is set under Settings → Pages it is used
+# automatically on the next run. site.config.json can override it.
+# See DOMAIN_SETUP.md.
 
 on:
   push:
     branches: [main]
     paths:
-      - 'preview/**'
+      - 'site/**'
       - 'public/images/**'
+      - 'scripts/assemble-site.mjs'
+      - 'site.config.json'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -32,42 +38,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Assemble the site
-        run: |
-          set -euo pipefail
-          mkdir -p _site/images
-          # Every image, whatever the extension. An earlier version globbed
-          # *.jpg and silently dropped a .webp, which 404'd on the live site.
-          cp public/images/* _site/images/
-          # The preview loads images from ../public/images/ when opened from a
-          # clone. Flatten that to images/ for the published root.
-          # index.html is the site; booking.html is the booking preview
-          # (demo availability, labelled DEMO / NOT LIVE on the page).
-          for page in index booking; do
-            sed 's|\.\./public/images/|images/|g' "preview/$page.html" > "_site/$page.html"
-            if grep -q '\.\./public/images/' "_site/$page.html"; then
-              echo "image paths were not rewritten in $page.html"; exit 1
-            fi
-          done
-          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
-          touch _site/.nojekyll
+      - id: pages
+        uses: actions/configure-pages@v5
 
-          # Fail the build if a page references an image that is not here.
-          missing=0
-          for f in $(grep -ho 'src="images/[^"]*"' _site/index.html _site/booking.html \
-                     | sed 's|src="||; s|"||' | sort -u); do
-            if [ ! -f "_site/$f" ]; then
-              echo "MISSING: $f"
-              missing=1
-            fi
-          done
-          if [ "$missing" -ne 0 ]; then
-            echo "referenced images are missing from the published site"
-            exit 1
-          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-          echo "--- published files ---"
-          find _site -type f | sort
+      - name: Assemble the public site
+        run: node scripts/assemble-site.mjs --site-url "${{ steps.pages.outputs.base_url }}" --out _site
 
       - uses: actions/upload-pages-artifact@v3
         with:

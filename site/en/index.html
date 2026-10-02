@@ -1,9 +1,30 @@
 <!doctype html>
-<html lang="da" data-locale="da" data-review="off">
+<html lang="en" data-locale="en" data-review="off" data-prod data-path-locale="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
-<title>Pandonia Website</title>
+<title>Pandonia — blood tests at your home in Copenhagen</title>
+<meta name="description" content="35+ biomarkers from a blood sample taken with us or at your home. Analysed in our own laboratory in Copenhagen. A review with a doctor, if you wish.">
+<meta name="robots" content="__ROBOTS__">
+<link rel="canonical" href="__SITE_URL__en/">
+<link rel="alternate" hreflang="da-DK" href="__SITE_URL__">
+<link rel="alternate" hreflang="en" href="__SITE_URL__en/">
+<link rel="alternate" hreflang="x-default" href="__SITE_URL__">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pandonia">
+<meta property="og:title" content="Pandonia — blood tests at your home in Copenhagen">
+<meta property="og:description" content="35+ biomarkers from a blood sample taken with us or at your home. Analysed in our own laboratory in Copenhagen. A review with a doctor, if you wish.">
+<meta property="og:url" content="__SITE_URL__en/">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="da_DK">
+<meta property="og:image" content="__SITE_URL__og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Happier Healthier Longer. — Pandonia">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="__BASE_PATH__favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="__BASE_PATH__apple-touch-icon.png">
+<meta name="theme-color" content="#FAFAF7">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Arimo and Tinos are the same designs as Liberation Sans and Liberation Serif,
@@ -575,32 +596,25 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   .hv .hvShape,.hv .hvIn{animation:none}
 }
 </style>
-
-<div class="bar">
-  <span data-da="Pandonia · klikbar prototype · DA + EN" data-en="Pandonia · clickable prototype · DA + EN">Pandonia</span>
-  <span style="display:flex;align-items:center;gap:14px">
-    <button type="button" class="revBtn" id="revToggle" aria-pressed="false" data-da="Review-lag" data-en="Review layer">Review-lag</button>
-    <span class="m" id="routebar" style="color:var(--acid)">/da</span>
-  </span>
-</div>
-
+</head>
+<body>
 <header class="nav" id="nav"><div class="navin">
   <a class="wm" data-route="home" aria-label="Pandonia">Pandonia</a>
   <nav class="navlinks" aria-label="Main">
-    <a data-nav="saadan" data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a>
-    <a data-nav="maaler" data-anchor="mMaalerSlot" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a>
-    <a data-nav="rapport" data-route="rapport" data-da="Din rapport" data-en="Your report">Din rapport</a>
-    <a data-nav="book" data-route="book" data-da="Priser" data-en="Pricing">Priser</a>
+    <a data-nav="saadan" data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">How it works</a>
+    <a data-nav="maaler" data-anchor="mMaalerSlot" data-da="Hvad vi måler" data-en="What we test">What we test</a>
+    <a data-nav="rapport" data-route="rapport" data-da="Din rapport" data-en="Your report">Your report</a>
+    <a data-nav="book" data-route="book" data-da="Priser" data-en="Pricing">Pricing</a>
     <a class="navFaq" data-nav="faq" data-route="faq">FAQ</a>
   </nav>
   <div class="navright">
     <div class="navutil">
       <a class="utilFaq" data-route="faq">FAQ</a><span class="sep utilFaq">·</span>
-      <a class="ext" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="Log ind" data-en="Log in">Log ind</a>
+      <a class="ext" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="Log ind" data-en="Log in">Log in</a>
       <span class="sep">·</span>
       <span class="langsw"><button type="button" id="btnDa" aria-current="true" lang="da">DA</button><span class="sep">·</span><button type="button" id="btnEn" aria-current="false" lang="en">EN</button></span>
     </div>
-    <a class="navcta" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
+    <a class="navcta" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mobnav" aria-label="Menu"><i></i></button>
   </div>
 </div></header>
@@ -608,16 +622,16 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <div class="mobnav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu" hidden>
   <button class="x" id="mobclose" aria-label="Luk">×</button>
   <nav><ul>
-    <li><a data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a></li>
-    <li><a data-route="rapport" data-da="Din rapport" data-en="Your report">Din rapport</a></li>
-    <li><a data-route="book" data-da="Priser" data-en="Pricing">Priser</a></li>
+    <li><a data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">How it works</a></li>
+    <li><a data-route="rapport" data-da="Din rapport" data-en="Your report">Your report</a></li>
+    <li><a data-route="book" data-da="Priser" data-en="Pricing">Pricing</a></li>
     <li><a data-route="faq">FAQ</a></li>
   </ul>
   <div class="langrow"><button type="button" class="mlang" data-loc="da" aria-current="true">DANSK</button><span class="sep">·</span><button type="button" class="mlang" data-loc="en" aria-current="false">ENGLISH</button></div>
   </nav>
   <div style="margin-top:26px">
-    <a class="btn btn1" style="background:var(--cream);color:var(--deep);width:100%" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-    <a class="ext" style="display:block;margin-top:14px;color:var(--onDeepQuiet);font-family:var(--sans);font-size:12px;letter-spacing:.1em" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="LOG IND" data-en="LOG IN">LOG IND</a>
+    <a class="btn btn1" style="background:var(--cream);color:var(--deep);width:100%" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
+    <a class="ext" style="display:block;margin-top:14px;color:var(--onDeepQuiet);font-family:var(--sans);font-size:12px;letter-spacing:.1em" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="LOG IND" data-en="LOG IN">LOG IN</a>
   </div>
 </div>
 
@@ -634,10 +648,10 @@ html[data-locale="en"] [data-lang="da"]{display:none}
         <span>Healthier</span>
         <span>Longer.</span>
       </h1>
-      <p class="bodyL measN" style="margin-top:32px" data-da="35+ biomarkører fra en blodprøve taget hos os eller hjemme hos dig. Analyseret i vores eget laboratorium i København. Hvis ønsket, gennemgang med læge." data-en="35+ biomarkers from a blood sample taken with us or at your home. Analysed in our own laboratory in Copenhagen. A review with a doctor, if you wish.">35+ biomarkører fra en blodprøve taget hos os eller hjemme hos dig.</p>
+      <p class="bodyL measN" style="margin-top:32px" data-da="35+ biomarkører fra en blodprøve taget hos os eller hjemme hos dig. Analyseret i vores eget laboratorium i København. Hvis ønsket, gennemgang med læge." data-en="35+ biomarkers from a blood sample taken with us or at your home. Analysed in our own laboratory in Copenhagen. A review with a doctor, if you wish.">35+ biomarkers from a blood sample taken with us or at your home. Analysed in our own laboratory in Copenhagen. A review with a doctor, if you wish.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:28px">
-        <a class="btn btn1" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-        <a class="lnk heroSee" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
+        <a class="lnk heroSee" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">See what we test</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <!-- Pandonia's own line from the feed, in English on both sites like the hero -->
@@ -654,184 +668,177 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 
 <section class="mCut wrap" style="padding-block:6px 30px">
   <div style="display:flex;flex-wrap:wrap;gap:12px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:18px;font-family:var(--sans);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2)">
-    <span data-da="35+ biomarkører" data-en="35+ biomarkers">35+ biomarkører</span>
-    <span data-da="Eget laboratorium · København" data-en="Our own laboratory · Copenhagen">Eget laboratorium · København</span>
-    <span data-da="Lægekonsultation" data-en="Doctor consultation">Lægekonsultation</span>
+    <span data-da="35+ biomarkører" data-en="35+ biomarkers">35+ biomarkers</span>
+    <span data-da="Eget laboratorium · København" data-en="Our own laboratory · Copenhagen">Our own laboratory · Copenhagen</span>
+    <span data-da="Lægekonsultation" data-en="Doctor consultation">Doctor consultation</span>
   </div>
 </section>
 
 <section class="mCut gSand"><div class="wrap air"><div style="margin-left:8%;max-width:54ch">
-  <h2 class="s d2 fg" data-da="Kend dine tal." data-en="Know your numbers.">Kend dine tal.</h2>
-  <p class="bd" style="margin-top:26px;max-width:44ch" data-da="Et blodprøvesvar er ikke en dom. Det viser, hvor du står i dag — og hvad der har flyttet sig siden sidst." data-en="A blood test result is not a verdict. It shows where you stand today — and what has moved since last time.">Et blodprøvesvar er ikke en dom.</p>
-  <p class="lab" style="margin-top:26px" data-da="Ingen henvisning · ingen venteliste" data-en="No referral · no waiting list">Ingen henvisning · ingen venteliste</p>
+  <h2 class="s d2 fg" data-da="Kend dine tal." data-en="Know your numbers.">Know your numbers.</h2>
+  <p class="bd" style="margin-top:26px;max-width:44ch" data-da="Et blodprøvesvar er ikke en dom. Det viser, hvor du står i dag — og hvad der har flyttet sig siden sidst." data-en="A blood test result is not a verdict. It shows where you stand today — and what has moved since last time.">A blood test result is not a verdict. It shows where you stand today — and what has moved since last time.</p>
+  <p class="lab" style="margin-top:26px" data-da="Ingen henvisning · ingen venteliste" data-en="No referral · no waiting list">No referral · no waiting list</p>
 </div></div></section>
 
 <section class="mCut gSand"><div class="split sp4258 alStretch gapNone">
   <div class="phBox" style="min-height:340px">
-    <img loading="lazy" decoding="async" class="ph gSoft" src="../public/images/draw-home.webp" data-alt-da="En blodprøve tages i en arm med staseslange, hjemme ved et bord." data-alt-en="A blood sample being taken from an arm with a tourniquet, at home." alt="" style="position:absolute;inset:0;object-position:55% 50%">
-    <span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span>
+    <img loading="lazy" decoding="async" class="ph gSoft" src="__BASE_PATH__images/draw-home.webp" data-alt-da="En blodprøve tages i en arm med staseslange, hjemme ved et bord." data-alt-en="A blood sample being taken from an arm with a tourniquet, at home." alt="A blood sample being taken from an arm with a tourniquet, at home." style="position:absolute;inset:0;object-position:55% 50%">
+    
   </div>
   <div class="dns" style="padding-inline:clamp(20px,4vw,64px)">
-    <p class="lab" style="margin-bottom:14px" data-da="Én af markørerne" data-en="One of the markers">Én af markørerne</p>
+    <p class="lab" style="margin-bottom:14px" data-da="Én af markørerne" data-en="One of the markers">One of the markers</p>
     <div data-lang="da">
       <h2 class="s d3 fg measS">Lavt D-vitamin er udbredt i Danmark, især i vinterhalvåret.</h2>
       <p class="bd measN" style="margin:18px 0 8px">Påvirker immunforsvar, knoglestyrke og mental balance.</p>
-      <div style="margin-bottom:26px"><span class="tagV">Verificeret · dansk kilde</span></div>
+      <div style="margin-bottom:26px"></div>
     </div>
     <div data-lang="en">
       <!-- Published in English at Pandonia's request, 28 Sep 2026: a direct
            translation of the verified Danish booking-system text. -->
       <h2 class="s d3 fg measS">Low vitamin D is common in Denmark, particularly through the winter.</h2>
       <p class="bd measN" style="margin:18px 0 8px">It affects the immune system, bone strength and mental balance.</p>
-      <div style="margin-bottom:26px"><span class="tagV">Translated from the Danish source · published at Pandonia's request</span></div>
+      <div style="margin-bottom:26px"></div>
     </div>
-    <div class="revonly" style="max-width:420px">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
-        <span class="val" style="font-size:clamp(24px,1.4vw + 19px,32px);color:var(--ink3)">—<s data-da="enhed afventer" data-en="unit pending">enhed afventer</s></span>
-        <span class="lab" data-da="Referenceområde afventer" data-en="Reference range pending">Referenceområde afventer</span>
-      </div>
-      <div class="band"><div class="none"></div></div>
-      <div class="axis"><span>—</span><span data-da="AFVENTER LABORATORIET" data-en="AWAITING THE LABORATORY">AFVENTER LABORATORIET</span><span>—</span></div>
-    </div>
-    <div style="margin-top:26px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">Se alle markører</span> <span aria-hidden="true">→</span></a></div>
+    
+    <div style="margin-top:26px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">See all markers</span> <span aria-hidden="true">→</span></a></div>
   </div>
 </div></section>
 
 <section class="mCut gSand" id="tests"><div class="wrap std">
   <div class="stepHead">
     <div>
-      <p class="lab" data-da="Tests og priser" data-en="Tests and prices">Tests og priser</p>
-      <h2 class="s fg" style="font-size:clamp(38px,3.6vw + 16px,70px);line-height:1.02;letter-spacing:-.03em"><span style="display:block" data-da="Én samlet test." data-en="One complete test.">Én samlet test.</span><span style="display:block" data-da="Eller ét spørgsmål ad gangen." data-en="Or one question at a time.">Eller ét spørgsmål ad gangen.</span></h2>
+      <p class="lab" data-da="Tests og priser" data-en="Tests and prices">Tests and prices</p>
+      <h2 class="s fg" style="font-size:clamp(38px,3.6vw + 16px,70px);line-height:1.02;letter-spacing:-.03em"><span style="display:block" data-da="Én samlet test." data-en="One complete test.">One complete test.</span><span style="display:block" data-da="Eller ét spørgsmål ad gangen." data-en="Or one question at a time.">Or one question at a time.</span></h2>
     </div>
-    <p class="bdS" data-da="Health Test giver det samlede overblik. De fokuserede tests svarer på ét bestemt spørgsmål. Prøven tages på samme måde — hjemme hos dig eller på vores laboratorium." data-en="The Health Test gives the full overview. The focused tests answer one particular question. The sample is taken the same way — at your home or at our laboratory.">Health Test giver det samlede overblik.</p>
+    <p class="bdS" data-da="Health Test giver det samlede overblik. De fokuserede tests svarer på ét bestemt spørgsmål. Prøven tages på samme måde — hjemme hos dig eller på vores laboratorium." data-en="The Health Test gives the full overview. The focused tests answer one particular question. The sample is taken the same way — at your home or at our laboratory.">The Health Test gives the full overview. The focused tests answer one particular question. The sample is taken the same way — at your home or at our laboratory.</p>
   </div>
   <div class="pk">
     <a class="pkC" data-route="book" data-anchor="pr-ht">
-      <div class="pkA a1"><span data-da="Samlet overblik" data-en="Full overview">Samlet overblik</span><span>Test · 01</span></div>
-      <div class="pkB"><h3 class="pkT">Health Test.</h3><p class="pkM" data-da="35+ biomarkører, Pandonia Score og seks systemscorer." data-en="35+ biomarkers, the Pandonia Score and six system scores.">35+ biomarkører.</p><p class="pkF"><span data-da="35+ markører" data-en="35+ markers">35+ markører</span><b data-da="3.500 kr." data-en="DKK 3,500">3.500 kr.</b></p></div>
+      <div class="pkA a1"><span data-da="Samlet overblik" data-en="Full overview">Full overview</span><span>Test · 01</span></div>
+      <div class="pkB"><h3 class="pkT">Health Test.</h3><p class="pkM" data-da="35+ biomarkører, Pandonia Score og seks systemscorer." data-en="35+ biomarkers, the Pandonia Score and six system scores.">35+ biomarkers, the Pandonia Score and six system scores.</p><p class="pkF"><span data-da="35+ markører" data-en="35+ markers">35+ markers</span><b data-da="3.500 kr." data-en="DKK 3,500">DKK 3,500</b></p></div>
     </a>
     <a class="pkC" data-route="book" data-anchor="pr-et">
-      <div class="pkA a2"><span data-da="Mænd" data-en="Men">Mænd</span><span>Test · 02</span></div>
-      <div class="pkB"><h3 class="pkT" data-da="Mænds sundhed." data-en="Men's health.">Mænds sundhed.</h3><p class="pkM" data-da="Testosteron · D-vitamin" data-en="Testosterone · vitamin D">Testosteron · D-vitamin</p><p class="pkF"><span data-da="2 markører" data-en="2 markers">2 markører</span><b data-da="1.600 kr." data-en="DKK 1,600">1.600 kr.</b></p></div>
+      <div class="pkA a2"><span data-da="Mænd" data-en="Men">Men</span><span>Test · 02</span></div>
+      <div class="pkB"><h3 class="pkT" data-da="Mænds sundhed." data-en="Men's health.">Men's health.</h3><p class="pkM" data-da="Testosteron · D-vitamin" data-en="Testosterone · vitamin D">Testosterone · vitamin D</p><p class="pkF"><span data-da="2 markører" data-en="2 markers">2 markers</span><b data-da="1.600 kr." data-en="DKK 1,600">DKK 1,600</b></p></div>
     </a>
     <a class="pkC" data-route="book" data-anchor="pr-et">
-      <div class="pkA a3"><span data-da="Skjoldbruskkirtel" data-en="Thyroid">Skjoldbruskkirtel</span><span>Test · 03</span></div>
-      <div class="pkB"><h3 class="pkT" data-da="Stofskifte." data-en="Thyroid.">Stofskifte.</h3><p class="pkM" data-da="TSH, T3 og T4" data-en="TSH, T3 and T4">TSH, T3 og T4</p><p class="pkF"><span data-da="3 markører" data-en="3 markers">3 markører</span><b data-da="1.200 kr." data-en="DKK 1,200">1.200 kr.</b></p></div>
+      <div class="pkA a3"><span data-da="Skjoldbruskkirtel" data-en="Thyroid">Thyroid</span><span>Test · 03</span></div>
+      <div class="pkB"><h3 class="pkT" data-da="Stofskifte." data-en="Thyroid.">Thyroid.</h3><p class="pkM" data-da="TSH, T3 og T4" data-en="TSH, T3 and T4">TSH, T3 and T4</p><p class="pkF"><span data-da="3 markører" data-en="3 markers">3 markers</span><b data-da="1.200 kr." data-en="DKK 1,200">DKK 1,200</b></p></div>
     </a>
     <a class="pkC" data-route="book" data-anchor="pr-et">
-      <div class="pkA a4"><span data-da="Vitaminer" data-en="Vitamins">Vitaminer</span><span>Test · 04</span></div>
-      <div class="pkB"><h3 class="pkT" data-da="D-vitamin." data-en="Vitamin D.">D-vitamin.</h3><p class="pkM" data-da="Dit niveau af D-vitamin" data-en="Your vitamin D level">Dit niveau af D-vitamin</p><p class="pkF"><span data-da="1 markør" data-en="1 marker">1 markør</span><b data-da="1.000 kr." data-en="DKK 1,000">1.000 kr.</b></p></div>
+      <div class="pkA a4"><span data-da="Vitaminer" data-en="Vitamins">Vitamins</span><span>Test · 04</span></div>
+      <div class="pkB"><h3 class="pkT" data-da="D-vitamin." data-en="Vitamin D.">Vitamin D.</h3><p class="pkM" data-da="Dit niveau af D-vitamin" data-en="Your vitamin D level">Your vitamin D level</p><p class="pkF"><span data-da="1 markør" data-en="1 marker">1 marker</span><b data-da="1.000 kr." data-en="DKK 1,000">DKK 1,000</b></p></div>
     </a>
   </div>
   <div class="pkX">
     <div>
-      <h3 data-da="Eller følg det over tid." data-en="Or follow it over time.">Eller følg det over tid.</h3>
-      <p data-da="Med medlemskabet får du en Health Test hvert kvartal — og otte ting mere. 2.000 kr. pr. måned." data-en="With membership you get a Health Test every quarter — and eight things more. DKK 2,000 per month.">Med medlemskabet får du en Health Test hvert kvartal.</p>
+      <h3 data-da="Eller følg det over tid." data-en="Or follow it over time.">Or follow it over time.</h3>
+      <p data-da="Med medlemskabet får du en Health Test hvert kvartal — og otte ting mere. 2.000 kr. pr. måned." data-en="With membership you get a Health Test every quarter — and eight things more. DKK 2,000 per month.">With membership you get a Health Test every quarter — and eight things more. DKK 2,000 per month.</p>
     </div>
-    <a data-route="book" data-anchor="pr-mb"><span data-da="Se medlemskabet" data-en="See the membership">Se medlemskabet</span> <span aria-hidden="true">→</span></a>
+    <a data-route="book" data-anchor="pr-mb"><span data-da="Se medlemskabet" data-en="See the membership">See the membership</span> <span aria-hidden="true">→</span></a>
   </div>
-  <div style="margin-top:clamp(24px,3vw,36px)"><a class="lnk" data-route="book"><span data-da="Se alle vores tests" data-en="See all our tests">Se alle vores tests</span> <span aria-hidden="true">→</span></a></div>
-  <p class="pl bdS revonly" style="max-width:70ch;margin-top:24px" data-lang="da"><b>Til gennemsyn</b>Opbygget som landingssidens "Curated panels", men med Pandonias egne tests og priser fra bookingsystemet. Landingssidens paneler (Core health 42 markører, Women's hormone m.fl.) findes ikke i bookingsystemet og er ikke brugt. Kortenes toppe er toneflader i CSS, ikke fotos.</p>
-  <p class="pl bdS revonly" style="max-width:70ch;margin-top:24px" data-lang="en"><b>For review</b>Built like the landing page's "Curated panels", but with Pandonia's own tests and the booking system's prices. The landing page's panels (Core health 42 markers, Women's hormone and others) do not exist in the booking system and are not used. The card tops are CSS tonal fields, not photographs.</p>
+  <div style="margin-top:clamp(24px,3vw,36px)"><a class="lnk" data-route="book"><span data-da="Se alle vores tests" data-en="See all our tests">See all our tests</span> <span aria-hidden="true">→</span></a></div>
+  
+  
 </div></section>
 
 <section class="mCut wrap std" id="how-it-works">
   <div class="stepHead">
     <div>
-      <p class="lab" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</p>
-      <h2 class="s d2 fg"><span style="display:block" data-da="Fire trin." data-en="Four steps.">Fire trin.</span><span style="display:block" data-da="Otteogfyrre timer." data-en="Forty-eight hours.">Otteogfyrre timer.</span></h2>
+      <p class="lab" data-da="Sådan fungerer det" data-en="How it works">How it works</p>
+      <h2 class="s d2 fg"><span style="display:block" data-da="Fire trin." data-en="Four steps.">Four steps.</span><span style="display:block" data-da="Otteogfyrre timer." data-en="Forty-eight hours.">Forty-eight hours.</span></h2>
     </div>
-    <p class="bdS" data-da="Fra bestilling til en rapport, der er klar til klinikeren. Samme arbejdsgang, uanset om du tager én eller flere tests om måneden." data-en="From order to clinician-ready report. The same workflow whether you take one test a month or several.">Fra bestilling til en rapport, der er klar til klinikeren.</p>
+    <p class="bdS" data-da="Fra bestilling til en rapport, der er klar til klinikeren. Samme arbejdsgang, uanset om du tager én eller flere tests om måneden." data-en="From order to clinician-ready report. The same workflow whether you take one test a month or several.">From order to clinician-ready report. The same workflow whether you take one test a month or several.</p>
   </div>
   <ol class="steps">
-    <li><p class="stepN">01</p><h3 class="stepT" data-da="Du bestiller" data-en="You order">Du bestiller</h3><p class="bdS" data-da="Vælg din ønskede test, eller sammensæt dit eget fra markørbiblioteket, i partnerportalen." data-en="Choose the test you want, or build your own from the marker library, in the partner portal.">Vælg din ønskede test.</p></li>
-    <li><p class="stepN">02</p><h3 class="stepT" data-da="Vi indsamler" data-en="We collect">Vi indsamler</h3><p class="bdS" data-da="Blodprøvetagning hjemme hos dig, eller på vores laboratorium i København." data-en="Blood draw at your home, or at our laboratory in Copenhagen.">Blodprøvetagning hjemme hos dig.</p></li>
-    <li><p class="stepN">03</p><h3 class="stepT" data-da="Vi analyserer" data-en="We analyse">Vi analyserer</h3><p class="bdS" data-da="Analyseret i vores eget laboratorium. Kvalitetskontrolleret og godkendt." data-en="Processed in our own lab. Quality controlled, signed off.">Analyseret i vores eget laboratorium.</p></li>
-    <li><p class="stepN">04</p><h3 class="stepT" data-da="Svar på 48 timer" data-en="Results in 48h">Svar på 48 timer</h3><p class="bdS" data-da="En rapport, der er klar til klinikeren, leveret i din portal. Klar til at dele med din klient." data-en="Clinician-ready report delivered to your portal. Ready to share with your client.">En rapport, der er klar til klinikeren.</p></li>
+    <li><p class="stepN">01</p><h3 class="stepT" data-da="Du bestiller" data-en="You order">You order</h3><p class="bdS" data-da="Vælg din ønskede test, eller sammensæt dit eget fra markørbiblioteket, i partnerportalen." data-en="Choose the test you want, or build your own from the marker library, in the partner portal.">Choose the test you want, or build your own from the marker library, in the partner portal.</p></li>
+    <li><p class="stepN">02</p><h3 class="stepT" data-da="Vi indsamler" data-en="We collect">We collect</h3><p class="bdS" data-da="Blodprøvetagning hjemme hos dig, eller på vores laboratorium i København." data-en="Blood draw at your home, or at our laboratory in Copenhagen.">Blood draw at your home, or at our laboratory in Copenhagen.</p></li>
+    <li><p class="stepN">03</p><h3 class="stepT" data-da="Vi analyserer" data-en="We analyse">We analyse</h3><p class="bdS" data-da="Analyseret i vores eget laboratorium. Kvalitetskontrolleret og godkendt." data-en="Processed in our own lab. Quality controlled, signed off.">Processed in our own lab. Quality controlled, signed off.</p></li>
+    <li><p class="stepN">04</p><h3 class="stepT" data-da="Svar på 48 timer" data-en="Results in 48h">Results in 48h</h3><p class="bdS" data-da="En rapport, der er klar til klinikeren, leveret i din portal. Klar til at dele med din klient." data-en="Clinician-ready report delivered to your portal. Ready to share with your client.">Clinician-ready report delivered to your portal. Ready to share with your client.</p></li>
   </ol>
-  <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="da"><b>Til gennemsyn — tekst fra landingssiden</b>Teksten er taget fra Pandonias landingsside (B2B) efter ønske og siden rettet til af Pandonia (Randox og "i din klinik" er fjernet); den danske er en oversættelse og skal godkendes. Den modsiger stadig resten af sitet på to punkter: 48 timer (sitet siger svar samme dag / 2–4 timer) og partnerportal / "din klient" (henvender sig til klinikker, ikke til private). Skal afklares før lancering.</p>
-  <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="en"><b>For review — copy from the landing page</b>This text is taken from Pandonia's landing page (B2B), as requested, and since edited by Pandonia (Randox and "at your clinic" removed). It still contradicts the rest of the site on two points: 48 hours (the site says same-day / 2–4 hours) and partner portal / "your client" (addresses clinics, not private customers). To be resolved before launch.</p>
-  <div style="margin-top:clamp(32px,4vw,48px)"><a class="lnk" data-route="saadan"><span data-da="Hele forløbet, trin for trin" data-en="The whole process, step by step">Hele forløbet, trin for trin</span> <span aria-hidden="true">→</span></a></div>
+  
+  
+  <div style="margin-top:clamp(32px,4vw,48px)"><a class="lnk" data-route="saadan"><span data-da="Hele forløbet, trin for trin" data-en="The whole process, step by step">The whole process, step by step</span> <span aria-hidden="true">→</span></a></div>
 </section>
 
 <section class="mCut gSheet" id="what-we-test"><div class="wrap std">
   <div class="split sp5545 alCenter" style="margin-bottom:clamp(28px,4vw,48px)">
     <div>
-      <h2 class="s d2 fg" style="max-width:12ch" data-da="Seks systemer. Én blodprøve." data-en="Six systems. One blood test.">Seks systemer. Én blodprøve.</h2>
-      <p class="bd measN" style="margin-top:20px" data-da="Rapporten scorer hvert system ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder." data-en="Your report scores each system on how close your values are to Pandonia's optimal ranges.">Rapporten scorer hvert system.</p>
+      <h2 class="s d2 fg" style="max-width:12ch" data-da="Seks systemer. Én blodprøve." data-en="Six systems. One blood test.">Six systems. One blood test.</h2>
+      <p class="bd measN" style="margin-top:20px" data-da="Rapporten scorer hvert system ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder." data-en="Your report scores each system on how close your values are to Pandonia's optimal ranges.">Your report scores each system on how close your values are to Pandonia's optimal ranges.</p>
     </div>
     <div><div class="radarSlot"></div></div>
   </div>
   <ul id="sysHome"></ul>
   <div style="margin-top:30px">
-    <p class="lab revonly" style="margin-bottom:14px" data-da="Navne verificeret fra Pandonias FAQ og rapport-UI" data-en="Names verified from Pandonia's FAQ and report UI">Navne verificeret</p>
-    <p class="pl bdS revonly" style="max-width:64ch" data-lang="da"><b>Terminologi til gennemsyn</b>Rækkerne bruger nu rapportens navne — Signaling, Highway, Digestion, Energy, Defense, Waste — som hovednavn, fordi det er dem kunden møder i sin rapport. FAQ'ens danske navne står under som forklaring. Ingen nye oversættelser. Scoregrundlaget er citeret fra rapportens vejledning; den danske formulering er en oversættelse og skal godkendes. Radarens tal er fra Pandonias rapport-UI-mockup, ikke en patient.</p>
-    <p class="pl bdS revonly" style="max-width:64ch" data-lang="en"><b>Terminology under review</b>The rows now lead with the report's names — Signaling, Highway, Digestion, Energy, Defense, Waste — because those are what a customer meets in their report. The English FAQ names sit underneath as a gloss; two published English sets still disagree on three of six. The score basis is quoted from the report's guide. The radar values come from Pandonia's report-UI mockup, not from a patient.</p>
-    <div style="margin-top:18px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">Se alle markører</span> <span aria-hidden="true">→</span></a></div>
+    
+    
+    
+    <div style="margin-top:18px"><a class="lnk" data-route="maaler"><span data-da="Se alle markører" data-en="See all markers">See all markers</span> <span aria-hidden="true">→</span></a></div>
   </div>
 </div></section>
 
 <section class="mCut gSand" id="your-report"><div class="wrap std">
   <div class="split sp4258 alCenter">
     <div>
-      <p class="lab" style="margin-bottom:14px" data-da="Din rapport" data-en="Your report">Din rapport</p>
-      <h2 class="s d3 fg" style="max-width:16ch" data-da="Hver måling, med sine områder ved siden af." data-en="Every measurement, with its ranges beside it.">Hver måling, med sine områder ved siden af.</h2>
-      <p class="bd measN" style="margin-top:18px" data-da="Optimalt område, referenceområde og uden for området — tegnet på samme bjælke, med dagens måling ved siden af." data-en="Optimal range, reference range and outside range — drawn on one bar, with today's measurement beside it.">Optimalt område, referenceområde og uden for området.</p>
-      <div style="margin-top:24px"><a class="lnk" data-route="rapport"><span data-da="Se hvordan rapporten ser ud" data-en="See what the report looks like">Se hvordan rapporten ser ud</span> <span aria-hidden="true">→</span></a></div>
+      <p class="lab" style="margin-bottom:14px" data-da="Din rapport" data-en="Your report">Your report</p>
+      <h2 class="s d3 fg" style="max-width:16ch" data-da="Hver måling, med sine områder ved siden af." data-en="Every measurement, with its ranges beside it.">Every measurement, with its ranges beside it.</h2>
+      <p class="bd measN" style="margin-top:18px" data-da="Optimalt område, referenceområde og uden for området — tegnet på samme bjælke, med dagens måling ved siden af." data-en="Optimal range, reference range and outside range — drawn on one bar, with today's measurement beside it.">Optimal range, reference range and outside range — drawn on one bar, with today's measurement beside it.</p>
+      <div style="margin-top:24px"><a class="lnk" data-route="rapport"><span data-da="Se hvordan rapporten ser ud" data-en="See what the report looks like">See what the report looks like</span> <span aria-hidden="true">→</span></a></div>
     </div>
     <div class="sheet">
       <div class="rbarSlot" data-kind="glu"></div>
       <div class="rLegend" style="justify-content:flex-start;margin-top:18px">
-        <span><i class="dotF" style="background:var(--rOpt)"></i><span data-da="Optimalt" data-en="Optimal">Optimalt</span></span>
+        <span><i class="dotF" style="background:var(--rOpt)"></i><span data-da="Optimalt" data-en="Optimal">Optimal</span></span>
         <span><i class="dotF" style="background:var(--rRef)"></i><span data-da="Reference" data-en="Reference">Reference</span></span>
-        <span><i class="dotF" style="background:var(--rOut)"></i><span data-da="Uden for området" data-en="Outside range">Uden for området</span></span>
+        <span><i class="dotF" style="background:var(--rOut)"></i><span data-da="Uden for området" data-en="Outside range">Outside range</span></span>
       </div>
-      <p class="lab" style="margin-top:16px" data-da="Eksempel fra rapportens vejledning" data-en="Example from the report's guide">Eksempel fra rapportens vejledning</p>
+      <p class="lab" style="margin-top:16px" data-da="Eksempel fra rapportens vejledning" data-en="Example from the report's guide">Example from the report's guide</p>
     </div>
   </div>
 </div></section>
 
 <section class="mCut" id="about-pandonia"><div class="split sp4258 alCenter gapNone">
   <div class="phBox" style="aspect-ratio:3/4">
-    <img loading="lazy" decoding="async" class="ph" src="../public/images/review.png" data-alt-da="Pandonia-rapporten vist på en tablet." data-alt-en="The Pandonia report shown on a tablet." alt="">
-    <span class="phTag" data-da="Ægte · produktrender" data-en="Real · product render">Ægte · produktrender</span>
+    <img loading="lazy" decoding="async" class="ph" src="__BASE_PATH__images/review.png" data-alt-da="Pandonia-rapporten vist på en tablet." data-alt-en="The Pandonia report shown on a tablet." alt="The Pandonia report shown on a tablet.">
+    
   </div>
   <div class="air" style="padding-inline:clamp(20px,4vw,64px)">
-    <h2 class="s d3 fg measS" data-da="En læge læser tallene med dig." data-en="A doctor reads the numbers with you.">En læge læser tallene med dig.</h2>
-    <p class="bd measN" style="margin:20px 0 26px" data-da="Benedikte Halle er læge hos Pandonia. Tyve minutter online, med din rapport foran jer — hvad der er værd at gøre noget ved, og hvad der ikke er." data-en="Benedikte Halle is a doctor at Pandonia. Twenty minutes online, with your report in front of you both — what is worth acting on, and what is not.">Benedikte Halle er læge hos Pandonia.</p>
+    <h2 class="s d3 fg measS" data-da="En læge læser tallene med dig." data-en="A doctor reads the numbers with you.">A doctor reads the numbers with you.</h2>
+    <p class="bd measN" style="margin:20px 0 26px" data-da="Benedikte Halle er læge hos Pandonia. Tyve minutter online, med din rapport foran jer — hvad der er værd at gøre noget ved, og hvad der ikke er." data-en="Benedikte Halle is a doctor at Pandonia. Twenty minutes online, with your report in front of you both — what is worth acting on, and what is not.">Benedikte Halle is a doctor at Pandonia. Twenty minutes online, with your report in front of you both — what is worth acting on, and what is not.</p>
     <div class="hr" style="padding-top:18px;max-width:46ch">
-      <p class="lab" style="margin-bottom:8px" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</p>
+      <p class="lab" style="margin-bottom:8px" data-da="Laboratoriet" data-en="The laboratory">The laboratory</p>
       <p class="bdS" data-lang="da">Vi har vores eget laboratorium på Langebrogade i København. Det er grunden til, at svaret kan nå frem samme dag.</p>
-      <p class="bdS pl" data-lang="en"><b>Awaiting sign-off — English wording</b>We have our own laboratory on Langebrogade in Copenhagen. That is why the answer can reach you the same day.</p>
+      
     </div>
   </div>
 </div></section>
 
 <section class="mCut gSand" id="pricing"><div class="wrap std">
-  <h2 class="s d3 fg measS" style="margin-bottom:26px" data-da="Tre måder at begynde på." data-en="Three ways to begin.">Tre måder at begynde på.</h2>
+  <h2 class="s d3 fg measS" style="margin-bottom:26px" data-da="Tre måder at begynde på." data-en="Three ways to begin.">Three ways to begin.</h2>
   <ul class="rows" style="max-width:680px">
-    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test + Consultation</span><span class="bdS measN" data-da="Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation." data-en="Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.">Pandonia Score og seks systemscorer.</span></span><span class="v" style="font-size:15px"><span data-da="4.750 kr." data-en="DKK 4,750">4.750 kr.</span></span></li>
-    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test</span><span class="bdS measN" data-da="Samme markører, Pandonia Score og seks systemscorer." data-en="The same markers, Pandonia Score and six system scores.">Samme markører.</span></span><span class="v" style="font-size:15px"><span data-da="3.500 kr." data-en="DKK 3,500">3.500 kr.</span></span></li>
-    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health check + Female hormones</span><span class="bdS measN" data-da="Health Test med kvindelige hormoner." data-en="The Health Test with female hormones.">Health Test med kvindelige hormoner.</span></span><span class="v" style="font-size:15px"><span data-da="5.200 kr." data-en="DKK 5,200">5.200 kr.</span></span></li>
+    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test + Consultation</span><span class="bdS measN" data-da="Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation." data-en="Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.">Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.</span></span><span class="v" style="font-size:15px"><span data-da="4.750 kr." data-en="DKK 4,750">DKK 4,750</span></span></li>
+    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test</span><span class="bdS measN" data-da="Samme markører, Pandonia Score og seks systemscorer." data-en="The same markers, Pandonia Score and six system scores.">The same markers, Pandonia Score and six system scores.</span></span><span class="v" style="font-size:15px"><span data-da="3.500 kr." data-en="DKK 3,500">DKK 3,500</span></span></li>
+    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health check + Female hormones</span><span class="bdS measN" data-da="Health Test med kvindelige hormoner." data-en="The Health Test with female hormones.">The Health Test with female hormones.</span></span><span class="v" style="font-size:15px"><span data-da="5.200 kr." data-en="DKK 5,200">DKK 5,200</span></span></li>
   </ul>
-  <p class="bdS" style="margin-top:18px;max-width:54ch" data-da="Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som virksomhedsordning." data-en="Single tests from DKK 1,000 if you would rather start smaller. Also available as a workplace programme.">Enkelte tests fra 1.000 kr.</p>
-  <p class="bdS" style="margin-top:10px;max-width:54ch"><span data-da="Eller følg din sundhed løbende med et medlemskab — 2.000 kr. pr. måned." data-en="Or follow your health continuously with a membership — DKK 2,000 per month.">Eller følg din sundhed løbende med et medlemskab.</span> <a class="lnk" style="padding-block:4px" data-route="book" data-anchor="pr-mb"><span data-da="Se medlemskabet" data-en="See the membership">Se medlemskabet</span> <span aria-hidden="true">→</span></a></p>
+  <p class="bdS" style="margin-top:18px;max-width:54ch" data-da="Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som virksomhedsordning." data-en="Single tests from DKK 1,000 if you would rather start smaller. Also available as a workplace programme.">Single tests from DKK 1,000 if you would rather start smaller. Also available as a workplace programme.</p>
+  <p class="bdS" style="margin-top:10px;max-width:54ch"><span data-da="Eller følg din sundhed løbende med et medlemskab — 2.000 kr. pr. måned." data-en="Or follow your health continuously with a membership — DKK 2,000 per month.">Or follow your health continuously with a membership — DKK 2,000 per month.</span> <a class="lnk" style="padding-block:4px" data-route="book" data-anchor="pr-mb"><span data-da="Se medlemskabet" data-en="See the membership">See the membership</span> <span aria-hidden="true">→</span></a></p>
   <div style="margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:22px">
-    <a class="btn btn1" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-    <a class="lnk" data-route="book"><span data-da="Se alle priser" data-en="See all prices">Se alle priser</span> <span aria-hidden="true">→</span></a>
+    <a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
+    <a class="lnk" data-route="book"><span data-da="Se alle priser" data-en="See all prices">See all prices</span> <span aria-hidden="true">→</span></a>
   </div>
 </div></section>
 
 <section class="mCut"><div class="wrap" style="padding-block:clamp(40px,6vw,88px)">
   <div class="stmt">
-    <p class="lab" style="color:var(--onDeepQuiet);margin-bottom:clamp(28px,4vw,56px)" data-da="Pandonia · tilgang" data-en="Pandonia · approach">Pandonia · tilgang</p>
+    <p class="lab" style="color:var(--onDeepQuiet);margin-bottom:clamp(28px,4vw,56px)" data-da="Pandonia · tilgang" data-en="Pandonia · approach">Pandonia · approach</p>
     <h2>
-      <span class="x" data-da="Mål." data-en="Measure.">Mål.</span>
-      <span class="x" data-da="Forstå." data-en="Understand.">Forstå.</span>
-      <span class="x ghost" data-da="Handl." data-en="Act.">Handl.</span>
+      <span class="x" data-da="Mål." data-en="Measure.">Measure.</span>
+      <span class="x" data-da="Forstå." data-en="Understand.">Understand.</span>
+      <span class="x ghost" data-da="Handl." data-en="Act.">Act.</span>
     </h2>
-    <p class="s" style="margin-top:clamp(24px,3vw,40px);font-size:clamp(18px,1vw + 14px,22px);font-style:italic;color:var(--onDeepMuted)" data-da="Det tredje skridt er dit." data-en="The third step is yours.">Det tredje skridt er dit.</p>
-    <div style="margin-top:clamp(28px,3vw,40px)"><a class="btn btn1" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></div>
+    <p class="s" style="margin-top:clamp(24px,3vw,40px);font-size:clamp(18px,1vw + 14px,22px);font-style:italic;color:var(--onDeepMuted)" data-da="Det tredje skridt er dit." data-en="The third step is yours.">The third step is yours.</p>
+    <div style="margin-top:clamp(28px,3vw,40px)"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a></div>
     <span class="dotA" aria-hidden="true"></span>
   </div>
 </div></section>
@@ -841,36 +848,36 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <div data-page="maaler" hidden>
   <section class="wrap dns">
     <div class="idx"><div class="idxin">
-      <p class="lab" data-da="Alle markører" data-en="All markers">Alle markører</p>
-      <div class="find"><label class="lab" for="mkf" data-da="Find markør" data-en="Find marker">Find markør</label><input id="mkf" type="search" placeholder="fx kolesterol" autocomplete="off"></div>
+      <p class="lab" data-da="Alle markører" data-en="All markers">All markers</p>
+      <div class="find"><label class="lab" for="mkf" data-da="Find markør" data-en="Find marker">Find marker</label><input id="mkf" type="search" placeholder="fx kolesterol" autocomplete="off"></div>
     </div></div>
     <div style="display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:18px;margin-top:30px;padding-bottom:10px;border-bottom:1px solid var(--rule)">
-      <span class="lab" data-da="Markør" data-en="Marker">Markør</span><span></span>
+      <span class="lab" data-da="Markør" data-en="Marker">Marker</span><span></span>
     </div>
     <div id="mklist"></div>
-    <p id="mkempty" hidden class="bd" style="padding-block:26px" data-da="Ingen markører matcher." data-en="No markers match.">Ingen markører matcher.</p>
+    <p id="mkempty" hidden class="bd" style="padding-block:26px" data-da="Ingen markører matcher." data-en="No markers match.">No markers match.</p>
     <p id="mkcount" class="lab" style="margin-top:16px" aria-live="polite"></p>
   </section>
   <section class="gSheet"><div class="wrap std">
     <div class="split sp5545 alCenter" style="margin-bottom:clamp(28px,4vw,48px)">
       <div>
-        <h2 class="s d3 fg measS" data-da="Kroppen arbejder ikke i kasser." data-en="The body does not work in boxes.">Kroppen arbejder ikke i kasser.</h2>
-        <p class="bd measN" style="margin-top:16px" data-da="Pandonia-modellen beskriver seks systemer. En markør hører sjældent kun ét sted til. Rapporten giver hvert system sin egen score." data-en="The Pandonia model describes six systems. A marker rarely belongs to just one. The report gives each system its own score.">Pandonia-modellen beskriver seks systemer.</p>
+        <h2 class="s d3 fg measS" data-da="Kroppen arbejder ikke i kasser." data-en="The body does not work in boxes.">The body does not work in boxes.</h2>
+        <p class="bd measN" style="margin-top:16px" data-da="Pandonia-modellen beskriver seks systemer. En markør hører sjældent kun ét sted til. Rapporten giver hvert system sin egen score." data-en="The Pandonia model describes six systems. A marker rarely belongs to just one. The report gives each system its own score.">The Pandonia model describes six systems. A marker rarely belongs to just one. The report gives each system its own score.</p>
       </div>
       <div><div class="radarSlot"></div></div>
     </div>
     <ul id="sysPage"></ul>
-    <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="da"><b>Niveau 3 — afventer klinisk godkendelse</b>Enheder, referenceområder, markør-til-system-mapping, fortolkning og scoreberegning findes ikke offentligt og er ikke gættet.</p>
-    <p class="pl bdS revonly" style="max-width:66ch;margin-top:26px" data-lang="en"><b>Level 3 — awaiting clinical approval</b>Units, reference ranges, marker-to-system mapping, interpretation and score calculation are not published anywhere and have not been guessed.</p>
+    
+    
   </div></section>
   <section class="gSand ovt">
     <div class="wrap ovtHead">
-      <h2 class="s d2 fg ovtTitle" data-da="Følg dine egne tendenser over tid." data-en="Follow your own trends over time.">Følg dine egne tendenser over tid.</h2>
-      <p class="lab revonly" style="margin-top:12px" data-da="Omskrevet fra Pandonias egen tekst · Om Pandonia" data-en="Adapted from Pandonia's own text · About Pandonia">Omskrevet fra Pandonias egen tekst</p>
+      <h2 class="s d2 fg ovtTitle" data-da="Følg dine egne tendenser over tid." data-en="Follow your own trends over time.">Follow your own trends over time.</h2>
+      
       <ul class="ovtPts">
-        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Skab din baseline" data-en="Set your baseline">Skab din baseline</span></li>
-        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Følg udviklingen over tid" data-en="Follow the change over time">Følg udviklingen over tid</span></li>
-        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Se dine markører i sammenhæng" data-en="See your markers in context">Se dine markører i sammenhæng</span></li>
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Skab din baseline" data-en="Set your baseline">Set your baseline</span></li>
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Følg udviklingen over tid" data-en="Follow the change over time">Follow the change over time</span></li>
+        <li><span class="ovtGl" aria-hidden="true"></span><span data-da="Se dine markører i sammenhæng" data-en="See your markers in context">See your markers in context</span></li>
       </ul>
     </div>
     <div class="ovtLower">
@@ -891,102 +898,95 @@ html[data-locale="en"] [data-lang="da"]{display:none}
       <div class="rcRail" id="rcRail" tabindex="0" role="region" aria-label="Eksempler på markører over tid">
       <figure class="rcard" aria-labelledby="rcTitle">
         <div class="rcHead">
-          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
-          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">One marker · over time</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Example</span>
         </div>
-        <p class="rcTitle" id="rcTitle" data-da="Det, der har flyttet sig." data-en="What has moved.">Det, der har flyttet sig.</p>
+        <p class="rcTitle" id="rcTitle" data-da="Det, der har flyttet sig." data-en="What has moved.">What has moved.</p>
         <div class="rbarSlot" data-kind="glu" style="margin-top:20px"></div>
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
-          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over time</p>
           <div class="trendSlot" data-small="1"></div>
         </div>
-        <figcaption class="rcCap" data-da="Målingen er rapportens eget vejledningseksempel. Forløbet er skematisk." data-en="The measurement is the report's own guide example. The trend is schematic.">Målingen er rapportens eget vejledningseksempel.</figcaption>
+        <figcaption class="rcCap" data-da="Målingen er rapportens eget vejledningseksempel. Forløbet er skematisk." data-en="The measurement is the report's own guide example. The trend is schematic.">The measurement is the report's own guide example. The trend is schematic.</figcaption>
       </figure>
       <figure class="rcard" aria-labelledby="rcTitle2">
         <div class="rcHead">
-          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
-          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">One marker · over time</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Example</span>
         </div>
-        <p class="rcTitle" id="rcTitle2" data-da="Langtidsblodsukker." data-en="Long-term blood sugar.">Langtidsblodsukker.</p>
+        <p class="rcTitle" id="rcTitle2" data-da="Langtidsblodsukker." data-en="Long-term blood sugar.">Long-term blood sugar.</p>
         <div class="rbarSlot" data-kind="a1c" style="margin-top:20px"></div>
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
-          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over time</p>
           <div class="trendSlot" data-small="1" data-pts=".66,.68,.67,.70,.73,.72,.76,.78,.79"></div>
         </div>
-        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">An example measurement. Ranges and trend are illustrative.</figcaption>
       </figure>
       <figure class="rcard" aria-labelledby="rcTitle3">
         <div class="rcHead">
-          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
-          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">One marker · over time</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Example</span>
         </div>
-        <p class="rcTitle" id="rcTitle3" data-da="D-vitamin." data-en="Vitamin D.">D-vitamin.</p>
+        <p class="rcTitle" id="rcTitle3" data-da="D-vitamin." data-en="Vitamin D.">Vitamin D.</p>
         <div class="rbarSlot" data-kind="vit" style="margin-top:20px"></div>
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
-          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over time</p>
           <div class="trendSlot" data-small="1" data-pts=".78,.72,.64,.62,.66,.72,.77,.70,.63"></div>
         </div>
-        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">An example measurement. Ranges and trend are illustrative.</figcaption>
       </figure>
       <figure class="rcard" aria-labelledby="rcTitle4">
         <div class="rcHead">
-          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
-          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">One marker · over time</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Example</span>
         </div>
-        <p class="rcTitle" id="rcTitle4" data-da="Stofskifte." data-en="Thyroid.">Stofskifte.</p>
+        <p class="rcTitle" id="rcTitle4" data-da="Stofskifte." data-en="Thyroid.">Thyroid.</p>
         <div class="rbarSlot" data-kind="tsh" style="margin-top:20px"></div>
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
-          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over time</p>
           <div class="trendSlot" data-small="1" data-pts=".70,.71,.69,.72,.71,.73,.72,.74,.73"></div>
         </div>
-        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">An example measurement. Ranges and trend are illustrative.</figcaption>
       </figure>
       <figure class="rcard" aria-labelledby="rcTitle5">
         <div class="rcHead">
-          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
-          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">One marker · over time</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Example</span>
         </div>
-        <p class="rcTitle" id="rcTitle5" data-da="Testosteron." data-en="Testosterone.">Testosteron.</p>
+        <p class="rcTitle" id="rcTitle5" data-da="Testosteron." data-en="Testosterone.">Testosterone.</p>
         <div class="rbarSlot" data-kind="tes" style="margin-top:20px"></div>
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
-          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over time</p>
           <div class="trendSlot" data-small="1" data-pts=".64,.66,.65,.69,.71,.70,.74,.76,.78"></div>
         </div>
-        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">An example measurement. Ranges and trend are illustrative.</figcaption>
       </figure>
       <figure class="rcard" aria-labelledby="rcTitle6">
         <div class="rcHead">
-          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">Én markør · over tid</span>
-          <span class="lab" data-da="Eksempel" data-en="Example">Eksempel</span>
+          <span class="lab" data-da="Én markør · over tid" data-en="One marker · over time">One marker · over time</span>
+          <span class="lab" data-da="Eksempel" data-en="Example">Example</span>
         </div>
-        <p class="rcTitle" id="rcTitle6" data-da="Kolesterol." data-en="Cholesterol.">Kolesterol.</p>
+        <p class="rcTitle" id="rcTitle6" data-da="Kolesterol." data-en="Cholesterol.">Cholesterol.</p>
         <div class="rbarSlot" data-kind="tc" style="margin-top:20px"></div>
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--ruleSoft)">
-          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over tid</p>
+          <p class="lab" style="margin-bottom:6px" data-da="Score over tid" data-en="Score over time">Score over time</p>
           <div class="trendSlot" data-small="1" data-pts=".62,.64,.66,.65,.69,.72,.71,.75,.77"></div>
         </div>
-        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">Eksempel på en måling.</figcaption>
+        <figcaption class="rcCap" data-da="Eksempel på en måling. Områder og forløb er illustrative." data-en="An example measurement. Ranges and trend are illustrative.">An example measurement. Ranges and trend are illustrative.</figcaption>
       </figure>
       </div>
     </div>
     <div class="rcNav">
-      <button type="button" class="rcBtn" id="rcPrev"><span aria-hidden="true">←</span><span class="sr" data-da="Forrige markør" data-en="Previous marker">Forrige markør</span></button>
+      <button type="button" class="rcBtn" id="rcPrev"><span aria-hidden="true">←</span><span class="sr" data-da="Forrige markør" data-en="Previous marker">Previous marker</span></button>
       <span class="rcCount" id="rcCount" aria-live="polite">1 / 6</span>
-      <button type="button" class="rcBtn" id="rcNext"><span aria-hidden="true">→</span><span class="sr" data-da="Næste markør" data-en="Next marker">Næste markør</span></button>
+      <button type="button" class="rcBtn" id="rcNext"><span aria-hidden="true">→</span><span class="sr" data-da="Næste markør" data-en="Next marker">Next marker</span></button>
     </div>
 
     <div class="wrap">
-      <div class="revonly" style="max-width:64ch;margin:40px auto 0">
-        <p class="lab" style="margin-bottom:10px" data-da="Til gennemsyn" data-en="For review">Til gennemsyn</p>
-        <p class="bdS" data-lang="da">"Baseline" er ikke et ord fra Pandonias eget materiale — de to andre punkter er støttet af "følge dine egne tendenser" og rapportens "Score over time". Kortet bruger rapportens eget vejledningseksempel, GLU 5,1. <b>Enheden er rettet:</b> vejledningen skriver nmol/L, men glukose måles i mmol/L. Bjælkens zoner er gengivet fra vejledningen og er ikke et verificeret referenceområde for glukose. Score-forløbet er skematisk, uden tal. <b>De fem øvrige kort</b> (HbA1c, D-vitamin, TSH, testosteron, kolesterol) er lavet på Pandonias ønske: værdier og zoner er illustrative og bygger på almindeligt anvendte grænser, ikke på laboratoriets egne områder. Skal tjekkes af laboratoriet før lancering.</p>
-        <p class="bdS" data-lang="en">"Baseline" is not a word from Pandonia's own material — the other two points are supported by "follow your own trends" and the report's "Score over time". The card uses the report's own guide example, GLU 5.1. <b>The unit is corrected:</b> the guide says nmol/L, but glucose is measured in mmol/L. The bar's zones are reproduced from the guide and are not a verified reference range for glucose. The score trace is schematic, with no numbers. <b>The five further cards</b> (HbA1c, vitamin D, TSH, testosterone, cholesterol) were made at Pandonia's request: values and zones are illustrative, based on commonly used limits, not the laboratory's own ranges. To be checked by the laboratory before launch.</p>
-        <h3 class="hh3" style="margin-top:22px" data-da="Hvad vi ikke måler." data-en="What we do not measure.">Hvad vi ikke måler.</h3>
-        <p class="pl bd" style="margin-top:10px" data-lang="da"><b>Afventer klinisk tekst</b>Et kort afsnit om hvad testen ikke dækker, og hvornår man skal tale med sin egen læge i stedet.</p>
-        <p class="pl bd" style="margin-top:10px" data-lang="en"><b>Awaiting clinical text</b>A short section on what the test does not cover, and when to speak to your own doctor instead.</p>
-      </div>
+      
       <div class="ovtCta">
-        <a class="btn btn1" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-        <a class="lnk" data-route="rapport"><span data-da="Se hvordan resultatet ser ud" data-en="See what the result looks like">Se hvordan resultatet ser ud</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
+        <a class="lnk" data-route="rapport"><span data-da="Se hvordan resultatet ser ud" data-en="See what the result looks like">See what the result looks like</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
     </div>
@@ -994,11 +994,11 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <section class="wrap" style="padding-block:clamp(52px,8vw,128px)">
     <div class="split sp6238 alStart">
       <div>
-        <h1 class="s d2 fg measS" data-da="Ét tal fortæller sjældent noget alene." data-en="One number rarely says much on its own.">Ét tal fortæller sjældent noget alene.</h1>
-        <p class="bodyL measN" style="margin-top:28px" data-da="En blodprøve er ikke en facitliste. Den er en række målinger, der først bliver til noget, når man ser dem sammen." data-en="A blood test is not an answer sheet. It is a set of measurements that only mean something when you see them together.">En blodprøve er ikke en facitliste.</p>
-        <p class="lab revonly" style="margin-top:22px" data-da="Markørnavne verificeret fra pandonia.com og Pandonias bookingsystem" data-en="Marker names verified from pandonia.com and Pandonia's booking system">Markørnavne verificeret</p>
+        <h1 class="s d2 fg measS" data-da="Ét tal fortæller sjældent noget alene." data-en="One number rarely says much on its own.">One number rarely says much on its own.</h1>
+        <p class="bodyL measN" style="margin-top:28px" data-da="En blodprøve er ikke en facitliste. Den er en række målinger, der først bliver til noget, når man ser dem sammen." data-en="A blood test is not an answer sheet. It is a set of measurements that only mean something when you see them together.">A blood test is not an answer sheet. It is a set of measurements that only mean something when you see them together.</p>
+        
       </div>
-      <div class="phBox" style="aspect-ratio:4/5"><img loading="lazy" decoding="async" class="ph gSoft" src="../public/images/tourniquet.webp" data-alt-da="En staseslange og et prøvetagningssæt lægges til rette på en underarm ved et bord." data-alt-en="A tourniquet and sampling device being set on a forearm at a table." alt="" style="object-position:55% 42%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
+      <div class="phBox" style="aspect-ratio:4/5"><img loading="lazy" decoding="async" class="ph gSoft" src="__BASE_PATH__images/tourniquet.webp" data-alt-da="En staseslange og et prøvetagningssæt lægges til rette på en underarm ved et bord." data-alt-en="A tourniquet and sampling device being set on a forearm at a table." alt="A tourniquet and sampling device being set on a forearm at a table." style="object-position:55% 42%"></div>
     </div>
   </section>
 </div>
@@ -1006,38 +1006,38 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <!-- ═══════════ SÅDAN FUNGERER DET ═══════════ -->
 <div data-page="saadan" hidden>
   <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,40px)">
-    <h1 class="s d2 fg" style="max-width:14ch" data-da="Hvad der sker med din prøve." data-en="What happens to your sample.">Hvad der sker med din prøve.</h1>
-    <p class="bodyL" style="margin-top:28px;max-width:52ch" data-da="Fire trin, på én dag: indsamling, transport, analyse og gennemgang." data-en="Four steps, in one day: collect, transport, analyse, review.">Fire trin, på én dag.</p>
+    <h1 class="s d2 fg" style="max-width:14ch" data-da="Hvad der sker med din prøve." data-en="What happens to your sample.">What happens to your sample.</h1>
+    <p class="bodyL" style="margin-top:28px;max-width:52ch" data-da="Fire trin, på én dag: indsamling, transport, analyse og gennemgang." data-en="Four steps, in one day: collect, transport, analyse, review.">Four steps, in one day: collect, transport, analyse, review.</p>
   </section>
-  <section><div class="phBox" style="min-height:min(48vh,360px)"><img loading="lazy" decoding="async" class="ph" src="../public/images/apron.jpg" data-alt-da="En Pandonia-medarbejder i forklæde." data-alt-en="A Pandonia employee in an apron." alt="" style="position:absolute;inset:0;object-position:50% 40%"><span class="phTag" data-da="Ægte · Pandonia" data-en="Real · Pandonia">Ægte · Pandonia</span></div></section>
+  <section><div class="phBox" style="min-height:min(48vh,360px)"><img loading="lazy" decoding="async" class="ph" src="__BASE_PATH__images/apron.jpg" data-alt-da="En Pandonia-medarbejder i forklæde." data-alt-en="A Pandonia employee in an apron." alt="A Pandonia employee in an apron." style="position:absolute;inset:0;object-position:50% 40%"></div></section>
 
   <section class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="lab" data-da="Inden" data-en="Before">Inden</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Aftenen inden" data-en="The evening before">Aftenen inden</h2></div>
+    <div><p class="lab" data-da="Inden" data-en="Before">Before</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Aftenen inden" data-en="The evening before">The evening before</h2></div>
     <div>
-      <p class="bd meas" data-da="Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer." data-en="Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.">Fast i mindst 12 timer.</p>
-      <p class="bd meas" style="margin-top:16px" data-da="Vi anbefaler at prøven tages tidligt på dagen, da flere biomarkører naturligt topper om morgenen." data-en="We recommend taking the sample early in the day, as several biomarkers naturally peak in the morning.">Vi anbefaler at prøven tages tidligt på dagen.</p>
-      <div style="margin-top:16px"><span class="tagV" data-da="Verificeret · pandonia.com" data-en="Verified · pandonia.com">Verificeret</span></div>
+      <p class="bd meas" data-da="Fast i mindst 12 timer, og undgå både kaffe og kosttilskud før prøven. Hård fysisk aktivitet frarådes de sidste 48 timer." data-en="Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.">Fast for at least 12 hours, and avoid both coffee and supplements before the test. Hard physical activity is not advised for the last 48 hours.</p>
+      <p class="bd meas" style="margin-top:16px" data-da="Vi anbefaler at prøven tages tidligt på dagen, da flere biomarkører naturligt topper om morgenen." data-en="We recommend taking the sample early in the day, as several biomarkers naturally peak in the morning.">We recommend taking the sample early in the day, as several biomarkers naturally peak in the morning.</p>
+      <div style="margin-top:16px"></div>
     </div>
   </div></section>
 
   <section class="gSand"><div class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="lab" data-da="01 · Indsamling" data-en="01 · Collect">01 · Indsamling</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Vi kommer til dig" data-en="We come to you">Vi kommer til dig</h2></div>
+    <div><p class="lab" data-da="01 · Indsamling" data-en="01 · Collect">01 · Collect</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Vi kommer til dig" data-en="We come to you">We come to you</h2></div>
     <div>
-      <p class="bd meas" data-da="Vores blodprøvetagere har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge." data-en="Our phlebotomists have experience from several different hospitals and work under close supervision of our responsible doctor.">Vores blodprøvetagere har erfaring fra flere hospitaler.</p>
-      <p class="pl bd meas" style="margin-top:16px" data-lang="da"><b>Afventer godkendelse</b>Bookingsystemet afsætter 10 minutter til Health Test og 15 til test med konsultation. Hjemmesiden siger fem minutter. Hvilket tal er det rigtige udadtil?</p>
-      <p class="pl bd meas" style="margin-top:16px" data-lang="en"><b>Awaiting sign-off</b>The booking system allocates 10 minutes for the Health Test and 15 for test with consultation. The site says five minutes. Which figure is customer-facing?</p>
+      <p class="bd meas" data-da="Vores blodprøvetagere har erfaring fra flere forskellige hospitaler og arbejder under tæt supervision af vores ansvarlige læge." data-en="Our phlebotomists have experience from several different hospitals and work under close supervision of our responsible doctor.">Our phlebotomists have experience from several different hospitals and work under close supervision of our responsible doctor.</p>
+      
+      
       <div class="hrs" style="margin-top:22px;padding-top:16px">
-        <p class="lab" style="margin-bottom:8px" data-da="Vi kommer i disse områder" data-en="We come to these areas">Vi kommer i disse områder</p>
-        <p class="bdS">København K, N, NV, V, S, SV, Ø, Frederiksberg <span data-da="og Hellerup — eller på vores laboratorium." data-en="and Hellerup — or at our laboratory.">og Hellerup.</span></p>
-        <div style="margin-top:10px"><span class="tagV" data-da="Verificeret" data-en="Verified">Verificeret</span></div>
+        <p class="lab" style="margin-bottom:8px" data-da="Vi kommer i disse områder" data-en="We come to these areas">We come to these areas</p>
+        <p class="bdS">København K, N, NV, V, S, SV, Ø, Frederiksberg <span data-da="og Hellerup — eller på vores laboratorium." data-en="and Hellerup — or at our laboratory.">and Hellerup — or at our laboratory.</span></p>
+        <div style="margin-top:10px"></div>
       </div>
     </div>
   </div></div></section>
 
   <section class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="lab" data-da="02 · Transport" data-en="02 · Transport">02 · Transport</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Direkte til laboratoriet" data-en="Straight to the laboratory">Direkte til laboratoriet</h2></div>
+    <div><p class="lab" data-da="02 · Transport" data-en="02 · Transport">02 · Transport</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Direkte til laboratoriet" data-en="Straight to the laboratory">Straight to the laboratory</h2></div>
     <div>
-      <p class="bd meas" data-da="Prøven bringes direkte til vores eget laboratorium. Den sendes ikke videre til et eksternt laboratorium." data-en="The sample is brought straight to our own laboratory. It is not sent on to an external laboratory.">Prøven bringes direkte til vores eget laboratorium.</p>
+      <p class="bd meas" data-da="Prøven bringes direkte til vores eget laboratorium. Den sendes ikke videre til et eksternt laboratorium." data-en="The sample is brought straight to our own laboratory. It is not sent on to an external laboratory.">The sample is brought straight to our own laboratory. It is not sent on to an external laboratory.</p>
     </div>
   </div></section>
 
@@ -1049,23 +1049,23 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   </div></section>
 
   <section class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="lab" data-da="04 · Gennemgang" data-en="04 · Review">04 · Gennemgang</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Rapporten" data-en="The report">Rapporten</h2></div>
+    <div><p class="lab" data-da="04 · Gennemgang" data-en="04 · Review">04 · Review</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Rapporten" data-en="The report">The report</h2></div>
     <div>
-      <p class="pl bd meas" data-lang="da"><b>Afventer godkendelse</b>Er 2–4 timer typisk eller bedste tilfælde? Et interval præsenteret som et løfte har brug for et oplyst grundlag.</p>
-      <p class="pl bd meas" data-lang="en"><b>Awaiting sign-off</b>Is 2–4 hours typical or best case? A range presented as a promise needs a stated basis.</p>
-      <p class="bd meas" style="margin-top:14px" data-da="Den er skrevet til at blive læst af dig — ikke af en læge." data-en="It is written to be read by you — not by a doctor.">Den er skrevet til at blive læst af dig.</p>
-      <div style="margin-top:22px"><a class="lnk" data-route="rapport"><span data-da="Se hele rapporten" data-en="See the whole report">Se hele rapporten</span> <span aria-hidden="true">→</span></a></div>
+      
+      
+      <p class="bd meas" style="margin-top:14px" data-da="Den er skrevet til at blive læst af dig — ikke af en læge." data-en="It is written to be read by you — not by a doctor.">It is written to be read by you — not by a doctor.</p>
+      <div style="margin-top:22px"><a class="lnk" data-route="rapport"><span data-da="Se hele rapporten" data-en="See the whole report">See the whole report</span> <span aria-hidden="true">→</span></a></div>
     </div>
   </div></section>
 
   <section class="gSand"><div class="wrap std"><div class="split sp4258 alStart">
-    <div><p class="lab" data-da="04 · Gennemgang" data-en="04 · Review">04 · Gennemgang</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Samtalen" data-en="The conversation">Samtalen</h2></div>
+    <div><p class="lab" data-da="04 · Gennemgang" data-en="04 · Review">04 · Review</p><h2 class="s d3 fg" style="margin-top:8px" data-da="Samtalen" data-en="The conversation">The conversation</h2></div>
     <div>
-      <p class="bd meas" data-da="Du booker konsultationen, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online." data-en="You book the consultation when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.">Du booker konsultationen, når det passer dig.</p>
-      <div style="margin-top:14px"><span class="tagV" data-da="Verificeret" data-en="Verified">Verificeret</span></div>
+      <p class="bd meas" data-da="Du booker konsultationen, når det passer dig — vi skal blot have mindst tre timer fra du modtager svaret. Tyve minutter online." data-en="You book the consultation when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.">You book the consultation when it suits you — we just need at least three hours from when you receive the result. Twenty minutes online.</p>
+      <div style="margin-top:14px"></div>
       <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
-        <a class="btn btn1" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-        <a class="lnk" data-route="faq"><span data-da="Praktiske spørgsmål" data-en="Practical questions">Praktiske spørgsmål</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
+        <a class="lnk" data-route="faq"><span data-da="Praktiske spørgsmål" data-en="Practical questions">Practical questions</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div></div></section>
@@ -1076,278 +1076,89 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
     <div class="split sp6238 alStart">
       <div>
-        <h1 class="s d2 fg" style="max-width:19ch" data-da="Det, du får, er ikke en liste med tal." data-en="What you get is not a list of numbers.">Det, du får, er ikke en liste med tal.</h1>
-        <p class="bodyL measN" style="margin-top:28px" data-da="Hver måling står med sit optimale område og sit referenceområde. Seks systemer får hver sin score. Og en læge læser det med dig, hvis du vil." data-en="Every measurement sits beside its optimal range and its reference range. Six systems each get a score. And a doctor reads it with you, if you want.">Hver måling står med sit optimale område og sit referenceområde.</p>
+        <h1 class="s d2 fg" style="max-width:19ch" data-da="Det, du får, er ikke en liste med tal." data-en="What you get is not a list of numbers.">What you get is not a list of numbers.</h1>
+        <p class="bodyL measN" style="margin-top:28px" data-da="Hver måling står med sit optimale område og sit referenceområde. Seks systemer får hver sin score. Og en læge læser det med dig, hvis du vil." data-en="Every measurement sits beside its optimal range and its reference range. Six systems each get a score. And a doctor reads it with you, if you want.">Every measurement sits beside its optimal range and its reference range. Six systems each get a score. And a doctor reads it with you, if you want.</p>
       </div>
-      <div class="phBox" style="aspect-ratio:1339/1036"><img loading="lazy" decoding="async" class="ph" src="../public/images/report-deck.webp" data-alt-da="En kvinde ser Pandonias rapport på en bærbar computer." data-alt-en="A woman looking at the Pandonia report on a laptop." alt=""><span class="phTag" data-da="Ægte UI · stock-foto" data-en="Real UI · stock photo">Ægte UI · stock-foto</span></div>
+      <div class="phBox" style="aspect-ratio:1339/1036"><img loading="lazy" decoding="async" class="ph" src="__BASE_PATH__images/report-deck.webp" data-alt-da="En kvinde ser Pandonias rapport på en bærbar computer." data-alt-en="A woman looking at the Pandonia report on a laptop." alt="A woman looking at the Pandonia report on a laptop."></div>
     </div>
   </section>
   <!-- A · OVERVIEW — the report's "Health assessment overview" -->
   <section class="gSheet" id="rp-overview"><div class="wrap std">
     <div class="split sp4258 alStart">
       <div>
-        <p class="lab" data-da="Oversigt" data-en="Overview">Oversigt</p>
-        <h2 class="s d3 fg" style="margin-top:12px;max-width:14ch" data-da="Seks systemer. Én samlet score." data-en="Six systems. One overall score.">Seks systemer. Én samlet score.</h2>
-        <p class="bd meas" style="margin-top:18px" data-da="Hvert område afspejler et centralt system i kroppen. Det scores ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder." data-en="Each health area reflects a core system in your body. It is scored on how close your values are to Pandonia's optimal ranges.">Hvert område afspejler et centralt system i kroppen.</p>
-        <p class="bd meas" style="margin-top:12px" data-da="Pilen ved hver score viser, hvordan den har ændret sig siden din sidste måling." data-en="The arrow beside each score shows how it has changed since your last measurement.">Pilen viser ændringen siden sidste måling.</p>
+        <p class="lab" data-da="Oversigt" data-en="Overview">Overview</p>
+        <h2 class="s d3 fg" style="margin-top:12px;max-width:14ch" data-da="Seks systemer. Én samlet score." data-en="Six systems. One overall score.">Six systems. One overall score.</h2>
+        <p class="bd meas" style="margin-top:18px" data-da="Hvert område afspejler et centralt system i kroppen. Det scores ud fra, hvor tæt dine værdier ligger på Pandonias optimale områder." data-en="Each health area reflects a core system in your body. It is scored on how close your values are to Pandonia's optimal ranges.">Each health area reflects a core system in your body. It is scored on how close your values are to Pandonia's optimal ranges.</p>
+        <p class="bd meas" style="margin-top:12px" data-da="Pilen ved hver score viser, hvordan den har ændret sig siden din sidste måling." data-en="The arrow beside each score shows how it has changed since your last measurement.">The arrow beside each score shows how it has changed since your last measurement.</p>
       </div>
       <div class="sheet">
         <div class="radarSlot"></div>
         <div class="rLegend">
-          <span><i class="tri up"></i><span data-da="Forbedret" data-en="Improved">Forbedret</span></span>
-          <span><i class="dotF"></i><span data-da="Uændret" data-en="No change">Uændret</span></span>
-          <span><i class="tri dn"></i><span data-da="Forværret" data-en="Worsened">Forværret</span></span>
+          <span><i class="tri up"></i><span data-da="Forbedret" data-en="Improved">Improved</span></span>
+          <span><i class="dotF"></i><span data-da="Uændret" data-en="No change">No change</span></span>
+          <span><i class="tri dn"></i><span data-da="Forværret" data-en="Worsened">Worsened</span></span>
         </div>
-        <p class="lab" style="text-align:center;margin-top:16px" data-da="Eksempel fra Pandonias rapport-UI" data-en="Example from Pandonia's report UI">Eksempel fra Pandonias rapport-UI</p>
+        <p class="lab" style="text-align:center;margin-top:16px" data-da="Eksempel fra Pandonias rapport-UI" data-en="Example from Pandonia's report UI">Example from Pandonia's report UI</p>
       </div>
     </div>
-    <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="da"><b>Kilde</b>Forklaringsteksten er oversat fra rapportens "How to read my results?" og skal godkendes på dansk. Radarens tal er fra Pandonias rapport-UI-mockup — ikke fra en patientrapport. At de seks scorer ligger tæt ved 100 er også sådan, Pandonias egen rapport tegner dem.</p>
-    <p class="pl bdS revonly" style="max-width:70ch;margin-top:28px" data-lang="en"><b>Source</b>The explanation is quoted from the report's "How to read my results?", lightly edited for grammar. The radar values come from Pandonia's report-UI mockup — not from a patient report. Six scores sitting close to 100 is also how Pandonia's own report draws them.</p>
+    
+    
   </div></section>
 
   <!-- B · ONE MARKER — the report's bar anatomy and its three ranges -->
   <section class="gSand"><div class="wrap std">
-    <p class="lab" data-da="Én markør" data-en="One marker">Én markør</p>
-    <h2 class="s d3 fg" style="margin-top:12px" data-da="Sådan læser du en måling." data-en="How to read a measurement.">Sådan læser du en måling.</h2>
+    <p class="lab" data-da="Én markør" data-en="One marker">One marker</p>
+    <h2 class="s d3 fg" style="margin-top:12px" data-da="Sådan læser du en måling." data-en="How to read a measurement.">How to read a measurement.</h2>
     <div class="sheet" style="margin-top:clamp(24px,3vw,36px)">
       <div class="rbarSlot" data-kind="glu" data-anno="1"></div>
     </div>
     <div class="rcards" style="margin-top:8px">
-      <div class="rc-opt"><h3 data-da="Optimalt område" data-en="Optimal range">Optimalt område</h3><p data-da="Viser de niveauer, hvor vi vurderer, at kroppen fungerer mest balanceret og robust — både her og nu og på lang sigt." data-en="Shows the levels where we assess that the body functions most balanced and robustly, both here and now and in the long term.">Hvor kroppen fungerer mest balanceret.</p></div>
-      <div class="rc-ref"><h3 data-da="Referenceområde" data-en="Reference range">Referenceområde</h3><p data-da="De værdier, sundhedsvæsenet i Danmark bruger som normale. For nogle biomarkører svarer referenceområdet til det optimale område." data-en="The values that the healthcare system in Denmark uses as normal. For some biomarkers, the reference range corresponds to the optimal range.">Sundhedsvæsenets normalværdier.</p></div>
-      <div class="rc-out"><h3 data-da="Uden for området" data-en="Outside range">Uden for området</h3><p data-da="Værdier uden for de anbefalede grænser. Det kan være tegn på en ubalance eller mangel og bør ses i sammenhæng med dit samlede helbred." data-en="Values outside the recommended limits. This may be a sign of an imbalance or deficiency and should be viewed in the context of your overall health.">Uden for de anbefalede grænser.</p></div>
+      <div class="rc-opt"><h3 data-da="Optimalt område" data-en="Optimal range">Optimal range</h3><p data-da="Viser de niveauer, hvor vi vurderer, at kroppen fungerer mest balanceret og robust — både her og nu og på lang sigt." data-en="Shows the levels where we assess that the body functions most balanced and robustly, both here and now and in the long term.">Shows the levels where we assess that the body functions most balanced and robustly, both here and now and in the long term.</p></div>
+      <div class="rc-ref"><h3 data-da="Referenceområde" data-en="Reference range">Reference range</h3><p data-da="De værdier, sundhedsvæsenet i Danmark bruger som normale. For nogle biomarkører svarer referenceområdet til det optimale område." data-en="The values that the healthcare system in Denmark uses as normal. For some biomarkers, the reference range corresponds to the optimal range.">The values that the healthcare system in Denmark uses as normal. For some biomarkers, the reference range corresponds to the optimal range.</p></div>
+      <div class="rc-out"><h3 data-da="Uden for området" data-en="Outside range">Outside range</h3><p data-da="Værdier uden for de anbefalede grænser. Det kan være tegn på en ubalance eller mangel og bør ses i sammenhæng med dit samlede helbred." data-en="Values outside the recommended limits. This may be a sign of an imbalance or deficiency and should be viewed in the context of your overall health.">Values outside the recommended limits. This may be a sign of an imbalance or deficiency and should be viewed in the context of your overall health.</p></div>
     </div>
-    <p class="lab" style="margin-top:14px" data-da="Definitionerne er fra Pandonias rapport · eksemplet er rapportens eget" data-en="Definitions from Pandonia's report · the example is the report's own">Definitionerne er fra Pandonias rapport</p>
-    <p class="pl bdS revonly" style="max-width:70ch;margin-top:20px" data-lang="da"><b>Til gennemsyn</b>De tre definitioner er citeret fra rapportens vejledning (engelsk) og oversat til dansk — den danske tekst skal godkendes. Rapportens farver er grøn / gul / rød; det erstatter den tidligere regel om ingen trafiklys, fordi det er produktets eget sprog. GLU-eksemplet: vejledningen skriver nmol/L, her rettet til mmol/L.</p>
-    <p class="pl bdS revonly" style="max-width:70ch;margin-top:20px" data-lang="en"><b>For review</b>The three definitions are quoted from the report's guide. The report uses green / yellow / red; this supersedes the earlier no-traffic-light rule, because it is the product's own language. GLU example: the guide says nmol/L, corrected here to mmol/L.</p>
+    <p class="lab" style="margin-top:14px" data-da="Definitionerne er fra Pandonias rapport · eksemplet er rapportens eget" data-en="Definitions from Pandonia's report · the example is the report's own">Definitions from Pandonia's report · the example is the report's own</p>
+    
+    
   </div></section>
 
   <!-- C · OVER TIME — score over time, results worth paying attention to -->
   <section class="gSheet"><div class="wrap std">
     <div class="split sp5545 alStart">
       <div>
-        <p class="lab" data-da="Over tid" data-en="Over time">Over tid</p>
-        <h2 class="s d3 fg" style="margin-top:12px" data-da="Score over tid." data-en="Score over time.">Score over tid.</h2>
-        <p class="bd meas" style="margin-top:16px" data-da="Hver ny måling lægger et punkt til din samlede score. Du ser udviklingen fra test til test." data-en="Each new measurement adds a point to your overall score. You see it develop from test to test.">Hver ny måling lægger et punkt til.</p>
+        <p class="lab" data-da="Over tid" data-en="Over time">Over time</p>
+        <h2 class="s d3 fg" style="margin-top:12px" data-da="Score over tid." data-en="Score over time.">Score over time.</h2>
+        <p class="bd meas" style="margin-top:16px" data-da="Hver ny måling lægger et punkt til din samlede score. Du ser udviklingen fra test til test." data-en="Each new measurement adds a point to your overall score. You see it develop from test to test.">Each new measurement adds a point to your overall score. You see it develop from test to test.</p>
         <div class="sheet" style="margin-top:24px"><div class="trendSlot"></div></div>
       </div>
       <div>
-        <p class="lab" data-da="Opmærksomhed" data-en="Attention">Opmærksomhed</p>
-        <h2 class="s d3 fg" style="margin-top:12px" data-da="Resultater værd at holde øje med." data-en="Results worth paying attention to.">Resultater værd at holde øje med.</h2>
-        <p class="bd meas" style="margin-top:16px" data-da="Målinger uden for området samles ét sted — med dine tidligere målinger ved siden af." data-en="Measurements outside the range are gathered in one place — with your previous measurements beside them.">Målinger uden for området samles ét sted.</p>
+        <p class="lab" data-da="Opmærksomhed" data-en="Attention">Attention</p>
+        <h2 class="s d3 fg" style="margin-top:12px" data-da="Resultater værd at holde øje med." data-en="Results worth paying attention to.">Results worth paying attention to.</h2>
+        <p class="bd meas" style="margin-top:16px" data-da="Målinger uden for området samles ét sted — med dine tidligere målinger ved siden af." data-en="Measurements outside the range are gathered in one place — with your previous measurements beside them.">Measurements outside the range are gathered in one place — with your previous measurements beside them.</p>
         <div class="sheet" style="margin-top:24px"><div class="rbarSlot" data-kind="gen"></div></div>
-        <p class="lab" style="margin-top:12px" data-da="Eksempel · anonymiseret" data-en="Example · anonymised">Eksempel · anonymiseret</p>
+        <p class="lab" style="margin-top:12px" data-da="Eksempel · anonymiseret" data-en="Example · anonymised">Example · anonymised</p>
       </div>
     </div>
   </div></section>
 
   <section class="wrap std"><div class="split sp3862 alCenter">
-    <div class="phBox" style="aspect-ratio:4/5"><img loading="lazy" decoding="async" class="ph gSoft" src="../public/images/samtale.webp" data-alt-da="En læge i kittel taler med en person ved et bord." data-alt-en="A doctor in a white coat talking with someone across a table." alt="" style="object-position:45% 50%"><span class="phTag lic" data-da="Stock · ikke Pandonia" data-en="Stock · not Pandonia">Stock · ikke Pandonia</span></div>
+    <div class="phBox" style="aspect-ratio:4/5"><img loading="lazy" decoding="async" class="ph gSoft" src="__BASE_PATH__images/samtale.webp" data-alt-da="En læge i kittel taler med en person ved et bord." data-alt-en="A doctor in a white coat talking with someone across a table." alt="A doctor in a white coat talking with someone across a table." style="object-position:45% 50%"></div>
     <div>
-      <h2 class="s d3 fg measS" data-da="Og så er der samtalen." data-en="And then there is the conversation.">Og så er der samtalen.</h2>
-      <p class="bd meas" style="margin-top:18px" data-da="Tyve minutter online med en læge, der har læst din rapport på forhånd. I gennemgår den sammen og finder ud af, hvad der giver mening at gøre — og hvad der ikke gør." data-en="Twenty minutes online with a doctor who has read your report beforehand. You go through it together and work out what makes sense to do — and what does not.">Tyve minutter online med en læge.</p>
-      <p class="bd meas" style="margin-top:14px" data-da="Er du i tvivl om dine resultater, anbefaler vi altid, at du booker en konsultation med vores læge." data-en="If you have doubts about your results, we always recommend booking a consultation with our doctor.">Er du i tvivl, så book en konsultation.</p>
+      <h2 class="s d3 fg measS" data-da="Og så er der samtalen." data-en="And then there is the conversation.">And then there is the conversation.</h2>
+      <p class="bd meas" style="margin-top:18px" data-da="Tyve minutter online med en læge, der har læst din rapport på forhånd. I gennemgår den sammen og finder ud af, hvad der giver mening at gøre — og hvad der ikke gør." data-en="Twenty minutes online with a doctor who has read your report beforehand. You go through it together and work out what makes sense to do — and what does not.">Twenty minutes online with a doctor who has read your report beforehand. You go through it together and work out what makes sense to do — and what does not.</p>
+      <p class="bd meas" style="margin-top:14px" data-da="Er du i tvivl om dine resultater, anbefaler vi altid, at du booker en konsultation med vores læge." data-en="If you have doubts about your results, we always recommend booking a consultation with our doctor.">If you have doubts about your results, we always recommend booking a consultation with our doctor.</p>
       <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
-        <a class="btn btn1" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-        <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">Se hvad vi måler</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
+        <a class="lnk" data-route="maaler"><span data-da="Se hvad vi måler" data-en="See what we test">See what we test</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div></section>
 </div>
 
-<!-- ═══════════ BOOKING (PREVIEW) ═══════════
-     Approval-gated preview. EasyPractice publishes no supported way to read
-     available times, so the calendar below runs on DEMO data and says so.
-     The live integration point is EasyPractice's own embed (bottom). -->
-<style>
-.bkBar{background:var(--deep);color:var(--inkInv);padding:12px clamp(20px,4vw,64px);display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
-.bkBar .lab{color:var(--acid)}
-.bkModes{display:flex;flex-wrap:wrap;gap:6px}
-.bkModes button{background:none;border:1px solid rgba(250,250,247,.35);color:var(--onDeepMuted);font:inherit;font-size:12px;padding:7px 11px;cursor:pointer}
-.bkModes button[aria-pressed="true"]{background:var(--acid);border-color:var(--acid);color:var(--ink)}
-.bkModes .bkReset{border-color:var(--inkInv);color:var(--inkInv)}
-.bkTop{padding-block:clamp(36px,6vw,72px) clamp(20px,3vw,32px)}
-.bkSteps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin-top:clamp(26px,3vw,40px);border-top:1px solid var(--ruleSoft)}
-@media(min-width:760px){.bkSteps{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.bkSteps li{padding-top:12px;margin-top:-1px;border-top:2px solid transparent;color:var(--ink3);font-size:14px;line-height:1.35;padding-bottom:12px}
-.bkSteps li b{display:block;font-size:11px;letter-spacing:.16em;font-weight:400}
-.bkSteps li small{display:block;font-size:11px;color:var(--ink3);margin-top:2px}
-.bkSteps li.on{border-top-color:var(--ink);color:var(--ink)}
-.bkSteps li.done{color:var(--ink2)}
-.bkBlock{padding-block:clamp(26px,3.5vw,44px);border-top:1px solid var(--rule)}
-.bkBlock h2{font-family:var(--serif);font-weight:400;font-size:clamp(24px,1.4vw + 17px,34px);letter-spacing:-.02em;line-height:1.1}
-.bkGrpH{margin:22px 0 4px}
-.bkSvcs{border-top:1px solid var(--ruleSoft)}
-.bkSvc{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:4px 14px;align-items:start;padding:15px 0;border-bottom:1px solid var(--ruleSoft);cursor:pointer}
-.bkSvc input{appearance:none;width:18px;height:18px;margin:3px 0 0;border:1px solid var(--ink);border-radius:0;display:grid;place-content:center;cursor:pointer;background:var(--paper)}
-.bkSvc input:checked{background:var(--ink)}
-.bkSvc input:checked::after{content:"";width:5px;height:9px;margin-top:-2px;border:solid var(--acid);border-width:0 2px 2px 0;transform:rotate(45deg)}
-.bkSvc input:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.bkSvc .nm{font-weight:700;letter-spacing:-.01em;font-size:16px}
-.bkSvc .ds{grid-column:2;font-size:14px;color:var(--ink2);line-height:1.45}
-.bkSvc .pr{grid-row:1;grid-column:3;text-align:right;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.bkSvc .pr small{display:block;font-size:11px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;margin-top:2px}
-.bkSvc:has(input:checked){background:rgba(241,236,122,.30)}
-.bkCalHead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:18px 0 12px}
-.bkMonth{font-size:15px;font-weight:700;letter-spacing:-.01em;text-transform:capitalize}
-.bkDemo{display:inline-block;background:var(--acid);color:var(--ink);font-size:10.5px;letter-spacing:.14em;padding:5px 8px;font-weight:700}
-.bkArrows{display:flex;gap:8px}
-.bkArrows button,.bkBack{width:44px;height:44px;background:none;border:1px solid var(--ink);color:var(--ink);font-size:16px;cursor:pointer}
-.bkArrows button:disabled{opacity:.3;cursor:default}
-.bkDays{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:6px;scrollbar-width:thin}
-.bkDay{flex:0 0 68px;scroll-snap-align:start;display:grid;justify-items:center;gap:2px;padding:10px 4px;background:var(--paper);border:1px solid var(--ruleSoft);color:var(--ink);font:inherit;cursor:pointer}
-@media(min-width:1024px){.bkDay{flex:1 0 68px}}
-.bkDay .wd{font-size:10.5px;letter-spacing:.14em}
-.bkDay .dn{font-size:22px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
-.bkDay .ct{font-size:11px;color:var(--ink2)}
-.bkDay:hover:not(:disabled){border-color:var(--ink)}
-.bkDay:disabled{background:transparent;color:var(--ink3);cursor:default}
-.bkDay:disabled .ct{color:var(--ink3)}
-.bkDay[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--inkInv)}
-.bkDay[aria-pressed="true"] .ct{color:var(--acid)}
-.bkDay:focus-visible,.bkSlot:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.bkNext{font-size:14px;color:var(--ink2);margin-top:12px}
-.bkNext button{background:none;border:none;border-bottom:1px solid var(--ink);padding:12px 0 4px;font:inherit;color:var(--ink);cursor:pointer}
-.bkSel{margin-top:22px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
-.bkSelDay{font-family:var(--serif);font-size:clamp(22px,1vw + 17px,28px);letter-spacing:-.02em;margin-top:4px;text-transform:none;color:var(--ink)}
-.bkSlots{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;margin-top:14px;max-width:640px}
-.bkSlot{height:48px;background:var(--paper);border:1px solid var(--ruleSoft);color:var(--ink);font:inherit;font-size:16px;font-variant-numeric:tabular-nums;cursor:pointer;position:relative}
-.bkSlot:hover{border-color:var(--ink)}
-.bkSlot[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--inkInv)}
-.bkSlot[aria-pressed="true"]::after{content:"";position:absolute;top:6px;right:6px;width:6px;height:6px;background:var(--acid)}
-.bkEmpty{padding:22px 0 6px}
-.bkEmpty p{font-family:var(--serif);font-size:clamp(20px,1vw + 15px,26px);letter-spacing:-.015em}
-.bkCta{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
-.bkCta .btn1:disabled{background:transparent;color:var(--ink3);box-shadow:inset 0 0 0 1px var(--ruleSoft);cursor:default}
-.bkCta .btn1{border:none;font:inherit;font-size:15px}
-@media(max-width:759px){.bkCta .btn1{width:100%}}
-.bkCta small{font-size:13px;color:var(--ink3);max-width:46ch;line-height:1.45}
-.bkNote{border-left:1px dotted var(--brick);padding:4px 0 4px 14px;margin-top:20px;max-width:70ch;font-size:14px;line-height:1.55;color:var(--ink2)}
-.bkNote b{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--brick);font-weight:400;margin-bottom:4px}
-.bkFrame{margin-top:18px;border:1px solid var(--rule);background:var(--paper)}
-.bkFrame .lab{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--ruleSoft)}
-.bkFrame iframe{display:block;width:100%;height:1000px;border:0}
-.bkPicked{margin-top:14px;font-size:13px;color:var(--ink3)}
-/* 03 — summary: one line of three on desktop, stacked on mobile, thin rules only */
-.bkLead{margin-top:10px;font-size:16px;line-height:1.5;color:var(--ink2);max-width:52ch}
-.bkSum{margin-top:clamp(20px,2.4vw,28px);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.bkSum>div{padding:14px 0}
-.bkSum>div+div{border-top:1px solid var(--ruleSoft)}
-.bkSum dt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
-.bkSum dd{margin:6px 0 0;font-size:16px;line-height:1.4;font-variant-numeric:tabular-nums}
-.bkSum dd ul{list-style:none;margin:0;padding:0}
-.bkSum dd li+li{margin-top:2px}
-@media(min-width:760px){.bkSum{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,.6fr)}
-  .bkSum>div{padding:16px 20px 16px 0}
-  .bkSum>div+div{border-top:none;border-left:1px solid var(--ruleSoft);padding-left:20px}}
-/* 03 — design preview of the intended EasyPractice step. Not a form: nothing can be typed or sent. */
-.bkEp{margin-top:clamp(22px,2.6vw,32px);border:1px solid var(--rule);background:var(--paper)}
-.bkEpHead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 14px;padding:10px 14px;border-bottom:1px solid var(--ruleSoft)}
-.bkEpHead .lab{color:var(--ink3)}
-.bkEpTag{display:inline-block;border:1px dashed var(--ink3);color:var(--ink2);font-size:10.5px;letter-spacing:.14em;padding:4px 7px;text-transform:uppercase}
-.bkEpBody{padding:clamp(18px,2.4vw,28px) clamp(16px,2.4vw,28px) clamp(20px,2.6vw,30px)}
-.bkEpSteps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink3)}
-.bkEpSteps li{display:flex;align-items:center;gap:6px}
-.bkEpSteps .ok{color:var(--ink2)}
-.bkEpSteps .ok::before{content:"✓";font-weight:700;color:var(--ink)}
-.bkEpSteps .now{color:var(--ink);font-weight:700}
-.bkEpSteps .now::before{content:"";width:7px;height:7px;background:var(--ink)}
-.bkEpH{margin-top:20px;font-size:18px;font-weight:700;letter-spacing:-.01em}
-.bkEpFields{display:grid;gap:12px;margin-top:14px;max-width:560px}
-@media(min-width:760px){.bkEpFields{grid-template-columns:1fr 1fr}.bkEpFields .w{grid-column:1/-1}}
-.bkEpF span{display:block;font-size:12px;color:var(--ink2);margin-bottom:5px}
-.bkEpF i{display:block;height:44px;border:1px solid var(--ruleSoft);background:var(--cream)}
-.bkEpBtn{display:inline-block;margin-top:20px;padding:13px 20px;font-size:15px;background:var(--ink);color:var(--inkInv);opacity:.45}
-.bkEpFoot{margin-top:14px;font-size:12.5px;line-height:1.5;color:var(--ink3);max-width:60ch}
-[data-bkmode] [data-bkshow]{display:none}
-[data-bkmode="demo"] [data-bkshow~="demo"],[data-bkmode="empty"] [data-bkshow~="empty"],[data-bkmode="live"] [data-bkshow~="live"]{display:block}
-</style>
-<div data-page="booking" hidden>
-  <div class="bkBar">
-    <p class="lab" data-da="Preview · booking — ikke live" data-en="Preview · booking — not live">Preview · booking — ikke live</p>
-    <div class="bkModes" role="group" aria-label="Preview">
-      <button type="button" data-bkm="demo" aria-pressed="true" data-da="Ønsket flow (demotider)" data-en="Desired flow (demo times)">Ønsket flow (demotider)</button>
-      <button type="button" data-bkm="empty" aria-pressed="false" data-da="Ingen ledige tider" data-en="No availability">Ingen ledige tider</button>
-      <button type="button" data-bkm="live" aria-pressed="false" data-da="Muligt i dag (EasyPractice)" data-en="Possible today (EasyPractice)">Muligt i dag (EasyPractice)</button>
-      <button type="button" data-bk="reset" class="bkReset" data-da="↺ Start forfra" data-en="↺ Start over">↺ Start forfra</button>
-    </div>
-  </div>
-  <div id="bkRoot" data-bkmode="demo">
-    <section class="wrap bkTop">
-      <p class="lab" data-da="Book" data-en="Book">Book</p>
-      <h1 class="s d2 fg" style="margin-top:12px;max-width:14ch" data-da="Book din blodprøve." data-en="Book your blood test.">Book din blodprøve.</h1>
-      <p class="bodyL measN" style="margin-top:20px" data-da="Vælg blodprøve, dato og tidspunkt. Dine oplysninger udfylder du til sidst i vores bookingsystem." data-en="Choose your blood test, a date and a time. You fill in your details at the end, in our booking system.">Vælg blodprøve, dato og tidspunkt.</p>
-      <ol class="bkSteps" id="bkSteps"></ol>
-    </section>
-
-    <div class="wrap" data-bkshow="demo empty">
-      <section class="bkBlock" id="bkStep1">
-        <p class="lab">01</p>
-        <h2 style="margin-top:6px" data-da="Vælg din blodprøve" data-en="Choose your blood test">Vælg din blodprøve</h2>
-        <div id="bkSvcList"></div>
-      </section>
-      <section class="bkBlock" id="bkStep2">
-        <p class="lab">02</p>
-        <h2 style="margin-top:6px" data-da="Vælg dato og tidspunkt" data-en="Choose a date and time">Vælg dato og tidspunkt</h2>
-        <div id="bkCal"></div>
-      </section>
-      <section class="bkBlock" id="bkStep3" hidden>
-        <!-- The intended hand-off: EasyPractice opens at "Dine informationer" with
-             tests, date and time already filled in. EasyPractice cannot receive a
-             selection today (see docs/booking-notes.md), so this is a DESIGN PREVIEW
-             of that state — no live iframe here, no real fields, nothing sent. -->
-        <p class="lab" data-da="03 · Dine oplysninger" data-en="03 · Your information">03 · Dine oplysninger</p>
-        <h2 style="margin-top:6px" data-da="Færdiggør din booking" data-en="Complete your booking">Færdiggør din booking</h2>
-        <p class="bkLead" data-da="Udfyld dine oplysninger for at bekræfte din tid." data-en="Enter your information to confirm your appointment.">Udfyld dine oplysninger for at bekræfte din tid.</p>
-        <dl class="bkSum" id="bkSum"></dl>
-        <div class="bkEp" role="group" aria-labelledby="bkEpLab">
-          <div class="bkEpHead">
-            <p class="lab" id="bkEpLab" data-da="EasyPractice · designpreview" data-en="EasyPractice · design preview">EasyPractice · designpreview</p>
-            <span class="bkEpTag" data-da="Demo — EasyPractice-integration afventer" data-en="Demo — EasyPractice integration pending">Demo — EasyPractice-integration afventer</span>
-          </div>
-          <div class="bkEpBody" inert>
-            <ol class="bkEpSteps">
-              <li class="ok" data-da="Ydelse" data-en="Service">Ydelse</li>
-              <li class="ok" data-da="Dato og tid" data-en="Date and time">Dato og tid</li>
-              <li class="now" aria-current="step" data-da="Dine informationer" data-en="Your information">Dine informationer</li>
-              <li data-da="Gennemse" data-en="Review">Gennemse</li>
-              <li data-da="Bekræft" data-en="Confirm">Bekræft</li>
-            </ol>
-            <p class="bkEpH" data-da="Dine informationer" data-en="Your information">Dine informationer</p>
-            <div class="bkEpFields" aria-hidden="true">
-              <div class="bkEpF"><span data-da="Fornavn" data-en="First name">Fornavn</span><i></i></div>
-              <div class="bkEpF"><span data-da="Efternavn" data-en="Last name">Efternavn</span><i></i></div>
-              <div class="bkEpF"><span data-da="E-mail" data-en="Email">E-mail</span><i></i></div>
-              <div class="bkEpF"><span data-da="Telefon" data-en="Phone">Telefon</span><i></i></div>
-            </div>
-            <span class="bkEpBtn" aria-hidden="true" data-da="Fortsæt til gennemse" data-en="Continue to review">Fortsæt til gennemse</span>
-          </div>
-        </div>
-        <p class="bkEpFoot" data-da="Designpreview af næste trin. Felterne er kun illustration — intet kan udfyldes eller sendes herfra." data-en="Design preview of the next step. The fields are illustration only — nothing can be filled in or sent from here.">Designpreview af næste trin. Felterne er kun illustration — intet kan udfyldes eller sendes herfra.</p>
-        <div style="margin-top:18px"><button type="button" class="lnk" data-bk="back" style="background:none;border-top:none;border-left:none;border-right:none;font:inherit;cursor:pointer"><span aria-hidden="true">←</span> <span data-da="Skift tid" data-en="Change time">Skift tid</span></button></div>
-      </section>
-    </div>
-
-    <div class="wrap" data-bkshow="live">
-      <section class="bkBlock">
-        <p class="lab" data-da="01–04 · i ét vindue" data-en="01–04 · in one window">01–04 · i ét vindue</p>
-        <h2 style="margin-top:6px" data-da="Vælg blodprøve og tid herunder." data-en="Choose your test and time below.">Vælg blodprøve og tid herunder.</h2>
-        <div class="bkNote" data-lang="da"><b>Sådan kan det køre i dag</b>EasyPractices officielle indlejring på Pandonias egen bookingside. Alle trin — blodprøve, dato, tid, oplysninger og bekræftelse — foregår i EasyPractice med rigtige ledige tider. Pandonia styrer siden omkring, men ikke udseendet inde i vinduet.</div>
-        <div class="bkNote" data-lang="en"><b>How it can run today</b>EasyPractice's official embed on Pandonia's own booking page. Every step — test, date, time, details and confirmation — happens in EasyPractice with real availability. Pandonia controls the page around it, not the look inside the window.</div>
-        <div class="bkFrame">
-          <p class="lab"><span>EasyPractice · live</span><span data-da="Rigtige tider" data-en="Real times">Rigtige tider</span></p>
-          <iframe title="EasyPractice booking" loading="lazy" data-src="https://system.easypractice.net/book/pandonia"></iframe>
-        </div>
-      </section>
-    </div>
-    <div style="height:clamp(40px,6vw,88px)"></div>
-  </div>
-</div>
-
 <!-- ═══════════ FAQ ═══════════ -->
 <div data-page="faq" hidden>
   <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(24px,3vw,44px)">
-    <h1 class="s d2 fg" style="max-width:16ch" data-da="Spørgsmål, i den rækkefølge de plejer at komme." data-en="Questions, in the order they usually come.">Spørgsmål, i den rækkefølge de plejer at komme.</h1>
+    <h1 class="s d2 fg" style="max-width:16ch" data-da="Spørgsmål, i den rækkefølge de plejer at komme." data-en="Questions, in the order they usually come.">Questions, in the order they usually come.</h1>
   </section>
   <section class="wrap" style="padding-bottom:clamp(50px,8vw,110px)" id="faqBody"></section>
 </div>
@@ -1355,96 +1166,96 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 <!-- ═══════════ BOOK ═══════════ -->
 <div data-page="book" hidden>
   <section class="wrap" style="padding-block:clamp(36px,6vw,80px) clamp(28px,4vw,52px)">
-    <h1 class="s d2 fg" style="max-width:16ch" data-da="Tre måder at bruge Pandonia." data-en="Three ways to use Pandonia.">Tre måder at bruge Pandonia.</h1>
-    <p class="bodyL" style="margin-top:24px;max-width:52ch" data-da="Test én gang, vælg en fokuseret test — eller følg din sundhed løbende med et medlemskab. Alt foregår i København, og du skal ikke bruge henvisning." data-en="Test once, choose a focused test — or follow your health continuously with a membership. Everything happens in Copenhagen, and you do not need a referral.">Test én gang, vælg en fokuseret test — eller følg din sundhed løbende.</p>
+    <h1 class="s d2 fg" style="max-width:16ch" data-da="Tre måder at bruge Pandonia." data-en="Three ways to use Pandonia.">Three ways to use Pandonia.</h1>
+    <p class="bodyL" style="margin-top:24px;max-width:52ch" data-da="Test én gang, vælg en fokuseret test — eller følg din sundhed løbende med et medlemskab. Alt foregår i København, og du skal ikke bruge henvisning." data-en="Test once, choose a focused test — or follow your health continuously with a membership. Everything happens in Copenhagen, and you do not need a referral.">Test once, choose a focused test — or follow your health continuously with a membership. Everything happens in Copenhagen, and you do not need a referral.</p>
   </section>
 
   <section class="wrap" id="priser" style="padding-bottom:clamp(56px,8vw,112px)">
     <div class="prTabs" id="prTabs" role="tablist">
       <button type="button" role="tab" class="prTab" id="tab-ht" aria-controls="pr-ht" aria-selected="true" tabindex="0">
         <span class="prName">Pandonia Health Test</span>
-        <span class="prSub" data-da="Test én gang" data-en="Test once">Test én gang</span>
+        <span class="prSub" data-da="Test én gang" data-en="Test once">Test once</span>
       </button>
       <button type="button" role="tab" class="prTab" id="tab-et" aria-controls="pr-et" aria-selected="false" tabindex="-1">
         <span class="prName">Essential Tests</span>
-        <span class="prSub" data-da="Ét bestemt spørgsmål" data-en="One particular question">Ét bestemt spørgsmål</span>
+        <span class="prSub" data-da="Ét bestemt spørgsmål" data-en="One particular question">One particular question</span>
       </button>
       <button type="button" role="tab" class="prTab" id="tab-mb" aria-controls="pr-mb" aria-selected="false" tabindex="-1">
-        <span class="prName" data-da="Medlemskab" data-en="Membership">Medlemskab</span>
-        <span class="prSub" data-da="Følg din sundhed løbende" data-en="Follow your health continuously">Følg din sundhed løbende</span>
+        <span class="prName" data-da="Medlemskab" data-en="Membership">Membership</span>
+        <span class="prSub" data-da="Følg din sundhed løbende" data-en="Follow your health continuously">Follow your health continuously</span>
       </button>
     </div>
 
     <!-- HEALTH TEST -->
     <div class="prPanel" id="pr-ht" role="tabpanel" aria-labelledby="tab-ht">
       <div id="priceRows"></div>
-      <p class="pl bdS revonly" style="margin-top:22px;max-width:66ch" data-lang="da"><b>Afvigelse på pandonia.com</b>Hjemmesiden lister "20-minute online doctor consultation" under The Health Test (3.500 kr.), men konsultationen er netop det, der adskiller Health Test + Consultation. Vist her uden konsultation. Priser verificeret fra Pandonias bookingsystem.</p>
-      <p class="pl bdS revonly" style="margin-top:22px;max-width:66ch" data-lang="en"><b>Discrepancy on pandonia.com</b>The site lists "20-minute online doctor consultation" under The Health Test (DKK 3,500), but the consultation is precisely what distinguishes Health Test + Consultation. Shown here without it. Prices verified from Pandonia's booking system.</p>
+      
+      
     </div>
 
     <!-- ESSENTIAL TESTS -->
     <div class="prPanel" id="pr-et" role="tabpanel" aria-labelledby="tab-et" hidden>
       <div class="prIntro">
-        <h2 class="s d3 fg" data-da="Når du har ét bestemt spørgsmål." data-en="When you have one particular question.">Når du har ét bestemt spørgsmål.</h2>
-        <p class="bd meas" style="margin-top:14px" data-da="Syv fokuserede tests. Prøven tages på samme måde som en Health Test — hjemme hos dig eller på Langebrogade." data-en="Seven focused tests. The sample is taken the same way as a Health Test — at your home or on Langebrogade.">Syv fokuserede tests.</p>
+        <h2 class="s d3 fg" data-da="Når du har ét bestemt spørgsmål." data-en="When you have one particular question.">When you have one particular question.</h2>
+        <p class="bd meas" style="margin-top:14px" data-da="Syv fokuserede tests. Prøven tages på samme måde som en Health Test — hjemme hos dig eller på Langebrogade." data-en="Seven focused tests. The sample is taken the same way as a Health Test — at your home or on Langebrogade.">Seven focused tests. The sample is taken the same way as a Health Test — at your home or on Langebrogade.</p>
       </div>
       <ul class="mbRows" id="singleTests"></ul>
-      <div style="margin-top:28px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Vælg test og tid" data-en="Choose a test and a time">Vælg test og tid</a></div>
-      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="da"><b>Opdateret fra EasyPractice · 2. okt. 2026</b>Navne, priser og varigheder er fra Pandonias bookingsystem, hvor kunden betaler. Nyt: Female hormones (2.200 kr.) og Health check + Female hormones + Thyroid panel (6.300 kr.). Ændret: Health check + Female hormones 4.500 → 5.200 kr., Mænds Sundhedstest 1.400 → 1.600 kr., Skjoldbruskkirtel Test 1.600 → 1.200 kr. Bookingsystemet samler de tre hormonprodukter i kategorien "Pandonia test" og viser ingen beskrivelse og ikke "Skal betales online" for dem. Her vises Female hormones under Essential Tests og de to Health check-pakker under Health Test — placering, korte beskrivelser og "Health check"/"Health Test" skal godkendes. Skjoldbruskkirtel Test har ingen beskrivelse i bookingsystemet; "TSH, T3 og T4" er fra pandonia.com.</p>
-      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="en"><b>Updated from EasyPractice · 2 Oct 2026</b>Names, prices and durations come from Pandonia's booking system, where the customer pays. New: Female hormones (DKK 2,200) and Health check + Female hormones + Thyroid panel (DKK 6,300). Changed: Health check + Female hormones 4,500 → 5,200, Men's Health Test 1,400 → 1,600, Thyroid Health Test 1,600 → 1,200. The booking system groups the three hormone products as "Pandonia test" and shows no description and no "pay online" for them. Here Female hormones sits under Essential Tests and the two Health check packages under Health Test — placement, short descriptions and "Health check"/"Health Test" need sign-off. Thyroid Health Test has no description in the booking system; "TSH, T3 and T4" is from pandonia.com.</p>
+      <div style="margin-top:28px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Vælg test og tid" data-en="Choose a test and a time">Choose a test and a time</a></div>
+      
+      
     </div>
 
     <!-- MEMBERSHIP -->
     <div class="prPanel" id="pr-mb" role="tabpanel" aria-labelledby="tab-mb" hidden>
       <div class="split sp5545 alStart mbTop">
         <div>
-          <p class="lab" data-da="Medlemskab" data-en="Membership">Medlemskab</p>
-          <h2 class="s d2 fg" style="margin-top:14px;max-width:13ch" data-da="Et løbende billede af din sundhed." data-en="A running picture of your health.">Et løbende billede af din sundhed.</h2>
-          <p class="bodyL" style="margin-top:22px;max-width:44ch" data-da="En enkelt Health Test viser, hvor du står i dag. Med medlemskabet tester du hvert kvartal og følger op hver gang — så du kan se, hvad der flytter sig, og hvad der bliver, hvor det er." data-en="A single Health Test shows where you stand today. With membership you test every quarter and follow up each time — so you can see what moves, and what stays where it is.">En enkelt Health Test viser, hvor du står i dag.</p>
+          <p class="lab" data-da="Medlemskab" data-en="Membership">Membership</p>
+          <h2 class="s d2 fg" style="margin-top:14px;max-width:13ch" data-da="Et løbende billede af din sundhed." data-en="A running picture of your health.">A running picture of your health.</h2>
+          <p class="bodyL" style="margin-top:22px;max-width:44ch" data-da="En enkelt Health Test viser, hvor du står i dag. Med medlemskabet tester du hvert kvartal og følger op hver gang — så du kan se, hvad der flytter sig, og hvad der bliver, hvor det er." data-en="A single Health Test shows where you stand today. With membership you test every quarter and follow up each time — so you can see what moves, and what stays where it is.">A single Health Test shows where you stand today. With membership you test every quarter and follow up each time — so you can see what moves, and what stays where it is.</p>
           <ol class="cyc" id="mbCycle">
-            <li><span data-da="Mål" data-en="Measure">Mål</span></li>
-            <li><span data-da="Forstå" data-en="Understand">Forstå</span></li>
-            <li><span data-da="Følg udviklingen" data-en="Follow the change">Følg udviklingen</span></li>
-            <li class="now"><span data-da="Mål igen" data-en="Measure again">Mål igen</span></li>
+            <li><span data-da="Mål" data-en="Measure">Measure</span></li>
+            <li><span data-da="Forstå" data-en="Understand">Understand</span></li>
+            <li><span data-da="Følg udviklingen" data-en="Follow the change">Follow the change</span></li>
+            <li class="now"><span data-da="Mål igen" data-en="Measure again">Measure again</span></li>
           </ol>
         </div>
         <div class="mbPrice">
           <p class="lab">All inclusive</p>
           <p class="mbName">The Pandonia Membership</p>
           <p class="val mbVal" id="mbVal">2.000 kr.</p>
-          <p class="mbPer" data-da="pr. måned" data-en="per month">pr. måned</p>
+          <p class="mbPer" data-da="pr. måned" data-en="per month">per month</p>
           <p class="lab" style="margin-top:14px" id="mbVat">inkl. moms · 1.600 kr. ekskl. moms</p>
-          <p class="lab" style="margin-top:4px" data-da="Betales månedligt" data-en="Billed monthly">Betales månedligt</p>
-          <div style="margin-top:24px"><a class="btn btn1" href="https://system.easypractice.net/subscription/806" target="_blank" rel="noopener noreferrer" data-da="Bliv medlem" data-en="Become a member">Bliv medlem</a></div>
+          <p class="lab" style="margin-top:4px" data-da="Betales månedligt" data-en="Billed monthly">Billed monthly</p>
+          <div style="margin-top:24px"><a class="btn btn1" href="https://system.easypractice.net/subscription/806" target="_blank" rel="noopener noreferrer" data-da="Bliv medlem" data-en="Become a member">Become a member</a></div>
         </div>
       </div>
       <div style="margin-top:clamp(44px,6vw,76px)">
-        <p class="lab" style="margin-bottom:14px" data-da="Inkluderet" data-en="Included">Inkluderet</p>
+        <p class="lab" style="margin-bottom:14px" data-da="Inkluderet" data-en="Included">Included</p>
         <ul class="mbRows" id="mbRows"></ul>
       </div>
-      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="da"><b>Afklaret — kilder</b>Bookingsystemets eneste aktive abonnement (806, "The Pandonia Membership", 2.000 kr./md.) og den engelske hjemmeside ("All inclusive", 2.000 inkl. / 1.600 ekskl. moms) viser samme medlemskab med samme ni fordele. Den danske pandonia.com viser stadig tre udgåede planer — 3.000, 3.699 og 6.100 kr./md. — og deres Tilmeld-knapper fører til abonnementer, der ikke findes (404). De skal fjernes fra den nuværende side. Ikke offentliggjort: bindingsperiode og opsigelse. Medlemskabets konsultation er beskrevet som "personlig rådgivning og opfølgning", ikke som en lægekonsultation.</p>
-      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="en"><b>Resolved — sources</b>The booking system's only active subscription (806, "The Pandonia Membership", DKK 2,000/mo) and the English website ("All inclusive", 2,000 incl. / 1,600 excl. VAT) show the same membership with the same nine benefits. The Danish pandonia.com still shows three retired plans — DKK 3,000, 3,699 and 6,100/mo — whose Subscribe buttons lead to subscriptions that do not exist (404). They should come off the current site. Not published: binding period and cancellation. The membership consultation is described as "personal advice and follow-up", not as a doctor consultation.</p>
+      
+      
     </div>
   </section>
 
   <section class="gSand"><div class="wrap std">
-    <h2 class="s d3 fg" style="margin-bottom:clamp(24px,3vw,36px)" data-da="Forskellen, kort fortalt." data-en="The difference, briefly.">Forskellen, kort fortalt.</h2>
+    <h2 class="s d3 fg" style="margin-bottom:clamp(24px,3vw,36px)" data-da="Forskellen, kort fortalt." data-en="The difference, briefly.">The difference, briefly.</h2>
     <div class="cmp" id="prCmp" role="table"></div>
   </div></section>
 
   <section class="wrap std" style="text-align:center">
-    <p class="s d3 fg" style="max-width:18ch;margin:0 auto" data-da="Begynd med én prøve. Eller bliv ved." data-en="Start with one test. Or keep going.">Begynd med én prøve. Eller bliv ved.</p>
+    <p class="s d3 fg" style="max-width:18ch;margin:0 auto" data-da="Begynd med én prøve. Eller bliv ved." data-en="Start with one test. Or keep going.">Start with one test. Or keep going.</p>
     <div class="ovtCta" style="margin-top:30px">
-      <a class="btn btn1" href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a>
-      <a class="btn btn2" href="https://system.easypractice.net/subscription/806" target="_blank" rel="noopener noreferrer" data-da="Bliv medlem" data-en="Become a member">Bliv medlem</a>
+      <a class="btn btn1" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a>
+      <a class="btn btn2" href="https://system.easypractice.net/subscription/806" target="_blank" rel="noopener noreferrer" data-da="Bliv medlem" data-en="Become a member">Become a member</a>
     </div>
   </section>
 
   <section class="wrap std" style="padding-top:0">
     <div class="hr" style="padding-top:clamp(40px,5vw,64px)">
-      <h2 class="s d3 fg" style="margin-bottom:28px" data-da="Hvad der sker, når du har booket" data-en="What happens once you have booked">Hvad der sker, når du har booket</h2>
+      <h2 class="s d3 fg" style="margin-bottom:28px" data-da="Hvad der sker, når du har booket" data-en="What happens once you have booked">What happens once you have booked</h2>
       <ol style="max-width:720px" id="afterSteps"></ol>
-      <p class="bdS" style="margin-top:22px;max-width:60ch" data-da="Også som klippekort. Skal flere på arbejdspladsen testes, så skriv til labs@pandonia.com." data-en="Also available as clip cards. If several people at your workplace want testing, write to labs@pandonia.com.">Også som klippekort.</p>
+      <p class="bdS" style="margin-top:22px;max-width:60ch" data-da="Også som klippekort. Skal flere på arbejdspladsen testes, så skriv til labs@pandonia.com." data-en="Also available as clip cards. If several people at your workplace want testing, write to labs@pandonia.com.">Also available as clip cards. If several people at your workplace want testing, write to labs@pandonia.com.</p>
     </div>
   </section>
 </div>
@@ -1454,32 +1265,32 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <div class="fgrid">
     <div style="grid-column:1/-1">
       <p class="wm" style="color:var(--inkInv);font-size:34px;margin-bottom:16px">Pandonia</p>
-      <p class="bdS onDeepMuted" style="max-width:32ch" data-da="Blodprøver hjemme hos dig i København, analyseret i vores eget laboratorium." data-en="Blood tests at your home in Copenhagen, analysed in our own laboratory.">Blodprøver hjemme hos dig i København.</p>
+      <p class="bdS onDeepMuted" style="max-width:32ch" data-da="Blodprøver hjemme hos dig i København, analyseret i vores eget laboratorium." data-en="Blood tests at your home in Copenhagen, analysed in our own laboratory.">Blood tests at your home in Copenhagen, analysed in our own laboratory.</p>
       <p class="bdS onDeepMuted" style="margin-top:16px">Langebrogade 3A, 2. sal<br>1411 København K<br><a href="mailto:labs@pandonia.com">labs@pandonia.com</a></p>
     </div>
-    <nav><h2 data-da="Websted" data-en="Site">Websted</h2><ul>
-      <li><a data-route="maaler" data-da="Hvad vi måler" data-en="What we test">Hvad vi måler</a></li>
-      <li><a data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">Sådan fungerer det</a></li>
-      <li><a data-route="saadan" data-anchor="laboratoriet" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</a></li>
-      <li><a data-route="rapport" data-da="Din rapport" data-en="Your report">Din rapport</a></li>
+    <nav><h2 data-da="Websted" data-en="Site">Site</h2><ul>
+      <li><a data-route="maaler" data-da="Hvad vi måler" data-en="What we test">What we test</a></li>
+      <li><a data-route="saadan" data-da="Sådan fungerer det" data-en="How it works">How it works</a></li>
+      <li><a data-route="saadan" data-anchor="laboratoriet" data-da="Laboratoriet" data-en="The laboratory">The laboratory</a></li>
+      <li><a data-route="rapport" data-da="Din rapport" data-en="Your report">Your report</a></li>
     </ul></nav>
-    <nav><h2 data-da="Praktisk" data-en="Practical">Praktisk</h2><ul>
-      <li><a data-route="book" data-da="Priser" data-en="Pricing">Priser</a></li>
-      <li><a href="#/booking" data-route="booking" data-da="Book din blodprøve" data-en="Book your blood test">Book din blodprøve</a></li>
+    <nav><h2 data-da="Praktisk" data-en="Practical">Practical</h2><ul>
+      <li><a data-route="book" data-da="Priser" data-en="Pricing">Pricing</a></li>
+      <li><a class="ext" href="https://system.easypractice.net/book/pandonia#choose-service" target="_blank" rel="noopener noreferrer" data-da="Book din blodprøve" data-en="Book your blood test">Book your blood test</a></li>
       <li><a data-route="faq">FAQ</a></li>
-      <li><a class="ext" href="mailto:labs@pandonia.com" data-da="For virksomheder" data-en="For business">For virksomheder</a></li>
-      <li><a class="ext" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="Log ind" data-en="Log in">Log ind</a></li>
+      <li><a class="ext" href="mailto:labs@pandonia.com" data-da="For virksomheder" data-en="For business">For business</a></li>
+      <li><a class="ext" href="https://system.easypractice.net/book/pandonia/center" target="_blank" rel="noopener noreferrer" data-da="Log ind" data-en="Log in">Log in</a></li>
     </ul></nav>
-    <nav><h2 data-da="Juridisk" data-en="Legal">Juridisk</h2><ul>
-      <li><a class="ext" href="https://www.pandonia.com/persondatapolitik" target="_blank" rel="noopener noreferrer" data-da="Persondatapolitik" data-en="Privacy policy (in Danish)">Persondatapolitik</a></li>
-      <li><a class="ext" href="https://www.pandonia.com/cookiepolitik" target="_blank" rel="noopener noreferrer" data-da="Cookiepolitik" data-en="Cookie policy (in Danish)">Cookiepolitik</a></li>
-      <li class="gated revonly" data-da="Handelsbetingelser — afventer" data-en="Terms — pending">Handelsbetingelser — afventer</li>
-      <li><a href="mailto:labs@pandonia.com" data-da="Kontakt" data-en="Contact">Kontakt</a></li>
+    <nav><h2 data-da="Juridisk" data-en="Legal">Legal</h2><ul>
+      <li><a class="ext" href="https://www.pandonia.com/persondatapolitik" target="_blank" rel="noopener noreferrer" data-da="Persondatapolitik" data-en="Privacy policy (in Danish)">Privacy policy (in Danish)</a></li>
+      <li><a class="ext" href="https://www.pandonia.com/cookiepolitik" target="_blank" rel="noopener noreferrer" data-da="Cookiepolitik" data-en="Cookie policy (in Danish)">Cookie policy (in Danish)</a></li>
+      
+      <li><a href="mailto:labs@pandonia.com" data-da="Kontakt" data-en="Contact">Contact</a></li>
     </ul></nav>
   </div>
   <div class="hrInv" style="margin-top:34px;padding-top:20px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between">
-    <p class="pl keep bdS" style="max-width:62ch" data-lang="da"><b>Afventer godkendelse</b>Pandonias tests erstatter ikke lægelig undersøgelse, diagnose eller behandling. Har du symptomer eller er du i tvivl, så kontakt din egen læge eller lægevagten.</p>
-    <p class="pl keep bdS" style="max-width:62ch" data-lang="en"><b>Awaiting legal approval — English</b>Pandonia's tests do not replace medical examination, diagnosis or treatment. If you have symptoms or are in any doubt, contact your own doctor or the out-of-hours medical service.</p>
+    <p class="pl keep bdS" style="max-width:62ch" data-lang="da">Pandonias tests erstatter ikke lægelig undersøgelse, diagnose eller behandling. Har du symptomer eller er du i tvivl, så kontakt din egen læge eller lægevagten.</p>
+    <p class="pl keep bdS" style="max-width:62ch" data-lang="en">Pandonia's tests do not replace medical examination, diagnosis or treatment. If you have symptoms or are in any doubt, contact your own doctor or the out-of-hours medical service.</p>
     <p class="lab onDeepQuiet">Pandonia ApS · CVR 41 58 87 64 · Dansk · English</p>
   </div>
 </div></footer>
@@ -1616,8 +1427,8 @@ var T={da:{what:'Hvad er det',why:'Hvorfor måler vi det',unit:'Måleenhed',rang
        en:{what:'What it is',why:'Why we measure it',unit:'Unit',range:'Reference range',sysL:'System',also:'Also called',source:'Source of the name',panel:'Panel — contents not published',prod:'Product — not a blood marker',pend:'Pending',awT:'Awaiting clinical text',awL:'Awaiting the laboratory',ver:'Name verified',sub:'Clinical description awaiting approval.',mk:'markers',cnt:function(n,t){return n===t?t+' markers':n+' of '+t+' shown'},incl:'Health Test',inclL:'Included in',prodL:'Separate product',
         inReport:'In your report:',seeMk:'See markers',allMk:'See all markers',
         sysNote:'We are still assigning the markers to each system. Until then you can see them all together.'}};
-var ROUTES={da:{home:'/da',maaler:'/da/hvad-vi-maaler',saadan:'/da/saadan-fungerer-det',rapport:'/da/din-rapport',faq:'/da/faq',book:'/da/book',booking:'/da/bestil-tid'},
-            en:{home:'/en',maaler:'/en/what-we-test',saadan:'/en/how-it-works',rapport:'/en/your-report',faq:'/en/faq',book:'/en/book',booking:'/en/booking'}};
+var ROUTES={da:{home:'/da',maaler:'/da/hvad-vi-maaler',saadan:'/da/saadan-fungerer-det',rapport:'/da/din-rapport',faq:'/da/faq',book:'/da/book'},
+            en:{home:'/en',maaler:'/en/what-we-test',saadan:'/en/how-it-works',rapport:'/en/your-report',faq:'/en/faq',book:'/en/book'}};
 var ANCHOR_PAGE={'mMaalerSlot':'home','what-we-test':'home','how-it-works':'home','your-report':'home','about-pandonia':'home','pricing':'home','laboratoriet':'saadan','pr-ht':'book','pr-et':'book','pr-mb':'book'};
 
 function nf(n){return loc==='da'?n.toFixed(1).replace('.',','):n.toFixed(1);}
@@ -1862,7 +1673,7 @@ if(phoneMq.addEventListener)phoneMq.addEventListener('change',placeMaaler);else 
 // Every internal link is a real <a href="#/page[/anchor]">, so it is in the tab
 // order, announced as a link, can open in a new tab, and Back/Forward work.
 // Hash routes survive a reload on a static host (GitHub Pages) with no rewrites.
-var DEFAULT_ROUTE='booking';   // the booking preview opens on the booking page
+var DEFAULT_ROUTE='home';
 var PAGE_TITLES={
   da:{maaler:'Hvad vi måler',saadan:'Sådan fungerer det',rapport:'Din rapport',faq:'FAQ',book:'Priser',booking:'Book din blodprøve'},
   en:{maaler:'What we test',saadan:'How it works',rapport:'Your report',faq:'FAQ',book:'Pricing',booking:'Book your blood test'}};
@@ -1877,7 +1688,6 @@ function parseHash(h){var m=/^#\/([a-z]+)(?:\/([A-Za-z0-9_-]+))?/.exec(h||'');
 function show(p,anchor,opt){
   opt=opt||{};
   page=p;
-  if(p==='booking'&&typeof BK!=='undefined'&&BK)setTimeout(bkRender,0);
   placeMaaler();
   document.querySelectorAll('[data-page]').forEach(function(x){x.hidden=x.getAttribute('data-page')!==p;});
   document.querySelectorAll('.navlinks a').forEach(function(a){var on=a.getAttribute('data-nav')===p;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
@@ -1910,7 +1720,7 @@ function setLocale(l){
   var mc=document.getElementById('mobclose');if(mc)mc.setAttribute('aria-label',l==='da'?'Luk menu':'Close menu');
   if(mob)mob.setAttribute('aria-label',l==='da'?'Menu':'Menu');
   var mk=document.getElementById('mkf');if(mk)mk.setAttribute('placeholder',l==='da'?'fx kolesterol':'e.g. cholesterol');
-  renderAll();stripReview();if(typeof bkRender==='function'&&typeof BK!=='undefined'&&BK)bkRender();linkify();setRoute();
+  renderAll();stripReview();linkify();setRoute();
   // Public build: each language has its own address (/ and /en/); keep the URL in step
   if(PROD){var onEn=root.getAttribute('data-path-locale')==='en';
     if(l==='en'&&!onEn){history.replaceState(null,'','en/'+location.hash);root.setAttribute('data-path-locale','en');}
@@ -2027,125 +1837,6 @@ if(revBtn&&!PROD){
   document.addEventListener('visibilitychange',sync);
   if(reduce.addEventListener)reduce.addEventListener('change',sync);
 })();
-// ── Booking preview ─────────────────────────────────────────────────
-// Services, prices, durations and categories come from the site's one
-// catalogue (SVC), which is read from EasyPractice's public booking page.
-// Choosing several tests is a UX preview only: whether EasyPractice can book
-// them as one appointment, and for how long, is not confirmed.
-// AVAILABILITY IS DEMO DATA: EasyPractice publishes no supported way to read
-// free times, so demoSlots() invents them for the preview and every view of
-// them is labelled. Step 03 is a DESIGN PREVIEW of the intended hand-off
-// (EasyPractice receiving tests, date and time); it is not a working
-// integration. Nothing typed or chosen here is stored or sent anywhere.
-var BK={mode:'demo',svcs:[],day:null,slot:null,stage:'pick',days:[]};
-// in EasyPractice's own order, grouped by its three categories
-var BKS=SVC.slice().sort(function(x,y){return x.ep-y.ep;}).map(function(s){return {id:s.id,g:s.cat,n:null,nDa:s.da,nEn:s.en,da:s.mDa,en:s.mEn,min:s.min,p:s.p};});
-var WD={da:['SØN','MAN','TIR','ONS','TOR','FRE','LØR'],en:['SUN','MON','TUE','WED','THU','FRI','SAT']};
-var WDL={da:['søndag','mandag','tirsdag','onsdag','torsdag','fredag','lørdag'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']};
-var MON={da:['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'],en:['January','February','March','April','May','June','July','August','September','October','November','December']};
-function bkT(da,en){return loc==='da'?da:en;}
-function demoSlots(d){
-  if(BK.mode==='empty')return [];
-  var w=d.getDay();if(w===0||w===6)return [];
-  var seed=d.getDate()*7+d.getMonth()*3;
-  if(seed%9===4)return [];                         // some weekdays are fully booked
-  var all=['08:00','08:30','09:15','10:00','10:45','11:30','13:00','13:45','14:30','15:00','15:45'];
-  var out=all.filter(function(t,i){return (seed+i*5)%4!==0&&(seed+i)%3!==1;});
-  var now=new Date();
-  if(d.toDateString()===now.toDateString()){       // today: only times at least two hours out
-    var lim=now.getHours()*60+now.getMinutes()+120;
-    out=out.filter(function(t){var p=t.split(':');return +p[0]*60+ +p[1]>=lim;});
-  }
-  return out;
-}
-function bkBuildDays(){var t=new Date();t.setHours(0,0,0,0);BK.days=[];
-  for(var i=0;i<14;i++){var d=new Date(t);d.setDate(t.getDate()+i);BK.days.push({d:d,s:demoSlots(d)});}}
-function bkDayLabel(d){return loc==='da'?WDL.da[d.getDay()]+' '+d.getDate()+'. '+MON.da[d.getMonth()]:WDL.en[d.getDay()]+' '+d.getDate()+' '+MON.en[d.getMonth()];}
-function bkCap(s){return s.replace(/^./,function(c){return c.toUpperCase();});}
-function bkSvcName(s){return s.n||bkT(s.nDa,s.nEn);}
-function bkChosen(){return BKS.filter(function(s){return BK.svcs.indexOf(s.id)!==-1;});}   // in list order
-function bkRender(){
-  var root=document.getElementById('bkRoot');if(!root)return;
-  root.setAttribute('data-bkmode',BK.mode);
-  document.querySelectorAll('[data-bkm]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-bkm')===BK.mode));});
-  if(!BK.svcs.length&&BK.stage==='hand')BK.stage='pick';
-  // steps
-  var cur=BK.mode==='live'?0:(BK.stage==='hand'?2:(BK.svcs.length?1:0));
-  var st=[[bkT('Vælg blodprøve','Choose your test'),''],[bkT('Vælg dato og tidspunkt','Choose a date and time'),''],[bkT('Dine oplysninger','Your information'),bkT('i bookingsystemet','in the booking system')],[bkT('Bekræft','Confirm'),bkT('i bookingsystemet','in the booking system')]];
-  document.getElementById('bkSteps').innerHTML=st.map(function(s,i){return '<li class="'+(i===cur?'on':(i<cur?'done':''))+'"'+(i===cur?' aria-current="step"':'')+'><b>0'+(i+1)+'</b>'+s[0]+(s[1]?'<small>'+s[1]+'</small>':'')+'</li>';}).join('');
-  // 01 services — one or more; tick again to remove
-  var grp=function(g,title){return '<p class="lab bkGrpH">'+title+'</p><div class="bkSvcs" role="group" aria-label="'+title+'">'+BKS.filter(function(s){return s.g===g;}).map(function(s){
-    return '<label class="bkSvc"><input type="checkbox" name="bksvc" value="'+s.id+'"'+(BK.svcs.indexOf(s.id)!==-1?' checked':'')+'><span class="nm">'+bkSvcName(s)+'</span><span class="pr">'+dkk(s.p)+'<small>'+s.min+' min</small></span><span class="ds">'+bkT(s.da,s.en)+'</span></label>';}).join('')+'</div>';};
-  var n=BK.svcs.length;
-  document.getElementById('bkSvcList').innerHTML=grp('ht','Health Tests')+grp('et',bkT('Essentielle tests','Essential Tests'))+grp('pt','Pandonia test')+
-    '<p class="bkPicked" aria-live="polite">'+(n?bkT(n===1?'1 prøve valgt':n+' prøver valgt',n===1?'1 test selected':n+' tests selected'):bkT('Du kan vælge én eller flere prøver.','You can choose one or more tests.'))+'</p>';
-  // 02 calendar
-  bkBuildDays();
-  var cal=document.getElementById('bkCal');
-  if(!n){cal.innerHTML='<p class="bkNext" style="margin-top:16px">'+bkT('Vælg en blodprøve først — så vises de ledige tider.','Choose a blood test first — then the available times appear.')+'</p>';}
-  else{
-    var any=BK.days.some(function(x){return x.s.length;});
-    if(BK.day!==null&&!BK.days[BK.day].s.length){BK.day=null;BK.slot=null;}
-    if(BK.day!==null&&BK.slot&&BK.days[BK.day].s.indexOf(BK.slot)===-1)BK.slot=null;
-    var first=BK.days[0].d,last=BK.days[13].d;
-    var month=first.getMonth()===last.getMonth()?MON[loc][first.getMonth()]+' '+first.getFullYear():MON[loc][first.getMonth()]+' – '+MON[loc][last.getMonth()]+' '+last.getFullYear();
-    var h='<div class="bkCalHead"><span class="bkMonth">'+month+'</span><span class="bkDemo">'+bkT('DEMOTIDER — IKKE LIVE','DEMO AVAILABILITY — NOT LIVE')+'</span><span class="bkArrows"><button type="button" data-bk="scroll" data-dir="-1" aria-label="'+bkT('Tidligere dage','Earlier days')+'">←</button><button type="button" data-bk="scroll" data-dir="1" aria-label="'+bkT('Senere dage','Later days')+'">→</button></span></div>';
-    h+='<div class="bkDays" id="bkDays" role="group" aria-label="'+bkT('Vælg dato','Choose a date')+'">'+BK.days.map(function(x,i){var c=x.s.length;
-      return '<button type="button" class="bkDay" data-bk="day" data-i="'+i+'"'+(c?'':' disabled')+' aria-pressed="'+(BK.day===i)+'" aria-label="'+bkDayLabel(x.d)+', '+(c?c+' '+bkT('ledige tider','available times'):bkT('ingen ledige tider','no available times'))+'"><span class="wd">'+(i===0?bkT('I DAG','TODAY'):WD[loc][x.d.getDay()])+'</span><span class="dn">'+('0'+x.d.getDate()).slice(-2)+'</span><span class="ct">'+(c?c+' '+bkT(c===1?'tid':'tider',c===1?'time':'times'):'—')+'</span></button>';}).join('')+'</div>';
-    if(!any){
-      h+='<div class="bkEmpty"><p>'+bkT('Ingen ledige tider de næste 14 dage.','No appointments available in the next 14 days.')+'</p><div style="margin-top:14px"><a class="lnk" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer"><span>'+bkT('Se senere tider','See later dates')+'</span> <span aria-hidden="true">→</span></a></div></div>';
-    }else{
-      var ni=BK.days.findIndex(function(x){return x.s.length;});
-      h+='<p class="bkNext">'+bkT('Næste ledige tid:','Next available appointment:')+' <button type="button" data-bk="next" data-i="'+ni+'">'+bkDayLabel(BK.days[ni].d)+' '+bkT('kl.','at')+' '+BK.days[ni].s[0]+'</button></p>';
-      if(BK.day!==null){var D=BK.days[BK.day];
-        h+='<p class="bkSel" id="bkTimes">'+bkT('Valgt dato','Selected date')+'</p><p class="bkSelDay">'+bkCap(bkDayLabel(D.d))+'</p>';
-        h+='<p class="bkSel" style="margin-top:18px">'+bkT('Ledige tider','Available times')+' <span class="bkDemo" style="margin-left:8px">DEMO</span></p><div class="bkSlots" role="group" aria-label="'+bkT('Ledige tider','Available times')+'">'+D.s.map(function(t){return '<button type="button" class="bkSlot" data-bk="slot" data-t="'+t+'" aria-pressed="'+(BK.slot===t)+'">'+t+'</button>';}).join('')+'</div>';
-      }
-      h+='<div class="bkCta"><button type="button" class="btn btn1" id="bkGo" data-bk="go"'+(BK.slot?'':' disabled')+'>'+(BK.slot?bkT('Fortsæt med ','Continue with ')+BK.slot:bkT('Vælg et tidspunkt','Choose a time'))+'</button><small>'+bkT('Dine oplysninger og bekræftelsen klarer du i vores bookingsystem.','You enter your details and confirm in our booking system.')+'</small></div>';
-    }
-    cal.innerHTML=h;
-  }
-  // 03 your information — summary of what is already chosen, then the intended next step
-  var s3=document.getElementById('bkStep3');s3.hidden=BK.stage!=='hand';
-  if(BK.stage==='hand'){
-    var ch=bkChosen(),D3=BK.days[BK.day];
-    document.getElementById('bkSum').innerHTML=
-      '<div><dt>'+bkT(ch.length===1?'Prøve':'Prøver',ch.length===1?'Test':'Tests')+'</dt><dd><ul>'+ch.map(function(s){return '<li>'+bkSvcName(s)+'</li>';}).join('')+'</ul></dd></div>'+
-      '<div><dt>'+bkT('Dato','Date')+'</dt><dd>'+bkCap(bkDayLabel(D3.d))+'</dd></div>'+
-      '<div><dt>'+bkT('Tid','Time')+'</dt><dd>'+BK.slot+'</dd></div>';
-  }
-  bkLoadFrames();
-}
-function bkLoadFrames(){document.querySelectorAll('#bkRoot iframe[data-src]').forEach(function(f){
-  var shown=f.offsetParent!==null;if(shown&&!f.getAttribute('src'))f.setAttribute('src',f.getAttribute('data-src'));});}
-// No guided scrolling: every selection updates in place and the viewport stays
-// where the customer left it. A re-render replaces the controls, so focus is put
-// back on the control that was used (without scrolling) and the date row keeps
-// its horizontal position.
-function bkKeepRow(fn){var r=document.getElementById('bkDays'),x=r?r.scrollLeft:0;fn();var n=document.getElementById('bkDays');if(n)n.scrollLeft=x;}
-function bkFocus(el){if(!el)return;if(!el.hasAttribute('tabindex')&&!/^(BUTTON|A|INPUT)$/.test(el.tagName))el.setAttribute('tabindex','-1');el.focus({preventScroll:true});}
-function bkStay(fn){var y=window.scrollY;fn();if(Math.abs(window.scrollY-y)>1)window.scrollTo({top:y,behavior:'instant'});}
-document.addEventListener('change',function(e){if(e.target.name!=='bksvc')return;
-  var id=e.target.value,i=BK.svcs.indexOf(id);
-  if(e.target.checked&&i===-1)BK.svcs.push(id);else if(!e.target.checked&&i!==-1)BK.svcs.splice(i,1);
-  // date and time are kept; if step 03 is open, its summary updates in place
-  bkStay(function(){bkKeepRow(bkRender);});
-  bkFocus(document.querySelector('.bkSvc input[value="'+id+'"]'));});
-document.addEventListener('click',function(e){
-  var m=e.target.closest('[data-bkm]');if(m){BK.mode=m.getAttribute('data-bkm');BK.stage='pick';BK.day=null;BK.slot=null;bkRender();return;}
-  var b=e.target.closest('[data-bk]');if(!b)return;var k=b.getAttribute('data-bk');
-  if(k==='day'||k==='next'){BK.day=+b.getAttribute('data-i');BK.slot=null;BK.stage='pick';bkStay(function(){bkKeepRow(bkRender);});
-    // keep the chosen day visible inside its own row (horizontal only; the page does not move)
-    var el=document.querySelector('.bkDay[data-i="'+BK.day+'"]'),row=document.getElementById('bkDays');
-    if(el&&row){var l=el.offsetLeft-row.offsetLeft,r=l+el.offsetWidth;if(l<row.scrollLeft||r>row.scrollLeft+row.clientWidth)row.scrollLeft=l-(row.clientWidth-el.offsetWidth)/2;}
-    bkFocus(k==='day'?el:document.querySelector('[data-bk="next"]'));}
-  else if(k==='slot'){var t=b.getAttribute('data-t');BK.slot=t;bkStay(function(){bkKeepRow(bkRender);});
-    bkFocus(document.querySelector('.bkSlot[data-t="'+t+'"]'));}
-  else if(k==='scroll'){var rw=document.getElementById('bkDays');if(rw)rw.scrollBy({left:(+b.getAttribute('data-dir'))*rw.clientWidth*.8,behavior:'smooth'});}
-  else if(k==='go'){if(!BK.slot||!BK.svcs.length)return;BK.stage='hand';bkStay(function(){bkKeepRow(bkRender);});bkFocus(document.getElementById('bkGo'));}
-  else if(k==='back'){BK.stage='pick';bkStay(function(){bkKeepRow(bkRender);});bkFocus(document.getElementById('bkGo'));}
-  else if(k==='reset'){BK.mode='demo';BK.svcs=[];BK.day=null;BK.slot=null;BK.stage='pick';bkRender();window.scrollTo({top:0,behavior:'instant'});}
-});
 var saved=null;try{saved=localStorage.getItem('pandonia-locale');}catch(e){}
 if(PROD&&root.getAttribute('data-path-locale')==='en')saved='en';
 setLocale(saved==='en'?'en':'da');
@@ -2154,3 +1845,5 @@ show(start?start.page:DEFAULT_ROUTE,start?start.anchor:null);
 root.classList.add('ready');
 })();
 </script>
+</body>
+</html>

@@ -26,3 +26,6 @@ next-env.d.ts
 .impeccable/previews/
 .impeccable/pending/
 .impeccable/config.local.json
+
+# Local output of scripts/assemble-site.mjs (the deploy builds its own)
+_site/

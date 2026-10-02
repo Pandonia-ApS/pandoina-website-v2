@@ -31,7 +31,7 @@ Pandonia takes blood samples at the customer's home, workplace or laboratory, an
 
 ## Capabilities and Constraints
 
-- Static site: a single HTML preview (`preview/index.html`) with client-side routes, published on GitHub Pages. A Next.js codebase in `src/` exists but has never been built.
+- Static site with client-side (#) routes, published on GitHub Pages from `site/` (Danish `/`, English `/en/`) by `scripts/assemble-site.mjs`; domain setup in `DOMAIN_SETUP.md`. `preview/` holds the internal review build and the booking demo, never published. A Next.js codebase in `src/` exists but has never been built.
 - Danish and English versions of every page, switchable in place.
 - Tests offered (EasyPractice booking page, read 2 Oct 2026): Health Tests — Health Test 3.500 kr., Health Test + Consultation 4.750 kr.; Essentielle tests — Blodsukker- og Kolesteroltest 1.300, D-vitamin Test 1.000, Glukose Monitorering 2.000, Metabolisk Sundheds Test 1.250, Mænds Sundhedstest 1.600, Skjoldbruskkirtel Test 1.200 kr.; Pandonia test — Female hormones 2.200, Health check + Female hormones 5.200, Health check + Female hormones + Thyroid panel 6.300 kr.; Membership 2.000 kr./md. The site keeps one catalogue (`SVC` in the preview script) for the Prices page and the booking demo.
 - Collection areas: København K, N, NV, V, S, SV, Ø, Frederiksberg and Hellerup — or at the laboratory.
