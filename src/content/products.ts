@@ -1,7 +1,8 @@
 /**
  * DESIGN CONTENT — products and pricing.
  *
- * Prices are verified from Pandonia's live booking system (23 Sep 2026).
+ * Names, prices and categories are from Pandonia's public EasyPractice booking
+ * page (2 Oct 2026). The preview's SVC catalogue holds the same data.
  * What is *included* is partly unresolved — see claims.consultationIncluded.
  *
  * Rows on rules, never cards (Phase 5 §12, fingerprint pass).
@@ -42,9 +43,29 @@ export const flagshipProducts: readonly Product[] = [
     emphasis: 'secondary',
     bookingRef: 'health-test',
   },
+  {
+    id: 'health-check-female-hormones',
+    name: 'Health check + Female hormones',
+    eyebrow: 'Med kvindelige hormoner',
+    description: 'Health Test med kvindelige hormoner.',
+    priceInclVat: 5200,
+    priceExclVat: 4160,
+    emphasis: 'secondary',
+    bookingRef: 'health-check-female-hormones',
+  },
+  {
+    id: 'health-check-female-hormones-thyroid',
+    name: 'Health check + Female hormones + Thyroid panel',
+    eyebrow: 'Med hormoner og skjoldbruskkirtel',
+    description: 'Health Test med kvindelige hormoner og et skjoldbruskkirtelpanel.',
+    priceInclVat: 6300,
+    priceExclVat: 5040,
+    emphasis: 'secondary',
+    bookingRef: 'health-check-female-hormones-thyroid-panel',
+  },
 ];
 
-/** Seven products currently sold and entirely invisible on the live website. */
+/** The seven focused tests (Essentielle tests, plus Female hormones from "Pandonia test"). */
 export const singleTests: readonly Product[] = [
   {
     id: 'd-vitamin',
@@ -74,7 +95,7 @@ export const singleTests: readonly Product[] = [
     id: 'maends-sundhed',
     name: 'Mænds Sundhedstest',
     description: 'Testosteron og D-vitamin.',
-    priceInclVat: 1400,
+    priceInclVat: 1600,
     emphasis: 'secondary',
     bookingRef: 'maends-sundhedstest',
   },
@@ -82,7 +103,7 @@ export const singleTests: readonly Product[] = [
     id: 'skjoldbruskkirtel',
     name: 'Skjoldbruskkirtel Test',
     description: '',
-    priceInclVat: 1600,
+    priceInclVat: 1200,
     emphasis: 'secondary',
     bookingRef: 'skjoldbruskkirtel-test',
   },
@@ -96,11 +117,11 @@ export const singleTests: readonly Product[] = [
   },
   {
     id: 'female-hormones',
-    name: 'Health check + Female hormones',
-    description: '',
-    priceInclVat: null, // Bookable on the live system with no published price.
+    name: 'Female hormones',
+    description: 'Kvindelige hormoner.',
+    priceInclVat: 2200,
     emphasis: 'secondary',
-    bookingRef: 'health-check-female-hormones',
+    bookingRef: 'female-hormones',
   },
 ];
 

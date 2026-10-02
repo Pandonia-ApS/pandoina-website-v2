@@ -33,7 +33,7 @@ Pandonia takes blood samples at the customer's home, workplace or laboratory, an
 
 - Static site: a single HTML preview (`preview/index.html`) with client-side routes, published on GitHub Pages. A Next.js codebase in `src/` exists but has never been built.
 - Danish and English versions of every page, switchable in place.
-- Tests offered (from the booking system): Health Test 3.500 kr., Health Test + Consultation 4.750 kr., Health Test + Female Hormones 4.500 kr.; Essential Tests: D-vitamin 1.000, Metabolisk Sundheds Test 1.250, Blodsukker- og Kolesteroltest 1.300, Mænds Sundhedstest 1.400, Skjoldbruskkirtel Test 1.600, Glukose Monitorering 2.000 kr.; Membership 2.000 kr./md.
+- Tests offered (EasyPractice booking page, read 2 Oct 2026): Health Tests — Health Test 3.500 kr., Health Test + Consultation 4.750 kr.; Essentielle tests — Blodsukker- og Kolesteroltest 1.300, D-vitamin Test 1.000, Glukose Monitorering 2.000, Metabolisk Sundheds Test 1.250, Mænds Sundhedstest 1.600, Skjoldbruskkirtel Test 1.200 kr.; Pandonia test — Female hormones 2.200, Health check + Female hormones 5.200, Health check + Female hormones + Thyroid panel 6.300 kr.; Membership 2.000 kr./md. The site keeps one catalogue (`SVC` in the preview script) for the Prices page and the booking demo.
 - Collection areas: København K, N, NV, V, S, SV, Ø, Frederiksberg and Hellerup — or at the laboratory.
 - A clinical content gate: unverified clinical copy is held back in the customer view and shown only in a review layer.
 - Open: turnaround promise (the homepage four steps say 48 hours; other copy says same day / 2–4 hours), and B2B wording ("partnerportal", "din klient") on the consumer homepage.

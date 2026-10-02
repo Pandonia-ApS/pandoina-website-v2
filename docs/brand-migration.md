@@ -91,7 +91,7 @@ Not used: "You can't optimise what you haven't measured." (optimise-language),
 | Turnaround | Landing page says **48 hours** / "Four steps. Forty-eight hours." Consumer site says 2–4 hours | Keeps consumer copy; 48h is likely the B2B figure — confirm |
 | Location | Feed footer: "Copenhagen — Palo Alto" | Not used |
 | Lab equipment | "Powered by Randox" | Not used until confirmed |
-| Female hormone panel | Booking system lists "Health check + Female hormones" (category "Pandonia test") with no published price | **Shown** as "Health Test + Female Hormones", DKK 4,500 (confirmed by Pandonia, 28 Sep 2026) |
+| Female hormone panel | Booking system now lists three services under "Pandonia test": Female hormones DKK 2,200, Health check + Female hormones DKK 5,200, Health check + Female hormones + Thyroid panel DKK 6,300 (read 2 Oct 2026; earlier shown as "Health Test + Female Hormones", DKK 4,500) | **Shown** under their booking-system names; placement and descriptions await Pandonia sign-off |
 | B2B panels | Core 42 markers / 1,290 · Men's 28 / 1,490 · Women's 32 / 1,490 · Longevity 36 / 1,890 · 200+ marker library | B2B only — not on consumer pages |
 | Heart claim | "The number that predicts your heart." | Not used |
 | Grip strength | Appears in the report's radar page (kgf) | Not described on the site |
@@ -148,7 +148,9 @@ of v2. The last v2 commit is tagged `v2` (`8852aa4`) so it can be restored.
   serif headline, four cards with soft tonal tops, a black bar below — but
   with Pandonia's own consumer tests and booking-system prices: Health Test
   3.500 kr., Mænds Sundhedstest 1.400 kr., Skjoldbruskkirtel Test 1.600 kr.,
-  D-vitamin Test 1.000 kr., and the membership at 2.000 kr./md. The
+  D-vitamin Test 1.000 kr., and the membership at 2.000 kr./md. (Prices at
+  the time; updated 2 Oct 2026 from EasyPractice: Mænds Sundhedstest
+  1.600 kr., Skjoldbruskkirtel Test 1.200 kr.) The
   landing page's clinic panels are not used. The premises photo stays on
   Om Pandonia.
 - **Small phones:** header tightened below 420px so the capitalised wordmark,

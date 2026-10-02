@@ -281,12 +281,14 @@ summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:n
 .mbF.price{font-size:14px;letter-spacing:.02em;text-transform:none;color:var(--ink);font-variant-numeric:tabular-nums}
 
 /* comparison: rows are attributes, columns are the three ways in */
+/* comparison: cells sit inside display:contents rows (for the table roles), so they are styled as .cmp [role=row]>div */
 .cmp{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
-.cmp>div{padding:16px 20px 16px 0;border-bottom:1px solid var(--ruleSoft);font-size:15px;line-height:1.5;color:var(--ink2)}
-.cmp>.ch{font-family:var(--serif);font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;color:var(--forest);border-bottom-color:var(--rule)}
-.cmp>.rl{font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-top:19px}
-.cmp>.pv{font-family:var(--sans);font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums}
-@media(max-width:860px){.cmp{grid-template-columns:1fr}.cmp>.ch,.cmp>.corner{display:none}.cmp>.rl{padding-top:22px;border-bottom:none;padding-bottom:4px;color:var(--ink)}.cmp>div:not(.rl){padding:8px 0}.cmp>div[data-p]::before{content:attr(data-p);display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}}
+.cmp [role=row]>div{padding:16px 20px 16px 0;border-bottom:1px solid var(--ruleSoft);font-size:15px;line-height:1.5;color:var(--ink2)}
+.cmp .ch{font-family:var(--serif);font-size:clamp(18px,.6vw + 15px,22px);letter-spacing:-.01em;color:var(--forest);border-bottom-color:var(--rule)}
+.cmp .rl{font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-top:19px}
+.cmp .pv{font-family:var(--sans);font-size:13.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+/* phone: one block per product, each with the five labelled rows */
+@media(max-width:860px){.cmp{grid-template-columns:1fr;border-top:none}.cmp [role=row]>div{order:var(--o)}.cmp .corner,.cmp .rl{display:none}.cmp .ch{padding:26px 0 10px;border-top:1px solid var(--rule);border-bottom:none;color:var(--ink)}.cmp [role=cell]{padding:9px 0;border-bottom:1px solid var(--ruleSoft)}.cmp [role=cell][data-r]::before{content:attr(data-r);display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}}
 
 /* team: name in serif under each portrait, role in mono */
 .tm{background:var(--deep);padding-bottom:20px}
@@ -710,11 +712,11 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     </a>
     <a class="pkC" data-route="book" data-anchor="pr-et">
       <div class="pkA a2"><span data-da="Mænd" data-en="Men">Mænd</span><span>Test · 02</span></div>
-      <div class="pkB"><h3 class="pkT" data-da="Mænds sundhed." data-en="Men's health.">Mænds sundhed.</h3><p class="pkM" data-da="Testosteron · D-vitamin" data-en="Testosterone · vitamin D">Testosteron · D-vitamin</p><p class="pkF"><span data-da="2 markører" data-en="2 markers">2 markører</span><b data-da="1.400 kr." data-en="DKK 1,400">1.400 kr.</b></p></div>
+      <div class="pkB"><h3 class="pkT" data-da="Mænds sundhed." data-en="Men's health.">Mænds sundhed.</h3><p class="pkM" data-da="Testosteron · D-vitamin" data-en="Testosterone · vitamin D">Testosteron · D-vitamin</p><p class="pkF"><span data-da="2 markører" data-en="2 markers">2 markører</span><b data-da="1.600 kr." data-en="DKK 1,600">1.600 kr.</b></p></div>
     </a>
     <a class="pkC" data-route="book" data-anchor="pr-et">
       <div class="pkA a3"><span data-da="Skjoldbruskkirtel" data-en="Thyroid">Skjoldbruskkirtel</span><span>Test · 03</span></div>
-      <div class="pkB"><h3 class="pkT" data-da="Stofskifte." data-en="Thyroid.">Stofskifte.</h3><p class="pkM" data-da="TSH, T3 og T4" data-en="TSH, T3 and T4">TSH, T3 og T4</p><p class="pkF"><span data-da="3 markører" data-en="3 markers">3 markører</span><b data-da="1.600 kr." data-en="DKK 1,600">1.600 kr.</b></p></div>
+      <div class="pkB"><h3 class="pkT" data-da="Stofskifte." data-en="Thyroid.">Stofskifte.</h3><p class="pkM" data-da="TSH, T3 og T4" data-en="TSH, T3 and T4">TSH, T3 og T4</p><p class="pkF"><span data-da="3 markører" data-en="3 markers">3 markører</span><b data-da="1.200 kr." data-en="DKK 1,200">1.200 kr.</b></p></div>
     </a>
     <a class="pkC" data-route="book" data-anchor="pr-et">
       <div class="pkA a4"><span data-da="Vitaminer" data-en="Vitamins">Vitaminer</span><span>Test · 04</span></div>
@@ -810,7 +812,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
   <ul class="rows" style="max-width:680px">
     <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test + Consultation</span><span class="bdS measN" data-da="Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation." data-en="Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.">Pandonia Score og seks systemscorer.</span></span><span class="v" style="font-size:15px"><span data-da="4.750 kr." data-en="DKK 4,750">4.750 kr.</span></span></li>
     <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test</span><span class="bdS measN" data-da="Samme markører, Pandonia Score og seks systemscorer." data-en="The same markers, Pandonia Score and six system scores.">Samme markører.</span></span><span class="v" style="font-size:15px"><span data-da="3.500 kr." data-en="DKK 3,500">3.500 kr.</span></span></li>
-    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health Test + Female Hormones</span><span class="bdS measN" data-da="Health Test med kvindelige hormoner." data-en="The Health Test with female hormones.">Health Test med kvindelige hormoner.</span></span><span class="v" style="font-size:15px"><span data-da="4.500 kr." data-en="DKK 4,500">4.500 kr.</span></span></li>
+    <li style="align-items:flex-start;padding-block:18px"><span class="l" style="flex-direction:column;align-items:flex-start;gap:4px"><span class="hh3">Health check + Female hormones</span><span class="bdS measN" data-da="Health Test med kvindelige hormoner." data-en="The Health Test with female hormones.">Health Test med kvindelige hormoner.</span></span><span class="v" style="font-size:15px"><span data-da="5.200 kr." data-en="DKK 5,200">5.200 kr.</span></span></li>
   </ul>
   <p class="bdS" style="margin-top:18px;max-width:54ch" data-da="Enkelte tests fra 1.000 kr., hvis du vil begynde mindre. Også som virksomhedsordning." data-en="Single tests from DKK 1,000 if you would rather start smaller. Also available as a workplace programme.">Enkelte tests fra 1.000 kr.</p>
   <p class="bdS" style="margin-top:10px;max-width:54ch"><span data-da="Eller følg din sundhed løbende med et medlemskab — 2.000 kr. pr. måned." data-en="Or follow your health continuously with a membership — DKK 2,000 per month.">Eller følg din sundhed løbende med et medlemskab.</span> <a class="lnk" style="padding-block:4px" data-route="book" data-anchor="pr-mb"><span data-da="Se medlemskabet" data-en="See the membership">Se medlemskabet</span> <span aria-hidden="true">→</span></a></p>
@@ -1384,12 +1386,12 @@ html[data-locale="en"] [data-lang="da"]{display:none}
     <div class="prPanel" id="pr-et" role="tabpanel" aria-labelledby="tab-et" hidden>
       <div class="prIntro">
         <h2 class="s d3 fg" data-da="Når du har ét bestemt spørgsmål." data-en="When you have one particular question.">Når du har ét bestemt spørgsmål.</h2>
-        <p class="bd meas" style="margin-top:14px" data-da="Seks fokuserede tests. Prøven tages på samme måde som en Health Test — hjemme hos dig eller på Langebrogade." data-en="Six focused tests. The sample is taken the same way as a Health Test — at your home or on Langebrogade.">Seks fokuserede tests.</p>
+        <p class="bd meas" style="margin-top:14px" data-da="Syv fokuserede tests. Prøven tages på samme måde som en Health Test — hjemme hos dig eller på Langebrogade." data-en="Seven focused tests. The sample is taken the same way as a Health Test — at your home or on Langebrogade.">Syv fokuserede tests.</p>
       </div>
       <ul class="mbRows" id="singleTests"></ul>
       <div style="margin-top:28px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer" data-da="Vælg test og tid" data-en="Choose a test and a time">Vælg test og tid</a></div>
-      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="da"><b>Kommerciel gennemgang påkrævet</b>Priserne her er fra Pandonias bookingsystem, hvor kunden faktisk betaler. Den engelske hjemmeside viser andre priser for tre af seks: D-vitamin 950 kr. (bookingsystem 1.000), glukosemonitorering 1.350 kr. (2.000) og "Digestion Health Test" 1.800 kr. (Blodsukker- og Kolesteroltest, 1.300). Den engelske side angiver også Thyroid Health Test som 1.600 inkl. og 1.800 ekskl. moms — ekskl. kan ikke være højere end inkl. De engelske testnavne er Pandonias egne; "Digestion" dækker en kolesterol- og HbA1c-test. "Health check + Female hormones" ligger i bookingsystemet under kategorien "Pandonia test" uden offentliggjort pris. Prisen, 4.500 kr., er bekræftet af Pandonia. Vist under Health Test som "Health Test + Female Hormones".</p>
-      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="en"><b>Commercial review required</b>These prices come from Pandonia's booking system, where the customer actually pays. The English website shows different prices for three of six: Vitamin D DKK 950 (booking system 1,000), glucose monitoring DKK 1,350 (2,000) and "Digestion Health Test" DKK 1,800 (Blodsukker- og Kolesteroltest, 1,300). It also lists Thyroid Health Test as 1,600 incl. and 1,800 excl. VAT — excl. cannot exceed incl. The English test names are Pandonia's own; "Digestion" covers a cholesterol and HbA1c test. "Health check + Female hormones" is in the booking system under the "Pandonia test" category with no published price. The price, DKK 4,500, is confirmed by Pandonia. Shown under Health Test as "Health Test + Female Hormones".</p>
+      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="da"><b>Opdateret fra EasyPractice · 2. okt. 2026</b>Navne, priser og varigheder er fra Pandonias bookingsystem, hvor kunden betaler. Nyt: Female hormones (2.200 kr.) og Health check + Female hormones + Thyroid panel (6.300 kr.). Ændret: Health check + Female hormones 4.500 → 5.200 kr., Mænds Sundhedstest 1.400 → 1.600 kr., Skjoldbruskkirtel Test 1.600 → 1.200 kr. Bookingsystemet samler de tre hormonprodukter i kategorien "Pandonia test" og viser ingen beskrivelse og ikke "Skal betales online" for dem. Her vises Female hormones under Essential Tests og de to Health check-pakker under Health Test — placering, korte beskrivelser og "Health check"/"Health Test" skal godkendes. Skjoldbruskkirtel Test har ingen beskrivelse i bookingsystemet; "TSH, T3 og T4" er fra pandonia.com.</p>
+      <p class="pl bdS revonly" style="margin-top:26px;max-width:70ch" data-lang="en"><b>Updated from EasyPractice · 2 Oct 2026</b>Names, prices and durations come from Pandonia's booking system, where the customer pays. New: Female hormones (DKK 2,200) and Health check + Female hormones + Thyroid panel (DKK 6,300). Changed: Health check + Female hormones 4,500 → 5,200, Men's Health Test 1,400 → 1,600, Thyroid Health Test 1,600 → 1,200. The booking system groups the three hormone products as "Pandonia test" and shows no description and no "pay online" for them. Here Female hormones sits under Essential Tests and the two Health check packages under Health Test — placement, short descriptions and "Health check"/"Health Test" need sign-off. Thyroid Health Test has no description in the booking system; "TSH, T3 and T4" is from pandonia.com.</p>
     </div>
 
     <!-- MEMBERSHIP -->
@@ -1514,14 +1516,49 @@ var MARK=[
 // ── Commercial data. Source for every figure: Pandonia's booking system,
 // system.easypractice.net/book/pandonia, read 25 Sep 2026 — the place the
 // customer actually pays. English names are Pandonia's own, from pandonia.com/en.
-var ESS=[
- {da:'D-vitamin Test',en:'Vitamin D Test',p:1000,mDa:'Dit niveau af D-vitamin',mEn:'Your vitamin D level'},
- {da:'Metabolisk Sundheds Test',en:'Basic Metabolic Test',p:1250,mDa:'Blodsukker, elektrolytter og væskebalance · leverfunktion og proteinniveauer · nyrernes filtreringskapacitet',mEn:'Blood sugar and electrolyte balance · liver and kidney function'},
- {da:'Blodsukker- og Kolesteroltest',en:'Digestion Health Test',p:1300,mDa:'Metabolisk sundhed · kolesterolprofil · langtidsblodsukker',mEn:'Cholesterol and lipid profile · long-term blood sugar (HbA1c)'},
- {da:'Mænds Sundhedstest',en:"Men's Health Test",p:1400,mDa:'Testosteron · D-vitamin',mEn:'Testosterone · vitamin D'},
- {da:'Skjoldbruskkirtel Test',en:'Thyroid Health Test',p:1600,mDa:'TSH, T3 og T4',mEn:'TSH, T3 and T4'},
- {da:'Glukose Monitorering',en:'Glucose monitoring',p:2000,mDa:'En sensor måler dit blodsukker i 14 dage · detaljeret rapport og en score',mEn:'A sensor tracks your blood sugar for 14 days · a detailed report and a score'}
+// ── One product catalogue for the whole site and the booking preview.
+// Names, prices (DKK incl. VAT), durations and categories are taken from
+// EasyPractice's public booking page, system.easypractice.net/book/pandonia,
+// read 2 Oct 2026. Only the public service list is used.
+//   cat  = EasyPractice category: ht "Health Tests", et "Essentielle tests", pt "Pandonia test"
+//   tab  = where the Prices page shows it (the page keeps its three tabs)
+//   ep   = order on EasyPractice; online = EasyPractice says "Skal betales online"
+//   mDa/mEn = the short line under the name; tag*/l* = the Health Test tab's label and text
+// The three "Pandonia test" services have no description on EasyPractice; their
+// lines here only restate the name (marked for Pandonia's review).
+var SVC=[
+ {id:'ht',cat:'ht',tab:'ht',ep:1,da:'Health Test',en:'Health Test',p:3500,min:10,online:1,
+  mDa:'35+ biomarkører, Pandonia Score og seks systemscorer.',mEn:'35+ biomarkers, the Pandonia Score and six system scores.',
+  tagDa:'Kun prøven',tagEn:'The test only',lDa:'Samme markører, Pandonia Score og seks systemscorer.',lEn:'The same markers, Pandonia Score and six system scores.'},
+ {id:'htc',cat:'ht',tab:'ht',ep:2,da:'Health Test + Consultation',en:'Health Test + Consultation',p:4750,min:15,online:1,
+  mDa:'Health Test og 20 minutters lægekonsultation.',mEn:'The Health Test and a 20-minute consultation with a doctor.',
+  tagDa:'Anbefales første gang',tagEn:'Recommended the first time',lDa:'Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation.',lEn:'Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.'},
+ {id:'bk',cat:'et',tab:'et',ep:3,da:'Blodsukker- og Kolesteroltest',en:'Digestion Health Test',p:1300,min:15,online:1,
+  mDa:'Metabolisk sundhed · kolesterolprofil · langtidsblodsukker',mEn:'Cholesterol and lipid profile · long-term blood sugar (HbA1c)'},
+ {id:'dv',cat:'et',tab:'et',ep:4,da:'D-vitamin Test',en:'Vitamin D Test',p:1000,min:15,online:1,
+  mDa:'Dit niveau af D-vitamin',mEn:'Your vitamin D level'},
+ {id:'gm',cat:'et',tab:'et',ep:5,da:'Glukose Monitorering',en:'Glucose monitoring',p:2000,min:15,online:1,
+  mDa:'En sensor måler dit blodsukker i 14 dage · detaljeret rapport og en score',mEn:'A sensor tracks your blood sugar for 14 days · a detailed report and a score'},
+ {id:'ms',cat:'et',tab:'et',ep:6,da:'Metabolisk Sundheds Test',en:'Basic Metabolic Test',p:1250,min:15,online:1,
+  mDa:'Blodsukker, elektrolytter og væskebalance · leverfunktion og proteinniveauer · nyrernes filtreringskapacitet',mEn:'Blood sugar and electrolyte balance · liver and kidney function'},
+ {id:'mh',cat:'et',tab:'et',ep:7,da:'Mænds Sundhedstest',en:"Men's Health Test",p:1600,min:15,online:1,
+  mDa:'Testosteron · D-vitamin',mEn:'Testosterone · vitamin D'},
+ {id:'th',cat:'et',tab:'et',ep:8,da:'Skjoldbruskkirtel Test',en:'Thyroid Health Test',p:1200,min:15,online:1,
+  mDa:'TSH, T3 og T4',mEn:'TSH, T3 and T4'},
+ {id:'fh',cat:'pt',tab:'et',ep:9,da:'Female hormones',en:'Female hormones',p:2200,min:10,online:0,
+  mDa:'Kvindelige hormoner',mEn:'Female hormones'},
+ {id:'hcfh',cat:'pt',tab:'ht',ep:10,da:'Health check + Female hormones',en:'Health check + Female hormones',p:5200,min:10,online:0,
+  mDa:'Health Test med kvindelige hormoner.',mEn:'The Health Test with female hormones.',
+  tagDa:'Med kvindelige hormoner',tagEn:'With female hormones',lDa:'Health Test med kvindelige hormoner.',lEn:'The Health Test with female hormones.'},
+ {id:'hcfht',cat:'pt',tab:'ht',ep:11,da:'Health check + Female hormones + Thyroid panel',en:'Health check + Female hormones + Thyroid panel',p:6300,min:10,online:0,
+  mDa:'Health Test med kvindelige hormoner og skjoldbruskkirtel.',mEn:'The Health Test with female hormones and a thyroid panel.',
+  tagDa:'Med hormoner og skjoldbruskkirtel',tagEn:'With hormones and thyroid',lDa:'Health Test med kvindelige hormoner og et skjoldbruskkirtelpanel.',lEn:'The Health Test with female hormones and a thyroid panel.'}
 ];
+var SVC_CAT={ht:'Health Tests',et:{da:'Essentielle tests',en:'Essential Tests'},pt:'Pandonia test'};
+// Essential Tests tab, in the site's existing order, then the standalone hormone test
+var ESS=['dv','ms','bk','mh','th','gm','fh'].map(function(id){return SVC.filter(function(s){return s.id===id;})[0];});
+// Health Test tab: the recommended package first, then the test, then the packages built on it
+var HTS=['htc','ht','hcfh','hcfht'].map(function(id){return SVC.filter(function(s){return s.id===id;})[0];});
 // Membership: booking-system subscription 806, confirmed identical on pandonia.com/en.
 // The three plans still on the Danish pandonia.com are retired — their links 404.
 var MB={inc:2000,exc:1600,url:'https://system.easypractice.net/subscription/806',
@@ -1731,10 +1768,7 @@ function renderAll(){
     '<div style="margin-top:40px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer">'+(loc==='da'?'Book din blodprøve':'Book your blood test')+'</a></div>';
 
   var pr=document.getElementById('priceRows');
-  if(pr) pr.innerHTML=[['Health Test + Consultation',4750,3800,loc==='da'?'Anbefales første gang':'Recommended the first time',loc==='da'?'Pandonia Score og seks systemscorer, blodprøve hjemme hos dig, og 20 minutters lægekonsultation.':'Pandonia Score and six system scores, the sample taken at your home, and a 20-minute consultation with a doctor.'],
-    ['Health Test',3500,2800,loc==='da'?'Kun prøven':'The test only',loc==='da'?'Samme markører, Pandonia Score og seks systemscorer.':'The same markers, Pandonia Score and six system scores.'],
-    // Price confirmed by Pandonia, 28 Sep 2026; the booking system lists none.
-    ['Health Test + Female Hormones',4500,3600,loc==='da'?'Med kvindelige hormoner':'With female hormones',loc==='da'?'Health Test med kvindelige hormoner.':'The Health Test with female hormones.']]
+  if(pr) pr.innerHTML=HTS.map(function(s){return [s.en,s.p,Math.round(s.p/1.25),loc==='da'?s.tagDa:s.tagEn,loc==='da'?s.lDa:s.lEn];})
     .map(function(p){return '<div style="display:grid;grid-template-columns:1fr;gap:20px 40px;align-items:start;padding-block:clamp(22px,3vw,32px);border-bottom:1px solid var(--rule)" class="g2"><div><p class="lab" style="margin-bottom:8px">'+p[3]+'</p><h2 style="font-size:clamp(21px,1.1vw + 17px,28px);font-weight:500;letter-spacing:-.015em">'+p[0]+'</h2><p class="bdS measN" style="margin-top:10px">'+p[4]+'</p></div><div>'+(p[1]===null?'<p class="val" style="font-size:clamp(20px,1.6vw + 12px,26px)">'+(loc==='da'?'Pris ved booking':'Price at booking')+'</p>':'<p class="val" style="font-size:clamp(26px,3vw,34px)">'+dkk(p[1])+'</p><p class="lab" style="margin-top:5px">'+(loc==='da'?'inkl. moms · '+new Intl.NumberFormat('da-DK').format(p[2])+' ekskl.':'incl. VAT · '+new Intl.NumberFormat('en-GB').format(p[2])+' excl.')+'</p>')+'<div style="margin-top:16px"><a class="btn btn1" href="https://system.easypractice.net/book/pandonia" target="_blank" rel="noopener noreferrer">'+(loc==='da'?'Vælg tid':'Choose a time')+'</a></div></div></div>';}).join('');
 
   var da=loc==='da';
@@ -1749,8 +1783,8 @@ function renderAll(){
 
   var cm=document.getElementById('prCmp');
   if(cm){ var cols=CMP.cols[loc];
-    cm.innerHTML='<div role="row" style="display:contents"><div class="corner" role="columnheader"></div>'+cols.map(function(c){return '<div class="ch" role="columnheader">'+c+'</div>';}).join('')+'</div>'+
-      CMP.rows[loc].map(function(r){return '<div role="row" style="display:contents"><div class="rl" role="rowheader">'+r[0]+'</div>'+r[1].map(function(v,i){return '<div'+(r[2]?' class="pv"':'')+' role="cell" data-p="'+cols[i]+'">'+v+'</div>';}).join('')+'</div>';}).join('');
+    cm.innerHTML='<div role="row" style="display:contents"><div class="corner" role="columnheader"></div>'+cols.map(function(c,i){return '<div class="ch" role="columnheader" style="--o:'+(i*10)+'">'+c+'</div>';}).join('')+'</div>'+
+      CMP.rows[loc].map(function(r,k){return '<div role="row" style="display:contents"><div class="rl" role="rowheader">'+r[0]+'</div>'+r[1].map(function(v,i){return '<div'+(r[2]?' class="pv"':'')+' role="cell" data-p="'+cols[i]+'" data-r="'+r[0]+'" style="--o:'+(i*10+k+1)+'">'+v+'</div>';}).join('')+'</div>';}).join('');
   }
   var tl=document.getElementById('prTabs'); if(tl) tl.setAttribute('aria-label',da?'Vælg hvordan du vil bruge Pandonia':'Choose how you want to use Pandonia');
 
@@ -1980,18 +2014,18 @@ setReview(revStart);
   if(reduce.addEventListener)reduce.addEventListener('change',sync);
 })();
 // ── Booking preview ─────────────────────────────────────────────────
-// Services, prices and durations are Pandonia's booking system's own.
+// Services, prices, durations and categories come from the site's one
+// catalogue (SVC), which is read from EasyPractice's public booking page.
+// Choosing several tests is a UX preview only: whether EasyPractice can book
+// them as one appointment, and for how long, is not confirmed.
 // AVAILABILITY IS DEMO DATA: EasyPractice publishes no supported way to read
 // free times, so demoSlots() invents them for the preview and every view of
 // them is labelled. Step 03 is a DESIGN PREVIEW of the intended hand-off
 // (EasyPractice receiving tests, date and time); it is not a working
 // integration. Nothing typed or chosen here is stored or sent anywhere.
 var BK={mode:'demo',svcs:[],day:null,slot:null,stage:'pick',days:[]};
-var BKS=[
-  {id:'ht',g:'h',n:'Health Test',da:'35+ biomarkører, Pandonia Score og seks systemscorer.',en:'35+ biomarkers, the Pandonia Score and six system scores.',min:10,p:3500},
-  {id:'htc',g:'h',n:'Health Test + Consultation',da:'Health Test og 20 minutters lægekonsultation.',en:'The Health Test and a 20-minute consultation with a doctor.',min:15,p:4750},
-  {id:'htf',g:'h',n:'Health Test + Female Hormones',da:'Health Test med kvindelige hormoner.',en:'The Health Test with female hormones.',min:10,p:4500}
-].concat(ESS.map(function(s,i){return {id:'e'+i,g:'e',n:null,nDa:s.da,nEn:s.en,da:s.mDa,en:s.mEn,min:15,p:s.p};}));
+// in EasyPractice's own order, grouped by its three categories
+var BKS=SVC.slice().sort(function(x,y){return x.ep-y.ep;}).map(function(s){return {id:s.id,g:s.cat,n:null,nDa:s.da,nEn:s.en,da:s.mDa,en:s.mEn,min:s.min,p:s.p};});
 var WD={da:['SØN','MAN','TIR','ONS','TOR','FRE','LØR'],en:['SUN','MON','TUE','WED','THU','FRI','SAT']};
 var WDL={da:['søndag','mandag','tirsdag','onsdag','torsdag','fredag','lørdag'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']};
 var MON={da:['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'],en:['January','February','March','April','May','June','July','August','September','October','November','December']};
@@ -2029,7 +2063,7 @@ function bkRender(){
   var grp=function(g,title){return '<p class="lab bkGrpH">'+title+'</p><div class="bkSvcs" role="group" aria-label="'+title+'">'+BKS.filter(function(s){return s.g===g;}).map(function(s){
     return '<label class="bkSvc"><input type="checkbox" name="bksvc" value="'+s.id+'"'+(BK.svcs.indexOf(s.id)!==-1?' checked':'')+'><span class="nm">'+bkSvcName(s)+'</span><span class="pr">'+dkk(s.p)+'<small>'+s.min+' min</small></span><span class="ds">'+bkT(s.da,s.en)+'</span></label>';}).join('')+'</div>';};
   var n=BK.svcs.length;
-  document.getElementById('bkSvcList').innerHTML=grp('h','Health Tests')+grp('e',bkT('Essentielle tests','Essential Tests'))+
+  document.getElementById('bkSvcList').innerHTML=grp('ht','Health Tests')+grp('et',bkT('Essentielle tests','Essential Tests'))+grp('pt','Pandonia test')+
     '<p class="bkPicked" aria-live="polite">'+(n?bkT(n===1?'1 prøve valgt':n+' prøver valgt',n===1?'1 test selected':n+' tests selected'):bkT('Du kan vælge én eller flere prøver.','You can choose one or more tests.'))+'</p>';
   // 02 calendar
   bkBuildDays();

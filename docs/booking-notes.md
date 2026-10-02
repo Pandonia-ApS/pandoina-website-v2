@@ -38,7 +38,11 @@ read every client record, and the site is a static page on GitHub Pages.
   cannot receive a selection from outside (section 1), so in production the
   customer would still choose test and time again inside EasyPractice.
 
-Services, prices and durations are the booking system's (9 tests). Nothing
+Services, prices and durations are the booking system's: 11 services in its
+three categories (Health Tests, Essentielle tests, Pandonia test), read from
+the public booking page on 2 Oct 2026. Choosing several tests at once is a
+UX preview only: whether EasyPractice can book them as one appointment, and
+for how long, needs Pandonia's confirmation. Nothing
 the customer selects is stored or sent anywhere by the Pandonia page.
 
 ## 3 · Recommendation
