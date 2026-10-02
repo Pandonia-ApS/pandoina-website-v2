@@ -22,16 +22,21 @@ read every client record, and the site is a static page on GitHub Pages.
 
 ## 2 · What the preview shows
 
-- **Ønsket flow (demotider)** — service → 14-day date row → times → "Fortsæt
-  med 10:00" → hand-off. Every time slot is generated in the browser and
-  labelled **DEMOTIDER — IKKE LIVE / DEMO AVAILABILITY — NOT LIVE**.
+- **Ønsket flow (demotider)** — one or more tests → 14-day date row → times →
+  "Fortsæt med 10:00" → 03 "Færdiggør din booking". Every time slot is
+  generated in the browser and labelled **DEMOTIDER — IKKE LIVE / DEMO
+  AVAILABILITY — NOT LIVE**. Selections update in place; the page never
+  scrolls on its own.
 - **Ingen ledige tider** — the empty state: "Ingen ledige tider de næste 14
   dage." + "Se senere tider →" (opens EasyPractice).
 - **Muligt i dag (EasyPractice)** — Pandonia's page around EasyPractice's
   official embed, with real availability. This is what can go live now.
-- Integration point: at step 03 the real EasyPractice form loads inside the
-  Pandonia page. The customer must choose test and time again there, because
-  EasyPractice cannot receive the choice — the preview says so on screen.
+- Step 03 shows the *intended* hand-off: a summary of the chosen tests, date
+  and time, then a **design preview** (not a form, not the live iframe) of
+  EasyPractice opening at "Dine informationer" with those already filled in,
+  labelled "DEMO — EasyPractice integration pending". Today EasyPractice
+  cannot receive a selection from outside (section 1), so in production the
+  customer would still choose test and time again inside EasyPractice.
 
 Services, prices and durations are the booking system's (9 tests). Nothing
 the customer selects is stored or sent anywhere by the Pandonia page.
