@@ -546,6 +546,36 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 @media(min-width:1024px){.dayGrid{grid-template-columns:repeat(5,1fr)!important}.teamGrid{grid-template-columns:repeat(3,1fr)!important}.labGrid{grid-template-columns:repeat(3,1fr)!important}.g2{grid-template-columns:1fr 1fr!important}.g4{grid-template-columns:repeat(4,1fr)!important}}
 @media(min-width:640px){.g2{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.001ms!important}}
+/* hero visual — desktop only. A warm, blurred organic form (the sample)
+   measured by the report's six-system geometry. Each ring is one measurement,
+   oldest faintest, so the shape reads as change over time; the newest ring
+   breathes and a measurement hexagon travels it. Decorative: no values, no
+   data. Below 1024px it is not shown, and the hero is exactly as before. */
+.hv{display:none}
+@media(min-width:1024px){
+  section:has(> .split > .hv){overflow-x:clip}
+  .hv{display:block;position:relative;isolation:isolate;pointer-events:none;user-select:none;aspect-ratio:480/540;margin-top:-34px;margin-right:calc(-1 * clamp(0px,3vw,48px))}
+}
+.hv svg{position:relative;z-index:2;display:block;width:100%;height:auto;overflow:visible}
+.hvF{position:absolute;z-index:1;border-radius:46% 54% 58% 42% / 52% 44% 56% 48%;filter:blur(34px);will-change:transform}
+.hvF1{left:13%;top:15%;width:76%;height:60%;filter:blur(20px);background:radial-gradient(closest-side,#F1EC7A,rgba(241,236,122,.88) 48%,rgba(241,236,122,0));animation:hvDrift1 26s ease-in-out infinite alternate}
+.hvF2{left:1%;top:44%;width:54%;height:44%;filter:blur(24px);background:radial-gradient(closest-side,rgba(150,121,96,.78),rgba(150,121,96,.40) 56%,rgba(150,121,96,0));mix-blend-mode:multiply;animation:hvDrift2 31s ease-in-out infinite alternate}
+.hvF3{left:38%;top:44%;width:20%;height:16%;background:radial-gradient(closest-side,rgba(110,88,71,.38),rgba(110,88,71,0));filter:blur(22px);mix-blend-mode:multiply;animation:hvDrift3 19s ease-in-out infinite alternate}
+@keyframes hvDrift1{to{transform:translate(4%,-3%) scale(1.06) rotate(6deg);border-radius:56% 44% 48% 52% / 44% 56% 46% 54%}}
+@keyframes hvDrift2{to{transform:translate(-3%,4%) scale(1.08) rotate(-8deg);border-radius:42% 58% 52% 48% / 58% 46% 54% 42%}}
+@keyframes hvDrift3{to{transform:translate(10%,-8%) scale(.9)}}
+/* film grain over the form, so it reads as an image rather than a gradient */
+.hv::after{content:"";position:absolute;z-index:1;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .32  0 0 0 0 .25  0 0 0 0 .19  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");opacity:.2;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(closest-side at 44% 52%,#000 35%,transparent);mask-image:radial-gradient(closest-side at 44% 52%,#000 35%,transparent)}
+.hv .hvC{stroke-dasharray:1;stroke-dashoffset:1;animation:hvDraw 1.5s cubic-bezier(.2,.7,.2,1) forwards}
+.hv .hvIn{opacity:0;animation:hvIn 1.2s ease forwards}
+@keyframes hvDraw{to{stroke-dashoffset:0}}
+@keyframes hvIn{to{opacity:1}}
+.hv text{font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;fill:var(--ink3);fill-opacity:.8}
+@media(prefers-reduced-motion:reduce){
+  .hvF{animation:none}
+  .hv .hvC{animation:none;stroke-dashoffset:0}
+  .hv .hvIn{animation:none;opacity:1}
+}
 </style>
 
 <div class="bar">
@@ -613,6 +643,8 @@ html[data-locale="en"] [data-lang="da"]{display:none}
       </div>
     </div>
     <!-- Pandonia's own line from the feed, in English on both sites like the hero -->
+    <!-- desktop-only hero visual; the SVG is drawn by the hero script -->
+    <div class="hv" aria-hidden="true"><i class="hvF hvF1"></i><i class="hvF hvF2"></i><i class="hvF hvF3"></i></div>
     <div class="heroCard mCut" lang="en">
       <p><span>You can't</span><span>optimise</span><span>what you</span><span>haven't measured.</span></p>
     </div>
@@ -1888,6 +1920,60 @@ try{revStart=localStorage.getItem('pandonia-review')==='1';}catch(e){}
 if(/[?&#]review=1\b/.test(location.search+location.hash))revStart=true;
 setReview(revStart);
 
+// ── Hero visual (desktop only): the report's six-system geometry, drawn as
+// rings of successive measurements. The radii are an abstract shape, not
+// anyone's scores, and no value is shown. Hidden below 1024px (CSS), and the
+// animation only runs while it is on screen.
+(function(){
+  var host=document.querySelector('.hv');if(!host)return;
+  var RINGS=[[.42,.55,.50,.40,.52,.46],[.50,.58,.47,.52,.57,.53],[.58,.62,.57,.60,.55,.63],[.66,.70,.62,.64,.66,.68],[.73,.74,.72,.73,.75,.70]];
+  var NOW_A=[.84,.82,.80,.86,.83,.81],NOW_B=[.86,.85,.78,.83,.86,.84];
+  var NAMES=['Signaling','Highway','Digestion','Energy','Defense','Waste'];
+  var c={W:480,H:540,cx:246,cy:262,R:184};
+  function pt(i,r){var a=(-90+60*i)*Math.PI/180;return [c.cx+c.R*r*Math.cos(a),c.cy+c.R*r*Math.sin(a)];}
+  function poly(v){return v.map(function(r,i){var q=pt(i,r);return q[0].toFixed(1)+','+q[1].toFixed(1);}).join(' ');}
+  function hex(r){var p=[];for(var i=0;i<6;i++){var a=(-90+60*i)*Math.PI/180;p.push((r*Math.cos(a)).toFixed(1)+','+(r*Math.sin(a)).toFixed(1));}return p.join(' ');}
+  var o='',ink='var(--ink)';
+  // grid: the outer ring and six axes
+  o+='<polygon class="hvIn" points="'+poly([1,1,1,1,1,1])+'" fill="none" stroke="'+ink+'" stroke-opacity=".22" stroke-width=".75"/>';
+  for(var i=0;i<6;i++){var e=pt(i,1);o+='<line class="hvIn" x1="'+c.cx+'" y1="'+c.cy+'" x2="'+e[0].toFixed(1)+'" y2="'+e[1].toFixed(1)+'" stroke="'+ink+'" stroke-opacity=".10" stroke-width=".75"/>';}
+  // measurements, oldest first and faintest
+  RINGS.forEach(function(v,j){o+='<polygon class="hvC" pathLength="1" style="animation-delay:'+(.15+j*.2).toFixed(2)+'s" points="'+poly(v)+'" fill="none" stroke="#5E4A3B" stroke-opacity="'+(.20+j*.08).toFixed(2)+'" stroke-width=".8" stroke-linejoin="round"/>';});
+  // the newest: a frosted lens in the report's navy
+  o+='<polygon class="hvC hvNow" pathLength="1" style="animation-delay:1.2s" points="'+poly(NOW_A)+'" fill="rgba(250,250,247,.34)" stroke="var(--rNavy)" stroke-width="1.3" stroke-linejoin="round"/>';
+  // the measuring line and the travelling hexagon
+  o+='<line class="hvIn hvRay" style="animation-delay:2s" x1="'+c.cx+'" y1="'+c.cy+'" x2="'+c.cx+'" y2="'+c.cy+'" stroke="'+ink+'" stroke-opacity=".38" stroke-width=".75"/>';
+  o+='<circle class="hvIn" style="animation-delay:1.6s" cx="'+c.cx+'" cy="'+c.cy+'" r="2.2" fill="'+ink+'"/>';
+  o+='<polygon class="hvIn hvPt" style="animation-delay:2s" points="'+hex(7.5)+'" fill="var(--acid)" stroke="'+ink+'" stroke-width="1"/>';
+  // system names at the axis ends
+  NAMES.forEach(function(n,i){
+    var q=pt(i,1),a='middle',dy=0,dx=0;
+    if(i===0)dy=-14;else if(i===3)dy=22;else{dx=i<3?12:-12;a=i<3?'start':'end';dy=4;}
+    o+='<text class="hvIn" style="animation-delay:1.4s" x="'+(q[0]+dx).toFixed(1)+'" y="'+(q[1]+dy).toFixed(1)+'" text-anchor="'+a+'">'+n+'</text>';
+  });
+  host.insertAdjacentHTML('beforeend','<svg viewBox="0 0 '+c.W+' '+c.H+'" aria-hidden="true" focusable="false">'+o+'</svg>');
+  var now=host.querySelector('.hvNow'),ray=host.querySelector('.hvRay'),hp=host.querySelector('.hvPt');
+  function frame(t){
+    var b=(1-Math.cos(t/14000*2*Math.PI))/2;                 // the newest ring breathes, 14 s
+    var v=NOW_A.map(function(a,i){return a+(NOW_B[i]-a)*b;});
+    var u=(t/7000)%6,i0=Math.floor(u),f=u-i0;                 // one side every 7 s
+    f=f<.5?2*f*f:1-Math.pow(-2*f+2,2)/2;                      // ease along each side, settle at each axis
+    now.setAttribute('points',poly(v));
+    var p0=pt(i0,v[i0]),p1=pt((i0+1)%6,v[(i0+1)%6]),x=p0[0]+(p1[0]-p0[0])*f,y=p0[1]+(p1[1]-p0[1])*f;
+    ray.setAttribute('x2',x.toFixed(1));ray.setAttribute('y2',y.toFixed(1));
+    hp.setAttribute('transform','translate('+x.toFixed(1)+' '+y.toFixed(1)+')');
+  }
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var t0=performance.now()-4500,raf=0,seen=false;
+  function loop(n){frame(n-t0);raf=requestAnimationFrame(loop);}
+  function sync(){cancelAnimationFrame(raf);raf=0;
+    if(reduce.matches||!seen||document.hidden){frame(4500);return;}
+    raf=requestAnimationFrame(loop);}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){seen=e[0].isIntersecting;sync();}).observe(host);
+  document.addEventListener('visibilitychange',sync);
+  if(reduce.addEventListener)reduce.addEventListener('change',sync);
+  frame(4500);
+})();
 // ── Booking preview ─────────────────────────────────────────────────
 // Services, prices and durations are Pandonia's booking system's own.
 // AVAILABILITY IS DEMO DATA: EasyPractice publishes no supported way to read
