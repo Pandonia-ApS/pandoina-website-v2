@@ -1,5 +1,5 @@
 {
   "$comment": "The one place for the public site address. Leave siteUrl empty to use the GitHub Pages address (which becomes the custom domain automatically once one is connected in GitHub). Set it, e.g. \"https://pandonia.dk/\", only to override. allowIndexing: null = automatic (search engines are allowed only on a real domain, not on *.github.io). See DOMAIN_SETUP.md.",
-  "siteUrl": "",
+  "siteUrl": "https://pandonia.com/",
   "allowIndexing": null
 }
