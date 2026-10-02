@@ -565,7 +565,7 @@ html[data-locale="en"] [data-lang="da"]{display:none}
 .hv text{font-family:var(--sans);fill:var(--ink)}
 .hv .hvShape{transform-box:view-box;transform-origin:240px 262px;animation:hvGrow 1.6s cubic-bezier(.2,.75,.2,1) .25s both}
 .hv .hvIn{animation:hvIn .9s ease .1s both}
-.hv .hvPt,.hv .hvRay{animation-delay:1.7s}
+.hv .hvPt,.hv .hvRay,.hv .hvArw{animation-delay:1.7s}
 @keyframes hvGrow{from{transform:scale(0)}to{transform:scale(1)}}
 @keyframes hvIn{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){
@@ -1922,6 +1922,8 @@ setReview(revStart);
 (function(){
   var host=document.querySelector('.hv');if(!host)return;
   var SYSV=[['Signaling',91],['Highway',84],['Digestion',76],['Energy',79],['Defense',82],['Waste',94]],TOTAL=84;
+  // change since the previous test, as the report marks it: 1 improved, -1 worsened (examples too)
+  var CHG=[1,-1,-1,1,1,1];
   var cx=240,cy=262,R=158,grid='#DCDCDA';
   function pt(i,r){var a=(-90+60*i)*Math.PI/180;return [cx+R*r*Math.cos(a),cy+R*r*Math.sin(a)];}
   function ring(r){var p=[];for(var i=0;i<6;i++){var q=pt(i,r);p.push(q[0].toFixed(1)+','+q[1].toFixed(1));}return p.join(' ');}
@@ -1943,13 +1945,16 @@ setReview(revStart);
   // names and scores at the axis ends, placed the way the report places them
   SYSV.forEach(function(s,i){
     var q=pt(i,1),x=q[0],y=q[1],a='middle',ny;
-    if(i===0)ny=y-36;else if(i===3)ny=y+26;else{a='middle';x+=i<3?34:-34;ny=y+(i===1||i===5?-24:-6);}
+    if(i===0)ny=y-50;else if(i===3)ny=y+26;else{a='middle';x+=i<3?34:-34;ny=y+(i===1||i===5?-24:-6);}
     o+='<text class="hvIn" x="'+x.toFixed(1)+'" y="'+ny.toFixed(1)+'" text-anchor="'+a+'" font-size="14.5">'+s[0]+'</text>';
     o+='<text class="hvIn hvNum" data-v="'+s[1]+'" x="'+x.toFixed(1)+'" y="'+(ny+19).toFixed(1)+'" text-anchor="'+a+'" font-size="14.5">'+s[1]+'</text>';
+    // the small change triangle under the score: green pointing up, red pointing down
+    var ty=ny+33,d=CHG[i],h=d>0?-4.5:4.5;
+    o+='<polygon class="hvIn hvArw" points="'+(x-5.5).toFixed(1)+','+(ty-h).toFixed(1)+' '+(x+5.5).toFixed(1)+','+(ty-h).toFixed(1)+' '+x.toFixed(1)+','+(ty+h).toFixed(1)+'" fill="'+(d>0?'var(--rUp)':'var(--rDown)')+'" stroke="'+(d>0?'var(--sageDeep)':'var(--brick)')+'" stroke-width="1" stroke-linejoin="round"/>';
   });
   // the measurement hexagon that travels the outline
   o+='<polygon class="hvIn hvPt" points="'+(function(){var p=[];for(var k=0;k<6;k++){var a=(-90+60*k)*Math.PI/180;p.push((7.5*Math.cos(a)).toFixed(1)+','+(7.5*Math.sin(a)).toFixed(1));}return p.join(' ');})()+'" fill="var(--acid)" stroke="var(--ink)" stroke-width="1"/>';
-  var lbl='Example six-system radar from a Pandonia health report. Overall score '+TOTAL+'. '+SYSV.map(function(s){return s[0]+' '+s[1];}).join(', ')+'.';
+  var lbl='Example six-system radar from a Pandonia health report. Overall score '+TOTAL+'. '+SYSV.map(function(s,i){return s[0]+' '+s[1]+(CHG[i]>0?' (improved)':' (worsened)');}).join(', ')+'.';
   host.insertAdjacentHTML('beforeend','<svg viewBox="0 0 480 540" role="img" aria-label="'+lbl+'">'+o+'</svg>');
   var ray=host.querySelector('.hvRay'),hp=host.querySelector('.hvPt');
   // the point walks the outline of the result, one side every 7 s, easing in and settling at each axis
