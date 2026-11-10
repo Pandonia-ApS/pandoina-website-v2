@@ -58,6 +58,11 @@ for (const f of pages) {
   const own = t.split(SITE_URL).join('');   // the site's own address may be a local one in a local test
   for (const bad of ['localhost', '127.0.0.1', 'booking.html', 'DEMOTIDER', 'DEMO AVAILABILITY', 'klikbar prototype', 'id="revToggle"', 'id="routebar"', '{{'])
     if (own.includes(bad)) problems.push(rel + ': contains "' + bad + '"');
+  // trackers may only start after cookie consent: Cookiebot runs type="text/plain" data-cookieconsent scripts itself
+  for (const m of t.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g))
+    if (/fbq\(|gtag\(|googletagmanager\.com|connect\.facebook\.net/.test(m[1] + m[2]) && !/type="text\/plain"[^>]*data-cookieconsent=/.test(m[1]))
+      problems.push(rel + ': tracker script without cookie-consent gating');
+  if (t.includes('facebook.com/tr?')) problems.push(rel + ': Meta Pixel noscript image cannot wait for consent');
   for (const m of t.matchAll(/(?:src|href)="([^"]+\.(?:jpe?g|png|webp|svg))"/g)) {
     const p = m[1]; if (/^https?:/.test(p)) continue;
     if (!p.startsWith(BASE_PATH)) { problems.push(rel + ': asset outside base path ' + p); continue; }
