@@ -21,6 +21,7 @@ on:
       - 'scripts/assemble-site.mjs'
       - 'site.config.json'
       - '.github/workflows/pages.yml'
+      - 'price-sync/**'
   workflow_dispatch:
 
 permissions:
@@ -47,6 +48,10 @@ jobs:
 
       - name: Assemble the public site
         run: node scripts/assemble-site.mjs --site-url "${{ steps.pages.outputs.base_url }}" --out _site
+
+      # fills the price placeholders from price-sync/prices/prices.json; fails the deploy if any is left
+      - name: Fill in the EasyPractice prices
+        run: node price-sync/scripts/apply-prices.mjs _site
 
       - uses: actions/upload-pages-artifact@v3
         with:

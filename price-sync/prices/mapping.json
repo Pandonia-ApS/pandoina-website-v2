@@ -1,0 +1,16 @@
+{
+  "_note": "Approved mapping: website product <-> EasyPractice service. Edited by people only, never by the sync. Vitamin D (246133) is discontinued and deliberately absent; memberships and add-ons are managed by hand.",
+  "source": "https://system.easypractice.net/book/pandonia/get",
+  "products": [
+    { "site": "ht",    "service": 228252, "easypractice": "Health Test" },
+    { "site": "htc",   "service": 229722, "easypractice": "Health Test + Consultation" },
+    { "site": "fh",    "service": 298849, "easypractice": "Female hormones" },
+    { "site": "mh",    "service": 328461, "easypractice": "Male hormones" },
+    { "site": "hcfh",  "service": 298848, "easypractice": "Health Test + Female hormones" },
+    { "site": "hcfht", "service": 300271, "easypractice": "Health Test + Female hormones + Thyroid panel" },
+    { "site": "hcmh",  "service": 328459, "easypractice": "Health Test + Male hormones" },
+    { "site": "hcmht", "service": 328460, "easypractice": "Health Test + Male hormones + Thyroid panel" },
+    { "site": "gm",    "service": 246132, "easypractice": "Glucose Monitoring" },
+    { "site": "th",    "service": 246129, "easypractice": "Thyroid panel" }
+  ]
+}

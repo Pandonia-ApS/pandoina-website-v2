@@ -1,0 +1,16 @@
+{
+  "updated": "2026-11-06",
+  "source": "https://system.easypractice.net/book/pandonia/get",
+  "prices": {
+    "ht": { "incl": 3500, "excl": 2800 },
+    "htc": { "incl": 4750, "excl": 3800 },
+    "fh": { "incl": 2200, "excl": 1760 },
+    "mh": { "incl": 2200, "excl": 1760 },
+    "hcfh": { "incl": 5200, "excl": 4160 },
+    "hcfht": { "incl": 6300, "excl": 5040 },
+    "hcmh": { "incl": 5200, "excl": 4160 },
+    "hcmht": { "incl": 6300, "excl": 5040 },
+    "gm": { "incl": 2000, "excl": 1600 },
+    "th": { "incl": 1200, "excl": 960 }
+  }
+}

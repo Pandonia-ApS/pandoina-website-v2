@@ -45,8 +45,8 @@ fs.writeFileSync(path.join(OUT, 'robots.txt'), INDEX
   ? `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`
   : `# Not indexed until Pandonia's own domain is connected (see DOMAIN_SETUP.md).\nUser-agent: *\nDisallow: /\n`);
 const today = new Date().toISOString().slice(0, 10);
-const entry = loc => `  <url>\n    <loc>${SITE_URL}${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <xhtml:link rel="alternate" hreflang="da-DK" href="${SITE_URL}"/>\n    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}en/"/>\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}"/>\n  </url>\n`;
-fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entry('')}${entry('en/')}</urlset>\n`);
+const entry = loc => `  <url>\n    <loc>${SITE_URL}${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}"/>\n    <xhtml:link rel="alternate" hreflang="da-DK" href="${SITE_URL}da/"/>\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}"/>\n  </url>\n`;
+fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entry('')}${entry('da/')}</urlset>\n`);
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 // ── checks: fail the deploy rather than publish something broken or internal
@@ -64,7 +64,7 @@ for (const f of pages) {
     if (!fs.existsSync(path.join(OUT, p.slice(BASE_PATH.length)))) problems.push(rel + ': missing ' + p);
   }
 }
-for (const need of ['index.html', 'en/index.html', '404.html', 'favicon.svg', 'og-image.png', 'robots.txt', 'sitemap.xml'])
+for (const need of ['index.html', 'da/index.html', 'en/index.html', '404.html', 'favicon.svg', 'og-image.png', 'robots.txt', 'sitemap.xml'])
   if (!fs.existsSync(path.join(OUT, need))) problems.push('missing ' + need);
 if (problems.length) { console.error('Site checks failed:\n  ' + problems.join('\n  ')); process.exit(1); }
 

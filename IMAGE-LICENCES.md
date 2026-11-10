@@ -336,6 +336,66 @@ Pandonia's own operation.
 The original brief for this frame — `OBJ-02`, "sample in transit, documentary
 object detail" — still stands as the real shot.
 
+## Score over time — added 9 October 2026
+
+| File | `score-over-time.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 9 October 2026 — a "Score Over Time" chart from a Pandonia report |
+| Treatment | White margins trimmed (1417×800 → 972×765), re-encoded as WebP; the chart itself is unchanged |
+| Placement | *Din rapport* → panel 04 "Score over tid", replacing the drawn schematic (all widths) |
+| Status | **Shows concrete scores and dates. Confirm they are example data, not a real person's results, before launch.** |
+
+## Hero photograph — replaced 19 October 2026
+
+| File | `hero-dashboard.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 19 October 2026 (1254 × 1254, re-encoded as WebP) |
+| Photographer / licence | **Unknown** — clear the rights before launch |
+| Placement | Homepage hero on every width (phones, tablet, desktop); replaces `hero-phone.webp` and `hero-wide.webp`, now unused |
+| Content | The phone shows a Pandonia Health Report page (Highway Score) with measured values and dates that match a real client report (RBC, HCT, HGB, MCH; 02/07/26, 11/08/26). **Used unchanged at Sebastian Baldur-Fels's explicit decision, 19 Oct 2026.** Confirm the client's consent to public use before launch. |
+
+## Desktop hero — added 8 October 2026
+
+| File | `hero-wide.webp` |
+|---|---|
+| Source | Supplied by Sebastian Baldur-Fels, 8 October 2026 — a wide version of the scene in `hero-phone.webp` |
+| Photographer | **Unknown** |
+| Licence | **Unknown** |
+| Commercial use | **Not confirmed** |
+| Dimensions | 1672 × 941, used as supplied |
+| Placement | Homepage hero from 1024px up (a `<picture>` source); phones and tablets keep `hero-phone.webp` |
+| Status | **Placed on request. Clear the rights before launch.** |
+
+## Phone test cards — added 7 October 2026
+
+Decorative backgrounds for the phone *Tests og priser* cards (`aria-hidden`, empty
+`alt`). Resized to 1000px on the long edge (the sensor to 1600px) and re-encoded as WebP; colour, crop and
+treatment are done in CSS, the files themselves are unretouched.
+
+| File | Source | Card |
+|---|---|---|
+| `card-cells.webp` | Pandonia supplied set, `11-33e8080f` (794×1191) | Basic Metabolic Test |
+| `card-tubes.webp` | Pandonia supplied set, `04-da456801` (1024×1536) | **Unused** since 9 Oct 2026 — source of card-tubes-blood.webp |
+| `card-tubes-blood.webp` | `card-tubes.webp` with the red caps turned grey (pixel edit of the caps only, 9 Oct 2026, on request); the blood keeps its own colour | Digestion Health Test |
+| `card-lake.webp` | Pandonia supplied set, `08-9059f584` (1036×1381) | Vitamin D Test |
+| `card-sky.webp` | Pandonia supplied set, `09-3c00dd0a` (794×1191) | Health check + Female hormones + Thyroid panel |
+| `card-marble.webp` | Pandonia supplied set, `10-6a7bf225` (670×1191) | Female hormones |
+| `card-neck.webp` | Unsplash, Angélica Echeverry, `5KY5LP_zc44` — "Free to use under the Unsplash License", checked on the photo page 7 Oct 2026 | Thyroid Health Test |
+| `card-sensor-arm.webp` | Supplied by Sebastian Baldur-Fels, 9 October 2026 (1448×1086 → 1200×900). Photographer and licence **unknown** — clear the rights before launch. The phone screen shows a glucose reading (5,6 mmol/L) | Glucose monitoring (replaces `card-sensor.webp`, now unused) |
+| `card-sensor.webp` | Supplied by Sebastian Baldur-Fels, 7 October 2026 (1842×854). Photographer and licence **unknown** — clear the rights before launch | **Unused** since 9 Oct 2026 — was Glucose monitoring |
+
+The five `0x-…` files come from the same supplied set as the team portraits and
+`rum.jpg`, but unlike those they are not documented as Pandonia's own photography.
+**Confirm Pandonia holds the rights to them before launch.** `card-sky.webp` shows an
+identifiable person.
+
+The other cards reuse files already listed above: `review.png`, `consultation.webp`,
+`skin.jpg`, `laptop.jpg` and `report-deck.webp`.
+
+Not used: three further Unsplash candidates (a shoulder, light through a window, a
+sheer curtain). Their licence could not be confirmed, and the curtain is the one
+rejected below.
+
 ## Rejected
 
 Two atmospheric candidates were downloaded and discarded: a sheer-curtain still
@@ -368,3 +428,40 @@ Filled since the original brief, with better source files still needed:
 Stock imagery may be used for atmosphere — a home in the morning, Copenhagen
 residential exteriors, light and transitions. It may never stand in for
 Pandonia's laboratory, staff, doctor, blood draw, premises or product.
+
+## Homepage after the supplied reference (22 Oct 2026)
+
+| File | Source | Placement |
+|---|---|---|
+| `home-hero-full.webp` | The full hero photograph supplied by Sebastian Baldur-Fels, 22 Oct 2026 (1967 × 799, used as supplied) | Homepage hero, edge to edge |
+| `home-card-individual.webp` | Same reference (311 × 240) | Homepage, For privatpersoner |
+| `home-card-clinic.webp` | Same reference (305 × 240) | Homepage, For klinikker |
+
+**Status: placed on request; photographer, licence and origin unknown (they may be generated).** The phone
+screen shows the Pandonia report's values (Highway 72; RBC 4.6/4.5/4.6; HCT 0.4; HGB 9.2/8.6/9.1; MCH 2.0/1.9/2.0),
+but its RBC scale reads 3.3 · 3.4 · 4.4 · 6.3 · 7.8 (the report: 1.9 · 3.4 · 4.8 · 6.3 · 7.8) and the column
+headings are garbled ("AQTS780", "LAB059"). The cuts are small; full-resolution originals should replace them.
+
+| `about-lounge.webp` | Supplied by Sebastian Baldur-Fels, 23 Oct 2026 (1700 × 1089, used as supplied) | Om Pandonia, opening |
+
+**Note:** the wall sign in this picture reads "PANDONIA · Blood insights for a longer tomorrow" with a droplet mark —
+not the wordmark or tagline used on the site. It may be a rendering; confirm it shows the actual lounge.
+
+| `clinic-draw.webp` | Supplied by Sebastian Baldur-Fels, 23 Oct 2026 (1672 × 941, used as supplied) | For klinikker, opening |
+| `clinic-draw-2.webp` | Supplied by Sebastian Baldur-Fels, 4 Nov 2026 (1672 × 941, used as supplied); replaces `clinic-draw.webp` in use | For klinikker, opening |
+
+**Note:** the shirt reads "pandonia · Happier. Healthier. Longer." but the wall sign shows a droplet mark and "PANDONIA" — not the site wordmark. It may be a rendering.
+
+| `cat-general-tubes.webp` | Supplied by Sebastian Baldur-Fels, 28 Oct 2026 (1536 × 1024, used as supplied) | General Health: category card and area page |
+| `cat-general-tubes-2.webp` | Supplied by Sebastian Baldur-Fels, 5 Nov 2026 (1586 × 992, used as supplied); replaces `cat-general-tubes.webp` in use | General Health: category card and area page |
+
+**Note:** the labels read "pandonia · Happier. Healthier. Longer." (with full stops; the site tagline has commas). May be a rendering.
+
+| `more-trend.webp` | Supplied by Sebastian Baldur-Fels, 28 Oct 2026 (949 × 883, used as supplied) | For individuals, More than numbers, third picture |
+| `more-trend-2.webp` | Supplied by Sebastian Baldur-Fels, 6 Nov 2026 (1254 × 1254, used as supplied); replaces `more-trend.webp` in use | For individuals, More than numbers, third picture |
+
+**Note:** an illustration — its values (76 … 87, Jan 2025 – Sep 2026, "Værdi") are not from the report; the tube label shows a ring mark and "PANDONIA", not the site wordmark.
+
+| `home-hero-scene-up.webp` | `home-hero-scene.webp` (supplied 27 Oct 2026) with only the trend curve on the phone screen redrawn, 28 Oct 2026 (1916 × 821) | Homepage hero, every width; replaces `home-hero-scene.webp`, kept unchanged |
+
+**Note:** the redrawn curve is illustrative (a gentle rise), not data from a report; the old lines were painted out with the screen's background and the grid lines redrawn. Axis labels, dates and every other pixel are unchanged.
