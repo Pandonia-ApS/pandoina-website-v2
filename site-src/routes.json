@@ -1,0 +1,380 @@
+{
+ "$comment": "One entry per page and language. scripts/prerender.mjs builds site/ from site-src/en.html and site-src/da.html with these addresses, titles and descriptions; scripts/assemble-site.mjs builds sitemap.xml from it.",
+ "pages": [
+  {
+   "page": "home",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/",
+    "title": "Privat blodprøve uden henvisning | Pandonia laboratorium",
+    "description": "Book online og få taget din blodprøve i vores lounge på Langebrogade eller hjemme hos dig. Svar typisk inden for 48 timer og lægegennemgang efter ønske."
+   },
+   "en": {
+    "path": "",
+    "title": "Private blood test, no referral needed | Pandonia laboratory",
+    "description": "Book online and have your blood test at our Langebrogade lounge in Copenhagen or at home. Results usually within 48 hours and an optional doctor review."
+   }
+  },
+  {
+   "page": "laboratory",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/laboratorium/",
+    "title": "Privat laboratorium i København | Pandonia",
+    "description": "Pandonias kliniske biokemiske laboratorium på Langebrogade 3B analyserer de fleste prøver selv. Svar inden for 48 timer, med en ansvarlig læge."
+   },
+   "en": {
+    "path": "laboratory/",
+    "title": "Private laboratory in Copenhagen | Pandonia",
+    "description": "Pandonia’s clinical biochemistry laboratory at Langebrogade 3B analyses most samples in-house. Results within 48 hours, overseen by a medical director."
+   }
+  },
+  {
+   "page": "individuals",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/privatpersoner/",
+    "title": "Sundhedstests for privatpersoner | Pandonia",
+    "description": "Vælg mellem generel sundhed, hormoner, sundhed i dybden og glukosemonitorering. Blodprøve på Langebrogade eller hjemme hos dig, svar inden for 48 timer."
+   },
+   "en": {
+    "path": "individuals/",
+    "title": "Health tests for individuals | Pandonia",
+    "description": "Choose general health, hormones, in-depth health or glucose monitoring. Blood test at Langebrogade or at home in Copenhagen, results within 48 hours."
+   }
+  },
+  {
+   "page": "health",
+   "anchor": "general",
+   "index": true,
+   "da": {
+    "path": "da/sundhedstests/generel-sundhed/",
+    "title": "Generel sundhed: blodprøve med 35+ biomarkører | Pandonia",
+    "description": "Health Test måler 35+ biomarkører, bl.a. blodsukker, kolesterol, lever, nyrer og blodceller. Med eller uden 20 minutters lægekonsultation."
+   },
+   "en": {
+    "path": "health-tests/general-health/",
+    "title": "General health blood test, 35+ biomarkers | Pandonia",
+    "description": "The Health Test measures 35+ biomarkers, including blood sugar, cholesterol, liver, kidneys and blood cells, with or without a doctor consultation."
+   }
+  },
+  {
+   "page": "health",
+   "anchor": "hormonal",
+   "index": true,
+   "da": {
+    "path": "da/sundhedstests/hormoner/",
+    "title": "Hormontest for kvinder og mænd | Pandonia",
+    "description": "Få målt relevante hormonniveauer med en blodprøve uden henvisning. Hormontests for kvinder og mænd, taget i København eller hjemme hos dig."
+   },
+   "en": {
+    "path": "health-tests/hormones/",
+    "title": "Hormone tests for women and men | Pandonia",
+    "description": "Have relevant hormone levels measured with a blood test, no referral needed. Hormone tests for women and men, taken in Copenhagen or at home."
+   }
+  },
+  {
+   "page": "health",
+   "anchor": "comprehensive",
+   "index": true,
+   "da": {
+    "path": "da/sundhedstests/sundhed-i-dybden/",
+    "title": "Health Test med hormoner og skjoldbruskkirtel | Pandonia",
+    "description": "Kombinér Health Test med hormontest og, hvis du ønsker det, skjoldbruskkirtelmarkører for et bredere billede af din sundhed ved ét besøg."
+   },
+   "en": {
+    "path": "health-tests/in-depth-health/",
+    "title": "Health Test with hormones and thyroid | Pandonia",
+    "description": "Combine the Health Test with hormone testing and, if you wish, thyroid markers for a broader picture of your health in one visit."
+   }
+  },
+  {
+   "page": "book",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/priser/",
+    "title": "Priser på blodprøver og sundhedstests | Pandonia",
+    "description": "Se priserne på alle Pandonias sundhedstests inkl. moms, og book online. Blodprøve på Langebrogade 3B eller hjemme hos dig i København."
+   },
+   "en": {
+    "path": "prices/",
+    "title": "Blood test prices in Copenhagen | Pandonia",
+    "description": "See prices for all Pandonia health tests including VAT, and book online. Blood test at Langebrogade 3B or at home in Copenhagen."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "ht",
+   "index": true,
+   "da": {
+    "path": "da/test/health-test/",
+    "title": "Health Test: 35+ biomarkører i én blodprøve | Pandonia",
+    "description": "35+ biomarkører, Pandonia Score og seks systemscorer fra én blodprøve. Svar inden for 48 timer. Lægegennemgang efter ønske."
+   },
+   "en": {
+    "path": "test/health-test/",
+    "title": "Health Test: 35+ biomarkers, one blood sample | Pandonia",
+    "description": "35+ biomarkers, the Pandonia Score and six system scores from one blood sample. Results within 48 hours, optional doctor review."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "htc",
+   "index": true,
+   "da": {
+    "path": "da/test/health-test-konsultation/",
+    "title": "Health Test med lægekonsultation | Pandonia",
+    "description": "Health Test med 35+ biomarkører og 20 minutters lægekonsultation, hvor din rapport gennemgås. Anbefales første gang."
+   },
+   "en": {
+    "path": "test/health-test-consultation/",
+    "title": "Health Test with doctor consultation | Pandonia",
+    "description": "The Health Test with 35+ biomarkers and a 20-minute consultation with a doctor who goes through your report. Recommended for your first test."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "fh",
+   "index": true,
+   "da": {
+    "path": "da/test/kvindelige-hormoner/",
+    "title": "Hormontest for kvinder: Female hormones | Pandonia",
+    "description": "En blodprøve med de hormonniveauer, der er mest relevante for kvinder. Uden henvisning, i København eller hjemme hos dig. Svar inden for 48 timer."
+   },
+   "en": {
+    "path": "test/female-hormones/",
+    "title": "Female hormone blood test | Pandonia",
+    "description": "A blood test of the hormone levels most relevant for women. No referral needed, in Copenhagen or at home. Results within 48 hours."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "mh",
+   "index": true,
+   "da": {
+    "path": "da/test/mandlige-hormoner/",
+    "title": "Hormontest for mænd: testosteron og D-vitamin | Pandonia",
+    "description": "Mål dit testosteron og D-vitamin med en blodprøve uden henvisning. Taget i København eller hjemme hos dig. Svar inden for 48 timer."
+   },
+   "en": {
+    "path": "test/male-hormones/",
+    "title": "Male hormone test: testosterone and vitamin D | Pandonia",
+    "description": "Measure your testosterone and vitamin D with a blood test, no referral needed. Taken in Copenhagen or at home. Results within 48 hours."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "hcfh",
+   "index": true,
+   "da": {
+    "path": "da/test/health-test-kvindelige-hormoner/",
+    "title": "Health Test + kvindelige hormoner | Pandonia",
+    "description": "Health Test med 35+ biomarkører og de hormonniveauer, der er mest relevante for kvinder, i én blodprøve. Svar inden for 48 timer."
+   },
+   "en": {
+    "path": "test/health-test-female-hormones/",
+    "title": "Health Test + female hormones | Pandonia",
+    "description": "The Health Test’s 35+ biomarkers plus the hormone levels most relevant for women, from one blood sample. Results within 48 hours."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "hcfht",
+   "index": true,
+   "da": {
+    "path": "da/test/health-test-kvindelige-hormoner-skjoldbruskkirtel/",
+    "title": "Health Test, kvindehormoner og skjoldbruskkirtel | Pandonia",
+    "description": "Health Test, kvindelige hormoner og et skjoldbruskkirtelpanel i én blodprøve. Et bredt billede af din sundhed ved ét besøg."
+   },
+   "en": {
+    "path": "test/health-test-female-hormones-thyroid/",
+    "title": "Health Test, female hormones and thyroid | Pandonia",
+    "description": "The Health Test, female hormones and a thyroid panel from one blood sample. A broad picture of your health in one visit."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "hcmh",
+   "index": true,
+   "da": {
+    "path": "da/test/health-test-mandlige-hormoner/",
+    "title": "Health Test + mandlige hormoner | Pandonia",
+    "description": "Health Test med 35+ biomarkører og de hormonniveauer, der er mest relevante for mænd, i én blodprøve. Svar inden for 48 timer."
+   },
+   "en": {
+    "path": "test/health-test-male-hormones/",
+    "title": "Health Test + male hormones | Pandonia",
+    "description": "The Health Test’s 35+ biomarkers plus the hormone levels most relevant for men, from one blood sample. Results within 48 hours."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "hcmht",
+   "index": true,
+   "da": {
+    "path": "da/test/health-test-mandlige-hormoner-skjoldbruskkirtel/",
+    "title": "Health Test, mandehormoner og skjoldbruskkirtel | Pandonia",
+    "description": "Health Test, mandlige hormoner og et skjoldbruskkirtelpanel i én blodprøve. Et bredt billede af din sundhed ved ét besøg."
+   },
+   "en": {
+    "path": "test/health-test-male-hormones-thyroid/",
+    "title": "Health Test, male hormones and thyroid | Pandonia",
+    "description": "The Health Test, male hormones and a thyroid panel from one blood sample. A broad picture of your health in one visit."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "gm",
+   "index": true,
+   "da": {
+    "path": "da/test/glukosemonitorering/",
+    "title": "Glukosemonitorering med sensor i 14 dage | Pandonia",
+    "description": "En sensor måler dit blodsukker i 14 dage, så du ser mønstrene i løbet af dagen frem for én enkelt måling. Med en detaljeret rapport og en score."
+   },
+   "en": {
+    "path": "test/glucose-monitoring/",
+    "title": "Continuous glucose monitoring, 14 days | Pandonia",
+    "description": "A sensor tracks your blood sugar for 14 days, so you see the patterns through the day rather than a single measurement. With a detailed report and a score."
+   }
+  },
+  {
+   "page": "test",
+   "anchor": "th",
+   "index": true,
+   "da": {
+    "path": "da/test/skjoldbruskkirteltest/",
+    "title": "Skjoldbruskkirteltest: TSH, T3, FT4 og Anti-TPO | Pandonia",
+    "description": "Se, hvordan din skjoldbruskkirtel fungerer, med en blodprøve uden henvisning: TSH, T3, FT4 og Anti-TPO. Svar inden for 48 timer."
+   },
+   "en": {
+    "path": "test/thyroid-panel/",
+    "title": "Thyroid blood test: TSH, T3, FT4, Anti-TPO | Pandonia",
+    "description": "See how your thyroid is working with a blood test, no referral needed: TSH, T3, FT4 and Anti-TPO. Results within 48 hours."
+   }
+  },
+  {
+   "page": "maaler",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/hvad-vi-maaler/",
+    "title": "Hvad vi måler: seks systemer, én blodprøve | Pandonia",
+    "description": "Health Test samler 35+ biomarkører i seks systemscorer og en Pandonia Score, så du kan se, hvor du står, og følge udviklingen over tid."
+   },
+   "en": {
+    "path": "what-we-measure/",
+    "title": "What we measure: six systems, one blood test | Pandonia",
+    "description": "The Health Test brings 35+ biomarkers together in six system scores and a Pandonia Score, so you can see where you stand and follow changes over time."
+   }
+  },
+  {
+   "page": "biomarkers",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/biomarkoerer/",
+    "title": "Biomarkører i vores blodprøver | Pandonia",
+    "description": "Alle biomarkører i Pandonias tests: hvad de måler, hvilket system de hører til, og hvilken test de indgår i. Søg efter fx kolesterol eller HbA1c."
+   },
+   "en": {
+    "path": "biomarkers/",
+    "title": "Biomarkers in our blood tests | Pandonia",
+    "description": "Every biomarker in Pandonia’s tests: what it measures, which system it belongs to and which test includes it. Search for e.g. cholesterol or HbA1c."
+   }
+  },
+  {
+   "page": "saadan",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/saadan-fungerer-det/",
+    "title": "Sådan fungerer en privat blodprøve | Pandonia",
+    "description": "Fem trin fra du vælger din test, til du har svaret: book online, få taget blodprøven, vi analyserer den, og du får en klar rapport inden for 48 timer."
+   },
+   "en": {
+    "path": "how-it-works/",
+    "title": "How a private blood test works | Pandonia",
+    "description": "Five steps from choosing your test to your results: book online, have your blood taken, we analyse it, and you get a clear report within 48 hours."
+   }
+  },
+  {
+   "page": "rapport",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/din-rapport/",
+    "title": "Din rapport: forstå dine blodprøvesvar | Pandonia",
+    "description": "Din rapport viser hver måling med sine områder, seks systemscorer og udviklingen over tid, så tallene giver mening."
+   },
+   "en": {
+    "path": "your-report/",
+    "title": "Your report: understand your blood test results | Pandonia",
+    "description": "Your report shows every measurement with its ranges, six system scores and your trend over time, so the numbers make sense."
+   }
+  },
+  {
+   "page": "testguide",
+   "anchor": null,
+   "index": false,
+   "da": {
+    "path": "da/find-din-test/",
+    "title": "Find din test | Pandonia",
+    "description": "Svar på op til tre korte spørgsmål, så foreslår vi en test, der passer til det, du gerne vil forstå."
+   },
+   "en": {
+    "path": "find-your-test/",
+    "title": "Find your test | Pandonia",
+    "description": "Answer up to three short questions and we’ll suggest a test that fits what you’d like to understand."
+   }
+  },
+  {
+   "page": "clinics",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/klinikker/",
+    "title": "Blodprøver til klinikker | Pandonia laboratorium",
+    "description": "Giv dine patienter adgang til de tests, de har brug for. Vi kan tage blodprøverne i din klinik, og de fleste analyseres i vores laboratorium i København."
+   },
+   "en": {
+    "path": "clinics/",
+    "title": "Blood tests for clinics | Pandonia laboratory",
+    "description": "Give your patients access to the tests they need. We can take the samples at your clinic, and most are analysed in our Copenhagen laboratory."
+   }
+  },
+  {
+   "page": "about",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/om-pandonia/",
+    "title": "Om Pandonia | Privat laboratorium og sundhedstests",
+    "description": "Pandonia ApS samler lægefaglighed og laboratorieekspertise på Langebrogade 3B i København. Mød holdet bag dine sundhedstests."
+   },
+   "en": {
+    "path": "about/",
+    "title": "About Pandonia | Private laboratory and health tests",
+    "description": "Pandonia ApS brings medical and laboratory expertise together at Langebrogade 3B in Copenhagen. Meet the team behind your health tests."
+   }
+  },
+  {
+   "page": "faq",
+   "anchor": null,
+   "index": true,
+   "da": {
+    "path": "da/faq/",
+    "title": "Spørgsmål og svar om blodprøver | Pandonia",
+    "description": "Hvor tages prøven, hvordan forbereder du dig, hvornår får du svar, og hvordan foregår konsultationen? Svar på de spørgsmål, vi oftest får."
+   },
+   "en": {
+    "path": "faq/",
+    "title": "Blood test questions and answers | Pandonia",
+    "description": "Where is the sample taken, how do you prepare, when do you get results and how does the consultation work? Answers to the questions we hear most."
+   }
+  }
+ ]
+}

@@ -1,5 +1,7 @@
 # Pandonia — website v3
 
+> **Maintaining the public site:** see [MAINTENANCE.md](MAINTENANCE.md) (how pages are built from `site-src/`, the checks, and how to deploy) and [CLAUDE.md](CLAUDE.md).
+
 **v3 is the brand and content migration of v2.** Same routes, navigation,
 DA/EN switching, booking links and clinical gate. What changed: the identity
 (off-white, black, warm sand, acid-yellow accent; Arimo and Tinos, the web

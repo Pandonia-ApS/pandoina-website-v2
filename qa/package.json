@@ -1,0 +1,12 @@
+{
+  "name": "pandonia-qa",
+  "private": true,
+  "description": "Local build checks for www.pandonia.com. See MAINTENANCE.md.",
+  "scripts": {
+    "check": "node run.cjs",
+    "check:live": "node check-live.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

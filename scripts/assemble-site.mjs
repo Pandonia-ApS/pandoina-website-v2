@@ -45,8 +45,10 @@ fs.writeFileSync(path.join(OUT, 'robots.txt'), INDEX
   ? `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`
   : `# Not indexed until Pandonia's own domain is connected (see DOMAIN_SETUP.md).\nUser-agent: *\nDisallow: /\n`);
 const today = new Date().toISOString().slice(0, 10);
-const entry = loc => `  <url>\n    <loc>${SITE_URL}${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}"/>\n    <xhtml:link rel="alternate" hreflang="da-DK" href="${SITE_URL}da/"/>\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}"/>\n  </url>\n`;
-fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entry('')}${entry('da/')}</urlset>\n`);
+// every indexable page in both languages, each with its language pair (site-src/routes.json, see scripts/prerender.mjs)
+const ROUTES = JSON.parse(fs.readFileSync(path.join(ROOT, 'site-src', 'routes.json'), 'utf8')).pages;
+const entry = (loc, r) => `  <url>\n    <loc>${SITE_URL}${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}${r.en.path}"/>\n    <xhtml:link rel="alternate" hreflang="da-DK" href="${SITE_URL}${r.da.path}"/>\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${r.en.path}"/>\n  </url>\n`;
+fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${ROUTES.filter(r => r.index).map(r => entry(r.en.path, r) + entry(r.da.path, r)).join('')}</urlset>\n`);
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 // ── checks: fail the deploy rather than publish something broken or internal
@@ -68,6 +70,19 @@ for (const f of pages) {
     if (!p.startsWith(BASE_PATH)) { problems.push(rel + ': asset outside base path ' + p); continue; }
     if (!fs.existsSync(path.join(OUT, p.slice(BASE_PATH.length)))) problems.push(rel + ': missing ' + p);
   }
+}
+// site/ must be the current build of site-src/
+problems.push(...(await import('./build-lock.mjs')).checkLock());
+// every routed page: its own canonical, one H1, valid structured data, and none of the claims Pandonia ruled out
+const BANNED = ['partnerklinik', 'partner clinic', 'partnerportal', 'partner portal', 'akkredit', 'accredit', 'DANAK', 'ISO 15189', 'Nordre Fasanvej'];
+for (const r of ROUTES) for (const l of ['en', 'da']) {
+  const rel = r[l].path + 'index.html', f = path.join(OUT, rel);
+  if (!fs.existsSync(f)) { problems.push('missing ' + rel); continue; }
+  const t = fs.readFileSync(f, 'utf8'), markup = t.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, '');
+  if (!t.includes(`<link rel="canonical" href="${SITE_URL}${r[l].path}">`)) problems.push(rel + ': canonical is not its own address');
+  const h1 = (markup.match(/<h1\b/g) || []).length; if (h1 !== 1) problems.push(`${rel}: ${h1} H1 elements`);
+  for (const w of BANNED) if (markup.toLowerCase().includes(w.toLowerCase())) problems.push(`${rel}: contains "${w}"`);
+  for (const m of t.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { JSON.parse(m[1]); } catch (e) { problems.push(rel + ': invalid JSON-LD'); } }
 }
 for (const need of ['index.html', 'da/index.html', 'en/index.html', '404.html', 'favicon.svg', 'og-image.png', 'robots.txt', 'sitemap.xml'])
   if (!fs.existsSync(path.join(OUT, need))) problems.push('missing ' + need);
