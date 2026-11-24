@@ -1,5 +1,5 @@
 // Lab performance, baseline vs new: node check-performance.cjs <baseline base> <new base>
-// Chromium with mobile throttling (4× CPU, ~10 Mbit/s, 40 ms) and desktop without; median of 5 loads.
+// Chromium with mobile throttling (4× CPU, ~10 Mbit/s, 40 ms) and desktop without; median of 5 loads each, live and new alternating.
 // LCP and CLS from the browser's own PerformanceObserver; bytes from the resource timings. A lab measurement on
 // this machine, not Google's field data.
 const { chromium } = require('playwright');
@@ -24,8 +24,14 @@ async function measure(br, url, mobile) {
 (async () => {
   const br = await chromium.launch(); const rows = [];
   for (const [b, n, label] of PAGES) for (const mobile of [true, false]) {
-    const run = async u => { const r = []; for (let i = 0; i < 5; i++) r.push(await measure(br, u, mobile)); return { lcp: median(r.map(x => x.lcp)), cls: median(r.map(x => x.cls)), bytes: median(r.map(x => x.bytes)) }; };
-    const before = await run(BASE + b), after = await run(NEW + n);
+    // live and new loads alternate (live, new, live, new …), so a change in machine load hits both sides equally
+    // the same address on both sides when the baseline has it; the old #/ address only for a baseline without real
+    // addresses (it redirects, so its page would load a second time with a warm cache and look faster)
+    const bUrl = (await fetch(BASE + n)).status === 200 ? BASE + n : BASE + b;
+    const a = [], z = [];
+    for (let i = 0; i < 5; i++) { a.push(await measure(br, bUrl, mobile)); z.push(await measure(br, NEW + n, mobile)); }
+    const med = r => ({ lcp: median(r.map(x => x.lcp)), cls: median(r.map(x => x.cls)), bytes: median(r.map(x => x.bytes)) });
+    const before = med(a), after = med(z);
     rows.push({ label, device: mobile ? 'mobile' : 'desktop', before, after });
   }
   await br.close();
