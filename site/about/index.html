@@ -1299,6 +1299,18 @@ html[data-cur="individuals"] .nxSub a[data-for~="individuals"],html[data-cur="he
 @media(min-width:900px){.nxAboutIn{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .nxAboutI{padding-top:22px;border-top:1px solid var(--rule)}
 .nxAboutI .nxSvcH{margin-top:0}
+/* Team Pandonia (About): the Why list's columns and type, a portrait per person */
+.nxTeam{padding-block:0 clamp(64px,8vw,128px)}
+[data-page="about"] .nxTeam .wrap{max-width:none;width:var(--abW)}
+.nxTeamL{display:grid;gap:clamp(48px,4vw,64px);list-style:none;margin:0;padding:0}
+@media(min-width:900px){.nxTeamL{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.nxTeamI{padding-top:24px;border-top:1px solid var(--rule)}
+.nxTeamImg{margin:0 0 22px;max-width:300px;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:var(--sand)}
+.nxTeamImg img{display:block;width:100%;height:100%;object-fit:cover}
+.nxTeamR{margin-top:10px}
+.nxTeamQ{margin:22px 0 0;padding:18px 0 0;border-top:1px solid var(--ruleSoft);max-width:38ch}
+.nxTeamQ p{font-size:clamp(19px,.3vw + 17px,22px);line-height:1.35;font-style:italic;color:var(--ink)}
+
 
 @media(prefers-reduced-motion:reduce){.nxCatA,.nxCatImg img,.nxGo span:last-child,.nxPlus{transition:none}}
 
@@ -1564,6 +1576,36 @@ html[data-cur="home"] .nav.atTop a:not(.navcta),html[data-cur="home"] .nav.atTop
       <p class="nxBody" data-da="Til klinikker leverer vi fleksible laboratorieydelser, der støtter deres arbejde og respekterer deres relation til patienterne." data-en="For clinics, we provide flexible laboratory services that support their work and respect their relationship with patients.">For clinics, we provide flexible laboratory services that support their work and respect their relationship with patients.</p>
       <p class="nxBody nxStrong" data-da="Forskellige behov. Den samme forpligtelse til kvalitet." data-en="Different needs. The same commitment to quality.">Different needs. The same commitment to quality.</p>
       <p class="nxLinks"><a class="lnk" href="__BASE_PATH__individuals/" data-route="individuals"><span data-da="For privatpersoner" data-en="For individuals">For individuals</span> <span aria-hidden="true">→</span></a><a class="lnk" href="__BASE_PATH__clinics/" data-route="clinics"><span data-da="For klinikker" data-en="For clinics">For clinics</span> <span aria-hidden="true">→</span></a></p></div>
+  </div></section>
+  <!-- Team Pandonia. Portraits: public/images/team-*.webp, 4:5 (400×500). A placeholder is replaced
+       by overwriting its file with the approved portrait; then set its alt text in data-alt-da/data-alt-en. -->
+  <section class="nxTeam" aria-labelledby="nxTeamH"><div class="wrap">
+    <div class="nxSecHd"><h2 class="s nxH2" data-da="Team Pandonia" data-en="Team Pandonia" id="nxTeamH">Team Pandonia</h2>
+      <p class="nxBody" data-da="Faglighed, forskning og laboratorieekspertise samlet ét sted. Mød de mennesker, der arbejder for, at vores sundhedstests er medicinsk relevante, videnskabeligt funderede og håndteret med omhu." data-en="Medical expertise, research and laboratory knowledge in one place. Meet the people working to ensure our health tests are medically relevant, scientifically grounded and handled with care.">Medical expertise, research and laboratory knowledge in one place. Meet the people working to ensure our health tests are medically relevant, scientifically grounded and handled with care.</p></div>
+    <ul class="nxTeamL">
+      <li class="nxTeamI">
+        <figure class="nxTeamImg"><img src="__BASE_PATH__images/team-benedikte-mohl-halle.webp" width="400" height="500" loading="lazy" decoding="async" data-alt-da="Portræt af Benedikte Møhl Halle" data-alt-en="Portrait of Benedikte Møhl Halle" alt="Portrait of Benedikte Møhl Halle"></figure>
+        <h3 class="s nxWhyH">Benedikte Møhl Halle</h3>
+        <p class="lab nxTeamR" data-da="Ansvarlig læge" data-en="Medical Director">Medical Director</p>
+        <p class="nxWhyP" data-da="Benedikte er Pandonias ansvarlige læge og det lægefaglige anker bag alt, hvad vi gør. Hun har ansvaret for vores lægefaglige kvalitet, godkender alle testpakker og har tilsyn med vores sundhedsfaglige medarbejdere, så du kan stole på, at din test er sammensat og håndteret med omhu." data-en="Benedikte is Pandonia’s Medical Director and the medical anchor behind everything we do. She is responsible for our medical quality, approves every test package and oversees our health professionals, so you can trust that your test is built and handled with care.">Benedikte is Pandonia’s Medical Director and the medical anchor behind everything we do. She is responsible for our medical quality, approves every test package and oversees our health professionals, so you can trust that your test is built and handled with care.</p>
+        <p class="nxWhyP" data-da="Hun blev uddannet læge fra Københavns Universitet i 2010 og har mere end 15 års klinisk erfaring fra hospitaler og almen praksis samt efteruddannelse i funktionel medicin. Den kombination præger den måde, vi arbejder på: forankret i konventionel medicin, med fokus på forebyggelse og det samlede billede af din sundhed." data-en="She qualified as a doctor from the University of Copenhagen in 2010 and brings more than 15 years of clinical experience from hospitals and general practice, along with further training in functional medicine. That combination shapes how we work: grounded in conventional medicine, with a focus on prevention and the bigger picture of your health.">She qualified as a doctor from the University of Copenhagen in 2010 and brings more than 15 years of clinical experience from hospitals and general practice, along with further training in functional medicine. That combination shapes how we work: grounded in conventional medicine, with a focus on prevention and the bigger picture of your health.</p>
+        <blockquote class="nxTeamQ"><p class="s" data-da="”Sundhed er ikke ens for alle. To mennesker kan have den samme værdi og have brug for vidt forskellige ting. At finde ud af det er det, der driver mig.”" data-en="“Health isn’t one size fits all. Two people can have the same value and need very different things. Figuring that out is what drives me.”">“Health isn’t one size fits all. Two people can have the same value and need very different things. Figuring that out is what drives me.”</p></blockquote>
+      </li>
+      <li class="nxTeamI">
+        <figure class="nxTeamImg"><img src="__BASE_PATH__images/team-carol-melo.webp" width="400" height="500" loading="lazy" decoding="async" data-alt-da="" data-alt-en="" alt=""></figure>
+        <h3 class="s nxWhyH">Carol Melo</h3>
+        <p class="lab nxTeamR" data-da="Forsker" data-en="Researcher">Researcher</p>
+        <p class="nxWhyP" data-da="Carol har en kandidatgrad i kemi og en baggrund inden for biokemi og dataanalyse. Hun gennemgår den videnskabelige evidens bag biomarkørerne, har tilsyn med kvalitetskontrol og kalibrering af vores laboratorieanalyser og holder os opdateret på den nyeste forskning." data-en="Carol holds a master’s degree in chemistry and has a background in biochemistry and data analysis. She reviews the scientific evidence behind the biomarkers, oversees quality control and calibration of our laboratory analyses and keeps us on track with the latest research.">Carol holds a master’s degree in chemistry and has a background in biochemistry and data analysis. She reviews the scientific evidence behind the biomarkers, oversees quality control and calibration of our laboratory analyses and keeps us on track with the latest research.</p>
+        <blockquote class="nxTeamQ"><p class="s" data-da="”Der ligger meget arbejde bag hvert resultat, og rapporterne er lavet for at gøre dine tal til noget, du kan forstå og handle på.”" data-en="“There’s a lot of work behind every result, and the reports are made to turn your numbers into something you can understand and act on.”">“There’s a lot of work behind every result, and the reports are made to turn your numbers into something you can understand and act on.”</p></blockquote>
+      </li>
+      <li class="nxTeamI">
+        <figure class="nxTeamImg"><img src="__BASE_PATH__images/team-regina-kovacs.webp" width="400" height="500" loading="lazy" decoding="async" data-alt-da="Portræt af Regina Kovács" data-alt-en="Portrait of Regina Kovács" alt="Portrait of Regina Kovács"></figure>
+        <h3 class="s nxWhyH">Regina Kovács</h3>
+        <p class="lab nxTeamR" data-da="Laboratorieanalytiker" data-en="Laboratory Analyst">Laboratory Analyst</p>
+        <p class="nxWhyP" data-da="Regina er ved at uddanne sig til ingeniør inden for biokemi og er en del af vores laboratorieteam. Hun tager et reelt ansvar for sit arbejde og er nysgerrig på alt bag det, fra hvorfor hver biomarkør er valgt, til hvordan forretningen omkring det fungerer." data-en="Regina is studying biochemical engineering and is part of our laboratory team. She takes real responsibility for her work and is curious about everything behind it, from why each biomarker is chosen to how the business around it works.">Regina is studying biochemical engineering and is part of our laboratory team. She takes real responsibility for her work and is curious about everything behind it, from why each biomarker is chosen to how the business around it works.</p>
+        <blockquote class="nxTeamQ"><p class="s" data-da="”Hver prøve tilhører en, der gerne vil forstå sig selv lidt bedre. Det har jeg i baghovedet i laboratoriet.”" data-en="“Every sample belongs to someone who wants to understand themselves a little better. I keep that in mind in the lab.”">“Every sample belongs to someone who wants to understand themselves a little better. I keep that in mind in the lab.”</p></blockquote>
+      </li>
+    </ul>
   </div></section>
   <section class="nxVis" aria-labelledby="nxVisL"><div class="wrap nxVisIn">
   <p class="lab" id="nxVisL" lang="en">Our vision</p>

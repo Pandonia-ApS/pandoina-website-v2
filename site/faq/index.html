@@ -1299,6 +1299,18 @@ html[data-cur="individuals"] .nxSub a[data-for~="individuals"],html[data-cur="he
 @media(min-width:900px){.nxAboutIn{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .nxAboutI{padding-top:22px;border-top:1px solid var(--rule)}
 .nxAboutI .nxSvcH{margin-top:0}
+/* Team Pandonia (About): the Why list's columns and type, a portrait per person */
+.nxTeam{padding-block:0 clamp(64px,8vw,128px)}
+[data-page="about"] .nxTeam .wrap{max-width:none;width:var(--abW)}
+.nxTeamL{display:grid;gap:clamp(48px,4vw,64px);list-style:none;margin:0;padding:0}
+@media(min-width:900px){.nxTeamL{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.nxTeamI{padding-top:24px;border-top:1px solid var(--rule)}
+.nxTeamImg{margin:0 0 22px;max-width:300px;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:var(--sand)}
+.nxTeamImg img{display:block;width:100%;height:100%;object-fit:cover}
+.nxTeamR{margin-top:10px}
+.nxTeamQ{margin:22px 0 0;padding:18px 0 0;border-top:1px solid var(--ruleSoft);max-width:38ch}
+.nxTeamQ p{font-size:clamp(19px,.3vw + 17px,22px);line-height:1.35;font-style:italic;color:var(--ink)}
+
 
 @media(prefers-reduced-motion:reduce){.nxCatA,.nxCatImg img,.nxGo span:last-child,.nxPlus{transition:none}}
 
