@@ -1326,6 +1326,33 @@ html[data-cur="individuals"] .nxSub a[data-for~="individuals"],html[data-cur="he
 [data-page="about"] .nxAbout .wrap{max-width:none;width:var(--abW)}
 [data-page="about"] .nxPgImg{aspect-ratio:1700/1089;border-radius:10px}
 [data-page="about"] .nxPgImg img{object-position:50% 55%}
+/* laboratory page: the lounge photo beside the heading, same rounded landscape frame as the About photo */
+[data-page="laboratory"] .nxPgImg{aspect-ratio:4/3;max-height:none;border-radius:10px}
+[data-page="laboratory"] .nxPgImg img{object-position:50% 45%}
+/* Laboratory page: one container for hero and facts, a larger balanced hero, a compact 2×2 facts box with icons */
+[data-page="laboratory"]{--labW:min(1320px,calc(100vw - 2 * clamp(20px,5vw,96px)))}
+[data-page="laboratory"] .nxPg{padding-block:clamp(24px,4vw,64px) clamp(28px,3vw,48px)}
+[data-page="laboratory"] .nxPg .wrap,[data-page="laboratory"] .nxAbout .wrap{max-width:none;width:var(--labW);padding-inline:0}
+[data-page="laboratory"] .nxPgTx .nxH1{font-size:clamp(40px,2.6vw + 24px,68px)}
+[data-page="laboratory"] .nxPgTx .nxLead{max-width:36ch;font-size:clamp(18px,.45vw + 14px,21px);line-height:1.5;color:var(--ink)}
+[data-page="laboratory"] .nxPgImg{aspect-ratio:16/10}
+@media(min-width:1024px){[data-page="laboratory"] .nxPgIn{grid-template-columns:minmax(0,40fr) minmax(0,60fr);gap:clamp(32px,3.4vw,56px)}}
+[data-page="laboratory"] .nxLabCtaP{margin-top:clamp(24px,2.4vw,36px)}
+[data-page="laboratory"] .nxLabCta{width:auto;min-height:52px;padding:14px 26px;gap:12px;background:#0A0A0A;color:#FAFAF7;border:0}
+[data-page="laboratory"] .nxLabCta:hover{background:#2a2a2a}
+[data-page="laboratory"] .nxAbout{padding-block:0 clamp(56px,7vw,104px)}
+[data-page="laboratory"] .nxAboutIn{padding:clamp(4px,.8vw,12px) clamp(20px,3.2vw,56px) clamp(16px,1.6vw,28px)}
+[data-page="laboratory"] .nxAboutI{display:grid;grid-template-columns:26px minmax(0,1fr);column-gap:clamp(14px,1.4vw,22px);align-content:start;margin:0;padding-block:clamp(20px,2vw,28px);border-top:1px solid var(--rule)}
+[data-page="laboratory"] .nxAboutI>*:not(.nxLabIco){grid-column:2}
+[data-page="laboratory"] .nxLabIco{grid-column:1;grid-row:1;padding-top:2px;color:var(--ink)}
+[data-page="laboratory"] .nxAboutI .nxSvcH{max-width:none;font-size:clamp(24px,.8vw + 18px,32px)}
+[data-page="laboratory"] .nxAboutI .nxBody{margin-top:8px;max-width:54ch}
+[data-page="laboratory"] .nxAboutI .nxLinks{margin-top:0;padding-top:16px}
+@media(min-width:900px){
+  [data-page="laboratory"] .nxAboutIn{column-gap:clamp(48px,5vw,96px)}
+  [data-page="laboratory"] .nxAboutI,[data-page="laboratory"] .nxAboutI+.nxAboutI{margin:0}
+  [data-page="laboratory"] .nxAboutI:nth-child(-n+2){border-top:0}
+}
 [data-page="about"] .nxPgTx .nxLead{max-width:40ch;font-size:clamp(17px,.35vw + 14px,20px);line-height:1.45}
 [data-page="about"] .nxPgTx .nxLead+.nxLead{margin-top:clamp(18px,2vw,28px)}
 @media(min-width:1024px){
@@ -2048,17 +2075,18 @@ html[data-cur="home"] .nav.atTop a:not(.navcta),html[data-cur="home"] .nav.atTop
 </div>
 <div data-page="laboratory" hidden>
   <section class="nxPg"><div class="wrap nxPgIn">
-    <div class="nxPgTx"><p class="lab" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</p><h1 class="s nxH1 nxH1s"><span data-da="Vores laboratorium i København" data-en="Our laboratory in Copenhagen">Vores laboratorium i København</span></h1><p class="nxLead" data-da="Pandonia er et privat klinisk biokemisk laboratorium på Langebrogade 3B i København. Loungen, prøvetagningen og laboratoriet ligger samme sted, og de fleste prøver analyserer vi selv." data-en="Pandonia is a private clinical biochemistry laboratory at Langebrogade 3B in Copenhagen. The lounge, sample collection and laboratory are under one roof, and we analyse most samples ourselves.">Pandonia er et privat klinisk biokemisk laboratorium på Langebrogade 3B i København. Loungen, prøvetagningen og laboratoriet ligger samme sted, og de fleste prøver analyserer vi selv.</p></div>
+    <div class="nxPgTx"><p class="lab" data-da="Laboratoriet" data-en="The laboratory">Laboratoriet</p><h1 class="s nxH1 nxH1s"><span data-da="Vores laboratorium i København" data-en="Our laboratory in Copenhagen">Vores laboratorium i København</span></h1><p class="nxLead" data-da="Pandonia er et privat klinisk biokemisk laboratorium på Langebrogade 3B i København. Loungen, prøvetagningen og laboratoriet ligger samme sted, og de fleste prøver analyserer vi selv." data-en="Pandonia is a private clinical biochemistry laboratory at Langebrogade 3B in Copenhagen. The lounge, sample collection and laboratory are under one roof, and we analyse most samples ourselves.">Pandonia er et privat klinisk biokemisk laboratorium på Langebrogade 3B i København. Loungen, prøvetagningen og laboratoriet ligger samme sted, og de fleste prøver analyserer vi selv.</p><p class="nxLabCtaP"><a class="btn btn1 nxLabCta" href="#/individuals" data-route="individuals"><span data-da="For privatpersoner" data-en="For individuals">For privatpersoner</span> <span aria-hidden="true">→</span></a></p></div>
+    <figure class="nxPgImg"><img src="__BASE_PATH__images/lab-lounge.webp" width="1152" height="1536" decoding="async" fetchpriority="high" data-alt-da="Pandonias lounge med en hvid prøvetagningsstol og en daybed foran en mørkeblå Pandonia-væg." data-alt-en="Pandonia’s lounge with a white sampling chair and a daybed in front of a dark blue Pandonia wall." alt="Pandonias lounge med en hvid prøvetagningsstol og en daybed foran en mørkeblå Pandonia-væg."></figure>
   </div></section>
   <section class="nxAbout"><div class="wrap nxAboutIn">
-    <div class="nxAboutI"><h2 class="s nxSvcH" data-da="Prøvetagning" data-en="Sample collection">Prøvetagning</h2>
+    <div class="nxAboutI"><span class="nxLabIco" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.4 4.1 5.6 7.2 5.6 10a5.6 5.6 0 0 1-11.2 0c0-2.8 2.2-5.9 5.6-10z"/></svg></span><h2 class="s nxSvcH" data-da="Prøvetagning" data-en="Sample collection">Prøvetagning</h2>
       <p class="nxBody" data-da="Få taget din blodprøve i vores lounge på Langebrogade 3B, eller hjemme hos dig eller på arbejdspladsen i København K, N, NV, V, S, SV, Ø, Frederiksberg og Hellerup." data-en="Have your blood taken in our lounge at Langebrogade 3B, or at home or at work in Copenhagen K, N, NV, V, S, SV, Ø, Frederiksberg and Hellerup.">Få taget din blodprøve i vores lounge på Langebrogade 3B, eller hjemme hos dig eller på arbejdspladsen i København K, N, NV, V, S, SV, Ø, Frederiksberg og Hellerup.</p></div>
-    <div class="nxAboutI"><h2 class="s nxSvcH" data-da="Analyse og svar" data-en="Analysis and results">Analyse og svar</h2>
+    <div class="nxAboutI"><span class="nxLabIco" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5M10.5 3.5v6L5.4 18.2a1.9 1.9 0 0 0 1.6 2.8h10a1.9 1.9 0 0 0 1.6-2.8L13.5 9.5v-6"/><path d="M7.6 15h8.8"/></svg></span><h2 class="s nxSvcH" data-da="Analyse og svar" data-en="Analysis and results">Analyse og svar</h2>
       <p class="nxBody" data-da="De fleste prøver analyseres i vores eget laboratorium. Du får svar inden for 48 timer i en rapport, der viser hver måling med sine områder." data-en="Most samples are analysed in our own laboratory. You get your results within 48 hours, in a report that shows every measurement with its ranges.">De fleste prøver analyseres i vores eget laboratorium. Du får svar inden for 48 timer i en rapport, der viser hver måling med sine områder.</p></div>
-    <div class="nxAboutI"><h2 class="s nxSvcH" data-da="Lægefaglig ansvarlig" data-en="Medical lead">Lægefaglig ansvarlig</h2>
+    <div class="nxAboutI"><span class="nxLabIco" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20.5c0-3.8 3.1-6.5 7-6.5s7 2.7 7 6.5"/></svg></span><h2 class="s nxSvcH" data-da="Lægefaglig ansvarlig" data-en="Medical lead">Lægefaglig ansvarlig</h2>
       <p class="nxBody" data-da="Benedikte Møhl Halle er Pandonias ansvarlige læge. Hun blev uddannet læge fra Københavns Universitet i 2010 og har mere end 15 års klinisk erfaring fra hospitaler og almen praksis samt efteruddannelse i funktionel medicin." data-en="Benedikte Møhl Halle is Pandonia’s Medical Director. She qualified as a doctor at the University of Copenhagen in 2010 and has more than 15 years of clinical experience in hospitals and general practice, with further training in functional medicine.">Benedikte Møhl Halle er Pandonias ansvarlige læge. Hun blev uddannet læge fra Københavns Universitet i 2010 og har mere end 15 års klinisk erfaring fra hospitaler og almen praksis samt efteruddannelse i funktionel medicin.</p>
       <p class="nxBody" data-da="Hun har ansvaret for den lægefaglige kvalitet, godkender alle testpakker og har tilsyn med vores sundhedsfaglige medarbejdere." data-en="She is responsible for medical quality, approves every test package and oversees our health professionals.">Hun har ansvaret for den lægefaglige kvalitet, godkender alle testpakker og har tilsyn med vores sundhedsfaglige medarbejdere.</p></div>
-    <div class="nxAboutI"><h2 class="s nxSvcH" data-da="Til klinikker" data-en="For clinics">Til klinikker</h2>
+    <div class="nxAboutI"><span class="nxLabIco" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 20.5V9.2L12 4.5l7.5 4.7v11.3z"/><path d="M10 20.5v-4.5h4v4.5"/><path d="M12 8.5v4M10 10.5h4"/></svg></span><h2 class="s nxSvcH" data-da="Til klinikker" data-en="For clinics">Til klinikker</h2>
       <p class="nxBody" data-da="Vi tager også blodprøver og analyserer dem for klinikker." data-en="We also take and analyse blood samples for clinics.">Vi tager også blodprøver og analyserer dem for klinikker.</p>
       <p class="nxBody">Pandonia ApS · CVR 41 58 87 64 · Langebrogade 3B, 1411 København K · <a href="mailto:labs@pandonia.com">labs@pandonia.com</a></p>
       <p class="nxLinks"><a class="lnk" href="#/clinics" data-route="clinics"><span data-da="Se laboratorieydelser" data-en="See laboratory services">Se laboratorieydelser</span> <span aria-hidden="true">→</span></a><a class="lnk" href="#/book" data-route="book"><span data-da="Se priser" data-en="See prices">Se priser</span> <span aria-hidden="true">→</span></a><a class="lnk" href="#/biomarkers" data-route="biomarkers"><span data-da="Se alle biomarkører" data-en="See all biomarkers">Se alle biomarkører</span> <span aria-hidden="true">→</span></a></p></div>

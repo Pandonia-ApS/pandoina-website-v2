@@ -1326,6 +1326,33 @@ html[data-cur="individuals"] .nxSub a[data-for~="individuals"],html[data-cur="he
 [data-page="about"] .nxAbout .wrap{max-width:none;width:var(--abW)}
 [data-page="about"] .nxPgImg{aspect-ratio:1700/1089;border-radius:10px}
 [data-page="about"] .nxPgImg img{object-position:50% 55%}
+/* laboratory page: the lounge photo beside the heading, same rounded landscape frame as the About photo */
+[data-page="laboratory"] .nxPgImg{aspect-ratio:4/3;max-height:none;border-radius:10px}
+[data-page="laboratory"] .nxPgImg img{object-position:50% 45%}
+/* Laboratory page: one container for hero and facts, a larger balanced hero, a compact 2×2 facts box with icons */
+[data-page="laboratory"]{--labW:min(1320px,calc(100vw - 2 * clamp(20px,5vw,96px)))}
+[data-page="laboratory"] .nxPg{padding-block:clamp(24px,4vw,64px) clamp(28px,3vw,48px)}
+[data-page="laboratory"] .nxPg .wrap,[data-page="laboratory"] .nxAbout .wrap{max-width:none;width:var(--labW);padding-inline:0}
+[data-page="laboratory"] .nxPgTx .nxH1{font-size:clamp(40px,2.6vw + 24px,68px)}
+[data-page="laboratory"] .nxPgTx .nxLead{max-width:36ch;font-size:clamp(18px,.45vw + 14px,21px);line-height:1.5;color:var(--ink)}
+[data-page="laboratory"] .nxPgImg{aspect-ratio:16/10}
+@media(min-width:1024px){[data-page="laboratory"] .nxPgIn{grid-template-columns:minmax(0,40fr) minmax(0,60fr);gap:clamp(32px,3.4vw,56px)}}
+[data-page="laboratory"] .nxLabCtaP{margin-top:clamp(24px,2.4vw,36px)}
+[data-page="laboratory"] .nxLabCta{width:auto;min-height:52px;padding:14px 26px;gap:12px;background:#0A0A0A;color:#FAFAF7;border:0}
+[data-page="laboratory"] .nxLabCta:hover{background:#2a2a2a}
+[data-page="laboratory"] .nxAbout{padding-block:0 clamp(56px,7vw,104px)}
+[data-page="laboratory"] .nxAboutIn{padding:clamp(4px,.8vw,12px) clamp(20px,3.2vw,56px) clamp(16px,1.6vw,28px)}
+[data-page="laboratory"] .nxAboutI{display:grid;grid-template-columns:26px minmax(0,1fr);column-gap:clamp(14px,1.4vw,22px);align-content:start;margin:0;padding-block:clamp(20px,2vw,28px);border-top:1px solid var(--rule)}
+[data-page="laboratory"] .nxAboutI>*:not(.nxLabIco){grid-column:2}
+[data-page="laboratory"] .nxLabIco{grid-column:1;grid-row:1;padding-top:2px;color:var(--ink)}
+[data-page="laboratory"] .nxAboutI .nxSvcH{max-width:none;font-size:clamp(24px,.8vw + 18px,32px)}
+[data-page="laboratory"] .nxAboutI .nxBody{margin-top:8px;max-width:54ch}
+[data-page="laboratory"] .nxAboutI .nxLinks{margin-top:0;padding-top:16px}
+@media(min-width:900px){
+  [data-page="laboratory"] .nxAboutIn{column-gap:clamp(48px,5vw,96px)}
+  [data-page="laboratory"] .nxAboutI,[data-page="laboratory"] .nxAboutI+.nxAboutI{margin:0}
+  [data-page="laboratory"] .nxAboutI:nth-child(-n+2){border-top:0}
+}
 [data-page="about"] .nxPgTx .nxLead{max-width:40ch;font-size:clamp(17px,.35vw + 14px,20px);line-height:1.45}
 [data-page="about"] .nxPgTx .nxLead+.nxLead{margin-top:clamp(18px,2vw,28px)}
 @media(min-width:1024px){
